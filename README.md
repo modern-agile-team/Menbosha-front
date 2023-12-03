@@ -104,32 +104,6 @@
   ```
 - dependencies
   ```json
-    "@loadable/component": "^5.15.3",
-    "@types/loadable__component": "^5.13.5",
-    "@types/node": "20.5.4",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
-    "axios": "^1.5.0",
-    "bootstrap": "^5.3.1",
-    "dompurify": "^3.0.6",
-    "dotenv": "^16.3.1",
-    "file-loader": "^6.2.0",
-    "loadable": "^1.0.0",
-    "next": "13.4.19",
-    "next-navigation": "^1.0.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.10.1",
-    "react-loadable": "^5.5.0",
-    "react-quill": "^2.0.0",
-    "react-router-dom": "^6.16.0",
-    "react-toastify": "^9.1.3",
-    "recoil": "^0.7.7",
-    "recoil-persist": "^5.1.0",
-    "socket.io-client": "^4.7.2",
-    "styled-components": "^6.0.7",
-    "typescript": "5.1.6"
-
     "axios": "^1.6.2",
     "next": "14.0.3",
     "react": "^18",
