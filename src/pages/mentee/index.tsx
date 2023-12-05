@@ -1,5 +1,7 @@
+import MenteeTemplete from '@/components/templates/menteetemp/MenteeTemplete';
+
 const Mentee = () => {
-  return <div>멘티 페이지</div>;
+  return <MenteeTemplete />;
 };
 
 export default Mentee;

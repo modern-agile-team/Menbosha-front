@@ -1,8 +1,11 @@
 import React from 'react';
-import Header from '../common/header/Header';
 
 const Test = () => {
-  return <Header />;
+  return (
+    <>
+      <div>테스트 템플릿</div>
+    </>
+  );
 };
 
 export default Test;

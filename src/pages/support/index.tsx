@@ -1,5 +1,7 @@
+import SupportTemplete from '@/components/templates/supporttemp/SupportTemplete';
+
 const Support = () => {
-  return <div>고객지원페이지</div>;
+  return <SupportTemplete />;
 };
 
 export default Support;
