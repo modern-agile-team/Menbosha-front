@@ -1,5 +1,11 @@
+import LoginTemplate from '@/components/templates/LoginTemplate';
+
 const NaverCallback = () => {
-  return <div>네이버 콜백</div>;
+  return (
+    <div>
+      <LoginTemplate provider="kakao" />
+    </div>
+  );
 };
 
 export default NaverCallback;

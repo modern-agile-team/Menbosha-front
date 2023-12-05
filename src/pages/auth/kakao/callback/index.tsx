@@ -1,5 +1,11 @@
+import LoginTemplate from '@/components/templates/LoginTemplate';
+
 const KakaoCallback = () => {
-  return <div>카카오콜백</div>;
+  return (
+    <div>
+      <LoginTemplate provider="kakao" />
+    </div>
+  );
 };
 
 export default KakaoCallback;
