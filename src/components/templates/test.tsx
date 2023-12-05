@@ -1,5 +1,8 @@
+import React from 'react';
+import Header from '../common/header/Header';
+
 const Test = () => {
-  return <div>test</div>;
+  return <Header />;
 };
 
 export default Test;

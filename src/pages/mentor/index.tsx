@@ -1,5 +1,5 @@
-const Mentee = () => {
-  return <div>멘티 페이지</div>;
+const Mentor = () => {
+  return <div>멘토 페이지</div>;
 };
 
-export default Mentee;
+export default Mentor;
