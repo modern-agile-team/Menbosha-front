@@ -1,5 +1,7 @@
-const Mentee = () => {
-  return <div>멘티 페이지</div>;
+import MentorTemplete from '@/components/templates/mentortemp/MentorTemplete';
+
+const Mentor = () => {
+  return <MentorTemplete />;
 };
 
-export default Mentee;
+export default Mentor;

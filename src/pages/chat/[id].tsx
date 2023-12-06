@@ -1,5 +1,7 @@
+import ChatPageTemplete from '@/components/templates/chatpagetemp/ChatPageTemplete';
+
 const Chattings = () => {
-  return <div>채팅페이지</div>;
+  return <ChatPageTemplete />;
 };
 
 export default Chattings;
