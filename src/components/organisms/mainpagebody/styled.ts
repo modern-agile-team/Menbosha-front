@@ -11,16 +11,16 @@ export const BodyWrapper = styled.div`
 export const BodyContainer = styled.div`
   display: flex;
   margin-left: 197.5px;
-  width: 80vw;
+  width: 88vw;
   height: inherit;
   align-items: center;
   justify-content: space-between;
   border: 2px solid yellow;
 `;
 
-export const BodyArea = styled.div`
+export const BodyBox = styled.div`
   display: flex;
   width: inherit;
-  height: 40vh;
+  height: 60vh;
   border: 2px solid green;
 `;

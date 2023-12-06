@@ -1,7 +1,12 @@
-const Footer = () => {
+import React from 'react';
+import * as S from './styled';
+
+const MainPageFooter = () => {
   return (
     <>
-      <div>Footer</div>
+      <S.FooterContainer></S.FooterContainer>
     </>
   );
 };
+
+export default MainPageFooter;

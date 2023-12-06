@@ -5,7 +5,7 @@ const MainPageBody = () => {
   return (
     <S.BodyWrapper>
       <S.BodyContainer>
-        <S.BodyArea></S.BodyArea>
+        <S.BodyBox></S.BodyBox>
       </S.BodyContainer>
     </S.BodyWrapper>
   );
