@@ -1,4 +1,4 @@
-import ContentsTemplete from '@/components/templates/contentstemp/ContentsTemplete';
+import ContentsTemplete from '@/components/templates/ContentsTemplete';
 
 const Contents = () => {
   return <ContentsTemplete />;

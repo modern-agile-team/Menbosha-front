@@ -1,9 +1,14 @@
 import React from 'react';
-import * as S from './styled';
 import MainPageHeader from '@/components/common/header/MainPageHeader';
+import MainPageBody from '../organisms/mainpagebody/MainPageBody';
 
 const MainTemplete = () => {
-  return <MainPageHeader />;
+  return (
+    <>
+      <MainPageHeader />
+      <MainPageBody />
+    </>
+  );
 };
 
 export default MainTemplete;
