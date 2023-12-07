@@ -1,4 +1,4 @@
-import ChatPageTemplete from '@/components/templates/chatpagetemp/ChatPageTemplete';
+import ChatPageTemplete from '@/components/templates/ChatPageTemplete';
 
 const Chattings = () => {
   return <ChatPageTemplete />;

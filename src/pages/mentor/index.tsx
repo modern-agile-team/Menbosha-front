@@ -1,4 +1,4 @@
-import MentorTemplete from '@/components/templates/mentortemp/MentorTemplete';
+import MentorTemplete from '@/components/templates/MentorTemplete';
 
 const Mentor = () => {
   return <MentorTemplete />;

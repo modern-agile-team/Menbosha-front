@@ -1,4 +1,4 @@
-import MenteeTemplete from '@/components/templates/menteetemp/MenteeTemplete';
+import MenteeTemplete from '@/components/templates/MenteeTemplete';
 
 const Mentee = () => {
   return <MenteeTemplete />;

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-// export const MainPageWrapper = styled.div`
-//   background: #252525;
-//   display: flex;
-//   margin: -10px 0px -10px -10px;
-//   width: 100vw;
-//   height: 100vh;
-//   /* border: 2px solid gray; */
-// `;
+export const MainPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+`;
