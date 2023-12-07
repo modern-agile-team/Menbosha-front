@@ -18,7 +18,7 @@ export const FooterArea = styled.div`
 
 export const FooterBox = styled.div`
   display: flex;
-  width: 51vw;
+  width: 53vw;
   justify-content: space-between;
   /* border: 2px solid gray; */
 `;
