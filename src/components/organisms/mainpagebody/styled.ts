@@ -12,7 +12,7 @@ export const BodyContainer = styled.div`
   background-size: cover;
   display: flex;
   margin: 0px 197.5px;
-  width: 76.5vw;
+  width: 76.8vw;
   height: inherit;
   align-items: center;
   justify-content: space-between;
