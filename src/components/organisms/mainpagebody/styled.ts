@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const BodyWrapper = styled.div`
   display: flex;
-  margin-top: 20px;
   width: inherit;
   height: 70vh;
   border: 2px solid white;
