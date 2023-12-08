@@ -1,4 +1,4 @@
-import MainTemplete from '@/components/templates/maintemp/MainTemplete';
+import MainTemplete from '@/components/templates/MainTemplete';
 import React from 'react';
 
 const Main = () => {

@@ -9,9 +9,10 @@ export const BodyWrapper = styled.div`
 
 export const BodyContainer = styled.div`
   display: flex;
-  /* margin: 0px 197.5px; */
-  width: 100vw;
-  height: inherit;
+  flex-direction: row;
+  margin: 0px 197.5px;
+  width: 76.8vw;
+  height: 70vh;
   align-items: center;
   border: 2px solid yellow;
 `;
