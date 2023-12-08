@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styled';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const MainPageFooter = () => {
   return (
@@ -10,18 +11,18 @@ const MainPageFooter = () => {
           <S.FooterBox>
             <S.FooterBoxLeft>
               <S.NoticeBox>
-                <img
+                <Image
                   src="/AlarmLeft.svg"
                   alt="alarm icon"
-                  width="20px"
-                  height="20px"
+                  width="20"
+                  height="20"
                 />
                 <span> ※ 공지사항 거 이왕이면 혁명이란 단어를 쓰십쇼</span>
-                <img
+                <Image
                   src="/AlarmRight.svg"
                   alt="alarm icon"
-                  width="20px"
-                  height="20px"
+                  width="20"
+                  height="20"
                 />
               </S.NoticeBox>
               <span>
