@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styled';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const id = 0; //초기값 -> 후에 변동 예정
 
@@ -20,8 +21,8 @@ const SubPageHeader = () => {
             href={{
               pathname: `/main`,
             }}>
-            <img src="/LogoIcon.svg" alt="LogoIcon" width="36" height="36" />
-            <img
+            <Image src="/LogoIcon.svg" alt="LogoIcon" width="36" height="36" />
+            <Image
               src="/LogoText.svg"
               alt="LogoText"
               width="110"
@@ -43,13 +44,13 @@ const SubPageHeader = () => {
               pathname: `/chat/${id}`,
               query: { id: 0 },
             }}>
-            <img src="/ChatIcon.svg" alt="ChatIcon" width="28" height="28" />
+            <Image src="/ChatIcon.svg" alt="ChatIcon" width="28" height="28" />
           </Link>
           <Link
             href={{
               pathname: `/userpage`,
             }}>
-            <img src="/UserIcon.svg" alt="UserIcon" width="28" height="28" />
+            <Image src="/UserIcon.svg" alt="UserIcon" width="28" height="28" />
           </Link>
         </S.IconBox>
       </S.HeaderArea>
