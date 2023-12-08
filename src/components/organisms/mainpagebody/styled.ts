@@ -8,14 +8,10 @@ export const BodyWrapper = styled.div`
 `;
 
 export const BodyContainer = styled.div`
-  background-image: url('/MainBody-example.png');
-  background-size: cover;
   display: flex;
-  margin: 0px 197.5px;
-  width: 76.8vw;
+  /* margin: 0px 197.5px; */
+  width: 100vw;
   height: inherit;
   align-items: center;
-  justify-content: space-between;
-  border-radius: 30px;
-  /* border: 2px solid yellow; */
+  border: 2px solid yellow;
 `;

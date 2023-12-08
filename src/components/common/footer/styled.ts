@@ -46,7 +46,7 @@ export const NoticeBox = styled.div`
   align-items: center;
   border-radius: 15px;
   border: 1.5px solid #c58940;
-  & > img {
+  & > Image {
     margin: 0px 16px;
   }
   & > span {
