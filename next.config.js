@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ['https://play-lh.googleusercontent.com/'],
+  },
   reactStrictMode: true,
 };
 
