@@ -16,9 +16,9 @@ const SaveToken = ({ provider }: Company) => {
     try {
       const code = new URL(window.location.href).searchParams.get('code');
 
-      const result = await AUTHS.getToken(provider, code as string);
-      localStorage.setItem('accessToken', result.accessToken);
-      localStorage.setItem('refreshToken', result.refreshToken);
+      // const result = await AUTHS.getToken(provider, code as string);
+      // localStorage.setItem('accessToken', result.accessToken);
+      // localStorage.setItem('refreshToken', result.refreshToken);
       localStorage.setItem('provider', provider);
       setIsLogin(true);
     } catch (err) {
