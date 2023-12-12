@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 interface CardType {
+  id: number;
   name: string;
   userImage: string;
   image: string;
@@ -39,6 +40,7 @@ const CardImageBox = styled.div`
   height: 200px;
   background-color: #999;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 interface CardTextBoxType {
@@ -65,4 +67,5 @@ const CardTextBox = styled.div<CardTextBoxType>`
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.color};
   padding: ${(props) => props.padding};
+  cursor: pointer;
 `;

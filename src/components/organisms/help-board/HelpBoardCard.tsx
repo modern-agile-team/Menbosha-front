@@ -1,19 +1,17 @@
-import HelpCard from '@/components/molecules/auth/help-board-element/HelpCard';
+import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const HelpBoardCardList = () => {
+  //api요청
   const [data, setData] = useState(require('/public/dummy/help.json'));
-  useEffect(() => {
-    setData(require('/public/dummy/help.json'));
-  });
-  console.log(data);
 
   return (
     <HelpCardWarpper>
       <HelpCardContainer>
         {data.helpBoard.map((data: any) => {
           const temp = {
+            id: data.id,
             name: data.userName,
             userImage: data.userImage,
             image: data.image,
