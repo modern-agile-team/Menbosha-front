@@ -6,7 +6,7 @@ export const HeaderContainer = styled.div`
   width: inherit;
   height: 51px; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   justify-content: center;
   /* border: 2px solid black; */
 `;

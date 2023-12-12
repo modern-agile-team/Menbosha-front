@@ -4,6 +4,7 @@ export const FooterContainer = styled.div`
   display: flex;
   width: inherit;
   height: 100vh;
+  margin-top: 20px;
   justify-content: space-between;
   /* border: 2px solid red; */
 `;
@@ -46,9 +47,6 @@ export const NoticeBox = styled.div`
   align-items: center;
   border-radius: 15px;
   border: 1.5px solid #c58940;
-  & > Image {
-    margin: 0px 16px;
-  }
   & > span {
     font-size: 14px;
     color: #c58940;

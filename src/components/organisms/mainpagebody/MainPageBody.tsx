@@ -6,7 +6,9 @@ const MainPageBody = () => {
   return (
     <S.BodyWrapper>
       <S.BodyContainer>
-        <MainImageSlider />
+        <S.SliderContainer>
+          <MainImageSlider />
+        </S.SliderContainer>
       </S.BodyContainer>
     </S.BodyWrapper>
   );
