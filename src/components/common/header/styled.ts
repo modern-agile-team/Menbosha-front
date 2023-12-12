@@ -34,7 +34,8 @@ export const LogoBox = styled.div`
 export const NavigateBox = styled.div`
   display: flex;
   /* flex-wrap: wrap; */
-  width: 570px;
+  width: 520px;
+  margin-right: 75px;
   justify-content: space-around;
   align-items: center;
   /* border: 2px solid blue; */
