@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { Google, Kakao, Naver } from '@/components/molecules/auth/AuthProvider';
+import {
+  Google,
+  Kakao,
+  Naver,
+} from '@/components/molecules/auth-elements/AuthProvider';
 
 interface ModalType {
   show: boolean;

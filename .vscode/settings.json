@@ -1,3 +1,9 @@
 {
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "html"
+  }
   "cSpell.words": ["mentee", "Pretendard", "userpage"]
 }
