@@ -6,8 +6,6 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { server } from '@/mocks/node';
 
-server.listen();
-
 interface SlideType {
   slide: () => void;
 }
@@ -24,8 +22,7 @@ const MentoBoardList = ({ slide }: SlideType) => {
 
   useEffect(() => {
     getMockingDataApi();
-    console.log(getMockingData);
-  });
+  }, []);
 
   return (
     <MentoCardContainer side={sideViewer.isSide}>
