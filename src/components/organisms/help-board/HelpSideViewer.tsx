@@ -15,19 +15,10 @@ interface CardType {
 }
 
 const HelpSideViewer = () => {
-  const [sideViewer, setSideViewer] = useRecoilState(SideViewerAtom);
   const [getHelpUnit, setHelpUnit] = useState<CardType>();
-
-  const handleSideViewer = () => {
-    setSideViewer({
-      isSide: false,
-      id: 0,
-    });
-  };
 
   return (
     <SideViewerWarpper>
-      <div onClick={handleSideViewer}>X</div>
       {getHelpUnit && (
         <div>
           <div>{getHelpUnit.userName}</div>
