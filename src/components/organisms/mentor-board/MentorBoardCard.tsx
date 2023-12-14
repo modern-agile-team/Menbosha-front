@@ -1,8 +1,12 @@
 import MentorCard from '@/components/molecules/mentor-board-elements/MentorCard';
 import { SideViewerAtom } from '@/recoil/atoms/SideViewerAtom';
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { server } from '@/mocks/node';
+
+server.listen();
 
 interface SlideType {
   slide: () => void;
@@ -10,8 +14,18 @@ interface SlideType {
 
 const MentoBoardList = ({ slide }: SlideType) => {
   //api요청
+  const [getMockingData, setMockingData] = useState<any>(null);
   const [data, setData] = useState(require('/public/dummy/user.json'));
   const [sideViewer, setSideViewer] = useRecoilState(SideViewerAtom);
+
+  const getMockingDataApi = () => {
+    axios.get('/api/mento').then((res) => setMockingData(res.data));
+  };
+
+  useEffect(() => {
+    getMockingDataApi();
+    console.log(getMockingData);
+  });
 
   return (
     <MentoCardContainer side={sideViewer.isSide}>

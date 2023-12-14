@@ -1,0 +1,24 @@
+import { PropsWithChildren, useEffect, useState } from 'react';
+
+const MSWProvider = ({ children }: PropsWithChildren) => {
+  const [isReady, setIsReady] = useState(false);
+  const isAPIMockingMode = process.env.NEXT_PUBLIC_API_MOCKING === 'enbale';
+
+  useEffect(() => {
+    const init = async () => {
+      if (isAPIMockingMode) {
+        const init = await import('@/mocks/initMSW');
+        await init.initMSW;
+
+        setIsReady(true);
+      }
+    };
+
+    if (!isReady) init();
+  }, [isReady]);
+
+  if (isAPIMockingMode && !isReady) return null;
+  return <>{children}</>;
+};
+
+export default MSWProvider;
