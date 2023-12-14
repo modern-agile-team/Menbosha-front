@@ -15,15 +15,8 @@ interface CardType {
 }
 
 const HelpSideViewer = () => {
-  const [data, setData] = useState(require('/public/dummy/help.json'));
   const [sideViewer, setSideViewer] = useRecoilState(SideViewerAtom);
   const [getHelpUnit, setHelpUnit] = useState<CardType>();
-
-  useEffect(() => {
-    const temp = data.helpBoard.filter((data: any) => data.id == sideViewer.id);
-    console.log(temp[0]);
-    setHelpUnit(temp[0]);
-  }, [sideViewer.id]);
 
   const handleSideViewer = () => {
     setSideViewer({

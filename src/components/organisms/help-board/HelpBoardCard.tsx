@@ -4,12 +4,11 @@ import styled from 'styled-components';
 
 const HelpBoardCardList = () => {
   //api요청
-  const [data, setData] = useState(require('/public/dummy/help.json'));
 
   return (
     <HelpCardWarpper>
       <HelpCardContainer>
-        {data.helpBoard.map((data: any) => {
+        {/* {data.helpBoard.map((data: any) => {
           const temp = {
             id: data.id,
             name: data.userName,
@@ -24,7 +23,7 @@ const HelpBoardCardList = () => {
               <HelpCard {...temp} />
             </div>
           );
-        })}
+        })} */}
       </HelpCardContainer>
     </HelpCardWarpper>
   );
