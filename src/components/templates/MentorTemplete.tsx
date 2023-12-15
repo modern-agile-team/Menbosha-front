@@ -2,6 +2,7 @@ import SubPageHeader from '@/components/common/header/SubPageHeader';
 import HelpCategory from '../organisms/help-board/HelpCategory';
 import MentoBoardList from '../organisms/mentor-board/MentorBoardCard';
 import MentorSideViewer from '../organisms/mentor-board/MentorSideViewer';
+import MentorBoardUnit from '../organisms/mentor-board/MentorBoardUnit';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -9,12 +10,12 @@ const MenteeTemplete = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLDivElement>(null);
 
-  const handleSlide = () => {
-    if (currentSlide === 1) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
+  const handleSlideNext = () => {
+    setCurrentSlide(currentSlide + 1);
+  };
+
+  const handleSlidePrev = () => {
+    setCurrentSlide(currentSlide - 1);
   };
 
   useEffect(() => {
@@ -38,10 +39,13 @@ const MenteeTemplete = () => {
           <SlideBox ref={slideRef}>
             <div>
               <HelpCategory />
-              <MentoBoardList slide={handleSlide} />
+              <MentoBoardList slide={handleSlideNext} />
             </div>
             <div>
-              <MentorSideViewer slide={handleSlide} />
+              <MentorSideViewer next={handleSlideNext} prev={handleSlidePrev} />
+            </div>
+            <div>
+              <MentorBoardUnit slide={handleSlidePrev} />
             </div>
           </SlideBox>
         </SlideContainer>
@@ -54,7 +58,7 @@ export default MenteeTemplete;
 
 const SlideContainer = styled.div`
   overflow: hidden;
-  width: 1100px;
+  width: 1512px;
 `;
 
 const SlideBox = styled.div`

@@ -34,14 +34,12 @@ const MentorCard = (props: CardType) => {
 export default MentorCard;
 
 const CardContainer = styled.div`
-  margin: 7px;
-  padding: 5px;
   border: 1px solid #f0f;
 `;
 
 const CardImageBox = styled.div`
-  width: 194px;
-  height: 200px;
+  width: 280px;
+  height: 290px;
   background-color: #999;
   border-radius: 10px;
   cursor: pointer;

@@ -5,10 +5,11 @@ import { useRecoilState } from 'recoil';
 import styled, { css } from 'styled-components';
 
 interface SlideType {
-  slide: () => void;
+  next: () => void;
+  prev: () => void;
 }
 
-const MentorSideViewer = ({ slide }: SlideType) => {
+const MentorSideViewer = ({ next, prev }: SlideType) => {
   const [getMentoUnit, setMentoUnit] = useState<any>(null);
   const [sideViewer, setSideViewer] = useRecoilState(SideViewerAtom);
 
@@ -19,20 +20,31 @@ const MentorSideViewer = ({ slide }: SlideType) => {
         id: sideViewer,
       },
     });
-    setMentoUnit(res.data);
+    setMentoUnit(res.data[0]);
   };
 
   useEffect(() => {
+    //id가 있을 때 api요청
     sideViewer && getMentoUserApi();
   }, [sideViewer]);
 
+  useEffect(() => {
+    console.log(getMentoUnit);
+  });
+
   return (
     <SideViewerWarpper>
-      <div onClick={slide}>X</div>
+      <div onClick={prev}>이전</div>
+      <div onClick={next}>다음</div>
       {getMentoUnit && (
         <div>
-          <TextBox color="#C63D2F">{getMentoUnit.name}</TextBox>
-          <div>{getMentoUnit.introduct}</div>
+          <TextBox color="#C63D2F" size={30}>
+            {getMentoUnit.name}
+          </TextBox>
+          <div>
+            <div>{getMentoUnit.image}</div>
+            <div></div>
+          </div>
         </div>
       )}
     </SideViewerWarpper>
@@ -42,7 +54,8 @@ const MentorSideViewer = ({ slide }: SlideType) => {
 export default MentorSideViewer;
 
 const SideViewerWarpper = styled.div`
-  width: 1000px;
+  min-width: 1100px;
+  width: 1512px;
   border: 4px solid #fe9;
 `;
 

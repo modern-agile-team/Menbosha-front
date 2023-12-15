@@ -34,9 +34,9 @@ const MentoBoardList = ({ slide }: SlideType) => {
             mainField: data.mainField,
           };
           return (
-            <div onClick={slide} key={data.id}>
+            <MentorCardWarpper onClick={slide} key={data.id}>
               <MentorCard {...temp} />
-            </div>
+            </MentorCardWarpper>
           );
         })}
     </MentoCardContainer>
@@ -50,6 +50,27 @@ const MentoCardContainer = styled.div`
   display: flex;
   justify-content: left;
   min-height: 500px;
-  width: 1100px;
+  width: 1512px;
   flex-wrap: wrap;
+`;
+
+const MentorCardWarpper = styled.div`
+  & > * {
+    &:nth-of-type(1n),
+    &:nth-of-type(1) {
+      margin: 0px 14px 118px 0px;
+    }
+    &:nth-of-type(5n),
+    :nth-of-type(5) {
+      margin: 0px 0px 118px 14px;
+    }
+    &:not(
+        :nth-of-type(1n),
+        :nth-of-type(5n),
+        :nth-of-type(1),
+        :nth-of-type(5)
+      ) {
+      margin: 0px 14px 118px 14px;
+    }
+  }
 `;
