@@ -1,11 +1,8 @@
 import React from 'react';
+import { PageWrapper } from './styled';
 
 const ChatPageTemplete = () => {
-  return (
-    <>
-      <span style={{ fontSize: '100px', color: 'white' }}>채팅 페이지</span>;
-    </>
-  );
+  return <PageWrapper></PageWrapper>;
 };
 
 export default ChatPageTemplete;

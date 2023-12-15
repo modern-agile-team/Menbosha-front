@@ -16,6 +16,7 @@ const MainPageFooter = () => {
                   alt="alarm icon"
                   width="20"
                   height="20"
+                  style={{ marginLeft: '16px' }}
                 />
                 <span> ※ 공지사항 거 이왕이면 혁명이란 단어를 쓰십쇼</span>
                 <Image
@@ -23,6 +24,7 @@ const MainPageFooter = () => {
                   alt="alarm icon"
                   width="20"
                   height="20"
+                  style={{ marginRight: '16px' }}
                 />
               </S.NoticeBox>
               <span>
