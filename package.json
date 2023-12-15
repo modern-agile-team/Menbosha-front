@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:mock": "env-cmd -f .env.mock next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,6 +14,7 @@
     "@types/slick-carousel": "^1.6.40",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
+    "env-cmd": "^10.1.0",
     "next": "14.0.3",
     "prettier": "^3.1.0",
     "react": "^18",
@@ -30,6 +32,10 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
+    "msw": "^2.0.11",
     "typescript": "^5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
