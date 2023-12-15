@@ -28,7 +28,7 @@ const ImageContainer2 = styled.div`
 `;
 const ImageContainer3 = styled.div`
   background-image: url('/body-3.svg');
-  background-size: 76.7vw 70vh;
+  background-size: 76.8vw 70vh;
   width: 76.8vw;
   height: 70vh;
 `;
