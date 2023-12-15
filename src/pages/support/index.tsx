@@ -1,7 +1,7 @@
-import SupportTemplete from '@/components/templates/SupportTemplete';
+import SupportTemplate from '@/components/templates/SupportTemplate';
 
 const Support = () => {
-  return <SupportTemplete />;
+  return <SupportTemplate />;
 };
 
 export default Support;

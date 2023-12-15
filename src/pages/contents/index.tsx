@@ -1,7 +1,7 @@
-import ContentsTemplete from '@/components/templates/ContentsTemplete';
+import ContentsTemplate from '@/components/templates/ContentsTemplate';
 
 const Contents = () => {
-  return <ContentsTemplete />;
+  return <ContentsTemplate />;
 };
 
 export default Contents;

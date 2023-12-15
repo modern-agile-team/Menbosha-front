@@ -1,11 +1,11 @@
 import SubPageHeader from '@/components/common/header/SubPageHeader';
 import HelpCategory from '../organisms/help-board/HelpCategory';
-import MentoBoardList from '../organisms/mentor-board/MentorBoardCard';
+import MentorBoardList from '../organisms/mentor-board/MentorBoardCard';
 import MentorSideViewer from '../organisms/mentor-board/MentorSideViewer';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-const MenteeTemplete = () => {
+const MentorTemplate = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +38,7 @@ const MenteeTemplete = () => {
           <SlideBox ref={slideRef}>
             <div>
               <HelpCategory />
-              <MentoBoardList slide={handleSlide} />
+              <MentorBoardList slide={handleSlide} />
             </div>
             <div>
               <MentorSideViewer slide={handleSlide} />
@@ -50,7 +50,7 @@ const MenteeTemplete = () => {
   );
 };
 
-export default MenteeTemplete;
+export default MentorTemplate;
 
 const SlideContainer = styled.div`
   overflow: hidden;

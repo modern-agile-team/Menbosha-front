@@ -1,8 +1,8 @@
-import MainTemplete from '@/components/templates/MainTemplete';
+import MainTemplate from '@/components/templates/MainTemplate';
 import React from 'react';
 
 const Main = () => {
-  return <MainTemplete />;
+  return <MainTemplate />;
 };
 
 export default Main;

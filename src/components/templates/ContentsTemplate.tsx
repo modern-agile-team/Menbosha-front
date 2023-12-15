@@ -1,7 +1,7 @@
 import SubPageHeader from '@/components/common/header/SubPageHeader';
 
-const SupportTemplete = () => {
+const ContentsTemplate = () => {
   return <SubPageHeader />;
 };
 
-export default SupportTemplete;
+export default ContentsTemplate;

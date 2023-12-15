@@ -10,7 +10,7 @@ interface SlideType {
   slide: () => void;
 }
 
-const MentoBoardList = ({ slide }: SlideType) => {
+const MentorBoardList = ({ slide }: SlideType) => {
   //api요청
   const [getMockingData, setMockingData] = useState<any>(null);
   const [data, setData] = useState(require('/public/dummy/user.json'));
@@ -25,7 +25,7 @@ const MentoBoardList = ({ slide }: SlideType) => {
   }, []);
 
   return (
-    <MentoCardContainer side={sideViewer.isSide}>
+    <MentorCardContainer side={sideViewer.isSide}>
       {data.user.map((data: any) => {
         const temp = {
           id: data.id,
@@ -43,17 +43,17 @@ const MentoBoardList = ({ slide }: SlideType) => {
           </div>
         );
       })}
-    </MentoCardContainer>
+    </MentorCardContainer>
   );
 };
 
-export default MentoBoardList;
+export default MentorBoardList;
 
 interface ViewerType {
   side: boolean;
 }
 
-const MentoCardContainer = styled.div<ViewerType>`
+const MentorCardContainer = styled.div<ViewerType>`
   border: 2px solid #c12;
   display: flex;
   justify-content: left;

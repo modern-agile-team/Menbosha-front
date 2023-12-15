@@ -1,7 +1,7 @@
-import MentorTemplete from '@/components/templates/MentorTemplete';
+import MentorTemplate from '@/components/templates/MentorTemplate';
 
 const Mentor = () => {
-  return <MentorTemplete />;
+  return <MentorTemplate />;
 };
 
 export default Mentor;

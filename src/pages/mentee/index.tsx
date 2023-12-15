@@ -1,7 +1,7 @@
-import MenteeTemplete from '@/components/templates/MenteeTemplete';
+import MenteeTemplate from '@/components/templates/MenteeTemplate';
 
 const Mentee = () => {
-  return <MenteeTemplete />;
+  return <MenteeTemplate />;
 };
 
 export default Mentee;
