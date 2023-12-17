@@ -5,6 +5,7 @@ import styled from 'styled-components';
 interface CardType {
   id: number;
   name: string;
+  image: string;
   introduct: string;
   mainField: string;
 }
@@ -17,7 +18,7 @@ const MentorCard = (props: CardType) => {
   };
   return (
     <CardContainer onClick={handleSideViewer}>
-      <CardImageBox></CardImageBox>
+      <CardImageBox>프로필 이미지 들어옴</CardImageBox>
       <CardTextBox size={16} color="#ff6000" padding="13px 0px">
         {props.name}
       </CardTextBox>

@@ -1,10 +1,15 @@
 import MentorCard from '@/components/molecules/mentor-board-elements/MentorCard';
-import { SideViewerAtom } from '@/recoil/atoms/SideViewerAtom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { server } from '@/mocks/node';
+
+type MentorListType = {
+  id: number;
+  name: string;
+  image: string;
+  introduct: string;
+  mainField: string;
+};
 
 interface SlideType {
   slide: () => void;
@@ -12,7 +17,7 @@ interface SlideType {
 
 const MentoBoardList = ({ slide }: SlideType) => {
   //api요청
-  const [getMockingData, setMockingData] = useState<any>(null);
+  const [getMockingData, setMockingData] = useState<MentorListType[]>([]);
 
   const getMockingDataApi = async () => {
     const res = await axios.get('/api/mento');
@@ -25,20 +30,20 @@ const MentoBoardList = ({ slide }: SlideType) => {
 
   return (
     <MentoCardContainer>
-      {getMockingData &&
-        getMockingData.map((data: any) => {
-          const temp = {
-            id: data.id,
-            name: data.name,
-            introduct: data.introduct,
-            mainField: data.mainField,
-          };
-          return (
-            <MentorCardWarpper onClick={slide} key={data.id}>
-              <MentorCard {...temp} />
-            </MentorCardWarpper>
-          );
-        })}
+      {getMockingData.map((data: any) => {
+        const temp = {
+          id: data.id,
+          name: data.name,
+          image: data.image,
+          introduct: data.introduct,
+          mainField: data.mainField,
+        };
+        return (
+          <MentorCardWarpper onClick={slide} key={data.id}>
+            <MentorCard {...temp} />
+          </MentorCardWarpper>
+        );
+      })}
     </MentoCardContainer>
   );
 };
