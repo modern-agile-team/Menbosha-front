@@ -1,12 +1,16 @@
 import React from 'react';
 import * as S from './styled';
 import ChatNavbar from '../organisms/chat/chat-navbar/ChatNavbar';
+import ChatSearchList from '../organisms/chat/chat-list/ChatSearchList';
+import ChatRoomList from '../organisms/chat/chat-list/ChatRoomList';
 
 const ChatPageTemplate = () => {
   return (
-    <S.PageWrapper>
+    <S.PageWrapperRaw>
       <ChatNavbar />
-    </S.PageWrapper>
+      <ChatSearchList />
+      <ChatRoomList />
+    </S.PageWrapperRaw>
   );
 };
 

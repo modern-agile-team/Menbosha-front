@@ -1,10 +1,10 @@
 import SaveToken from '../organisms/auth/SaveToken';
 
-interface ProvidedrInter {
+interface ProviderInter {
   provider: string;
 }
 
-const LoginTemplate = ({ provider }: ProvidedrInter) => {
+const LoginTemplate = ({ provider }: ProviderInter) => {
   return (
     <div>
       <SaveToken provider={provider} />

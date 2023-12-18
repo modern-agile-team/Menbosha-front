@@ -36,7 +36,7 @@ export const TopNavBox = styled.div`
   height: 45vh;
   justify-content: space-around;
   align-items: center;
-  /* border: 2px solid lightgreen; */
+  /* border: 2px solid lightGreen; */
   & > a {
     text-decoration: none;
     color: #c58940;
