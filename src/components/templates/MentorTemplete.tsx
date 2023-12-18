@@ -2,7 +2,6 @@ import SubPageHeader from '@/components/common/header/SubPageHeader';
 import HelpCategory from '../organisms/help-board/HelpCategory';
 import MentoBoardList from '../organisms/mentor-board/MentorBoardCard';
 import MentorSideViewer from '../organisms/mentor-board/MentorSideViewer';
-import MentorBoardUnit from '../organisms/mentor-board/MentorBoardUnit';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
