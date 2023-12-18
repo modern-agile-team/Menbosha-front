@@ -1,60 +1,92 @@
 import { SideViewerAtom } from '@/recoil/atoms/SideViewerAtom';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import styled, { css } from 'styled-components';
-
-interface CardType {
-  id: number;
-  name: string;
-  email: string;
-  userImage: string;
-  rank: number;
-  phone: string;
-  w_category: string;
-  a_category: string;
-}
+import * as S from './styled';
+import { TextBox } from '@/components/common/globalStyled/styled';
 
 interface SlideType {
   slide: () => void;
 }
 
 const MentorSideViewer = ({ slide }: SlideType) => {
-  const [data, setData] = useState(require('/public/dummy/user.json'));
+  const [getMentoUnit, setMentoUnit] = useState<any>(null);
   const [sideViewer, setSideViewer] = useRecoilState(SideViewerAtom);
-  const [getMentoUnit, setMentoUnit] = useState<CardType>();
+
+  //유저 모킹
+  const getMentoUserApi = async () => {
+    const res = await axios.get(`/api/mento-unit`, {
+      params: {
+        id: sideViewer,
+      },
+    });
+    setMentoUnit(res.data[0]);
+  };
 
   useEffect(() => {
-    const temp = data.user.filter((data: any) => data.id === sideViewer.id);
-    console.log(temp[0]);
-    setMentoUnit(temp[0]);
-  }, [sideViewer.id]);
+    //id가 있을 때 api요청
+    sideViewer && getMentoUserApi();
+  }, [sideViewer]);
 
   return (
-    <SideViewerWarpper>
-      <div onClick={slide}>X</div>
+    <S.SideViewerWarpper>
       {getMentoUnit && (
         <div>
-          <TextBox color="#C63D2F">{getMentoUnit.name}</TextBox>
-          <div>{getMentoUnit.rank}</div>
+          <TextBox color="#C63D2F" size={40}>
+            {getMentoUnit.name}
+          </TextBox>
+          <S.SideProfileContainer>
+            <div>
+              <S.ImageBox>이미지 들어올자리</S.ImageBox>
+              <TextBox onClick={slide} color="#FFBB5C">
+                이전
+              </TextBox>
+            </div>
+            <div>
+              <S.ProfileViewBox>
+                <div>
+                  <TextBox
+                    color="#FFBB5C"
+                    size={20}
+                    style={{ padding: '28px' }}>
+                    주요경력
+                  </TextBox>
+                  <TextBox
+                    color="#fff"
+                    size={15}
+                    style={{
+                      display: 'flex',
+                      padding: '28px',
+                      width: 280,
+                      flexWrap: 'wrap',
+                    }}>
+                    {getMentoUnit.career}
+                  </TextBox>
+                </div>
+                <div>
+                  <TextBox
+                    color="#FFBB5C"
+                    size={20}
+                    style={{ padding: '28px' }}>
+                    멘토링분야
+                  </TextBox>
+                  <TextBox color="#fff" size={15} style={{ padding: '28px' }}>
+                    {getMentoUnit.mainField}
+                  </TextBox>
+                </div>
+              </S.ProfileViewBox>
+              <TextBox color="#FFBB5C" size={20} style={{ padding: '28px' }}>
+                소개
+              </TextBox>
+              <TextBox color="#fff" size={15} style={{ padding: '28px' }}>
+                {getMentoUnit.introduct}
+              </TextBox>
+            </div>
+          </S.SideProfileContainer>
         </div>
       )}
-    </SideViewerWarpper>
+    </S.SideViewerWarpper>
   );
 };
 
 export default MentorSideViewer;
-
-const SideViewerWarpper = styled.div`
-  width: 1000px;
-  border: 4px solid #fe9;
-`;
-
-interface BoxType {
-  color?: string;
-  size?: number;
-}
-
-const TextBox = styled.div<BoxType>`
-  color: ${({ color }) => color};
-  font-size: ${({ size }) => size}px;
-`;
