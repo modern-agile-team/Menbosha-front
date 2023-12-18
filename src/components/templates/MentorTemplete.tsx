@@ -7,23 +7,11 @@ import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const MenteeTemplete = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slideRef = useRef<HTMLDivElement>(null);
+  const [isSlide, setSlide] = useState(false);
 
-  const handleSlideNext = () => {
-    setCurrentSlide(currentSlide + 1);
+  const handleSlide = () => {
+    setSlide(!isSlide);
   };
-
-  const handleSlidePrev = () => {
-    setCurrentSlide(currentSlide - 1);
-  };
-
-  useEffect(() => {
-    if (slideRef.current !== null) {
-      slideRef.current.style.transition = 'all 0.5s ease-in-out';
-      slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
-    }
-  }, [currentSlide]);
 
   return (
     <>
@@ -36,18 +24,13 @@ const MenteeTemplete = () => {
           border: '2px solid #fff',
         }}>
         <SlideContainer>
-          <SlideBox ref={slideRef}>
-            <div>
-              <HelpCategory />
-              <MentoBoardList slide={handleSlideNext} />
-            </div>
-            <div>
-              <MentorSideViewer next={handleSlideNext} prev={handleSlidePrev} />
-            </div>
-            <div>
-              <MentorBoardUnit slide={handleSlidePrev} />
-            </div>
-          </SlideBox>
+          <ContentList>
+            <HelpCategory />
+            <MentoBoardList slide={handleSlide} />
+          </ContentList>
+          <HiddenSlide isSlide={isSlide}>
+            <MentorSideViewer slide={handleSlide} />
+          </HiddenSlide>
         </SlideContainer>
       </div>
     </>
@@ -57,10 +40,28 @@ const MenteeTemplete = () => {
 export default MenteeTemplete;
 
 const SlideContainer = styled.div`
-  overflow: hidden;
-  width: 1512px;
+  display: flex;
+  width: 1560px;
 `;
 
-const SlideBox = styled.div`
-  display: flex;
+const ContentList = styled.div`
+  position: relative;
+`;
+
+interface SlideType {
+  isSlide: boolean;
+}
+
+const HiddenSlide = styled.div<SlideType>`
+  height: 100%;
+  /* width: 0px; */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #252525;
+  overflow-x: hidden;
+  transform: ${({ isSlide }) =>
+    isSlide ? 'translateX(260px)' : 'translateX(2000px)'};
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
