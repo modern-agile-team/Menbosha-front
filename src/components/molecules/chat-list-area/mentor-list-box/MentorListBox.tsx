@@ -18,13 +18,13 @@ const MentorListBox = () => {
           <S.MentorInfoBox>
             <span
               style={{
-                fontSize: '16px',
+                fontSize: '0.65em',
                 fontWeight: '700',
                 marginBottom: '5px',
               }}>
               원동건
             </span>
-            <span style={{ fontSize: '12px', fontWeight: '400' }}>
+            <span style={{ fontSize: '0.5em', fontWeight: '400' }}>
               디자인, IT, 취미
             </span>
           </S.MentorInfoBox>

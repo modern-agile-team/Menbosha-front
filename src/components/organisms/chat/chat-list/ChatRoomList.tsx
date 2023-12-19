@@ -11,6 +11,19 @@ const ChatRoomList = () => {
       </S.ChatRoomListHeader>
       <S.ListContainer>
         <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
+        <ChatListBox />
       </S.ListContainer>
     </S.ChatRoomListContainer>
   );

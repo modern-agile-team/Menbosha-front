@@ -4,11 +4,11 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: inherit;
-  height: 51px; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
-  margin-top: 40px;
-  margin-bottom: 20px;
+  height: 10vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
+  margin-top: 60px;
+  /* margin-bottom: 20px; */
   justify-content: center;
-  /* border: 2px solid black; */
+  /* border: 2px solid white; */
 `;
 
 export const HeaderArea = styled.div`
@@ -16,7 +16,7 @@ export const HeaderArea = styled.div`
   /* flex-wrap: wrap; */
   width: 80vw;
   min-width: 20px;
-  height: inherit;
+  height: 9vh;
   margin: 0px 197.5px;
   justify-content: space-between;
   /* border: 2px solid green; */
@@ -42,7 +42,7 @@ export const NavigateBox = styled.div`
   & > a {
     text-decoration: none;
     color: #c58940;
-    font-size: 20px;
+    font-size: 1em;
     font-weight: bold;
     transition: color 0.3s ease;
     &:hover {

@@ -23,7 +23,6 @@ export const MentorInfoLeft = styled.div`
   display: flex;
   width: 14vw;
   height: 7vh;
-  /* justify-content: space-between; */
   align-items: center;
   /* border: 1px solid yellow; */
 `;

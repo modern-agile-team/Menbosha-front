@@ -20,11 +20,11 @@ export const ListContainer = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   &::-webkit-scrollbar {
-    width: 2px;
+    width: 5px;
   }
   &::-webkit-scrollbar-thumb {
     /* width: 10px; */
-    background: #fff;
+    background: gray;
     border-radius: 10px;
   }
 `;
@@ -43,7 +43,7 @@ export const SearchMentorBox = styled.div`
     margin: 0px 10px;
   }
   & > span {
-    font-size: 20px;
+    font-size: 0.83em;
     font-weight: 700;
     color: #ffbb5c;
   }
@@ -70,7 +70,7 @@ export const ChatRoomListHeader = styled.div`
     margin: 0px 10px;
   }
   & > span {
-    font-size: 20px;
+    font-size: 0.83em;
     font-weight: 700;
     color: #ffbb5c;
   }
