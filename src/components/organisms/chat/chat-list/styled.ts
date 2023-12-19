@@ -49,6 +49,7 @@ export const SearchMentorBox = styled.div`
   }
 `;
 
+// 추후에 쓸 것
 export const SearchInputBox = styled.input`
   display: flex;
   width: 16vw;
