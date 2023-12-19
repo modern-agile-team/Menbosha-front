@@ -26,7 +26,7 @@ const CategoryContainer = styled.div`
   justify-content: left;
   border: 1px solid #9ff;
   min-width: 500px;
-  width: 1100px;
+  width: 1532px;
 `;
 
 const CategoryBox = styled.div`
