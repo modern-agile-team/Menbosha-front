@@ -15,9 +15,8 @@ interface SlideType {
   slide: () => void;
 }
 
-const MentoBoardList = ({ slide }: SlideType) => {
+const MentorBoardList = ({ slide }: SlideType) => {
   const [getMockingData, setMockingData] = useState<MentorListType[]>([]);
-
   //api요청
   const getMockingDataApi = async () => {
     const res = await axios.get('/api/mento');
@@ -48,4 +47,4 @@ const MentoBoardList = ({ slide }: SlideType) => {
   );
 };
 
-export default MentoBoardList;
+export default MentorBoardList;

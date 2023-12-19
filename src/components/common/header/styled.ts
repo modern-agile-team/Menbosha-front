@@ -44,6 +44,7 @@ export const NavigateBox = styled.div`
     color: #c58940;
     font-size: 20px;
     font-weight: bold;
+    transition: color 0.3s ease;
     &:hover {
       color: #ffac60;
     }

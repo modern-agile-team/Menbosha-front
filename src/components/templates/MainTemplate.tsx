@@ -4,7 +4,7 @@ import MainPageHeader from '@/components/common/header/MainPageHeader';
 import MainPageBody from '../organisms/mainpagebody/MainPageBody';
 import MainPageFooter from '../common/footer/Footer';
 
-const MainTemplete = () => {
+const MainTemplate = () => {
   return (
     <S.PageWrapper>
       <MainPageHeader />
@@ -14,4 +14,4 @@ const MainTemplete = () => {
   );
 };
 
-export default MainTemplete;
+export default MainTemplate;

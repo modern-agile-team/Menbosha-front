@@ -2,7 +2,7 @@ import SubPageHeader from '@/components/common/header/SubPageHeader';
 import HelpBoardCardList from '../organisms/help-board/HelpBoardCard';
 import HelpCategory from '../organisms/help-board/HelpCategory';
 
-const MenteeTemplete = () => {
+const MenteeTemplate = () => {
   return (
     <>
       <SubPageHeader />
@@ -16,4 +16,4 @@ const MenteeTemplete = () => {
   );
 };
 
-export default MenteeTemplete;
+export default MenteeTemplate;

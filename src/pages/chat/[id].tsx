@@ -1,7 +1,7 @@
-import ChatPageTemplete from '@/components/templates/ChatPageTemplete';
+import ChatPageTemplate from '@/components/templates/ChatPageTemplate';
 
-const Chattings = () => {
-  return <ChatPageTemplete />;
+const ChatPage = () => {
+  return <ChatPageTemplate />;
 };
 
-export default Chattings;
+export default ChatPage;
