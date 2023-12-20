@@ -4,6 +4,7 @@ import {
   Kakao,
   Naver,
 } from '@/components/molecules/auth-elements/AuthProvider';
+import { useEffect } from 'react';
 
 interface ModalType {
   show: boolean;
@@ -11,6 +12,15 @@ interface ModalType {
 }
 
 const LoginModal = ({ show, hide }: ModalType) => {
+  useEffect(() => {
+    const storage = globalThis?.sessionStorage;
+    if (!storage) {
+      return;
+    }
+    const previousUrl = storage.getItem('CURRENT_URL');
+    storage.setItem('PREVIOUS_URL', previousUrl as string);
+    storage.setItem('CURRENT_URL', globalThis.location.pathname);
+  }, []);
   return (
     <div>
       <ModalWrapper>
