@@ -5,6 +5,8 @@ import {
   Naver,
 } from '@/components/molecules/auth-elements/AuthProvider';
 import { useEffect } from 'react';
+import Image from 'next/image';
+import { TextBox } from '@/components/common/globalStyled/styled';
 
 interface ModalType {
   show: boolean;
@@ -24,16 +26,25 @@ const LoginModal = ({ show, hide }: ModalType) => {
   return (
     <div>
       <ModalWrapper>
-        <div>
-          <div onClick={hide}>X</div>
-        </div>
-        <div>로고</div>
-        <div>로그인</div>
-        <div>
+        <ModalHeaderBox>
+          <TextBox size={21}>로그인/회원가입</TextBox>
+          <TextBox
+            size={21}
+            style={{ marginLeft: 'auto', cursor: 'pointer' }}
+            onClick={hide}>
+            X
+          </TextBox>
+        </ModalHeaderBox>
+        <LogoBox>
+          <Image src="/LogoIcon.svg" alt="로고아이콘" width={100} height={60} />
+          <br />
+          <Image src="/LogoText.svg" alt="로고텍스트" width={168} height={60} />
+        </LogoBox>
+        <OAuthBox>
           <Naver />
-          <Kakao />
           <Google />
-        </div>
+          <Kakao />
+        </OAuthBox>
       </ModalWrapper>
       <Backdrop
         onClick={(e: React.MouseEvent) => {
@@ -55,11 +66,11 @@ export const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  width: 300px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #252525;
+  width: 588px;
+  height: 455px;
+  border: 2px solid #ff9b50;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10000;
   text-align: center;
@@ -73,4 +84,24 @@ export const Backdrop = styled.div`
   top: 0px;
   z-index: 9999;
   background-color: rgba(0, 0, 0, 0.2);
+`;
+
+export const ModalHeaderBox = styled.div`
+  display: flex;
+  padding: 24px;
+  background-color: #ff9b50;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+`;
+
+export const LogoBox = styled.div`
+  margin: 18px;
+`;
+
+export const OAuthBox = styled.div`
+  display: flex;
+  justify-content: center;
+  & > * {
+    margin: 24px;
+  }
 `;
