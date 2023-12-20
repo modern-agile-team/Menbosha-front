@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styled';
 import Link from 'next/link';
 import Image from 'next/image';
+import useModal from '@/hooks/useModal';
+import LoginModal from '@/components/organisms/auth/LoginModal';
+import { useRecoilState } from 'recoil';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 
 const id = 0; //초기값 -> 후에 변동 예정
 
 const SubPageHeader = () => {
+  const [isLogin, setLogin] = useRecoilState(LoginStateAtom);
+  const { handleModal, isOpenModal } = useModal();
   const headerElements = ['멘토', '멘티', '콘텐츠', '고객 지원'];
   const translationElements: Record<string, string> = {
     멘토: 'mentor',
@@ -46,12 +52,24 @@ const SubPageHeader = () => {
             }}>
             <Image src="/ChatIcon.svg" alt="ChatIcon" width="28" height="28" />
           </Link>
-          <Link
-            href={{
-              pathname: `/userpage`,
-            }}>
-            <Image src="/UserIcon.svg" alt="UserIcon" width="28" height="28" />
-          </Link>
+          {isLogin ? (
+            <Link
+              href={{
+                pathname: `/userpage`,
+              }}>
+              <Image
+                src="/UserIcon.svg"
+                alt="UserIcon"
+                width="28"
+                height="28"
+              />
+            </Link>
+          ) : (
+            <div onClick={handleModal}>로그인</div>
+          )}
+          {isOpenModal && (
+            <LoginModal show={isOpenModal} hide={handleModal}></LoginModal>
+          )}
         </S.IconBox>
       </S.HeaderArea>
     </S.HeaderContainer>

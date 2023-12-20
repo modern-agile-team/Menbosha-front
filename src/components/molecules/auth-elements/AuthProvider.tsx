@@ -54,13 +54,12 @@ export const Kakao = () => {
 
 export const Google = () => {
   const googleLogin = () => {
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?
-    scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&
-    include_granted_scopes=true&
-    response_type=token&
-    state=${getRandomInt(1, 9999)}&
-    redirect_uri=${process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URL}&
-    client_id=${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`;
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=${getRandomInt(
+      1,
+      9999,
+    )}&redirect_uri=${process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URL}&client_id=${
+      process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
+    }`;
   };
   return (
     <div>
