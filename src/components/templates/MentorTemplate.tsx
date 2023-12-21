@@ -20,7 +20,6 @@ const MentorTemplate = () => {
           display: 'flex',
           justifyContent: 'center',
           width: '100vw',
-          border: '2px solid #fff',
         }}>
         <SlideContainer>
           <ContentList>
