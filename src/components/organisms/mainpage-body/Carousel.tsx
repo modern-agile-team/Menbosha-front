@@ -37,84 +37,88 @@ const ImageContainer3 = styled.div`
   height: 70vh;
 `;
 
-const CustomDots = styled.ul`
-  position: absolute;
-  bottom: 15px;
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  justify-content: center;
-`;
+// 현재 커스텀 Dots 스타일 컴포넌트 부분을 활성화하면 hydration 에러를 뿜어서
+// 주석처리 해놓았습니다. 추후에 useEffect로 구현부 감싸서 서버 사이드 렌더링에
+// 침해받지 않도록 수정할 예정입니다.
 
-const CustomDot = styled.li`
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin: 0 5px;
-  cursor: pointer;
-`;
+// const CustomDots = styled.ul`
+//   position: absolute;
+//   bottom: 15px;
+//   display: flex;
+//   width: 100%;
+//   padding: 0;
+//   margin: 0;
+//   list-style: none;
+//   justify-content: center;
+// `;
 
-const CustomDotButton = styled.button`
-  font-size: 0;
-  line-height: 0;
-  display: block;
-  width: 20px;
-  height: 20px;
-  padding: 5px;
-  cursor: pointer;
-  color: transparent;
-  border: 0;
-  outline: none;
-  background: transparent;
+// const CustomDot = styled.li`
+//   position: relative;
+//   display: inline-block;
+//   width: 20px;
+//   height: 20px;
+//   margin: 0 5px;
+//   cursor: pointer;
+// `;
 
-  &:hover,
-  &:focus {
-    outline: none;
-  }
+// const CustomDotButton = styled.button`
+//   font-size: 0;
+//   line-height: 0;
+//   display: block;
+//   width: 20px;
+//   height: 20px;
+//   padding: 5px;
+//   cursor: pointer;
+//   color: transparent;
+//   border: 0;
+//   outline: none;
+//   background: transparent;
 
-  &:hover:before,
-  &:focus:before {
-    opacity: 1;
-  }
+//   &:hover,
+//   &:focus {
+//     outline: none;
+//   }
 
-  &:before {
-    font-family: 'slick';
-    font-size: 6px;
-    line-height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    content: '•';
-    text-align: center;
-    opacity: 0.25;
-    color: black;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+//   &:hover:before,
+//   &:focus:before {
+//     opacity: 1;
+//   }
 
-  ${(props) =>
-    props['aria-selected'] === 'true' &&
-    `
-    &:before {
-      opacity: 0.75;
-      color: #c58940; /* Change color for selected dot */
-    }
-  `}
+//   &:before {
+//     font-family: 'slick';
+//     font-size: 6px;
+//     line-height: 20px;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 20px;
+//     height: 20px;
+//     content: '•';
+//     text-align: center;
+//     opacity: 0.25;
+//     color: black;
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//   }
 
-  ${(props) =>
-    props['aria-selected'] === 'false' &&
-    `
-    &:before {
-      opacity: 0.25;
-      color: black; /* Change color for unselected dot */
-    }
-  `}
-`;
+//   ${(props) =>
+//     props['aria-selected'] === 'true' &&
+//     `
+//     &:before {
+//       opacity: 0.75;
+//       color: #c58940; /* Change color for selected dot */
+//     }
+//   `}
+
+//   ${(props) =>
+//     props['aria-selected'] === 'false' &&
+//     `
+//     &:before {
+//       opacity: 0.25;
+//       color: black; /* Change color for unselected dot */
+//     }
+//   `}
+// `;
 
 const MainImageSlider = () => {
   const settings = {
@@ -126,16 +130,16 @@ const MainImageSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    appendDots: (dots: any) => (
-      <CustomDots>
-        {dots.map((dot: any, index: any) => (
-          <CustomDot key={index}>{dot}</CustomDot>
-        ))}
-      </CustomDots>
-    ),
-    customPaging: (i: any) => (
-      <CustomDotButton type="button">{i + 1}</CustomDotButton>
-    ),
+    // appendDots: (dots: any) => (
+    //   <CustomDots>
+    //     {dots.map((dot: any, index: any) => (
+    //       <CustomDot key={index}>{dot}</CustomDot>
+    //     ))}
+    //   </CustomDots>
+    // ),
+    // customPaging: (i: any) => (
+    //   <CustomDotButton type="button">{i + 1}</CustomDotButton>
+    // ),
   };
 
   return (

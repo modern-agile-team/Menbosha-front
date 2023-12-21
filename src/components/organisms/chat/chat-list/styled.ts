@@ -12,23 +12,6 @@ export const ChatRoomListContainer = styled.div`
   /* border: 2px solid red; */
 `;
 
-export const ListContainer = styled.div`
-  display: block;
-  width: 21vw;
-  height: 100vh;
-  text-align: center;
-  overflow: scroll;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    /* width: 10px; */
-    background: gray;
-    border-radius: 10px;
-  }
-`;
-
 // ChatSearchList Styled-Components
 
 export const SearchMentorBox = styled.div`

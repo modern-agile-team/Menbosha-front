@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 
+export const ListContainer = styled.div`
+  display: block;
+  width: 21vw;
+  height: 100vh;
+  text-align: center;
+  overflow: scroll;
+  overflow-x: hidden;
+  /* border: 2px solid red; */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    /* width: 10px; */
+    background: gray;
+    border-radius: 10px;
+  }
+`;
+
 // export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
 export const ChatRoomListArea = styled.li`
   display: flex;
