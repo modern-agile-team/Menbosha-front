@@ -81,3 +81,5 @@ export const MentorInfoBox = styled.div<ListAreaType>`
   }
   /* border: 1px solid green; */
 `;
+
+// export const
