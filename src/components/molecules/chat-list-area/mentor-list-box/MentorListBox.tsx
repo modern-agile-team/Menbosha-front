@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
+import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
+import { MentorInfoType } from '@/components/templates/ChatPageTemplate';
 // import { getMentorInfoSelector } from '@/recoil/selectors/MentorInfoSelector';
-
-type MentorInfoType = {
-  id: number;
-  name: string;
-  image: string;
-  mainField: string;
-};
 
 const MentorListBox = () => {
   // const MentorInfo = useRecoilValue<MentorInfoType[]>(getMentorInfoSelector);
+  const MentorInfo = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
   }>({});
@@ -26,7 +22,7 @@ const MentorListBox = () => {
 
   return (
     <S.ListContainer>
-      {/* {MentorInfo.map((mentor) => (
+      {MentorInfo.map((mentor) => (
         <S.ListArea
           key={mentor.id}
           onClick={() => handleMentorClick(mentor.id)}
@@ -82,7 +78,7 @@ const MentorListBox = () => {
             </S.IconBox>
           )}
         </S.ListArea>
-      ))} */}
+      ))}
     </S.ListContainer>
   );
 };
