@@ -15,7 +15,7 @@ const MainPageHeader = () => {
   const headerElements = ['멘토', '멘티', '콘텐츠', '고객 지원'];
   const translationElements: Record<string, string> = {
     멘토: 'mentor',
-    멘티: 'mentee',
+    멘티: 'help',
     콘텐츠: 'contents',
     '고객 지원': 'support',
   };

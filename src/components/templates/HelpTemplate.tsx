@@ -1,7 +1,7 @@
 import SubPageHeader from '@/components/common/header/SubPageHeader';
 import HelpBoardCardList from '../organisms/help-board/HelpBoardCard';
-import HelpCategory from '../organisms/help-board/HelpCategory';
 import Link from 'next/link';
+import Category from '../common/category/Category';
 
 const HelpTemplate = () => {
   return (
@@ -10,7 +10,7 @@ const HelpTemplate = () => {
       <div
         style={{ display: 'flex', justifyContent: 'center', width: '100vw' }}>
         <div>
-          <HelpCategory />
+          <Category />
           <Link
             href={{
               pathname: `/help/create`,

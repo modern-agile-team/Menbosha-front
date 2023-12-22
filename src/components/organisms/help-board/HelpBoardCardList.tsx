@@ -6,7 +6,7 @@ const HelpBoardCardList = () => {
   //api요청
 
   return (
-    <HelpCardWarpper>
+    <HelpCardWrapper>
       <HelpCardContainer>
         {/* {data.helpBoard.map((data: any) => {
           const temp = {
@@ -25,13 +25,13 @@ const HelpBoardCardList = () => {
           );
         })} */}
       </HelpCardContainer>
-    </HelpCardWarpper>
+    </HelpCardWrapper>
   );
 };
 
 export default HelpBoardCardList;
 
-const HelpCardWarpper = styled.div`
+const HelpCardWrapper = styled.div`
   display: flex;
   justify-content: center;
   border: 1px solid #448;
