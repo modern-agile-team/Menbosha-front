@@ -5,3 +5,8 @@ export const CategorySelectAtom = atom({
   key: 'categorySelect',
   default: '',
 });
+
+export const SectionSelectAtom = atom({
+  key: 'sectionSelect',
+  default: '',
+});

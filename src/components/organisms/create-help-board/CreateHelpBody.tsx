@@ -4,12 +4,13 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as S from '../help-board/styled';
-import { TextBox } from '@/components/common/globalStyled/styled';
-import CategorySelector from '@/components/common/category/CategorySelector';
+import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 import { categoryList } from '@/components/common/category/categoryList';
 import HELP from '@/apis/help';
+import CategorySelectorBox from '@/components/common/category/CategorySelector';
+import SectionSelectorBox from '@/components/molecules/create-board-elements/ChoiceSection';
 
 const QuillWrapper = dynamic(() => import('react-quill'), {
   ssr: false,
@@ -154,12 +155,15 @@ const CreateHelpBody = () => {
               setUnitTitle(e.target.value);
             }}></S.CreateHeadValue>
         </S.CreateHeader>
-        <div>
+        <FlexBox type="flex">
           <TextBox color="#C63D2F" size={25}>
             본문
           </TextBox>
-          <CategorySelector />
-        </div>
+          <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
+            <SectionSelectorBox />
+            <CategorySelectorBox />
+          </FlexBox>
+        </FlexBox>
         <QuillWrapper
           value={quillText}
           theme="snow"

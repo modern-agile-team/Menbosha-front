@@ -2,20 +2,30 @@ import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
 import useModal from '@/hooks/useModal';
-import { categoryList } from './categoryList';
-import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 import { useRouter } from 'next/router';
+import { SectionSelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 
-const CategorySelectorBox = () => {
-  const [getCategory, setCategory] = useRecoilState(CategorySelectAtom);
-  const resetSelect = useResetRecoilState(CategorySelectAtom);
+export const sectionList = [
+  {
+    id: 1,
+    section: '멘토',
+  },
+  {
+    id: 2,
+    section: '도와주세요',
+  },
+];
+
+const SectionSelectorBox = () => {
+  const [getSection, setSection] = useRecoilState(SectionSelectAtom);
+  const resetSelect = useResetRecoilState(SectionSelectAtom);
   const { isOpenModal, handleModal } = useModal();
   const router = useRouter();
 
   /** 게시판 선택 시 */
   const handleOnChangeSelectValue = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLDivElement;
-    setCategory(target.innerHTML);
+    setSection(target.innerHTML);
   };
 
   //다른 페이지로 넘어가도 select초기화
@@ -29,13 +39,13 @@ const CategorySelectorBox = () => {
   return (
     <>
       <SelectBox onClick={handleModal}>
-        <Label>{getCategory ? getCategory : '카테고리'}</Label>
+        <Label>{getSection ? getSection : '위치'}</Label>
         <SelectOptions show={`${isOpenModal}`}>
-          {categoryList.map((list) => {
+          {sectionList.map((list) => {
             return (
               <div key={list.id}>
                 <Option onClick={handleOnChangeSelectValue}>
-                  {list.category}
+                  {list.section}
                 </Option>
               </div>
             );
@@ -121,4 +131,4 @@ const DropDown = styled.div`
   cursor: auto;
 `;
 
-export default CategorySelectorBox;
+export default SectionSelectorBox;
