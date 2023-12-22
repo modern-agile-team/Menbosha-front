@@ -33,8 +33,8 @@ const CategorySelector = () => {
         <SelectOptions show={`${isOpenModal}`}>
           {categoryList.map((list) => {
             return (
-              <div>
-                <Option key={list.id} onClick={handleOnChangeSelectValue}>
+              <div key={list.id}>
+                <Option onClick={handleOnChangeSelectValue}>
                   {list.category}
                 </Option>
               </div>

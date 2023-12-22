@@ -1,5 +1,5 @@
 import SubPageHeader from '@/components/common/header/SubPageHeader';
-import HelpBoardCardList from '../organisms/help-board/HelpBoardCard';
+import HelpBoardCardList from '../organisms/help-board/HelpBoardCardList';
 import Link from 'next/link';
 import Category from '../common/category/Category';
 

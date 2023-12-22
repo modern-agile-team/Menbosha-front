@@ -1,9 +1,13 @@
+import SEARCH from '@/apis/search';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const HelpBoardCardList = () => {
   //api요청
+  const getHelpListApi = async () => {
+    const response = await SEARCH.getSearchPageApi;
+  };
 
   return (
     <HelpCardWrapper>
