@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
-import { getMentorInfoSelector } from '@/recoil/selectors/MentorInfoSelector';
+// import { getMentorInfoSelector } from '@/recoil/selectors/MentorInfoSelector';
 
 type MentorInfoType = {
   id: number;
@@ -12,7 +12,7 @@ type MentorInfoType = {
 };
 
 const MentorListBox = () => {
-  const MentorInfo = useRecoilValue<MentorInfoType[]>(getMentorInfoSelector);
+  // const MentorInfo = useRecoilValue<MentorInfoType[]>(getMentorInfoSelector);
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
   }>({});
@@ -26,7 +26,7 @@ const MentorListBox = () => {
 
   return (
     <S.ListContainer>
-      {MentorInfo.map((mentor) => (
+      {/* {MentorInfo.map((mentor) => (
         <S.ListArea
           key={mentor.id}
           onClick={() => handleMentorClick(mentor.id)}
@@ -82,7 +82,7 @@ const MentorListBox = () => {
             </S.IconBox>
           )}
         </S.ListArea>
-      ))}
+      ))} */}
     </S.ListContainer>
   );
 };
