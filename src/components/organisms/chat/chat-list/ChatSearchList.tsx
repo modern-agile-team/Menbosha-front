@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import { ListArea } from '@/components/molecules/chat-list-area/mentor-list-box/styled';
 import MentorListBox from '@/components/molecules/chat-list-area/mentor-list-box/MentorListBox';
 
 const ChatSearchList = () => {

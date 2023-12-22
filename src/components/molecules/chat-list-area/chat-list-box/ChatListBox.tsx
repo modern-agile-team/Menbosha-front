@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 
 const ChatListBox = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const handleChatRoomClick = () => {
-    setIsExpanded(!isExpanded);
-  };
   return (
     <S.ListContainer>
       <S.ChatRoomListArea>

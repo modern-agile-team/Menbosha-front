@@ -5,7 +5,7 @@ export const HeaderContainer = styled.div`
   flex-wrap: wrap;
   width: inherit;
   height: 10vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
-  margin-top: 60px;
+  margin-top: 40px;
   /* margin-bottom: 20px; */
   justify-content: center;
   /* border: 2px solid white; */

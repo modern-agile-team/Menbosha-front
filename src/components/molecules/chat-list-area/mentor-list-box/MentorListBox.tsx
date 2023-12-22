@@ -16,6 +16,7 @@ const MentorListBox = () => {
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
   }>({});
+
   const handleMentorClick = (mentorId: number) => {
     setExpandedStates((prevStates) => ({
       ...prevStates,
@@ -64,7 +65,22 @@ const MentorListBox = () => {
               </S.MentorInfoBox>
             </S.MentorInfoLeft>
           </S.MentorInfoArea>
-          {expandedStates[mentor.id] && <div></div>}
+          {expandedStates[mentor.id] && (
+            <S.IconBox isExpanded={expandedStates[mentor.id]}>
+              <Image
+                src="/UserIcon-black.svg"
+                alt="ChatIcon"
+                width="36"
+                height="36"
+              />
+              <Image
+                src="/ChatIcon-black.svg"
+                alt="ChatIcon"
+                width="36"
+                height="36"
+              />
+            </S.IconBox>
+          )}
         </S.ListArea>
       ))}
     </S.ListContainer>

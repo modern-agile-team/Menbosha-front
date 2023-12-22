@@ -49,8 +49,8 @@ export const NoticeBox = styled.div`
 
 export const FooterBoxRight = styled.span`
   display: flex;
-  width: 8vw;
-  margin-top: 110px;
+  width: 9vw;
+  margin-top: 100px;
   font-size: 0.5em;
   color: #c58940;
   /* border: 2px solid green; */

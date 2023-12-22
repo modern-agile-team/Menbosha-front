@@ -13,7 +13,7 @@ export const ListContainer = styled.div`
   overflow-x: hidden;
   /* border: 2px solid red; */
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
   }
   &::-webkit-scrollbar-thumb {
     /* width: 10px; */
@@ -24,10 +24,11 @@ export const ListContainer = styled.div`
 
 export const ListArea = styled.div<ListAreaType>`
   display: flex;
+  flex-direction: ${({ isExpanded }) => (isExpanded ? 'column' : 'row')};
   width: 20vw;
   height: ${({ isExpanded }) => (isExpanded ? '18vh' : '8vh')};
   margin-bottom: 24px;
-  justify-content: center;
+  /* justify-content: center; */
   /* align-items: center; */
   border: 2px solid #ffbb5c;
   border-radius: 10px;
@@ -40,9 +41,10 @@ export const ListArea = styled.div<ListAreaType>`
 
 export const MentorInfoArea = styled.div`
   display: flex;
-  width: 19vw;
+  width: 18vw;
   height: 7vh;
   margin-top: 4px;
+  margin-left: 0.6vw;
   justify-content: space-between;
   /* border: 2px solid white; */
 `;
@@ -82,4 +84,18 @@ export const MentorInfoBox = styled.div<ListAreaType>`
   /* border: 1px solid green; */
 `;
 
-// export const
+export const IconBox = styled.div<ListAreaType>`
+  display: flex;
+  width: 10vw;
+  height: ${({ isExpanded }) => (isExpanded ? 'auto' : '7vh')};
+  margin-top: 16px;
+  margin-left: 4.8vw;
+  justify-content: space-between;
+  align-items: center;
+  visibility: ${({ isExpanded }) => (isExpanded ? 'visible' : 'hidden')};
+  opacity: ${({ isExpanded }) => (isExpanded ? 1 : 0)};
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+  /* border: 2px solid black; */
+`;
