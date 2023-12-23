@@ -7,7 +7,7 @@ type MentorListType = {
   id: number;
   name: string;
   image: string;
-  introduct: string;
+  introduction: string;
   mainField: string;
 };
 
@@ -34,7 +34,7 @@ const MentorBoardList = ({ slide }: SlideType) => {
           id: data.id,
           name: data.name,
           image: data.image,
-          introduct: data.introduct,
+          introduction: data.introduction,
           mainField: data.mainField,
         };
         return (
