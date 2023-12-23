@@ -1,7 +1,14 @@
+import SubPageHeader from '../common/header/SubPageHeader';
+import CreateHelpBody from '../organisms/create-help-board/CreateHelpBody';
+
 const CreateHelpTemplate = () => {
   return (
     <div>
-      <div>도와줘요생성생성생성</div>
+      <SubPageHeader />
+      <div
+        style={{ display: 'flex', justifyContent: 'center', width: '100vw' }}>
+        <CreateHelpBody />;
+      </div>
     </div>
   );
 };

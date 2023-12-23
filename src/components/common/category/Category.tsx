@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
-const HelpCategory = () => {
+const Category = () => {
   return (
-    <CategoryWarpper>
+    <CategoryWrapper>
       <CategoryContainer>
         <CategoryBox>카테고리</CategoryBox>
         <CategoryBox>카테고리2123123</CategoryBox>
         <CategoryBox>카테고리3</CategoryBox>
         <CategoryBox>카테고리4</CategoryBox>
       </CategoryContainer>
-    </CategoryWarpper>
+    </CategoryWrapper>
   );
 };
 
-export default HelpCategory;
+export default Category;
 
-const CategoryWarpper = styled.div`
+const CategoryWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 40px 0px 25px 0px;

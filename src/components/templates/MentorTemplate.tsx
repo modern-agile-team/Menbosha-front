@@ -1,9 +1,9 @@
 import SubPageHeader from '@/components/common/header/SubPageHeader';
-import HelpCategory from '../organisms/help-board/HelpCategory';
 import MentorBoardList from '../organisms/mentor-board/MentorBoardCard';
 import MentorSideViewer from '../organisms/mentor-board/MentorSideViewer';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import Category from '../common/category/Category';
 
 const MentorTemplate = () => {
   const [isSlide, setSlide] = useState(false);
@@ -23,7 +23,7 @@ const MentorTemplate = () => {
         }}>
         <SlideContainer>
           <ContentList>
-            <HelpCategory />
+            <Category />
             <MentorBoardList slide={handleSlide} />
           </ContentList>
           <HiddenSlide isSlide={isSlide}>
