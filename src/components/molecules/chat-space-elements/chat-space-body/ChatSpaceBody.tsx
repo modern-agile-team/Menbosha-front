@@ -27,7 +27,7 @@ const ChatSpaceBody = () => {
         <S.ChatTimeBox>16:40</S.ChatTimeBox>
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleHostContainer isHost={false}>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        <S.ChatTimeBox>16:42</S.ChatTimeBox>
         <S.ChatBubble isHost={false}>
           <span>
             네형 네형네형네형네형네형네형네형네형네형네형네형네형네형네형
@@ -45,7 +45,7 @@ const ChatSpaceBody = () => {
             <span>배고파으어어으ㅓ으ㅓ으응</span>
           </S.ChatBubble>
         </S.ChatBubbleGuestCenter>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>12:20</S.ChatTimeBox> */}
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
@@ -57,34 +57,34 @@ const ChatSpaceBody = () => {
             <span>밥먹자으아ㅡ아으ㅏ으ㅓ어ㅡ아ㅡ아으ㅏ</span>
           </S.ChatBubble>
         </S.ChatBubbleGuestCenter>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        <S.ChatTimeBox>12:20</S.ChatTimeBox>
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleHostContainer isHost={false}>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>16:40</S.ChatTimeBox> */}
         <S.ChatBubble isHost={false}>
           <span>정신 차려요 형...</span>
         </S.ChatBubble>
       </S.ChatBubbleHostContainer>
       <S.ChatBubbleHostContainer isHost={false}>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>16:40</S.ChatTimeBox> */}
         <S.ChatBubble isHost={false}>
           <span>뭐 드실래요??</span>
         </S.ChatBubble>
       </S.ChatBubbleHostContainer>
       <S.ChatBubbleHostContainer isHost={false}>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>16:40</S.ChatTimeBox> */}
         <S.ChatBubble isHost={false}>
           <span>장미 식당??</span>
         </S.ChatBubble>
       </S.ChatBubbleHostContainer>
       <S.ChatBubbleHostContainer isHost={false}>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>16:40</S.ChatTimeBox> */}
         <S.ChatBubble isHost={false}>
           <span>국밥???</span>
         </S.ChatBubble>
       </S.ChatBubbleHostContainer>
       <S.ChatBubbleHostContainer isHost={false}>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        <S.ChatTimeBox>12:34</S.ChatTimeBox>
         <S.ChatBubble isHost={false}>
           <span>아니면 그냥 준혁이 먹어버리죠???????</span>
         </S.ChatBubble>
@@ -99,7 +99,7 @@ const ChatSpaceBody = () => {
             <span>좋은 생각이다</span>
           </S.ChatBubble>
         </S.ChatBubbleGuestCenter>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>16:40</S.ChatTimeBox> */}
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
@@ -111,7 +111,7 @@ const ChatSpaceBody = () => {
             <span>물 올려??</span>
           </S.ChatBubble>
         </S.ChatBubbleGuestCenter>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        {/* <S.ChatTimeBox>16:40</S.ChatTimeBox> */}
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
@@ -123,7 +123,7 @@ const ChatSpaceBody = () => {
             <span>일단 옷부터 벗겨</span>
           </S.ChatBubble>
         </S.ChatBubbleGuestCenter>
-        <S.ChatTimeBox>16:40</S.ChatTimeBox>
+        <S.ChatTimeBox>12:49</S.ChatTimeBox>
       </S.ChatBubbleGuestContainer>
     </S.ChatSpaceBodyContainer>
   );
