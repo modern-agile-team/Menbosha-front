@@ -26,3 +26,5 @@ branches:
     prefix: test
   - label: 🙋‍♂️ Question
     prefix: question
+  - label: 🎨 Publish
+    prefix: publish
