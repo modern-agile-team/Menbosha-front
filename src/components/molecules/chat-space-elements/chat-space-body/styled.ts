@@ -5,10 +5,20 @@ export const ChatSpaceBodyContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 80vh;
+  overflow: scroll;
+  overflow-x: hidden;
   /* border: 2px solid white; */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    /* width: 10px; */
+    background: gray;
+    border-radius: 10px;
+  }
 `;
 
-export const ChatBubbleContainer = styled.div<{ isHost: boolean }>`
+export const ChatBubbleHostContainer = styled.div<{ isHost: boolean }>`
   display: flex;
   max-width: 20vw;
   align-self: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
@@ -26,7 +36,7 @@ export const ChatBubble = styled.div<{ isHost: boolean }>`
   display: flex;
   max-width: 16vw;
   margin: ${({ isHost }) =>
-    isHost ? '0.2vw 0.3vw 10px 0px' : '20px 20px 10px 0.2vw'};
+    isHost ? '0.3vw 0.3vw 10px 0px' : '20px 20px 10px 0.2vw'};
   justify-content: center;
   align-self: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
   overflow-wrap: break-word;
