@@ -40,6 +40,15 @@ const HELP = {
     );
     return result;
   },
+
+  async getHelpBoardList(page: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${HELP.path}`, {
+      params: {
+        page: page,
+      },
+    });
+    return result.data;
+  },
 };
 
 export default HELP;

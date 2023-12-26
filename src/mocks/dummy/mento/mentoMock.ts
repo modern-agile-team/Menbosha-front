@@ -4,7 +4,7 @@ const mentoData = [
   {
     id: 1,
     name: '이재진',
-    introduct: '모애6기 회장입니다~',
+    introduction: '모애6기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -29,7 +29,7 @@ const mentoData = [
   {
     id: 2,
     name: '이자이진',
-    introduct: '모애7기 회장입니다~',
+    introduction: '모애7기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -54,7 +54,7 @@ const mentoData = [
   {
     id: 3,
     name: '이제진',
-    introduct: '모애8기 회장입니다~',
+    introduction: '모애8기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -79,7 +79,7 @@ const mentoData = [
   {
     id: 4,
     name: '이줴진',
-    introduct: '모애6.5기 회장입니다~',
+    introduction: '모애6.5기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -104,7 +104,7 @@ const mentoData = [
   {
     id: 5,
     name: '이족진',
-    introduct: '모애9기 회장입니다~',
+    introduction: '모애9기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -129,7 +129,7 @@ const mentoData = [
   {
     id: 6,
     name: '이주직',
-    introduct: '모애10기 회장입니다~',
+    introduction: '모애10기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -154,7 +154,7 @@ const mentoData = [
   {
     id: 7,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -179,7 +179,7 @@ const mentoData = [
   {
     id: 8,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -204,7 +204,7 @@ const mentoData = [
   {
     id: 9,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -229,7 +229,7 @@ const mentoData = [
   {
     id: 10,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -254,7 +254,7 @@ const mentoData = [
   {
     id: 11,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -279,7 +279,7 @@ const mentoData = [
   {
     id: 12,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -304,7 +304,7 @@ const mentoData = [
   {
     id: 13,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -329,7 +329,7 @@ const mentoData = [
   {
     id: 14,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -354,7 +354,7 @@ const mentoData = [
   {
     id: 15,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -379,7 +379,7 @@ const mentoData = [
   {
     id: 16,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -404,7 +404,7 @@ const mentoData = [
   {
     id: 17,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -429,7 +429,7 @@ const mentoData = [
   {
     id: 18,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -454,7 +454,7 @@ const mentoData = [
   {
     id: 19,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -479,7 +479,7 @@ const mentoData = [
   {
     id: 20,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -504,7 +504,7 @@ const mentoData = [
   {
     id: 21,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -529,7 +529,7 @@ const mentoData = [
   {
     id: 22,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -554,7 +554,7 @@ const mentoData = [
   {
     id: 23,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -579,7 +579,7 @@ const mentoData = [
   {
     id: 24,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -604,7 +604,7 @@ const mentoData = [
   {
     id: 25,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -629,7 +629,7 @@ const mentoData = [
   {
     id: 26,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -654,7 +654,7 @@ const mentoData = [
   {
     id: 27,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -679,7 +679,7 @@ const mentoData = [
   {
     id: 28,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -704,7 +704,7 @@ const mentoData = [
   {
     id: 29,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -729,7 +729,7 @@ const mentoData = [
   {
     id: 30,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -754,7 +754,7 @@ const mentoData = [
   {
     id: 31,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -779,7 +779,7 @@ const mentoData = [
   {
     id: 32,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
@@ -804,7 +804,7 @@ const mentoData = [
   {
     id: 33,
     name: '이지짖',
-    introduct: '모애11기 회장입니다~',
+    introduction: '모애11기 회장입니다~',
     image: '',
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',

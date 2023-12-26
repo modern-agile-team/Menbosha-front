@@ -3,7 +3,7 @@ import 'react-quill/dist/quill.snow.css';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import * as S from '../help-board/styled';
+import * as S from './styled';
 import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';

@@ -1,51 +1,85 @@
+import HELP from '@/apis/help';
 import SEARCH from '@/apis/search';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import * as S from './styled';
 
 const HelpBoardCardList = () => {
-  //api요청
-  const getHelpListApi = async () => {
-    const response = await SEARCH.getSearchPageApi;
+  const [totalPage, setTotalPage] = useState(0); //페이지 수
+  const [getList, setGetList] = useState<any>([]);
+  const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
+  const [load, setLoad] = useState(false);
+  const preventRef = useRef(true); //옵저버 중복 방지
+
+  //페이지 수 로드 함수
+  const getLoadPage = useCallback(async () => {
+    const response = await SEARCH.getSearchPageApi('이승');
+    setTotalPage(response);
+  }, []);
+
+  //옵저버 생성
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObs, { threshold: 0.5 });
+    if (obsRef.current) observer.observe(obsRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, [obsRef, getList]);
+
+  //첫 페이지 로드
+  useEffect(() => {
+    getLoadPage();
+  }, []);
+
+  //무한스크롤 로드
+  useEffect(() => {
+    loadPost();
+  }, [totalPage]);
+
+  useEffect(() => {
+    console.log(getList);
+  });
+
+  const handleObs = (entries: any) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      //옵저버 중복 실행 방지
+      preventRef.current = false; //옵저버 중복 실행 방지
+      setTotalPage((prev) => prev - 1); //페이지 값 감소
+    }
   };
 
+  //스크롤 시 로드 함수
+  const loadPost = useCallback(async () => {
+    setLoad(true); //로딩 시작
+    if (totalPage > 0) {
+      const result = await HELP.getHelpBoardList(totalPage); //api요청 글 목록 불러오기
+      const reverseArr = [...result.data].reverse();
+      result && setGetList((prev: any) => [...prev, ...reverseArr]);
+    }
+    setLoad(false);
+  }, [totalPage]);
+
   return (
-    <HelpCardWrapper>
-      <HelpCardContainer>
-        {/* {data.helpBoard.map((data: any) => {
-          const temp = {
-            id: data.id,
-            name: data.userName,
-            userImage: data.userImage,
-            image: data.image,
-            head: data.head,
-            body: data.body,
-            createAt: data.create_at,
-          };
-          return (
-            <div key={data.id}>
-              <HelpCard {...temp} />
-            </div>
-          );
-        })} */}
-      </HelpCardContainer>
-    </HelpCardWrapper>
+    <S.HelpCardContainer>
+      {getList.map((data: any) => {
+        const temp = {
+          id: data.id,
+          name: data.userName,
+          userImage: data.userImage,
+          image: data.image,
+          head: data.head,
+          body: data.body,
+          createAt: data.create_at,
+        };
+        return (
+          <S.HelpCardWrapper key={data.id}>
+            <HelpCard {...temp} />
+          </S.HelpCardWrapper>
+        );
+      })}
+    </S.HelpCardContainer>
   );
 };
 
 export default HelpBoardCardList;
-
-const HelpCardWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  border: 1px solid #448;
-`;
-
-const HelpCardContainer = styled.div`
-  border: 2px solid #c12;
-  display: flex;
-  justify-content: left;
-  min-height: 500px;
-  width: 1100px;
-  flex-wrap: wrap;
-`;
