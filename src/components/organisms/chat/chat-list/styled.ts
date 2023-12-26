@@ -12,23 +12,6 @@ export const ChatRoomListContainer = styled.div`
   /* border: 2px solid red; */
 `;
 
-export const ListContainer = styled.div`
-  display: block;
-  width: 21vw;
-  height: 100vh;
-  text-align: center;
-  overflow: scroll;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 2px;
-  }
-  &::-webkit-scrollbar-thumb {
-    /* width: 10px; */
-    background: #fff;
-    border-radius: 10px;
-  }
-`;
-
 // ChatSearchList Styled-Components
 
 export const SearchMentorBox = styled.div`
@@ -43,7 +26,7 @@ export const SearchMentorBox = styled.div`
     margin: 0px 10px;
   }
   & > span {
-    font-size: 20px;
+    font-size: 0.83em;
     font-weight: 700;
     color: #ffbb5c;
   }
@@ -70,7 +53,7 @@ export const ChatRoomListHeader = styled.div`
     margin: 0px 10px;
   }
   & > span {
-    font-size: 20px;
+    font-size: 0.83em;
     font-weight: 700;
     color: #ffbb5c;
   }

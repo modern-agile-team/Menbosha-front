@@ -40,7 +40,7 @@ export const TopNavBox = styled.div`
   & > a {
     text-decoration: none;
     color: #c58940;
-    font-size: 20px;
+    font-size: 1em;
     font-weight: bold;
     transition: color 0.3s ease;
     &:hover {

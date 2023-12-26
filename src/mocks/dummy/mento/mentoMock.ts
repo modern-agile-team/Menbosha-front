@@ -9,7 +9,7 @@ const mentoData = [
     mainField: 'nextjs, front-end',
     career: '2023.6 ~ 2024.3 모던애자일6기, 2020.3 ~ 2026.3 인덕대학교',
     rank: 3,
-    userReveiw: [
+    serReveiw: [
       {
         userId: 3,
         userName: '이제진',

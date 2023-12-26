@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import { ListArea } from '@/components/molecules/chat-list-area/mentor-list-box/styled';
 import MentorListBox from '@/components/molecules/chat-list-area/mentor-list-box/MentorListBox';
 
 const ChatSearchList = () => {
@@ -12,23 +11,7 @@ const ChatSearchList = () => {
         {/* <S.SearchInputBox></S.SearchInputBox> */}
         <Image src="/SearchIcon.svg" alt="SearchIcon" width="24" height="24" />
       </S.SearchMentorBox>
-      <S.ListContainer>
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-        <MentorListBox />
-      </S.ListContainer>
+      <MentorListBox />
     </S.ChatRoomListContainer>
   );
 };

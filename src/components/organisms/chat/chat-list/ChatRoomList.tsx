@@ -9,9 +9,7 @@ const ChatRoomList = () => {
       <S.ChatRoomListHeader>
         <span>열려 있는 채팅방</span>
       </S.ChatRoomListHeader>
-      <S.ListContainer>
-        <ChatListBox />
-      </S.ListContainer>
+      <ChatListBox />
     </S.ChatRoomListContainer>
   );
 };
