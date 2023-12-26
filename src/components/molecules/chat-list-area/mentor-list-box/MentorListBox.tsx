@@ -65,7 +65,7 @@ const MentorListBox = () => {
             <S.IconBox isExpanded={expandedStates[mentor.id]}>
               <Image
                 src="/UserIcon-black.svg"
-                alt="ChatIcon"
+                alt="UserIcon"
                 width="36"
                 height="36"
               />

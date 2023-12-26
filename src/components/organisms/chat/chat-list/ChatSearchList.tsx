@@ -5,14 +5,14 @@ import MentorListBox from '@/components/molecules/chat-list-area/mentor-list-box
 
 const ChatSearchList = () => {
   return (
-    <S.ChatRoomListContainer>
+    <S.MentorListContainer>
       <S.SearchMentorBox>
         <span>멘토 리스트</span>
         {/* <S.SearchInputBox></S.SearchInputBox> */}
         <Image src="/SearchIcon.svg" alt="SearchIcon" width="24" height="24" />
       </S.SearchMentorBox>
       <MentorListBox />
-    </S.ChatRoomListContainer>
+    </S.MentorListContainer>
   );
 };
 

@@ -9,7 +9,7 @@ export const ListContainer = styled.div`
   overflow-x: hidden;
   /* border: 2px solid red; */
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
   }
   &::-webkit-scrollbar-thumb {
     /* width: 10px; */
@@ -93,7 +93,7 @@ export const ChatListPrevText = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 22vh;
+    max-width: 12vw;
   }
 `;
 
