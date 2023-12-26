@@ -80,7 +80,6 @@ const SelectBox = styled.div`
   &::before {
     content: '⌵';
     position: absolute;
-    top: 1px;
     right: 8px;
     font-size: 20px;
   }

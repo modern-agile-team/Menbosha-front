@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
 import useModal from '@/hooks/useModal';
-import { categoryList } from './categoryList';
+import { categoryList } from '../../common/category/categoryList';
 import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 import { useRouter } from 'next/router';
 
@@ -70,7 +70,6 @@ const SelectBox = styled.div`
   &::before {
     content: '⌵';
     position: absolute;
-    top: 1px;
     right: 8px;
     font-size: 20px;
   }

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
@@ -14,6 +15,10 @@ export const CardContainer = styled.div`
       transition: height 500ms ease;
     }
   }
+`;
+
+export const CardLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export const CardImageBox = styled.div`

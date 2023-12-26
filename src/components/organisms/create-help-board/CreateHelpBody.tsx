@@ -9,7 +9,7 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 import { categoryList } from '@/components/common/category/categoryList';
 import HELP from '@/apis/help';
-import CategorySelectorBox from '@/components/common/category/CategorySelector';
+import CategorySelectorBox from '@/components/molecules/create-board-elements/CategorySelector';
 import SectionSelectorBox from '@/components/molecules/create-board-elements/ChoiceSection';
 
 const QuillWrapper = dynamic(() => import('react-quill'), {
@@ -142,9 +142,10 @@ const CreateHelpBody = () => {
 
   return (
     <S.CreateHelpContainer>
+      <S.CreateTitle>게시글 작성하기</S.CreateTitle>
       <div>
         <S.CreateHeader>
-          <TextBox color="#C63D2F" size={25} style={{ width: '80%' }}>
+          <TextBox color="#ffffff" size={20} style={{ width: '100%' }}>
             제목
           </TextBox>
           <S.CreateHeadValue
@@ -156,7 +157,7 @@ const CreateHelpBody = () => {
             }}></S.CreateHeadValue>
         </S.CreateHeader>
         <FlexBox type="flex">
-          <TextBox color="#C63D2F" size={25}>
+          <TextBox color="#ffffff" size={20}>
             본문
           </TextBox>
           <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
@@ -173,9 +174,11 @@ const CreateHelpBody = () => {
           onChange={(e: any) => setQuillText(e)}
           style={{
             height: 400,
-            padding: '0px 0px 40px 0px',
-            backgroundColor: '#e25e3e',
+            padding: '0px 0px 44px 0px',
+            backgroundColor: '#252525',
             color: '#fff',
+            border: '2px solid #ffbb5c',
+            borderRadius: 15,
           }}
         />
       </div>

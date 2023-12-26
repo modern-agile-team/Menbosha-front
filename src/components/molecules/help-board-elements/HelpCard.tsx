@@ -14,14 +14,14 @@ interface CardType {
 
 const HelpCard = (props: CardType) => {
   return (
-    <S.CardContainer>
-      <Link
-        href={{
-          pathname: `/help/unit`,
-          query: {
-            id: props.id,
-          },
-        }}>
+    <S.CardLink
+      href={{
+        pathname: `/help/unit`,
+        query: {
+          id: props.id,
+        },
+      }}>
+      <S.CardContainer>
         <S.CardImageBox>이미지이미지이미지</S.CardImageBox>
         <TextBox size={20} color="#C63D2F" style={{ padding: '13px 0px' }}>
           {props.head}
@@ -35,8 +35,8 @@ const HelpCard = (props: CardType) => {
           style={{ padding: '10px 0px 10px 0px' }}>
           {props.createAt}
         </TextBox>
-      </Link>
-    </S.CardContainer>
+      </S.CardContainer>
+    </S.CardLink>
   );
 };
 
