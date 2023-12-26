@@ -58,11 +58,13 @@ const CategorySelectorBox = () => {
 
 const SelectBox = styled.div`
   position: relative;
+  border: 1px solid #ffbb5c;
   margin-left: auto;
   width: 200px;
-  padding: 8px;
+  margin: 0px 8px 16px 8px;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #252525;
+  color: #fff;
   align-self: center;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 25%);
   cursor: pointer;
@@ -71,14 +73,14 @@ const SelectBox = styled.div`
     content: '⌵';
     position: absolute;
     right: 8px;
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 
 const Label = styled.label`
-  font-size: 14px;
-  margin-left: 4px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
 `;
 
 interface SO {
@@ -88,14 +90,13 @@ interface SO {
 const SelectOptions = styled.div<SO>`
   position: absolute;
   list-style: none;
-  top: 36px;
   left: 0;
   width: 100%;
   overflow: hidden;
-  height: auto;
   max-height: ${(props) => (props.show === 'true' ? 'none' : '0')};
   padding: 0;
   border-radius: 8px;
+  border: ${(props) => (props.show === 'true' ? '1px solid #ffbb5c' : 'none')};
   background-color: #222222;
   color: #fefefe;
 `;
@@ -105,7 +106,7 @@ const Option = styled.div`
   padding: 6px 8px;
   transition: background-color 0.2s ease-in;
   &:hover {
-    background-color: #595959;
+    background-color: #ff9b50;
   }
 `;
 

@@ -165,31 +165,36 @@ const CreateHelpBody = () => {
             <CategorySelectorBox />
           </FlexBox>
         </FlexBox>
-        <QuillWrapper
-          value={quillText}
-          theme="snow"
-          modules={modules}
-          formats={formats}
-          placeholder="글을 작성해 주세요."
-          onChange={(e: any) => setQuillText(e)}
-          style={{
-            height: 400,
-            padding: '0px 0px 44px 0px',
-            backgroundColor: '#252525',
-            color: '#fff',
-            border: '2px solid #ffbb5c',
-            borderRadius: 15,
-          }}
-        />
+        <S.QuillBox>
+          <QuillWrapper
+            value={quillText}
+            modules={modules}
+            formats={formats}
+            placeholder="글을 작성해 주세요."
+            onChange={(e: any) => setQuillText(e)}
+            style={{
+              backgroundColor: '#ffffff',
+              height: '100%',
+              minHeight: 400,
+              borderRadius: 15,
+            }}
+          />
+        </S.QuillBox>
       </div>
-      <S.Test>
-        <TextBox color="#C63D2F" size={25}>
-          사진
-        </TextBox>
-        <div>
-          <input type="file" id="fileUpload" onChange={onChangeFiles} />
-        </div>
-        <div>
+      <TextBox
+        color="#ffffff"
+        size={20}
+        style={{ margin: '48px 0px 16px 0px' }}>
+        사진
+      </TextBox>
+      <div
+        style={{
+          display: 'flex',
+        }}>
+        <S.ImageUploadBox>
+          <div>
+            <input type="file" id="fileUpload" onChange={onChangeFiles} />
+          </div>
           {files.length > 0 &&
             files.map((file: IFileTypes) => {
               const { id, url } = file;
@@ -205,9 +210,9 @@ const CreateHelpBody = () => {
                 </div>
               );
             })}
-        </div>
+        </S.ImageUploadBox>
         <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
-      </S.Test>
+      </div>
     </S.CreateHelpContainer>
   );
 };
