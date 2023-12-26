@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CreateHelpContainer = styled.div`
-  width: 80%;
   max-width: 1512px;
 `;
 
@@ -33,11 +32,21 @@ export const CreateHeadValue = styled.input`
   }
 `;
 
-export const Test = styled.div`
-  border: 3px solid #fe3;
-  margin: 20px 0px 100px 0px;
+export const QuillBox = styled.div`
+  border: 2px solid #ffbb5c;
+  border-radius: 15px;
+  padding: 26px 16px;
+  height: 100%;
+`;
+
+export const ImageUploadBox = styled.div`
+  border: 2px solid #ffbb5c;
+  border-radius: 10px;
+  padding: 24px;
+  width: 100%;
 `;
 
 export const SubmitBox = styled.div`
+  color: #fff;
   cursor: pointer;
 `;
