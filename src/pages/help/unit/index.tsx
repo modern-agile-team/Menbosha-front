@@ -1,9 +1,11 @@
-import { useRouter } from 'next/router';
+import HelpUnitTemplate from '@/components/templates/HelpUnitTemplate';
 
 const HelpUnit = () => {
-  const router = useRouter();
-
-  return <div>{router.query && router.query.id}</div>;
+  return (
+    <div>
+      <HelpUnitTemplate />
+    </div>
+  );
 };
 
 export default HelpUnit;
