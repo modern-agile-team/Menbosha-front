@@ -21,15 +21,23 @@ body {
   font-size: 24px;
 }
 
-.ql-editor.ql-blank {
+.ql-editor {
   border-radius: 0px 0px 15px 15px;
-  height: 400px;
+  height: 400px !important;
 }
 
 .ql-toolbar {
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15psx 0px 0px;
 }
 
 .ql-container.ql-snow {
-  border: none !important;
+  border: 2px solid #ffbb5c !important;
+}
+
+.ql-toolbar.ql-snow {
+  border: 2px solid #ffbb5c !important;
+}
+
+.ql-fill {
+  color: #fff !important;
 }

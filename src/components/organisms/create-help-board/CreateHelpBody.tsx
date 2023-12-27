@@ -65,9 +65,11 @@ const CreateHelpBody = () => {
   const [unitTitle, setUnitTitle] = useState<string>(''); //제목
   const [quillText, setQuillText] = useState<string>(''); //본문
   const [category, setCategory] = useRecoilState(CategorySelectAtom); //카테고리
+  const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const router = useRouter();
   const fileId = useRef<number>(0);
+  const dragRef = useRef<HTMLLabelElement | null>(null);
   const resetSelect = useResetRecoilState(CategorySelectAtom);
 
   /**이미지 추가 핸들러 */
@@ -80,7 +82,7 @@ const CreateHelpBody = () => {
       // 드래그 했을 때와 안했을 때 가리키는 파일 배열을 다르게
       if (e.type === 'drop') {
         // 드래그 앤 드롭 했을때
-        selectFiles = e.dataTransfer.files; //나중에 로직 추가
+        selectFiles = e.dataTransfer.files;
       } else {
         selectFiles = e.target.files;
         // "파일 첨부" 버튼을 눌러서 이미지를 선택했을때
@@ -109,6 +111,66 @@ const CreateHelpBody = () => {
     },
     [files],
   );
+
+  const handleDragIn = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
+  const handleDragOut = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setIsDragging(false);
+  }, []);
+
+  const handleDragOver = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (e.dataTransfer!.files) {
+      setIsDragging(true);
+    }
+  }, []);
+
+  const handleDrop = useCallback(
+    (e: DragEvent): void => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      onChangeFiles(e);
+      setIsDragging(false);
+    },
+    [onChangeFiles],
+  );
+
+  const initDragEvents = useCallback((): void => {
+    // 앞서 말했던 4개의 이벤트에 Listener를 등록합니다. (마운트 될때)
+
+    if (dragRef.current !== null) {
+      dragRef.current.addEventListener('dragenter', handleDragIn);
+      dragRef.current.addEventListener('dragleave', handleDragOut);
+      dragRef.current.addEventListener('dragover', handleDragOver);
+      dragRef.current.addEventListener('drop', handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  const resetDragEvents = useCallback((): void => {
+    // 앞서 말했던 4개의 이벤트에 Listener를 삭제합니다. (언마운트 될때)
+
+    if (dragRef.current !== null) {
+      dragRef.current.removeEventListener('dragenter', handleDragIn);
+      dragRef.current.removeEventListener('dragleave', handleDragOut);
+      dragRef.current.removeEventListener('dragover', handleDragOver);
+      dragRef.current.removeEventListener('drop', handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  useEffect(() => {
+    initDragEvents();
+
+    return () => resetDragEvents();
+  }, [initDragEvents, resetDragEvents]);
 
   const handleSubmit = async () => {
     const formData = new FormData();
@@ -173,7 +235,8 @@ const CreateHelpBody = () => {
             placeholder="글을 작성해 주세요."
             onChange={(e: any) => setQuillText(e)}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: '#252525',
+              color: '#fff',
               height: '100%',
               minHeight: 400,
               borderRadius: 15,
@@ -185,34 +248,55 @@ const CreateHelpBody = () => {
         color="#ffffff"
         size={20}
         style={{ margin: '48px 0px 16px 0px' }}>
-        사진
+        사진{' '}
+        <TextBox color="#f00" size={11}>
+          이미지는 3개까지만 업로드 가능합니다.
+        </TextBox>
       </TextBox>
+      <FlexBox type="flex"></FlexBox>
       <div
         style={{
           display: 'flex',
         }}>
         <S.ImageUploadBox>
           <div>
-            <input type="file" id="fileUpload" onChange={onChangeFiles} />
+            <FlexBox type="flex">
+              {files.length > 0 &&
+                files.map((file: IFileTypes) => {
+                  const { id, url } = file;
+                  return (
+                    <div key={id} style={{ margin: 5 }}>
+                      <Image
+                        src={url as string}
+                        alt="업로드 사진"
+                        width={100}
+                        height={100}
+                        onClick={() => handleFilterFile(id as number)}
+                      />
+                    </div>
+                  );
+                })}
+              {files.length > 2 ? (
+                <div></div>
+              ) : (
+                <S.DropDownImageBox
+                  htmlFor="fileUpload"
+                  ref={dragRef}
+                  drag={isDragging}>
+                  +
+                </S.DropDownImageBox>
+              )}
+            </FlexBox>
+            <input
+              type="file"
+              id="fileUpload"
+              onChange={onChangeFiles}
+              style={{ display: 'none' }}
+            />
           </div>
-          {files.length > 0 &&
-            files.map((file: IFileTypes) => {
-              const { id, url } = file;
-              return (
-                <div key={id}>
-                  <div onClick={() => handleFilterFile(id as number)}>X</div>
-                  <Image
-                    src={url as string}
-                    alt="업로드 사진"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-              );
-            })}
         </S.ImageUploadBox>
-        <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
       </div>
+      <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
     </S.CreateHelpContainer>
   );
 };

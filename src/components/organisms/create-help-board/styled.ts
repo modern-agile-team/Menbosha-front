@@ -27,6 +27,7 @@ export const CreateHeadValue = styled.input`
   outline: none;
   background-color: #252525;
   border-radius: 15px;
+  color: #fff;
   &::placeholder {
     color: #ffffff50;
   }
@@ -49,4 +50,20 @@ export const ImageUploadBox = styled.div`
 export const SubmitBox = styled.div`
   color: #fff;
   cursor: pointer;
+`;
+
+interface DropType {
+  drag: boolean;
+}
+
+export const DropDownImageBox = styled.label<DropType>`
+  display: flex;
+  border: 1px solid #ffbb5c;
+  color: #fff;
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: ${({ drag }) => (drag ? '#999' : '#252525')};
 `;
