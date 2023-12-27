@@ -21,10 +21,16 @@ export const CardLink = styled(Link)`
   text-decoration: none;
 `;
 
-export const CardImageBox = styled.div`
+interface CardImageType {
+  src: string;
+}
+
+export const CardImageBox = styled.div<CardImageType>`
   width: 280px;
   height: 290px;
   background-color: #999;
   border-radius: 10px;
   cursor: pointer;
+  background-image: url(${({ src }) => src});
+  background-size: cover;
 `;

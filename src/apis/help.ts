@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
+import { HelpListApiType, HelpUnitType } from '@/types/help';
 
 type createType = {
   head: string;
@@ -41,10 +42,27 @@ const HELP = {
     return result;
   },
 
-  async getHelpBoardList(page: number): Promise<any> {
+  //리스트 페이지 수 불러오는 api
+  async getHelpBoardPage(): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${HELP.path}/page`);
+    return result.data;
+  },
+
+  //리스트 불러오는 api
+  async getHelpBoardList(page: number): Promise<HelpListApiType> {
     const result: AxiosResponse = await instance.get(`${HELP.path}`, {
       params: {
         page: page,
+      },
+    });
+    return result.data;
+  },
+
+  //도와주세요 unit불러오는 api [get]
+  async getHelpUnit(id: number): Promise<HelpUnitType> {
+    const result: AxiosResponse = await instance.get(`${HELP.path}/unit`, {
+      params: {
+        boardId: id,
       },
     });
     return result.data;

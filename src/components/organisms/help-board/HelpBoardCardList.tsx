@@ -1,21 +1,15 @@
 import HELP from '@/apis/help';
-import SEARCH from '@/apis/search';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
+import { HelpListApiType } from '@/types/help';
 
 const HelpBoardCardList = () => {
   const [totalPage, setTotalPage] = useState(0); //페이지 수
-  const [getList, setGetList] = useState<any>([]);
+  const [getList, setGetList] = useState<HelpListApiType[]>([]);
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-
-  //페이지 수 로드 함수
-  const getLoadPage = useCallback(async () => {
-    const response = await SEARCH.getSearchPageApi('이승');
-    setTotalPage(response);
-  }, []);
 
   //옵저버 생성
   useEffect(() => {
@@ -36,10 +30,6 @@ const HelpBoardCardList = () => {
     loadPost();
   }, [totalPage]);
 
-  useEffect(() => {
-    console.log(getList);
-  });
-
   const handleObs = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting) {
@@ -48,6 +38,11 @@ const HelpBoardCardList = () => {
       setTotalPage((prev) => prev - 1); //페이지 값 감소
     }
   };
+  //페이지 수 로드 함수
+  const getLoadPage = useCallback(async () => {
+    const response = await HELP.getHelpBoardPage();
+    setTotalPage(response.totalPage);
+  }, []);
 
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
@@ -60,14 +55,21 @@ const HelpBoardCardList = () => {
     setLoad(false);
   }, [totalPage]);
 
+  useEffect(() => {
+    console.log('::::', getList);
+  }, [totalPage]);
+
   return (
     <S.HelpCardContainer>
       {getList.map((data: any) => {
         const temp = {
           id: data.id,
-          name: data.userName,
-          userImage: data.userImage,
-          image: data.image,
+          name: data.user.name,
+          userImage: data.user.userImage.imageUrl,
+          image:
+            data.helpMeBoardImages.length > 0
+              ? data.helpMeBoardImages[0].imageUrl
+              : '',
           head: data.head,
           body: data.body,
           createAt: data.create_at,
@@ -78,6 +80,10 @@ const HelpBoardCardList = () => {
           </S.HelpCardWrapper>
         );
       })}
+      <div>
+        {load && <div>Loading...</div>}
+        <div ref={obsRef}></div>
+      </div>
     </S.HelpCardContainer>
   );
 };

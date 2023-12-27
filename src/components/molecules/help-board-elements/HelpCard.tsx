@@ -1,18 +1,15 @@
 import { TextBox } from '@/components/common/globalStyled/styled';
 import * as S from './styled';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { HelpListType } from '@/types/help';
 
-interface CardType {
-  id: number;
-  name: string;
-  userImage: string;
-  image: string;
-  head: string;
-  body: string;
-  createAt: string;
-}
+const HelpCard = (props: HelpListType) => {
+  const [isStateHtml, setStateHtml] = useState(false);
 
-const HelpCard = (props: CardType) => {
+  useEffect(() => {
+    setStateHtml(true);
+  }, []);
   return (
     <S.CardLink
       href={{
@@ -22,18 +19,23 @@ const HelpCard = (props: CardType) => {
         },
       }}>
       <S.CardContainer>
-        <S.CardImageBox>이미지이미지이미지</S.CardImageBox>
+        <S.CardImageBox src={props.image}></S.CardImageBox>
         <TextBox size={20} color="#C63D2F" style={{ padding: '13px 0px' }}>
           {props.head}
         </TextBox>
-        <TextBox size={14} color="#fff" style={{ padding: '0px 0px 10px 0px' }}>
-          {props.body}
-        </TextBox>
+        {isStateHtml && (
+          <TextBox
+            size={14}
+            color="#fff"
+            style={{ padding: '0px 0px 10px 0px' }}
+            dangerouslySetInnerHTML={{ __html: props.body }}
+          />
+        )}
         <TextBox
           size={14}
           color="#fff"
           style={{ padding: '10px 0px 10px 0px' }}>
-          {props.createAt}
+          {props.name}
         </TextBox>
       </S.CardContainer>
     </S.CardLink>
