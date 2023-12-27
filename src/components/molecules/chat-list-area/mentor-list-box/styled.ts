@@ -51,7 +51,7 @@ export const MentorInfoArea = styled.div`
 
 export const MentorInfoLeft = styled.div`
   display: flex;
-  width: 14vw;
+  width: 19vw;
   height: 7vh;
   align-items: center;
   /* border: 1px solid yellow; */

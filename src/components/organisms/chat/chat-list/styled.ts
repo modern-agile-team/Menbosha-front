@@ -1,11 +1,23 @@
 import styled from 'styled-components';
 
+export const MentorListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 23vw; // 434px
+  height: 100vh;
+  margin-right: 28px;
+  align-items: center;
+  border-left: 1px solid #ffbb5c;
+  border-right: 1px solid #ffbb5c;
+  /* border: 2px solid red; */
+`;
+
 export const ChatRoomListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 22.5vw; // 434px
+  width: 23vw; // 434px
   height: 100vh;
-  margin-right: 28px;
+  margin-right: 0px;
   align-items: center;
   border-left: 1px solid #ffbb5c;
   border-right: 1px solid #ffbb5c;

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
+import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 
 export type MentorInfoType = {
   id: number;
@@ -32,6 +33,7 @@ const ChatPageTemplate = () => {
       <ChatNavbar />
       <ChatSearchList />
       <ChatRoomList />
+      <ChatSpace />
     </S.PageWrapperRaw>
   );
 };
