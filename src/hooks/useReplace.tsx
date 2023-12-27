@@ -7,7 +7,7 @@ interface QueryParams {
   [key: string]: QueryValue | QueryValue[];
 }
 
-const useNavigator = () => {
+const useReplace = () => {
   const router = useRouter();
 
   const replaceNavigate = useCallback(
@@ -24,4 +24,4 @@ const useNavigator = () => {
   return replaceNavigate;
 };
 
-export default useNavigator;
+export default useReplace;

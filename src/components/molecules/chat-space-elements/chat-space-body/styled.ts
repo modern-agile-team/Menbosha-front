@@ -4,7 +4,7 @@ export const ChatSpaceBodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 80vh;
+  height: 85vh;
   overflow: scroll;
   overflow-x: hidden;
   /* border: 2px solid white; */
@@ -47,6 +47,7 @@ export const ChatBubble = styled.div<{ isHost: boolean }>`
   border-radius: 10px;
   & > span {
     margin: 7px 12px;
+    line-height: 150%;
     font-size: 0.65em;
   }
 `;

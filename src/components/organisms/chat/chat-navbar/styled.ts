@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const NavbarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 10vw;
+  width: 10vw; //204px
   height: 100vh;
   justify-content: space-between;
   /* border: 2px solid white; */

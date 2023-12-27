@@ -56,6 +56,7 @@ export const ChatListLeft = styled.div`
 export const ChatListGuestImage = styled.div`
   display: flex;
   width: 50px;
+  min-width: 50px;
   height: 50px;
   justify-content: center;
   align-items: center;
@@ -78,9 +79,6 @@ export const ChatListGuestName = styled.span`
   font-size: 0.65em;
   font-weight: 700;
   margin-bottom: 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 export const ChatListPrevText = styled.div`
