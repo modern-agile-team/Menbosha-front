@@ -31,7 +31,7 @@ const HELP = {
       image,
       {
         params: {
-          boardId: boardId,
+          helpMeBoardId: boardId,
         },
         headers: {
           'Content-Type': 'multipart/form-data',
