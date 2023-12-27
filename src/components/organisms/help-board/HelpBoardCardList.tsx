@@ -2,7 +2,7 @@ import HELP from '@/apis/help';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import { HelpListApiType, HelpListCard } from '@/types/help';
+import { HelpListApiType } from '@/types/help';
 
 const HelpBoardCardList = () => {
   const [totalPage, setTotalPage] = useState(0); //페이지 수
