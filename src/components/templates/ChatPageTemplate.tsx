@@ -65,9 +65,9 @@ const ChatPageTemplate = () => {
     getMentorInfoApi();
   }, []);
 
-  useEffect(() => {
-    getChatRoomListApi();
-  }, []);
+  // useEffect(() => {
+  //   getChatRoomListApi();
+  // }, []);
 
   return (
     <S.PageWrapperRaw>
