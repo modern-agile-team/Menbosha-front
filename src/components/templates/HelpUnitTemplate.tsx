@@ -4,11 +4,15 @@ import HelpUnitContent from '../organisms/help-unit/HelpUnitContent';
 
 const HelpUnitTemplate = () => {
   const router = useRouter();
+  console.log(router);
 
   return (
     <div>
       <SubPageHeader />
-      <HelpUnitContent id={router.query && Number(router.query.id)} />
+      <div
+        style={{ display: 'flex', justifyContent: 'center', height: '70vh' }}>
+        {router.isReady && <HelpUnitContent id={Number(router.query.id)} />}
+      </div>
     </div>
   );
 };

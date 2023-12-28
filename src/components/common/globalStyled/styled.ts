@@ -50,3 +50,34 @@ export const FlexBox = styled.div<FlexType>`
     `;
   }}
 `;
+
+interface ImageType {
+  src: string;
+  width?: string;
+  height?: string;
+  size?: string;
+}
+
+/** backgroun-image를 위한 style
+ * @param src [string]
+ *  src="이미지경로"
+ * @param width [string]
+ *  [default] width : 250px
+ *  width="100px" || "100vw" || "100%"
+ * @param height [string]
+ *  [default] height : 250px
+ *  height="100px" || "100vh" || "100%"
+ * @param size [string]
+ *  [default] size : cover
+ * @returns src-> background-image:url('src');
+ * @returns width-> width: 100px;
+ * @returns height-> height: 100px;
+ * @returns size-> background-size: cover;
+ */
+export const ImageBox = styled.div<ImageType>`
+  background-image: url(${({ src }) => src});
+  width: ${({ width }) => (width !== undefined ? width : `100%`)};
+  height: ${({ height }) => (height !== undefined ? height : `250px`)};
+  background-size: ${({ size }) => (size !== undefined ? size : 'contain')};
+  background-repeat: no-repeat;
+`;

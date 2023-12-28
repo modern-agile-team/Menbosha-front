@@ -39,8 +39,8 @@ export type HelpUnitType = {
   body: string;
   head: string;
   category: number;
-  createAt: string;
-  updateAt: string;
+  createdAt: string;
+  updatedAt: string;
   helpMeBoardImages: {
     id: number;
     imageUrl: string;
