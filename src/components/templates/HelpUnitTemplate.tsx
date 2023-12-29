@@ -4,7 +4,6 @@ import HelpUnitContent from '../organisms/help-unit/HelpUnitContent';
 
 const HelpUnitTemplate = () => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <div>

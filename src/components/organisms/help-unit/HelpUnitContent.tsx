@@ -1,11 +1,12 @@
 import HELP from '@/apis/help';
 import { HelpUnitType } from '@/types/help';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import { ImageBox, TextBox } from '@/components/common/globalStyled/styled';
 import { useRouter } from 'next/router';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import UnitContentHead from '@/components/molecules/help-unit-elements/UnitConentHead';
+import UnitContentBody from '@/components/molecules/help-unit-elements/UnitContentBody';
+import Link from 'next/link';
+import { LinkBox } from '@/components/common/globalStyled/styled';
 
 interface BoardIdType {
   id: number;
@@ -13,8 +14,6 @@ interface BoardIdType {
 
 const HelpUnitContent = ({ id }: BoardIdType) => {
   const [getUnitInfo, setUnitInfo] = useState<HelpUnitType>();
-  const [isStateHtml, setStatHtml] = useState(false);
-  const router = useRouter();
 
   //Unit정보 불러오는 api
   const getHelpUnitApi = async () => {
@@ -22,55 +21,33 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
     setUnitInfo(response);
   };
 
-  const handleBack = () => {
-    router.back();
-  };
-
   //Unit의 정보 불러오는 api호출
   useEffect(() => {
     getHelpUnitApi();
-    setStatHtml(true);
   }, []);
-
-  const settings = {
-    // centerMode: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 7000,
-  };
 
   return (
     <S.ContentWrapper>
-      <div onClick={() => handleBack()}>이전</div>
+      <LinkBox
+        href={{
+          pathname: '/help',
+        }}
+        color="#f2f">
+        이전
+      </LinkBox>
       <div>
-        <TextBox color="#C63D2F" size={40}>
-          {getUnitInfo?.head}
-        </TextBox>
-        <TextBox color="#FFBB5C" size={10}>
-          {getUnitInfo?.createdAt.slice(0, 10)}
-        </TextBox>
-        <S.SliderContainer>
-          <S.StyledSlider {...settings}>
-            {getUnitInfo?.helpMeBoardImages.map((data) => {
-              return (
-                <ImageBox
-                  src={data.imageUrl}
-                  width="46.8vw"
-                  height="40vh"
-                  size="46vw 40vh"></ImageBox>
-              );
-            })}
-          </S.StyledSlider>
-        </S.SliderContainer>
-        {isStateHtml && (
-          <TextBox
-            size={16}
-            color="#fff"
-            style={{ padding: '0px 0px 10px 0px' }}
-            dangerouslySetInnerHTML={{ __html: getUnitInfo?.body as string }}
+        {getUnitInfo && (
+          <UnitContentHead
+            head={getUnitInfo?.head}
+            createdAt={getUnitInfo?.createdAt}
+            unitOwner={getUnitInfo?.unitOwner}
+            user={getUnitInfo?.user}
+          />
+        )}
+        {getUnitInfo && (
+          <UnitContentBody
+            body={getUnitInfo.body}
+            helpMeBoardImages={getUnitInfo.helpMeBoardImages}
           />
         )}
       </div>

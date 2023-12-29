@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 interface TextType {
@@ -17,6 +18,26 @@ interface TextType {
 export const TextBox = styled.div<TextType>`
   color: ${({ color }) => color};
   font-size: ${({ size }) => size}px;
+`;
+
+interface ButtonType {
+  color?: string;
+  size?: number;
+}
+
+/**
+ * 텍스트 상자의 색깔과 size 지정을 위한 style
+ * @param color [string]
+ *  color='#fff'
+ * @param size [number]
+ *  size={20}
+ * @return color -> color : #fff
+ * @return color -> size : 20px
+ */
+export const ButtonBox = styled.div<ButtonType>`
+  color: ${({ color }) => color};
+  font-size: ${({ size }) => size}px;
+  cursor: pointer;
 `;
 
 interface FlexType {
@@ -80,4 +101,24 @@ export const ImageBox = styled.div<ImageType>`
   height: ${({ height }) => (height !== undefined ? height : `250px`)};
   background-size: ${({ size }) => (size !== undefined ? size : 'contain')};
   background-repeat: no-repeat;
+`;
+
+interface LinkType {
+  color: string;
+  size: string;
+}
+
+/**
+ * Link태그를 스타일 하기위한 전역 스타일
+ * @param color [string]
+ *  color='#fff'
+ * @param size [number]
+ *  size={20}
+ * @return color -> color : #fff
+ * @return color -> font-size : 20px
+ */
+export const LinkBox = styled(Link)<LinkType>`
+  color: ${({ color }) => color};
+  size: ${({ size }) => size};
+  text-decoration: none;
 `;

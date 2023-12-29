@@ -41,6 +41,7 @@ export type HelpUnitType = {
   category: number;
   createdAt: string;
   updatedAt: string;
+  unitOwner: boolean;
   helpMeBoardImages: {
     id: number;
     imageUrl: string;
@@ -48,9 +49,30 @@ export type HelpUnitType = {
   user: {
     name: string;
     userImage: {
-      id: number;
       imageUrl: string;
-      userId: 33;
+      userId: number;
     };
   };
 };
+
+/** 도와주세요 게시글 제목부분 타입 */
+export interface HelpUnitHeadType {
+  head: string;
+  createdAt: string;
+  unitOwner: boolean;
+  user: {
+    name: string;
+    userImage: {
+      imageUrl: string;
+      userId: number;
+    };
+  };
+}
+
+export interface HelpUnitBodyType {
+  body: string;
+  helpMeBoardImages: {
+    id: number;
+    imageUrl: string;
+  }[];
+}
