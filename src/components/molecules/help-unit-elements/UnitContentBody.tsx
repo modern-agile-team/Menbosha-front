@@ -51,7 +51,7 @@ const UnitContentBody = (props: HelpUnitBodyType) => {
             <S.SlidImages ref={slideRef}>
               {props.helpMeBoardImages.map((data) => {
                 return (
-                  <div>
+                  <div key={data.id}>
                     <S.BodyImages src={data.imageUrl} alt="이미지" />
                   </div>
                 );
