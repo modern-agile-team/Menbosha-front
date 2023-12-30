@@ -3,6 +3,7 @@ import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { HelpListApiType } from '@/types/help';
+import { useRouter } from 'next/router';
 
 const HelpBoardCardList = () => {
   const [totalPage, setTotalPage] = useState(0); //페이지 수
@@ -10,6 +11,7 @@ const HelpBoardCardList = () => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
+  const router = useRouter();
 
   //옵저버 생성
   useEffect(() => {
@@ -59,6 +61,39 @@ const HelpBoardCardList = () => {
     console.log('::::', getList);
   }, [totalPage]);
 
+  // 스크롤 수동으로 조정 설정
+  useEffect(() => {
+    if (
+      'scrollRestoration' in history &&
+      history.scrollRestoration !== 'manual'
+    ) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  //router발생시 스크롤 위치 저장
+  useEffect(() => {
+    console.log(window.history);
+    const handleRouteChange = () => {
+      sessionStorage.setItem(
+        `__next_scroll_${window.history.state.as}`,
+        JSON.stringify({
+          x: 0,
+          y: window.scrollY.toString(),
+        }),
+      );
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router.events]);
+
+  //스크롤 위치 복원 & session비우기
+  useEffect(() => {
+    window.scrollTo(0, Number(sessionStorage.getItem(`__next_scroll_/help`)));
+    window.sessionStorage.clear();
+  }, []);
   return (
     <S.HelpCardContainer>
       {getList.map((data: any) => {

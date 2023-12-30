@@ -11,7 +11,7 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['https://play-lh.googleusercontent.com/'],
+    domains: ['menbosha-s3.s3.ap-northeast-2.amazonaws.com'],
   },
   reactStrictMode: true,
 };

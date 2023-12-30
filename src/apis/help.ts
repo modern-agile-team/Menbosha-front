@@ -65,6 +65,7 @@ const HELP = {
         boardId: id,
       },
     });
+    console.log(result.data);
     return result.data;
   },
 };

@@ -3,6 +3,8 @@ import * as S from './styled';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HelpListType } from '@/types/help';
+import { useRouter } from 'next/router';
+import { AstPath } from 'prettier';
 
 const HelpCard = (props: HelpListType) => {
   const [isStateHtml, setStateHtml] = useState(false);
@@ -13,7 +15,7 @@ const HelpCard = (props: HelpListType) => {
   return (
     <S.CardLink
       href={{
-        pathname: `/help/unit`,
+        pathname: `/help/unit/${props.id}`,
         query: {
           id: props.id,
         },
