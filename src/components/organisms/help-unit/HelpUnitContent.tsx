@@ -5,7 +5,6 @@ import * as S from './styled';
 import { useRouter } from 'next/router';
 import UnitContentHead from '@/components/molecules/help-unit-elements/UnitConentHead';
 import UnitContentBody from '@/components/molecules/help-unit-elements/UnitContentBody';
-import Link from 'next/link';
 import { LinkBox } from '@/components/common/globalStyled/styled';
 
 interface BoardIdType {
