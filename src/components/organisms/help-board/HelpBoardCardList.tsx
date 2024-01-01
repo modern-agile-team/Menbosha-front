@@ -14,6 +14,7 @@ const HelpBoardCardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
+  const [listBack, setListBack] = useState(0);
 
   //옵저버 생성
   useEffect(() => {
@@ -88,14 +89,13 @@ const HelpBoardCardList = () => {
 
   //스크롤 위치 복원 & session비우기
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const temp = JSON.parse(
-        sessionStorage.getItem(`__next_scroll_back`) as string,
-      );
-      console.log(temp);
-      temp && window.scrollTo(0, Number(temp.y));
-      //   window.sessionStorage.clear();
-    }
+    const temp = JSON.parse(
+      sessionStorage.getItem(`__next_scroll_back`) as string,
+    );
+    // temp && setListBack(Number(temp.y));
+    temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
+    // temp && window.scrollTo(0, Number(temp.y));
+    window.sessionStorage.clear();
   }, []);
 
   return (
