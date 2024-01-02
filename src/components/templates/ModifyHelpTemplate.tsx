@@ -33,7 +33,7 @@ const ModifyHelpTemplate = () => {
             head={modifyInfo.head}
             body={modifyInfo.body}
             image={modifyInfo.helpMeBoardImages}
-            category={modifyInfo.category}
+            categoryId={modifyInfo.category}
           />
         )}
       </div>
