@@ -1,4 +1,4 @@
-import { ChatRoomListType } from '@/components/templates/ChatPageTemplate';
+import { ChatRoomListType } from '@/types/chat';
 import { atom } from 'recoil';
 
 export const ChatRoomListAtom = atom<ChatRoomListType[]>({
