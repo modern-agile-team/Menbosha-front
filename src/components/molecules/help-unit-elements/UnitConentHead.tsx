@@ -1,3 +1,4 @@
+import HELP from '@/apis/help';
 import {
   ButtonBox,
   FlexBox,
@@ -5,6 +6,7 @@ import {
   TextBox,
 } from '@/components/common/globalStyled/styled';
 import { HelpUnitHeadType } from '@/types/help';
+import { useRouter } from 'next/router';
 
 const UnitContentHead = (props: HelpUnitHeadType) => {
   return (
@@ -19,12 +21,6 @@ const UnitContentHead = (props: HelpUnitHeadType) => {
           {props.createdAt.slice(0, 10)}
         </TextBox>
       </div>
-      {props.unitOwner && (
-        <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
-          <ButtonBox color="#fff">삭제</ButtonBox>
-          <ButtonBox color="#fff">수정</ButtonBox>
-        </FlexBox>
-      )}
     </FlexBox>
   );
 };

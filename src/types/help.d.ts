@@ -57,6 +57,7 @@ export type HelpUnitType = {
 
 /** 도와주세요 게시글 제목부분 타입 */
 export interface HelpUnitHeadType {
+  id: number;
   head: string;
   createdAt: string;
   unitOwner: boolean;
@@ -69,10 +70,20 @@ export interface HelpUnitHeadType {
   };
 }
 
+/** 도와주세요 게시글 본문 부분 타입 */
 export interface HelpUnitBodyType {
   body: string;
   helpMeBoardImages: {
     id: number;
     imageUrl: string;
   }[];
+}
+
+/** 도와주세요 unit 수정 api 타입 */
+export interface ModifyHelpUnitType {
+  id: number;
+  head: string;
+  body: string;
+  categoryId: number;
+  image?: Array;
 }
