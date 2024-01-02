@@ -3,7 +3,7 @@ import * as S from './styled';
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
-import { MentorInfoType } from '@/components/templates/ChatPageTemplate';
+import { MentorInfoType } from '@/types/chat';
 // import { getMentorInfoSelector } from '@/recoil/selectors/MentorInfoSelector';
 
 const MentorListBox = () => {

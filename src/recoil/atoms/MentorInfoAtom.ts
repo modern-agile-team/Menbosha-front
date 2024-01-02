@@ -1,5 +1,4 @@
-import { MentorInfoType } from '@/components/templates/ChatPageTemplate';
-import axios from 'axios';
+import { MentorInfoType } from '@/types/chat';
 import { atom } from 'recoil';
 
 export const MentorInfoAtom = atom<MentorInfoType[]>({
