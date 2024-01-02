@@ -1,3 +1,5 @@
+'use client';
+
 import HELP from '@/apis/help';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -12,6 +14,7 @@ const HelpBoardCardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
+  const [listBack, setListBack] = useState(0);
 
   //옵저버 생성
   useEffect(() => {
@@ -56,11 +59,6 @@ const HelpBoardCardList = () => {
     }
     setLoad(false);
   }, [totalPage]);
-
-  useEffect(() => {
-    console.log('::::', getList);
-  }, [totalPage]);
-
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
     if (
@@ -71,18 +69,18 @@ const HelpBoardCardList = () => {
     }
   }, []);
 
-  //router발생시 스크롤 위치 저장
+  const handleRouteChange = useCallback((e: any) => {
+    sessionStorage.setItem(
+      `__next_scroll_back`,
+      JSON.stringify({
+        x: 0,
+        y: window.scrollY.toString(),
+      }),
+    );
+  }, []);
+
+  //   router발생시 스크롤 위치 저장
   useEffect(() => {
-    console.log(window.history);
-    const handleRouteChange = () => {
-      sessionStorage.setItem(
-        `__next_scroll_${window.history.state.as}`,
-        JSON.stringify({
-          x: 0,
-          y: window.scrollY.toString(),
-        }),
-      );
-    };
     router.events.on('routeChangeStart', handleRouteChange);
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
@@ -91,9 +89,15 @@ const HelpBoardCardList = () => {
 
   //스크롤 위치 복원 & session비우기
   useEffect(() => {
-    window.scrollTo(0, Number(sessionStorage.getItem(`__next_scroll_/help`)));
+    const temp = JSON.parse(
+      sessionStorage.getItem(`__next_scroll_back`) as string,
+    );
+    // temp && setListBack(Number(temp.y));
+    temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
+    // temp && window.scrollTo(0, Number(temp.y));
     window.sessionStorage.clear();
   }, []);
+
   return (
     <S.HelpCardContainer>
       {getList.map((data: any) => {

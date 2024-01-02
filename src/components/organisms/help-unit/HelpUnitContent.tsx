@@ -5,8 +5,7 @@ import * as S from './styled';
 import { useRouter } from 'next/router';
 import UnitContentHead from '@/components/molecules/help-unit-elements/UnitConentHead';
 import UnitContentBody from '@/components/molecules/help-unit-elements/UnitContentBody';
-import Link from 'next/link';
-import { LinkBox } from '@/components/common/globalStyled/styled';
+import { LinkBox, TextBox } from '@/components/common/globalStyled/styled';
 
 interface BoardIdType {
   id: number;
@@ -14,11 +13,16 @@ interface BoardIdType {
 
 const HelpUnitContent = ({ id }: BoardIdType) => {
   const [getUnitInfo, setUnitInfo] = useState<HelpUnitType>();
+  const router = useRouter();
 
   //Unit정보 불러오는 api
   const getHelpUnitApi = async () => {
     const response = await HELP.getHelpUnit(id);
     setUnitInfo(response);
+  };
+
+  const handleBack = () => {
+    router.push('/help');
   };
 
   //Unit의 정보 불러오는 api호출
@@ -32,9 +36,13 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
         href={{
           pathname: '/help',
         }}
-        color="#f2f">
+        color="#f2f"
+        scroll={false}>
         이전
       </LinkBox>
+      {/* <TextBox color="#f23" onClick={handleBack}>
+        이전
+      </TextBox> */}
       <div>
         {getUnitInfo && (
           <UnitContentHead
