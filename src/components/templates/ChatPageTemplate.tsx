@@ -10,38 +10,7 @@ import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import instance from '@/apis/axiosInstance';
 import CHAT from '@/apis/chatApi/chat';
-
-export type MentorInfoType = {
-  id: number;
-  name: string;
-  image: string;
-  mainField: string;
-};
-
-export interface ChatRoomListType {
-  statusCode: number;
-  data: [
-    {
-      chatRooms: {
-        _id: string;
-        hostId: number;
-        guestId: number;
-        createdAt: string;
-        chatCount: number;
-        chat: {
-          content: string;
-          isSeen: boolean;
-          createdAt: string;
-        };
-      };
-      chatPartner: {
-        id: number;
-        name: string;
-        userImage: string;
-      };
-    },
-  ];
-}
+import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 
 const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
