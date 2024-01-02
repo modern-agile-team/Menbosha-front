@@ -8,23 +8,26 @@ import { useRecoilState } from 'recoil';
 import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
 import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
-import instance from '@/apis/axiosInstance';
 import CHAT from '@/apis/chatApi/chat';
 import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 
 const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
-
   const [getMentorInfo, setGetMentorInfo] =
     useRecoilState<MentorInfoType[]>(MentorInfoAtom);
-  // api요청;
+
+  /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
     const res = await CHAT.getChatRoomList();
     setGetChatRoomList(res);
     console.log(res);
   };
 
+  /** 채팅룸 전체조회 Guest데이터 */
+  const GuestInfo = getChatRoomList.map;
+
+  /** 멘토리스트 전체조회 api (mock) */
   const getMentorInfoApi = async () => {
     const res = await axios.get('/api/mento');
     setGetMentorInfo(res.data);
@@ -32,11 +35,8 @@ const ChatPageTemplate = () => {
 
   useEffect(() => {
     getMentorInfoApi();
+    getChatRoomListApi();
   }, []);
-
-  // useEffect(() => {
-  //   getChatRoomListApi();
-  // }, []);
 
   return (
     <S.PageWrapperRaw>

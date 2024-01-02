@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 
-const ChatListBox = () => {
+const ChatRoomListBox = () => {
   return (
     <S.ListContainer>
       <S.ChatRoomListArea>
@@ -35,4 +35,4 @@ const ChatListBox = () => {
   );
 };
 
-export default ChatListBox;
+export default ChatRoomListBox;
