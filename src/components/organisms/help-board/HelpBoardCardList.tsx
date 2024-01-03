@@ -14,7 +14,7 @@ const HelpBoardCardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
-  const [listBack, setListBack] = useState(0);
+  const [isScroll, setScroll] = useState(false);
 
   //옵저버 생성
   useEffect(() => {
@@ -33,6 +33,7 @@ const HelpBoardCardList = () => {
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
+    setScroll(true);
   }, [totalPage]);
 
   const handleObs = (entries: any) => {
@@ -92,11 +93,9 @@ const HelpBoardCardList = () => {
     const temp = JSON.parse(
       sessionStorage.getItem(`__next_scroll_back`) as string,
     );
-    // temp && setListBack(Number(temp.y));
     temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // temp && window.scrollTo(0, Number(temp.y));
-    window.sessionStorage.clear();
-  }, []);
+    // window.sessionStorage.clear();
+  }, [getList]);
 
   return (
     <S.HelpCardContainer>
