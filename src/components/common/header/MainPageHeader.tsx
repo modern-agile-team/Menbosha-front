@@ -6,12 +6,15 @@ import useModal from '@/hooks/useModal';
 import LoginModal from '@/components/organisms/auth/LoginModal';
 import { useRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import AfterLoginModal from '@/components/organisms/auth/AfterLoginModal';
 
 const id = 0; //초기값 -> 후에 변동 예정
 
 const MainPageHeader = () => {
   const [isLogin, setLogin] = useRecoilState(LoginStateAtom);
-  const { handleModal, isOpenModal } = useModal();
+  const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
+    useModal();
+  const { isOpenModal: afterModal, handleModal: handleAfterModal } = useModal();
   const headerElements = ['멘토', '멘티', '콘텐츠', '고객 지원'];
   const translationElements: Record<string, string> = {
     멘토: 'mentor',
@@ -27,13 +30,11 @@ const MainPageHeader = () => {
             href={{
               pathname: `/main`,
             }}>
-            <Image src="/LogoIcon.svg" alt="LogoIcon" width="36" height="36" />
             <Image
-              src="/LogoText.svg"
-              alt="LogoText"
-              width="110"
-              height="18"
-              style={{ marginBottom: '8px' }}
+              src="/MenboshaLogo2.png"
+              alt="LogoIcon"
+              width={162}
+              height={47}
             />
           </Link>
         </S.LogoBox>
@@ -53,22 +54,23 @@ const MainPageHeader = () => {
             <Image src="/ChatIcon.svg" alt="ChatIcon" width="28" height="28" />
           </Link>
           {isLogin ? (
-            <Link
-              href={{
-                pathname: `/userpage`,
-              }}>
-              <Image
-                src="/UserIcon.svg"
-                alt="UserIcon"
-                width="28"
-                height="28"
-              />
-            </Link>
+            <Image
+              onClick={handleAfterModal}
+              src="/UserIcon.svg"
+              alt="UserIcon"
+              width="28"
+              height="28"
+            />
           ) : (
-            <div onClick={handleModal}>로그인</div>
+            <div onClick={handleBeforeModal}>로그인</div>
           )}
-          {isOpenModal && (
-            <LoginModal show={isOpenModal} hide={handleModal}></LoginModal>
+          {beforeModal && (
+            <LoginModal
+              show={beforeModal}
+              hide={handleBeforeModal}></LoginModal>
+          )}
+          {afterModal && (
+            <AfterLoginModal show={afterModal} hide={handleAfterModal} />
           )}
         </S.IconBox>
       </S.HeaderArea>
