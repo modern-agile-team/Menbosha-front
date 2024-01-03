@@ -81,8 +81,10 @@ const HelpBoardCardList = () => {
   //   router발생시 스크롤 위치 저장
   useEffect(() => {
     router.events.on('routeChangeStart', handleRouteChange);
+    window.addEventListener('beforeunload', handleRouteChange);
     return () => {
       router.events.off('routeChangeStart', handleRouteChange);
+      window.removeEventListener('beforeunload', handleRouteChange);
     };
   }, [router.events]);
 
