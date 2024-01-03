@@ -14,7 +14,6 @@ const HelpBoardCardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
-  const [isScroll, setScroll] = useState(false);
 
   //옵저버 생성
   useEffect(() => {
@@ -33,7 +32,6 @@ const HelpBoardCardList = () => {
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
-    setScroll(true);
   }, [totalPage]);
 
   const handleObs = (entries: any) => {
