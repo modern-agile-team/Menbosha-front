@@ -20,8 +20,9 @@ export const Naver = () => {
         src="/Group-88.jpeg"
         alt="네이버로그인"
         onClick={naverLogin}
-        height={126}
-        width={126}
+        height={30}
+        width={30}
+        style={{ cursor: 'pointer' }}
       />
     </div>
   );
@@ -36,9 +37,10 @@ export const Kakao = () => {
       <Image
         src="/Group-90.jpeg"
         alt="카카오로그인"
-        width={126}
-        height={126}
+        width={30}
+        height={30}
         onClick={kakaoLogin}
+        style={{ cursor: 'pointer' }}
       />
     </div>
   );
@@ -53,9 +55,10 @@ export const Google = () => {
       <Image
         src="/Group-89.jpeg"
         alt="구글로그인"
-        width={126}
-        height={126}
+        width={30}
+        height={30}
         onClick={googleLogin}
+        style={{ cursor: 'pointer' }}
       />
     </div>
   );

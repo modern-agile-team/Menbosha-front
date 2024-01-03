@@ -36,9 +36,12 @@ const LoginModal = ({ show, hide }: ModalType) => {
           </TextBox>
         </ModalHeaderBox>
         <LogoBox>
-          <Image src="/LogoIcon.svg" alt="로고아이콘" width={100} height={60} />
-          <br />
-          <Image src="/LogoText.svg" alt="로고텍스트" width={168} height={60} />
+          <Image
+            src="/MenboshaLogo.png"
+            alt="로고아이콘"
+            width={75}
+            height={68}
+          />
         </LogoBox>
         <OAuthBox>
           <Naver />
@@ -67,13 +70,14 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #252525;
-  width: 588px;
-  height: 455px;
+  width: 362px;
+  height: 280px;
   border: 2px solid #ff9b50;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10000;
   text-align: center;
+  cursor: auto;
 `;
 
 export const Backdrop = styled.div`
@@ -84,6 +88,7 @@ export const Backdrop = styled.div`
   top: 0px;
   z-index: 9999;
   background-color: rgba(0, 0, 0, 0.2);
+  cursor: auto;
 `;
 
 export const ModalHeaderBox = styled.div`
