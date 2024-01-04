@@ -1,6 +1,9 @@
 <!-- 내용 (필수) -->
 ### Description
 
+<!-- 추가예정 내용 (있다면 필수)-->
+### Schedule
+
 <!-- 추가된 전역관리 내용 (있다면 필수) -->
 ### Global Style, Recoil, Hook
 
