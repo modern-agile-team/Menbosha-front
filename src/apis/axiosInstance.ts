@@ -42,12 +42,10 @@ instance.interceptors.response.use(
       reNewToken();
       const accessToken = localStorage.getItem('accessToken');
 
-      error.config.headers = {
-        access_token: accessToken,
-      };
+      error.config.headers['access_token'] = accessToken;
 
       // 중단된 요청을(에러난 요청)을 토큰 갱신 후 재요청
-      const response = await axios.request(error.config);
+      const response = await instance(error.config);
       return response;
     }
     return Promise.reject(error);
