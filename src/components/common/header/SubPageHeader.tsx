@@ -15,12 +15,12 @@ const SubPageHeader = () => {
   const { isOpenModal: afterModal, handleModal: handleAfterModal } = useModal();
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
-  const headerElements = ['멘토', '멘티', '콘텐츠', '고객 지원'];
+  const headerElements = ['멘토', '멘티', '고객 지원', '설정'];
   const translationElements: Record<string, string> = {
     멘토: 'mentor',
     멘티: 'help',
-    콘텐츠: 'contents',
     '고객 지원': 'support',
+    설정: 'setting',
   };
   return (
     <S.HeaderContainer style={{ marginTop: '20px' }}>
