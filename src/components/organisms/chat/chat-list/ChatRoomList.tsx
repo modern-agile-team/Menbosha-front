@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import ChatListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatListBox';
+import ChatRoomListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatListBox';
 
 const ChatRoomList = () => {
   return (
@@ -9,7 +9,7 @@ const ChatRoomList = () => {
       <S.ChatRoomListHeader>
         <span>열려 있는 채팅방</span>
       </S.ChatRoomListHeader>
-      <ChatListBox />
+      <ChatRoomListBox />
     </S.ChatRoomListContainer>
   );
 };
