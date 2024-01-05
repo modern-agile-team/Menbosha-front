@@ -79,6 +79,13 @@ export interface HelpUnitBodyType {
   }[];
 }
 
+/** 도와주세요 unit생성 api 타입 */
+export type CreateHelpType = {
+  head: string;
+  body: string;
+  category?: number;
+};
+
 /** 도와주세요 unit 수정 api 타입 */
 export interface ModifyHelpUnitType {
   id: number;

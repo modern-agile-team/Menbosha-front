@@ -4,20 +4,18 @@ import {
   HelpListApiType,
   HelpUnitType,
   ModifyHelpUnitType,
+  CreateHelpType,
 } from '@/types/help';
-
-type createType = {
-  head: string;
-  body: string;
-  category?: number;
-};
-
 const HELP = {
   path: '/HelpMeBoard',
 
   /**도와줘요 게시판 생성 api [post]*/
-  async createHelpBoard({ head, body, category }: createType): Promise<any> {
-    const result: AxiosResponse = await instance.post<createType>(
+  async createHelpBoard({
+    head,
+    body,
+    category,
+  }: CreateHelpType): Promise<any> {
+    const result: AxiosResponse = await instance.post<CreateHelpType>(
       `${HELP.path}`,
       {
         head: head,
