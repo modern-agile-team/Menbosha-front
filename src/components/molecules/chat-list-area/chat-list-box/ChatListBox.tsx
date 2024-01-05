@@ -11,12 +11,13 @@ import { ChatPartnerType, ChatRoomListType } from '@/types/chat';
 const ChatRoomListBox = () => {
   const ChatRoomInfo = useRecoilValue<ChatPartnerType[]>(ChatPartnerAtom);
   console.log(ChatRoomInfo);
+  useEffect(() => {
+    ChatRoomInfo.map((data: any) => {
+      console.log('data', data);
+    });
+  });
   return (
     <S.ListContainer>
-      {/* {ChatRoomInfo &&
-        ChatRoomInfo.map((data) => {
-          console.log('daat', data);
-        })} */}
       {/* {ChatRoomInfo.map((partner) => ( */}
       <S.ChatRoomListArea>
         <S.ChatRoomInfoBox>
