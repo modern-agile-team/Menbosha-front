@@ -50,7 +50,12 @@ const MainPageHeader = () => {
               pathname: `/chat/${id}`,
               query: { id: 0 },
             }}>
-            <Image src="/ChatIcon.svg" alt="ChatIcon" width="28" height="28" />
+            <Image
+              src="/chat/ChatIcon.svg"
+              alt="ChatIcon"
+              width="28"
+              height="28"
+            />
           </Link>
           {isLogin ? (
             <Link

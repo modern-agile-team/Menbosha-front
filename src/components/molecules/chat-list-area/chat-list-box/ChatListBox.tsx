@@ -1,10 +1,23 @@
 import React, { useEffect } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
+import { useRecoilValue } from 'recoil';
+import {
+  ChatPartnerAtom,
+  ChatRoomListAtom,
+} from '@/recoil/atoms/ChatRoomListAtom';
+import { ChatPartnerType, ChatRoomListType } from '@/types/chat';
 
 const ChatRoomListBox = () => {
+  const ChatRoomInfo = useRecoilValue<ChatPartnerType[]>(ChatPartnerAtom);
+  console.log(ChatRoomInfo);
   return (
     <S.ListContainer>
+      {/* {ChatRoomInfo &&
+        ChatRoomInfo.map((data) => {
+          console.log('daat', data);
+        })} */}
+      {/* {ChatRoomInfo.map((partner) => ( */}
       <S.ChatRoomListArea>
         <S.ChatRoomInfoBox>
           <S.ChatListLeft>
@@ -31,6 +44,7 @@ const ChatRoomListBox = () => {
           </S.ChatListRight>
         </S.ChatRoomInfoBox>
       </S.ChatRoomListArea>
+      {/* ))} */}
     </S.ListContainer>
   );
 };

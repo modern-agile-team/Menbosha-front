@@ -3,7 +3,7 @@ import * as S from './styled';
 import Image from 'next/image';
 import MentorListBox from '@/components/molecules/chat-list-area/mentor-list-box/MentorListBox';
 
-const ChatSearchList = () => {
+const ChatMentorList = () => {
   return (
     <S.MentorListContainer>
       <S.SearchMentorBox>
@@ -16,4 +16,4 @@ const ChatSearchList = () => {
   );
 };
 
-export default ChatSearchList;
+export default ChatMentorList;
