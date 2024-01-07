@@ -1,4 +1,4 @@
-import { CreateMentorType } from '@/types/mentor';
+import { CreateMentorType, MentorBoardListType } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 
@@ -27,5 +27,15 @@ const MENTOR = {
     return result.data;
   },
 
-  /**페이지별 멘토 게시물 불러오는 api [get] */
+  /**페이지별 멘토 리스트 불러오는 api [get] */
+  async getMentorBoardList(page: number): Promise<MentorBoardListType[]> {
+    const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
+      params: {
+        page: page,
+      },
+    });
+    return result.data.data;
+  },
 };
+
+export default MENTOR;

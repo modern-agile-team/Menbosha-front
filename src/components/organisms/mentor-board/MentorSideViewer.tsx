@@ -29,7 +29,7 @@ const MentorSideViewer = ({ slide }: SlideType) => {
   }, [sideViewer]);
 
   return (
-    <S.SideViewerWarpper>
+    <S.SideViewerWrapper>
       {getMentoUnit && (
         <div>
           <TextBox color="#C63D2F" size={40}>
@@ -85,7 +85,7 @@ const MentorSideViewer = ({ slide }: SlideType) => {
           </S.SideProfileContainer>
         </div>
       )}
-    </S.SideViewerWarpper>
+    </S.SideViewerWrapper>
   );
 };
 
