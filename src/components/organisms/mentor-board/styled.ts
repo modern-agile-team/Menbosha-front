@@ -9,7 +9,7 @@ export const MentoCardContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const MentorCardWarpper = styled.div`
+export const MentorCardWrapper = styled.div`
   /* margin: 0px 14px 118px 14px; */
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@ export const MentorCardWarpper = styled.div`
 
 /**MentorSideViewer */
 
-export const SideViewerWarpper = styled.div`
+export const SideViewerWrapper = styled.div`
   display: flex;
   justify-content: left;
   height: 100%;

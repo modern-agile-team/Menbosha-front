@@ -15,7 +15,7 @@ interface SlideType {
   slide: () => void;
 }
 
-const MentorBoardList = ({ slide }: SlideType) => {
+const MentorList = ({ slide }: SlideType) => {
   const [getMockingData, setMockingData] = useState<MentorListType[]>([]);
   //api요청
   const getMockingDataApi = async () => {
@@ -38,13 +38,13 @@ const MentorBoardList = ({ slide }: SlideType) => {
           mainField: data.mainField,
         };
         return (
-          <S.MentorCardWarpper onClick={slide} key={data.id}>
+          <S.MentorCardWrapper onClick={slide} key={data.id}>
             <MentorCard {...temp} />
-          </S.MentorCardWarpper>
+          </S.MentorCardWrapper>
         );
       })}
     </S.MentoCardContainer>
   );
 };
 
-export default MentorBoardList;
+export default MentorList;
