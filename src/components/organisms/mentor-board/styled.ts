@@ -13,6 +13,15 @@ export const MentorCardWrapper = styled.div`
   /* margin: 0px 14px 118px 14px; */
   display: flex;
   justify-content: center;
+  width: 280px;
+  height: 160px;
+  margin: 14px;
+`;
+
+export const MentorBoardCardWrapper = styled.div`
+  /* margin: 0px 14px 118px 14px; */
+  display: flex;
+  justify-content: center;
   width: 308px;
   height: 545px;
 `;

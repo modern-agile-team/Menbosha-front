@@ -22,8 +22,6 @@ const MentorBoardList = () => {
     getMentorBoardListApi();
   }, []);
 
-  console.log(getBoardData);
-
   return (
     <S.MentoCardContainer>
       {getBoardData.map((data: MentorBoardListType) => {
@@ -39,9 +37,9 @@ const MentorBoardList = () => {
           boardImage: data.boardImage,
         };
         return (
-          <S.MentorCardWrapper key={data.id}>
+          <S.MentorBoardCardWrapper key={data.id}>
             <MentorBoardCard {...temp} />
-          </S.MentorCardWrapper>
+          </S.MentorBoardCardWrapper>
         );
       })}
     </S.MentoCardContainer>

@@ -1,5 +1,5 @@
 /**멘토 게시판 생성 api 타입 */
-export type CreateMentorType = {
+export type CreateMentorBoardType = {
   head: string;
   body: string;
   category?: number;
@@ -30,6 +30,7 @@ export type MentorBoardListType = {
   }[];
 };
 
+/**멘토게시판 카트형식의 타입 */
 export interface MentorBoardCardType {
   id: number;
   head: string;
