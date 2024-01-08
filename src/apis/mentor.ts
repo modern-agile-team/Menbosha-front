@@ -1,4 +1,4 @@
-import { CreateMentorType, MentorBoardListType } from '@/types/mentor';
+import { CreateMentorBoardType, MentorBoardListType } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 
@@ -10,8 +10,8 @@ const MENTOR = {
     head,
     body,
     category,
-  }: CreateMentorType): Promise<any> {
-    const result: AxiosResponse = await instance.post<CreateMentorType>(
+  }: CreateMentorBoardType): Promise<any> {
+    const result: AxiosResponse = await instance.post<CreateMentorBoardType>(
       `${MENTOR.path}`,
       {
         head: head,

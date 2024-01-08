@@ -6,7 +6,6 @@ export const MentorListContainer = styled.div`
   width: auto;
   min-width: 1560px;
   max-height: 500px;
-  border: 2px solid #f00;
   margin: 50px 0px;
   overflow: auto;
 `;
@@ -34,6 +33,5 @@ export const MentorBoardListContainer = styled.div`
   width: auto;
   height: 500px;
   min-width: 1560px;
-  border: 2px solid #f00;
   overflow: auto;
 `;
