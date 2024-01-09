@@ -2,12 +2,9 @@ import styled from 'styled-components';
 
 /**멘토 리스트 컨테이너 */
 export const MentorListContainer = styled.div`
-  display: flex;
   width: auto;
   min-width: 1560px;
   max-height: 500px;
-  margin: 50px 0px;
-  overflow: auto;
 `;
 
 interface SlideType {
@@ -33,5 +30,4 @@ export const MentorBoardListContainer = styled.div`
   width: auto;
   height: 500px;
   min-width: 1560px;
-  overflow: auto;
 `;
