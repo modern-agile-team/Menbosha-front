@@ -22,3 +22,27 @@ export interface MentorCardType {
   introduce: string;
   mainField: string;
 }
+
+/**멘토 조회를위한 props로 id전달하기 위한 type */
+export interface MentorUnitPropsType {
+  id: number;
+}
+
+/**멘토 조회 api 타입 */
+export type MentorUnitType = {
+  name: string;
+  phone: string;
+  isMentor: boolean;
+  intro: {
+    career: string;
+    introduce: string;
+    mainField: string;
+  };
+  image: string;
+  email: string;
+  activityCategoryId: number;
+  badge: {
+    badgeId: number;
+    createAt: string;
+  }[];
+};

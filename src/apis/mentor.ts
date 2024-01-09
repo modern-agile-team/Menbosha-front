@@ -1,4 +1,8 @@
-import { CreateMentorBoardType, MentorBoardListType } from '@/types/mentor';
+import {
+  CreateMentorBoardType,
+  MentorBoardListType,
+  MentorBoardUnitType,
+} from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 
@@ -35,6 +39,16 @@ const MENTOR = {
       },
     });
     return result.data.data;
+  },
+
+  /**멘토 게시물 불러오기 api [get] */
+  async getMentorBoardUnit(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${MENTOR.path}/unit`, {
+      params: {
+        mentorBoardId: id,
+      },
+    });
+    return result.data;
   },
 };
 

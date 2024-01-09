@@ -122,3 +122,11 @@ export const LinkBox = styled(Link)<LinkType>`
   size: ${({ size }) => size};
   text-decoration: none;
 `;
+
+/**template Wrapper */
+export const ContainerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+`;

@@ -21,7 +21,15 @@ const USER = {
         },
       },
     );
-    console.log(result);
+    return result.data.data;
+  },
+
+  async getUserInfo(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${USER.path}/info`, {
+      params: {
+        userId: id,
+      },
+    });
     return result.data.data;
   },
 };

@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-/**template Wrapper */
-export const ContainerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-`;
-
 /**멘토 리스트 컨테이너 */
 export const MentorListContainer = styled.div`
   width: auto;

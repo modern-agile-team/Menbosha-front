@@ -1,18 +1,19 @@
 import SubPageHeader from '@/components/common/header/SubPageHeader';
-import MentorList from '../../organisms/mentor-board/MentorList';
-import MentorSideViewer from '../../organisms/mentor-board/MentorSideViewer';
-import { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import Category from '../../common/category/Category';
 import MentorBoardList from '@/components/organisms/mentor-board/MentorBoardList';
-import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
+import {
+  ContainerWrapper,
+  FlexBox,
+  TextBox,
+} from '@/components/common/globalStyled/styled';
 
 const MentorBoardTemplate = () => {
   return (
     <>
       <SubPageHeader />
       <Category />
-      <S.ContainerWrapper>
+      <ContainerWrapper>
         <S.MentorBoardListContainer>
           <TextBox size={30} color="#fff">
             멘토가 들려주는 꿀통 대방출~!~!
@@ -32,7 +33,7 @@ const MentorBoardTemplate = () => {
           </TextBox>
           <MentorBoardList />
         </S.MentorBoardListContainer>
-      </S.ContainerWrapper>
+      </ContainerWrapper>
     </>
   );
 };
