@@ -43,3 +43,26 @@ export interface MentorBoardCardType {
   userImage: string;
   boardImage: Array;
 }
+
+export type MentorBoardUnitType = {
+  id: number;
+  head: string;
+  body: string;
+  createdAt: string;
+  updatedAt: string;
+  categoryId: number;
+  user: {
+    name: string;
+    userImage: {
+      id: number;
+      imageUrl: string;
+      userId: number;
+    };
+  };
+  unitOwner: boolean;
+};
+
+/**멘토 게시물 불러오기 위한 id넘기는 props Type */
+export interface MentorBoardUnitPropsType {
+  id: number;
+}
