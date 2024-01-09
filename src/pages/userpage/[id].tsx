@@ -1,4 +1,4 @@
-import UserpageTemplate from '@/components/templates/userpage-template/UserpageTemplate';
+import UserpageTemplate from '@/components/templates/UserpageTemplate';
 
 const Userpage = () => {
   return (
