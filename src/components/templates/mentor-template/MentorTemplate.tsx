@@ -12,13 +12,7 @@ const MentorTemplate = () => {
     <>
       <SubPageHeader />
       <Category />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: '100vw',
-        }}>
+      <S.ContainerWrapper>
         <S.MentorListContainer>
           <TextBox size={30} color="#fff">
             명예의 전당
@@ -37,7 +31,7 @@ const MentorTemplate = () => {
           </TextBox>
           <MentorList />
         </S.MentorListContainer>
-      </div>
+      </S.ContainerWrapper>
     </>
   );
 };
