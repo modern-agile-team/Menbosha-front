@@ -8,22 +8,40 @@ import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
 import { useRouter } from 'next/router';
 
+/**게시판으로 라우트 */
 const MentorBoardCard = (props: MentorBoardCardType) => {
   const router = useRouter();
 
-  const handleRoute = () => {
-    router.push({
-      pathname: `/mentor/board/unit`,
-      query: {},
-    });
+  const handleRouteBoard = () => {
+    router.push(
+      {
+        pathname: `/mentor/board/unit/${props.id}`,
+        query: {
+          id: props.id,
+        },
+      },
+      `/mentor/board/unit/${props.id}`,
+    );
+  };
+  /**유저페이지로 라우트 */
+  const handleRouteUser = () => {
+    router.push(
+      {
+        pathname: `/userpage/${props.userId}`,
+        query: {
+          id: props.userId,
+        },
+      },
+      `/userpage/${props.userId}`,
+    );
   };
 
   const foundCategory = categoryList.find(
     (data) => data.id === (props.category as number),
   );
   return (
-    <S.MentorBoardCardContainer>
-      <FlexBox type="flex" style={{ marginBottom: '12px' }}>
+    <div>
+      <S.MentorBoardUserBox onClick={handleRouteUser}>
         <ImageBox
           src={props.userImage}
           width="50px"
@@ -42,8 +60,8 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
             {foundCategory ? foundCategory.category : 'not Found'}
           </TextBox>
         </div>
-      </FlexBox>
-      <div>
+      </S.MentorBoardUserBox>
+      <S.MentorBoardCardContainer onClick={handleRouteBoard}>
         <S.CardImageBox>사진들어갈 곳</S.CardImageBox>
         <TextBox size={20} color="#fae" style={{ padding: '12px 0px 0px 0px' }}>
           {props.head}
@@ -54,8 +72,8 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
         <TextBox size={10} color="#fff">
           {props.createdAt.slice(0, 10)}
         </TextBox>
-      </div>
-    </S.MentorBoardCardContainer>
+      </S.MentorBoardCardContainer>
+    </div>
   );
 };
 

@@ -38,6 +38,7 @@ export interface MentorBoardCardType {
   category: number;
   createdAt: string;
   updatedAt: string;
+  userId: number;
   userName: string;
   userImage: string;
   boardImage: Array;

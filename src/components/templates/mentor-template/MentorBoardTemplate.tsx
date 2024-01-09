@@ -12,21 +12,7 @@ const MentorBoardTemplate = () => {
     <>
       <SubPageHeader />
       <Category />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: '100vw',
-        }}>
-        {/* <S.MentorListContainer>
-        <TextBox size={30} color="#fff">
-          멘토
-        </TextBox>
-          <FlexBox type="flex">
-            <MentorList />
-          </FlexBox>
-        </S.MentorListContainer> */}
+      <S.ContainerWrapper>
         <S.MentorBoardListContainer>
           <TextBox size={30} color="#fff">
             멘토가 들려주는 꿀통 대방출~!~!
@@ -38,12 +24,15 @@ const MentorBoardTemplate = () => {
           </TextBox>
         </S.MentorBoardListContainer>
         <S.MentorBoardListContainer>
-          <TextBox size={30} color="#fff">
+          <TextBox
+            size={30}
+            color="#fff"
+            style={{ padding: '0px 0px 24px 6px' }}>
             전체 멘토 게시글
           </TextBox>
           <MentorBoardList />
         </S.MentorBoardListContainer>
-      </div>
+      </S.ContainerWrapper>
     </>
   );
 };

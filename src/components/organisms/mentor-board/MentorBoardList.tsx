@@ -106,6 +106,7 @@ const MentorBoardList = () => {
           category: data.category,
           createdAt: data.createdAt,
           updatedAt: data.updatedAt,
+          userId: data.user.userImage.userId,
           userName: data.user.name,
           userImage: data.user.userImage.imageUrl,
           boardImage: data.boardImage,

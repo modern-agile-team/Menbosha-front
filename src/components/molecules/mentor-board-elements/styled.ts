@@ -1,4 +1,7 @@
+import Link from 'next/link';
 import styled from 'styled-components';
+
+//멘토 css
 
 export const MentorCardContainer = styled.div`
   display: flex;
@@ -26,16 +29,25 @@ export const CardImageBox = styled.div`
   cursor: pointer;
 `;
 
+//멘토 게시판 css
+
+export const MentorBoardUserBox = styled.div`
+  display: flex;
+  margin: 0px 0px 12px 0px;
+  cursor: pointer;
+  width: 40%;
+`;
+
 export const MentorBoardCardContainer = styled.div`
   height: 425px;
   transition: height 500ms ease;
-  & > :nth-child(2) {
+  & > :nth-child(1) {
     height: 290px;
     transition: height 500ms ease;
   }
   &:hover {
     height: 517px;
-    & > :nth-child(2) {
+    & > :nth-child(1) {
       height: 370px;
       transition: height 500ms ease;
     }
