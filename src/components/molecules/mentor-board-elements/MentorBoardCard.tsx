@@ -6,8 +6,18 @@ import {
 import { MentorBoardCardType } from '@/types/mentor';
 import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
+import { useRouter } from 'next/router';
 
 const MentorBoardCard = (props: MentorBoardCardType) => {
+  const router = useRouter();
+
+  const handleRoute = () => {
+    router.push({
+      pathname: `/mentor/board/unit`,
+      query: {},
+    });
+  };
+
   const foundCategory = categoryList.find(
     (data) => data.id === (props.category as number),
   );
@@ -33,16 +43,18 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
           </TextBox>
         </div>
       </FlexBox>
-      <S.CardImageBox>사진들어갈 곳</S.CardImageBox>
-      <TextBox size={20} color="#fae" style={{ padding: '12px 0px 0px 0px' }}>
-        {props.head}
-      </TextBox>
-      <TextBox size={12} color="#fff" style={{ padding: '6px 0px 24px 0px' }}>
-        {props.body}
-      </TextBox>
-      <TextBox size={10} color="#fff">
-        {props.createdAt.slice(0, 8)}
-      </TextBox>
+      <div>
+        <S.CardImageBox>사진들어갈 곳</S.CardImageBox>
+        <TextBox size={20} color="#fae" style={{ padding: '12px 0px 0px 0px' }}>
+          {props.head}
+        </TextBox>
+        <TextBox size={12} color="#fff" style={{ padding: '6px 0px 24px 0px' }}>
+          {props.body}
+        </TextBox>
+        <TextBox size={10} color="#fff">
+          {props.createdAt.slice(0, 10)}
+        </TextBox>
+      </div>
     </S.MentorBoardCardContainer>
   );
 };

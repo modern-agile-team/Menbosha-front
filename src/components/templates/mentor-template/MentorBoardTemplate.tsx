@@ -7,7 +7,7 @@ import Category from '../../common/category/Category';
 import MentorBoardList from '@/components/organisms/mentor-board/MentorBoardList';
 import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
 
-const MentorTemplate = () => {
+const MentorBoardTemplate = () => {
   return (
     <>
       <SubPageHeader />
@@ -19,27 +19,33 @@ const MentorTemplate = () => {
           alignItems: 'center',
           width: '100vw',
         }}>
-        <S.MentorListContainer>
+        {/* <S.MentorListContainer>
+        <TextBox size={30} color="#fff">
+          멘토
+        </TextBox>
+          <FlexBox type="flex">
+            <MentorList />
+          </FlexBox>
+        </S.MentorListContainer> */}
+        <S.MentorBoardListContainer>
           <TextBox size={30} color="#fff">
-            명예의 전당
+            멘토가 들려주는 꿀통 대방출~!~!
           </TextBox>
-          <MentorList />
-        </S.MentorListContainer>
-        <S.MentorListContainer>
+        </S.MentorBoardListContainer>
+        <S.MentorBoardListContainer>
           <TextBox size={30} color="#fff">
-            인기 멘토
+            최근 인기 멘토글
           </TextBox>
-          <MentorList />
-        </S.MentorListContainer>
-        <S.MentorListContainer>
+        </S.MentorBoardListContainer>
+        <S.MentorBoardListContainer>
           <TextBox size={30} color="#fff">
-            전체 멘토
+            전체 멘토 게시글
           </TextBox>
-          <MentorList />
-        </S.MentorListContainer>
+          <MentorBoardList />
+        </S.MentorBoardListContainer>
       </div>
     </>
   );
 };
 
-export default MentorTemplate;
+export default MentorBoardTemplate;
