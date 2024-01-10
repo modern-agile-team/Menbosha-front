@@ -1,6 +1,5 @@
 import { Axios, AxiosResponse } from 'axios';
 import instance from '../axiosInstance';
-import { promises } from 'dns';
 
 const CHAT = {
   path: '/chat-room',
@@ -17,13 +16,24 @@ const CHAT = {
 
   /** 채팅룸 전체조회 api */
   async getChatRoomList(): Promise<any> {
+    const result: AxiosResponse<any> = await instance.get(`${CHAT.path}/new`);
+    return result.data.contents;
+  },
+
+  /** 채팅룸 단일조회 - 유저 id */
+  async getChatRoomById(receiverId: number): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(
-      `${CHAT.path}/new-api`,
+      `${CHAT.path}/check`,
+      {
+        params: {
+          receiverId: receiverId,
+        },
+      },
     );
     return result.data;
   },
 
-  /** 채팅룸 단일조회 api */
+  /** 채팅룸 단일조회 - roomId api */
   async getChatRoom(roomId: string): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(
       `${CHAT.path}/${roomId}`,

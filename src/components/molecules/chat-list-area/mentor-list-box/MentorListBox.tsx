@@ -4,10 +4,8 @@ import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
 import { MentorInfoType } from '@/types/chat';
-// import { getMentorInfoSelector } from '@/recoil/selectors/MentorInfoSelector';
 
 const MentorListBox = () => {
-  // const MentorInfo = useRecoilValue<MentorInfoType[]>(getMentorInfoSelector);
   const MentorInfo = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
