@@ -51,6 +51,7 @@ export type MentorBoardUnitType = {
   createdAt: string;
   updatedAt: string;
   categoryId: number;
+  image: Array;
   user: {
     name: string;
     userImage: {
@@ -65,4 +66,24 @@ export type MentorBoardUnitType = {
 /**멘토 게시물 불러오기 위한 id넘기는 props Type */
 export interface MentorBoardUnitPropsType {
   id: number;
+}
+
+/**멘토 게시글 중 Head Props Type */
+export interface MBUnitHeadPropsType {
+  head: string;
+  userName: string;
+  userImage: string;
+  category: string;
+  createdAt: string;
+}
+/**멘토 게시글 중 Body Props Type */
+export interface MBUnitBodyPropsType {
+  image: Array;
+  body: string;
+}
+
+/**멘토 게시글 중 Bottom Props Type */
+export interface MBUnitBottomPropsType {
+  id: number;
+  userImage;
 }
