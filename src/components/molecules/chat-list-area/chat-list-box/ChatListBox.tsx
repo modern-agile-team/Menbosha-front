@@ -6,11 +6,7 @@ import {
   ChatPartnerAtom,
   ChatRoomListAtom,
 } from '@/recoil/atoms/ChatRoomListAtom';
-import {
-  ChatPartnerType,
-  ChatRoomListPropsType,
-  ChatRoomListType,
-} from '@/types/chat';
+import { ChatRoomListType } from '@/types/chat';
 
 const ChatRoomListBox = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
   return (

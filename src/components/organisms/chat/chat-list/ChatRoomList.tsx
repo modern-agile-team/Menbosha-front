@@ -2,13 +2,9 @@ import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import ChatRoomListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatListBox';
-import { ChatRoomListPropsType } from '@/types/chat';
+import { ChatRoomListType } from '@/types/chat';
 
-const ChatRoomList = ({
-  chatRooms,
-}: {
-  chatRooms: ChatRoomListPropsType[];
-}) => {
+const ChatRoomList = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
   return (
     <S.ChatRoomListContainer>
       <S.ChatRoomListHeader>
