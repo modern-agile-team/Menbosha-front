@@ -15,7 +15,7 @@ export const ChatSpaceInputBox = styled.div`
   height: 5vh;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff4651;
   border-radius: 10px;
 `;
 
@@ -27,7 +27,7 @@ export const ChatSpaceInputArea = styled.textarea`
   margin-left: 5px;
   text-align: justify;
   color: white;
-  background-color: #252525;
+  background-color: #ffffff;
   font-family: 'Pretendard';
   font-size: 0.58em;
   line-height: 4vh;
@@ -41,7 +41,7 @@ export const ChatSpaceInputArea = styled.textarea`
   &::placeholder {
     font-family: 'Pretendard';
     font-size: 0.85em;
-    color: rgba(255, 221, 77, 0.5);
+    color: rgba(0, 0, 0, 0.5);
   }
 `;
 

@@ -6,7 +6,7 @@ export const ChatSpaceHeaderContainer = styled.div`
   height: 9vh;
   justify-content: center;
   align-items: center;
-  background: #ffbb5c;
+  background: #ff4651;
   border-radius: 0px 0px 10px 10px;
   /* border: 2px solid lightGreen; */
 `;
@@ -31,7 +31,7 @@ export const ChatSpaceHeaderLeft = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 0.83em;
-    color: #190300;
+    color: #ffffff;
   }
 `;
 
@@ -42,7 +42,7 @@ export const ChatSpaceHeaderGuestImage = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  border: 2px solid #190300;
+  border: 2px solid #ffffff;
   border-radius: 10px;
 `;
 

@@ -38,7 +38,12 @@ const ChatNavbar = () => {
           href={{
             pathname: `/userpage`,
           }}>
-          <Image src="/UserIcon.svg" alt="UserIcon" width="28" height="28" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="UserIcon"
+            width="28"
+            height="28"
+          />
         </Link>
       </S.NavbarBottom>
     </S.NavbarContainer>

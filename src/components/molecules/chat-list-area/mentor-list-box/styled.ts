@@ -30,9 +30,9 @@ export const ListArea = styled.div<ListAreaType>`
   margin-bottom: 24px;
   /* justify-content: center; */
   /* align-items: center; */
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff4651;
   border-radius: 10px;
-  background-color: ${({ isExpanded }) => (isExpanded ? '#ffbb5c' : '#252525')};
+  background-color: ${({ isExpanded }) => (isExpanded ? '#FF4651' : '#ffffff')};
   cursor: pointer;
   transition:
     height 0.5s ease,
@@ -64,9 +64,9 @@ export const MentorImage = styled.div<ListAreaType>`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff4651;
   border: ${({ isExpanded }) =>
-    isExpanded ? '2px solid #190300' : ' 2px solid #ffbb5c'};
+    isExpanded ? '2px solid #ffffff' : ' 2px solid #FF4651'};
   border-radius: 10px;
   transition: border 0.3s ease;
 `;
@@ -79,7 +79,7 @@ export const MentorInfoBox = styled.div<ListAreaType>`
   justify-content: center;
   align-items: flex-start;
   & > span {
-    color: ${({ isExpanded }) => (isExpanded ? '#190300' : ' #fff')};
+    color: ${({ isExpanded }) => (isExpanded ? '#ffffff' : ' #000000')};
   }
   /* border: 1px solid green; */
 `;
@@ -88,7 +88,7 @@ export const IconBox = styled.div<ListAreaType>`
   display: flex;
   width: 10vw;
   height: ${({ isExpanded }) => (isExpanded ? 'auto' : '7vh')};
-  margin-top: 16px;
+  margin-top: 24px;
   margin-left: 4.8vw;
   justify-content: space-between;
   align-items: center;

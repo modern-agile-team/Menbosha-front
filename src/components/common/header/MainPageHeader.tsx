@@ -52,7 +52,7 @@ const MainPageHeader = () => {
               query: { id: 0 },
             }}>
             <Image
-              src="/chat/ChatIcon.svg"
+              src="/ChatIcon-Red.png"
               alt="ChatIcon"
               width="28"
               height="28"
@@ -61,7 +61,7 @@ const MainPageHeader = () => {
           {isLogin ? (
             <Image
               onClick={handleAfterModal}
-              src="/UserIcon.svg"
+              src="/UserIcon-Red.png"
               alt="UserIcon"
               width="28"
               height="28"
