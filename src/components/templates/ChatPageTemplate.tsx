@@ -6,10 +6,6 @@ import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
 import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
-import {
-  ChatPartnerAtom,
-  ChatRoomListAtom,
-} from '@/recoil/atoms/ChatRoomListAtom';
 import CHAT from '@/apis/chatApi/chat';
 import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
