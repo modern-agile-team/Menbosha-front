@@ -1,15 +1,15 @@
 import React from 'react';
 import * as S from './styled';
-import Image from 'next/image';
 import ChatRoomListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatListBox';
+import { ChatRoomListType } from '@/types/chat';
 
-const ChatRoomList = () => {
+const ChatRoomList = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
   return (
     <S.ChatRoomListContainer>
       <S.ChatRoomListHeader>
         <span>열려 있는 채팅방</span>
       </S.ChatRoomListHeader>
-      <ChatRoomListBox />
+      <ChatRoomListBox chatRooms={chatRooms} />
     </S.ChatRoomListContainer>
   );
 };

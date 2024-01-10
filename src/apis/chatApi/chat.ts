@@ -17,6 +17,8 @@ const CHAT = {
   /** 채팅룸 전체조회 api */
   async getChatRoomList(): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(`${CHAT.path}/new`);
+    // console.log(result);
+
     return result.data.contents;
   },
 

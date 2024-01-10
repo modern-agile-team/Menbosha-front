@@ -67,13 +67,6 @@ export interface ChatRoomListType {
   }[];
 }
 
-/** 채팅룸 Partner 데이터 타입 */
-export interface ChatPartnerType {
-  id: number;
-  name: string;
-  userImage: string;
-}
-
 /**  채팅룸 단일조회 api 타입 */
 export interface ChatRoomType {
   statusCode: number;

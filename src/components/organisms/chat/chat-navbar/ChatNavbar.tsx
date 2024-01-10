@@ -18,7 +18,12 @@ const ChatNavbar = () => {
           href={{
             pathname: `/main`,
           }}>
-          <Image src="/LogoIcon.svg" alt="LogoIcon" width="36" height="36" />
+          <Image
+            src="/MenboshaLogo2.png"
+            alt="LogoIcon"
+            width="144"
+            height="36"
+          />
         </S.TopLogoBox>
         <S.TopNavBox>
           {headerElements.map((element, index) => (
