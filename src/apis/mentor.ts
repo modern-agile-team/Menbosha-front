@@ -7,7 +7,7 @@ import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 
 const MENTOR = {
-  path: `/mentorBoard`,
+  path: `/mentor-board`,
 
   /** 멘토 게시판 생성 api [post] */
   async createMentorBoard({
@@ -32,9 +32,13 @@ const MENTOR = {
   },
 
   /**페이지별 멘토 리스트 불러오는 api [get] */
-  async getMentorBoardList(page: number): Promise<MentorBoardListType[]> {
+  async getMentorBoardList(
+    category: number | undefined,
+    page: number,
+  ): Promise<MentorBoardListType[]> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
       params: {
+        category: category,
         page: page,
       },
     });

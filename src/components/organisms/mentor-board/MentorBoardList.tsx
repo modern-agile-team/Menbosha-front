@@ -51,7 +51,8 @@ const MentorBoardList = () => {
   const loadPost = useCallback(async () => {
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
-      const result = await MENTOR.getMentorBoardList(totalPage); //api요청 글 목록 불러오기
+      //나중에 카테고리 전역으로 관리 예정
+      const result = await MENTOR.getMentorBoardList(1, totalPage); //api요청 글 목록 불러오기
       const reverseArr = [...result].reverse();
       result && setBoardData((prev: any) => [...prev, ...reverseArr]);
     }

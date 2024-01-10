@@ -5,6 +5,8 @@ import {
   FlexBox,
   ImageBox,
 } from '@/components/common/globalStyled/styled';
+import MentorBoardUnitBody from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitBody';
+import MentorBoardUnitHead from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitHead';
 import { MentorBoardUnitPropsType, MentorBoardUnitType } from '@/types/mentor';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -13,7 +15,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
   const [getUnitData, setUnitData] = useState<MentorBoardUnitType>();
   const category = categoryList.find(
     (data) => data.id === getUnitData?.categoryId,
-  );
+  )?.category;
 
   const getMentorBoardUnitApi = async () => {
     const response = await MENTOR.getMentorBoardUnit(id);
@@ -26,30 +28,30 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
 
   return (
     <div>
-      <div>{getUnitData?.head}</div>
-      <FlexBox type="flex">
-        <ImageBox src={getUnitData?.user.userImage.imageUrl as string} />
+      {getUnitData && (
         <div>
-          <div>{getUnitData?.user.name}</div>
-          <div>{category?.category}</div>
-          <div>{getUnitData?.createdAt.slice(0, 10)}</div>
-          <div>
-            <div>수정버튼</div>
-            <div>삭제버튼</div>
-          </div>
+          <MentorBoardUnitHead
+            head={getUnitData.head}
+            userImage={getUnitData.user.userImage.imageUrl}
+            userName={getUnitData.user.name}
+            category={category as string}
+            createdAt={getUnitData.createdAt}
+          />
+          <MentorBoardUnitBody
+            image={getUnitData.image}
+            body={getUnitData.body}
+          />
+          <FlexBox type="flex">
+            <div>
+              <ImageBox src={getUnitData?.user.userImage.imageUrl as string} />
+              <div>
+                <div>랭크</div>
+                <div>이름</div>
+              </div>
+            </div>
+          </FlexBox>
         </div>
-      </FlexBox>
-      <div>이미지들어올자리</div>
-      <div>{getUnitData?.body}</div>
-      <FlexBox type="flex">
-        <div>
-          <ImageBox src={getUnitData?.user.userImage.imageUrl as string} />
-          <div>
-            <div>랭크</div>
-            <div>이름</div>
-          </div>
-        </div>
-      </FlexBox>
+      )}
     </div>
   );
 };
