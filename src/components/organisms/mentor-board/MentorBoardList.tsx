@@ -97,7 +97,7 @@ const MentorBoardList = () => {
   }, [getBoardData]);
 
   return (
-    <S.MentoCardContainer>
+    <S.MentoBoardCardContainer>
       {getBoardData.map((data: MentorBoardListType) => {
         const temp = {
           id: data.id,
@@ -117,7 +117,7 @@ const MentorBoardList = () => {
           </S.MentorBoardCardWrapper>
         );
       })}
-    </S.MentoCardContainer>
+    </S.MentoBoardCardContainer>
   );
 };
 

@@ -1,19 +1,20 @@
 import { ContainerWrapper } from '@/components/common/globalStyled/styled';
 import SubPageHeader from '@/components/common/header/SubPageHeader';
-import MentorBoardUnit from '@/components/organisms/mentor-board/MentorBoardUnit';
+import MentorUnit from '@/components/organisms/mentor/MentorUnit';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
-const MentorBoardUnitTemplate = () => {
+const UserpageTemplate = () => {
   const router = useRouter();
 
   return (
     <div>
       <SubPageHeader />
       <ContainerWrapper>
-        {router.isReady && <MentorBoardUnit id={Number(router.query.id)} />}
+        {router.isReady && <MentorUnit id={Number(router.query.id)} />}
       </ContainerWrapper>
     </div>
   );
 };
 
-export default MentorBoardUnitTemplate;
+export default UserpageTemplate;

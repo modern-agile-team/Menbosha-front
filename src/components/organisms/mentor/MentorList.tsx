@@ -6,6 +6,7 @@ import USER from '@/apis/user';
 import { MentorType } from '@/types/user';
 import { useRouter } from 'next/router';
 
+/**모킹데이터 타입 */
 type MentorListType = {
   id: number;
   name: string;

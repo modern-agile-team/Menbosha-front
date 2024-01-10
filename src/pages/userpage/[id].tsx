@@ -1,5 +1,11 @@
+import UserpageTemplate from '@/components/templates/userpage-template/UserpageTemplate';
+
 const Userpage = () => {
-  return <div>유저페이지</div>;
+  return (
+    <div>
+      <UserpageTemplate />
+    </div>
+  );
 };
 
 export default Userpage;
