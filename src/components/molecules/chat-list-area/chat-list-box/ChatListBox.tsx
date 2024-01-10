@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import { useRecoilValue } from 'recoil';
-import {
-  ChatPartnerAtom,
-  ChatRoomListAtom,
-} from '@/recoil/atoms/ChatRoomListAtom';
 import { ChatRoomListType } from '@/types/chat';
 
 const ChatRoomListBox = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
