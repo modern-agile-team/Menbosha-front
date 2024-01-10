@@ -67,6 +67,27 @@ export interface ChatRoomListType {
   }[];
 }
 
+/** 채팅룸 props 타입 */
+export interface ChatRoomListPropsType {
+  totalCount: number;
+  currentPage: number;
+  pageSize: number;
+  nextPage: number;
+  hasNext: boolean;
+  lastPage: number;
+  _id: string;
+  originalMembers: Array;
+  chatMembers: Array;
+  chatRoomType: Array;
+  createdAt: string;
+  updatedAt: string;
+  unReadChatCount: number;
+  content: string;
+  seenUsers: Array;
+  chatCreatedAt: string;
+  chatPartner: Array;
+}
+
 /** 채팅룸 Partner 데이터 타입 */
 export interface ChatPartnerType {
   id: number;

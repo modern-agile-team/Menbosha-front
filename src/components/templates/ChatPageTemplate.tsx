@@ -13,6 +13,7 @@ import {
 import CHAT from '@/apis/chatApi/chat';
 import {
   ChatPartnerType,
+  ChatRoomListPropsType,
   ChatRoomListType,
   MentorInfoType,
 } from '@/types/chat';
@@ -20,19 +21,16 @@ import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 
 const ChatPageTemplate = () => {
   const [renderState, setRenderState] = useState(false);
-  const [getChatRoomList, setGetChatRoomList] =
-    useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
+  const [getChatRoomList, setGetChatRoomList] = useState<ChatRoomListType[]>(
+    [],
+  );
   const [getMentorInfo, setGetMentorInfo] =
     useRecoilState<MentorInfoType[]>(MentorInfoAtom);
-  const [getChatPartner, setGetChatPartner] =
-    useRecoilState<ChatPartnerType[]>(ChatPartnerAtom);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
     const res = await CHAT.getChatRoomList();
-    setGetChatRoomList(res);
-
-    setGetChatPartner(res.chatRooms);
+    setGetChatRoomList(res.chatRooms);
     setRenderState(true);
   };
 
@@ -49,19 +47,14 @@ const ChatPageTemplate = () => {
 
   useEffect(() => {
     console.log('123', getChatRoomList);
-    console.log('321', getChatPartner);
   });
 
   return (
     <S.PageWrapperRaw>
-      {renderState && (
-        <>
-          <ChatNavbar />
-          <ChatMentorList />
-          <ChatRoomList />
-          <ChatSpace />
-        </>
-      )}
+      <ChatNavbar />
+      <ChatMentorList />
+      <ChatRoomList chatRooms={getChatRoomList} />
+      <ChatSpace />
     </S.PageWrapperRaw>
   );
 };
