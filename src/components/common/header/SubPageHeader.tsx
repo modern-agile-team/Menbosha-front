@@ -51,12 +51,17 @@ const SubPageHeader = () => {
               pathname: `/chat/${id}`,
               query: { id: 0 },
             }}>
-            <Image src="/ChatIcon.svg" alt="ChatIcon" width="28" height="28" />
+            <Image
+              src="/ChatIcon-Red.png"
+              alt="ChatIcon"
+              width="28"
+              height="28"
+            />
           </Link>
           {isLogin ? (
             <Image
               onClick={handleAfterModal}
-              src="/UserIcon.svg"
+              src="/UserIcon-Red.png"
               alt="UserIcon"
               width="28"
               height="28"

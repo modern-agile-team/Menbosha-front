@@ -30,14 +30,14 @@ const MentorListBox = () => {
               <S.MentorImage isExpanded={expandedStates[mentor.id]}>
                 {expandedStates[mentor.id] ? (
                   <Image
-                    src="/userIcon-black.svg"
+                    src="/userIcon-White.png"
                     alt="MentorIcon"
                     width="24"
                     height="24"
                   />
                 ) : (
                   <Image
-                    src="/UserIcon.svg"
+                    src="/UserIcon-Red.png"
                     alt="MentorIcon"
                     width="24"
                     height="24"
@@ -62,13 +62,13 @@ const MentorListBox = () => {
           {expandedStates[mentor.id] && (
             <S.IconBox isExpanded={expandedStates[mentor.id]}>
               <Image
-                src="/UserIcon-black.svg"
+                src="/UserIcon-White.png"
                 alt="UserIcon"
                 width="36"
                 height="36"
               />
               <Image
-                src="/ChatIcon-black.svg"
+                src="/ChatIcon-White.png"
                 alt="ChatIcon"
                 width="36"
                 height="36"

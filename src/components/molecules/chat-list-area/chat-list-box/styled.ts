@@ -26,11 +26,11 @@ export const ChatRoomListArea = styled.li`
   margin-bottom: 24px;
   justify-content: center;
   align-items: center;
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff4651;
   border-radius: 10px;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: rgba(255, 187, 92, 0.1);
+    background-color: #ffe7e9;
     cursor: pointer;
   }
 `;
@@ -61,7 +61,7 @@ export const ChatListGuestImage = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff4651;
   border-radius: 10px;
 `;
 
@@ -79,13 +79,15 @@ export const ChatListGuestName = styled.span`
   font-size: 0.65em;
   font-weight: 700;
   margin-bottom: 5px;
+  color: #000000;
 `;
 
 export const ChatListPrevText = styled.div`
   display: flex;
   font-size: 0.65em;
   font-weight: 400;
-  color: rgba(255, 187, 92, 0.75);
+  opacity: 0.8;
+  color: #000000;
   /* border: 1px solid red; */
   & > span {
     overflow: hidden;
@@ -105,6 +107,7 @@ export const ChatListRight = styled.div`
   align-items: center;
   /* border: 1px solid red; */
   & > span {
+    color: #000000;
     margin-bottom: 7px;
     font-size: 0.5em;
     opacity: 0.7;
@@ -120,7 +123,7 @@ export const UnreadMessage = styled.div`
   border: none;
   border-radius: 50%;
   background: #ff0000;
-  opacity: 0.6;
+  opacity: 0.7;
   & > span {
     font-size: 0.5em;
   }

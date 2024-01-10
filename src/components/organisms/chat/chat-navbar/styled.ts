@@ -39,12 +39,12 @@ export const TopNavBox = styled.div`
   /* border: 2px solid lightGreen; */
   & > a {
     text-decoration: none;
-    color: #c58940;
+    color: #ff4651;
     font-size: 1em;
     font-weight: bold;
     transition: color 0.3s ease;
     &:hover {
-      color: #ffac60;
+      color: #ff8a91;
     }
   }
 `;

@@ -16,7 +16,12 @@ const ChatSpaceBody = () => {
     <S.ChatSpaceBodyContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
-          <Image src="/UserIcon.svg" alt="GuestImage" width="24" height="24" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="GuestImage"
+            width="24"
+            height="24"
+          />
         </S.ChatGuestImage>
         <S.ChatBubbleGuestCenter>
           <S.ChatGuestName>원동건 님</S.ChatGuestName>
@@ -37,7 +42,12 @@ const ChatSpaceBody = () => {
       <TimeStamp />
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
-          <Image src="/UserIcon.svg" alt="GuestImage" width="24" height="24" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="GuestImage"
+            width="24"
+            height="24"
+          />
         </S.ChatGuestImage>
         <S.ChatBubbleGuestCenter>
           <S.ChatGuestName>원동건 님</S.ChatGuestName>
@@ -49,7 +59,12 @@ const ChatSpaceBody = () => {
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
-          <Image src="/UserIcon.svg" alt="GuestImage" width="24" height="24" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="GuestImage"
+            width="24"
+            height="24"
+          />
         </S.ChatGuestImage>
         <S.ChatBubbleGuestCenter>
           <S.ChatGuestName>원동건 님</S.ChatGuestName>
@@ -91,7 +106,12 @@ const ChatSpaceBody = () => {
       </S.ChatBubbleHostContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
-          <Image src="/UserIcon.svg" alt="GuestImage" width="24" height="24" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="GuestImage"
+            width="24"
+            height="24"
+          />
         </S.ChatGuestImage>
         <S.ChatBubbleGuestCenter>
           <S.ChatGuestName>원동건 님</S.ChatGuestName>
@@ -103,7 +123,12 @@ const ChatSpaceBody = () => {
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
-          <Image src="/UserIcon.svg" alt="GuestImage" width="24" height="24" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="GuestImage"
+            width="24"
+            height="24"
+          />
         </S.ChatGuestImage>
         <S.ChatBubbleGuestCenter>
           <S.ChatGuestName>원동건 님</S.ChatGuestName>
@@ -115,7 +140,12 @@ const ChatSpaceBody = () => {
       </S.ChatBubbleGuestContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
-          <Image src="/UserIcon.svg" alt="GuestImage" width="24" height="24" />
+          <Image
+            src="/UserIcon-Red.png"
+            alt="GuestImage"
+            width="24"
+            height="24"
+          />
         </S.ChatGuestImage>
         <S.ChatBubbleGuestCenter>
           <S.ChatGuestName>원동건 님</S.ChatGuestName>

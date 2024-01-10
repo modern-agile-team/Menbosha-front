@@ -17,7 +17,7 @@ const ChatRoomListBox = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
               <S.ChatListLeft>
                 <S.ChatListGuestImage>
                   <Image
-                    src="/UserIcon.svg"
+                    src="/UserIcon-Red.png"
                     alt="GuestIcon"
                     width="24"
                     height="24"
