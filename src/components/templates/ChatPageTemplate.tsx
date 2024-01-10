@@ -11,12 +11,7 @@ import {
   ChatRoomListAtom,
 } from '@/recoil/atoms/ChatRoomListAtom';
 import CHAT from '@/apis/chatApi/chat';
-import {
-  ChatPartnerType,
-  ChatRoomListPropsType,
-  ChatRoomListType,
-  MentorInfoType,
-} from '@/types/chat';
+import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 
 const ChatPageTemplate = () => {
