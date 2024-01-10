@@ -6,10 +6,14 @@ import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
 import { MentorInfoType } from '@/types/chat';
 
 const MentorListBox = () => {
-  const MentorInfo = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
+  const MentorInfoMock = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
+  // const [getMentorInfo, setGetMentorInfo] = useState<MentorInfoType[]>([])
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
   }>({});
+
+  /** 멘토리스트 불러오는 api */
+  // const getMentorListApi =
 
   const handleMentorClick = (mentorId: number) => {
     setExpandedStates((prevStates) => ({
@@ -20,7 +24,7 @@ const MentorListBox = () => {
 
   return (
     <S.ListContainer>
-      {MentorInfo.map((mentor) => (
+      {MentorInfoMock.map((mentor) => (
         <S.ListArea
           key={mentor.id}
           onClick={() => handleMentorClick(mentor.id)}
