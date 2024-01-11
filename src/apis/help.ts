@@ -7,7 +7,7 @@ import {
   CreateHelpType,
 } from '@/types/help';
 const HELP = {
-  path: '/HelpMeBoard',
+  path: '/help-me-board',
 
   /**도와줘요 게시판 생성 api [post]*/
   async createHelpBoard({

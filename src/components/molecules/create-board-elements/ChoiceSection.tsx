@@ -8,11 +8,11 @@ import { SectionSelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 export const sectionList = [
   {
     id: 1,
-    section: '멘토',
+    section: '멘토 게시판',
   },
   {
     id: 2,
-    section: '도와주세요',
+    section: '도와주세요 게시판',
   },
 ];
 
