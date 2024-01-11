@@ -12,6 +12,10 @@ const nextConfig = {
   },
   images: {
     domains: ['menbosha-s3.s3.ap-northeast-2.amazonaws.com'],
+    domains: ['lh3.googleusercontent.com'],
+    domains: ['k.kakaocdn.net'],
+    domains: ['ssl.pstatic.net'],
+    domains: ['phinf.pstatic.net'],
   },
   reactStrictMode: true,
   eslint: {

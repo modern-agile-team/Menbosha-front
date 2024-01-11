@@ -6,6 +6,7 @@ import {
   ImageBox,
 } from '@/components/common/globalStyled/styled';
 import MentorBoardUnitBody from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitBody';
+import MentorBoardUnitBottom from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitBottom';
 import MentorBoardUnitHead from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitHead';
 import { MentorBoardUnitPropsType, MentorBoardUnitType } from '@/types/mentor';
 import Image from 'next/image';
@@ -32,24 +33,18 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
         <div>
           <MentorBoardUnitHead
             head={getUnitData.head}
+            body={getUnitData.body}
+            image={getUnitData.mentorBoardImages}
             userImage={getUnitData.user.userImage.imageUrl}
             userName={getUnitData.user.name}
             category={category as string}
             createdAt={getUnitData.createdAt}
           />
           <MentorBoardUnitBody
-            image={getUnitData.image}
+            image={getUnitData.mentorBoardImages}
             body={getUnitData.body}
           />
-          <FlexBox type="flex">
-            <div>
-              <ImageBox src={getUnitData?.user.userImage.imageUrl as string} />
-              <div>
-                <div>랭크</div>
-                <div>이름</div>
-              </div>
-            </div>
-          </FlexBox>
+          <MentorBoardUnitBottom id={getUnitData.user.userImage.userId} />
         </div>
       )}
     </div>
