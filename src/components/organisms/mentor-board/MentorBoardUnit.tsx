@@ -23,8 +23,6 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
     setUnitData(response);
   };
 
-  console.log(getUnitData);
-
   useEffect(() => {
     getMentorBoardUnitApi();
   }, []);
