@@ -15,6 +15,7 @@ const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] = useState<ChatRoomListType[]>(
     [],
   );
+  // 모킹데이터 status
   // const [getMentorInfo, setGetMentorInfo] =
   //   useRecoilState<MentorInfoType[]>(MentorInfoAtom);
 
@@ -35,10 +36,6 @@ const ChatPageTemplate = () => {
     // getMentorInfoApi();
     getChatRoomListApi();
   }, []);
-
-  // useEffect(() => {
-  //   console.log('123', getChatRoomList);
-  // });
 
   return (
     <S.PageWrapperRaw>
