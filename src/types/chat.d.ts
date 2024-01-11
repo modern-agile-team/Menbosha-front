@@ -1,21 +1,18 @@
 /** 멘토 리스트 타입 - 추후 변경 */
 export type MentorInfoType = {
-  data: {
-    id: number;
-    name: string;
-    userImage: {
-      id: number;
-      imageUrl: string;
-    };
-    userIntro: {
-      introduce: string;
-      mainField: string;
-    };
-  }[];
+  id: number;
+  name: string;
+  userImage: {
+    imageUrl: string;
+  };
+  userIntro: {
+    introduce: string;
+    mainField: string;
+  };
 };
 
-/** 채팅룸 전체조회 api 타입 */
-export interface ChatRoomListApiType {
+export /** 채팅룸 전체조회 api 타입 */
+interface ChatRoomListApiType {
   statusCode: number;
   contents: {
     totalCount: number;

@@ -6,7 +6,7 @@ export const ChatSpaceHeaderContainer = styled.div`
   height: 9vh;
   justify-content: center;
   align-items: center;
-  background: #ff4651;
+  background: #ff772b;
   border-radius: 0px 0px 10px 10px;
   /* border: 2px solid lightGreen; */
 `;

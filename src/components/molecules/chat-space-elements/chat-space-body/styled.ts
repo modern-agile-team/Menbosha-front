@@ -42,8 +42,8 @@ export const ChatBubble = styled.div<{ isHost: boolean }>`
   overflow-wrap: break-word;
   word-break: break-all;
   color: ${({ isHost }) => (isHost ? '#ffffff' : '#000000')};
-  background-color: ${({ isHost }) => (isHost ? '#FF4651' : '#ffffff')};
-  border: ${({ isHost }) => (isHost ? 'none' : '2px solid #FF4651')};
+  background-color: ${({ isHost }) => (isHost ? '#FF772B' : '#ffffff')};
+  border: ${({ isHost }) => (isHost ? 'none' : '2px solid #FF772B')};
   border-radius: 10px;
   & > span {
     margin: 7px 12px;
@@ -59,7 +59,7 @@ export const ChatGuestImage = styled.div`
   justify-content: center;
   align-items: center;
   /* margin-right: 10px; */
-  border: 2px solid #ff4651;
+  border: 2px solid #ff772b;
   border-radius: 10px;
 `;
 

@@ -7,7 +7,6 @@ const ChatRoomListBox = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
   return (
     <S.ListContainer>
       {chatRooms.map((data) => {
-        console.log('::::', data);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');

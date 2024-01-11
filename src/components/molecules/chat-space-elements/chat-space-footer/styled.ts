@@ -15,7 +15,7 @@ export const ChatSpaceInputBox = styled.div`
   height: 5vh;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid #ff4651;
+  border: 2px solid #ff772b;
   border-radius: 10px;
 `;
 

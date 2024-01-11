@@ -13,7 +13,7 @@ const nextConfig = {
   images: {
     domains: ['menbosha-s3.s3.ap-northeast-2.amazonaws.com'],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
