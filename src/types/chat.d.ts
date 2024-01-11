@@ -2,12 +2,17 @@
 export type MentorInfoType = {
   id: number;
   name: string;
-  image: string;
-  mainField: string;
+  userImage: {
+    imageUrl: string;
+  };
+  userIntro: {
+    introduce: string;
+    mainField: string;
+  };
 };
 
-/** 채팅룸 전체조회 api 타입 */
-export interface ChatRoomListApiType {
+export /** 채팅룸 전체조회 api 타입 */
+interface ChatRoomListApiType {
   statusCode: number;
   contents: {
     totalCount: number;

@@ -17,7 +17,7 @@ const nextConfig = {
     domains: ['ssl.pstatic.net'],
     domains: ['phinf.pstatic.net'],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
   },

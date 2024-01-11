@@ -15,7 +15,7 @@ export const ChatSpaceInputBox = styled.div`
   height: 5vh;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid #ff4651;
+  border: 2px solid #ff772b;
   border-radius: 10px;
 `;
 
@@ -26,8 +26,8 @@ export const ChatSpaceInputArea = styled.textarea`
   height: 4vh;
   margin-left: 5px;
   text-align: justify;
-  color: white;
-  background-color: #ffffff;
+  color: #000000;
+  /* background-color: #ffffff; */
   font-family: 'Pretendard';
   font-size: 0.58em;
   line-height: 4vh;

@@ -15,8 +15,8 @@ const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] = useState<ChatRoomListType[]>(
     [],
   );
-  const [getMentorInfo, setGetMentorInfo] =
-    useRecoilState<MentorInfoType[]>(MentorInfoAtom);
+  // const [getMentorInfo, setGetMentorInfo] =
+  //   useRecoilState<MentorInfoType[]>(MentorInfoAtom);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
@@ -26,19 +26,19 @@ const ChatPageTemplate = () => {
   };
 
   /** 멘토리스트 전체조회 api (mock) */
-  const getMentorInfoApi = async () => {
-    const res = await axios.get('/api/mento');
-    setGetMentorInfo(res.data);
-  };
+  // const getMentorInfoApi = async () => {
+  //   const res = await axios.get('/api/mento');
+  //   setGetMentorInfo(res.data);
+  // };
 
   useEffect(() => {
-    getMentorInfoApi();
+    // getMentorInfoApi();
     getChatRoomListApi();
   }, []);
 
-  useEffect(() => {
-    console.log('123', getChatRoomList);
-  });
+  // useEffect(() => {
+  //   console.log('123', getChatRoomList);
+  // });
 
   return (
     <S.PageWrapperRaw>
