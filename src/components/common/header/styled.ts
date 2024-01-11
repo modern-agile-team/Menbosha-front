@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -62,5 +62,43 @@ export const IconBox = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+`;
+
+interface MentorType {
+  isMentor: boolean;
+}
+
+export const MentorModal = styled.div<MentorType>`
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 2;
+  overflow: hidden;
+  height: ${({ isMentor }) => (isMentor ? '100px' : '0px')};
+  transition: all 500ms ease;
+  > * {
+    text-decoration: none;
+    z-index: 2;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+  }
+  :nth-child(3) {
+    ${({ isMentor }) => {
+      return css`
+        display: ${isMentor ? 'block' : 'none'};
+        width: ${isMentor ? '10000px' : '0px'};
+        height: ${isMentor ? '10000px' : '0px'};
+      `;
+    }}
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: auto;
   }
 `;

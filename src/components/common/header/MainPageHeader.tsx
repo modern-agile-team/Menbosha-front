@@ -7,6 +7,7 @@ import LoginModal from '@/components/organisms/auth/LoginModal';
 import { useRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import AfterLoginModal from '@/components/organisms/auth/AfterLoginModal';
+import { ButtonBox } from '../globalStyled/styled';
 
 const id = 0; //초기값 -> 후에 변동 예정
 
@@ -15,13 +16,8 @@ const MainPageHeader = () => {
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
   const { isOpenModal: afterModal, handleModal: handleAfterModal } = useModal();
-  const headerElements = ['멘토', '멘티', '고객 지원', '설정'];
-  const translationElements: Record<string, string> = {
-    멘토: 'mentor',
-    멘티: 'help',
-    '고객 지원': 'support',
-    설정: 'setting',
-  };
+  const { isOpenModal: mentorModal, handleModal: handleMentorModal } =
+    useModal();
   return (
     <S.HeaderContainer>
       <S.HeaderArea>
@@ -39,11 +35,25 @@ const MainPageHeader = () => {
           </Link>
         </S.LogoBox>
         <S.NavigateBox>
-          {headerElements.map((element, index) => (
-            <Link key={index} href={`/${translationElements[element]}`}>
-              <span>{element}</span>
-            </Link>
-          ))}
+          <div>
+            <ButtonBox color="#fff" onClick={handleMentorModal}>
+              멘토
+            </ButtonBox>
+            <S.MentorModal isMentor={mentorModal}>
+              <Link href={`/mentor`}>프로필</Link>
+              <Link href={`/mentor/board`}>게시글</Link>
+              <div onClick={handleMentorModal}></div>
+            </S.MentorModal>
+          </div>
+          <Link href={`/help`}>
+            <span>멘티</span>
+          </Link>
+          <Link href={`/support`}>
+            <span>고객지원</span>
+          </Link>
+          <Link href={`/setting`}>
+            <span>설정</span>
+          </Link>
         </S.NavigateBox>
         <S.IconBox>
           <Link

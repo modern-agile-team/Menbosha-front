@@ -7,6 +7,7 @@ import {
   FlexBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
+import Link from 'next/link';
 
 const MentorBoardTemplate = () => {
   return (
@@ -25,6 +26,12 @@ const MentorBoardTemplate = () => {
           </TextBox>
         </S.MentorBoardListContainer>
         <S.MentorBoardListContainer>
+          <Link
+            href={{
+              pathname: `/create`,
+            }}>
+            글쓰기
+          </Link>
           <TextBox
             size={30}
             color="#fff"

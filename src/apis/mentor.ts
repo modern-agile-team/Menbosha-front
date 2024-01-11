@@ -26,6 +26,23 @@ const MENTOR = {
     );
     return result.data;
   },
+  /**멘토 게시판 이미지 업로드 api [post] */
+  async createMentorBoardImage(image: FormData, boardId: number): Promise<any> {
+    const result: AxiosResponse = await instance.post(
+      `${MENTOR.path}/images`,
+      image,
+      {
+        params: {
+          mentorBoardId: boardId,
+        },
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    return result;
+  },
+
   /**멘토 게시판 페이지 불러오는 api [get] */
   async getMentorBoardPage(category: number): Promise<any> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}/page`, {
