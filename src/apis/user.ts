@@ -30,7 +30,7 @@ const USER = {
         userId: id,
       },
     });
-    return result.data.data;
+    return result.data;
   },
 };
 

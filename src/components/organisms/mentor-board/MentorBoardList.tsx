@@ -42,9 +42,8 @@ const MentorBoardList = () => {
   };
   //페이지 수 로드 함수
   const getPage = useCallback(async () => {
-    // const response = await MENTOR.getMentorBoardPage();
-    // setTotalPage(response.totalPage);
-    setTotalPage(1);
+    const response = await MENTOR.getMentorBoardPage(5);
+    setTotalPage(response.totalPage);
   }, []);
 
   //스크롤 시 로드 함수
@@ -52,7 +51,7 @@ const MentorBoardList = () => {
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
       //나중에 카테고리 전역으로 관리 예정
-      const result = await MENTOR.getMentorBoardList(1, totalPage); //api요청 글 목록 불러오기
+      const result = await MENTOR.getMentorBoardList(5, totalPage); //api요청 글 목록 불러오기
       const reverseArr = [...result].reverse();
       result && setBoardData((prev: any) => [...prev, ...reverseArr]);
     }
@@ -104,7 +103,7 @@ const MentorBoardList = () => {
           id: data.id,
           head: data.head,
           body: data.body,
-          category: data.category,
+          category: data.categoryId,
           createdAt: data.createdAt,
           updatedAt: data.updatedAt,
           userId: data.user.userImage.userId,
