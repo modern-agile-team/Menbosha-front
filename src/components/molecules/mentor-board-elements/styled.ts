@@ -20,11 +20,15 @@ export const MentorCardImageBox = styled.div`
   height: 135px;
   background-color: #999;
 `;
-
-export const CardImageBox = styled.div`
+interface ImgType {
+  img?: string;
+}
+export const CardImageBox = styled.div<ImgType>`
   width: 280px;
   height: 290px;
   background-color: #999;
+  background-image: url(${({ img }) => img});
+  background-size: auto;
   border-radius: 10px;
   cursor: pointer;
 `;

@@ -29,7 +29,7 @@ const useCarousel = (image: any) => {
     }
   }, [currentSlide]);
 
-  return [slideRef, handleSlidePrev, handleSlideNext];
+  return { slideRef, handleSlidePrev, handleSlideNext };
 };
 
 export default useCarousel;
