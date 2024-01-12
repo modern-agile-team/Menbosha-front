@@ -62,7 +62,7 @@ const MentorListBox = () => {
   const getMentorListApi = useCallback(async () => {
     setLoad(true); // 로드 시작
     if (totalPage > 0) {
-      const result = await USER.getMentorList(totalPage);
+      const result = await USER.getMentorList(4, totalPage);
       const reverseArr = [...result].reverse();
       result && setGetMentorList((prev) => [...prev, ...reverseArr]);
     }

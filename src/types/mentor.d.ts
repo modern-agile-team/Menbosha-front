@@ -23,7 +23,7 @@ export type MentorBoardListType = {
       imageUrl: string;
     };
   };
-  boardImage: {
+  mentorBoardImages: {
     id: number;
     boardId: number;
     imageUrl: string;
@@ -41,7 +41,10 @@ export interface MentorBoardCardType {
   userId: number;
   userName: string;
   userImage: string;
-  boardImage: Array;
+  mentorBoardImage: {
+    id: number;
+    imageUrl: string;
+  }[];
 }
 
 export type MentorBoardUnitType = {
