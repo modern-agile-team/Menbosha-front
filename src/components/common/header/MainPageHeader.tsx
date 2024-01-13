@@ -62,7 +62,7 @@ const MainPageHeader = () => {
               query: { id: 0 },
             }}>
             <Image
-              src="/chat/ChatIcon-Red.png"
+              src="/ChatIcon-Red.png"
               alt="ChatIcon"
               width="28"
               height="28"
