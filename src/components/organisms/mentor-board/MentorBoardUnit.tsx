@@ -32,6 +32,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
       {getUnitData && (
         <div>
           <MentorBoardUnitHead
+            id={getUnitData.id}
             head={getUnitData.head}
             body={getUnitData.body}
             image={getUnitData.mentorBoardImages}
