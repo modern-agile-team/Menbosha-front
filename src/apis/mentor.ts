@@ -78,6 +78,16 @@ const MENTOR = {
     });
     return result.data;
   },
+
+  /**멘토 게시물 삭제 api [delete] */
+  async deleteMentorBoardUnit(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.delete(`${MENTOR.path}`, {
+      params: {
+        mentorBoardId: id,
+      },
+    });
+    return result.data;
+  },
 };
 
 export default MENTOR;

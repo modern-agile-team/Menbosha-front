@@ -73,6 +73,7 @@ export interface MentorBoardUnitPropsType {
 
 /**멘토 게시글 중 Head Props Type */
 export interface MBUnitHeadPropsType {
+  id: number;
   head: string;
   body: string;
   image: Array;

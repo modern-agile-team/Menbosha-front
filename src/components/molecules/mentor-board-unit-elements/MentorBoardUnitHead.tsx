@@ -7,6 +7,7 @@ import { MBUnitHeadPropsType } from '@/types/mentor';
 import Image from 'next/image';
 import * as S from './style';
 import { useRouter } from 'next/router';
+import MENTOR from '@/apis/mentor';
 
 const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
   const router = useRouter();
@@ -15,15 +16,20 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
     //경로 추가 예정
     router.push(
       {
-        pathname: ``,
+        pathname: `/help/modify`,
         query: {
-          head: props.head,
-          body: props.body,
-          image: props.image,
+          data: JSON.stringify(props),
         },
       },
       ``,
     );
+  };
+
+  const deleteMentorBoardUnit = async () => {
+    confirm('게시물을 삭제하시겠습니까?') &&
+      (await MENTOR.deleteMentorBoardUnit(props.id));
+
+    //이전으로 돌아가는 로직 추가 예정
   };
   return (
     <div>
@@ -47,7 +53,7 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
         </S.HeadProfile>
         <FlexBox type="flex" style={{ margin: '0px 0px 0px auto' }}>
           <div onClick={modifiedMentorBoardUnit}>수정버튼</div>
-          <div>삭제버튼</div>
+          <div onClick={deleteMentorBoardUnit}>삭제버튼</div>
         </FlexBox>
       </FlexBox>
     </div>
