@@ -2,13 +2,19 @@ import { ButtonBox } from '@/components/common/globalStyled/styled';
 import useCarousel from '@/hooks/useCarousel';
 import { MBUnitBodyPropsType } from '@/types/mentor';
 import * as S from './style';
+import { useEffect, useState } from 'react';
 
 const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
   const { slideRef, handleSlidePrev, handleSlideNext } = useCarousel(
     props.image,
   );
+  const [isHtml, setHtml] = useState(false);
+
+  useEffect(() => {
+    setHtml(true);
+  }, []);
   return (
-    <div>
+    <S.BodyContainer>
       {props.image.length >= 0 && (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           {props.image.length >= 2 && (
@@ -34,9 +40,15 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
           )}
         </div>
       )}
-      <div>이미지들어올자리</div>
-      <div>{props.body}</div>
-    </div>
+      <S.BodyContentBox>
+        {isHtml && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: props.body as string,
+            }}></div>
+        )}
+      </S.BodyContentBox>
+    </S.BodyContainer>
   );
 };
 
