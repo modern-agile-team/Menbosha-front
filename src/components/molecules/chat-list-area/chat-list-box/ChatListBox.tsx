@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import { ChatRoomListType } from '@/types/chat';
+import { useRecoilValue } from 'recoil';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
-const ChatRoomListBox = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
+const ChatRoomListBox = () => {
+  const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   return (
     <S.ListContainer>
-      {chatRooms.map((data) => {
+      {getChatRoomList.map((data) => {
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');

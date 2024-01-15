@@ -56,11 +56,7 @@ const MainPageHeader = () => {
           </Link>
         </S.NavigateBox>
         <S.IconBox>
-          <Link
-            href={{
-              pathname: `/chat/${id}`,
-              query: { id: 0 },
-            }}>
+          <Link href={'/chat'}>
             <Image
               src="/chat/ChatIcon-Red.png"
               alt="ChatIcon"

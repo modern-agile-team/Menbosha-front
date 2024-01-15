@@ -9,12 +9,13 @@ import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 import CHAT from '@/apis/chatApi/chat';
 import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const ChatPageTemplate = () => {
   const [renderState, setRenderState] = useState(false);
-  const [getChatRoomList, setGetChatRoomList] = useState<ChatRoomListType[]>(
-    [],
-  );
+  const [getChatRoomList, setGetChatRoomList] =
+    useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
+
   // 모킹데이터 status
   // const [getMentorInfo, setGetMentorInfo] =
   //   useRecoilState<MentorInfoType[]>(MentorInfoAtom);
@@ -41,7 +42,7 @@ const ChatPageTemplate = () => {
     <S.PageWrapperRaw>
       <ChatNavbar />
       <ChatMentorList />
-      <ChatRoomList chatRooms={getChatRoomList} />
+      <ChatRoomList />
       <ChatSpace />
     </S.PageWrapperRaw>
   );
