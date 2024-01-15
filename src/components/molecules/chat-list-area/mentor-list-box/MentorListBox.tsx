@@ -6,6 +6,7 @@ import { MentorInfoType } from '@/types/chat';
 import USER from '@/apis/user';
 import { useRecoilState } from 'recoil';
 import Link from 'next/link';
+import useChatRoomCreate from '@/hooks/useCreateRoom';
 
 const MentorListBox = () => {
   const [getMentorList, setGetMentorList] =
@@ -17,6 +18,7 @@ const MentorListBox = () => {
   const [load, setLoad] = useState(false);
   const obsRef = useRef<HTMLDivElement>(null); // 옵저버 state
   const preventRef = useRef(true); // 옵저버 중복 방지
+  const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
 
   // 옵저버 생성
   useEffect(() => {
@@ -74,6 +76,10 @@ const MentorListBox = () => {
       ...prevStates,
       [mentorId]: !prevStates[mentorId] || false,
     }));
+  };
+
+  const handleChatIconClick = async (mentorId: number) => {
+    const confirmed = window.confirm(``);
   };
 
   return (

@@ -7,7 +7,7 @@ import { useRecoilState } from 'recoil';
 const useChatRoomCreate = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [chatRoom, setChatRoom] = useRecoilState(ChatRoomListAtom);
+  // const [chatRoom, setChatRoom] = useRecoilState(ChatRoomListAtom);
 
   const handleCreateChatRoom = async (
     receiverId: number,
@@ -21,7 +21,7 @@ const useChatRoomCreate = () => {
         chatRoomType,
       };
       const result = await CHAT.createChatRoom(requestBody);
-      setChatRoom(result.data.content);
+      // setChatRoom(result.data.content);
       console.log('채팅룸 생성 성공:', result.data.content);
     } catch (error) {
       console.error('채팅룸 생성 시 오류가 발생했습니다.:', error);
