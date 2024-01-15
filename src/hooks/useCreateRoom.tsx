@@ -2,12 +2,11 @@ import CHAT from '@/apis/chatApi/chat';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import { CreateChatRoomRequestBody } from '@/types/chat';
 import { useState } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 const useChatRoomCreate = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // const [createChatRoom, setCreateChatRoom] = useState<any | null>(null);
   const [chatRoom, setChatRoom] = useRecoilState(ChatRoomListAtom);
 
   const handleCreateChatRoom = async (
