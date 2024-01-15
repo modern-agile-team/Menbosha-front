@@ -11,8 +11,14 @@ export type MentorInfoType = {
   };
 };
 
-export /** 채팅룸 전체조회 api 타입 */
-interface ChatRoomListApiType {
+/** 채팅룸 생성 request body */
+export interface CreateChatRoomRequestBody {
+  receiverId: number;
+  chatRoomType: string;
+}
+
+/** 채팅룸 전체조회 api 타입 */
+export interface ChatRoomListApiType {
   statusCode: number;
   contents: {
     totalCount: number;

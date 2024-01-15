@@ -1,3 +1,5 @@
+import React from 'react';
+
 const MypageBadge = () => {
   return <div>온도/칭호 페이지</div>;
 };

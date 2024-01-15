@@ -52,7 +52,7 @@ const SubPageHeader = () => {
               query: { id: 0 },
             }}>
             <Image
-              src="/ChatIcon-Red.png"
+              src="/chat/ChatIcon-Red.png"
               alt="ChatIcon"
               width="28"
               height="28"
