@@ -17,7 +17,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 COPY package.json package-lock.json ./
-RUN npm ci --platform=linuxmusl --arch=x64
 RUN npm run build
 
 # Next.js collects completely anonymous telemetry data about general usage.
@@ -51,9 +50,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 80
 
-ENV PORT 3000
+ENV PORT 80
 # set hostname to localhost
 
 CMD ["node", "server.js"]

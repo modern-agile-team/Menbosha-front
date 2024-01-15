@@ -105,7 +105,7 @@ export const ImageBox = styled.div<ImageType>`
 
 interface LinkType {
   color: string;
-  size: string;
+  size?: string;
 }
 
 /**
