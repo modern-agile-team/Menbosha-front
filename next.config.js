@@ -11,6 +11,8 @@ const nextConfig = {
     ];
   },
   images: {
+    loader: 'default', // 'imgix'에서 'default'로 변경
+    path: '', // 이미지 최적화 비활성화
     remotePatterns: [
       {
         protocol: 'https',
