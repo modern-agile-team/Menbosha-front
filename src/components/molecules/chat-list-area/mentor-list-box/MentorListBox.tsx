@@ -15,7 +15,7 @@ import { stringify } from 'querystring';
 import { ImageBox } from '@/components/common/globalStyled/styled';
 
 const MentorListBox = () => {
-  const MentorInfoMock = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
+  // const MentorInfoMock = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
   const [getMentorList, setGetMentorList] = useState<MentorInfoType[]>([]);
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
@@ -62,7 +62,7 @@ const MentorListBox = () => {
   const getMentorListApi = useCallback(async () => {
     setLoad(true); // 로드 시작
     if (totalPage > 0) {
-      const result = await USER.getMentorList(4, totalPage);
+      const result = await USER.getMentorList(5, totalPage);
       const reverseArr = [...result].reverse();
       result && setGetMentorList((prev) => [...prev, ...reverseArr]);
     }
