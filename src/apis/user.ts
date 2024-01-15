@@ -7,7 +7,6 @@ const USER = {
 
   async getMentorListPage(): Promise<any> {
     const result: AxiosResponse = await instance.get(`${USER.path}/page`);
-    // console.log(result);
     return result.data;
   },
 
@@ -22,7 +21,6 @@ const USER = {
         },
       },
     );
-    console.log(result);
     return result.data.data;
   },
 

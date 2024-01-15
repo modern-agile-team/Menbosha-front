@@ -1,15 +1,18 @@
 import { Axios, AxiosResponse } from 'axios';
 import instance from '../axiosInstance';
+import { CreateChatRoomRequestBody } from '@/types/chat';
 
 const CHAT = {
   path: '/chat-room',
 
   /** 채팅룸 생성 api */
-  async createChatRoom(receiverId: number): Promise<any> {
+  async createChatRoom({
+    receiverId,
+    chatRoomType,
+  }: CreateChatRoomRequestBody): Promise<any> {
     const result: AxiosResponse<any> = await instance.post(`${CHAT.path}`, {
-      params: {
-        receiverId: receiverId,
-      },
+      receiverId: receiverId,
+      chatRoomType: chatRoomType,
     });
     return result;
   },

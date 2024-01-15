@@ -1,3 +1,5 @@
+import React from 'react';
+
 const MyPageInfo = () => {
   return <div>본인 정보 페이지</div>;
 };

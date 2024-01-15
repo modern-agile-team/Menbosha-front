@@ -1,4 +1,5 @@
 import LoginTemplate from '@/components/templates/LoginTemplate';
+import React from 'react';
 
 const KakaoCallback = () => {
   return (
