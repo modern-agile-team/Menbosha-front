@@ -21,7 +21,6 @@ const CHAT = {
   async getChatRoomList(): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(`${CHAT.path}/new`);
     // console.log(result);
-
     return result.data.contents;
   },
 
