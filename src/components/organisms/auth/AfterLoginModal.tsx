@@ -47,7 +47,7 @@ const AfterLoginModal = ({ show, hide }: ModalType) => {
             X
           </TextBox>
         </FlexBox>
-        <LinkBox href={{ pathname: `/userpage` }} color="#fff">
+        <LinkBox href={{ pathname: `/mypage` }} color="#fff">
           마이페이지
         </LinkBox>
         <ButtonBox color="#fff" onClick={handleLogoutApi}>
