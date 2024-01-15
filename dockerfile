@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
-RUN npm ci --platform=linuxmusl --arch=x64
+RUN npm ci; 
 RUN rm -rf ./.next/cache
 
 # Rebuild the source code only when needed
@@ -17,6 +17,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 COPY package.json package-lock.json ./
+RUN npm ci --platform=linuxmusl --arch=x64
 RUN npm run build
 
 # Next.js collects completely anonymous telemetry data about general usage.
