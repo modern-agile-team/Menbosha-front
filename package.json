@@ -24,6 +24,7 @@
     "react-slider": "^2.0.6",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
+    "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.1"
   },
