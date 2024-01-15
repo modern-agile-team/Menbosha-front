@@ -3,7 +3,7 @@ services:
   ma6-main:
     image: 2swo/ma6-menbosha-front
     ports:
-      - '3000:3000'
+      - '80:80'
     env_file:
       - .env
     restart: always
