@@ -33,7 +33,7 @@ export const ListArea = styled.div<ListAreaType>`
   border: 2px solid #ff4651;
   border-radius: 10px;
   background-color: ${({ isExpanded }) => (isExpanded ? '#FF4651' : '#ffffff')};
-  cursor: pointer;
+  cursor: ${({ isExpanded }) => (isExpanded ? 'default' : 'pointer')};
   transition:
     height 0.5s ease,
     background-color 0.5s ease;
@@ -95,7 +95,10 @@ export const IconBox = styled.div<ListAreaType>`
   visibility: ${({ isExpanded }) => (isExpanded ? 'visible' : 'hidden')};
   opacity: ${({ isExpanded }) => (isExpanded ? 1 : 0)};
   transition:
-    opacity 0.6s ease,
-    visibility 0.6s ease;
+    opacity 2s ease,
+    visibility 3s ease;
+  & > a {
+    cursor: pointer;
+  }
   /* border: 2px solid black; */
 `;

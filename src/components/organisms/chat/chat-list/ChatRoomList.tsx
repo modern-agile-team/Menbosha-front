@@ -3,13 +3,13 @@ import * as S from './styled';
 import ChatRoomListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatListBox';
 import { ChatRoomListType } from '@/types/chat';
 
-const ChatRoomList = ({ chatRooms }: { chatRooms: ChatRoomListType[] }) => {
+const ChatRoomList = () => {
   return (
     <S.ChatRoomListContainer>
       <S.ChatRoomListHeader>
         <span>열려 있는 채팅방</span>
       </S.ChatRoomListHeader>
-      <ChatRoomListBox chatRooms={chatRooms} />
+      <ChatRoomListBox />
     </S.ChatRoomListContainer>
   );
 };

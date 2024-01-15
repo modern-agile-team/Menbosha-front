@@ -1,22 +1,15 @@
-import React, {
-  startTransition,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import { useRecoilValue } from 'recoil';
 import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
 import { MentorInfoType } from '@/types/chat';
 import USER from '@/apis/user';
-import { stringify } from 'querystring';
-import { ImageBox } from '@/components/common/globalStyled/styled';
+import { useRecoilState } from 'recoil';
+import Link from 'next/link';
 
 const MentorListBox = () => {
-  // const MentorInfoMock = useRecoilValue<MentorInfoType[]>(MentorInfoAtom);
-  const [getMentorList, setGetMentorList] = useState<MentorInfoType[]>([]);
+  const [getMentorList, setGetMentorList] =
+    useRecoilState<MentorInfoType[]>(MentorInfoAtom);
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
   }>({});
@@ -62,7 +55,7 @@ const MentorListBox = () => {
   const getMentorListApi = useCallback(async () => {
     setLoad(true); // 로드 시작
     if (totalPage > 0) {
-      const result = await USER.getMentorList(5, totalPage);
+      const result = await USER.getMentorList(3, totalPage);
       const reverseArr = [...result].reverse();
       result && setGetMentorList((prev) => [...prev, ...reverseArr]);
     }
@@ -126,14 +119,16 @@ const MentorListBox = () => {
           </S.MentorInfoArea>
           {expandedStates[mentor.id] && (
             <S.IconBox isExpanded={expandedStates[mentor.id]}>
+              <Link href={'/mypage'}>
+                <Image
+                  src="/UserIcon-White.png"
+                  alt="UserIcon"
+                  width="36"
+                  height="36"
+                />
+              </Link>
               <Image
-                src="/UserIcon-White.png"
-                alt="UserIcon"
-                width="36"
-                height="36"
-              />
-              <Image
-                src="/ChatIcon-White.png"
+                src="/chat/ChatIcon-White.png"
                 alt="ChatIcon"
                 width="36"
                 height="36"
