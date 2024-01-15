@@ -37,12 +37,12 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
         {props.head}
       </TextBox>
       <FlexBox type="flex">
-        <Image
+        <ImageBox
           src={props.userImage}
-          alt="프로필이미지"
-          width={53}
-          height={53}
-          style={{ borderRadius: 10 }}
+          width="114px"
+          height="135px"
+          size="cover"
+          style={{ borderRadius: 10, margin: 12 }}
         />
         <S.HeadProfile>
           <TextBox size={16}>{props.userName}</TextBox>

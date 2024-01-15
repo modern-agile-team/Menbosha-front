@@ -30,7 +30,7 @@ export interface HelpListType {
   body: string;
   name: string;
   userImage: string;
-  createAt: string;
+  createdAt: string;
 }
 
 /** 도와주세요 게시글 Unit정보 API타입 */
@@ -61,13 +61,9 @@ export interface HelpUnitHeadType {
   head: string;
   createdAt: string;
   unitOwner: boolean;
-  user: {
-    name: string;
-    userImage: {
-      imageUrl: string;
-      userId: number;
-    };
-  };
+  userName: string;
+  userImage: string;
+  body: string;
 }
 
 /** 도와주세요 게시글 본문 부분 타입 */

@@ -9,7 +9,7 @@ export const CreateTitle = styled.div`
   font-size: 48px;
   margin: 0px 0px 64px 0px;
   padding: 64px 0px 24px 0px;
-  color: #ffffff;
+  color: #000;
 `;
 
 export const CreateHeader = styled.div`
@@ -25,9 +25,9 @@ export const CreateHeadValue = styled.input`
   padding: 10px;
   margin: 16px 0px 16px 0px;
   outline: none;
-  background-color: #252525;
+  background-color: #fff;
   border-radius: 15px;
-  color: #fff;
+  color: #000;
   &::placeholder {
     color: #ffffff50;
   }
@@ -48,7 +48,7 @@ export const ImageUploadBox = styled.div`
 `;
 
 export const SubmitBox = styled.div`
-  color: #fff;
+  color: #000;
   cursor: pointer;
 `;
 
@@ -59,11 +59,23 @@ interface DropType {
 export const DropDownImageBox = styled.label<DropType>`
   display: flex;
   border: 1px solid #ffbb5c;
-  color: #fff;
+  color: #000;
   width: 100%;
-  height: 100px;
+  height: 200px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: ${({ drag }) => (drag ? '#999' : '#252525')};
+  background-color: ${({ drag }) => (drag ? '#999' : '#FFF')};
+  > :nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > :nth-child(1) {
+      font-size: 55px;
+    }
+    > :nth-child(2),
+    :nth-child(3) {
+      font-size: 12px;
+    }
+  }
 `;

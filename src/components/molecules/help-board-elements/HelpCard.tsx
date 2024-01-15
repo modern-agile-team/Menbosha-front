@@ -20,6 +20,9 @@ const HelpCard = (props: HelpListType) => {
           id: props.id,
         },
       }}>
+      <TextBox size={14} color="#000">
+        {props.name}
+      </TextBox>
       <S.CardContainer>
         <S.CardImageBox src={props.image}></S.CardImageBox>
         <TextBox size={20} color="#C63D2F" style={{ padding: '13px 0px' }}>
@@ -28,16 +31,16 @@ const HelpCard = (props: HelpListType) => {
         {isStateHtml && (
           <TextBox
             size={14}
-            color="#fff"
+            color="#000"
             style={{ padding: '0px 0px 10px 0px' }}
             dangerouslySetInnerHTML={{ __html: props.body }}
           />
         )}
         <TextBox
           size={14}
-          color="#fff"
+          color="#000"
           style={{ padding: '10px 0px 10px 0px' }}>
-          {props.name}
+          {props.createdAt.slice(0, 10)}
         </TextBox>
       </S.CardContainer>
     </S.CardLink>

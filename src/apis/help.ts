@@ -50,12 +50,17 @@ const HELP = {
   },
 
   /**리스트 불러오는 api */
-  async getHelpBoardList(page: number): Promise<HelpListApiType> {
+  async getHelpBoardList(
+    category: number,
+    page: number,
+  ): Promise<HelpListApiType> {
     const result: AxiosResponse = await instance.get(`${HELP.path}`, {
       params: {
+        category: category,
         page: page,
       },
     });
+    console.log(result);
     return result.data;
   },
 

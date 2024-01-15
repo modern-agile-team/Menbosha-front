@@ -7,10 +7,16 @@ import { MentorBoardCardType } from '@/types/mentor';
 import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 /**게시판으로 라우트 */
 const MentorBoardCard = (props: MentorBoardCardType) => {
+  const [isHtml, setHtml] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setHtml(true);
+  }, []);
 
   const handleRouteBoard = () => {
     router.push(
@@ -74,9 +80,15 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
           style={{ padding: '12px 0px 0px 0px' }}>
           {props.head}
         </TextBox>
-        <TextBox size={12} color="#000" style={{ padding: '6px 0px 24px 0px' }}>
-          {props.body}
-        </TextBox>
+        {isHtml && (
+          <TextBox
+            size={12}
+            color="#000"
+            style={{ padding: '6px 0px 24px 0px' }}
+            dangerouslySetInnerHTML={{
+              __html: props.body as string,
+            }}></TextBox>
+        )}
         <TextBox size={10} color="#000">
           {props.createdAt.slice(0, 10)}
         </TextBox>

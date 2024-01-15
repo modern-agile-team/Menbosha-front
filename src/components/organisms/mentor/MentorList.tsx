@@ -111,17 +111,6 @@ const MentorList = () => {
     setMockingData(res.data);
   };
 
-  useEffect(() => {
-    getPage();
-  }, []);
-
-  useEffect(() => {
-    // getMockingDataApi();
-    if (totalPage) {
-      getMentorListApi();
-    }
-  }, [totalPage]);
-
   return (
     <S.MentoCardContainer>
       {getMentorData.map((data: MentorType) => {

@@ -73,10 +73,9 @@ const SelectBox = styled.div`
   width: 200px;
   margin: 0px 8px 16px 8px;
   border-radius: 5px;
-  background-color: #252525;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   align-self: center;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 25%);
   cursor: pointer;
   z-index: 1;
   &::before {
@@ -107,8 +106,8 @@ const SelectOptions = styled.div<SO>`
   padding: 0;
   border-radius: 8px;
   border: ${(props) => (props.show === 'true' ? '1px solid #ffbb5c' : 'none')};
-  background-color: #222222;
-  color: #fefefe;
+  background-color: #fff;
+  color: #000;
 `;
 
 const Option = styled.div`

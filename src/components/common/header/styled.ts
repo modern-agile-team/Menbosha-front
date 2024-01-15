@@ -51,6 +51,15 @@ export const NavigateBox = styled.div`
   }
 `;
 
+export const MentorNavBox = styled.div`
+  color: #c58940;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    color: #ffac60;
+  }
+`;
+
 export const IconBox = styled.div`
   display: flex;
   width: 100px;
@@ -83,8 +92,12 @@ export const MentorModal = styled.div<MentorType>`
     text-decoration: none;
     z-index: 2;
     cursor: pointer;
-    color: #fff;
+    color: #c58940;
+    font-weight: bold;
     padding: 10px;
+    &:hover {
+      color: #ffac60;
+    }
   }
   :nth-child(3) {
     ${({ isMentor }) => {

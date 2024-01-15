@@ -30,9 +30,9 @@ const CategoryContainer = styled.div`
 
 const CategoryBox = styled.div`
   padding: 7px;
-  border: 1px solid #fff;
+  border: 1px solid #ff772b;
   border-radius: 10px;
-  color: #fff;
+  color: #000;
   width: auto;
   margin: 6px;
   font-size: 16px;
