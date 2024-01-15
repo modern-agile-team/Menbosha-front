@@ -32,7 +32,7 @@ export const Wave = styled.div`
   height: 1030vw;
   position: absolute;
   top: -1027vw;
-  background-color: #252525;
+  background-color: #fff;
   border: 5px solid #fe2;
   z-index: -1;
 `;

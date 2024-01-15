@@ -228,7 +228,7 @@ const CreateBody = () => {
       <S.CreateTitle>게시글 작성하기</S.CreateTitle>
       <div>
         <S.CreateHeader>
-          <TextBox color="#ffffff" size={20} style={{ width: '100%' }}>
+          <TextBox color="#000" size={20} style={{ width: '100%' }}>
             제목
           </TextBox>
           <S.CreateHeadValue
@@ -240,7 +240,7 @@ const CreateBody = () => {
             }}></S.CreateHeadValue>
         </S.CreateHeader>
         <FlexBox type="flex">
-          <TextBox color="#ffffff" size={20}>
+          <TextBox color="#000" size={20}>
             본문
           </TextBox>
           <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
@@ -256,8 +256,8 @@ const CreateBody = () => {
             placeholder="글을 작성해 주세요."
             onChange={(e: any) => setQuillText(e)}
             style={{
-              backgroundColor: '#252525',
-              color: '#fff',
+              backgroundColor: '#fff',
+              color: '#000',
               height: '100%',
               minHeight: 400,
               borderRadius: 15,
@@ -265,10 +265,7 @@ const CreateBody = () => {
           />
         </S.QuillBox>
       </div>
-      <TextBox
-        color="#ffffff"
-        size={20}
-        style={{ margin: '48px 0px 16px 0px' }}>
+      <TextBox color="#000" size={20} style={{ margin: '48px 0px 16px 0px' }}>
         사진{' '}
         <TextBox color="#f00" size={11}>
           이미지는 3개까지만 업로드 가능합니다.
@@ -290,8 +287,8 @@ const CreateBody = () => {
                       <Image
                         src={url as string}
                         alt="업로드 사진"
-                        width={100}
-                        height={100}
+                        width={200}
+                        height={180}
                         onClick={() => handleFilterFile(id as number)}
                       />
                     </div>

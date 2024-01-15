@@ -13,7 +13,7 @@ const HelpTemplate = () => {
           <Category />
           <Link
             href={{
-              pathname: `/help/create`,
+              pathname: `/create`,
             }}>
             글쓰기
           </Link>

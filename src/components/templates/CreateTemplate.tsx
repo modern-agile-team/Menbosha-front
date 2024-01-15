@@ -7,7 +7,7 @@ const CreateTemplate = () => {
       <SubPageHeader />
       <div
         style={{ display: 'flex', justifyContent: 'center', width: '100vw' }}>
-        <CreateBody />;
+        <CreateBody />
       </div>
     </div>
   );

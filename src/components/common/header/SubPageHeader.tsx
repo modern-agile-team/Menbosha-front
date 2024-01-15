@@ -36,9 +36,7 @@ const SubPageHeader = () => {
         </S.LogoBox>
         <S.NavigateBox>
           <div>
-            <ButtonBox color="#fff" onClick={handleMentorModal}>
-              멘토
-            </ButtonBox>
+            <S.MentorNavBox onClick={handleMentorModal}>멘토</S.MentorNavBox>
             <S.MentorModal isMentor={mentorModal}>
               <Link href={`/mentor`}>프로필</Link>
               <Link href={`/mentor/board`}>게시글</Link>

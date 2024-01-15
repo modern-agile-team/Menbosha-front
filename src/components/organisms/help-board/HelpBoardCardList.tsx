@@ -52,7 +52,7 @@ const HelpBoardCardList = () => {
   const loadPost = useCallback(async () => {
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
-      const result = await HELP.getHelpBoardList(totalPage); //api요청 글 목록 불러오기
+      const result = await HELP.getHelpBoardList(5, totalPage); //api요청 글 목록 불러오기
       const reverseArr = [...result.data].reverse();
       result && setGetList((prev: any) => [...prev, ...reverseArr]);
     }
@@ -110,7 +110,7 @@ const HelpBoardCardList = () => {
               : '',
           head: data.head,
           body: data.body,
-          createAt: data.create_at,
+          createdAt: data.createdAt,
         };
         return (
           <S.HelpCardWrapper key={data.id}>
