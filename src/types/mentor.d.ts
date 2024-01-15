@@ -12,7 +12,7 @@ export type MentorBoardListType = {
   id: number;
   head: string;
   body: string;
-  category: number;
+  categoryId: number;
   createdAt: string;
   updatedAt: string;
   user: {
@@ -23,7 +23,7 @@ export type MentorBoardListType = {
       imageUrl: string;
     };
   };
-  boardImage: {
+  mentorBoardImages: {
     id: number;
     boardId: number;
     imageUrl: string;
@@ -41,7 +41,10 @@ export interface MentorBoardCardType {
   userId: number;
   userName: string;
   userImage: string;
-  boardImage: Array;
+  mentorBoardImage: {
+    id: number;
+    imageUrl: string;
+  }[];
 }
 
 export type MentorBoardUnitType = {
@@ -51,7 +54,7 @@ export type MentorBoardUnitType = {
   createdAt: string;
   updatedAt: string;
   categoryId: number;
-  image: Array;
+  mentorBoardImages: Array;
   user: {
     name: string;
     userImage: {
@@ -70,7 +73,10 @@ export interface MentorBoardUnitPropsType {
 
 /**멘토 게시글 중 Head Props Type */
 export interface MBUnitHeadPropsType {
+  id: number;
   head: string;
+  body: string;
+  image: Array;
   userName: string;
   userImage: string;
   category: string;
@@ -80,10 +86,4 @@ export interface MBUnitHeadPropsType {
 export interface MBUnitBodyPropsType {
   image: Array;
   body: string;
-}
-
-/**멘토 게시글 중 Bottom Props Type */
-export interface MBUnitBottomPropsType {
-  id: number;
-  userImage;
 }

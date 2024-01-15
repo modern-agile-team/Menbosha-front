@@ -61,7 +61,7 @@ const MentorList = () => {
   const getMentorListApi = useCallback(async () => {
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
-      const result = await USER.getMentorList(totalPage); //api요청 글 목록 불러오기
+      const result = await USER.getMentorList(3, totalPage); //api요청 글 목록 불러오기
       const reverseArr = [...result].reverse();
       result && setMentorData((prev: any) => [...prev, ...reverseArr]);
     }

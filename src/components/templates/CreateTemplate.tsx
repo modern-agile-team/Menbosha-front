@@ -1,16 +1,16 @@
 import SubPageHeader from '../common/header/SubPageHeader';
-import CreateHelpBody from '../organisms/create-help-board/CreateHelpBody';
+import CreateBody from '../organisms/create-board/CreateBody';
 
-const CreateHelpTemplate = () => {
+const CreateTemplate = () => {
   return (
     <div>
       <SubPageHeader />
       <div
         style={{ display: 'flex', justifyContent: 'center', width: '100vw' }}>
-        <CreateHelpBody />;
+        <CreateBody />;
       </div>
     </div>
   );
 };
 
-export default CreateHelpTemplate;
+export default CreateTemplate;

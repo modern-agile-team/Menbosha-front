@@ -1,8 +1,7 @@
 import CreateTemplate from '@/components/templates/CreateTemplate';
-import React from 'react';
 
-const CreateHelp = () => {
+const CreateBoard = () => {
   return <CreateTemplate />;
 };
 
-export default CreateHelp;
+export default CreateBoard;

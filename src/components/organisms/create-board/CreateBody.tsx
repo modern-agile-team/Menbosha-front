@@ -6,11 +6,15 @@ import Image from 'next/image';
 import * as S from './styled';
 import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
 import { useRecoilState, useResetRecoilState } from 'recoil';
-import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
+import {
+  CategorySelectAtom,
+  SectionSelectAtom,
+} from '@/recoil/atoms/CategorySelectAtom';
 import { categoryList } from '@/components/common/category/categoryList';
 import HELP from '@/apis/help';
 import CategorySelectorBox from '@/components/molecules/create-board-elements/CategorySelector';
 import SectionSelectorBox from '@/components/molecules/create-board-elements/ChoiceSection';
+import MENTOR from '@/apis/mentor';
 
 const QuillWrapper = dynamic(() => import('react-quill'), {
   ssr: false,
@@ -61,10 +65,11 @@ export interface IFileTypes {
   url?: string;
 }
 
-const CreateHelpBody = () => {
+const CreateBody = () => {
   const [unitTitle, setUnitTitle] = useState<string>(''); //제목
   const [quillText, setQuillText] = useState<string>(''); //본문
   const [category, setCategory] = useRecoilState(CategorySelectAtom); //카테고리
+  const [section, setSection] = useRecoilState(SectionSelectAtom);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const router = useRouter();
@@ -178,7 +183,13 @@ const CreateHelpBody = () => {
       formData.append('files', data.object as File);
     });
     if (confirm('업로드하시겠습니까?')) {
-      if (category === '' || unitTitle === '' || quillText === '') {
+      if (
+        category === '' ||
+        unitTitle === '' ||
+        quillText === '' ||
+        section === ''
+      ) {
+        if (section === '') alert('게시판 위치를 선택해주세요.');
         if (category === '') alert('카테고리를 선택해주세요.');
         if (unitTitle === '') alert('제목을 입력해주세요.');
         if (quillText === '') alert('본문내용을 입력해주세요.');
@@ -189,14 +200,24 @@ const CreateHelpBody = () => {
           body: quillText,
           category: catID && catID.id,
         };
-        const data = await HELP.createHelpBoard(isData);
-        if (files[0] !== null) {
-          await HELP.createImg(formData, data.id);
+        if (section === '멘토 게시판') {
+          const data = await MENTOR.createMentorBoard(isData);
+          if (files[0] !== null) {
+            await MENTOR.createMentorBoardImage(formData, data.id);
+          }
+          router.push({
+            pathname: `/mentor/board`,
+          });
+        } else {
+          const data = await HELP.createHelpBoard(isData);
+          if (files[0] !== null) {
+            await HELP.createImg(formData, data.id);
+          }
+          //router => 해당 글 로 페이지 이동
+          router.push({
+            pathname: `/help`,
+          });
         }
-        //router => 해당 글 로 페이지 이동
-        router.push({
-          pathname: `/help`,
-        });
         resetSelect(); //게시글 카테고리 초기화
       }
     }
@@ -301,4 +322,4 @@ const CreateHelpBody = () => {
   );
 };
 
-export default CreateHelpBody;
+export default CreateBody;

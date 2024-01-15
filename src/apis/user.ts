@@ -11,11 +11,12 @@ const USER = {
   },
 
   /**페이지 별로 멘토(유저)정보 받아오는 api [get]*/
-  async getMentorList(page: number): Promise<any> {
+  async getMentorList(category: number, page: number): Promise<any> {
     const result: AxiosResponse = await instance.get(
       `${USER.path}/mentor-list`,
       {
         params: {
+          categoryId: category,
           page: page,
         },
       },
@@ -29,7 +30,7 @@ const USER = {
         userId: id,
       },
     });
-    return result.data.data;
+    return result.data;
   },
 };
 

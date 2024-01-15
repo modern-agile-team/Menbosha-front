@@ -1,10 +1,10 @@
-import CreateHelpTemplate from '@/components/templates/CreateHelpTemplate';
+import CreateTemplate from '@/components/templates/CreateTemplate';
 import React from 'react';
 
 const CreateMentee = () => {
   return (
     <div>
-      <CreateHelpTemplate />
+      <CreateTemplate />
     </div>
   );
 };

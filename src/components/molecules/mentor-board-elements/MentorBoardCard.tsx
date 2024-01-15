@@ -47,29 +47,37 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
           width="50px"
           height="50px"
           size="cover"
-          style={{ borderRadius: 10 }}
+          style={{ borderRadius: 10, border: '2px solid #FF772B' }}
         />
         <div>
           <TextBox
-            color="#fff"
+            color="#000"
             size={16}
             style={{ padding: '3px', fontWeight: 'bold' }}>
             {props.userName}
           </TextBox>
-          <TextBox color="#fff" size={12} style={{ padding: '3px' }}>
+          <TextBox color="#000" size={12} style={{ padding: '3px' }}>
             {foundCategory ? foundCategory.category : 'not Found'}
           </TextBox>
         </div>
       </S.MentorBoardUserBox>
       <S.MentorBoardCardContainer onClick={handleRouteBoard}>
-        <S.CardImageBox>사진들어갈 곳</S.CardImageBox>
-        <TextBox size={20} color="#fae" style={{ padding: '12px 0px 0px 0px' }}>
+        {props.mentorBoardImage.length > 0 ? (
+          <S.CardImageBox
+            img={props.mentorBoardImage[0].imageUrl}></S.CardImageBox>
+        ) : (
+          <S.CardImageBox />
+        )}
+        <TextBox
+          size={20}
+          color="#FF772B"
+          style={{ padding: '12px 0px 0px 0px' }}>
           {props.head}
         </TextBox>
-        <TextBox size={12} color="#fff" style={{ padding: '6px 0px 24px 0px' }}>
+        <TextBox size={12} color="#000" style={{ padding: '6px 0px 24px 0px' }}>
           {props.body}
         </TextBox>
-        <TextBox size={10} color="#fff">
+        <TextBox size={10} color="#000">
           {props.createdAt.slice(0, 10)}
         </TextBox>
       </S.MentorBoardCardContainer>
