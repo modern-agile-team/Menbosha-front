@@ -4,9 +4,17 @@ import Image from 'next/image';
 import { ChatRoomListType } from '@/types/chat';
 import { useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
+import useModal from '@/hooks/useModal';
 
 const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
+  const { isOpenModal, handleModal } = useModal();
+
+  const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
+    e.preventDefault();
+    handleModal(); // Open the modal
+  };
+
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
@@ -20,7 +28,10 @@ const ChatRoomListBox = () => {
           !isNaN(createdAtDate.getMinutes());
 
         return (
-          <S.ChatRoomListArea key={data.chatRooms._id} {...data}>
+          <S.ChatRoomListArea
+            key={data.chatRooms._id}
+            {...data}
+            onContextMenu={handleChatRoomDelete}>
             <S.ChatRoomInfoBox key={data.chatPartner[0].id}>
               <S.ChatListLeft>
                 <S.ChatListGuestImage>
@@ -48,11 +59,15 @@ const ChatRoomListBox = () => {
                   </S.UnreadMessage>
                 )}
               </S.ChatListRight>
-              <S.ChatRoomTab></S.ChatRoomTab>
             </S.ChatRoomInfoBox>
           </S.ChatRoomListArea>
         );
       })}
+      {isOpenModal && (
+        <div>
+          <button onClick={handleModal}>채팅방 나가기</button>
+        </div>
+      )}
     </S.ListContainer>
   );
 };

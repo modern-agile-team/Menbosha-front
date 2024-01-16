@@ -72,7 +72,7 @@ export const ChatListCenter = styled.div`
   height: 6vh;
   justify-content: center;
   align-items: flex-start;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 `;
 
 export const ChatListGuestName = styled.span`
@@ -104,7 +104,7 @@ export const ChatListRight = styled.div`
   height: 5vh;
   margin-top: 2px;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   & > span {
     color: #000000;
     margin-bottom: 7px;
@@ -128,11 +128,4 @@ export const UnreadMessage = styled.div`
     font-size: 0.5em;
     color: white;
   }
-`;
-
-export const ChatRoomTab = styled.div`
-  display: flex;
-  margin-bottom: 40px;
-  width: 0.9vw;
-  border: 2px solid black;
 `;
