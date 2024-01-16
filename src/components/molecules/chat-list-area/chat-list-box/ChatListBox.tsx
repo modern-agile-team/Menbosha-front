@@ -13,6 +13,12 @@ const ChatRoomListBox = () => {
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
+        // 초기 채팅방 생성시엔 chat.createdAt이 number타입이 아니기 때문에
+        // 조건을 부여해서 isNaN이면 랜더링 안하는 것으로 했습니다.
+        const isValidTime =
+          !isNaN(createdAtDate.getHours()) &&
+          !isNaN(createdAtDate.getMinutes());
+
         return (
           <S.ChatRoomListArea key={data.chatRooms._id} {...data}>
             <S.ChatRoomInfoBox key={data.chatPartner[0].id}>
@@ -35,11 +41,14 @@ const ChatRoomListBox = () => {
                 </S.ChatListCenter>
               </S.ChatListLeft>
               <S.ChatListRight>
-                <span>{`${hours}:${minutes}`}</span>
-                <S.UnreadMessage>
-                  <span>{data.chatRooms.unReadChatCount}</span>
-                </S.UnreadMessage>
+                {isValidTime && <span>{`${hours}:${minutes}`}</span>}
+                {data.chatRooms.unReadChatCount > 0 && (
+                  <S.UnreadMessage>
+                    <span>{data.chatRooms.unReadChatCount}</span>
+                  </S.UnreadMessage>
+                )}
               </S.ChatListRight>
+              <S.ChatRoomTab></S.ChatRoomTab>
             </S.ChatRoomInfoBox>
           </S.ChatRoomListArea>
         );
