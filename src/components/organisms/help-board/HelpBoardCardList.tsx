@@ -68,7 +68,7 @@ const HelpBoardCardList = () => {
     }
   }, []);
 
-  const handleRouteChange = useCallback((e: any) => {
+  const handleRouteChange = (e: any) => {
     sessionStorage.setItem(
       `__next_scroll_back`,
       JSON.stringify({
@@ -76,7 +76,7 @@ const HelpBoardCardList = () => {
         y: window.scrollY.toString(),
       }),
     );
-  }, []);
+  };
 
   //   router발생시 스크롤 위치 저장
   useEffect(() => {

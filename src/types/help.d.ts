@@ -90,3 +90,24 @@ export interface ModifyHelpUnitType {
   categoryId: number;
   image?: Array;
 }
+
+export type PullingUpType = {
+  id: number;
+  body: string;
+  head: string;
+  category: number;
+  createdAt: string;
+  updatedAt: string;
+  unitOwner: boolean;
+  helpMeBoardImages: {
+    id: number;
+    imageUrl: string;
+  }[];
+  user: {
+    name: string;
+    userImage: {
+      imageUrl: string;
+      userId: number;
+    };
+  };
+};

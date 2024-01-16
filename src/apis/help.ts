@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import axios, { Axios, AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 import {
   HelpListApiType,
@@ -122,6 +122,28 @@ const HELP = {
       },
     );
     return result;
+  },
+
+  /** 도와주세요 끌올 api [patch] */
+  async pullingUp(boardId: number): Promise<any> {
+    const accessToken = localStorage.getItem('accessToken');
+    const result: AxiosResponse = await axios({
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}help-me-board/pulling-up`,
+      method: 'patch',
+      params: {
+        helpMeBoardId: boardId,
+      },
+      headers: {
+        access_token: accessToken,
+      },
+    });
+    return result;
+  },
+
+  /** 도와주세요 끌올 리스트 api [get]*/
+  async getPullingUp(): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${HELP.path}/pulling-up`);
+    return result.data.data;
   },
 };
 
