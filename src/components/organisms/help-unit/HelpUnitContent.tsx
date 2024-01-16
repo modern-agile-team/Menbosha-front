@@ -18,11 +18,26 @@ interface BoardIdType {
 
 const HelpUnitContent = ({ id }: BoardIdType) => {
   const [getUnitInfo, setUnitInfo] = useState<HelpUnitType>();
+  const router = useRouter();
 
   //Unit정보 불러오는 api
   const getHelpUnitApi = async () => {
     const response = await HELP.getHelpUnit(id);
     setUnitInfo(response);
+  };
+
+  const handlePullingUp = async () => {
+    if (confirm('끌올시키시겠습니까?')) {
+      await HELP.pullingUp(id);
+    }
+    sessionStorage.setItem(
+      '__next_scroll_back',
+      JSON.stringify({
+        x: 0,
+        y: window.scrollY.toString(),
+      }),
+    );
+    router.back();
   };
 
   //Unit의 정보 불러오는 api호출
@@ -40,9 +55,7 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
         scroll={false}>
         이전
       </LinkBox>
-      {/* <TextBox color="#f23" onClick={handleBack}>
-        이전
-      </TextBox> */}
+      <div onClick={handlePullingUp}>끌올시키기</div>
       <div>
         {getUnitInfo && <UnitContentHead {...getUnitInfo} />}
         {getUnitInfo && (
