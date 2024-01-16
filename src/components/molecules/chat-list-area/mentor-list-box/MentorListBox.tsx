@@ -7,6 +7,7 @@ import USER from '@/apis/user';
 import { useRecoilState } from 'recoil';
 import Link from 'next/link';
 import useChatRoomCreate from '@/hooks/useCreateRoom';
+import { handleChatIconClickType } from '@/types/chat';
 
 const MentorListBox = () => {
   const [getMentorList, setGetMentorList] =
@@ -78,8 +79,16 @@ const MentorListBox = () => {
     }));
   };
 
-  const handleChatIconClick = async (mentorId: number) => {
-    const confirmed = window.confirm(``);
+  const handleChatIconClick = async ({
+    mentorId,
+    mentorName,
+  }: handleChatIconClickType) => {
+    const confirmed = window.confirm(
+      `${mentorName}과 채팅을 시작하시겠습니까?`,
+    );
+    if (confirmed) {
+      await handleCreateChatRoom(mentorId);
+    }
   };
 
   return (
@@ -138,6 +147,12 @@ const MentorListBox = () => {
                 alt="ChatIcon"
                 width="36"
                 height="36"
+                onClick={() =>
+                  handleChatIconClick({
+                    mentorId: mentor.id,
+                    mentorName: mentor.name,
+                  })
+                }
               />
             </S.IconBox>
           )}
