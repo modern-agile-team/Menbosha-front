@@ -34,7 +34,7 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
       '__next_scroll_back',
       JSON.stringify({
         x: 0,
-        y: window.scrollY.toString(),
+        y: 0,
       }),
     );
     router.back();

@@ -13,8 +13,6 @@ const HelpPullingBoardList = () => {
     setPullingData(temp);
   };
 
-  console.log(getPullingData);
-
   useEffect(() => {
     getPullingUpApi();
   }, []);
