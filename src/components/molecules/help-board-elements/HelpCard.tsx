@@ -13,7 +13,6 @@ const HelpCard = (props: HelpListType) => {
     setStateHtml(true);
   }, []);
 
-  console.log(props.createdAt);
   return (
     <S.CardLink
       href={{
