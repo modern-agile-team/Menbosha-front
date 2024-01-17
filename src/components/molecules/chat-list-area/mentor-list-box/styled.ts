@@ -97,7 +97,7 @@ export const IconBox = styled.div<ListAreaType>`
   transition:
     opacity 2s ease,
     visibility 3s ease;
-  & > a {
+  & > * {
     cursor: pointer;
   }
   /* border: 2px solid black; */

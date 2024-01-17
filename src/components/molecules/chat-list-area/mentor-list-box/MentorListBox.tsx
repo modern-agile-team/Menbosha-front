@@ -6,6 +6,8 @@ import { MentorInfoType } from '@/types/chat';
 import USER from '@/apis/user';
 import { useRecoilState } from 'recoil';
 import Link from 'next/link';
+import useChatRoomCreate from '@/hooks/useCreateRoom';
+import { handleChatIconClickType } from '@/types/chat';
 
 const MentorListBox = () => {
   const [getMentorList, setGetMentorList] =
@@ -17,6 +19,7 @@ const MentorListBox = () => {
   const [load, setLoad] = useState(false);
   const obsRef = useRef<HTMLDivElement>(null); // 옵저버 state
   const preventRef = useRef(true); // 옵저버 중복 방지
+  const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
 
   // 옵저버 생성
   useEffect(() => {
@@ -76,6 +79,18 @@ const MentorListBox = () => {
     }));
   };
 
+  const handleChatIconClick = async ({
+    mentorId,
+    mentorName,
+  }: handleChatIconClickType) => {
+    const confirmed = window.confirm(
+      `${mentorName}님과 채팅을 시작하시겠습니까?`,
+    );
+    if (confirmed) {
+      await handleCreateChatRoom(mentorId);
+    }
+  };
+
   return (
     <S.ListContainer>
       {getMentorList.map((mentor) => (
@@ -132,6 +147,12 @@ const MentorListBox = () => {
                 alt="ChatIcon"
                 width="36"
                 height="36"
+                onClick={() =>
+                  handleChatIconClick({
+                    mentorId: mentor.id,
+                    mentorName: mentor.name,
+                  })
+                }
               />
             </S.IconBox>
           )}

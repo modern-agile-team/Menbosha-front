@@ -17,6 +17,12 @@ export interface CreateChatRoomRequestBody {
   chatRoomType: string;
 }
 
+/** 채팅룸 생성시 필요한 데이터 */
+export interface handleChatIconClickType {
+  mentorId: number;
+  mentorName: string;
+}
+
 /** 채팅룸 전체조회 api 타입 */
 export interface ChatRoomListApiType {
   statusCode: number;
@@ -110,4 +116,10 @@ export interface ChatType {
     hasNext: boolean;
     lastPage: number;
   }[];
+}
+
+/** 채팅 페이지 모달 타입 */
+export interface ModalType {
+  show: boolean;
+  hide: () => void;
 }
