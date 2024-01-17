@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
 import { useRouter } from 'next/router';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const MentorBoardList = () => {
   const [getBoardData, setBoardData] = useState<MentorBoardListType[]>([]);
@@ -12,6 +14,7 @@ const MentorBoardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
+  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -22,15 +25,30 @@ const MentorBoardList = () => {
     };
   }, [obsRef, getBoardData]);
 
-  //첫 페이지 로드
   useEffect(() => {
+    //첫 페이지 로드
     getPage();
+    //스크롤 수동으로 조정 설정
+    if (
+      'scrollRestoration' in history &&
+      history.scrollRestoration !== 'manual'
+    ) {
+      history.scrollRestoration = 'manual';
+    }
   }, []);
 
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
   }, [totalPage]);
+
+  useEffect(() => {
+    setBoardData([]);
+    getPage();
+    setTimeout(() => {
+      loadPost();
+    }, 0);
+  }, [filterCategory]);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
@@ -42,7 +60,7 @@ const MentorBoardList = () => {
   };
   //페이지 수 로드 함수
   const getPage = useCallback(async () => {
-    const response = await MENTOR.getMentorBoardPage(5);
+    const response = await MENTOR.getMentorBoardPage(filterCategory);
     setTotalPage(response.totalPage);
   }, []);
 
@@ -51,21 +69,12 @@ const MentorBoardList = () => {
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
       //나중에 카테고리 전역으로 관리 예정
-      const result = await MENTOR.getMentorBoardList(5, totalPage); //api요청 글 목록 불러오기
+      const result = await MENTOR.getMentorBoardList(filterCategory, totalPage); //api요청 글 목록 불러오기
       const reverseArr = [...result].reverse();
       result && setBoardData((prev: any) => [...prev, ...reverseArr]);
     }
     setLoad(false);
   }, [totalPage]);
-  // 스크롤 수동으로 조정 설정
-  useEffect(() => {
-    if (
-      'scrollRestoration' in history &&
-      history.scrollRestoration !== 'manual'
-    ) {
-      history.scrollRestoration = 'manual';
-    }
-  }, []);
 
   const handleRouteChange = useCallback((e: any) => {
     sessionStorage.setItem(
@@ -93,8 +102,10 @@ const MentorBoardList = () => {
       sessionStorage.getItem(`__next_scroll_back`) as string,
     );
     temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // window.sessionStorage.clear();
-  }, [getBoardData]);
+    setTimeout(() => {
+      window.sessionStorage.clear();
+    }, 1000);
+  }, []);
 
   return (
     <S.MentoBoardCardContainer>
