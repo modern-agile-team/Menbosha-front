@@ -56,11 +56,10 @@ const HELP = {
   ): Promise<HelpListApiType> {
     const result: AxiosResponse = await instance.get(`${HELP.path}`, {
       params: {
-        category: category,
+        category: category !== 1 ? category : '',
         page: page,
       },
     });
-    console.log(result);
     return result.data;
   },
 

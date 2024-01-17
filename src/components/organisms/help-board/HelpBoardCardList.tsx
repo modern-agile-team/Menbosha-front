@@ -6,6 +6,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { HelpListApiType } from '@/types/help';
 import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const HelpBoardCardList = () => {
   const [totalPage, setTotalPage] = useState(0); //페이지 수
@@ -14,6 +16,8 @@ const HelpBoardCardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
+  const [filterCategory, setFilterCategory] =
+    useRecoilState(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -24,9 +28,16 @@ const HelpBoardCardList = () => {
     };
   }, [obsRef, getList]);
 
-  //첫 페이지 로드
   useEffect(() => {
+    //첫 페이지 로드
     getLoadPage();
+    // 스크롤 수동으로 조정 설정
+    if (
+      'scrollRestoration' in history &&
+      history.scrollRestoration !== 'manual'
+    ) {
+      history.scrollRestoration = 'manual';
+    }
   }, []);
 
   //무한스크롤 로드
@@ -52,21 +63,12 @@ const HelpBoardCardList = () => {
   const loadPost = useCallback(async () => {
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
-      const result = await HELP.getHelpBoardList(5, totalPage); //api요청 글 목록 불러오기
+      const result = await HELP.getHelpBoardList(filterCategory, totalPage); //api요청 글 목록 불러오기
       const reverseArr = [...result.data].reverse();
       result && setGetList((prev: any) => [...prev, ...reverseArr]);
     }
     setLoad(false);
   }, [totalPage]);
-  // 스크롤 수동으로 조정 설정
-  useEffect(() => {
-    if (
-      'scrollRestoration' in history &&
-      history.scrollRestoration !== 'manual'
-    ) {
-      history.scrollRestoration = 'manual';
-    }
-  }, []);
 
   const handleRouteChange = (e: any) => {
     sessionStorage.setItem(
