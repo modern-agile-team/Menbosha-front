@@ -6,6 +6,7 @@ import {
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 import Category from '@/components/common/category/Category';
+import COUNT from './count';
 
 const MENTOR = {
   path: `/mentor-board`,
@@ -16,6 +17,7 @@ const MENTOR = {
     body,
     category,
   }: CreateMentorBoardType): Promise<any> {
+    await COUNT.totalCount('increment', 'countMentorBoard');
     const result: AxiosResponse = await instance.post<CreateMentorBoardType>(
       `${MENTOR.path}`,
       {
