@@ -44,8 +44,12 @@ const HELP = {
   },
 
   /**리스트 페이지 수 불러오는 api*/
-  async getHelpBoardPage(): Promise<any> {
-    const result: AxiosResponse = await instance.get(`${HELP.path}/page`);
+  async getHelpBoardPage(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${HELP.path}/page`, {
+      params: {
+        categoryId: id !== 1 ? id : '',
+      },
+    });
     return result.data;
   },
 
@@ -56,7 +60,7 @@ const HELP = {
   ): Promise<HelpListApiType> {
     const result: AxiosResponse = await instance.get(`${HELP.path}`, {
       params: {
-        category: category !== 1 ? category : '',
+        categoryId: category !== 1 ? category : '',
         page: page,
       },
     });

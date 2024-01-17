@@ -23,7 +23,7 @@ const Category = () => {
     const temp = categoryList.find((data) => data.category === value)?.id;
     temp && setCatNum(temp);
     if (temp === catNum) {
-      setCatNum(0);
+      setCatNum(1);
     }
   };
 
