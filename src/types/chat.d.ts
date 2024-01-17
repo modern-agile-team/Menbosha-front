@@ -118,8 +118,10 @@ export interface ChatType {
   }[];
 }
 
-/** 채팅 페이지 모달 타입 */
+/** 채팅방 삭제 모달 타입 */
 export interface ModalType {
   show: boolean;
   hide: () => void;
+  chatRoomId: string;
+  partnerName: string;
 }
