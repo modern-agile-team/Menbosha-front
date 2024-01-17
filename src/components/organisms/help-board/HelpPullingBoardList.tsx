@@ -17,6 +17,8 @@ const HelpPullingBoardList = () => {
     getPullingUpApi();
   }, []);
 
+  console.log(getPullingData);
+
   return (
     <S.HelpCardContainer>
       {getPullingData.map((data: any) => {

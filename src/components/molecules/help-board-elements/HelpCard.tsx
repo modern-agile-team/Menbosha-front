@@ -12,6 +12,8 @@ const HelpCard = (props: HelpListType) => {
   useEffect(() => {
     setStateHtml(true);
   }, []);
+
+  console.log(props.createdAt);
   return (
     <S.CardLink
       href={{
@@ -40,7 +42,7 @@ const HelpCard = (props: HelpListType) => {
           size={14}
           color="#000"
           style={{ padding: '10px 0px 10px 0px' }}>
-          {props.createdAt.slice(0, 10)}
+          {props.createdAt && props.createdAt.slice(0, 10)}
         </TextBox>
       </S.CardContainer>
     </S.CardLink>

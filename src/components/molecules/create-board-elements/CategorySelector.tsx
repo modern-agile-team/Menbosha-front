@@ -5,11 +5,13 @@ import useModal from '@/hooks/useModal';
 import { categoryList } from '../../common/category/categoryList';
 import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
 import { useRouter } from 'next/router';
+import { filterType } from '@/components/common/category/Category';
 
 const CategorySelectorBox = () => {
   const [getCategory, setCategory] = useRecoilState(CategorySelectAtom);
   const resetSelect = useResetRecoilState(CategorySelectAtom);
   const { isOpenModal, handleModal } = useModal();
+  const [getFilterCategory, setFilterCategory] = useState<filterType[]>([]);
   const router = useRouter();
 
   /** 게시판 선택 시 */
@@ -20,6 +22,8 @@ const CategorySelectorBox = () => {
 
   //다른 페이지로 넘어가도 select초기화
   useEffect(() => {
+    const temp = categoryList.filter((data) => data.id !== 1);
+    setFilterCategory(temp);
     router.events.on('routeChangeStart', resetSelect);
     return () => {
       router.events.off('routeChangeStart', resetSelect);
@@ -31,7 +35,7 @@ const CategorySelectorBox = () => {
       <SelectBox onClick={handleModal}>
         <Label>{getCategory ? getCategory : '카테고리'}</Label>
         <SelectOptions show={`${isOpenModal}`}>
-          {categoryList.map((list) => {
+          {getFilterCategory.map((list) => {
             return (
               <div key={list.id}>
                 <Option onClick={handleOnChangeSelectValue}>
