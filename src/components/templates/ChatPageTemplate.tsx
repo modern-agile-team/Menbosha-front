@@ -12,7 +12,6 @@ import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const ChatPageTemplate = () => {
-  const [renderState, setRenderState] = useState(false);
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
 
@@ -24,7 +23,6 @@ const ChatPageTemplate = () => {
   const getChatRoomListApi = async () => {
     const res = await CHAT.getChatRoomList();
     setGetChatRoomList(res.chatRooms);
-    setRenderState(true);
   };
 
   /** 멘토리스트 전체조회 api (mock) */

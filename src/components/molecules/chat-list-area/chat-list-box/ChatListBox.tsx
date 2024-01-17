@@ -66,7 +66,14 @@ const ChatRoomListBox = () => {
       })}
       {isOpenModal && (
         <div>
-          <ChatRoomOutModal show={isOpenModal} hide={handleModal} />
+          {getChatRoomList.map((data) => (
+            <ChatRoomOutModal
+              show={isOpenModal}
+              hide={handleModal}
+              chatRoomId={data.chatRooms._id}
+              partnerName={data.chatPartner[0].name}
+            />
+          ))}
         </div>
       )}
     </S.ListContainer>

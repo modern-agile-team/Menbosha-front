@@ -1,17 +1,45 @@
 import { ModalType } from '@/types/chat';
 import styled from 'styled-components';
 import React from 'react';
+import CHAT from '@/apis/chatApi/chat';
+import { useRecoilState } from 'recoil';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
-const ChatRoomOutModal = ({ show, hide }: ModalType) => {
+const ChatRoomOutModal = ({
+  show,
+  hide,
+  chatRoomId,
+  partnerName,
+}: ModalType) => {
+  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
+
+  // 채팅방 나가기 기능
+  const handleChatRoomOut = async () => {
+    await CHAT.deleteChatRoom(chatRoomId);
+    updateChatRoomListApi();
+    handleCloseModal();
+  };
+
+  const updateChatRoomListApi = async () => {
+    const res = await CHAT.getChatRoomList();
+    setChatRoomList(res.chatRooms);
+  };
+
+  const handleCloseModal = () => {
+    if (show) {
+      hide();
+    }
+  };
+
   return (
-    <div style={{ zIndex: '1000', marginBottom: '100px' }}>
+    <div>
       <ModalWrapper>
         <ModalContainer>
           <ModalTitle>채팅방 나가기</ModalTitle>
           <span>님과의 채팅방을 나가시겠습니까?</span>
           <ButtonArea>
-            <button>예</button>
-            <button>아니오</button>
+            <button onClick={handleChatRoomOut}>예</button>
+            <button onClick={handleCloseModal}>아니오</button>
           </ButtonArea>
         </ModalContainer>
       </ModalWrapper>

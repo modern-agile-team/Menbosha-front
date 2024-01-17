@@ -8,6 +8,8 @@ import { useRecoilState } from 'recoil';
 import Link from 'next/link';
 import useChatRoomCreate from '@/hooks/useCreateRoom';
 import { handleChatIconClickType } from '@/types/chat';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
+import CHAT from '@/apis/chatApi/chat';
 
 const MentorListBox = () => {
   const [getMentorList, setGetMentorList] =
@@ -20,6 +22,7 @@ const MentorListBox = () => {
   const obsRef = useRef<HTMLDivElement>(null); // 옵저버 state
   const preventRef = useRef(true); // 옵저버 중복 방지
   const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
+  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
 
   // 옵저버 생성
   useEffect(() => {
@@ -88,7 +91,13 @@ const MentorListBox = () => {
     );
     if (confirmed) {
       await handleCreateChatRoom(mentorId);
+      updateChatRoomListApi();
     }
+  };
+
+  const updateChatRoomListApi = async () => {
+    const res = await CHAT.getChatRoomList();
+    setChatRoomList(res.chatRooms);
   };
 
   return (
