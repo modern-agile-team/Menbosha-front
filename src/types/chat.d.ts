@@ -117,3 +117,9 @@ export interface ChatType {
     lastPage: number;
   }[];
 }
+
+/** 채팅 페이지 모달 타입 */
+export interface ModalType {
+  show: boolean;
+  hide: () => void;
+}

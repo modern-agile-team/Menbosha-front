@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import { ChatRoomListType } from '@/types/chat';
 import { useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import useModal from '@/hooks/useModal';
+import ChatRoomOutModal from './ChatRoomOutModal';
 
 const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
@@ -12,7 +13,7 @@ const ChatRoomListBox = () => {
 
   const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.preventDefault();
-    handleModal(); // Open the modal
+    handleModal();
   };
 
   return (
@@ -65,7 +66,7 @@ const ChatRoomListBox = () => {
       })}
       {isOpenModal && (
         <div>
-          <button onClick={handleModal}>채팅방 나가기</button>
+          <ChatRoomOutModal show={isOpenModal} hide={handleModal} />
         </div>
       )}
     </S.ListContainer>

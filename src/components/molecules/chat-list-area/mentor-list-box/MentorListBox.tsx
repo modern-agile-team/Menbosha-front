@@ -84,7 +84,7 @@ const MentorListBox = () => {
     mentorName,
   }: handleChatIconClickType) => {
     const confirmed = window.confirm(
-      `${mentorName}과 채팅을 시작하시겠습니까?`,
+      `${mentorName}님과 채팅을 시작하시겠습니까?`,
     );
     if (confirmed) {
       await handleCreateChatRoom(mentorId);
