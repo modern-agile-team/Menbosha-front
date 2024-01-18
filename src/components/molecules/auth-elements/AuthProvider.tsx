@@ -17,7 +17,7 @@ export const Naver = () => {
   return (
     <div>
       <Image
-        src="/Group-88.jpeg"
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/Naver.svg"
         alt="네이버로그인"
         onClick={naverLogin}
         height={30}
@@ -35,7 +35,7 @@ export const Kakao = () => {
   return (
     <div>
       <Image
-        src="/Group-90.jpeg"
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/Kakao.svg"
         alt="카카오로그인"
         width={30}
         height={30}
@@ -53,7 +53,7 @@ export const Google = () => {
   return (
     <div>
       <Image
-        src="/Group-89.jpeg"
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/Google.svg"
         alt="구글로그인"
         width={30}
         height={30}

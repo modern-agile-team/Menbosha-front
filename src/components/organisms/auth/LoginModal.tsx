@@ -37,7 +37,7 @@ const LoginModal = ({ show, hide }: ModalType) => {
         </ModalHeaderBox>
         <LogoBox>
           <Image
-            src="/MenboshaLogo.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/FooterLogo.svg"
             alt="로고아이콘"
             width={75}
             height={68}
