@@ -22,6 +22,14 @@ jobs:
         run: |
           npm install
           npm run build
+          echo "NEXT_PUBLIC_NAVER_CLIENT_ID=${{ secrets.NEXT_PUBLIC_NAVER_CLIENT_ID }}" >> .env
+          echo "NEXT_PUBLIC_NAVER_CLIENT_SECRET=${{ secrets.NEXT_PUBLIC_NAVER_CLIENT_SECRET }}" >> .env
+          echo "NEXT_PUBLIC_NAVER_STATE=${{ secrets.NEXT_PUBLIC_NAVER_STATE }}" >> .env
+          echo "NEXT_PUBLIC_NAVER_REDIRECT_URL=${{ secrets.NEXT_PUBLIC_NAVER_REDIRECT_URL }}" >> .env
+          echo "NEXT_PUBLIC_KAKAO_CLIENT_ID=${{ secrets.NEXT_PUBLIC_KAKAO_CLIENT_ID }}" >> .env
+          echo "NEXT_PUBLIC_KAKAO_REDIRECT_URL=${{ secrets.NEXT_PUBLIC_KAKAO_REDIRECT_URL }}" >> .env
+          echo "NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" >> .env
+          cat .env
           docker build --platform linux/amd64 -t ${{ secrets.DOCKER_IMAGE_NAME }}:latest .
 
       - name: Login to Docker Hub
