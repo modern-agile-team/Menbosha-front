@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "env-cmd -f .env.dev next dev",
     "dev:mock": "env-cmd -f .env.mock next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:prod": "env-cmd -f .env.production next build"
   },
   "dependencies": {
     "@types/react-slick": "^0.23.12",
