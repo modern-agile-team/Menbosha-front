@@ -9,7 +9,7 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import AfterLoginModal from '@/components/organisms/auth/AfterLoginModal';
 import { ButtonBox } from '../globalStyled/styled';
 
-const id = 0; //초기값 -> 후에 변동 예정
+const id = 'home'; //초기값 -> 후에 변동 예정
 
 const MainPageHeader = () => {
   const [isLogin, setLogin] = useRecoilState(LoginStateAtom);
@@ -54,7 +54,10 @@ const MainPageHeader = () => {
           </Link>
         </S.NavigateBox>
         <S.IconBox>
-          <Link href={'/chat'}>
+          <Link
+            href={{
+              pathname: `chat/${id}`,
+            }}>
             <Image
               src="/chat/ChatIcon-Red.png"
               alt="ChatIcon"

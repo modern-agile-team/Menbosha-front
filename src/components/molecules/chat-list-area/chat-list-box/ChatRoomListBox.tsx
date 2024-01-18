@@ -1,16 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import { ChatRoomListType } from '@/types/chat';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import useModal from '@/hooks/useModal';
 import ChatRoomOutModal from './ChatRoomOutModal';
+import useReplace from '@/hooks/useReplace';
+import CHAT from '@/apis/chatApi/chat';
+import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 
 const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
+  const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
+  const [selectedRoomId, setSelectedRoomId] = useState<string>('');
+  const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
+  const page = 1;
+  const pageSize = 5;
 
+  useEffect(() => {
+    const getChatHistoryApi = async () => {
+      if (selectedRoomId) {
+        const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
+        SetGetChatHistory(res);
+        console.log(getChatHistory);
+      }
+    };
+
+    getChatHistoryApi();
+  }, [selectedRoomId]);
+
+  const handleRoomSelect = (roomId: string) => {
+    const queryURL = {
+      roomId: roomId,
+    };
+    selectRoom(`${roomId}`, queryURL);
+    setSelectedRoomId(roomId);
+  };
+
+  // 마우스 우클릭 시 삭제 모달 핸들러
   const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.preventDefault();
     handleModal();
@@ -32,7 +60,9 @@ const ChatRoomListBox = () => {
           <S.ChatRoomListArea
             key={data.chatRooms._id}
             {...data}
-            onContextMenu={handleChatRoomDelete}>
+            onContextMenu={handleChatRoomDelete}
+            onClick={() => handleRoomSelect(data.chatRooms._id)}
+            isSelected={selectedRoomId === data.chatRooms._id}>
             <S.ChatRoomInfoBox key={data.chatPartner[0].id}>
               <S.ChatListLeft>
                 <S.ChatListGuestImage>

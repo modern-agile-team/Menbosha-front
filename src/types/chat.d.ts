@@ -99,23 +99,20 @@ export interface ChatRoomType {
 }
 
 /** 채팅 내역 전체조회 api 타입 */
-export interface ChatType {
-  statusCode: number;
-  content: {
-    _id: string;
-    chatMembers: Array;
-    chats: Array;
-    chatRoomType: Array;
-    createdAt: string;
-    updatedAt: string;
-    deletedAt: null;
-    totalCount: number;
-    currentPage: number;
-    pageSize: number;
-    nextPage: number;
-    hasNext: boolean;
-    lastPage: number;
-  }[];
+export interface ChatHistoryType {
+  _id: string;
+  chatMembers: Array;
+  chats: Array;
+  chatRoomType: Array;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null;
+  totalCount: number;
+  currentPage: number;
+  pageSize: number;
+  nextPage: number;
+  hasNext: boolean;
+  lastPage: number;
 }
 
 /** 채팅방 삭제 모달 타입 */
