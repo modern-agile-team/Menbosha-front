@@ -46,7 +46,7 @@ export const MentorInfoArea = styled.div`
   margin-top: 4px;
   margin-left: 0.6vw;
   justify-content: space-between;
-  /* border: 2px solid white; */
+  /* border: 2px solid black; */
 `;
 
 export const MentorInfoLeft = styled.div`
@@ -78,7 +78,11 @@ export const MentorInfoBox = styled.div<ListAreaType>`
   height: 6vh;
   justify-content: center;
   align-items: flex-start;
+  text-align: start;
   & > span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: ${({ isExpanded }) => (isExpanded ? '#ffffff' : ' #000000')};
   }
   /* border: 1px solid green; */
