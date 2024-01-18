@@ -19,3 +19,15 @@ export const BodyImages = styled.img`
   object-fit: scale-down;
   background-color: #999;
 `;
+
+export const HeadTextBox = styled.div`
+  > :nth-child(1) {
+    margin: 0px 0px 5px 12px;
+  }
+  > :nth-child(2) {
+    margin: 0px 12px 0px 12px;
+    > * {
+      margin: 0px 20px 0px 0px;
+    }
+  }
+`;
