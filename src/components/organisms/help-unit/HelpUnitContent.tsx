@@ -1,20 +1,12 @@
 import HELP from '@/apis/help';
-import { HelpUnitType } from '@/types/help';
+import { BoardIdType, HelpUnitType } from '@/types/help';
 import { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { useRouter } from 'next/router';
 import UnitContentHead from '@/components/molecules/help-unit-elements/UnitConentHead';
 import UnitContentBody from '@/components/molecules/help-unit-elements/UnitContentBody';
-import {
-  ButtonBox,
-  FlexBox,
-  LinkBox,
-  TextBox,
-} from '@/components/common/globalStyled/styled';
-
-interface BoardIdType {
-  id: number;
-}
+import { LinkBox } from '@/components/common/globalStyled/styled';
+import UnitComment from '@/components/molecules/help-unit-elements/UnitComment';
 
 const HelpUnitContent = ({ id }: BoardIdType) => {
   const [getUnitInfo, setUnitInfo] = useState<HelpUnitType>();
@@ -55,15 +47,21 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
         scroll={false}>
         이전
       </LinkBox>
-      <div onClick={handlePullingUp}>끌올시키기</div>
       <div>
-        {getUnitInfo && <UnitContentHead {...getUnitInfo} />}
-        {getUnitInfo && (
-          <UnitContentBody
-            body={getUnitInfo.body}
-            helpMeBoardImages={getUnitInfo.helpMeBoardImages}
-          />
-        )}
+        <div onClick={handlePullingUp}>끌올시키기</div>
+        <div>
+          {getUnitInfo && (
+            <div>
+              <UnitContentHead {...getUnitInfo} />
+              <UnitContentBody
+                body={getUnitInfo.body}
+                helpMeBoardImages={getUnitInfo.helpMeBoardImages}
+              />
+            </div>
+          )}
+        </div>
+        <div>댓글</div>
+        <UnitComment id={id} />
       </div>
     </S.ContentWrapper>
   );

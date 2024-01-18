@@ -129,17 +129,15 @@ const HELP = {
 
   /** 도와주세요 끌올 api [patch] */
   async pullingUp(boardId: number): Promise<any> {
-    const accessToken = localStorage.getItem('accessToken');
-    const result: AxiosResponse = await axios({
-      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}help-me-board/pulling-up`,
-      method: 'patch',
-      params: {
-        helpMeBoardId: boardId,
+    const result: AxiosResponse = await instance.patch(
+      `${HELP.path}/pulling-up`,
+      {},
+      {
+        params: {
+          helpMeBoardId: boardId,
+        },
       },
-      headers: {
-        access_token: accessToken,
-      },
-    });
+    );
     return result;
   },
 

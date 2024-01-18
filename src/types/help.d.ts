@@ -38,7 +38,7 @@ export type HelpUnitType = {
   id: number;
   body: string;
   head: string;
-  category: number;
+  categoryId: number;
   createdAt: string;
   updatedAt: string;
   unitOwner: boolean;
@@ -109,5 +109,21 @@ export type PullingUpType = {
       imageUrl: string;
       userId: number;
     };
+  };
+};
+
+export interface BoardIdType {
+  id: number;
+}
+
+export type HelpCommentType = {
+  id: number;
+  content: string;
+  commentOwner: boolean;
+  user: {
+    categoryId: number;
+    imageUrl: string;
+    name: string;
+    userId: number;
   };
 };
