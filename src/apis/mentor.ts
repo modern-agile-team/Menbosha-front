@@ -49,25 +49,23 @@ const MENTOR = {
   async getMentorBoardPage(category: number): Promise<any> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}/page`, {
       params: {
-        categoryId: category,
+        categoryId: category !== 1 ? category : '',
       },
     });
-    console.log(result);
     return result.data;
   },
 
   /**페이지별 멘토 리스트 불러오는 api [get] */
   async getMentorBoardList(
-    category: number | undefined,
+    category: number,
     page: number,
   ): Promise<MentorBoardListType[]> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
       params: {
-        categoryId: category,
+        categoryId: category !== 1 ? category : '',
         page: page,
       },
     });
-    console.log(result);
     return result.data.data;
   },
 
@@ -89,6 +87,16 @@ const MENTOR = {
       },
     });
     return result.data;
+  },
+
+  /**랜덤 멘토 게시글 불러오는 api */
+  async randomMentorBoard(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${MENTOR.path}/random`, {
+      params: {
+        categoryId: id !== 1 ? id : '',
+      },
+    });
+    return result.data.data;
   },
 };
 

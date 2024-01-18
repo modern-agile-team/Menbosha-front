@@ -8,6 +8,7 @@ import {
   TextBox,
 } from '@/components/common/globalStyled/styled';
 import Link from 'next/link';
+import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorBaord';
 
 const MentorBoardTemplate = () => {
   return (
@@ -19,6 +20,7 @@ const MentorBoardTemplate = () => {
           <TextBox size={30} color="#000">
             멘토가 들려주는 꿀통 대방출~!~!
           </TextBox>
+          <RandomMentorBoard />
         </S.MentorBoardListContainer>
         <S.MentorBoardListContainer>
           <TextBox size={30} color="#000">

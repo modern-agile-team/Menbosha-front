@@ -45,6 +45,15 @@ const HelpBoardCardList = () => {
     loadPost();
   }, [totalPage]);
 
+  useEffect(() => {
+    setGetList([]);
+    getLoadPage();
+    setTimeout(() => {
+      loadPost();
+    }, 0);
+    console.log('카테고리 선택!!');
+  }, [filterCategory]);
+
   const handleObs = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting) {
@@ -55,7 +64,7 @@ const HelpBoardCardList = () => {
   };
   //페이지 수 로드 함수
   const getLoadPage = useCallback(async () => {
-    const response = await HELP.getHelpBoardPage();
+    const response = await HELP.getHelpBoardPage(filterCategory);
     setTotalPage(response.totalPage);
   }, []);
 
@@ -80,7 +89,7 @@ const HelpBoardCardList = () => {
     );
   };
 
-  //   router발생시 스크롤 위치 저장
+  //router발생시 스크롤 위치 저장
   useEffect(() => {
     router.events.on('routeChangeStart', handleRouteChange);
     window.addEventListener('beforeunload', handleRouteChange);
