@@ -15,7 +15,7 @@ const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
 
-  // 모킹데이터 status
+  // 모킹데이터
   // const [getMentorInfo, setGetMentorInfo] =
   //   useRecoilState<MentorInfoType[]>(MentorInfoAtom);
 
