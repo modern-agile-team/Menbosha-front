@@ -90,8 +90,12 @@ const MENTOR = {
   },
 
   /**랜덤 멘토 게시글 불러오는 api */
-  async randomMentorBoard(): Promise<any> {
-    const result: AxiosResponse = await instance.get(`${MENTOR.path}/random`);
+  async randomMentorBoard(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${MENTOR.path}/random`, {
+      params: {
+        categoryId: id !== 1 ? id : '',
+      },
+    });
     return result.data.data;
   },
 };

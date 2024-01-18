@@ -17,6 +17,21 @@ export const MentorBoardCardWrapper = styled.div`
   height: 545px;
 `;
 
+/** RandomMentorBoard */
+export const RandomMentorWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 545px;
+  > :nth-child(1) {
+    > :nth-child(2) {
+      > :nth-child(1) {
+        width: 450px;
+      }
+    }
+  }
+`;
+
 /**MentorSideViewer */
 
 export const SideViewerWrapper = styled.div`

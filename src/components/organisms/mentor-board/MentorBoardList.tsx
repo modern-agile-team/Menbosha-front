@@ -128,6 +128,10 @@ const MentorBoardList = () => {
           </S.MentorBoardCardWrapper>
         );
       })}
+      <div>
+        {load && <div>Loading...</div>}
+        <div ref={obsRef}></div>
+      </div>
     </S.MentoBoardCardContainer>
   );
 };

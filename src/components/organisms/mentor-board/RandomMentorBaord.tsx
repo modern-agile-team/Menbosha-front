@@ -3,21 +3,28 @@ import MentorBoardCard from '@/components/molecules/mentor-board-elements/Mentor
 import { MentorBoardListType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const RandomMentorBoard = () => {
   const [getRandomData, setRandomData] = useState<MentorBoardListType[]>([]);
+  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getRandomMentorBoardApi = async () => {
-    const response = await MENTOR.randomMentorBoard();
+    const response = await MENTOR.randomMentorBoard(filterCategory);
     setRandomData(response);
   };
+
+  useEffect(() => {
+    getRandomMentorBoardApi();
+  }, [filterCategory]);
 
   useEffect(() => {
     getRandomMentorBoardApi();
   }, []);
 
   return (
-    <div>
+    <S.MentoBoardCardContainer>
       {getRandomData.map((data) => {
         const temp = {
           id: data.id,
@@ -32,12 +39,12 @@ const RandomMentorBoard = () => {
           mentorBoardImage: data.mentorBoardImages,
         };
         return (
-          <S.MentorBoardCardWrapper key={data.id}>
+          <S.RandomMentorWrapper key={data.id}>
             <MentorBoardCard {...temp} />
-          </S.MentorBoardCardWrapper>
+          </S.RandomMentorWrapper>
         );
       })}
-    </div>
+    </S.MentoBoardCardContainer>
   );
 };
 
