@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styled';
-import ChatRoomListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatListBox';
 import { ChatRoomListType } from '@/types/chat';
+import ChatRoomListBox from '@/components/molecules/chat-list-area/chat-list-box/ChatRoomListBox';
 
 const ChatRoomList = () => {
   return (

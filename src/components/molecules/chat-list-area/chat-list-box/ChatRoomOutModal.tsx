@@ -36,7 +36,7 @@ const ChatRoomOutModal = ({
       <ModalWrapper>
         <ModalContainer>
           <ModalTitle>채팅방 나가기</ModalTitle>
-          <span>님과의 채팅방을 나가시겠습니까?</span>
+          <span>{partnerName}님과의 채팅방을 나가시겠습니까?</span>
           <ButtonArea>
             <button onClick={handleChatRoomOut}>예</button>
             <button onClick={handleCloseModal}>아니오</button>

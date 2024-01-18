@@ -19,7 +19,7 @@ export const ListContainer = styled.div`
 `;
 
 // export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
-export const ChatRoomListArea = styled.li`
+export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   display: flex;
   width: 20vw;
   height: 8vh;
@@ -28,6 +28,7 @@ export const ChatRoomListArea = styled.li`
   align-items: center;
   border: 2px solid #ff4651;
   border-radius: 10px;
+  background-color: ${({ isSelected }) => isSelected && '#e1e1e1'};
   transition: background-color 0.3s ease;
   &:hover {
     background-color: #ffe7e9;

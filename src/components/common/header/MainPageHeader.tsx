@@ -9,13 +9,13 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import AfterLoginModal from '@/components/organisms/auth/AfterLoginModal';
 import { ButtonBox } from '../globalStyled/styled';
 
-const id = 0; //초기값 -> 후에 변동 예정
+const id = 'home'; //초기값 -> 후에 변동 예정
 
 const MainPageHeader = () => {
   const [isLogin, setLogin] = useRecoilState(LoginStateAtom);
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
-  const { isOpenModal: afterModal, handleModal: handleAfterModal } = useModal();
+  // const { isOpenModal: afterModal, handleModal: handleAfterModal } = useModal();
   const { isOpenModal: mentorModal, handleModal: handleMentorModal } =
     useModal();
   return (
@@ -27,7 +27,7 @@ const MainPageHeader = () => {
               pathname: `/main`,
             }}>
             <Image
-              src="/MenboshaLogo2.png"
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/MainLogo.svg"
               alt="LogoIcon"
               width={162}
               height={47}
@@ -54,32 +54,41 @@ const MainPageHeader = () => {
           </Link>
         </S.NavigateBox>
         <S.IconBox>
-          <Link href={'/chat'}>
+          <Link
+            href={{
+              pathname: `chat/${id}`,
+            }}>
             <Image
-              src="/chat/ChatIcon-Red.png"
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
               alt="ChatIcon"
               width="28"
               height="28"
             />
           </Link>
           {isLogin ? (
-            <Image
-              onClick={handleAfterModal}
-              src="/UserIcon-Red.png"
-              alt="UserIcon"
-              width="28"
-              height="28"
-            />
+            <div>
+              <Image
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
+                alt="UserIcon"
+                width="28"
+                height="28"
+              />
+              <Image
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/Logout.svg"
+                alt="LogoutIcon"
+                width="28"
+                height="28"
+              />
+            </div>
           ) : (
-            <div onClick={handleBeforeModal}>로그인</div>
+            <div onClick={handleBeforeModal} style={{ color: '#000000' }}>
+              로그인
+            </div>
           )}
           {beforeModal && (
             <LoginModal
               show={beforeModal}
               hide={handleBeforeModal}></LoginModal>
-          )}
-          {afterModal && (
-            <AfterLoginModal show={afterModal} hide={handleAfterModal} />
           )}
         </S.IconBox>
       </S.HeaderArea>

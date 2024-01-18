@@ -16,7 +16,7 @@ const useReplace = () => {
         ? `?${new URLSearchParams(query as Record<string, string>).toString()}`
         : '';
 
-      router.replace(`${to}${queryString}`);
+      router.replace(`${to}${queryString}`, undefined, { shallow: true });
     },
     [router],
   );

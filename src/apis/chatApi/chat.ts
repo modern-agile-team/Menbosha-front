@@ -51,16 +51,21 @@ const CHAT = {
   },
 
   /** 단일 채팅룸 채팅내역 조회 */
-  async getChatHistory(roomId: string): Promise<any> {
+  async getChatHistory(
+    roomId: string,
+    page: number,
+    pageSize: number,
+  ): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(
       `${CHAT.path}/${roomId}/chat`,
       {
         params: {
-          roomId: roomId,
+          page: page,
+          pageSize: pageSize,
         },
       },
     );
-    return result.data;
+    return result.data.contents;
   },
 
   /** 채팅 이미지 삽입 api <미완성> */
