@@ -1,5 +1,5 @@
 import AUTH from '@/apis/oauth';
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '@/components/common/header/MainPageHeader';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -29,7 +29,7 @@ const SettingTemplate = () => {
 
   return (
     <div>
-      <SubPageHeader />
+      <MainPageHeader />
       <div>계정설정</div>
       <div></div>
       <div>

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import SubPageHeader from '../common/header/SubPageHeader';
+import MainPageHeader from '../common/header/MainPageHeader';
 import ModifyHelpBoard from '../organisms/modify-help-board/ModifyHelpBoard';
 import { useEffect, useState } from 'react';
 import { HelpUnitType } from '@/types/help';
@@ -20,7 +20,7 @@ const ModifyHelpTemplate = () => {
   console.log(modifyInfo);
   return (
     <div>
-      <SubPageHeader />
+      <MainPageHeader />
       <div
         style={{
           display: 'flex',

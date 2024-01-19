@@ -18,7 +18,6 @@ export const ListContainer = styled.div`
   }
 `;
 
-// export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
 export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   display: flex;
   width: 20vw;
@@ -26,7 +25,7 @@ export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   margin-bottom: 24px;
   justify-content: center;
   align-items: center;
-  border: 2px solid #ff4651;
+  border: 2px solid #ff772b;
   border-radius: 10px;
   background-color: ${({ isSelected }) => isSelected && '#e1e1e1'};
   transition: background-color 0.3s ease;
@@ -35,7 +34,6 @@ export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
     cursor: pointer;
   }
 `;
-// background-color: ${({ isSelected }) => isSelected && '#e1e1e1'};
 
 export const ChatRoomInfoBox = styled.div`
   display: flex;
@@ -54,16 +52,31 @@ export const ChatListLeft = styled.div`
   /* border: 1px solid green; */
 `;
 
-export const ChatListGuestImage = styled.div`
-  display: flex;
+// export const ChatListGuestImage = styled.div`
+//   display: flex;
+//   width: 50px;
+//   min-width: 50px;
+//   height: 50px;
+//   justify-content: center;
+//   align-items: center;
+//   margin-right: 10px;
+//   border: 2px solid #ff772b;
+//   border-radius: 10px;
+//   > :nth-child(1) {
+//     /* background-size: cover; */
+//     width: 50px;
+//     height: 50px;
+//     border-radius: 10px;
+//   }
+// `;
+
+export const ChatListGuestImage = styled.img`
   width: 50px;
-  min-width: 50px;
   height: 50px;
-  justify-content: center;
-  align-items: center;
   margin-right: 10px;
-  border: 2px solid #ff4651;
   border-radius: 10px;
+  color: #ff772b;
+  border: 2px solid #ff772b;
 `;
 
 export const ChatListCenter = styled.div`
@@ -123,7 +136,7 @@ export const UnreadMessage = styled.div`
   align-items: center;
   border: none;
   border-radius: 50%;
-  background: #ff0000;
+  background: #ff772b;
   opacity: 0.7;
   & > span {
     font-size: 0.5em;

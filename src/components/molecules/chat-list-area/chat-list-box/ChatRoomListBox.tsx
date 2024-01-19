@@ -65,14 +65,13 @@ const ChatRoomListBox = () => {
             isSelected={selectedRoomId === data.chatRooms._id}>
             <S.ChatRoomInfoBox key={data.chatPartner[0].id}>
               <S.ChatListLeft>
-                <S.ChatListGuestImage>
-                  <Image
-                    src="/UserIcon-Red.png"
-                    alt="GuestIcon"
-                    width="24"
-                    height="24"
-                  />
-                </S.ChatListGuestImage>
+                {/* <S.ChatListGuestImage>
+                  <img src={data.chatPartner[0].userImage} alt="GuestImage" />
+                </S.ChatListGuestImage> */}
+                <S.ChatListGuestImage
+                  src={data.chatPartner[0].userImage}
+                  alt="GuestImage"
+                />
                 <S.ChatListCenter>
                   <S.ChatListGuestName>
                     {data.chatPartner[0].name}

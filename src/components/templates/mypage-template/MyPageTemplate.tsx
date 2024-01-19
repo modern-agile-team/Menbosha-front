@@ -1,4 +1,4 @@
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '@/components/common/header/MainPageHeader';
 import { ImageBox, LinkBox } from '../../common/globalStyled/styled';
 import * as S from './styled';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ const MyPageTemplate = () => {
 
   return (
     <div>
-      <SubPageHeader />
+      <MainPageHeader />
       <S.UserpageWrapper>
         <S.Wave />
         <S.ElementSection>

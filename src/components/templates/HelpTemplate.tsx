@@ -1,14 +1,14 @@
-import SubPageHeader from '@/components/common/header/SubPageHeader';
 import HelpBoardCardList from '../organisms/help-board/HelpBoardCardList';
 import Link from 'next/link';
 import Category from '../common/category/Category';
 import HelpPullingBoardList from '../organisms/help-board/HelpPullingBoardList';
 import { FlexBox, TextBox } from '../common/globalStyled/styled';
+import MainPageHeader from '../common/header/MainPageHeader';
 
 const HelpTemplate = () => {
   return (
     <>
-      <SubPageHeader />
+      <MainPageHeader />
       <div
         style={{ display: 'flex', justifyContent: 'center', width: '100vw' }}>
         <div>

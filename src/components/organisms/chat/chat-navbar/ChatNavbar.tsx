@@ -19,7 +19,7 @@ const ChatNavbar = () => {
             pathname: `/main`,
           }}>
           <Image
-            src="/MenboshaLogo2.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/MainLogo.svg"
             alt="LogoIcon"
             width="144"
             height="36"
@@ -39,7 +39,7 @@ const ChatNavbar = () => {
             pathname: `/userpage`,
           }}>
           <Image
-            src="/UserIcon-Red.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
             alt="UserIcon"
             width="28"
             height="28"

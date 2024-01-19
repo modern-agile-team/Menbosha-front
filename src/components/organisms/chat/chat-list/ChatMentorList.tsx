@@ -9,7 +9,12 @@ const ChatMentorList = () => {
       <S.SearchMentorBox>
         <span>멘토 리스트</span>
         {/* <S.SearchInputBox></S.SearchInputBox> */}
-        <Image src="/SearchIcon.png" alt="SearchIcon" width="24" height="24" />
+        <Image
+          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatSearchIcon.svg"
+          alt="SearchIcon"
+          width="24"
+          height="24"
+        />
       </S.SearchMentorBox>
       <MentorListBox />
     </S.MentorListContainer>

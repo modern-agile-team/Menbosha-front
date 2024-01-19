@@ -7,8 +7,8 @@ export const MentorListContainer = styled.div`
   height: 100vh;
   margin-right: 28px;
   align-items: center;
-  border-left: 1px solid #ff4651;
-  border-right: 1px solid #ff4651;
+  border-left: 1px solid #ff772b;
+  border-right: 1px solid #ff772b;
   /* border: 2px solid red; */
 `;
 
@@ -19,8 +19,8 @@ export const ChatRoomListContainer = styled.div`
   height: 100vh;
   margin-right: 0px;
   align-items: center;
-  border-left: 1px solid #ff4651;
-  border-right: 1px solid #ff4651;
+  border-left: 1px solid #ff772b;
+  border-right: 1px solid #ff772b;
   /* border: 2px solid red; */
 `;
 
@@ -40,7 +40,7 @@ export const SearchMentorBox = styled.div`
   & > span {
     font-size: 0.83em;
     font-weight: 700;
-    color: #ff4651;
+    color: #ff772b;
   }
 `;
 
@@ -67,6 +67,6 @@ export const ChatRoomListHeader = styled.div`
   & > span {
     font-size: 0.83em;
     font-weight: 700;
-    color: #ff4651;
+    color: #ff772b;
   }
 `;

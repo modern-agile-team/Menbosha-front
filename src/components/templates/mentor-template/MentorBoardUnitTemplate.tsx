@@ -1,5 +1,5 @@
 import { ContainerWrapper } from '@/components/common/globalStyled/styled';
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '@/components/common/header/MainPageHeader';
 import MentorBoardUnit from '@/components/organisms/mentor-board/MentorBoardUnit';
 import { useRouter } from 'next/router';
 
@@ -8,7 +8,7 @@ const MentorBoardUnitTemplate = () => {
 
   return (
     <div>
-      <SubPageHeader />
+      <MainPageHeader />
       <ContainerWrapper>
         {router.isReady && <MentorBoardUnit id={Number(router.query.id)} />}
       </ContainerWrapper>
