@@ -21,24 +21,32 @@ const nextConfig = {
         port: '',
         pathname: '**',
       },
-      {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
-        port: '',
-        pathname: '**',
-      },
+    ],
+    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'k.kakaocdn.net',
         port: '',
         pathname: '**',
       },
+    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '**',
+      },
+    ],
+    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'ssl.pstatic.net',
         port: '',
-        pathname: '**',
+        pathname: '/static/pwe/address/**',
       },
+    ],
+    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'phinf.pstatic.net',
@@ -47,7 +55,7 @@ const nextConfig = {
       },
     ],
   },
-  reactStrictMode: false,
+  reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

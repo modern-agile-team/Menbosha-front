@@ -60,7 +60,6 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
             </div>
           )}
         </div>
-        <div>댓글</div>
         <UnitComment id={id} />
       </div>
     </S.ContentWrapper>

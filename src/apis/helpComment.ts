@@ -24,19 +24,30 @@ const HELPCOMMENT = {
       return result.data;
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
-        err.response.status === 409 && alert('이미 프로필을 등록했습니다..');
+        return err.response.status;
       }
     }
   },
 
   /** 도와주세요 댓글 삭제 api [delete] */
   async deleteHelpComment(commentId: number): Promise<any> {
-    const result: AxiosResponse = await instance.delete(`${HELPCOMMENT.path}`, {
-      params: {
-        commentId: commentId,
-      },
-    });
-    return result.data.data;
+    try {
+      const result: AxiosResponse = await instance.delete(
+        `${HELPCOMMENT.path}`,
+        {
+          params: {
+            commentId: commentId,
+          },
+        },
+      );
+      return result.data.data;
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        if (err.response.status === 404) {
+          return 0;
+        }
+      }
+    }
   },
 
   /** 도와주세요 댓글 불러오기 api [get] */
