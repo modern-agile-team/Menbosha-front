@@ -63,20 +63,20 @@ const ChatRoomListBox = () => {
             onContextMenu={handleChatRoomDelete}
             onClick={() => handleRoomSelect(data.chatRooms._id)}
             isSelected={selectedRoomId === data.chatRooms._id}>
-            <S.ChatRoomInfoBox key={data.chatPartner[0].id}>
+            <S.ChatRoomInfoBox key={data.chatPartners[0].id}>
               <S.ChatListLeft>
                 {/* <S.ChatListGuestImage>
-                  <img src={data.chatPartner[0].userImage} alt="GuestImage" />
+                  <img src={data.chatPartners[0].userImage} alt="GuestImage" />
                 </S.ChatListGuestImage> */}
                 <S.ChatListGuestImage
                   isSelected={selectedRoomId === data.chatRooms._id}
-                  src={data.chatPartner[0].userImage}
+                  src={data.chatPartners[0].userImage}
                   alt="GuestImage"
                 />
                 <S.ChatListCenter>
                   <S.ChatListGuestName
                     isSelected={selectedRoomId === data.chatRooms._id}>
-                    {data.chatPartner[0].name}
+                    {data.chatPartners[0].name}
                   </S.ChatListGuestName>
                   <S.ChatListPrevText
                     isSelected={selectedRoomId === data.chatRooms._id}>
@@ -104,7 +104,7 @@ const ChatRoomListBox = () => {
               show={isOpenModal}
               hide={handleModal}
               chatRoomId={data.chatRooms._id}
-              partnerName={data.chatPartner[0].name}
+              partnerName={data.chatPartners[0].name}
             />
           ))}
         </div>
