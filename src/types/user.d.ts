@@ -46,3 +46,19 @@ export type MentorUnitType = {
     createAt: string;
   }[];
 };
+
+/**내 정보 조회 api Type */
+export type MyProfileType = {
+  id: number;
+  name: string;
+  isMentor: boolean;
+  activityCategoryId: number;
+  wishCategoryId: number;
+  image: string;
+  rank: number;
+  intro: {
+    mainField: string;
+    introduce: string;
+    career: string;
+  };
+};

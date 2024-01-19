@@ -24,12 +24,19 @@ const USER = {
     return result.data.data;
   },
 
+  /**유저 정보 조회 api [get] */
   async getUserInfo(id: number): Promise<any> {
     const result: AxiosResponse = await instance.get(`${USER.path}/info`, {
       params: {
         userId: id,
       },
     });
+    return result.data;
+  },
+
+  /**내 정보 조회 api [get] */
+  async getMyInfo(): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${USER.path}/my/profile`);
     return result.data;
   },
 };

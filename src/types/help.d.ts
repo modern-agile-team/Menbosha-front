@@ -125,5 +125,6 @@ export type HelpCommentType = {
     imageUrl: string;
     name: string;
     userId: number;
+    rank: number;
   };
 };
