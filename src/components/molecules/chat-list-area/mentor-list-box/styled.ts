@@ -30,9 +30,9 @@ export const ListArea = styled.div<ListAreaType>`
   margin-bottom: 24px;
   /* justify-content: center; */
   /* align-items: center; */
-  border: 2px solid #ff4651;
+  border: 2px solid #ff772b;
   border-radius: 10px;
-  background-color: ${({ isExpanded }) => (isExpanded ? '#FF4651' : '#ffffff')};
+  background-color: ${({ isExpanded }) => (isExpanded ? '#ff772b' : '#ffffff')};
   cursor: ${({ isExpanded }) => (isExpanded ? 'default' : 'pointer')};
   transition:
     height 0.5s ease,
@@ -64,11 +64,14 @@ export const MentorImage = styled.div<ListAreaType>`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  border: 2px solid #ff4651;
-  border: ${({ isExpanded }) =>
-    isExpanded ? '2px solid #ffffff' : ' 2px solid #FF4651'};
-  border-radius: 10px;
+  /* border: ${({ isExpanded }) =>
+    isExpanded ? '2px solid #ffffff' : ' 2px solid #ff772b'}; */
   transition: border 0.3s ease;
+  & > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
 `;
 
 export const MentorInfoBox = styled.div<ListAreaType>`

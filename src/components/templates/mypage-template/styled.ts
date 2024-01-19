@@ -9,12 +9,36 @@ export const UserpageWrapper = styled.div`
   padding: 90px 0px 90px 0px;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
+  /* border: 2px solid green; */
+`;
+
+export const MyPageTitleBox = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 16vw;
+  height: 12vh;
+  text-align: center;
+  /* border: 2px solid red; */
+  :nth-child(1) {
+    margin-bottom: 12px;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 120%;
+    color: rgb(255, 119, 43);
+  }
+  :nth-child(2) {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(255, 119, 43, 0.75);
+  }
 `;
 
 /**각 기능 구역설정을 위한 style */
 export const ElementSection = styled.div`
   width: 49%;
   height: 37vh;
+  /* border: 2px solid black; */
 `;
 
 /**물결 움직임을 위한 keyframes */
@@ -33,7 +57,7 @@ export const Wave = styled.div`
   position: absolute;
   top: -1027vw;
   background-color: #fff;
-  border: 5px solid #fe2;
+  border: 5px solid rgb(255, 119, 43);
   z-index: -1;
 `;
 
@@ -58,13 +82,13 @@ export const Bubble = styled.div<BubbleSizeType>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 50%;
-  border: 2px solid #fe2;
+  border: 2px solid rgb(255, 119, 43);
   position: absolute;
   animation: ${bubbleMove} 1s infinite linear;
 `;
 
 export const ProfileLinkImg = styled.div`
-  background-image: url('/profileLinkIcon.png');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 50%;
@@ -74,7 +98,7 @@ export const ProfileLinkImg = styled.div`
   transition: all 0.5s;
   &:hover {
     height: 100%;
-    background-image: url('/profileLinkIcon.png');
+    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
     transition: all 0.5s;
   }
 `;
@@ -86,7 +110,7 @@ export const ProfileLinkText = styled.div`
 `;
 
 export const TempLinkImg = styled.div`
-  background-image: url('/tempIcon.png');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/rank.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 50%;
@@ -96,7 +120,7 @@ export const TempLinkImg = styled.div`
   transition: all 0.5s;
   &:hover {
     height: 100%;
-    background-image: url('/tempIcon.png');
+    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/rank.svg');
     transition: all 0.5s;
   }
 `;
@@ -110,7 +134,7 @@ export const TempLinkText = styled.div`
 export const ReviewLinkImg = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url('/reviewLinkIcon.png');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/review.svg');
   width: 50%;
   height: 90%;
   margin: 6% 0% 0% 29%;
@@ -118,7 +142,7 @@ export const ReviewLinkImg = styled.div`
   transition: all 0.5s;
   &:hover {
     height: 100%;
-    background-image: url('/reviewLinkIcon.png');
+    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/review.svg');
     transition: all 0.5s;
   }
 `;
@@ -130,17 +154,17 @@ export const ReviewLinkText = styled.div`
 `;
 
 export const ChatLinkImg = styled.div`
-  background-image: url('/chatLinkIcon.png');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/chatting.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 50%;
-  height: 90%;
+  height: 80%;
   margin: 3% 0% 0% 10%;
   cursor: pointer;
   transition: all 0.5s;
   &:hover {
     height: 100%;
-    background-image: url('/chatLinkIcon.png');
+    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/chatting.svg');
     transition: all 0.5s;
   }
 `;

@@ -35,13 +35,13 @@ const ChatSpaceFooter = () => {
         />
         <S.ChatSpaceToolBox>
           <Image
-            src="/chat/ChatPlusIcon.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatPlus.svg"
             alt="PlusIcon"
             width="28"
             height="28"
           />
           <Image
-            src="/chat/ChatEmoticon.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatImoticon.svg"
             alt="PlusIcon"
             width="28"
             height="28"

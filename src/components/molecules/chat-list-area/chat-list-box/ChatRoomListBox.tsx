@@ -69,19 +69,23 @@ const ChatRoomListBox = () => {
                   <img src={data.chatPartner[0].userImage} alt="GuestImage" />
                 </S.ChatListGuestImage> */}
                 <S.ChatListGuestImage
+                  isSelected={selectedRoomId === data.chatRooms._id}
                   src={data.chatPartner[0].userImage}
                   alt="GuestImage"
                 />
                 <S.ChatListCenter>
-                  <S.ChatListGuestName>
+                  <S.ChatListGuestName
+                    isSelected={selectedRoomId === data.chatRooms._id}>
                     {data.chatPartner[0].name}
                   </S.ChatListGuestName>
-                  <S.ChatListPrevText>
+                  <S.ChatListPrevText
+                    isSelected={selectedRoomId === data.chatRooms._id}>
                     <span>{data.chatRooms.chat.content}</span>
                   </S.ChatListPrevText>
                 </S.ChatListCenter>
               </S.ChatListLeft>
-              <S.ChatListRight>
+              <S.ChatListRight
+                isSelected={selectedRoomId === data.chatRooms._id}>
                 {isValidTime && <span>{`${hours}:${minutes}`}</span>}
                 {data.chatRooms.unReadChatCount > 0 && (
                   <S.UnreadMessage>

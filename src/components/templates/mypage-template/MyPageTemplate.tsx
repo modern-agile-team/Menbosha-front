@@ -18,6 +18,10 @@ const MyPageTemplate = () => {
       <MainPageHeader />
       <S.UserpageWrapper>
         <S.Wave />
+        <S.MyPageTitleBox>
+          <span>프로필</span>
+          <span>빵을 눌러 확인해보세요.</span>
+        </S.MyPageTitleBox>
         <S.ElementSection>
           <S.Bubble size="2vw" style={{ margin: '2% 0px 0px 6%' }} />
           <S.Bubble size="4vw" style={{ margin: '5% 0px 0px 7%' }} />

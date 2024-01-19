@@ -19,13 +19,19 @@ const ChatSpaceHeader = () => {
         </S.ChatSpaceHeaderLeft>
         <S.ChatSpaceHeaderRight>
           <Image
-            src="/chat/ChatRoomInfo.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatToolTip.svg"
             alt="Info"
             width="28"
             height="28"
           />
           <Image
-            src="/chat/ChatRoomOut.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
+            alt="Info"
+            width="28"
+            height="28"
+          />
+          <Image
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatRoomOut.svg"
             alt="Info"
             width="28"
             height="28"

@@ -27,7 +27,7 @@ export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   align-items: center;
   border: 2px solid #ff772b;
   border-radius: 10px;
-  background-color: ${({ isSelected }) => isSelected && '#e1e1e1'};
+  background-color: ${({ isSelected }) => isSelected && '#ff772b'};
   transition: background-color 0.3s ease;
   &:hover {
     background-color: #ffe7e9;
@@ -52,31 +52,14 @@ export const ChatListLeft = styled.div`
   /* border: 1px solid green; */
 `;
 
-// export const ChatListGuestImage = styled.div`
-//   display: flex;
-//   width: 50px;
-//   min-width: 50px;
-//   height: 50px;
-//   justify-content: center;
-//   align-items: center;
-//   margin-right: 10px;
-//   border: 2px solid #ff772b;
-//   border-radius: 10px;
-//   > :nth-child(1) {
-//     /* background-size: cover; */
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 10px;
-//   }
-// `;
-
-export const ChatListGuestImage = styled.img`
+export const ChatListGuestImage = styled.img<{ isSelected: boolean }>`
   width: 50px;
+  min-width: 50px;
   height: 50px;
   margin-right: 10px;
   border-radius: 10px;
-  color: #ff772b;
-  border: 2px solid #ff772b;
+  /* border: 2px solid #ff772b;
+  border: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff772b')}; */
 `;
 
 export const ChatListCenter = styled.div`
@@ -89,19 +72,19 @@ export const ChatListCenter = styled.div`
   /* border: 1px solid gray; */
 `;
 
-export const ChatListGuestName = styled.span`
+export const ChatListGuestName = styled.span<{ isSelected: boolean }>`
   font-size: 0.65em;
   font-weight: 700;
   margin-bottom: 5px;
-  color: #000000;
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
 `;
 
-export const ChatListPrevText = styled.div`
+export const ChatListPrevText = styled.div<{ isSelected: boolean }>`
   display: flex;
   font-size: 0.65em;
   font-weight: 400;
   opacity: 0.8;
-  color: #000000;
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
   /* border: 1px solid red; */
   & > span {
     overflow: hidden;
@@ -111,7 +94,7 @@ export const ChatListPrevText = styled.div`
   }
 `;
 
-export const ChatListRight = styled.div`
+export const ChatListRight = styled.div<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   width: 2vw;
@@ -120,7 +103,7 @@ export const ChatListRight = styled.div`
   align-items: center;
   /* border: 1px solid red; */
   & > span {
-    color: #000000;
+    color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
     margin-bottom: 7px;
     justify-content: flex-start;
     font-size: 0.5em;
