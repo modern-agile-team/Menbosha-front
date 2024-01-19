@@ -14,7 +14,7 @@ const StyledSlider = styled(Slider)`
 `;
 
 const ImageContainer1 = styled.div`
-  background-image: url('/body-1.svg');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/body-1.svg');
   background-repeat: no-repeat;
   background-size: 76.7vw 70vh;
   width: 76.8vw;
@@ -23,7 +23,7 @@ const ImageContainer1 = styled.div`
 `;
 
 const ImageContainer2 = styled.div`
-  background-image: url('/body-2.svg');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/body-2.svg');
   background-repeat: no-repeat;
   background-size: 76.7vw 70vh;
   width: 76.8vw;
@@ -31,7 +31,7 @@ const ImageContainer2 = styled.div`
 `;
 
 const ImageContainer3 = styled.div`
-  background-image: url('/body-3.svg');
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/body-3.svg');
   background-repeat: no-repeat;
   background-size: 76.8vw 70vh;
   width: 76.8vw;

@@ -48,10 +48,13 @@ export const ChatSpaceHeaderGuestImage = styled.div`
 
 export const ChatSpaceHeaderRight = styled.div`
   display: flex;
-  width: 5vw;
+  width: 8vw;
   height: inherit;
   margin-right: 10px;
   justify-content: space-between;
   align-items: center;
+  & > * {
+    cursor: pointer;
+  }
   /* border: 2px solid blue; */
 `;

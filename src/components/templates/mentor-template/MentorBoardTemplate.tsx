@@ -1,4 +1,4 @@
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '@/components/common/header/MainPageHeader';
 import * as S from './styled';
 import Category from '../../common/category/Category';
 import MentorBoardList from '@/components/organisms/mentor-board/MentorBoardList';
@@ -13,7 +13,7 @@ import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorB
 const MentorBoardTemplate = () => {
   return (
     <>
-      <SubPageHeader />
+      <MainPageHeader />
       <Category />
       <ContainerWrapper>
         <S.MentorBoardListContainer>

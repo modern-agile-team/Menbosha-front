@@ -12,7 +12,7 @@ const MainPageFooter = () => {
           <S.FooterBoxCenter>
             <S.NoticeBox>
               <Image
-                src="/AlarmLeft.svg"
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
                 alt="alarm icon"
                 width="20"
                 height="20"
@@ -20,7 +20,7 @@ const MainPageFooter = () => {
               />
               <span> ※ 공지사항 거 이왕이면 혁명이란 단어를 쓰십쇼</span>
               <Image
-                src="/AlarmRight.svg"
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
                 alt="alarm icon"
                 width="20"
                 height="20"
@@ -37,7 +37,7 @@ const MainPageFooter = () => {
                 href="https://modern-agile-official-client.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ textDecoration: 'none', color: '#c58940' }}>
+                style={{ textDecoration: 'none', color: 'rgb(255, 119, 43)' }}>
                 Modern Agile
               </a>
               . All rights reserved.

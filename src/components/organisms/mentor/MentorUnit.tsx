@@ -1,6 +1,6 @@
 import USER from '@/apis/user';
 import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '@/components/common/header/MainPageHeader';
 import { MentorType, MentorUnitPropsType, MentorUnitType } from '@/types/user';
 import { useEffect, useState } from 'react';
 

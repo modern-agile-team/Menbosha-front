@@ -1,4 +1,4 @@
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '@/components/common/header/MainPageHeader';
 import MentorList from '../../organisms/mentor/MentorList';
 import * as S from './styled';
 import Category from '../../common/category/Category';
@@ -10,7 +10,7 @@ import {
 const MentorTemplate = () => {
   return (
     <>
-      <SubPageHeader />
+      <MainPageHeader />
       <Category />
       <ContainerWrapper>
         <S.MentorListContainer>

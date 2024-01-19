@@ -1,7 +1,7 @@
-import SubPageHeader from '@/components/common/header/SubPageHeader';
+import MainPageHeader from '../common/header/MainPageHeader';
 
 const SupportTemplate = () => {
-  return <SubPageHeader />;
+  return <MainPageHeader />;
 };
 
 export default SupportTemplate;

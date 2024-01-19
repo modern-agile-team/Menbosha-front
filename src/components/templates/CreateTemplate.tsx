@@ -1,10 +1,10 @@
-import SubPageHeader from '../common/header/SubPageHeader';
+import MainPageHeader from '../common/header/MainPageHeader';
 import CreateBody from '../organisms/create-board/CreateBody';
 
 const CreateTemplate = () => {
   return (
     <div>
-      <SubPageHeader />
+      <MainPageHeader />
       <div
         style={{ display: 'flex', justifyContent: 'center', width: '100vw' }}>
         <CreateBody />

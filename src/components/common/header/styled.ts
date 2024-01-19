@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<{ isMain: boolean }>`
   display: flex;
   flex-wrap: wrap;
   width: inherit;
   height: 10vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
-  margin-top: 40px;
+  margin-top: ${({ isMain }) => (isMain ? '40px' : '20px')};
   /* margin-bottom: 20px; */
   justify-content: center;
+  transition: margin-top 0.3s ease;
   /* border: 2px solid white; */
 `;
 
@@ -41,30 +42,35 @@ export const NavigateBox = styled.div`
   /* border: 2px solid blue; */
   & > a {
     text-decoration: none;
-    color: #c58940;
+    color: #ff772b;
     font-size: 1em;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    /* transition:
+      color 0.3s ease, font-weight 0.3s ease; */
     &:hover {
-      color: #ffac60;
+      /* color: #ffac60; */
+      font-weight: 600;
     }
   }
 `;
 
 export const MentorNavBox = styled.div`
-  color: #c58940;
-  font-weight: bold;
+  color: #ff772b;
+  font-weight: 500;
+  /* transition:
+    color 0.3s ease, font-weight 0.3s ease; */
   cursor: pointer;
   &:hover {
-    color: #ffac60;
+    /* color: #ffac60; */
+    font-weight: 600;
   }
 `;
 
 export const IconBox = styled.div`
   display: flex;
-  width: 100px;
+  width: 8vw;
   height: inherit;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   /* border: 2px solid red; */
   & > * {

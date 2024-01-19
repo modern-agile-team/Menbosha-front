@@ -18,7 +18,6 @@ export const ListContainer = styled.div`
   }
 `;
 
-// export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
 export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   display: flex;
   width: 20vw;
@@ -26,16 +25,15 @@ export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   margin-bottom: 24px;
   justify-content: center;
   align-items: center;
-  border: 2px solid #ff4651;
+  border: 2px solid #ff772b;
   border-radius: 10px;
-  background-color: ${({ isSelected }) => isSelected && '#e1e1e1'};
+  background-color: ${({ isSelected }) => isSelected && '#ff772b'};
   transition: background-color 0.3s ease;
   &:hover {
     background-color: #ffe7e9;
     cursor: pointer;
   }
 `;
-// background-color: ${({ isSelected }) => isSelected && '#e1e1e1'};
 
 export const ChatRoomInfoBox = styled.div`
   display: flex;
@@ -54,16 +52,14 @@ export const ChatListLeft = styled.div`
   /* border: 1px solid green; */
 `;
 
-export const ChatListGuestImage = styled.div`
-  display: flex;
+export const ChatListGuestImage = styled.img<{ isSelected: boolean }>`
   width: 50px;
   min-width: 50px;
   height: 50px;
-  justify-content: center;
-  align-items: center;
   margin-right: 10px;
-  border: 2px solid #ff4651;
   border-radius: 10px;
+  /* border: 2px solid #ff772b;
+  border: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff772b')}; */
 `;
 
 export const ChatListCenter = styled.div`
@@ -76,19 +72,19 @@ export const ChatListCenter = styled.div`
   /* border: 1px solid gray; */
 `;
 
-export const ChatListGuestName = styled.span`
+export const ChatListGuestName = styled.span<{ isSelected: boolean }>`
   font-size: 0.65em;
   font-weight: 700;
   margin-bottom: 5px;
-  color: #000000;
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
 `;
 
-export const ChatListPrevText = styled.div`
+export const ChatListPrevText = styled.div<{ isSelected: boolean }>`
   display: flex;
   font-size: 0.65em;
   font-weight: 400;
   opacity: 0.8;
-  color: #000000;
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
   /* border: 1px solid red; */
   & > span {
     overflow: hidden;
@@ -98,7 +94,7 @@ export const ChatListPrevText = styled.div`
   }
 `;
 
-export const ChatListRight = styled.div`
+export const ChatListRight = styled.div<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   width: 2vw;
@@ -107,7 +103,7 @@ export const ChatListRight = styled.div`
   align-items: center;
   /* border: 1px solid red; */
   & > span {
-    color: #000000;
+    color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
     margin-bottom: 7px;
     justify-content: flex-start;
     font-size: 0.5em;
@@ -123,7 +119,7 @@ export const UnreadMessage = styled.div`
   align-items: center;
   border: none;
   border-radius: 50%;
-  background: #ff0000;
+  background: #ff772b;
   opacity: 0.7;
   & > span {
     font-size: 0.5em;

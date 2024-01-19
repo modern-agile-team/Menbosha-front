@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import SubPageHeader from '../common/header/SubPageHeader';
+import MainPageHeader from '../common/header/MainPageHeader';
 import HelpUnitContent from '../organisms/help-unit/HelpUnitContent';
 
 const HelpUnitTemplate = () => {
@@ -7,7 +7,7 @@ const HelpUnitTemplate = () => {
 
   return (
     <div>
-      <SubPageHeader />
+      <MainPageHeader />
       <div
         style={{ display: 'flex', justifyContent: 'center', height: '70vh' }}>
         {router.isReady && <HelpUnitContent id={Number(router.query.id)} />}

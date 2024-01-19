@@ -111,19 +111,9 @@ const MentorListBox = () => {
             <S.MentorInfoLeft>
               <S.MentorImage isExpanded={expandedStates[mentor.id]}>
                 {expandedStates[mentor.id] ? (
-                  <Image
-                    src="/UserIcon-White.png"
-                    alt="MentorIcon"
-                    width="24"
-                    height="24"
-                  />
+                  <img src={mentor.userImage.imageUrl} alt="MentorIcon" />
                 ) : (
-                  <Image
-                    src="/UserIcon-Red.png"
-                    alt="MentorIcon"
-                    width="24"
-                    height="24"
-                  />
+                  <img src={mentor.userImage.imageUrl} alt="MentorIcon" />
                 )}
               </S.MentorImage>
               <S.MentorInfoBox isExpanded={expandedStates[mentor.id]}>
@@ -145,14 +135,14 @@ const MentorListBox = () => {
             <S.IconBox isExpanded={expandedStates[mentor.id]}>
               <Link href={'/mypage'}>
                 <Image
-                  src="/UserIcon-White.png"
+                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/User-white.svg"
                   alt="UserIcon"
                   width="36"
                   height="36"
                 />
               </Link>
               <Image
-                src="/chat/ChatIcon-White.png"
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatIcon.svg"
                 alt="ChatIcon"
                 width="36"
                 height="36"
