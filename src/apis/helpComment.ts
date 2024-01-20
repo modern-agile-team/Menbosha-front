@@ -9,7 +9,7 @@ const HELPCOMMENT = {
   /** 도와주세요 댓글 생성 api [post] */
   async createHelpComment(boardId: number): Promise<any> {
     try {
-      // await COUNT.totalCount('increment', 'countHelpYouComment');
+      await COUNT.totalCount('increment', 'countHelpYouComment');
       const result: AxiosResponse = await instance.post(
         `${HELPCOMMENT.path}`,
         {
