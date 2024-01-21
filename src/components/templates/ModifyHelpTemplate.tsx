@@ -13,6 +13,8 @@ const ModifyHelpTemplate = () => {
     setModifyInfo(temp);
   };
 
+  console.log(modifyInfo);
+
   useEffect(() => {
     getRouterInfo();
   }, []);

@@ -76,7 +76,10 @@ export interface MBUnitHeadPropsType {
   id: number;
   head: string;
   body: string;
-  image: Array;
+  helpMeBoardImages: {
+    id: number;
+    imageUrl: string;
+  }[];
   userName: string;
   userImage: string;
   category: string;
