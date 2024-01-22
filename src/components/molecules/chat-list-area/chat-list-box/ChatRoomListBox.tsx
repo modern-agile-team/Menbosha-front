@@ -8,27 +8,29 @@ import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import CHAT from '@/apis/chatApi/chat';
 import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
+import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 
 const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
-  const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
-  const [selectedRoomId, setSelectedRoomId] = useState<string>('');
+  // const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
+  const [selectedRoomId, setSelectedRoomId] =
+    useRecoilState(SelectedRoomIdAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
-  const page = 1;
-  const pageSize = 5;
+  // const page = 1;
+  // const pageSize = 5;
 
-  useEffect(() => {
-    const getChatHistoryApi = async () => {
-      if (selectedRoomId) {
-        const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
-        SetGetChatHistory(res);
-        console.log(getChatHistory);
-      }
-    };
+  // useEffect(() => {
+  //   const getChatHistoryApi = async () => {
+  //     if (selectedRoomId) {
+  //       const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
+  //       SetGetChatHistory(res);
+  //       console.log(getChatHistory);
+  //     }
+  //   };
 
-    getChatHistoryApi();
-  }, [selectedRoomId]);
+  //   getChatHistoryApi();
+  // }, [selectedRoomId]);
 
   const handleRoomSelect = (roomId: string) => {
     const queryURL = {
@@ -65,9 +67,6 @@ const ChatRoomListBox = () => {
             isSelected={selectedRoomId === data.chatRooms._id}>
             <S.ChatRoomInfoBox key={data.chatPartners[0].id}>
               <S.ChatListLeft>
-                {/* <S.ChatListGuestImage>
-                  <img src={data.chatPartners[0].userImage} alt="GuestImage" />
-                </S.ChatListGuestImage> */}
                 <S.ChatListGuestImage
                   isSelected={selectedRoomId === data.chatRooms._id}
                   src={data.chatPartners[0].userImage}
