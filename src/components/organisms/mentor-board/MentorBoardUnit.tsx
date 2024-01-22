@@ -35,7 +35,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
             id={getUnitData.id}
             head={getUnitData.head}
             body={getUnitData.body}
-            image={getUnitData.mentorBoardImages}
+            helpMeBoardImages={getUnitData.mentorBoardImages}
             userImage={getUnitData.user.userImage.imageUrl}
             userName={getUnitData.user.name}
             category={category as string}

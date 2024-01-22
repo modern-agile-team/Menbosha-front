@@ -17,7 +17,6 @@ const ModifyHelpTemplate = () => {
     getRouterInfo();
   }, []);
 
-  console.log(modifyInfo);
   return (
     <div>
       <MainPageHeader />

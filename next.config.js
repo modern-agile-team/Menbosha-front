@@ -12,7 +12,7 @@ const nextConfig = {
   },
   generateEtags: false,
   images: {
-    loader: 'default', // 'imgix'에서 'default'로 변경
+    loader: 'imgix', // 'imgix'에서 'default'로 변경
     path: '', // 이미지 최적화 비활성화
     remotePatterns: [
       {
@@ -21,32 +21,24 @@ const nextConfig = {
         port: '',
         pathname: '**',
       },
-    ],
-    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'k.kakaocdn.net',
         port: '',
         pathname: '**',
       },
-    ],
-    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
         port: '',
         pathname: '**',
       },
-    ],
-    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'ssl.pstatic.net',
         port: '',
         pathname: '/static/pwe/address/**',
       },
-    ],
-    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'phinf.pstatic.net',

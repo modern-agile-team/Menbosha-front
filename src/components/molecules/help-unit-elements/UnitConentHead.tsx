@@ -23,21 +23,19 @@ const UnitContentHead = (props: HelpUnitType) => {
   };
 
   useEffect(() => {
-    const temp = categoryList.find((data) => data.id === props.categoryId)
-      ?.category;
+    const temp = categoryList.find(
+      (data) => data.id === props.categoryId,
+    )?.category;
     temp && setCategory(temp);
   }, []);
 
   const modifyHelpUnit = () => {
-    router.push(
-      {
-        pathname: '/help/modify',
-        query: {
-          data: JSON.stringify(props),
-        },
+    router.push({
+      pathname: '/help/modify',
+      query: {
+        data: JSON.stringify(props),
       },
-      '/help/modify',
-    );
+    });
   };
   return (
     <div>

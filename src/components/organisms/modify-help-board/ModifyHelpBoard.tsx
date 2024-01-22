@@ -76,8 +76,9 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
 
   /**수정 전 값 불러오기 */
   const getModifyInfo = () => {
-    const temp = categoryList.find((data) => data.id === props.categoryId)
-      ?.category;
+    const temp = categoryList.find(
+      (data) => data.id === props.categoryId,
+    )?.category;
     let tempFiles: IFileTypes[] = files;
     setUnitTitle(props.head as string);
     setQuillText(props.body as string);
@@ -217,8 +218,9 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
         if (unitTitle === '') alert('제목을 입력해주세요.');
         if (quillText === '') alert('본문내용을 입력해주세요.');
       } else {
-        const catID = categoryList.find((data) => data.category === category)
-          ?.id;
+        const catID = categoryList.find(
+          (data) => data.category === category,
+        )?.id;
         console.log(typeof catID);
         const isData = {
           id: props.id,
@@ -300,7 +302,7 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
                   const { id, url } = file;
                   return (
                     <div key={id} style={{ margin: 5 }}>
-                      <Image
+                      <img
                         src={url as string}
                         alt="업로드 사진"
                         width={200}
