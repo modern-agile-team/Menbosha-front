@@ -1,4 +1,4 @@
-import MentorCard from '@/components/molecules/mentor-board-elements/MentorCard';
+import MentorCard from '@/components/molecules/mentor-elements/MentorCard';
 import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
