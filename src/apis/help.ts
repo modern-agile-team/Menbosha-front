@@ -142,8 +142,15 @@ const HELP = {
   },
 
   /** 도와주세요 끌올 리스트 api [get]*/
-  async getPullingUp(): Promise<any> {
-    const result: AxiosResponse = await instance.get(`${HELP.path}/pulling-up`);
+  async getPullingUp(id: number): Promise<any> {
+    const result: AxiosResponse = await instance.get(
+      `${HELP.path}/pulling-up`,
+      {
+        params: {
+          categoryId: id !== 1 ? id : '',
+        },
+      },
+    );
     return result.data.data;
   },
 };
