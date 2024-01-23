@@ -41,7 +41,7 @@ const MainPageHeader = () => {
   }, []);
 
   return (
-    <S.HeaderContainer isMain={isMain}>
+    <S.HeaderContainer ismain={isMain}>
       <S.HeaderArea>
         <S.LogoBox>
           <Link

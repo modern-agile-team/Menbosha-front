@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
-export const HeaderContainer = styled.div<{ isMain: boolean }>`
+export const HeaderContainer = styled.div<{ ismain: boolean }>`
   display: flex;
   flex-wrap: wrap;
   width: inherit;
   height: 10vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
-  margin-top: ${({ isMain }) => (isMain ? '40px' : '20px')};
+  margin-top: ${({ ismain }) => (ismain ? '40px' : '20px')};
   /* margin-bottom: 20px; */
   justify-content: center;
   transition: margin-top 0.3s ease;
