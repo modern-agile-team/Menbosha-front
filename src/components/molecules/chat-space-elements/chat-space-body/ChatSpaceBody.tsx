@@ -2,22 +2,28 @@ import React from 'react';
 import * as S from './styled';
 import TimeStamp from '../time-stamp/TimeStamp';
 import Image from 'next/image';
+import {
+  ChatContentsType,
+  ChatPaginationType,
+  ChatPartnersType,
+} from '@/types/chat';
 
-const ChatSpaceBody = () => {
+const ChatSpaceBody = (props: {
+  chatPartners: ChatPartnersType[];
+  chatContents: ChatContentsType[];
+  pagination: ChatPaginationType | undefined;
+}) => {
+  const { chatPartners, chatContents, pagination } = props;
   const hostId = 1;
   const currentUserId = 2 as number;
   const isHost = currentUserId === hostId;
 
-  // 모킹 데이터 만들기 전에 퍼블리싱 구현이 잘 되어 있는지 확인하는 용도입니다!!
-  // 모킹 데이터까지 만들면 pr이 너무 늘고, 제 개인적으로 퍼블리싱이 완료된 후에
-  // 데이터를 넣는 것을 더 선호해서 일단 return단에 전부 우겨넣었습니다.
-  // 이 부분은 스무스하게 넘기셔도 괜찮습니다 ㅎㅎ
   return (
     <S.ChatSpaceBodyContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
         <S.ChatGuestImage>
           <Image
-            src="/UserIcon-Red.png"
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/User-orange.svg"
             alt="GuestImage"
             width="24"
             height="24"
@@ -31,6 +37,7 @@ const ChatSpaceBody = () => {
         </S.ChatBubbleGuestCenter>
         <S.ChatTimeBox>16:40</S.ChatTimeBox>
       </S.ChatBubbleGuestContainer>
+      {/* 분기 */}
       <S.ChatBubbleHostContainer isHost={false}>
         <S.ChatTimeBox>16:42</S.ChatTimeBox>
         <S.ChatBubble isHost={false}>
