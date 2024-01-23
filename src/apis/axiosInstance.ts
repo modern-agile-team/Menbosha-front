@@ -38,7 +38,11 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    if (error.response.status == 401 || error.response.status == 403) {
+    console.log(error);
+    if (
+      error.response.data.statusCode === 401 &&
+      error.response.data.message === 'jwt expired'
+    ) {
       reNewToken();
       const accessToken = localStorage.getItem('accessToken');
 
