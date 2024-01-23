@@ -9,6 +9,7 @@ import {
 } from '@/components/common/globalStyled/styled';
 import Link from 'next/link';
 import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorBaord';
+import PopularMentorBoardList from '@/components/organisms/mentor-board/PopularMentorBoardList';
 
 const MentorBoardTemplate = () => {
   return (
@@ -26,6 +27,7 @@ const MentorBoardTemplate = () => {
           <TextBox size={30} color="#000">
             최근 인기 멘토글
           </TextBox>
+          <PopularMentorBoardList />
         </S.MentorBoardListContainer>
         <S.MentorBoardListContainer>
           <Link

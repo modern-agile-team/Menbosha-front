@@ -120,7 +120,10 @@ const MentorBoardList = () => {
           userId: data.user.userImage.userId,
           userName: data.user.name,
           userImage: data.user.userImage.imageUrl,
-          mentorBoardImage: data.mentorBoardImages,
+          mentorBoardImage:
+            data.mentorBoardImages.length !== 0
+              ? data.mentorBoardImages[0].imageUrl
+              : '',
         };
         return (
           <S.MentorBoardCardWrapper key={data.id}>

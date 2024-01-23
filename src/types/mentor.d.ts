@@ -41,10 +41,7 @@ export interface MentorBoardCardType {
   userId: number;
   userName: string;
   userImage: string;
-  mentorBoardImage: {
-    id: number;
-    imageUrl: string;
-  }[];
+  mentorBoardImage: string;
 }
 
 export type MentorBoardUnitType = {
@@ -54,7 +51,10 @@ export type MentorBoardUnitType = {
   createdAt: string;
   updatedAt: string;
   categoryId: number;
-  mentorBoardImages: Array;
+  mentorBoardImages: {
+    id: number;
+    imageUrl: string;
+  }[];
   user: {
     name: string;
     userImage: {
@@ -89,4 +89,65 @@ export interface MBUnitHeadPropsType {
 export interface MBUnitBodyPropsType {
   image: Array;
   body: string;
+}
+
+/**멘토 인기 게시글 props type */
+export interface MentorHotBoardPropsType {
+  page?: number;
+  pageSize?: number;
+  categoryId: number;
+  orderField?:
+    | 'id'
+    | 'userId'
+    | 'head'
+    | 'body'
+    | 'createdAt'
+    | 'updatedAt'
+    | 'categoryId'
+    | 'popularAt';
+  sortOrder?: 'DESC' | 'ASC';
+}
+
+export type MentorHotBoardType = {
+  totalCount: number;
+  currentPage: number;
+  pageSize: number;
+  nextPage: number;
+  hasNext: boolean;
+  lastPage: number;
+  mentorBoardForHotPostsItemDto: {
+    id: number;
+    userId: number;
+    head: string;
+    body: string;
+    createdAt: string;
+    updatedAt: string;
+    categoryId: number;
+    user: {
+      name: string;
+      userImage: {
+        imageUrl: string;
+      };
+    };
+    imageUrl: string;
+    likeCount: number;
+  };
+};
+
+export interface MentorHotBoardListType {
+  id: number;
+  userId: number;
+  head: string;
+  body: string;
+  createdAt: string;
+  updatedAt: string;
+  categoryId: number;
+  user: {
+    name: string;
+    userImage: {
+      imageUrl: string;
+    };
+  };
+  imageUrl: string;
+  likeCount: number;
 }
