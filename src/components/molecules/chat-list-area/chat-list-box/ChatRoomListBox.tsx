@@ -49,6 +49,7 @@ const ChatRoomListBox = () => {
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
+        // console.log(data);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
@@ -65,34 +66,36 @@ const ChatRoomListBox = () => {
             onContextMenu={handleChatRoomDelete}
             onClick={() => handleRoomSelect(data.chatRooms._id)}
             isSelected={selectedRoomId === data.chatRooms._id}>
-            <S.ChatRoomInfoBox key={data.chatPartners[0].id}>
-              <S.ChatListLeft>
-                <S.ChatListGuestImage
-                  isSelected={selectedRoomId === data.chatRooms._id}
-                  src={data.chatPartners[0].userImage}
-                  alt="GuestImage"
-                />
-                <S.ChatListCenter>
-                  <S.ChatListGuestName
-                    isSelected={selectedRoomId === data.chatRooms._id}>
-                    {data.chatPartners[0].name}
-                  </S.ChatListGuestName>
-                  <S.ChatListPrevText
-                    isSelected={selectedRoomId === data.chatRooms._id}>
-                    <span>{data.chatRooms.chat.content}</span>
-                  </S.ChatListPrevText>
-                </S.ChatListCenter>
-              </S.ChatListLeft>
-              <S.ChatListRight
-                isSelected={selectedRoomId === data.chatRooms._id}>
-                {isValidTime && <span>{`${hours}:${minutes}`}</span>}
-                {data.chatRooms.unReadChatCount > 0 && (
-                  <S.UnreadMessage>
-                    <span>{data.chatRooms.unReadChatCount}</span>
-                  </S.UnreadMessage>
-                )}
-              </S.ChatListRight>
-            </S.ChatRoomInfoBox>
+            {data.chatPartners.length !== 0 && (
+              <S.ChatRoomInfoBox key={data.chatPartners[0].id}>
+                <S.ChatListLeft>
+                  <S.ChatListGuestImage
+                    isSelected={selectedRoomId === data.chatRooms._id}
+                    src={data.chatPartners[0].userImage}
+                    alt="GuestImage"
+                  />
+                  <S.ChatListCenter>
+                    <S.ChatListGuestName
+                      isSelected={selectedRoomId === data.chatRooms._id}>
+                      {data.chatPartners[0].name}
+                    </S.ChatListGuestName>
+                    <S.ChatListPrevText
+                      isSelected={selectedRoomId === data.chatRooms._id}>
+                      <span>{data.chatRooms.chat.content}</span>
+                    </S.ChatListPrevText>
+                  </S.ChatListCenter>
+                </S.ChatListLeft>
+                <S.ChatListRight
+                  isSelected={selectedRoomId === data.chatRooms._id}>
+                  {isValidTime && <span>{`${hours}:${minutes}`}</span>}
+                  {data.chatRooms.unReadChatCount > 0 && (
+                    <S.UnreadMessage>
+                      <span>{data.chatRooms.unReadChatCount}</span>
+                    </S.UnreadMessage>
+                  )}
+                </S.ChatListRight>
+              </S.ChatRoomInfoBox>
+            )}
           </S.ChatRoomListArea>
         );
       })}

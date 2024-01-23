@@ -16,6 +16,7 @@ export const ChatSpaceHeaderArea = styled.div`
   width: 40vw;
   height: 6vh;
   justify-content: space-between;
+  align-items: center;
   /* border: 2px solid red; */
 `;
 
@@ -35,14 +36,13 @@ export const ChatSpaceHeaderLeft = styled.div`
   }
 `;
 
-export const ChatSpaceHeaderGuestImage = styled.div`
+export const ChatSpaceHeaderGuestImage = styled.img`
   display: flex;
   width: 50px;
   height: 50px;
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  border: 2px solid #ffffff;
   border-radius: 10px;
 `;
 

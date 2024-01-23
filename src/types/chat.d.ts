@@ -120,6 +120,33 @@ export interface ChatHistoryType {
   lastPage: number;
 }
 
+/** 채팅내역 조회타입 */
+export interface ChatContentsType {
+  chatRoomId: string;
+  createAt: string;
+  contents: string;
+  seenUsers: Array;
+  senderId: number;
+  chatId: number;
+}
+
+/** 채팅페이지 무한스크롤 타입 */
+export interface ChatPaginationType {
+  currentPage: number;
+  hasNext: boolean;
+  lastPage: number;
+  nextPage: number | null;
+  pageSize: number;
+  totalCount: number;
+}
+
+/** chatPartners 타입 */
+export interface ChatPartnersType {
+  id: number;
+  name: string;
+  userImage: string;
+}
+
 /** 채팅방 삭제 모달 타입 */
 export interface ModalType {
   show: boolean;

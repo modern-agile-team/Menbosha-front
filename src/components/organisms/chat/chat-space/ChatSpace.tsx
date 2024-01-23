@@ -3,21 +3,43 @@ import ChatSpaceFooter from '@/components/molecules/chat-space-elements/chat-spa
 import ChatSpaceHeader from '@/components/molecules/chat-space-elements/chat-space-header/ChatSpaceHeader';
 import React, { useEffect, useState } from 'react';
 import * as S from './styled';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import CHAT from '@/apis/chatApi/chat';
+import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
+import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
+import {
+  ChatContentsType,
+  ChatHistoryType,
+  ChatPaginationType,
+  ChatPartnersType,
+} from '@/types/chat';
+import { log } from 'console';
 
 const ChatSpace = () => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState<ChatHistoryType[]>([]);
+  const [pagination, setPagination] = useState<ChatPaginationType>();
+  const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
+  const [chatPartners, setChatPartners] = useState<ChatPartnersType[]>([]);
   const page = 1;
   const pageSize = 5; // 무한 스크롤 구현 전까지 일단 기본값
-  // 채팅내역 불러오기 api
+  // 채팅내역 불러오기 api ,테스트가 전부 끝나면 try-catch 삭제 예정
   const getChatHistoryApi = async () => {
     try {
       const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
-      setChatHistory(res);
-      console.log('채팅 내역:', res);
+      const temp = {
+        currentPage: res.currentPage,
+        hasNext: res.hasNext,
+        lastPage: res.lastPage,
+        nextPage: res.nextPage,
+        pageSize: res.pageSize,
+        totalCount: res.totalCount,
+      };
+      setChatHistory(res); //일단 안씁니다.
+      setPagination(temp);
+      setChatContents(res.chats);
+      setChatPartners(res.chatPartners);
     } catch (error) {
       console.error('에러:', error);
     }
@@ -26,14 +48,19 @@ const ChatSpace = () => {
   useEffect(() => {
     if (selectedRoomId) {
       getChatHistoryApi();
-      console.log(selectedRoomId);
+      console.log('::::::', chatHistory);
+      console.log(pagination);
     }
   }, [selectedRoomId]);
 
   return (
     <S.ChatSpaceContainer>
-      <ChatSpaceHeader />
-      <ChatSpaceBody />
+      <ChatSpaceHeader chatPartners={chatPartners} />
+      <ChatSpaceBody
+        pagination={pagination}
+        chatPartners={chatPartners}
+        chatContents={chatContents}
+      />
       <ChatSpaceFooter />
     </S.ChatSpaceContainer>
   );

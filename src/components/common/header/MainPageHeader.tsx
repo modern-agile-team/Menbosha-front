@@ -9,7 +9,7 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
 
-const id = 0; //초기값 -> 후에 변동 예정
+const id = 'home'; //초기값 -> 후에 변동 예정
 
 const MainPageHeader = () => {
   const router = useRouter();
