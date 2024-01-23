@@ -3,9 +3,8 @@ import * as S from './styled';
 import MainPageHeader from '@/components/common/header/MainPageHeader';
 import MainPageFooter from '../common/footer/Footer';
 import MainPageBody from '../organisms/mainpage-body/MainPageBody';
-import dynamic from 'next/dynamic';
 
-const MainTemplate = () => {
+const MainPageTemplate = () => {
   return (
     <S.PageWrapper>
       <MainPageHeader />
@@ -15,4 +14,4 @@ const MainTemplate = () => {
   );
 };
 
-export default MainTemplate;
+export default MainPageTemplate;

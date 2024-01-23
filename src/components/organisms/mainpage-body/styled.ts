@@ -3,23 +3,19 @@ import styled from 'styled-components';
 export const BodyWrapper = styled.div`
   display: flex;
   width: 100vw;
-  height: 70vh;
   justify-content: center;
-  /* border: 2px solid white; */
+  /* border: 2px solid black; */
 `;
 
 export const BodyContainer = styled.div`
   display: flex;
-  width: 76.8vw;
-  height: 70vh;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid yellow; */
 `;
 
-export const SliderContainer = styled.div`
-  width: 100%;
+export const MenboshaContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: inherit;
+  height: inherit;
+  z-index: -999;
 `;
