@@ -71,7 +71,7 @@ export const ChatBubbleGuestCenter = styled.div`
 `;
 
 export const ChatGuestName = styled.div`
-  max-width: 5vw;
+  max-width: 6vw;
   height: 2vh;
   /* text-align: center; */
   font-size: 0.65em;

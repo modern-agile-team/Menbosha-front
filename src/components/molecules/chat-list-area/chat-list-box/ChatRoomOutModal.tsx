@@ -35,8 +35,13 @@ const ChatRoomOutModal = ({
     <div>
       <ModalWrapper>
         <ModalContainer>
-          <ModalTitle>채팅방 나가기</ModalTitle>
-          <span>{partnerName}님과의 채팅방을 나가시겠습니까?</span>
+          <ModalTitle>
+            <span>채팅방 나가기</span>
+          </ModalTitle>
+          <ModalContents>
+            <span>{partnerName} 멘토님</span>
+            <span>채팅방을 나가시겠습니까?</span>
+          </ModalContents>
           <ButtonArea>
             <button onClick={handleChatRoomOut}>예</button>
             <button onClick={handleCloseModal}>아니오</button>
@@ -60,59 +65,87 @@ export default ChatRoomOutModal;
 export const ModalWrapper = styled.div`
   display: flex;
   position: absolute;
-  width: 20vw;
-  height: 16vh;
+  width: 27vw;
+  height: 30vh;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: #ffffff;
   z-index: 10000;
   border-radius: 10px;
-  border: 2px solid #ff9b50;
+  /* border: 2px solid #ff9b50; */
 `;
 
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 19vw;
-  height: 13vh;
+  width: 27vw;
+  height: 30vh;
   align-items: center;
   font-size: 0.65em;
   color: #000000;
   /* border: 1px solid green; */
-  & > span {
-    margin-bottom: 24px;
-  }
 `;
+
 export const ModalTitle = styled.div`
   display: flex;
-  margin: 0px 0px 20px 0px;
-  font-size: 1.2em;
-  font-weight: 700;
-  color: #ff772b;
+  width: 27vw;
+  height: 5vh;
+  align-items: center;
+  margin-bottom: 7vh;
+  background-color: #ff772b;
+  border-radius: 10px 10px 0px 0px;
+  border: 1px solid #ff772b;
+  & > span {
+    font-size: 1em;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 1vw;
+  }
+`;
+
+export const ModalContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 5vh;
+  align-items: center;
+  margin-bottom: 32px;
+  /* border: 2px solid red; */
+  :nth-child(1) {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  :nth-child(2) {
+    font-size: 1em;
+  }
 `;
 
 export const ButtonArea = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 13vw;
-  height: 3vh;
-
+  width: 14vw;
+  height: 5vh;
   /* border: 2px solid black; */
   & > button {
-    border: 1px solid rgb(255, 119, 43, 0.5);
-    border-radius: 4px;
+    border: 2px solid rgb(255, 119, 43);
+    border-radius: 10px;
     cursor: pointer;
-    width: 4vw;
+    width: 6vw;
+    height: 3vh;
+    font-size: 1em;
+    font-weight: 700;
     background-color: #ffffff;
     transition:
       background-color ease,
       color ease;
     &:hover {
-      background-color: rgb(255, 119, 43, 0.15);
+      background-color: rgb(255, 119, 43);
       border: none;
+      color: #ffffff;
     }
   }
 `;

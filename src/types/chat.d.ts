@@ -47,7 +47,7 @@ export interface ChatRoomListApiType {
         createdAt: string;
       };
     };
-    chatPartner: {
+    chatPartners: {
       id: number;
       name: string;
       userImage: string;
@@ -77,7 +77,7 @@ export interface ChatRoomListType {
       createdAt: string;
     };
   };
-  chatPartner: {
+  chatPartners: {
     id: number;
     name: string;
     userImage: string;
@@ -98,7 +98,7 @@ export interface ChatRoomType {
   };
 }
 
-/** 채팅 내역 전체조회 api 타입 */
+/** 채팅내역 전체조회 api 타입 */
 export interface ChatHistoryType {
   _id: string;
   chatMembers: Array;
@@ -107,6 +107,11 @@ export interface ChatHistoryType {
   createdAt: string;
   updatedAt: string;
   deletedAt: null;
+  chatPartners: {
+    id: number;
+    name: string;
+    userImage: string;
+  }[];
   totalCount: number;
   currentPage: number;
   pageSize: number;
