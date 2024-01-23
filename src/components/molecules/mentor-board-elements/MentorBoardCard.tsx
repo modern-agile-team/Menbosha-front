@@ -69,8 +69,7 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
       </S.MentorBoardUserBox>
       <S.MentorBoardCardContainer onClick={handleRouteBoard}>
         {props.mentorBoardImage.length > 0 ? (
-          <S.CardImageBox
-            img={props.mentorBoardImage[0].imageUrl}></S.CardImageBox>
+          <S.CardImageBox img={props.mentorBoardImage}></S.CardImageBox>
         ) : (
           <S.CardImageBox />
         )}

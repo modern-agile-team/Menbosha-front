@@ -51,7 +51,6 @@ const HelpBoardCardList = () => {
     setTimeout(() => {
       loadPost();
     }, 0);
-    console.log('카테고리 선택!!');
   }, [filterCategory]);
 
   const handleObs = (entries: any) => {

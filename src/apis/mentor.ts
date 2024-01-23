@@ -2,6 +2,7 @@ import {
   CreateMentorBoardType,
   MentorBoardListType,
   MentorBoardUnitType,
+  MentorHotBoardPropsType,
 } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
@@ -97,6 +98,23 @@ const MENTOR = {
       },
     });
     return result.data.data;
+  },
+
+  /**인기 멘토 게시글 불러오는 api [get] */
+  async hotMentorBoard({ categoryId }: MentorHotBoardPropsType): Promise<any> {
+    const result: AxiosResponse = await instance.get(
+      `${MENTOR.path}/hot-posts`,
+      {
+        params: {
+          page: 1,
+          pageSize: 5,
+          categoryId: categoryId,
+          orderField: 'id',
+          sortOrder: 'ASC',
+        },
+      },
+    );
+    return result.data.contents;
   },
 };
 
