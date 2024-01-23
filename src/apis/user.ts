@@ -39,6 +39,14 @@ const USER = {
     const result: AxiosResponse = await instance.get(`${USER.path}/my/profile`);
     return result.data;
   },
+
+  /**인기 멘토 불러오는 api [get] */
+  async getPopularMentor(): Promise<any> {
+    const result: AxiosResponse = await instance.get(
+      `${USER.path}/total-ranking`,
+    );
+    return result.data.userRanking;
+  },
 };
 
 export default USER;

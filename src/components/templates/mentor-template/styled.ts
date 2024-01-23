@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 /**멘토 리스트 컨테이너 */
 export const MentorListContainer = styled.div`
-  width: auto;
   min-width: 1560px;
-  max-height: 500px;
 `;
 
 interface SlideType {
@@ -30,4 +28,9 @@ export const MentorBoardListContainer = styled.div`
   width: auto;
   height: 500px;
   min-width: 1560px;
+`;
+
+/**인기 멘토 리스트 컨테이너*/
+export const PopularMentorListContainer = styled.div`
+  height: 1100px;
 `;

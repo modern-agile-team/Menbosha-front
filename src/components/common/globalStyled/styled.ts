@@ -73,7 +73,7 @@ export const FlexBox = styled.div<FlexType>`
 `;
 
 interface ImageType {
-  src: string;
+  src?: string;
   width?: string;
   height?: string;
   size?: string;
@@ -97,6 +97,7 @@ interface ImageType {
  */
 export const ImageBox = styled.div<ImageType>`
   background-image: url(${({ src }) => src});
+  background-color: #999;
   width: ${({ width }) => (width !== undefined ? width : `100%`)};
   height: ${({ height }) => (height !== undefined ? height : `250px`)};
   background-size: ${({ size }) => (size !== undefined ? size : 'contain')};
@@ -104,7 +105,7 @@ export const ImageBox = styled.div<ImageType>`
 `;
 
 interface LinkType {
-  color: string;
+  color?: string;
   size?: string;
 }
 
