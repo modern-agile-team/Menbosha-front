@@ -8,6 +8,11 @@ export const MentorCardContainer = styled.div`
   height: 159px;
   border-radius: 10px;
   border: 2px solid #ff792bbf;
+  cursor: pointer;
+  transition: all 250ms ease;
+  &:hover {
+    border: 5px solid #ff792bbf;
+  }
 `;
 
 export const MentorCardContentBox = styled.div`
@@ -23,6 +28,7 @@ export const MentorCardImageBox = styled.div`
 export const ProfileContentBox = styled.div`
   display: flex;
   width: 232px;
+  height: 110px;
 `;
 
 export const RankBox = styled.div`
@@ -48,10 +54,15 @@ export const NameBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto 0px;
+  margin: 0px auto;
   > :nth-child(3) {
     flex-wrap: wrap;
   }
+`;
+
+export const CountBox = styled.div`
+  display: flex;
+  margin: auto;
 `;
 
 export const PopularMentorCardContainer = styled.div`
@@ -62,4 +73,9 @@ export const PopularMentorCardContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  cursor: pointer;
+  transition: all 250ms ease;
+  &:hover {
+    border: 5px solid #ff792bbf;
+  }
 `;

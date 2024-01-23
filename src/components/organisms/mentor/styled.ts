@@ -8,5 +8,7 @@ export const MentoCardContainer = styled.div`
 `;
 
 export const MentorCardWrapper = styled.div`
-  margin: 14px;
+  width: 290px;
+  height: 460px;
+  margin: 8px;
 `;
