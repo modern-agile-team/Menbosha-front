@@ -7,7 +7,7 @@ import { MentorType, PopularMentorType } from '@/types/user';
 import { useRouter } from 'next/router';
 import PopularMentorCard from '@/components/molecules/mentor-elements/PopularMentorCard';
 
-const PopularMentor = () => {
+const PopularMentorList = () => {
   const [getPopData, setPopData] = useState<PopularMentorType[]>([]);
   const router = useRouter();
 
@@ -81,4 +81,4 @@ const PopularMentor = () => {
   );
 };
 
-export default PopularMentor;
+export default PopularMentorList;

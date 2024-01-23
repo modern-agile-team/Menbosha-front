@@ -6,7 +6,7 @@ import {
   ContainerWrapper,
   TextBox,
 } from '@/components/common/globalStyled/styled';
-import PopularMentor from '@/components/organisms/mentor/PopularMentor';
+import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 
 const MentorTemplate = () => {
   return (
@@ -19,12 +19,12 @@ const MentorTemplate = () => {
             명예의 전당
           </TextBox>
         </S.MentorListContainer>
-        <S.MentorListContainer>
+        <S.PopularMentorListContainer>
           <TextBox size={30} color="#000">
             인기 멘토
           </TextBox>
-          <PopularMentor />
-        </S.MentorListContainer>
+          <PopularMentorList />
+        </S.PopularMentorListContainer>
         <S.MentorListContainer>
           <TextBox size={30} color="#000">
             전체 멘토
