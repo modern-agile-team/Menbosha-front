@@ -30,8 +30,9 @@ export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   background-color: ${({ isSelected }) => isSelected && '#ff772b'};
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #ffe7e9;
-    cursor: pointer;
+    background-color: ${({ isSelected }) =>
+      isSelected ? '#ff772b' : '#ffe7e9'};
+    cursor: ${({ isSelected }) => (isSelected ? 'default' : 'pointer')};
   }
 `;
 

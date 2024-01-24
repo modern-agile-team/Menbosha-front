@@ -52,14 +52,14 @@ export const ChatBubble = styled.div<{ isHost: boolean }>`
   }
 `;
 
-export const ChatGuestImage = styled.div`
+export const ChatGuestImage = styled.img`
   display: flex;
   width: 50px;
   height: 50px;
   justify-content: center;
   align-items: center;
   /* margin-right: 10px; */
-  border: 2px solid #ff772b;
+  /* border: 2px solid #ff772b; */
   border-radius: 10px;
 `;
 

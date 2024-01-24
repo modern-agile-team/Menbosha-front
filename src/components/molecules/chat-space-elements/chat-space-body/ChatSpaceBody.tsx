@@ -9,7 +9,7 @@ import {
 } from '@/types/chat';
 
 const ChatSpaceBody = (props: {
-  chatPartners: ChatPartnersType[];
+  chatPartners: ChatPartnersType | undefined;
   chatContents: ChatContentsType[];
   pagination: ChatPaginationType | undefined;
 }) => {
@@ -21,16 +21,11 @@ const ChatSpaceBody = (props: {
   return (
     <S.ChatSpaceBodyContainer>
       <S.ChatBubbleGuestContainer isHost={true}>
-        <S.ChatGuestImage>
-          <Image
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/User-orange.svg"
-            alt="GuestImage"
-            width="24"
-            height="24"
-          />
-        </S.ChatGuestImage>
+        {chatPartners?.userImage && (
+          <S.ChatGuestImage src={chatPartners.userImage} alt="GuestImage" />
+        )}
         <S.ChatBubbleGuestCenter>
-          <S.ChatGuestName>원동건 님</S.ChatGuestName>
+          <S.ChatGuestName>{chatPartners?.name}</S.ChatGuestName>
           <S.ChatBubble isHost={true}>
             <span>안녕 재진아</span>
           </S.ChatBubble>
