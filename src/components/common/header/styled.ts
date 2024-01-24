@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 
 export const HeaderContainer = styled.div`
+  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   width: inherit;
   height: 7.5vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
   justify-content: center;
+  background-color: #ffffff;
   border-bottom: 2px solid #ff772b;
 `;
 

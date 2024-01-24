@@ -1,17 +1,19 @@
 import React from 'react';
 import * as S from './styled';
-import Image from 'next/image';
 
 const MainPageBody = () => {
   return (
     <S.BodyWrapper>
       <S.BodyContainer>
-        <S.MenboshaContainer>
-          <img
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/mainMenbosha.svg"
-            alt="mainImage"
-          />
-        </S.MenboshaContainer>
+        <S.MenboshaImageBox>
+          <S.MenboshaTitleBoxColumn>
+            <S.MenboshaTitleBoxRow>
+              <span>멘보샤</span>
+              <span>처럼 맛있게,</span>
+            </S.MenboshaTitleBoxRow>
+            <span>당신만의 멘토링.</span>
+          </S.MenboshaTitleBoxColumn>
+        </S.MenboshaImageBox>
       </S.BodyContainer>
     </S.BodyWrapper>
   );
