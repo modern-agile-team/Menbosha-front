@@ -18,6 +18,7 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
     setHtml(true);
   }, []);
 
+  /**게시판으로 라우트 */
   const handleRouteBoard = () => {
     router.push(
       {
@@ -66,9 +67,10 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
             {foundCategory ? foundCategory.category : 'not Found'}
           </TextBox>
         </div>
+        <div>{props.likes}</div>
       </S.MentorBoardUserBox>
       <S.MentorBoardCardContainer onClick={handleRouteBoard}>
-        {props.mentorBoardImage.length > 0 ? (
+        {props.mentorBoardImage !== '' ? (
           <S.CardImageBox img={props.mentorBoardImage}></S.CardImageBox>
         ) : (
           <S.CardImageBox />

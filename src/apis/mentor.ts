@@ -116,6 +116,22 @@ const MENTOR = {
     );
     return result.data.contents;
   },
+
+  /**멘토 게시글 좋아요 생성 [post] */
+  async createLike(boardId: number): Promise<any> {
+    const result: AxiosResponse = await instance.post(
+      `${MENTOR.path}/${boardId}/like`,
+    );
+    return result;
+  },
+
+  /**멘토 게시글 좋아요 삭제 [delete] */
+  async deleteLike(boardId: number): Promise<any> {
+    const result: AxiosResponse = await instance.delete(
+      `${MENTOR.path}/${boardId}/like`,
+    );
+    return result;
+  },
 };
 
 export default MENTOR;

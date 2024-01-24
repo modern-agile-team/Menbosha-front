@@ -17,8 +17,6 @@ const PopularMentorBoardList = () => {
     setHotData(response.mentorBoardForHotPostsItemDto);
   };
 
-  console.log(getHotData);
-
   useEffect(() => {
     getRandomMentorBoardApi();
   }, [filterCategory]);
@@ -41,6 +39,7 @@ const PopularMentorBoardList = () => {
           userName: data.user.name,
           userImage: data.user.userImage.imageUrl,
           mentorBoardImage: data.imageUrl,
+          likes: data.likeCount,
         };
         return (
           <S.MentorBoardCardWrapper key={data.id}>
