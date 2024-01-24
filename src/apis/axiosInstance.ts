@@ -7,7 +7,16 @@ const instance = axios.create({
 
 //토근 갱신
 const reNewToken = async () => {
-  const response = await instance.get(`auth/new-access-token`);
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}auth/new-access-token`,
+    {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    },
+  );
   localStorage.setItem('accessToken', response.data.accessToken);
 };
 
@@ -18,9 +27,8 @@ instance.interceptors.request.use(
       localStorage.setItem('accessToken', '');
     }
     const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-    config.headers['access_token'] = accessToken;
-    config.headers['refresh_token'] = refreshToken;
+
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
 
     return config;
   },
@@ -38,7 +46,6 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log(error);
     if (
       error.response.data.statusCode === 401 &&
       error.response.data.message === 'jwt expired'
@@ -46,7 +53,7 @@ instance.interceptors.response.use(
       reNewToken();
       const accessToken = localStorage.getItem('accessToken');
 
-      error.config.headers['access_token'] = accessToken;
+      error.config.headers['Authorization'] = `Bearer ${accessToken}`;
 
       // 중단된 요청을(에러난 요청)을 토큰 갱신 후 재요청
       const response = await instance(error.config);
