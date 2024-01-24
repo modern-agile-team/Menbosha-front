@@ -58,7 +58,9 @@ const ChatRoomListBox = () => {
         const isValidTime =
           !isNaN(createdAtDate.getHours()) &&
           !isNaN(createdAtDate.getMinutes());
-
+        const getAmPm = (hours: number): string => {
+          return hours >= 12 ? '오후' : '오전';
+        };
         return (
           <S.ChatRoomListArea
             key={data.chatRooms._id}
@@ -87,7 +89,11 @@ const ChatRoomListBox = () => {
                 </S.ChatListLeft>
                 <S.ChatListRight
                   isSelected={selectedRoomId === data.chatRooms._id}>
-                  {isValidTime && <span>{`${hours}:${minutes}`}</span>}
+                  {isValidTime && (
+                    <span>{`${getAmPm(hours)} ${
+                      hours % 12 || 12
+                    }:${minutes}`}</span>
+                  )}
                   {data.chatRooms.unReadChatCount > 0 && (
                     <S.UnreadMessage>
                       <span>{data.chatRooms.unReadChatCount}</span>

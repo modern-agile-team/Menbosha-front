@@ -7,7 +7,7 @@ export const ChatSpaceBodyContainer = styled.div`
   height: 85vh;
   overflow: scroll;
   overflow-x: hidden;
-  /* border: 2px solid white; */
+  /* border: 2px solid blue; */
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -18,17 +18,19 @@ export const ChatSpaceBodyContainer = styled.div`
   }
 `;
 
-export const ChatBubbleHostContainer = styled.div<{ isHost: boolean }>`
+export const ChatBubbleHostContainer = styled.div`
   display: flex;
   max-width: 20vw;
-  align-self: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
+  float: inline-end; //지렸다 대 재 진
+  /* align-self: flex-end; */
   /* border: 2px solid red; */
 `;
 
-export const ChatBubbleGuestContainer = styled.div<{ isHost: boolean }>`
+export const ChatBubbleGuestContainer = styled.div`
   display: flex;
   margin: 20px 0px 10px 20px;
-  align-self: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
+  float: inline-start;
+  /* align-self: flex-start; */
   /* border: 2px solid green; */
 `;
 
@@ -38,7 +40,7 @@ export const ChatBubble = styled.div<{ isHost: boolean }>`
   margin: ${({ isHost }) =>
     isHost ? '0.3vw 0.3vw 10px 0px' : '20px 20px 10px 0.2vw'};
   justify-content: center;
-  align-self: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
+  align-self: ${({ isHost }) => (isHost ? 'flex-end' : 'flex-start')};
   overflow-wrap: break-word;
   word-break: break-all;
   color: ${({ isHost }) => (isHost ? '#ffffff' : '#000000')};
@@ -82,10 +84,12 @@ export const ChatGuestName = styled.div`
 export const ChatTimeBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 2vw;
+  width: 3vw;
+  /* height: 2vh; */
   margin-bottom: 10px;
   justify-content: flex-end;
   /* text-align: center; */
   font-size: 0.5em;
+  color: rgb(0, 0, 0, 0.7);
   /* border: 2px solid blue; */
 `;

@@ -98,7 +98,7 @@ export const ChatListPrevText = styled.div<{ isSelected: boolean }>`
 export const ChatListRight = styled.div<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
-  width: 2vw;
+  width: 3vw;
   height: 5vh;
   margin-top: 2px;
   align-items: center;

@@ -123,11 +123,11 @@ export interface ChatHistoryType {
 /** 채팅내역 조회타입 */
 export interface ChatContentsType {
   chatRoomId: string;
-  createAt: string;
-  contents: string;
+  createdAt: string;
+  content: string;
   seenUsers: Array;
   senderId: number;
-  chatId: number;
+  _id: number;
 }
 
 /** 채팅페이지 무한스크롤 타입 */

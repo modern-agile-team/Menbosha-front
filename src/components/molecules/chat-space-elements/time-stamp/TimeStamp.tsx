@@ -1,11 +1,18 @@
 import React from 'react';
 import * as S from './styled';
 
-const TimeStamp = () => {
+interface TimeStampProps {
+  date: Date;
+}
+
+const TimeStamp = (props: TimeStampProps) => {
+  const formattedDate = `${props.date.getFullYear()}년 ${
+    props.date.getMonth() + 1
+  }월 ${props.date.getDate()}일`;
   return (
     <S.TimeStampContainer>
       <S.TimeLine />
-      <S.TimeStampArea>2023년 12월 26일</S.TimeStampArea>
+      <S.TimeStampArea>{formattedDate}</S.TimeStampArea>
     </S.TimeStampContainer>
   );
 };
