@@ -3,16 +3,40 @@ import useCarousel from '@/hooks/useCarousel';
 import { MBUnitBodyPropsType } from '@/types/mentor';
 import * as S from './style';
 import { useEffect, useState } from 'react';
+import MENTOR from '@/apis/mentor';
+import axios from 'axios';
 
 const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
   const { slideRef, handleSlidePrev, handleSlideNext } = useCarousel(
     props.image,
   );
   const [isHtml, setHtml] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+  const [isLike, setIsLike] = useState(false);
 
   useEffect(() => {
     setHtml(true);
+    setLikeCount(props.likes);
   }, []);
+
+  const handleLike = async () => {
+    if (isLike) {
+      setLikeCount(likeCount - 1);
+      setIsLike(false);
+      await MENTOR.deleteLike(props.id);
+    } else {
+      try {
+        await MENTOR.createLike(props.id);
+        setLikeCount(likeCount + 1);
+        setIsLike(true);
+      } catch (err) {
+        if (axios.isAxiosError(err) && err.response) {
+          alert(`${err.response.data.message}`);
+        }
+      }
+    }
+  };
+
   return (
     <S.BodyContainer>
       {props.image.length >= 0 && (
@@ -48,6 +72,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
             }}></div>
         )}
       </S.BodyContentBox>
+      <ButtonBox onClick={handleLike}>좋아요{likeCount}</ButtonBox>
     </S.BodyContainer>
   );
 };

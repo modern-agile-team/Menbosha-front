@@ -28,6 +28,7 @@ export type MentorBoardListType = {
     boardId: number;
     imageUrl: string;
   }[];
+  mentorBoardLikes: number;
 };
 
 /**멘토게시판 카트형식의 타입 */
@@ -41,6 +42,7 @@ export interface MentorBoardCardType {
   userId: number;
   userName: string;
   userImage: string;
+  likes: number;
   mentorBoardImage: string;
 }
 
@@ -51,6 +53,7 @@ export type MentorBoardUnitType = {
   createdAt: string;
   updatedAt: string;
   categoryId: number;
+  mentorBoardLikes: number;
   mentorBoardImages: {
     id: number;
     imageUrl: string;
@@ -87,8 +90,10 @@ export interface MBUnitHeadPropsType {
 }
 /**멘토 게시글 중 Body Props Type */
 export interface MBUnitBodyPropsType {
+  id: number;
   image: Array;
   body: string;
+  likes: number;
 }
 
 /**멘토 인기 게시글 props type */

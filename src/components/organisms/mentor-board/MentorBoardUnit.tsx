@@ -23,6 +23,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
     setUnitData(response);
   };
 
+  console.log(getUnitData);
   useEffect(() => {
     getMentorBoardUnitApi();
   }, []);
@@ -42,8 +43,10 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
             createdAt={getUnitData.createdAt}
           />
           <MentorBoardUnitBody
+            id={getUnitData.id}
             image={getUnitData.mentorBoardImages}
             body={getUnitData.body}
+            likes={getUnitData.mentorBoardLikes}
           />
           <MentorBoardUnitBottom id={getUnitData.user.userImage.userId} />
         </div>

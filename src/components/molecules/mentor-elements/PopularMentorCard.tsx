@@ -52,7 +52,7 @@ const PopularMentorCard = (props: PopularMentorType) => {
               size={12}
               color="#000"
               style={{ padding: '0px 0px 10px 0px' }}>
-              {props.introduce.slice(0, 25)}
+              {props.introduce}
             </TextBox>
           </S.NameBox>
         </S.ProfileContentBox>

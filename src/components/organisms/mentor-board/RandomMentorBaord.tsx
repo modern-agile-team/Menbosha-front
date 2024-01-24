@@ -36,6 +36,7 @@ const RandomMentorBoard = () => {
           userId: data.user.userImage.userId,
           userName: data.user.name,
           userImage: data.user.userImage.imageUrl,
+          likes: data.mentorBoardLikes,
           mentorBoardImage:
             data.mentorBoardImages.length !== 0
               ? data.mentorBoardImages[0].imageUrl
