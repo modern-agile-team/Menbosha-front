@@ -39,7 +39,7 @@ export const MentorBoardUserBox = styled.div`
   display: flex;
   margin: 0px 0px 12px 0px;
   cursor: pointer;
-  width: 40%;
+  width: 90%;
 `;
 
 export const MentorBoardCardContainer = styled.div`

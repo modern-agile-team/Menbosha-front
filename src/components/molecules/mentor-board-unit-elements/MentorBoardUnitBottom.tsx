@@ -13,8 +13,6 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
     setUserInfo(response);
   };
 
-  console.log(userInfo);
-
   useEffect(() => {
     getUserInfoApi();
   }, []);

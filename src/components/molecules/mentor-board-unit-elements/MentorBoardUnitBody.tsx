@@ -12,7 +12,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
   );
   const [isHtml, setHtml] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(props.isLike);
 
   useEffect(() => {
     setHtml(true);
@@ -72,7 +72,14 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
             }}></div>
         )}
       </S.BodyContentBox>
-      <ButtonBox onClick={handleLike}>좋아요{likeCount}</ButtonBox>
+      <ButtonBox onClick={handleLike}>
+        {!isLike ? (
+          <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/emptyHeart.svg" />
+        ) : (
+          <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg" />
+        )}
+        {likeCount}
+      </ButtonBox>
     </S.BodyContainer>
   );
 };
