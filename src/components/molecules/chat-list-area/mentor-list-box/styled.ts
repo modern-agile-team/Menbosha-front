@@ -86,6 +86,7 @@ export const MentorInfoBox = styled.div<ListAreaType>`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: 10vw;
     color: ${({ isExpanded }) => (isExpanded ? '#ffffff' : ' #000000')};
   }
   /* border: 1px solid green; */

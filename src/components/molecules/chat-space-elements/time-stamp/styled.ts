@@ -28,5 +28,6 @@ export const TimeStampArea = styled.div`
   font-weight: 400;
   font-size: 0.5em;
   line-height: 150%;
+  color: #000000;
   opacity: 0.7; // 추후에 font-weight로 조정할 예정
 `;

@@ -30,8 +30,9 @@ export const ChatRoomListArea = styled.li<{ isSelected: boolean }>`
   background-color: ${({ isSelected }) => isSelected && '#ff772b'};
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #ffe7e9;
-    cursor: pointer;
+    background-color: ${({ isSelected }) =>
+      isSelected ? '#ff772b' : '#ffe7e9'};
+    cursor: ${({ isSelected }) => (isSelected ? 'default' : 'pointer')};
   }
 `;
 
@@ -97,7 +98,7 @@ export const ChatListPrevText = styled.div<{ isSelected: boolean }>`
 export const ChatListRight = styled.div<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
-  width: 2vw;
+  width: 3vw;
   height: 5vh;
   margin-top: 2px;
   align-items: center;

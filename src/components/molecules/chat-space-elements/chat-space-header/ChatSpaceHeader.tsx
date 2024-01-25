@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import { ChatPartnersType } from '@/types/chat';
 
-const ChatSpaceHeader = (props: { chatPartners: ChatPartnersType[] }) => {
+const ChatSpaceHeader = (props: {
+  chatPartners: ChatPartnersType | undefined;
+}) => {
   const { chatPartners } = props;
 
   return (
     <S.ChatSpaceHeaderContainer>
       <S.ChatSpaceHeaderArea>
-        {chatPartners.length > 0 ? (
-          chatPartners.map((data) => {
-            return (
-              <div key={data.id}>
-                <S.ChatSpaceHeaderLeft>
-                  <S.ChatSpaceHeaderGuestImage
-                    src={data.userImage}
-                    alt="GuestIcon"
-                  />
-                  <span>{data.name}</span>
-                </S.ChatSpaceHeaderLeft>
-              </div>
-            );
-          })
+        {chatPartners ? (
+          <div>
+            <S.ChatSpaceHeaderLeft>
+              <S.ChatSpaceHeaderGuestImage
+                src={chatPartners?.userImage}
+                alt="GuestIcon"
+              />
+              <span>{chatPartners?.name}</span>
+            </S.ChatSpaceHeaderLeft>
+          </div>
         ) : (
           <div>
             <S.ChatSpaceHeaderLeft>
