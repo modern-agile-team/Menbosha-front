@@ -53,6 +53,7 @@ export type MentorBoardUnitType = {
   createdAt: string;
   updatedAt: string;
   categoryId: number;
+  isLike: boolean;
   mentorBoardLikes: number;
   mentorBoardImages: {
     id: number;
@@ -94,6 +95,7 @@ export interface MBUnitBodyPropsType {
   image: Array;
   body: string;
   likes: number;
+  isLike: boolean;
 }
 
 /**멘토 인기 게시글 props type */
