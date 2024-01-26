@@ -119,6 +119,7 @@ const MENTOR = {
 
   /**멘토 게시글 좋아요 생성 [post] */
   async createLike(boardId: number): Promise<any> {
+    await COUNT.totalCount('increment', 'countMentorBoardLike');
     const result: AxiosResponse = await instance.post(
       `${MENTOR.path}/${boardId}/like`,
     );
@@ -127,6 +128,7 @@ const MENTOR = {
 
   /**멘토 게시글 좋아요 삭제 [delete] */
   async deleteLike(boardId: number): Promise<any> {
+    await COUNT.totalCount('decrement', 'countMentorBoardLike');
     const result: AxiosResponse = await instance.delete(
       `${MENTOR.path}/${boardId}/like`,
     );
