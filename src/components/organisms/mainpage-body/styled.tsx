@@ -76,7 +76,7 @@ export const MainContents2Right = styled.div`
   flex-direction: column;
   width: 52vw;
   height: 80vh;
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   / & > span {
     margin-bottom: 2vh;
     font-size: 4em;
@@ -113,22 +113,23 @@ export const MainContentsContainer3 = styled.div`
   width: 80vw;
   height: 100vh;
   color: #000000;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 `;
 
 export const MainContents3Left = styled.img`
   width: 7vw;
   height: 12vh;
   margin-right: 1vw;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 `;
 
 export const MainContents3Right = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 55vw;
   height: 80vh;
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   & > span {
     margin-bottom: 2vh;
     font-size: 4em;
@@ -144,17 +145,51 @@ export const MainContents3Right = styled.div`
   }
 `;
 
+//grid 한번 써봤는데 어렵네요 컨테이너의 item이 고정된 개수가 아니라면
+//flex 사용할 것 같습니다. 대신 편하긴 해요
 export const MainContents3InfoContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
   min-width: 46vw; // 890
   min-height: 50vh; //541
-  border: 2px solid black;
+  /* border: 2px solid black; */
 `;
 
 export const InfoBox = styled.div`
   display: flex;
-  border: 2px solid red;
-  text-align: justify;
+  flex-direction: column;
+  width: 22vw;
+  height: 23vh;
+  /* align-items: center; */
+  justify-content: space-around;
+  border: 3px solid #ff772b;
+  border-radius: 30px;
+`;
+
+export const InfoTitleBox = styled.div`
+  display: flex;
+  width: 20vw;
+  height: 7vh;
+  padding-left: 2vh;
+  text-align: start;
+  /* border: 2px solid blue; */
+`;
+
+export const InfoTextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 16vw;
+  height: 10vh;
+  padding-left: 2vh;
+  justify-content: flex-end;
+  font-size: 0.65em;
+  font-weight: 500;
+  line-height: 150%;
+  /* border: 2px solid green; */
 `;
