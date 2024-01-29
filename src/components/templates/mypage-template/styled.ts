@@ -174,3 +174,11 @@ export const ChatLinkText = styled.div`
   position: absolute;
   color: #fff;
 `;
+
+//MyProfileTemplate
+export const ContentContainer = styled.div`
+  display: flex;
+  border: 2px solid #98f;
+  width: 65%;
+  margin: 100px 50px 100px 0px;
+`;
