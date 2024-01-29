@@ -13,7 +13,7 @@ const id = 'home'; //초기값 -> 후에 변동 예정
 
 const MainPageHeader = () => {
   const router = useRouter();
-  const [isMain, setIsMain] = useState(false);
+  // const [isMain, setIsMain] = useState(false);
   const [isLogin, setLogin] = useRecoilState(LoginStateAtom);
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
@@ -22,9 +22,9 @@ const MainPageHeader = () => {
   const [provider, setProvider] = useState('');
   const [isLoginState, setLoginState] = useRecoilState(LoginStateAtom);
 
-  useEffect(() => {
-    setIsMain(router.pathname === '/main');
-  }, [router.pathname]);
+  // useEffect(() => {
+  //   setIsMain(router.pathname === '/main');
+  // }, [router.pathname]); // 디자인 변경으로 인해서 헤더 위치 고정
 
   const handleLogoutApi = async () => {
     await AUTH.handleLogout(provider);
@@ -41,7 +41,7 @@ const MainPageHeader = () => {
   }, []);
 
   return (
-    <S.HeaderContainer ismain={isMain}>
+    <S.HeaderContainer>
       <S.HeaderArea>
         <S.LogoBox>
           <Link
@@ -57,16 +57,14 @@ const MainPageHeader = () => {
           </Link>
         </S.LogoBox>
         <S.NavigateBox>
-          <div>
-            <S.MentorNavBox onClick={handleMentorModal}>멘토</S.MentorNavBox>
-            <S.MentorModal isMentor={mentorModal}>
-              <Link href={`/mentor`}>프로필</Link>
-              <Link href={`/mentor/board`}>게시글</Link>
-              <div onClick={handleMentorModal}></div>
-            </S.MentorModal>
-          </div>
+          <Link href={`/mentor`}>
+            <span>멘토 찾기</span>
+          </Link>
+          <Link href={`/mentor/board`}>
+            <span>멘토 게시글</span>
+          </Link>
           <Link href={`/help`}>
-            <span>멘티</span>
+            <span>도와주세요</span>
           </Link>
           <Link href={`/support`}>
             <span>고객지원</span>

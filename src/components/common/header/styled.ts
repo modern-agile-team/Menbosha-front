@@ -1,23 +1,22 @@
 import styled, { css } from 'styled-components';
 
-export const HeaderContainer = styled.div<{ ismain: boolean }>`
+export const HeaderContainer = styled.div`
+  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   width: inherit;
-  height: 10vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
-  margin-top: ${({ ismain }) => (ismain ? '40px' : '20px')};
-  /* margin-bottom: 20px; */
+  height: 7.5vh; // 실제 렌더링되는 화면의 비율이 너무 구리다. 일단 절반 값으로 변경
   justify-content: center;
-  transition: margin-top 0.3s ease;
-  /* border: 2px solid white; */
+  background-color: #ffffff;
+  border-bottom: 2px solid #ff772b;
 `;
 
 export const HeaderArea = styled.div`
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   width: 80vw;
   min-width: 20px;
-  height: 9vh;
+  height: 7.5vh;
   margin: 0px 197.5px;
   justify-content: space-between;
   /* border: 2px solid green; */
@@ -25,7 +24,7 @@ export const HeaderArea = styled.div`
 
 export const LogoBox = styled.div`
   display: flex;
-  width: 146px;
+  width: 10vw;
   height: inherit;
   align-items: center;
   justify-content: space-between;
@@ -35,36 +34,34 @@ export const LogoBox = styled.div`
 export const NavigateBox = styled.div`
   display: flex;
   /* flex-wrap: wrap; */
-  width: 520px;
-  margin-right: 75px;
-  justify-content: space-around;
+  width: 40vw;
+  /* margin-right: 6vw; */
+  justify-content: space-between;
   align-items: center;
   /* border: 2px solid blue; */
   & > a {
     text-decoration: none;
     color: #ff772b;
-    font-size: 1em;
+    font-size: 0.83em;
     font-weight: 500;
     /* transition:
       color 0.3s ease, font-weight 0.3s ease; */
     &:hover {
-      /* color: #ffac60; */
       font-weight: 600;
     }
   }
 `;
 
-export const MentorNavBox = styled.div`
-  color: #ff772b;
-  font-weight: 500;
-  /* transition:
-    color 0.3s ease, font-weight 0.3s ease; */
-  cursor: pointer;
-  &:hover {
-    /* color: #ffac60; */
-    font-weight: 600;
-  }
-`;
+// export const MentorNavBox = styled.div`
+//   color: #ff772b;
+//   font-weight: 500;
+//   /* transition:
+//     color 0.3s ease, font-weight 0.3s ease; */
+//   cursor: pointer;
+//   &:hover {
+//     font-weight: 600;
+//   }
+// `;
 
 export const IconBox = styled.div`
   display: flex;
