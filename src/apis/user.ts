@@ -66,6 +66,20 @@ const USER = {
     );
     return result;
   },
+
+  /**유저 이미지 수정 api [patch] */
+  async updateMyImage(image: FormData): Promise<any> {
+    const result: AxiosResponse = await instance.patch(
+      `${USER.path}/image`,
+      image,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    return result;
+  },
 };
 
 export default USER;

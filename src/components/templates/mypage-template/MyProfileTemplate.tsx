@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 const MyProfileTemplate = () => {
   const router = useRouter();
   const handleBack = () => {
-    router.back();
+    router.push(`/mypage/info`);
   };
   return (
     <ContainerWrapper>
