@@ -8,7 +8,7 @@ export const ContentContainer = styled.div`
 
 export const HeaderContentsBox = styled.div`
   width: 35%;
-  height: 4v60px;
+  height: 460px;
 `;
 
 export const BodyContentsBox = styled.div`
