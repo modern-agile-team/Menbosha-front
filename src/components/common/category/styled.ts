@@ -1,16 +1,10 @@
 import styled from 'styled-components';
 
-export const CategoryWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 40px 0px 25px 0px;
-`;
-
 export const CategoryContainer = styled.div`
   display: flex;
   justify-content: left;
-  min-width: 500px;
-  width: 1532px;
+  flex-wrap: wrap;
+  width: 74%;
 `;
 
 interface IsCategoryType {

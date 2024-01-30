@@ -15,33 +15,36 @@ const MentorBoardTemplate = () => {
   return (
     <>
       <MainPageHeader />
-      <Category />
+      <S.HeadTitleContainer>
+        <div>
+          <div>멘토 - 게시글</div>
+          <div>멘토들의 직접 작성한 좋은 게시글을 찾아보세요.</div>
+        </div>
+      </S.HeadTitleContainer>
+      <S.MentorBoardCategoryContainer>
+        <Category />
+        <S.CreateIconLink
+          href={{
+            pathname: `/create`,
+          }}>
+          <img
+            src={
+              'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
+            }
+          />
+        </S.CreateIconLink>
+      </S.MentorBoardCategoryContainer>
       <ContainerWrapper>
         <S.MentorBoardListContainer>
-          <TextBox size={30} color="#000">
-            멘토가 들려주는 꿀통 대방출~!~!
-          </TextBox>
+          <S.BoardTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.BoardTitleBox>
           <RandomMentorBoard />
         </S.MentorBoardListContainer>
         <S.MentorBoardListContainer>
-          <TextBox size={30} color="#000">
-            최근 인기 멘토글
-          </TextBox>
+          <S.BoardTitleBox>최근 인기 멘토글</S.BoardTitleBox>
           <PopularMentorBoardList />
         </S.MentorBoardListContainer>
         <S.MentorBoardListContainer>
-          <Link
-            href={{
-              pathname: `/create`,
-            }}>
-            글쓰기
-          </Link>
-          <TextBox
-            size={30}
-            color="#000"
-            style={{ padding: '0px 0px 24px 6px' }}>
-            전체 멘토 게시글
-          </TextBox>
+          <S.BoardTitleBox>전체 멘토 게시글</S.BoardTitleBox>
           <MentorBoardList />
         </S.MentorBoardListContainer>
       </ContainerWrapper>

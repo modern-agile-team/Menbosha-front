@@ -69,7 +69,9 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
         </div>
         <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
           <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg" />
-          <div style={{ verticalAlign: 'center' }}>{props.likes}</div>
+          <S.HeartCountBox style={{ verticalAlign: 'center' }}>
+            {props.likes}
+          </S.HeartCountBox>
         </FlexBox>
       </S.MentorBoardUserBox>
       <S.MentorBoardCardContainer onClick={handleRouteBoard}>
