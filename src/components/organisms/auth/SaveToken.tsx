@@ -17,8 +17,14 @@ const SaveToken = ({ provider }: Company) => {
       const code = new URL(window.location.href).searchParams.get('code');
 
       const result = await AUTH.getToken(provider, code as string);
-      localStorage.setItem('accessToken', result.accessToken);
-      localStorage.setItem('refreshToken', result.refreshToken);
+      localStorage.setItem(
+        'accessToken',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhY2Nlc3NUb2tlbiIsInVzZXJJZCI6MzIsImV4cCI6MTcwNjA3NDIzNSwiaWF0IjoxNzA2MDc0MjM1fQ.G3xijFc6lhh1Q6AZH54yRwwiS_vpusccisb4ix3-3WY',
+      );
+      localStorage.setItem(
+        'refreshToken',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZWZyZXNoVG9rZW4iLCJ1c2VySWQiOjMyLCJleHAiOjE3MTM4NTA0MTEsImlhdCI6MTcwNjA3NDQxMX0.0QkaqJ_bJZNN87jCwX6DrKXiK6XOgTPUcX31QA1GH1c',
+      );
       localStorage.setItem('provider', provider);
       setIsLogin(true);
     } catch (err) {
