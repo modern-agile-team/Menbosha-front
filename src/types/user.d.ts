@@ -1,3 +1,9 @@
+/** 유저 타입 제네릭 */
+type UserType<T> = {
+  id: number;
+  name: string;
+} & T;
+
 /**멘토(유저)카드 타입
  * 멘토코멘트 개수 추가 필요
  * 유저 랭크 추가 필요
@@ -76,3 +82,33 @@ export type PopularMentorType = {
   rank: number;
   reviewCount: number;
 };
+
+/**UserType의 제네릭을 활용한 profileType */
+export type UserProfileType = UserType<{
+  activityCategoryId: number;
+  hopeCategoryId: number;
+  image: string;
+  intro: {
+    career: string;
+    customCategory: string;
+    detail: string;
+    portfolio: string;
+    shortIntro: string;
+    sns: string;
+  };
+  isMentor: boolean;
+  rank: number;
+  phone: string;
+}>;
+
+export interface UpdateProfileType {
+  activityCategoryId: number;
+  hopeCategoryId: number;
+  career: string;
+  customCategory: string;
+  detail: string;
+  portfolio: string;
+  shortIntro: string;
+  sns: string;
+  isMentor: boolean;
+}

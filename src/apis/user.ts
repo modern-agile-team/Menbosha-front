@@ -1,6 +1,6 @@
-import { MentorType } from '@/types/user';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
+import { UpdateProfileType } from '@/types/user';
 
 const USER = {
   path: '/user',
@@ -46,6 +46,25 @@ const USER = {
       `${USER.path}/total-ranking`,
     );
     return result.data.userRanking;
+  },
+
+  /**본인 정보 수정 api */
+  async updateMyProfile(update: UpdateProfileType): Promise<any> {
+    const result: AxiosResponse = await instance.patch(
+      `${USER.path}/my/intro`,
+      {
+        shortIntro: update.shortIntro,
+        career: update.career,
+        customCategory: update.customCategory,
+        detail: update.detail,
+        portfolio: update.portfolio,
+        sns: update.sns,
+        hopeCategory: update.hopeCategoryId,
+        activityCategory: update.activityCategoryId,
+        isMentor: update.isMentor,
+      },
+    );
+    return result;
   },
 };
 
