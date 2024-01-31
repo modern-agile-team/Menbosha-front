@@ -28,6 +28,9 @@ export const HiddenSlide = styled.div<SlideType>`
 export const MentorBoardCategoryContainer = styled.div`
   display: flex;
   justify-content: center;
+  position: sticky;
+  background-color: #fff;
+  top: 0px;
   margin: 40px 0px 0px 0px;
 `;
 

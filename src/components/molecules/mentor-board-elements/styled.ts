@@ -28,7 +28,9 @@ export const CardImageBox = styled.div<ImgType>`
   height: 290px;
   background-color: #999;
   background-image: url(${({ img }) => img});
-  background-size: auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 10px;
   cursor: pointer;
 `;
@@ -43,21 +45,17 @@ export const MentorBoardUserBox = styled.div`
 `;
 
 export const MentorBoardCardContainer = styled.div`
-  height: 425px;
-  width: 80%;
-  //디자인쪽에서 안쓰길래 우선 주석처리
-  /* transition: height 500ms ease;
+  width: 100%;
+  transition: height 500ms ease;
   & > :nth-child(1) {
-    height: 290px;
-    transition: height 500ms ease;
+    transition: all 500ms ease;
   }
   &:hover {
-    height: 517px;
     & > :nth-child(1) {
-      height: 370px;
-      transition: height 500ms ease;
+      background-size: 110%;
+      transition: all 500ms ease;
     }
-  } */
+  }
 `;
 
 /**멘토 카드 하트 수 위치//근뎅 */
