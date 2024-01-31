@@ -112,3 +112,11 @@ export interface UpdateProfileType {
   sns: string;
   isMentor: boolean;
 }
+
+export type RankType = {
+  rank: number;
+  badge: {
+    badgeId: number;
+    createdAt: string;
+  }[];
+};

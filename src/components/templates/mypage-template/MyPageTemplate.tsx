@@ -46,8 +46,8 @@ const MyPageTemplate = () => {
           </S.ReviewLinkImg>
         </S.ElementSection>
         <S.ElementSection>
-          <S.ChatLinkImg onClick={() => handleRouter(`/chat`)}>
-            <S.ChatLinkText>채팅</S.ChatLinkText>
+          <S.ChatLinkImg onClick={() => handleRouter(`/mypage/record`)}>
+            <S.ChatLinkText>게시글 및 덧글</S.ChatLinkText>
           </S.ChatLinkImg>
         </S.ElementSection>
       </S.UserpageWrapper>

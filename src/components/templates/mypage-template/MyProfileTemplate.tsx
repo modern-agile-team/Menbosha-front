@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 const MyProfileTemplate = () => {
   const router = useRouter();
   const handleBack = () => {
-    router.push(`/mypage/info`);
+    router.push(`/mypage`);
   };
   return (
     <ContainerWrapper>
@@ -17,6 +17,10 @@ const MyProfileTemplate = () => {
         <ButtonBox onClick={handleBack}>이전</ButtonBox>
         <MyProfileContents />
       </S.ContentContainer>
+      <S.MyProfileBack>
+        <div></div>
+        <div></div>
+      </S.MyProfileBack>
     </ContainerWrapper>
   );
 };

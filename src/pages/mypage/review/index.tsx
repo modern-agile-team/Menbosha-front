@@ -1,5 +1,11 @@
+import MyReviewTemplate from '@/components/templates/mypage-template/MyReviewTemplate';
+
 const MypageReview = () => {
-  return <div>유저 후기 페이지</div>;
+  return (
+    <div>
+      <MyReviewTemplate />
+    </div>
+  );
 };
 
 export default MypageReview;
