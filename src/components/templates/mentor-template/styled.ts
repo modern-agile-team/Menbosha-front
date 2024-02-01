@@ -34,3 +34,22 @@ export const MentorBoardListContainer = styled.div`
 export const PopularMentorListContainer = styled.div`
   height: 1100px;
 `;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  border: 2px solid #98f;
+  width: 65%;
+  margin: 100px 50px 100px 0px;
+  > :nth-child(1) {
+    font-size: 64px;
+    font-weight: bold;
+    color: #ff772b;
+    width: 180px;
+  }
+  > :nth-child(2) {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #00f;
+  }
+`;
