@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 /**유저 페이지 최상위 */
 export const UserpageWrapper = styled.div`
@@ -106,7 +106,7 @@ export const ProfileLinkImg = styled.div`
 export const ProfileLinkText = styled.div`
   margin: 14% 0% 0% 8%;
   position: absolute;
-  color: #fff;
+  color: #ff772b;
 `;
 
 export const TempLinkImg = styled.div`
@@ -128,7 +128,7 @@ export const TempLinkImg = styled.div`
 export const TempLinkText = styled.div`
   margin: 14% 0% 0% 9%;
   position: absolute;
-  color: #fff;
+  color: #ff772b;
 `;
 
 export const ReviewLinkImg = styled.div`
@@ -150,7 +150,7 @@ export const ReviewLinkImg = styled.div`
 export const ReviewLinkText = styled.div`
   margin: 14% 0% 0% 11%;
   position: absolute;
-  color: #fff;
+  color: #ff772b;
 `;
 
 export const ChatLinkImg = styled.div`
@@ -172,7 +172,7 @@ export const ChatLinkImg = styled.div`
 export const ChatLinkText = styled.div`
   margin: 14% 0% 0% 11%;
   position: absolute;
-  color: #fff;
+  color: #ff772b;
 `;
 
 //MyProfileTemplate
@@ -181,4 +181,64 @@ export const ContentContainer = styled.div`
   border: 2px solid #98f;
   width: 65%;
   margin: 100px 50px 100px 0px;
+`;
+
+const BackGround = css`
+  > :nth-child(1) {
+    width: 0px;
+    height: 100px;
+    border-right: 1000px solid #fff;
+    border-top: 300px solid transparent;
+    border-bottom: 0px solid transparent;
+    position: absolute;
+    z-index: -1;
+    top: 73vw;
+    left: 1000px;
+    &::after {
+      height: 100px;
+      content: '';
+      border-left: 1000px solid #fff;
+      border-top: 300px solid transparent;
+      border-bottom: 0px solid transparent;
+      position: absolute;
+      top: -300px;
+      left: -1000px;
+    }
+  }
+  > :nth-child(2) {
+    width: 100000px;
+    height: 1000000px;
+    left: -50vw;
+    top: -50vw;
+    position: fixed;
+    z-index: -2;
+  }
+`;
+
+export const BadgeBack = styled.div`
+  ${BackGround}
+  > :nth-child(2) {
+    background-color: #b83a42;
+  }
+`;
+
+export const MyProfileBack = styled.div`
+  ${BackGround}
+  > :nth-child(2) {
+    background-color: #ff772b;
+  }
+`;
+
+export const MyReviewBack = styled.div`
+  ${BackGround}
+  >:nth-child(2) {
+    background-color: #752626;
+  }
+`;
+
+export const MyRecordBack = styled.div`
+  ${BackGround}
+  >:nth-child(2) {
+    background-color: #4e1f1f;
+  }
 `;
