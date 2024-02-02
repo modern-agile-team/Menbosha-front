@@ -34,7 +34,7 @@ export type MentorReviewType = {
       isBad: boolean;
       isStuffy: boolean;
     };
-    createdAt: boolean;
+    createdAt: string;
   }[];
 };
 
@@ -59,5 +59,5 @@ export interface ReviewProprType {
   isInformative: boolean;
   isBad: boolean;
   isStuffy: boolean;
-  createdAt: boolean;
+  createdAt: string;
 }

@@ -28,7 +28,13 @@ const MentorUnitTemplate = () => {
           {router.isReady && <MentorUnit id={Number(router.query.id)} />}
         </div>
       </S.ContentContainer>
-      {router.isReady && <MentorReview id={Number(router.query.id)} />}
+      <S.MentorReviewWrapper>
+        <div></div>
+        <div>
+          <div>후기</div>
+          {router.isReady && <MentorReview id={Number(router.query.id)} />}
+        </div>
+      </S.MentorReviewWrapper>
     </ContainerWrapper>
   );
 };
