@@ -79,3 +79,11 @@ export const PopularMentorCardContainer = styled.div`
     border: 5px solid #ff792bbf;
   }
 `;
+
+export const BadgeBox = styled.div`
+  border: 2px solid #000;
+  border-radius: 15px;
+  height: 166px;
+  width: 30.3%;
+  margin: 14px;
+`;

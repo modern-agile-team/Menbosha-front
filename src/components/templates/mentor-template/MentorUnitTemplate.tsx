@@ -1,8 +1,14 @@
-import { ButtonBox, TextBox } from '@/components/common/globalStyled/styled';
+import {
+  ButtonBox,
+  ContainerWrapper,
+  TextBox,
+} from '@/components/common/globalStyled/styled';
 import MainPageHeader from '@/components/common/header/MainPageHeader';
 import MentorUnit from '@/components/organisms/mentor/MentorUnit';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import * as S from './styled';
+import Image from 'next/image';
+import MentorReview from '@/components/organisms/mentor/MentorReveiw';
 
 const MentorUnitTemplate = () => {
   const router = useRouter();
@@ -11,21 +17,19 @@ const MentorUnitTemplate = () => {
     router.back();
   };
   return (
-    <div>
+    <ContainerWrapper>
       <MainPageHeader />
-      <div
-        style={{ display: 'flex', justifyContent: 'center', height: '70vh' }}>
+      <S.ContentContainer>
         <div>
-          <TextBox color="#FF772B" size={64}>
-            멘토
-            <br />
-            프로필
-          </TextBox>
-          <ButtonBox onClick={handleBack}>이전버튼</ButtonBox>
+          <div>멘토 프로필</div>
+          <ButtonBox onClick={handleBack}>이전</ButtonBox>
         </div>
-        {router.isReady && <MentorUnit id={Number(router.query.id)} />}
-      </div>
-    </div>
+        <div>
+          {router.isReady && <MentorUnit id={Number(router.query.id)} />}
+        </div>
+      </S.ContentContainer>
+      {router.isReady && <MentorReview id={Number(router.query.id)} />}
+    </ContainerWrapper>
   );
 };
 

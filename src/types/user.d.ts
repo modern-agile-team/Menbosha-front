@@ -41,16 +41,20 @@ export type MentorUnitType = {
   isMentor: boolean;
   intro: {
     career: string;
-    introduce: string;
-    mainField: string;
+    shortIntro: string;
+    customCategory: string;
+    detail: string;
+    portfolio: string;
+    sns: string;
   };
   image: string;
   email: string;
   activityCategoryId: number;
   badge: {
     badgeId: number;
-    createAt: string;
+    createdAt: string;
   }[];
+  rank: number;
 };
 
 /**내 정보 조회 api Type */
