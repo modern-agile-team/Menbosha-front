@@ -3,6 +3,7 @@ import MentorReviewElements from '@/components/molecules/mentor-review-elements/
 import { MentorReviewType } from '@/types/review';
 import { MentorUnitPropsType } from '@/types/user';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import * as S from './styled';
 
 const MentorReview = ({ id }: MentorUnitPropsType) => {
   const [reviewData, setReviewData] = useState<
@@ -13,8 +14,6 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-  console.log('page', page);
-  console.log('tot', totalPage);
 
   //옵저버 생성
   useEffect(() => {

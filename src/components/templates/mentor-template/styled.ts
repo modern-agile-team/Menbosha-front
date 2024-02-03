@@ -53,3 +53,16 @@ export const ContentContainer = styled.div`
     border: 2px solid #00f;
   }
 `;
+
+/**멘토 리뷰 */
+export const MentorReviewWrapper = styled.div`
+  display: flex;
+  width: 65%;
+  border: 2px solid #0ff;
+  > :nth-child(1) {
+    font-size: 64px;
+    font-weight: bold;
+    color: #ff772b;
+    width: 180px;
+  }
+`;
