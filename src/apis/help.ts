@@ -6,6 +6,8 @@ import {
   ModifyHelpUnitType,
   CreateHelpType,
   HelpListParamsType,
+  HelpCommentParamsType,
+  HelpCommentListApiType,
 } from '@/types/help';
 const HELP = {
   path: '/help-me-boards',
@@ -142,6 +144,24 @@ const HELP = {
       },
     );
     return result;
+  },
+
+  /**도와줄게요 댓글 불러오는 pagination */
+  async helpCommentPagination(
+    params: HelpCommentParamsType,
+  ): Promise<HelpCommentListApiType> {
+    const result: AxiosResponse = await instance.get(
+      `${HELP.path}/${params.helpBoardId}/help-you-comments`,
+      {
+        params: {
+          page: params.page,
+          pageSize: params.pageSize,
+          orderField: params.orderField,
+          sortOrder: params.sortOrder,
+        },
+      },
+    );
+    return result.data;
   },
 };
 
