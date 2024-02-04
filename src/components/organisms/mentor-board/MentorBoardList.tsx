@@ -70,7 +70,7 @@ const MentorBoardList = () => {
       pageSize: 10,
     };
     setLoad(true); //로딩 시작
-    if (totalPage > 0) {
+    if (page <= totalPage) {
       //나중에 카테고리 전역으로 관리 예정
       const response = await MENTOR.MentorBoardPagination(temp); //api요청 글 목록 불러오기
       setBoardData((prev: any) => [
