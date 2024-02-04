@@ -1,19 +1,31 @@
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import * as S from './styled';
 import { useEffect, useState } from 'react';
-import { PullingUpType } from '@/types/help';
+import {
+  HelpListApiType,
+  HelpListParamsType,
+  PullingUpType,
+} from '@/types/help';
 import HELP from '@/apis/help';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const HelpPullingBoardList = () => {
-  const [getPullingData, setPullingData] = useState<PullingUpType[]>([]);
+  const [getPullingData, setPullingData] = useState<
+    HelpListApiType['helpMeBoardWithUserAndImagesItemDto']
+  >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getPullingUpApi = async () => {
-    const response = await HELP.getPullingUp(filterCategory);
-    const temp = response.filter((data: any, idx: number) => idx < 5);
-    setPullingData(temp);
+    const params: HelpListParamsType = {
+      categoryId: filterCategory,
+      loadOnlyPullingUp: true,
+      sortOrder: 'DESC',
+      orderField: 'id',
+      pageSize: 5,
+    };
+    const response = await HELP.getHelpBoardPagination(params);
+    setPullingData(response.helpMeBoardWithUserAndImagesItemDto);
   };
 
   useEffect(() => {

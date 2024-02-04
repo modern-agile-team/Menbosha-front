@@ -5,9 +5,10 @@ import {
   HelpUnitType,
   ModifyHelpUnitType,
   CreateHelpType,
+  HelpListParamsType,
 } from '@/types/help';
 const HELP = {
-  path: '/help-me-board',
+  path: '/help-me-boards',
 
   /**도와줘요 게시판 생성 api [post]*/
   async createHelpBoard({
@@ -54,14 +55,16 @@ const HELP = {
   },
 
   /**리스트 불러오는 api */
-  async getHelpBoardList(
-    category: number,
-    page: number,
+  async getHelpBoardPagination(
+    params: HelpListParamsType,
   ): Promise<HelpListApiType> {
     const result: AxiosResponse = await instance.get(`${HELP.path}`, {
       params: {
-        categoryId: category !== 1 ? category : '',
-        page: page,
+        categoryId: params.categoryId !== 1 ? params.categoryId : 1,
+        loadOnlyPullingUp: params.loadOnlyPullingUp,
+        sortOrder: params.sortOrder,
+        pageSize: params.pageSize,
+        page: params.page,
       },
     });
     return result.data;
@@ -139,19 +142,6 @@ const HELP = {
       },
     );
     return result;
-  },
-
-  /** 도와주세요 끌올 리스트 api [get]*/
-  async getPullingUp(id: number): Promise<any> {
-    const result: AxiosResponse = await instance.get(
-      `${HELP.path}/pulling-up`,
-      {
-        params: {
-          categoryId: id !== 1 ? id : '',
-        },
-      },
-    );
-    return result.data.data;
   },
 };
 

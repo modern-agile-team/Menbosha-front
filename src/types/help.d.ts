@@ -1,25 +1,46 @@
 /** 도와주세요 게시글 불러오는 API타입 */
 export type HelpListApiType = {
-  data: {
+  totalCount: number;
+  currentPage: number;
+  pageSize: number;
+  nextPage: number;
+  hasNext: boolean;
+  lastPage: number;
+  helpMeBoardWithUserAndImagesItemDto: {
     id: number;
-    body: string;
+    userId: number;
     head: string;
-    category: number;
-    createAt: string;
-    updateAt: string;
-    helpMeBoardImages: {
-      id: number;
-      imageUrl: string;
-    }[];
+    body: string;
+    createdAt: string;
+    updatedAt: string;
+    pullingUp: string | null;
+    categoryId: number;
     user: {
       name: string;
       userImage: {
-        id: number;
         imageUrl: string;
-        userId: 33;
       };
     };
+    imageUrl: string;
   }[];
+};
+
+/**helpListAPi요청을 위한 params type */
+export type HelpListParamsType = {
+  page?: number;
+  pageSize?: number;
+  categoryId: number;
+  loadOnlyPullingUp: boolean;
+  orderField:
+    | 'id'
+    | 'userId'
+    | 'head'
+    | 'body'
+    | 'createdAt'
+    | 'updatedAt'
+    | 'categoryId'
+    | 'pullingUp';
+  sortOrder: 'DESC' | 'ASC';
 };
 
 /** 도와주세요 카드형식 타입 */
