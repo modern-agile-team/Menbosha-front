@@ -12,21 +12,33 @@ const MentorTemplate = () => {
   return (
     <>
       <MainPageHeader />
-      <Category />
+      <S.MentorBoardCategoryContainer>
+        <Category />
+        <S.CreateIconLink
+          href={{
+            pathname: `/create`,
+          }}>
+          <img
+            src={
+              'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
+            }
+          />
+        </S.CreateIconLink>
+      </S.MentorBoardCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
-          <TextBox size={30} color="#000">
+          <TextBox size={30} color="#ff792b">
             명예의 전당
           </TextBox>
         </S.MentorListContainer>
         <S.PopularMentorListContainer>
-          <TextBox size={30} color="#000">
+          <TextBox size={30} color="#ff792b">
             인기 멘토
           </TextBox>
           <PopularMentorList />
         </S.PopularMentorListContainer>
         <S.MentorListContainer>
-          <TextBox size={30} color="#000">
+          <TextBox size={30} color="#ff792b">
             전체 멘토
           </TextBox>
           <MentorList />

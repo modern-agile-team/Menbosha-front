@@ -28,25 +28,23 @@ const Category = () => {
   };
 
   return (
-    <S.CategoryWrapper>
-      <S.CategoryContainer>
-        {filterList.map((data) => {
-          return (
-            <div>
-              {catNum === data.id ? (
-                <S.CategoryBox isCat={true} onClick={handleCategory}>
-                  {data.category}
-                </S.CategoryBox>
-              ) : (
-                <S.CategoryBox isCat={false} onClick={handleCategory}>
-                  {data.category}
-                </S.CategoryBox>
-              )}
-            </div>
-          );
-        })}
-      </S.CategoryContainer>
-    </S.CategoryWrapper>
+    <S.CategoryContainer>
+      {filterList.map((data) => {
+        return (
+          <div>
+            {catNum === data.id ? (
+              <S.CategoryBox isCat={true} onClick={handleCategory}>
+                {data.category}
+              </S.CategoryBox>
+            ) : (
+              <S.CategoryBox isCat={false} onClick={handleCategory}>
+                {data.category}
+              </S.CategoryBox>
+            )}
+          </div>
+        );
+      })}
+    </S.CategoryContainer>
   );
 };
 
