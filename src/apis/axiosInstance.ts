@@ -64,7 +64,7 @@ instance.interceptors.response.use(
       }
       const accessToken = localStorage.getItem('accessToken');
 
-      error.config.headers['Authorization'] = `Bearer ${accessToken}`;
+      error.config.headers['Authorization'] = ` Bearer ${accessToken}`;
 
       // 중단된 요청을(에러난 요청)을 토큰 갱신 후 재요청
       const response = await instance(error.config);

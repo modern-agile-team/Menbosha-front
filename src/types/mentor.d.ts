@@ -158,3 +158,8 @@ export interface MentorHotBoardListType {
   imageUrl: string;
   likeCount: number;
 }
+
+export interface MentorBadgeType {
+  badgeId: number;
+  createdAt: string;
+}

@@ -46,7 +46,6 @@ export const MentorBoardListContainer = styled.div`
 export const PopularMentorListContainer = styled.div`
   height: 1100px;
 `;
-
 /**게시글 생성 아이콘 */
 export const CreateIconLink = styled(Link)`
   width: 5%;
@@ -81,5 +80,34 @@ export const HeadTitleContainer = styled.div`
       display: flex;
       align-items: end;
     }
+export const ContentContainer = styled.div`
+  display: flex;
+  border: 2px solid #98f;
+  width: 65%;
+  margin: 100px 50px 100px 0px;
+  > :nth-child(1) {
+    font-size: 64px;
+    font-weight: bold;
+    color: #ff772b;
+    width: 180px;
+  }
+  > :nth-child(2) {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #00f;
+  }
+`;
+
+/**멘토 리뷰 */
+export const MentorReviewWrapper = styled.div`
+  display: flex;
+  width: 65%;
+  border: 2px solid #0ff;
+  > :nth-child(1) {
+    font-size: 64px;
+    font-weight: bold;
+    color: #ff772b;
+    width: 180px;
   }
 `;

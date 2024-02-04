@@ -80,6 +80,12 @@ const USER = {
     );
     return result;
   },
+
+  /**유저 온도/칭호 조회 api */
+  async getMyRank(): Promise<any> {
+    const result: AxiosResponse = await instance.get(`${USER.path}/my/rank`);
+    return result.data;
+  },
 };
 
 export default USER;
