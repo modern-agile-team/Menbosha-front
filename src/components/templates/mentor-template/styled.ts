@@ -80,6 +80,9 @@ export const HeadTitleContainer = styled.div`
       display: flex;
       align-items: end;
     }
+  }
+`;
+
 export const ContentContainer = styled.div`
   display: flex;
   border: 2px solid #98f;
