@@ -1,5 +1,5 @@
 import MENTOR from '@/apis/mentor';
-import { MentorBoardListType } from '@/types/mentor';
+import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
@@ -8,8 +8,11 @@ import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const MentorBoardList = () => {
-  const [getBoardData, setBoardData] = useState<MentorBoardListType[]>([]);
-  const [totalPage, setTotalPage] = useState(0); //페이지 수
+  const [getBoardData, setBoardData] = useState<
+    MentorBoardListType['mentorBoardForHotPostsItemDto']
+  >([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1); //페이지 수
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
@@ -26,8 +29,6 @@ const MentorBoardList = () => {
   }, [obsRef, getBoardData]);
 
   useEffect(() => {
-    //첫 페이지 로드
-    getPage();
     //스크롤 수동으로 조정 설정
     if (
       'scrollRestoration' in history &&
@@ -40,11 +41,10 @@ const MentorBoardList = () => {
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
-  }, [totalPage]);
+  }, [page]);
 
   useEffect(() => {
     setBoardData([]);
-    getPage();
     setTimeout(() => {
       loadPost();
     }, 0);
@@ -58,23 +58,29 @@ const MentorBoardList = () => {
       setTotalPage((prev) => prev - 1); //페이지 값 감소
     }
   };
-  //페이지 수 로드 함수
-  const getPage = useCallback(async () => {
-    const response = await MENTOR.getMentorBoardPage(filterCategory);
-    setTotalPage(response.totalPage);
-  }, []);
 
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
+    const temp: MentorBoardParamsType = {
+      categoryId: filterCategory,
+      loadOnlyPopular: false,
+      orderField: 'id',
+      sortOrder: 'DESC',
+      page: page,
+      pageSize: 10,
+    };
     setLoad(true); //로딩 시작
     if (totalPage > 0) {
       //나중에 카테고리 전역으로 관리 예정
-      const result = await MENTOR.getMentorBoardList(filterCategory, totalPage); //api요청 글 목록 불러오기
-      const reverseArr = [...result].reverse();
-      result && setBoardData((prev: any) => [...prev, ...reverseArr]);
+      const response = await MENTOR.MentorBoardPagination(temp); //api요청 글 목록 불러오기
+      setBoardData((prev: any) => [
+        ...prev,
+        ...response.mentorBoardForHotPostsItemDto,
+      ]);
+      setPage(response.lastPage);
     }
     setLoad(false);
-  }, [totalPage]);
+  }, [page]);
 
   const handleRouteChange = useCallback((e: any) => {
     sessionStorage.setItem(
@@ -109,7 +115,7 @@ const MentorBoardList = () => {
 
   return (
     <S.MentoBoardCardContainer>
-      {getBoardData.map((data: MentorBoardListType) => {
+      {getBoardData.map((data) => {
         const temp = {
           id: data.id,
           head: data.head,
@@ -117,14 +123,11 @@ const MentorBoardList = () => {
           category: data.categoryId,
           createdAt: data.createdAt,
           updatedAt: data.updatedAt,
-          userId: data.user.userImage.userId,
+          userId: data.userId,
           userName: data.user.name,
           userImage: data.user.userImage.imageUrl,
-          likes: data.mentorBoardLikes,
-          mentorBoardImage:
-            data.mentorBoardImages.length !== 0
-              ? data.mentorBoardImages[0].imageUrl
-              : '',
+          likes: data.likeCount,
+          mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
         };
         return (
           <S.MentorBoardCardWrapper key={data.id}>

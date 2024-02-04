@@ -1,18 +1,28 @@
 import MENTOR from '@/apis/mentor';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
-import { MentorBoardListType } from '@/types/mentor';
+import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const RandomMentorBoard = () => {
-  const [getRandomData, setRandomData] = useState<MentorBoardListType[]>([]);
+  const [getRandomData, setRandomData] = useState<
+    MentorBoardListType['mentorBoardForHotPostsItemDto']
+  >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getRandomMentorBoardApi = async () => {
-    const response = await MENTOR.randomMentorBoard(filterCategory);
-    setRandomData(response);
+    const temp: MentorBoardParamsType = {
+      categoryId: filterCategory,
+      pageSize: 3,
+      loadOnlyPopular: false,
+      orderField: 'id',
+      sortOrder: 'DESC',
+      page: 1,
+    };
+    const response = await MENTOR.MentorBoardPagination(temp);
+    setRandomData(response.mentorBoardForHotPostsItemDto);
   };
 
   useEffect(() => {
@@ -33,14 +43,11 @@ const RandomMentorBoard = () => {
           category: data.categoryId,
           createdAt: data.createdAt,
           updatedAt: data.updatedAt,
-          userId: data.user.userImage.userId,
+          userId: data.userId,
           userName: data.user.name,
           userImage: data.user.userImage.imageUrl,
-          likes: data.mentorBoardLikes,
-          mentorBoardImage:
-            data.mentorBoardImages.length !== 0
-              ? data.mentorBoardImages[0].imageUrl
-              : '',
+          likes: data.likeCount,
+          mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
         };
         return (
           <S.RandomMentorWrapper key={data.id}>

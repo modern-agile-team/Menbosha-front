@@ -3,7 +3,7 @@ import {
   ImageBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
-import { MentorBoardCardType } from '@/types/mentor';
+import { MentorBoardCardType, MentorBoardListType } from '@/types/mentor';
 import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
 import { useRouter } from 'next/router';

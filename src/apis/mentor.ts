@@ -1,16 +1,15 @@
 import {
   CreateMentorBoardType,
   MentorBoardListType,
-  MentorBoardUnitType,
   MentorHotBoardPropsType,
+  MentorBoardParamsType,
 } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
-import Category from '@/components/common/category/Category';
 import COUNT from './count';
 
 const MENTOR = {
-  path: `/mentor-board`,
+  path: `/mentor-boards`,
 
   /** 멘토 게시판 생성 api [post] */
   async createMentorBoard({
@@ -57,17 +56,20 @@ const MENTOR = {
   },
 
   /**페이지별 멘토 리스트 불러오는 api [get] */
-  async getMentorBoardList(
-    category: number,
-    page: number,
-  ): Promise<MentorBoardListType[]> {
+  async MentorBoardPagination(
+    params: MentorBoardParamsType,
+  ): Promise<MentorBoardListType> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
       params: {
-        categoryId: category !== 1 ? category : '',
-        page: page,
+        categoryId: params.categoryId !== 1 ? params.categoryId : 1,
+        pageSize: params.pageSize,
+        page: params.page,
+        loadOnlyPopular: params.loadOnlyPopular,
+        orderField: params.orderField,
+        sortOrder: params.sortOrder,
       },
     });
-    return result.data.data;
+    return result.data.contents;
   },
 
   /**멘토 게시물 불러오기 api [get] */
