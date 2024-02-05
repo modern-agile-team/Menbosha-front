@@ -1,13 +1,15 @@
 import MENTOR from '@/apis/mentor';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
-import { MentorBoardParamsType, MentorHotBoardListType } from '@/types/mentor';
+import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const PopularMentorBoardList = () => {
-  const [getHotData, setHotData] = useState<MentorHotBoardListType[]>([]);
+  const [getHotData, setHotData] = useState<
+    MentorBoardListType['mentorBoardForHotPostsItemDto']
+  >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getRandomMentorBoardApi = async () => {

@@ -17,7 +17,7 @@ const RandomMentorBoard = () => {
       categoryId: filterCategory,
       pageSize: 3,
       loadOnlyPopular: false,
-      orderField: 'id',
+      orderField: 'RAND()',
       sortOrder: 'DESC',
       page: 1,
     };

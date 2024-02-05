@@ -86,7 +86,8 @@ export type ParamsType<T> = {
     | 'createdAt'
     | 'updatedAt'
     | 'categoryId'
-    | 'pullingUp';
+    | 'pullingUp'
+    | 'RAND()';
   sortOrder: 'DESC' | 'ASC';
 } & T;
 

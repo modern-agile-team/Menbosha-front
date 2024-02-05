@@ -144,24 +144,6 @@ export type MentorHotBoardType = {
   };
 };
 
-export interface MentorHotBoardListType {
-  id: number;
-  userId: number;
-  head: string;
-  body: string;
-  createdAt: string;
-  updatedAt: string;
-  categoryId: number;
-  user: {
-    name: string;
-    userImage: {
-      imageUrl: string;
-    };
-  };
-  imageUrl: string;
-  likeCount: number;
-}
-
 export interface MentorBadgeType {
   badgeId: number;
   createdAt: string;
