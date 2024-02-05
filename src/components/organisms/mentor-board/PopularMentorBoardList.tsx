@@ -1,10 +1,6 @@
 import MENTOR from '@/apis/mentor';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
-import {
-  MentorBoardListType,
-  MentorBoardParamsType,
-  MentorHotBoardListType,
-} from '@/types/mentor';
+import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
