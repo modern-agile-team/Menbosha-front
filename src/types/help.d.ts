@@ -1,26 +1,105 @@
+export type PaginationType<T> = {
+  totalCount: number;
+  currentPage: number;
+  pageSize: number;
+  nextPage: number;
+  hasNext: boolean;
+  lastPage: number;
+} & T;
+
 /** 도와주세요 게시글 불러오는 API타입 */
-export type HelpListApiType = {
-  data: {
+export type HelpListApiType = PaginationType<{
+  helpMeBoardWithUserAndImagesItemDto: {
     id: number;
-    body: string;
+    userId: number;
     head: string;
-    category: number;
-    createAt: string;
-    updateAt: string;
-    helpMeBoardImages: {
-      id: number;
-      imageUrl: string;
-    }[];
+    body: string;
+    createdAt: string;
+    updatedAt: string;
+    pullingUp: string | null;
+    categoryId: number;
     user: {
       name: string;
       userImage: {
-        id: number;
         imageUrl: string;
-        userId: 33;
+      };
+    };
+    imageUrl: string;
+  }[];
+}>;
+
+/**도와줄게요 댓글 api타입 */
+export type HelpCommentListApiType = PaginationType<{
+  helpYouCommentWithUserAndUserImagesItemDto: {
+    id: number;
+    userId: number;
+    helpMeBoardId: number;
+    createdAt: string;
+    isAuthor: boolean;
+    user: {
+      name: string;
+      userImage: {
+        imageUrl: string;
+      };
+      rank: number;
+      activityCategory: number;
+      userIntro: {
+        shortIntro: string;
+        career: string;
       };
     };
   }[];
-};
+}>;
+
+/**도와줄게요 댓글 api타입 */
+export type HelpCommentType = PaginationType<{
+  helpYouCommentWithUserAndUserImagesItemDto: {
+    id: number;
+    userId: number;
+    helpMeBoardId: number;
+    createdAt: string;
+    isAuthor: boolean;
+    user: {
+      name: string;
+      userImage: {
+        imageUrl: string;
+      };
+      rank: number;
+      activityCategory: number;
+      userIntro: {
+        shortIntro: string;
+        career: string;
+      };
+    };
+  };
+}>;
+
+/**파아미터로 넘기는 타입 */
+export type ParamsType<T> = {
+  page?: number;
+  pageSize?: number;
+  orderField:
+    | 'id'
+    | 'userId'
+    | 'head'
+    | 'body'
+    | 'createdAt'
+    | 'updatedAt'
+    | 'categoryId'
+    | 'pullingUp';
+  sortOrder: 'DESC' | 'ASC';
+} & T;
+
+/**helpListAPi요청을 위한 params type */
+export type HelpListParamsType = ParamsType<{
+  categoryId: number;
+  loadOnlyPullingUp: boolean;
+}>;
+
+/**helpCommentApi요청을 위한 params type */
+export type HelpCommentParamsType = ParamsType<{
+  helpBoardId: number;
+}>;
 
 /** 도와주세요 카드형식 타입 */
 export interface HelpListType {
@@ -115,16 +194,3 @@ export type PullingUpType = {
 export interface BoardIdType {
   id: number;
 }
-
-export type HelpCommentType = {
-  id: number;
-  content: string;
-  commentOwner: boolean;
-  user: {
-    categoryId: number;
-    imageUrl: string;
-    name: string;
-    userId: number;
-    rank: number;
-  };
-};

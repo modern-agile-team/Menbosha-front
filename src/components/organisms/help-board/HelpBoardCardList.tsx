@@ -4,14 +4,17 @@ import HELP from '@/apis/help';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import { HelpListApiType } from '@/types/help';
+import { HelpListApiType, HelpListParamsType } from '@/types/help';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const HelpBoardCardList = () => {
-  const [totalPage, setTotalPage] = useState(0); //페이지 수
-  const [getList, setGetList] = useState<HelpListApiType[]>([]);
+  const [totalPage, setTotalPage] = useState(1); //페이지 수
+  const [page, setPage] = useState(1);
+  const [getList, setGetList] = useState<
+    HelpListApiType['helpMeBoardWithUserAndImagesItemDto']
+  >([]);
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
@@ -29,8 +32,6 @@ const HelpBoardCardList = () => {
   }, [obsRef, getList]);
 
   useEffect(() => {
-    //첫 페이지 로드
-    getLoadPage();
     // 스크롤 수동으로 조정 설정
     if (
       'scrollRestoration' in history &&
@@ -43,11 +44,10 @@ const HelpBoardCardList = () => {
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
-  }, [totalPage]);
+  }, [page]);
 
   useEffect(() => {
     setGetList([]);
-    getLoadPage();
     setTimeout(() => {
       loadPost();
     }, 0);
@@ -58,25 +58,31 @@ const HelpBoardCardList = () => {
     if (target.isIntersecting) {
       //옵저버 중복 실행 방지
       preventRef.current = false; //옵저버 중복 실행 방지
-      setTotalPage((prev) => prev - 1); //페이지 값 감소
+      setTotalPage((prev) => prev + 1); //페이지 값 증가
     }
   };
-  //페이지 수 로드 함수
-  const getLoadPage = useCallback(async () => {
-    const response = await HELP.getHelpBoardPage(filterCategory);
-    setTotalPage(response.totalPage);
-  }, []);
 
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
+    const temp: HelpListParamsType = {
+      categoryId: filterCategory,
+      loadOnlyPullingUp: false,
+      sortOrder: 'DESC',
+      orderField: 'id',
+      pageSize: 10,
+      page: page,
+    };
     setLoad(true); //로딩 시작
-    if (totalPage > 0) {
-      const result = await HELP.getHelpBoardList(filterCategory, totalPage); //api요청 글 목록 불러오기
-      const reverseArr = [...result.data].reverse();
-      result && setGetList((prev: any) => [...prev, ...reverseArr]);
+    if (page <= totalPage) {
+      const response = await HELP.getHelpBoardPagination(temp); //api요청 글 목록 불러오기
+      setGetList((prev) => [
+        ...prev,
+        ...response.helpMeBoardWithUserAndImagesItemDto,
+      ]);
+      setTotalPage(response.lastPage);
     }
     setLoad(false);
-  }, [totalPage]);
+  }, [page]);
 
   const handleRouteChange = (e: any) => {
     sessionStorage.setItem(
@@ -109,15 +115,12 @@ const HelpBoardCardList = () => {
 
   return (
     <S.HelpCardContainer>
-      {getList.map((data: any) => {
+      {getList.map((data) => {
         const temp = {
           id: data.id,
           name: data.user.name,
           userImage: data.user.userImage.imageUrl,
-          image:
-            data.helpMeBoardImages.length > 0
-              ? data.helpMeBoardImages[0].imageUrl
-              : '',
+          image: data.imageUrl && data.imageUrl,
           head: data.head,
           body: data.body,
           createdAt: data.createdAt,
