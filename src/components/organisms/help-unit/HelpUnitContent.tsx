@@ -29,7 +29,6 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
         y: 0,
       }),
     );
-    router.back();
   };
 
   //Unit의 정보 불러오는 api호출

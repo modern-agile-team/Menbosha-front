@@ -11,7 +11,9 @@ import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const PopularMentorBoardList = () => {
-  const [getHotData, setHotData] = useState<MentorHotBoardListType[]>([]);
+  const [getHotData, setHotData] = useState<
+    MentorBoardListType['mentorBoardForHotPostsItemDto']
+  >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getRandomMentorBoardApi = async () => {

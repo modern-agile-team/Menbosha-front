@@ -47,10 +47,12 @@ const HelpBoardCardList = () => {
   }, [page]);
 
   useEffect(() => {
-    setGetList([]);
-    setTimeout(() => {
-      loadPost();
-    }, 0);
+    if (filterCategory !== 1) {
+      setGetList([]);
+      setTimeout(() => {
+        loadPost();
+      }, 0);
+    }
   }, [filterCategory]);
 
   const handleObs = (entries: any) => {

@@ -44,10 +44,13 @@ const MentorBoardList = () => {
   }, [page]);
 
   useEffect(() => {
-    setBoardData([]);
-    setTimeout(() => {
-      loadPost();
-    }, 0);
+    if (filterCategory !== 1) {
+      setPage(1);
+      setBoardData([]);
+      setTimeout(() => {
+        loadPost();
+      }, 0);
+    }
   }, [filterCategory]);
 
   const handleObs = (entries: any) => {
@@ -55,7 +58,7 @@ const MentorBoardList = () => {
     if (target.isIntersecting) {
       //옵저버 중복 실행 방지
       preventRef.current = false; //옵저버 중복 실행 방지
-      setTotalPage((prev) => prev - 1); //페이지 값 감소
+      setPage((prev) => prev + 1); //페이지 값 증가
     }
   };
 
@@ -77,7 +80,7 @@ const MentorBoardList = () => {
         ...prev,
         ...response.mentorBoardForHotPostsItemDto,
       ]);
-      setPage(response.lastPage);
+      setTotalPage(response.lastPage);
     }
     setLoad(false);
   }, [page]);
@@ -135,7 +138,7 @@ const MentorBoardList = () => {
           </S.MentorBoardCardWrapper>
         );
       })}
-      <div>
+      <div style={{ width: '100%' }}>
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
       </div>

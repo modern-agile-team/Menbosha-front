@@ -8,7 +8,7 @@ import MentorUnit from '@/components/organisms/mentor/MentorUnit';
 import { useRouter } from 'next/router';
 import * as S from './styled';
 import Image from 'next/image';
-import MentorReview from '@/components/organisms/mentor/MentorReveiw';
+import MentorReview from '@/components/organisms/mentor/MentorReview';
 
 const MentorUnitTemplate = () => {
   const router = useRouter();

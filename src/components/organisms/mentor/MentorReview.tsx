@@ -4,6 +4,8 @@ import { MentorReviewType } from '@/types/review';
 import { MentorUnitPropsType } from '@/types/user';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const MentorReview = ({ id }: MentorUnitPropsType) => {
   const [reviewData, setReviewData] = useState<
@@ -14,6 +16,7 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
+  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -49,6 +52,16 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
   useEffect(() => {
     getMentorReviewApi();
   }, [page]);
+
+  useEffect(() => {
+    if (filterCategory !== 1) {
+      setPage(1);
+      setReviewData([]);
+      setTimeout(() => {
+        getMentorReviewApi();
+      }, 0);
+    }
+  }, [filterCategory]);
 
   return (
     <div>
