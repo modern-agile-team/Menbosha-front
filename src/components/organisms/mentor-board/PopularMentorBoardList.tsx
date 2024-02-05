@@ -19,7 +19,7 @@ const PopularMentorBoardList = () => {
       orderField: 'id',
       sortOrder: 'DESC',
       page: 1,
-      pageSize: 5,
+      pageSize: 4,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
     setHotData(response.mentorBoardForHotPostsItemDto);
