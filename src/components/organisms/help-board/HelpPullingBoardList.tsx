@@ -22,7 +22,7 @@ const HelpPullingBoardList = () => {
       loadOnlyPullingUp: true,
       sortOrder: 'DESC',
       orderField: 'id',
-      pageSize: 5,
+      pageSize: 4,
     };
     const response = await HELP.getHelpBoardPagination(params);
     setPullingData(response.helpMeBoardWithUserAndImagesItemDto);
