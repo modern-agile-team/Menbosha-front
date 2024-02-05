@@ -79,7 +79,7 @@ const MENTOR = {
         mentorBoardId: id,
       },
     });
-    return result.data;
+    return result.data.contents;
   },
 
   /**멘토 게시물 삭제 api [delete] */
