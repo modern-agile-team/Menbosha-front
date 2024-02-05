@@ -62,7 +62,6 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
       }, 0);
     }
   }, [filterCategory]);
-
   return (
     <div>
       {reviewData &&
