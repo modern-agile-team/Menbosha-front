@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import MainPageHeader from '../common/header/MainPageHeader';
-import HelpUnitContent from '../organisms/help-unit/HelpUnitContent';
+import MainPageHeader from '../../common/header/MainPageHeader';
+import HelpUnitContent from '../../organisms/help-unit/HelpUnitContent';
 
 const HelpUnitTemplate = () => {
   const router = useRouter();

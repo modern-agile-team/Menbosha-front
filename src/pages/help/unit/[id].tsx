@@ -1,4 +1,4 @@
-import HelpUnitTemplate from '@/components/templates/HelpUnitTemplate';
+import HelpUnitTemplate from '@/components/templates/help-template/HelpUnitTemplate';
 
 const HelpUnit = () => {
   return (
