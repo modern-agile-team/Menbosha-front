@@ -21,7 +21,7 @@ const HelpPullingBoardList = () => {
       categoryId: filterCategory,
       loadOnlyPullingUp: true,
       sortOrder: 'DESC',
-      orderField: 'id',
+      orderField: 'pullingUp',
       pageSize: 4,
     };
     const response = await HELP.getHelpBoardPagination(params);

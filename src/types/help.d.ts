@@ -42,7 +42,7 @@ export type HelpCommentListApiType = PaginationType<{
         imageUrl: string;
       };
       rank: number;
-      activityCategory: number;
+      activityCategoryId: number;
       userIntro: {
         shortIntro: string;
         career: string;
@@ -65,7 +65,7 @@ export type HelpCommentType = PaginationType<{
         imageUrl: string;
       };
       rank: number;
-      activityCategory: number;
+      activityCategoryId: number;
       userIntro: {
         shortIntro: string;
         career: string;

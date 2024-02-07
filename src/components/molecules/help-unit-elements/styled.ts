@@ -20,16 +20,60 @@ export const BodyImages = styled.img`
   background-color: #999;
 `;
 
-export const HeadTextBox = styled.div`
-  > :nth-child(1) {
-    margin: 0px 0px 5px 12px;
+export const HelpHeadContainer = styled.div`
+  & > :nth-child(1) {
+    font-size: 40px;
+    color: #ff772b;
+    font-weight: bold;
+    margin: 0px 0px 41px 0px;
   }
-  > :nth-child(2) {
-    margin: 0px 12px 0px 12px;
+  & > :nth-child(2) {
+    display: flex;
+    margin: 0px 0px 24px 0px;
+  }
+`;
+
+export const UserInfoBox = styled.div`
+  padding: 5px 0px 0px 24px;
+  & > :nth-child(1) {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    padding: 0px 0px 5px 0px;
+  }
+  & > :nth-child(2) {
+    display: flex;
     > * {
-      margin: 0px 20px 0px 0px;
+      margin: 0px 25px 0px 0px;
     }
   }
+`;
+
+export const ActiveButtonBox = styled.div`
+  display: flex;
+  margin-left: auto;
+  & > :nth-child(1) {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 25px;
+    margin: auto 17px;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #ff772b;
+  }
+  & > img {
+    cursor: pointer;
+    margin: auto 17px;
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const UserImg = styled.img`
+  width: 51px;
+  height: 51px;
+  border-radius: 10px;
 `;
 
 /**도와주세요 댓글 컨테이너 */
@@ -42,9 +86,7 @@ export const CommentBorder = styled.div`
   border: 2px solid #ff772b;
   border-radius: 10px;
   margin: 14px;
-  width: 43%;
-  display: flex;
-  align-items: center;
+  width: 46%;
 `;
 
 export const CommentContentBox = styled.div`
@@ -59,27 +101,44 @@ export const CommentContentBox = styled.div`
     border-radius: 10px;
     margin-left: 18px;
   }
-  //랭크 박스
-  > :nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70px;
+`;
+
+/**랭크박스 */
+export const RankBox = styled.div`
+  vertical-align: middle;
+  margin: auto;
+  & > :nth-child(1) {
+    width: 40px;
+    height: 40px;
   }
-  //이름, 카테고리 박스
-  > :nth-child(3) {
-    width: 100px;
+  & > :nth-child(2),
+  :nth-child(3) {
+    font-size: 13px;
+    text-align: center;
   }
-  //채팅창 버튼, 삭제 버튼
-  > :nth-child(4) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    > div {
-      cursor: pointer;
-      > div {
-        margin: 25px 0px;
-      }
-    }
+`;
+
+/**정보박스 */
+export const CategoryBox = styled.div`
+  margin: auto;
+  min-width: 100px;
+  & > :nth-child(1) {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  & > :nth-child(2),
+  :nth-child(3),
+  :nth-child(4) {
+    font-size: 12px;
+  }
+`;
+
+export const HelpCommentButtonBox = styled.div`
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  > * {
+    padding: 10px;
   }
 `;

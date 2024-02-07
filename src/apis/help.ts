@@ -161,7 +161,7 @@ const HELP = {
         },
       },
     );
-    return result.data;
+    return result.data.contents;
   },
 };
 
