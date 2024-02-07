@@ -39,18 +39,17 @@ const HelpPullingBoardList = () => {
 
   return (
     <S.HelpCardContainer>
-      {getPullingData.map((data: any) => {
+      {getPullingData.map((data) => {
         const temp = {
           id: data.id,
           name: data.user.name,
           userImage: data.user.userImage.imageUrl,
-          image:
-            data.helpMeBoardImages.length > 0
-              ? data.helpMeBoardImages[0].imageUrl
-              : '',
+          image: data.imageUrl !== null ? data.imageUrl : '',
           head: data.head,
           body: data.body,
           createdAt: data.pullingUp,
+          userId: data.userId,
+          categoryId: data.categoryId,
         };
         return (
           <div>

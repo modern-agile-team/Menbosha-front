@@ -16,7 +16,7 @@ export type HelpListApiType = PaginationType<{
     body: string;
     createdAt: string;
     updatedAt: string;
-    pullingUp: string | null;
+    pullingUp: string;
     categoryId: number;
     user: {
       name: string;
@@ -105,12 +105,14 @@ export type HelpCommentParamsType = ParamsType<{
 /** 도와주세요 카드형식 타입 */
 export interface HelpListType {
   id: number;
+  userId: number;
   image: string;
   head: string;
   body: string;
   name: string;
   userImage: string;
   createdAt: string;
+  categoryId: number;
 }
 
 /** 도와주세요 게시글 Unit정보 API타입 */

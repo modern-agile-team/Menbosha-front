@@ -4,6 +4,7 @@ import Category from '../../common/category/Category';
 import MentorBoardList from '@/components/organisms/mentor-board/MentorBoardList';
 import {
   ContainerWrapper,
+  CreateIconLink,
   FlexBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
@@ -23,7 +24,7 @@ const MentorBoardTemplate = () => {
       </S.HeadTitleContainer>
       <S.MentorBoardCategoryContainer>
         <Category />
-        <S.CreateIconLink
+        <CreateIconLink
           href={{
             pathname: `/create`,
           }}>
@@ -32,7 +33,7 @@ const MentorBoardTemplate = () => {
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
           />
-        </S.CreateIconLink>
+        </CreateIconLink>
       </S.MentorBoardCategoryContainer>
       <ContainerWrapper>
         <S.MentorBoardListContainer>

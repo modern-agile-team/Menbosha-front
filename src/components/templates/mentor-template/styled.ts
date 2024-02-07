@@ -46,11 +46,6 @@ export const MentorBoardListContainer = styled.div`
 export const PopularMentorListContainer = styled.div`
   height: 1100px;
 `;
-/**게시글 생성 아이콘 */
-export const CreateIconLink = styled(Link)`
-  width: 5%;
-  margin: 7px 0px 0px 0px;
-`;
 
 /**게시글 제목 박스 */
 export const BoardTitleBox = styled.div`
