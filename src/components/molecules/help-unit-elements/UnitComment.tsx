@@ -8,15 +8,15 @@ import {
 } from '@/types/help';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import Image from 'next/image';
 import { categoryList } from '@/components/common/category/categoryList';
 import Link from 'next/link';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { MyProfileType } from '@/types/user';
 import USER from '@/apis/user';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import HELP from '@/apis/help';
 import { useRouter } from 'next/router';
+import { rankList } from '@/components/common/rank/rankList';
 
 const UnitComment = ({ id }: BoardIdType) => {
   //페이지네이션 state
@@ -49,13 +49,15 @@ const UnitComment = ({ id }: BoardIdType) => {
     if (target.isIntersecting) {
       //옵저버 중복 실행 방지
       preventRef.current = false; //옵저버 중복 실행 방지
-      setTotalPage((prev) => prev + 1); //페이지 값 증가
+      setPage((prev) => prev + 1); //페이지 값 증가
     }
   };
 
   //무한스크롤 로드
   useEffect(() => {
-    loadPost();
+    if (page !== 1) {
+      loadPost();
+    }
   }, [page]);
 
   //스크롤 시 로드 함수
@@ -96,7 +98,7 @@ const UnitComment = ({ id }: BoardIdType) => {
               imageUrl: myProfile?.image as string,
             },
             rank: myProfile?.rank as number,
-            activityCategory: myProfile?.activityCategoryId as number,
+            activityCategoryId: myProfile?.activityCategoryId as number,
             userIntro: {
               shortIntro: response.content,
               career: '경력',
@@ -142,6 +144,47 @@ const UnitComment = ({ id }: BoardIdType) => {
     setMyProfile(response);
   };
 
+  /**랭크 불러오기 */
+  const getRankInfo = (rank: number) => {
+    const temp = rankList.find(
+      (data) => data.range[0] < rank && data.range[1] > rank,
+    );
+    return (
+      <>
+        {temp && (
+          <S.RankBox>
+            <img src={temp?.image}></img>
+            <div>{temp?.rank}</div>
+            <div>{rank}점</div>
+          </S.RankBox>
+        )}
+      </>
+    );
+  };
+
+  const getCategoryInfo = (
+    name: string,
+    categoryId: number,
+    career: string,
+    short: string,
+  ) => {
+    const category = categoryList.find(
+      (data) => data.id === categoryId,
+    )?.category;
+    return (
+      <>
+        {category && (
+          <S.CategoryBox>
+            <div>{name}</div>
+            <div>{category}</div>
+            <div>{career}</div>
+            <div>{short}</div>
+          </S.CategoryBox>
+        )}
+      </>
+    );
+  };
+
   useEffect(() => {
     getCommentApi();
     isLogin && getMyProfileApi();
@@ -153,9 +196,10 @@ const UnitComment = ({ id }: BoardIdType) => {
         <TextBox color="#FF772B">
           도와줄게요({commentCount ? commentCount : commentData.length}개)
         </TextBox>
-        <div style={{ marginLeft: 'auto' }} onClick={handleCreateCommentApi}>
-          생성
-        </div>
+        <img
+          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
+          style={{ marginLeft: 'auto' }}
+          onClick={handleCreateCommentApi}></img>
       </FlexBox>
       <S.CommentContainer>
         {commentData.map((data) => {
@@ -163,39 +207,37 @@ const UnitComment = ({ id }: BoardIdType) => {
             <S.CommentBorder>
               <S.CommentContentBox>
                 <img src={data.user.userImage.imageUrl} alt="유저이미지" />
-                <div>
-                  <div>랭크</div>
-                  <div>{data.user.rank}</div>
-                </div>
-                <div>
-                  <TextBox size={20}>{data.user.name}</TextBox>
-                  <TextBox size={12}>
-                    {
-                      categoryList.find(
-                        (list) => list.id === data.user.activityCategory,
-                      )?.category
-                    }
-                  </TextBox>
-                </div>
-                <div>
-                  {/* 채팅창 모달 켜질 부분*/}
-                  {data.isAuthor ? (
-                    <div>
-                      <TextBox size={12}>채팅창</TextBox>
-                      <TextBox
-                        size={12}
-                        onClick={() => handleDeleteCommentApi(data.id)}>
-                        철회
-                      </TextBox>
-                    </div>
-                  ) : (
-                    <TextBox size={12}>채팅창</TextBox>
+                <>{getRankInfo(data.user.rank)}</>
+                <>
+                  {getCategoryInfo(
+                    data.user.name,
+                    data.user.activityCategoryId,
+                    data.user.userIntro.career,
+                    data.user.userIntro.shortIntro,
                   )}
-                </div>
+                </>
+
+                {/* 채팅창 모달 켜질 부분*/}
+                {data.isAuthor ? (
+                  <S.HelpCommentButtonBox>
+                    <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
+                    <img
+                      src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
+                      onClick={() => handleDeleteCommentApi(data.id)}></img>
+                  </S.HelpCommentButtonBox>
+                ) : (
+                  <S.HelpCommentButtonBox>
+                    <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
+                  </S.HelpCommentButtonBox>
+                )}
               </S.CommentContentBox>
             </S.CommentBorder>
           );
         })}
+        <div>
+          {load && <div>Loading...</div>}
+          <div ref={obsRef}></div>
+        </div>
       </S.CommentContainer>
     </div>
   );

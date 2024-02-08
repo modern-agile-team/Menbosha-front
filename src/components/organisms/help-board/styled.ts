@@ -13,6 +13,5 @@ export const HelpCardWrapper = styled.div`
   /* margin: 0px 14px 118px 14px; */
   display: flex;
   justify-content: center;
-  width: 308px;
-  height: 545px;
+  width: 390px;
 `;

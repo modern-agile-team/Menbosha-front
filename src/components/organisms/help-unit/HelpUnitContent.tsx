@@ -18,19 +18,6 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
     setUnitInfo(response);
   };
 
-  const handlePullingUp = async () => {
-    if (confirm('끌올시키시겠습니까?')) {
-      await HELP.pullingUp(id);
-    }
-    sessionStorage.setItem(
-      '__next_scroll_back',
-      JSON.stringify({
-        x: 0,
-        y: 0,
-      }),
-    );
-  };
-
   //Unit의 정보 불러오는 api호출
   useEffect(() => {
     getHelpUnitApi();
@@ -44,10 +31,9 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
         }}
         color="#f2f"
         scroll={false}>
-        이전
+        <S.PrevImg src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg" />
       </LinkBox>
       <div>
-        <div onClick={handlePullingUp}>끌올시키기</div>
         <div>
           {getUnitInfo && (
             <div>

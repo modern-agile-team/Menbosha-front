@@ -71,7 +71,7 @@ const HelpBoardCardList = () => {
       loadOnlyPullingUp: false,
       sortOrder: 'DESC',
       orderField: 'id',
-      pageSize: 10,
+      pageSize: 8,
       page: page,
     };
     setLoad(true); //로딩 시작
@@ -126,6 +126,8 @@ const HelpBoardCardList = () => {
           head: data.head,
           body: data.body,
           createdAt: data.createdAt,
+          userId: data.userId,
+          categoryId: data.categoryId,
         };
         return (
           <S.HelpCardWrapper key={data.id}>

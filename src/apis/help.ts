@@ -69,7 +69,7 @@ const HELP = {
         page: params.page,
       },
     });
-    return result.data;
+    return result.data.contents;
   },
 
   /**도와주세요 unit불러오는 api [get] */
@@ -161,7 +161,7 @@ const HELP = {
         },
       },
     );
-    return result.data;
+    return result.data.contents;
   },
 };
 

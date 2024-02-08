@@ -22,6 +22,20 @@ const UnitContentHead = (props: HelpUnitType) => {
     }
   };
 
+  const handlePullingUp = async () => {
+    if (confirm('끌올시키시겠습니까?')) {
+      await HELP.pullingUp(props.id);
+      sessionStorage.setItem(
+        '__next_scroll_back',
+        JSON.stringify({
+          x: 0,
+          y: 0,
+        }),
+      );
+      router.back();
+    }
+  };
+
   useEffect(() => {
     const temp = categoryList.find(
       (data) => data.id === props.categoryId,
@@ -38,47 +52,34 @@ const UnitContentHead = (props: HelpUnitType) => {
     });
   };
   return (
-    <div>
-      <TextBox color="#C63D2F" size={40}>
-        {props.head}
-      </TextBox>
-      <FlexBox type="flex" style={{ margin: '0px 0px 60px 0px' }}>
-        <Image
-          src={props.user.userImage.imageUrl}
-          alt="유저이미지"
-          width={50}
-          height={50}
-          style={{ border: '2px solid #FF772B', borderRadius: 10 }}
-        />
-        <S.HeadTextBox>
-          <FlexBox type="flex">
-            <div>
-              <TextBox color="#000" size={16}>
-                {props.user.name}
-              </TextBox>
-              <FlexBox type="flex">
-                <TextBox color="#000" size={12}>
-                  {category}
-                </TextBox>
-                <TextBox color="#000" size={10}>
-                  {props.createdAt.slice(0, 10)}
-                </TextBox>
-              </FlexBox>
-            </div>
-            {props.unitOwner && (
-              <FlexBox type="flex">
-                <ButtonBox color="#000" onClick={deleteHelpUnitApi}>
-                  삭제
-                </ButtonBox>
-                <ButtonBox color="#000" onClick={modifyHelpUnit}>
-                  수정
-                </ButtonBox>
-              </FlexBox>
-            )}
-          </FlexBox>
-        </S.HeadTextBox>
-      </FlexBox>
-    </div>
+    <S.HelpHeadContainer>
+      <div>{props.head}</div>
+      <div>
+        <S.UserImg src={props.user.userImage.imageUrl} alt="유저이미지" />
+        <S.UserInfoBox>
+          <div>{props.user.name}</div>
+          <div>
+            <TextBox color="#000" size={12}>
+              {category}
+            </TextBox>
+            <TextBox color="#000" size={10}>
+              {props.createdAt.slice(0, 10)}
+            </TextBox>
+          </div>
+        </S.UserInfoBox>
+        {props.unitOwner && (
+          <S.ActiveButtonBox>
+            <div onClick={handlePullingUp}>끌어올리기</div>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
+              onClick={modifyHelpUnit}></img>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
+              onClick={deleteHelpUnitApi}></img>
+          </S.ActiveButtonBox>
+        )}
+      </div>
+    </S.HelpHeadContainer>
   );
 };
 

@@ -27,10 +27,10 @@ export const SlideContain = styled.div`
   height: 350px;
 `;
 
-export const SlidImages = styled.div`
-  display: flex;
-  flex-direction: row;
-  position: relative;
+export const PrevImg = styled.img`
+  width: 190px;
+  height: 190px;
+  margin: 155px 114px 0px 0px;
 `;
 
 export const BodyImages = styled.img`

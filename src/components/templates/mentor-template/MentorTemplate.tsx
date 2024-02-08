@@ -4,6 +4,7 @@ import * as S from './styled';
 import Category from '../../common/category/Category';
 import {
   ContainerWrapper,
+  CreateIconLink,
   TextBox,
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
@@ -14,7 +15,7 @@ const MentorTemplate = () => {
       <MainPageHeader />
       <S.MentorBoardCategoryContainer>
         <Category />
-        <S.CreateIconLink
+        <CreateIconLink
           href={{
             pathname: `/create`,
           }}>
@@ -23,7 +24,7 @@ const MentorTemplate = () => {
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
           />
-        </S.CreateIconLink>
+        </CreateIconLink>
       </S.MentorBoardCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
