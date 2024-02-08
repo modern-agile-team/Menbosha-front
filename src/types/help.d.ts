@@ -166,6 +166,7 @@ export type CreateHelpType = {
 
 /** 도와주세요 unit 수정 api 타입 */
 export interface ModifyHelpUnitType {
+  location?: string;
   id: number;
   head: string;
   body: string;

@@ -31,3 +31,12 @@ export const RandomMentorWrapper = styled.div`
     }
   }
 `;
+
+/** MentorBoardUnit */
+export const MentorBoardUnitContainer = styled.div`
+  display: flex;
+  padding: 130px;
+  & > :nth-child(1) {
+    padding: 200px 110px 0px 0px;
+  }
+`;

@@ -3,6 +3,7 @@ import {
   MentorBoardListType,
   MentorHotBoardPropsType,
   MentorBoardParamsType,
+  MentorModifyParamsType,
 } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
@@ -133,6 +134,46 @@ const MENTOR = {
     await COUNT.totalCount('decrement', 'mentorBoardLikeCount');
     const result: AxiosResponse = await instance.delete(
       `${MENTOR.path}/${boardId}/like`,
+    );
+    return result;
+  },
+
+  /**멘토 게시글 unit 수정 api [patch] */
+  async ModifyMentorBoardUnit(props: MentorModifyParamsType): Promise<any> {
+    const result: AxiosResponse = await instance.patch(
+      `${MENTOR.path}`,
+      {
+        head: props.head,
+        body: props.body,
+        categoryId: props.categoryId,
+      },
+      {
+        params: {
+          mentorBoardId: props.id,
+        },
+      },
+    );
+    return result.data;
+  },
+
+  /**이미지 수정 업로드 api [patch]*/
+  async modifyImg(
+    image: FormData,
+    boardId: number,
+    delUrl: string[],
+  ): Promise<any> {
+    const result: AxiosResponse = await instance.patch(
+      `${MENTOR.path}/images`,
+      image,
+      {
+        params: {
+          mentorBoardId: boardId,
+          deleteImageUrl: JSON.stringify(delUrl),
+        },
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
     );
     return result;
   },

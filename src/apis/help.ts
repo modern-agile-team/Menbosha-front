@@ -121,7 +121,7 @@ const HELP = {
       image,
       {
         params: {
-          boardId: boardId,
+          helpMeBoardId: boardId,
           deleteImageUrl: JSON.stringify(delUrl),
         },
         headers: {

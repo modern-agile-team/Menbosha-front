@@ -83,13 +83,9 @@ export interface MBUnitHeadPropsType {
   id: number;
   head: string;
   body: string;
-  helpMeBoardImages: {
-    id: number;
-    imageUrl: string;
-  }[];
   userName: string;
   userImage: string;
-  category: string;
+  categoryId: number;
   createdAt: string;
 }
 /**멘토 게시글 중 Body Props Type */
@@ -147,4 +143,11 @@ export type MentorHotBoardType = {
 export interface MentorBadgeType {
   badgeId: number;
   createdAt: string;
+}
+
+export interface MentorModifyParamsType {
+  head: string;
+  body: string;
+  categoryId: number;
+  id: number;
 }

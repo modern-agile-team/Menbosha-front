@@ -19,7 +19,7 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
   return (
     <FlexBox type="flex">
       <div>
-        <Image
+        <img
           src={userInfo?.image as string}
           alt="33"
           width={232}

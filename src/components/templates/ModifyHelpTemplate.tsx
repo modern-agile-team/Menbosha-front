@@ -6,11 +6,13 @@ import { HelpUnitType } from '@/types/help';
 
 const ModifyHelpTemplate = () => {
   const [modifyInfo, setModifyInfo] = useState<HelpUnitType>();
+  const [modifyLocation, setModifyLocation] = useState('');
   const router = useRouter();
 
   const getRouterInfo = () => {
     const temp = router.isReady && JSON.parse(router.query.data as string);
-    setModifyInfo(temp);
+    setModifyInfo(temp.data);
+    setModifyLocation(temp.location);
   };
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const ModifyHelpTemplate = () => {
         }}>
         {modifyInfo && (
           <ModifyHelpBoard
+            location={modifyLocation}
             id={modifyInfo.id}
             head={modifyInfo.head}
             body={modifyInfo.body}
