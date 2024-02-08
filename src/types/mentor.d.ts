@@ -90,6 +90,7 @@ export interface MBUnitHeadPropsType {
 }
 /**멘토 게시글 중 Body Props Type */
 export interface MBUnitBodyPropsType {
+  userId: number;
   id: number;
   image: Array;
   body: string;

@@ -39,4 +39,11 @@ export const MentorBoardUnitContainer = styled.div`
   & > :nth-child(1) {
     padding: 200px 110px 0px 0px;
   }
+  & > :nth-child(1) {
+    > img {
+      width: 10vw;
+      height: 10vw;
+      cursor: pointer;
+    }
+  }
 `;

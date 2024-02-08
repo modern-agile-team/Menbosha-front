@@ -121,19 +121,19 @@ const MENTOR = {
   },
 
   /**멘토 게시글 좋아요 생성 [post] */
-  async createLike(boardId: number): Promise<any> {
-    await COUNT.totalCount('increment', 'mentorBoardLikeCount');
+  async createLike(boardId: number, userId: number): Promise<any> {
+    await COUNT.totalCount('increment', 'mentorBoardLikeCount', userId);
     const result: AxiosResponse = await instance.post(
-      `${MENTOR.path}/${boardId}/like`,
+      `${MENTOR.path}/${boardId}/likes`,
     );
     return result;
   },
 
   /**멘토 게시글 좋아요 삭제 [delete] */
-  async deleteLike(boardId: number): Promise<any> {
-    await COUNT.totalCount('decrement', 'mentorBoardLikeCount');
+  async deleteLike(boardId: number, userId: number): Promise<any> {
+    await COUNT.totalCount('decrement', 'mentorBoardLikeCount', userId);
     const result: AxiosResponse = await instance.delete(
-      `${MENTOR.path}/${boardId}/like`,
+      `${MENTOR.path}/${boardId}/likes`,
     );
     return result;
   },
@@ -176,6 +176,22 @@ const MENTOR = {
       },
     );
     return result;
+  },
+
+  /**해당 유저의 게시글 불러오는 api [get] */
+  async MentorOtherBoards(userId: number): Promise<MentorBoardListType> {
+    const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
+      params: {
+        categoryId: 1,
+        pageSize: 5,
+        page: 1,
+        loadOnlyPopular: false,
+        orderField: 'RAND()',
+        sortOrder: 'DESC',
+        userId: userId,
+      },
+    });
+    return result.data.contents;
   },
 };
 

@@ -14,6 +14,7 @@ const COUNT = {
       | 'reviewCount: ', //멘토 후기 수
     userId?: number,
   ): Promise<any> {
+    console.log('과연', userId);
     const result: AxiosResponse = await instance.patch(
       `${COUNT.path}/counting`,
       {
