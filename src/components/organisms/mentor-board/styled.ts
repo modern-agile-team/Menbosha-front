@@ -31,3 +31,19 @@ export const RandomMentorWrapper = styled.div`
     }
   }
 `;
+
+/** MentorBoardUnit */
+export const MentorBoardUnitContainer = styled.div`
+  display: flex;
+  padding: 130px;
+  & > :nth-child(1) {
+    padding: 200px 110px 0px 0px;
+  }
+  & > :nth-child(1) {
+    > img {
+      width: 10vw;
+      height: 10vw;
+      cursor: pointer;
+    }
+  }
+`;

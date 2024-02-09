@@ -140,5 +140,6 @@ export const HelpCommentButtonBox = styled.div`
   justify-content: center;
   > * {
     padding: 10px;
+    cursor: pointer;
   }
 `;

@@ -5,13 +5,17 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as S from './styled';
 import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { CategorySelectAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
+import {
+  CategorySelectAtom,
+  SectionSelectAtom,
+} from '@/recoil/atoms/CategorySelectAtom';
 import { categoryList } from '@/components/common/category/categoryList';
 import HELP from '@/apis/help';
 import CategorySelectorBox from '@/components/molecules/create-board-elements/CategorySelector';
 import SectionSelectorBox from '@/components/molecules/create-board-elements/ChoiceSection';
 import { ModifyHelpUnitType } from '@/types/help';
+import MENTOR from '@/apis/mentor';
 
 const QuillWrapper = dynamic(() => import('react-quill'), {
   ssr: false,
@@ -66,6 +70,7 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
   const [unitTitle, setUnitTitle] = useState<string>(''); //제목
   const [quillText, setQuillText] = useState<string>(''); //본문
   const [category, setCategory] = useRecoilState(CategorySelectAtom); //카테고리
+  const setSection = useSetRecoilState(SectionSelectAtom);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const router = useRouter();
@@ -83,6 +88,7 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
     setUnitTitle(props.head as string);
     setQuillText(props.body as string);
     setCategory(temp as string);
+    setSection(props.location === 'help' ? '도와주세요 게시판' : '멘토 게시판');
     for (const file of props.image) {
       tempFiles = [
         ...tempFiles,
@@ -228,14 +234,25 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
           body: quillText,
           categoryId: catID as number,
         };
-        const data = await HELP.ModifyHelpUnit(isData);
-        if (files[0] !== null) {
-          await HELP.modifyImg(formData, data.id, delImg);
+        if (props.location === 'help') {
+          const data = await HELP.ModifyHelpUnit(isData);
+          if (files[0] !== null) {
+            await HELP.modifyImg(formData, data.id, delImg);
+          }
+          //router => 해당 글 로 페이지 이동
+          router.push({
+            pathname: `/help`,
+          });
+        } else {
+          const data = await MENTOR.ModifyMentorBoardUnit(isData);
+          if (files[0] !== null) {
+            await MENTOR.modifyImg(formData, data.id, delImg);
+          }
+          //router => 해당 글 로 페이지 이동
+          router.push({
+            pathname: `/help`,
+          });
         }
-        //router => 해당 글 로 페이지 이동
-        router.push({
-          pathname: `/help`,
-        });
         resetSelect(); //게시글 카테고리 초기화
       }
     }

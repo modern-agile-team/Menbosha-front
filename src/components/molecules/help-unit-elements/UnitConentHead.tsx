@@ -15,6 +15,8 @@ import * as S from './styled';
 const UnitContentHead = (props: HelpUnitType) => {
   const [category, setCategory] = useState('');
   const router = useRouter();
+
+  /**게시글 삭제 핸들러 */
   const deleteHelpUnitApi = async () => {
     if (confirm('게시글을 삭제 하시겠습니까?')) {
       const response = await HELP.deleteHelpUnit(props.id);
@@ -22,6 +24,7 @@ const UnitContentHead = (props: HelpUnitType) => {
     }
   };
 
+  /**게시글 끌올 핸들러 */
   const handlePullingUp = async () => {
     if (confirm('끌올시키시겠습니까?')) {
       await HELP.pullingUp(props.id);
@@ -36,6 +39,20 @@ const UnitContentHead = (props: HelpUnitType) => {
     }
   };
 
+  /**게시글 수정 핸들러 */
+  const modifyHelpUnit = () => {
+    const jsonData = {
+      data: props,
+      location: 'help',
+    };
+    router.push({
+      pathname: '/modify',
+      query: {
+        data: JSON.stringify(jsonData),
+      },
+    });
+  };
+
   useEffect(() => {
     const temp = categoryList.find(
       (data) => data.id === props.categoryId,
@@ -43,14 +60,6 @@ const UnitContentHead = (props: HelpUnitType) => {
     temp && setCategory(temp);
   }, []);
 
-  const modifyHelpUnit = () => {
-    router.push({
-      pathname: '/help/modify',
-      query: {
-        data: JSON.stringify(props),
-      },
-    });
-  };
   return (
     <S.HelpHeadContainer>
       <div>{props.head}</div>

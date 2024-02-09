@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
-import { UpdateProfileType } from '@/types/user';
+import { UpdateProfileType, MentorUnitType } from '@/types/user';
 
 const USER = {
   path: '/user',
@@ -25,7 +25,7 @@ const USER = {
   },
 
   /**유저 정보 조회 api [get] */
-  async getUserInfo(id: number): Promise<any> {
+  async getUserInfo(id: number): Promise<MentorUnitType> {
     const result: AxiosResponse = await instance.get(`${USER.path}/info`, {
       params: {
         userId: id,

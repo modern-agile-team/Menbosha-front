@@ -11,29 +11,47 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
     props.image,
   );
   const [isHtml, setHtml] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
-  const [isLike, setIsLike] = useState(props.isLike);
+  const [like, setLike] = useState({
+    count: 0,
+    isLike: props.isLike,
+  });
 
   useEffect(() => {
     setHtml(true);
-    setLikeCount(props.likes);
+    setLike((prev) => {
+      return {
+        ...prev,
+        count: props.likes,
+      };
+    });
   }, []);
 
+  /**좋아요 핸들러 */
   const handleLike = async () => {
-    if (isLike) {
-      setLikeCount(likeCount - 1);
-      setIsLike(false);
-      await MENTOR.deleteLike(props.id);
-    } else {
+    if (!like.isLike) {
       try {
-        await MENTOR.createLike(props.id);
-        setLikeCount(likeCount + 1);
-        setIsLike(true);
+        await MENTOR.createLike(props.id, props.userId);
+        setLike((prev) => {
+          return {
+            ...prev,
+            count: like.count + 1,
+            isLike: true,
+          };
+        });
       } catch (err) {
         if (axios.isAxiosError(err) && err.response) {
-          alert(`${err.response.data.message}`);
+          alert('본인의 게시물에는 좋아요를 할 수 없습니다.');
         }
       }
+    } else {
+      await MENTOR.deleteLike(props.id, props.userId);
+      setLike((prev) => {
+        return {
+          ...prev,
+          count: like.count - 1,
+          isLike: false,
+        };
+      });
     }
   };
 
@@ -72,14 +90,20 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
             }}></div>
         )}
       </S.BodyContentBox>
-      <ButtonBox onClick={handleLike}>
-        {!isLike ? (
-          <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/emptyHeart.svg" />
+      <S.LikeContainer>
+        {!like.isLike ? (
+          <img
+            onClick={handleLike}
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/emptyHeart.svg"
+          />
         ) : (
-          <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg" />
+          <img
+            onClick={handleLike}
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg"
+          />
         )}
-        {likeCount}
-      </ButtonBox>
+        {like.count}
+      </S.LikeContainer>
     </S.BodyContainer>
   );
 };
