@@ -44,6 +44,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
             userName={getUnitData.user.name}
             categoryId={getUnitData.categoryId}
             createdAt={getUnitData.createdAt}
+            isOwner={getUnitData.unitOwner}
           />
           <MentorBoardUnitBody
             userId={getUnitData.user.userImage.userId}
