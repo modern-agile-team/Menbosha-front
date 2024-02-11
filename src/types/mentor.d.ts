@@ -29,6 +29,23 @@ export type MentorBoardListType = PaginationType<{
   }[];
 }>;
 
+export type MentorListType = PaginationType<{
+  userWithImageAndIntroDtos: {
+    id: number;
+    mentorBoardCount: number;
+    mentorReviewCount: number;
+    name: string;
+    rank: number;
+    userImage: {
+      imageUrl: string;
+    };
+    userIntro: {
+      customCategory: string;
+      shortIntro: string;
+    };
+  }[];
+}>;
+
 export type MentorBoardParamsType = ParamsType<{
   categoryId: number;
   loadOnlyPopular: boolean;
@@ -100,7 +117,7 @@ export interface MBUnitBodyPropsType {
 }
 
 /**멘토 인기 게시글 props type */
-export interface MentorHotBoardPropsType {
+export interface MentorPaginationType {
   page?: number;
   pageSize?: number;
   categoryId: number;
