@@ -87,6 +87,7 @@ export interface MBUnitHeadPropsType {
   userImage: string;
   categoryId: number;
   createdAt: string;
+  isOwner: boolean;
 }
 /**멘토 게시글 중 Body Props Type */
 export interface MBUnitBodyPropsType {

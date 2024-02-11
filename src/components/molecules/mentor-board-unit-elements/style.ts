@@ -75,6 +75,7 @@ export const ButtonContainer = styled.div`
     width: 24px;
     height: 24px;
     margin: auto 18px;
+    cursor: pointer;
   }
 `;
 

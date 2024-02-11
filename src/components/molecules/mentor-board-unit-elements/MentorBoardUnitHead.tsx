@@ -40,11 +40,12 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
   };
 
   const deleteMentorBoardUnit = async () => {
-    confirm('게시물을 삭제하시겠습니까?') &&
-      (await MENTOR.deleteMentorBoardUnit(props.id));
-    router.push({
-      pathname: `/mentor/board`,
-    });
+    if (confirm('게시물을 삭제하시겠습니까?')) {
+      await MENTOR.deleteMentorBoardUnit(props.id);
+      router.push({
+        pathname: `/mentor/board`,
+      });
+    }
   };
 
   useEffect(() => {
@@ -62,14 +63,16 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
           <TextBox size={16}>{props.userName}</TextBox>
           <TextBox size={12}>{category}</TextBox>
         </S.HeadProfile>
-        <S.ButtonContainer>
-          <img
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
-            onClick={modifiedMentorBoardUnit}></img>
-          <img
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
-            onClick={deleteMentorBoardUnit}></img>
-        </S.ButtonContainer>
+        {props.isOwner && (
+          <S.ButtonContainer>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
+              onClick={modifiedMentorBoardUnit}></img>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
+              onClick={deleteMentorBoardUnit}></img>
+          </S.ButtonContainer>
+        )}
       </S.MentorBoardOwnerUser>
     </div>
   );
