@@ -170,3 +170,14 @@ export interface MentorModifyParamsType {
   categoryId: number;
   id: number;
 }
+
+/**멘토 리스트 d.ts */
+export interface MentorCardType {
+  id: number;
+  name: string;
+  shortIntro: string;
+  customCategory: string;
+  reviewCnt: number;
+  boardCnt: number;
+  userImage: string;
+}

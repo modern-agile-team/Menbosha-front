@@ -1,19 +1,14 @@
-import { SideViewerAtom } from '@/recoil/atoms/SideViewerAtom';
-import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import {
+  FlexBox,
   ImageBox,
   LinkBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
-import { MentorCardType } from '@/types/user';
+import { MentorCardType } from '@/types/mentor';
 
 const MentorCard = (props: MentorCardType) => {
-  const [sideViewer, setSideViewer] = useRecoilState(SideViewerAtom);
-
-  const handleSideViewer = () => {
-    setSideViewer(props.id);
-  };
+  console.log(props);
   return (
     <LinkBox
       color="#fff"
@@ -23,30 +18,32 @@ const MentorCard = (props: MentorCardType) => {
           id: props.id,
         },
       }}>
-      <S.MentorCardContainer onClick={handleSideViewer}>
-        <ImageBox
-          src={props.userImage}
-          width="114px"
-          height="135px"
-          size="cover"
-          style={{ borderRadius: 10, margin: 12 }}
-        />
+      <S.MentorCardContainer>
+        <img src={props.userImage} alt="유저이미지" />
         <S.MentorCardContentBox>
-          <TextBox size={16} color="#C63D2F" style={{ padding: '13px 0px' }}>
-            {props.name}
-          </TextBox>
-          <TextBox
-            size={12}
-            color="#fff"
-            style={{ padding: '0px 0px 10px 0px' }}>
-            {props.introduce}
-          </TextBox>
-          <TextBox
-            size={12}
-            color="#fff"
-            style={{ padding: '10px 0px 10px 0px' }}>
-            {props.mainField}
-          </TextBox>
+          <div>
+            <div>{props.name}</div>
+          </div>
+          <div>
+            <div>{props.shortIntro}</div>
+            <div>{props.customCategory}</div>
+          </div>
+          <S.MentorCountBox>
+            <div>
+              <img
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/reviewCnt.svg"
+                alt="리뷰수이모지"
+              />
+              <div>{props.reviewCnt}개</div>
+            </div>
+            <div>
+              <img
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/boardCnt.svg"
+                alt="보드수이모지"
+              />
+              <div>{props.boardCnt}개</div>
+            </div>
+          </S.MentorCountBox>
         </S.MentorCardContentBox>
       </S.MentorCardContainer>
     </LinkBox>

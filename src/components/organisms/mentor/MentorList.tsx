@@ -6,7 +6,11 @@ import USER from '@/apis/user';
 import { MentorType } from '@/types/user';
 import { useRouter } from 'next/router';
 import MENTORS from '@/apis/mentors';
-import { MentorListType, MentorPaginationType } from '@/types/mentor';
+import {
+  MentorCardType,
+  MentorListType,
+  MentorPaginationType,
+} from '@/types/mentor';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
@@ -119,12 +123,14 @@ const MentorList = () => {
     <S.MentoCardContainer>
       {getMentorData &&
         getMentorData.map((data) => {
-          const temp = {
+          const temp: MentorCardType = {
             id: data.id,
             name: data.name,
             userImage: data.userImage.imageUrl,
-            introduce: data.userIntro.shortIntro,
-            mainField: data.userIntro.customCategory,
+            shortIntro: data.userIntro.shortIntro,
+            customCategory: data.userIntro.customCategory,
+            reviewCnt: data.mentorReviewCount,
+            boardCnt: data.mentorBoardCount,
           };
           return (
             <S.MentorCardWrapper key={data.id}>

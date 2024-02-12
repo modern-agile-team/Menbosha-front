@@ -1,5 +1,3 @@
-import { SideViewerAtom } from '@/recoil/atoms/SideViewerAtom';
-import { useRecoilState } from 'recoil';
 import * as S from './styled';
 import {
   FlexBox,

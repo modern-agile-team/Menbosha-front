@@ -13,10 +13,49 @@ export const MentorCardContainer = styled.div`
   &:hover {
     border: 5px solid #ff792bbf;
   }
+  & > img {
+    width: 40%;
+    height: 135px;
+    border-radius: 10px;
+    margin: 12px;
+  }
 `;
 
 export const MentorCardContentBox = styled.div`
-  width: 140px;
+  width: 40%;
+  padding: 24px;
+  font-size: 12px;
+  color: #000;
+  height: 111px;
+  & > :nth-child(1) {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  & > :nth-child(2) {
+    font-size: 12px;
+    padding: 5px 0px;
+    height: 60px;
+  }
+  & > :nth-child(3) {
+    margin: auto 0px;
+  }
+`;
+
+export const MentorCountBox = styled.div`
+  display: flex;
+  color: rgba(0, 0, 0, 0.5);
+  & > :nth-child(n) {
+    display: flex;
+    margin: 0px 12px 0px 0px;
+    & > :nth-child(2) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 5px;
+      width: 25px;
+      font-weight: bold;
+    }
+  }
 `;
 
 export const MentorCardImageBox = styled.div`
