@@ -33,10 +33,10 @@ const MentorUnitTemplate = () => {
       </S.ContentContainer>
       <S.MentorReviewWrapper>
         <div></div>
-        <div>
+        <S.MentorReviewContainer>
           <div>후기</div>
           {router.isReady && <MentorReview id={Number(router.query.id)} />}
-        </div>
+        </S.MentorReviewContainer>
       </S.MentorReviewWrapper>
     </ContainerWrapper>
   );

@@ -63,7 +63,7 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
     }
   }, [filterCategory]);
   return (
-    <div>
+    <S.ReviewElementWrapper>
       {reviewData &&
         reviewData.map((data) => {
           const temp = {
@@ -89,16 +89,16 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
             createdAt: data.createdAt,
           };
           return (
-            <div key={data.id}>
+            <S.ReviewContentContainer key={data.id}>
               <MentorReviewElements {...temp} />
-            </div>
+            </S.ReviewContentContainer>
           );
         })}
       <div>
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
       </div>
-    </div>
+    </S.ReviewElementWrapper>
   );
 };
 

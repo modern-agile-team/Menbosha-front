@@ -101,10 +101,19 @@ export const MentorReviewWrapper = styled.div`
   width: 65%;
   border: 2px solid #0ff;
   > :nth-child(1) {
-    font-size: 64px;
+    width: 180px;
+    @media only all and (max-width: 1600px) {
+      display: none;
+    }
+  }
+`;
+
+export const MentorReviewContainer = styled.div`
+  width: 100%;
+  & > :nth-child(1) {
+    font-size: 20px;
     font-weight: bold;
     color: #ff772b;
-    width: 180px;
   }
 `;
 

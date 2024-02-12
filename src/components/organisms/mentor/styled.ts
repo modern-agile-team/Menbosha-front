@@ -155,3 +155,12 @@ export const MentorOtherBoardsWrapper = styled.div`
     padding: 14px;
   }
 `;
+
+export const ReviewElementWrapper = styled.div`
+  margin-top: 27px;
+`;
+
+export const ReviewContentContainer = styled.div`
+  border-bottom: 1px solid #ff772b;
+  padding: 24px 0px;
+`;
