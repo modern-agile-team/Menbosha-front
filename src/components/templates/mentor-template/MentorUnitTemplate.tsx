@@ -20,10 +20,13 @@ const MentorUnitTemplate = () => {
     <ContainerWrapper>
       <MainPageHeader />
       <S.ContentContainer>
-        <div>
+        <S.MentorPageTitleContainer>
           <div>멘토 프로필</div>
-          <ButtonBox onClick={handleBack}>이전</ButtonBox>
-        </div>
+          <img
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"
+            alt="이전버튼"
+          />
+        </S.MentorPageTitleContainer>
         <div>
           {router.isReady && <MentorUnit id={Number(router.query.id)} />}
         </div>

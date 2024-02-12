@@ -68,6 +68,7 @@ const MENTOR = {
         loadOnlyPopular: params.loadOnlyPopular,
         orderField: params.orderField,
         sortOrder: params.sortOrder,
+        userId: params.userId ? params.userId : undefined,
       },
     });
     return result.data.contents;

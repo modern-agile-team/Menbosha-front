@@ -120,9 +120,11 @@ export const PopularMentorCardContainer = styled.div`
 `;
 
 export const BadgeBox = styled.div`
-  border: 2px solid #000;
-  border-radius: 15px;
-  height: 166px;
   width: 30.3%;
   margin: 14px;
+  & > img {
+    border-radius: 15px;
+    height: 166px;
+    width: 100%;
+  }
 `;

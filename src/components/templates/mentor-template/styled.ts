@@ -80,7 +80,6 @@ export const HeadTitleContainer = styled.div`
 
 export const ContentContainer = styled.div`
   display: flex;
-  border: 2px solid #98f;
   width: 65%;
   margin: 100px 50px 100px 0px;
   > :nth-child(1) {
@@ -93,7 +92,6 @@ export const ContentContainer = styled.div`
     width: 90%;
     display: flex;
     justify-content: center;
-    border: 2px solid #00f;
   }
 `;
 
@@ -107,5 +105,17 @@ export const MentorReviewWrapper = styled.div`
     font-weight: bold;
     color: #ff772b;
     width: 180px;
+  }
+`;
+
+/**page title */
+export const MentorPageTitleContainer = styled.div`
+  & > :nth-child(1) {
+    @media only all and (max-width: 1700px) {
+      font-size: 25px;
+    }
+  }
+  & > :nth-child(2) {
+    width: 100%;
   }
 `;
