@@ -32,21 +32,28 @@ const MentorReviewElements = (props: ReviewProprType) => {
   return (
     <div>
       <S.ReviewContentBox>
-        <div>
+        <S.RankBox>
           <Image src={getRank.image} alt="랭크" width={48} height={48} />
           <div>{getRank.name}</div>
           <div>{props.rank}점</div>
-        </div>
-        <div>
+        </S.RankBox>
+        <S.UserInfoBox>
           <div>{props.name}</div>
-          <div>{props.customCategory}</div>
-          <div>{props.career}</div>
-          <div>{props.shortIntro}</div>
-        </div>
-        <div>
+          <div>
+            <div>{props.customCategory}</div>
+            <div>{props.career}</div>
+            <div>{props.shortIntro}</div>
+          </div>
+        </S.UserInfoBox>
+        <S.ReviewTextBox>
           <div>{props.createdAt.slice(0, 10)}</div>
           <div>{props.review}</div>
-        </div>
+        </S.ReviewTextBox>
+        <S.ReportBox>
+          <img
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
+            alt="신고버튼"></img>
+        </S.ReportBox>
       </S.ReviewContentBox>
       <S.CheckListContainer>
         {props.isGoodWork && <div>잘 가르쳐요</div>}

@@ -29,9 +29,27 @@ export type MentorBoardListType = PaginationType<{
   }[];
 }>;
 
+export type MentorListType = PaginationType<{
+  userWithImageAndIntroDtos: {
+    id: number;
+    mentorBoardCount: number;
+    mentorReviewCount: number;
+    name: string;
+    rank: number;
+    userImage: {
+      imageUrl: string;
+    };
+    userIntro: {
+      customCategory: string;
+      shortIntro: string;
+    };
+  }[];
+}>;
+
 export type MentorBoardParamsType = ParamsType<{
   categoryId: number;
   loadOnlyPopular: boolean;
+  userId?: number;
 }>;
 
 /**멘토게시판 카트형식의 타입 */
@@ -100,21 +118,9 @@ export interface MBUnitBodyPropsType {
 }
 
 /**멘토 인기 게시글 props type */
-export interface MentorHotBoardPropsType {
-  page?: number;
-  pageSize?: number;
+export type MentorPaginationType = ParamsType<{
   categoryId: number;
-  orderField?:
-    | 'id'
-    | 'userId'
-    | 'head'
-    | 'body'
-    | 'createdAt'
-    | 'updatedAt'
-    | 'categoryId'
-    | 'popularAt';
-  sortOrder?: 'DESC' | 'ASC';
-}
+}>;
 
 export type MentorHotBoardType = {
   totalCount: number;
@@ -152,4 +158,15 @@ export interface MentorModifyParamsType {
   body: string;
   categoryId: number;
   id: number;
+}
+
+/**멘토 리스트 d.ts */
+export interface MentorCardType {
+  id: number;
+  name: string;
+  shortIntro: string;
+  customCategory: string;
+  reviewCnt: number;
+  boardCnt: number;
+  userImage: string;
 }

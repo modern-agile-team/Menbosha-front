@@ -1,7 +1,7 @@
 import {
   CreateMentorBoardType,
   MentorBoardListType,
-  MentorHotBoardPropsType,
+  MentorPaginationType,
   MentorBoardParamsType,
   MentorModifyParamsType,
 } from '@/types/mentor';
@@ -68,6 +68,7 @@ const MENTOR = {
         loadOnlyPopular: params.loadOnlyPopular,
         orderField: params.orderField,
         sortOrder: params.sortOrder,
+        userId: params.userId ? params.userId : undefined,
       },
     });
     return result.data.contents;
@@ -104,7 +105,7 @@ const MENTOR = {
   },
 
   /**인기 멘토 게시글 불러오는 api [get] */
-  async hotMentorBoard({ categoryId }: MentorHotBoardPropsType): Promise<any> {
+  async hotMentorBoard({ categoryId }: MentorPaginationType): Promise<any> {
     const result: AxiosResponse = await instance.get(
       `${MENTOR.path}/hot-posts`,
       {
