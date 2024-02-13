@@ -129,7 +129,8 @@ export const ContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  flex-wrap: wrap;
+  width: inherit;
 `;
 
 /**게시글 생성 아이콘 */
