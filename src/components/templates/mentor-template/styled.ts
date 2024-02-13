@@ -99,7 +99,6 @@ export const ContentContainer = styled.div`
 export const MentorReviewWrapper = styled.div`
   display: flex;
   width: 65%;
-  border: 2px solid #0ff;
   > :nth-child(1) {
     width: 180px;
     @media only all and (max-width: 1600px) {
@@ -126,5 +125,6 @@ export const MentorPageTitleContainer = styled.div`
   }
   & > :nth-child(2) {
     width: 100%;
+    cursor: pointer;
   }
 `;

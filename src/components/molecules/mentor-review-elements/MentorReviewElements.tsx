@@ -3,6 +3,8 @@ import { ReviewProprType } from '@/types/review';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
+import Link from 'next/link';
+import { LinkBox } from '@/components/common/globalStyled/styled';
 
 const MentorReviewElements = (props: ReviewProprType) => {
   const [getRank, setRank] = useState({
@@ -37,14 +39,22 @@ const MentorReviewElements = (props: ReviewProprType) => {
           <div>{getRank.name}</div>
           <div>{props.rank}점</div>
         </S.RankBox>
-        <S.UserInfoBox>
-          <div>{props.name}</div>
-          <div>
-            <div>{props.customCategory}</div>
-            <div>{props.career}</div>
-            <div>{props.shortIntro}</div>
-          </div>
-        </S.UserInfoBox>
+        <LinkBox
+          href={{
+            pathname: `/userpage/${props.menteeId}`,
+            query: {
+              id: props.id,
+            },
+          }}>
+          <S.UserInfoBox>
+            <div>{props.name}</div>
+            <div>
+              <div>{props.customCategory}</div>
+              <div>{props.career}</div>
+              <div>{props.shortIntro}</div>
+            </div>
+          </S.UserInfoBox>
+        </LinkBox>
         <S.ReviewTextBox>
           <div>{props.createdAt.slice(0, 10)}</div>
           <div>{props.review}</div>

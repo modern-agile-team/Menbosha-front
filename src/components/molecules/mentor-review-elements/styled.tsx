@@ -25,6 +25,7 @@ export const RankBox = styled.div`
 
 export const UserInfoBox = styled.div`
   & > :nth-child(1) {
+    color: #000;
     font-size: 20px;
     font-weight: bold;
     padding-left: 10px;

@@ -1,13 +1,8 @@
-import {
-  ButtonBox,
-  ContainerWrapper,
-  TextBox,
-} from '@/components/common/globalStyled/styled';
+import { ContainerWrapper } from '@/components/common/globalStyled/styled';
 import MainPageHeader from '@/components/common/header/MainPageHeader';
 import MentorUnit from '@/components/organisms/mentor/MentorUnit';
 import { useRouter } from 'next/router';
 import * as S from './styled';
-import Image from 'next/image';
 import MentorReview from '@/components/organisms/mentor/MentorReview';
 
 const MentorUnitTemplate = () => {
@@ -25,6 +20,7 @@ const MentorUnitTemplate = () => {
           <img
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"
             alt="이전버튼"
+            onClick={handleBack}
           />
         </S.MentorPageTitleContainer>
         <div>

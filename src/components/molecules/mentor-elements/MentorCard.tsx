@@ -8,7 +8,6 @@ import {
 import { MentorCardType } from '@/types/mentor';
 
 const MentorCard = (props: MentorCardType) => {
-  console.log(props);
   return (
     <LinkBox
       color="#fff"

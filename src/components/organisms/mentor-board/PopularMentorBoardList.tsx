@@ -35,26 +35,30 @@ const PopularMentorBoardList = () => {
 
   return (
     <S.MentoBoardCardContainer>
-      {getHotData.map((data) => {
-        const temp = {
-          id: data.id,
-          head: data.head,
-          body: data.body,
-          category: data.categoryId,
-          createdAt: data.createdAt,
-          updatedAt: data.updatedAt,
-          userId: data.userId,
-          userName: data.user.name,
-          userImage: data.user.userImage.imageUrl,
-          mentorBoardImage: data.imageUrl,
-          likes: data.likeCount,
-        };
-        return (
-          <S.MentorBoardCardWrapper key={data.id}>
-            <MentorBoardCard {...temp} />
-          </S.MentorBoardCardWrapper>
-        );
-      })}
+      {getHotData ? (
+        getHotData.map((data) => {
+          const temp = {
+            id: data.id,
+            head: data.head,
+            body: data.body,
+            category: data.categoryId,
+            createdAt: data.createdAt,
+            updatedAt: data.updatedAt,
+            userId: data.userId,
+            userName: data.user.name,
+            userImage: data.user.userImage.imageUrl,
+            mentorBoardImage: data.imageUrl,
+            likes: data.likeCount,
+          };
+          return (
+            <S.MentorBoardCardWrapper key={data.id}>
+              <MentorBoardCard {...temp} />
+            </S.MentorBoardCardWrapper>
+          );
+        })
+      ) : (
+        <div style={{ color: '#000' }}>없음</div>
+      )}
     </S.MentoBoardCardContainer>
   );
 };
