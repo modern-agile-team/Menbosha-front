@@ -8,7 +8,7 @@ import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const PopularMentorBoardList = () => {
   const [getHotData, setHotData] = useState<
-    MentorBoardListType['mentorBoardsItemDto']
+    MentorBoardListType['mentorBoardForHotPostsItemDto']
   >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
@@ -22,7 +22,7 @@ const PopularMentorBoardList = () => {
       pageSize: 4,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
-    setHotData(response.mentorBoardsItemDto);
+    setHotData(response.mentorBoardForHotPostsItemDto);
   };
 
   useEffect(() => {
