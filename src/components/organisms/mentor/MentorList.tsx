@@ -88,8 +88,6 @@ const MentorList = () => {
     }
   }, []);
 
-  console.log(getMentorData);
-
   const handleRouteChange = useCallback((e: any) => {
     sessionStorage.setItem(
       `__next_scroll_back`,

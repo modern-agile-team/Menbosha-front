@@ -27,8 +27,6 @@ const PopularMentorList = () => {
     getPopularMentorApi();
   }, []);
 
-  console.log(getPopData);
-
   const handleRouteChange = useCallback((e: any) => {
     sessionStorage.setItem(
       `__next_scroll_back`,
@@ -60,23 +58,27 @@ const PopularMentorList = () => {
 
   return (
     <S.MentoCardContainer>
-      {getPopData.map((data) => {
-        const temp = {
-          userId: data.userId,
-          name: data.name,
-          activityCategoryId: data.activityCategoryId,
-          introduce: data.introduce,
-          career: data.career,
-          mainField: data.mainField,
-          rank: data.rank,
-          reviewCount: data.reviewCount,
-        };
-        return (
-          <S.MentorCardWrapper key={data.userId}>
-            <PopularMentorCard {...temp} />
-          </S.MentorCardWrapper>
-        );
-      })}
+      {getPopData.length !== 0 ? (
+        getPopData.map((data) => {
+          const temp = {
+            userId: data.userId,
+            name: data.name,
+            activityCategoryId: data.activityCategoryId,
+            introduce: data.introduce,
+            career: data.career,
+            mainField: data.mainField,
+            rank: data.rank,
+            reviewCount: data.reviewCount,
+          };
+          return (
+            <S.MentorCardWrapper key={data.userId}>
+              <PopularMentorCard {...temp} />
+            </S.MentorCardWrapper>
+          );
+        })
+      ) : (
+        <div style={{ color: '#000' }}>인기 멘토가 없습니다.</div>
+      )}
     </S.MentoCardContainer>
   );
 };
