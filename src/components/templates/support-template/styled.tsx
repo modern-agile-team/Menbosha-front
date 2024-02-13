@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const SupportContainer = styled.div`
-  width: 1512px;
+  width: 80%;
   margin: 64px 204px;
+  @media only all and (max-width: 1500px) {
+    width: 80%;
+    margin: 6% 20%;
+  }
 `;
 
 export const SupportHeaderBox = styled.div`
@@ -23,15 +27,22 @@ export const SupportHeaderBox = styled.div`
 `;
 
 export const SupportButtonContainer = styled.div`
+  @media only all and (max-width: 1000px) {
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: column;
+  }
   display: flex;
-  justify-content: space-between;
   margin-top: 64px;
+  justify-content: space-between;
   & > :nth-child(n) {
     cursor: pointer;
     text-decoration: none;
     padding: 46px 104px 37px 104px;
-    margin: 31.5px;
-    width: 330px;
+    @media only all and (max-width: 1500px) {
+      padding: 4% 5% 6% 5%;
+      width: 25%;
+    }
     background-color: #ff772b;
     border-radius: 10px;
     color: #fff;
@@ -46,6 +57,15 @@ export const SupportButtonContainer = styled.div`
       }
       text-align: center;
     }
+  }
+  & > :nth-child(1) {
+    margin: 0px 31.5px 0px 0px;
+  }
+  & > :nth-last-child(1) {
+    margin: 0px 0px 0px 31.5px;
+  }
+  & > :not(:nth-child(1), :nth-last-child(1)) {
+    margin: 0px 31.5px;
   }
 `;
 
@@ -67,4 +87,10 @@ export const SupportEtcContainer = styled.div`
 export const SupportElementBox = styled.div`
   cursor: pointer;
   padding: 0px 5px 15px 0px;
+`;
+
+//QnA Container
+export const QnAContainer = styled.div`
+  width: 80%;
+  margin: 64px 204px;
 `;
