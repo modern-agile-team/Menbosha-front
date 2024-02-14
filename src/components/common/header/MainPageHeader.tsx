@@ -69,9 +69,6 @@ const MainPageHeader = () => {
           <Link href={`/support`}>
             <span>고객지원</span>
           </Link>
-          <Link href={`/setting`}>
-            <span>설정</span>
-          </Link>
         </S.NavigateBox>
         <S.IconBox>
           <Link
