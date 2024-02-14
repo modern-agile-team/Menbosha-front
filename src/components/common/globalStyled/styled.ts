@@ -130,6 +130,7 @@ export const ContainerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  height: 100vh;
 `;
 
 /**게시글 생성 아이콘 */

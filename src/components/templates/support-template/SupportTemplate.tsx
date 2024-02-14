@@ -61,7 +61,6 @@ const SupportTemplate = () => {
           </S.SupportEtcContainer>
         </S.SupportContainer>
       </ContainerWrapper>
-      <MainPageFooter />
     </div>
   );
 };
