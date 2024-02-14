@@ -1,10 +1,9 @@
-import MainPageHeader from '@/components/common/header/MainPageHeader';
+import QnATemplate from '@/components/templates/support-template/QnATemplate';
 
 const QnA = () => {
   return (
     <div>
-      <MainPageHeader />
-      QnA페이지 입니당.
+      <QnATemplate />
     </div>
   );
 };
