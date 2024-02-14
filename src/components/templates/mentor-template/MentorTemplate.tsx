@@ -8,6 +8,7 @@ import {
   TextBox,
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
+import MentorRanking from '@/components/organisms/mentor/RankMentor';
 
 const MentorTemplate = () => {
   return (
@@ -31,6 +32,7 @@ const MentorTemplate = () => {
           <TextBox size={30} color="#ff792b">
             명예의 전당
           </TextBox>
+          <MentorRanking />
         </S.MentorListContainer>
         <S.PopularMentorListContainer>
           <TextBox size={30} color="#ff792b">

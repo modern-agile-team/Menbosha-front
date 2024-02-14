@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 /**멘토 리스트 컨테이너 */
 export const MentorListContainer = styled.div`
+  margin: 64px 204px;
   min-width: 1560px;
 `;
 

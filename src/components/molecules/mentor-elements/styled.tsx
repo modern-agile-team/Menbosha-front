@@ -74,13 +74,6 @@ export const RankBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  > :nth-child(1) {
-    width: 43px;
-    height: 43px;
-    background-color: #3da2ff;
-    border: 1px solid #3da2ff;
-    border-radius: 5px;
-  }
   > :nth-child(2) {
     font-size: 15px;
   }
@@ -94,14 +87,42 @@ export const NameBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0px auto;
-  > :nth-child(3) {
-    flex-wrap: wrap;
+  color: #000;
+  & > :nth-child(1) {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px 0px;
   }
+  & > :nth-child(2) {
+    font-size: 12px;
+    padding: 10px 0px;
+  }
+  & > :nth-child(3) {
+    flex-wrap: wrap;
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+  }
+`;
+
+export const CountContainer = styled.div`
+  display: flex;
+  margin: auto auto auto 30px;
+  justify-content: space-between;
 `;
 
 export const CountBox = styled.div`
   display: flex;
-  margin: auto;
+  margin-right: 30px;
+  & > :nth-child(1) {
+    margin-right: 6px;
+  }
+  & > :nth-child(2) {
+    margin-right: 18px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 export const PopularMentorCardContainer = styled.div`

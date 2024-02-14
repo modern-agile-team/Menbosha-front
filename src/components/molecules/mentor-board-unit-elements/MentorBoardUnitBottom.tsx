@@ -22,15 +22,16 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
     name: '',
   });
   const [otherBoards, setOtherBoards] = useState<
-    MentorBoardListType['mentorBoardForHotPostsItemDto']
+    MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
 
   const getRankList = () => {
     const temp =
       userInfo &&
-      rankList.find((data) => {
-        data.range[0] < userInfo?.rank && data.range[1] > userInfo?.rank;
-      });
+      rankList.find(
+        (data) =>
+          data.range[0] < userInfo?.rank && data.range[1] > userInfo?.rank,
+      );
     temp &&
       setRankInfo((prev) => {
         return {
@@ -50,7 +51,7 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
   /**해당 유저의 게시글 가져오는 api */
   const getUserOtherBoardsApi = async () => {
     const response = await MENTOR.MentorOtherBoards(props.id);
-    setOtherBoards(response.mentorBoardForHotPostsItemDto);
+    setOtherBoards(response.mentorBoardWithUserAndImageDtos);
   };
 
   /**유저 정보로 route */

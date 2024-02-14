@@ -1,26 +1,50 @@
 import * as S from './styled';
 import {
-  FlexBox,
   ImageBox,
   LinkBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
-import { PopularMentorType } from '@/types/user';
-import { categoryList } from '@/components/common/category/categoryList';
-import Link from 'next/link';
+import { rankList } from '@/components/common/rank/rankList';
+import { MentorPopCardType } from '@/types/mentor';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-const PopularMentorCard = (props: PopularMentorType) => {
+const PopularMentorCard = (props: MentorPopCardType) => {
+  const [rankInfo, setRankInfo] = useState({
+    image: '',
+    name: '',
+  });
+
+  const getRankList = () => {
+    const temp = rankList.find(
+      (data) => data.range[0] < props?.rank && data.range[1] > props?.rank,
+    );
+    temp &&
+      setRankInfo((prev) => {
+        return {
+          ...prev,
+          image: temp?.image,
+          name: temp?.rank,
+        };
+      });
+  };
+
+  useEffect(() => {
+    getRankList();
+  }, []);
+
   return (
     <LinkBox
       color="#000"
       href={{
-        pathname: `/mentor/unit/${props.userId}`,
+        pathname: `/mentor/unit/${props.id}`,
         query: {
-          id: props.userId,
+          id: props.id,
         },
       }}>
       <S.PopularMentorCardContainer>
         <ImageBox
+          src={props.image}
           width="232px"
           height="232px"
           size="cover"
@@ -28,36 +52,40 @@ const PopularMentorCard = (props: PopularMentorType) => {
         />
         <S.ProfileContentBox>
           <S.RankBox>
-            <div></div>
-            <div>랭크</div>
-            <div>몇 점</div>
+            <Image
+              src={rankInfo.image}
+              alt={`${props.rank}점랭크`}
+              width={51}
+              height={51}></Image>
+            <div>{rankInfo.name}</div>
+            <div>{props.rank}점</div>
           </S.RankBox>
           <S.NameBox>
-            <TextBox size={20} color="#000" style={{ padding: '6px 0px' }}>
-              {props.name}
-            </TextBox>
-            <TextBox
-              size={12}
-              color="#000"
-              style={{ padding: '10px 0px 10px 0px' }}>
-              {
-                categoryList.find(
-                  (data) => data.id === props.activityCategoryId,
-                )?.category
-              }
-            </TextBox>
-            <TextBox
-              size={12}
-              color="#000"
-              style={{ padding: '0px 0px 10px 0px' }}>
-              {props.introduce}
-            </TextBox>
+            <div>{props.name}</div>
+            <div>{props.customCategory}</div>
+            <div>{props.shortIntro}</div>
           </S.NameBox>
         </S.ProfileContentBox>
-        <S.CountBox>
-          <TextBox size={12}>게시물 수</TextBox>
-          <TextBox size={12}>후기 개수</TextBox>
-        </S.CountBox>
+        <S.CountContainer>
+          <S.CountBox>
+            <Image
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/boardCnt.svg"
+              alt=""
+              width={25}
+              height={25}
+            />
+            <div>{props.mentorBoardCount}</div>
+          </S.CountBox>
+          <S.CountBox>
+            <Image
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/reviewCnt.svg"
+              alt=""
+              width={25}
+              height={25}
+            />
+            <div>{props.mentorReviewCount}</div>
+          </S.CountBox>
+        </S.CountContainer>
       </S.PopularMentorCardContainer>
     </LinkBox>
   );

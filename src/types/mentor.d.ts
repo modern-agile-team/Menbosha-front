@@ -117,11 +117,6 @@ export interface MBUnitBodyPropsType {
   isLike: boolean;
 }
 
-/**멘토 인기 게시글 props type */
-export type MentorPaginationType = ParamsType<{
-  categoryId: number;
-}>;
-
 export type MentorHotBoardType = {
   totalCount: number;
   currentPage: number;
@@ -170,3 +165,25 @@ export interface MentorCardType {
   boardCnt: number;
   userImage: string;
 }
+
+export interface MentorPopCardType {
+  id: number;
+  name: string;
+  rank: number;
+  shortIntro: string;
+  customCategory: string;
+  mentorReviewCount: number;
+  mentorBoardCount: number;
+  image: string;
+}
+
+/**멘토 d.ts */
+export type MentorPaginationParamsType = {
+  page?: number; //검색할 페이지
+  pageSize?: number; //검색할 페이지 size
+  id?: number; // id로 필터링하기
+  activityCategoryId: number; //카테고리로 필터링하기
+  orderField: //멘토정렬
+  'id' | 'name' | 'rank' | 'activityCategoryId';
+  sortOrder: 'DESC' | 'ASC'; //오름차순, 내림차순
+};
