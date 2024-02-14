@@ -10,7 +10,7 @@ export type CreateMentorBoardType = {
 /**멘토 게시글 리스트 불러오는 api 타입
  */
 export type MentorBoardListType = PaginationType<{
-  mentorBoardForHotPostsItemDto: {
+  mentorBoardWithUserAndImageDtos: {
     id: number;
     userId: number;
     head: string;
