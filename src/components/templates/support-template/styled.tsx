@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+/**오른쪽 화살표 아이콘  [ > ]*/
+export const ArrowIcon = styled.div`
+  margin-top: 0.4%;
+  position: relative;
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 8px; /* 사이즈 */
+    height: 8px; /* 사이즈 */
+    border-top: 4px solid #000; /* 선 두께 */
+    border-right: 4px solid #000; /* 선 두께 */
+    transform: rotate(45deg); /* 각도 */
+  }
+`;
+
 export const SupportContainer = styled.div`
   width: 80%;
   margin: 64px 204px;
@@ -89,6 +106,8 @@ export const SupportEtcContainer = styled.div`
 
 export const SupportElementBox = styled.div`
   cursor: pointer;
+  text-decoration: none;
+  color: #000;
   padding: 0px 5px 15px 0px;
 `;
 

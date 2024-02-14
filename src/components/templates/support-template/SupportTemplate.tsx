@@ -1,4 +1,7 @@
-import { ContainerWrapper } from '@/components/common/globalStyled/styled';
+import {
+  ContainerWrapper,
+  LinkBox,
+} from '@/components/common/globalStyled/styled';
 import MainPageHeader from '../../common/header/MainPageHeader';
 import MainPageFooter from '@/components/common/footer/Footer';
 import * as S from './styled';
@@ -46,18 +49,18 @@ const SupportTemplate = () => {
           </S.SupportButtonContainer>
           <S.SupportEtcContainer>
             <div>기타</div>
-            <div>
+            <LinkBox href={`/support/terms-conditions`}>
               <S.SupportElementBox>이용약관</S.SupportElementBox>
-              <div>&gt;</div>
-            </div>
-            <div>
+              <S.ArrowIcon></S.ArrowIcon>
+            </LinkBox>
+            <LinkBox href={`/support/privacy-policy`}>
               <S.SupportElementBox>개인정보 처리</S.SupportElementBox>
-              <div>&gt;</div>
-            </div>
-            <div>
+              <S.ArrowIcon></S.ArrowIcon>
+            </LinkBox>
+            <LinkBox href={`/support/withdrawal`}>
               <S.SupportElementBox>회원탈퇴</S.SupportElementBox>
-              <div>&gt;</div>
-            </div>
+              <S.ArrowIcon></S.ArrowIcon>
+            </LinkBox>
           </S.SupportEtcContainer>
         </S.SupportContainer>
       </ContainerWrapper>
