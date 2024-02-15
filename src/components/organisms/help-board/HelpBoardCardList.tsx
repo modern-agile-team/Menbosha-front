@@ -116,7 +116,7 @@ const HelpBoardCardList = () => {
   }, [getList]);
 
   return (
-    <S.HelpCardContainer>
+    <S.PullingUpCardContainer>
       {getList.map((data) => {
         const temp = {
           id: data.id,
@@ -139,7 +139,7 @@ const HelpBoardCardList = () => {
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
       </div>
-    </S.HelpCardContainer>
+    </S.PullingUpCardContainer>
   );
 };
 

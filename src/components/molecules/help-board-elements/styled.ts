@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   width: 100%;
+  color: rgba(0, 0, 0, 0.75);
+  //도와주세요 카드 이미지
   & > :nth-child(1) {
     transition: all 500ms ease;
   }
@@ -12,11 +14,17 @@ export const CardContainer = styled.div`
       transition: all 500ms ease;
     }
   }
+  //도와주세요 카드 제목
   & > :nth-child(2) {
     font-size: 20px;
     font-weight: bold;
     color: #ff772b;
     padding: 13px 0px;
+  }
+  //도와주세요 카드 날짜
+  & > :nth-child(4) {
+    font-size: 10px;
+    padding: 10px 0px;
   }
 `;
 

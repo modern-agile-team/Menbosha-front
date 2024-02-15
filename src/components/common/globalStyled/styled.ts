@@ -136,3 +136,24 @@ export const ContainerWrapper = styled.div`
 export const CreateIconLink = styled(Link)`
   margin: 7px 0px 0px 0px;
 `;
+
+//html태그 불러오기
+export const HTMLtext = styled.div`
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: none;
+  overflow: visible;
+  text-overflow: ellipsis;
+  padding-bottom: 10px;
+  h1,
+  h2,
+  ol,
+  li,
+  p,
+  span,
+  strong,
+  u {
+    font-size: 14px;
+    text-decoration: none;
+  }
+`;

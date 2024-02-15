@@ -38,7 +38,7 @@ const HelpPullingBoardList = () => {
   }, [filterCategory]);
 
   return (
-    <S.HelpCardContainer>
+    <S.PullingUpCardContainer>
       {getPullingData.map((data) => {
         const temp = {
           id: data.id,
@@ -61,7 +61,7 @@ const HelpPullingBoardList = () => {
           </div>
         );
       })}
-    </S.HelpCardContainer>
+    </S.PullingUpCardContainer>
   );
 };
 
