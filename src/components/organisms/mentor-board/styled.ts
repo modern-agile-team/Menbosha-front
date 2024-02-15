@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 /**멘토 게시글 카드 컨테이너 */
 export const MentorBoardCardContainer = styled.div`
