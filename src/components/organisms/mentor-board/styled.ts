@@ -1,35 +1,42 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-/**MentorBoardCard.tsx */
-
-export const MentoBoardCardContainer = styled.div`
+/**멘토 게시글 카드 컨테이너 */
+export const MentorBoardCardContainer = css`
   display: flex;
-  width: 1560px;
-  min-height: 500px;
   flex-wrap: wrap;
+  & > :nth-child(1) {
+    margin-right: 14px;
+  }
+  /* 각 행의 첫 번째 요소 */
+  & > :nth-child(5n + 1) {
+    margin: 14px 14px 14px 0px;
+  }
+  /* 각 행의 마지막 요소 */
+  & > :nth-child(5n) {
+    margin: 14px 0px 14px 14px;
+  }
+  & > :not(:nth-child(1), :nth-child(5n + 1), :nth-child(5n)) {
+    margin: 14px 14px;
+  }
+`;
+
+/** 랜덤 멘토 게시글 컨테이너*/
+export const RandomBoardCardContainer = styled.div`
+  ${MentorBoardCardContainer}
+`;
+
+/** 인기 멘토 게시글 컨테이너*/
+export const PopBoardCardContainer = styled.div`
+  ${MentorBoardCardContainer}
 `;
 
 export const MentorBoardCardWrapper = styled.div`
-  /* margin: 0px 14px 118px 14px; */
-  display: flex;
-  justify-content: space-between;
-  width: 20%;
-  height: 545px;
+  width: 18.5%;
 `;
 
-/** RandomMentorBoard */
-export const RandomMentorWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 33.3%;
-  height: 545px;
-  > :nth-child(1) {
-    > :nth-child(2) {
-      > :nth-child(1) {
-        width: 450px;
-      }
-    }
-  }
+/** 랜덤 멘토 게시글 */
+export const RandomBoardWrapper = styled.div`
+  width: 31.79%;
 `;
 
 /** MentorBoardUnit */

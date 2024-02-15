@@ -134,6 +134,5 @@ export const ContainerWrapper = styled.div`
 
 /**게시글 생성 아이콘 */
 export const CreateIconLink = styled(Link)`
-  width: 5%;
   margin: 7px 0px 0px 0px;
 `;

@@ -36,21 +36,15 @@ const MentorTemplate = () => {
       </S.MentorBoardCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
-          <TextBox size={30} color="#ff792b">
-            명예의 전당
-          </TextBox>
+          <S.ListTitleBox>명예의 전당</S.ListTitleBox>
           <MentorRanking />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <TextBox size={30} color="#ff792b">
-            인기 멘토
-          </TextBox>
+          <S.ListTitleBox>인기 멘토</S.ListTitleBox>
           <PopularMentorList />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <TextBox size={30} color="#ff792b">
-            전체 멘토
-          </TextBox>
+          <S.ListTitleBox>전체 멘토</S.ListTitleBox>
           <MentorList />
         </S.MentorListContainer>
       </ContainerWrapper>

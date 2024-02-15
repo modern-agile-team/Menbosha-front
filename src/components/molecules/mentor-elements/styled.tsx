@@ -138,7 +138,6 @@ export const CountBox = styled.div`
 `;
 
 export const PopularMentorCardContainer = styled.div`
-  width: 96.5%;
   height: 100%;
   border-radius: 10px;
   border: 2px solid #ff792bbf;

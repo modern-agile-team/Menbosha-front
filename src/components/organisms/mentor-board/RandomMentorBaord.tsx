@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import RandomMentorBoardCard from '@/components/molecules/mentor-board-elements/RandomMentorBoardCard';
 
 const RandomMentorBoard = () => {
   const [getRandomData, setRandomData] = useState<
@@ -34,7 +35,7 @@ const RandomMentorBoard = () => {
   }, []);
 
   return (
-    <S.MentoBoardCardContainer>
+    <S.RandomBoardCardContainer>
       {getRandomData.map((data) => {
         const temp = {
           id: data.id,
@@ -50,12 +51,12 @@ const RandomMentorBoard = () => {
           mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
         };
         return (
-          <S.RandomMentorWrapper key={data.id}>
-            <MentorBoardCard {...temp} />
-          </S.RandomMentorWrapper>
+          <S.RandomBoardWrapper key={data.id}>
+            <RandomMentorBoardCard {...temp} />
+          </S.RandomBoardWrapper>
         );
       })}
-    </S.MentoBoardCardContainer>
+    </S.RandomBoardCardContainer>
   );
 };
 

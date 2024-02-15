@@ -34,7 +34,7 @@ const PopularMentorBoardList = () => {
   }, []);
 
   return (
-    <S.MentoBoardCardContainer>
+    <S.PopBoardCardContainer>
       {getHotData ? (
         getHotData.map((data) => {
           const temp = {
@@ -59,7 +59,7 @@ const PopularMentorBoardList = () => {
       ) : (
         <div style={{ color: '#000' }}>없음</div>
       )}
-    </S.MentoBoardCardContainer>
+    </S.PopBoardCardContainer>
   );
 };
 

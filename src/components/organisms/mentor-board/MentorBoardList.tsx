@@ -117,7 +117,7 @@ const MentorBoardList = () => {
   }, []);
 
   return (
-    <S.MentoBoardCardContainer>
+    <S.PopBoardCardContainer>
       {getBoardData.map((data) => {
         const temp = {
           id: data.id,
@@ -142,7 +142,7 @@ const MentorBoardList = () => {
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
       </div>
-    </S.MentoBoardCardContainer>
+    </S.PopBoardCardContainer>
   );
 };
 

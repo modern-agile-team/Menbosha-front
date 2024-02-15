@@ -4,14 +4,19 @@ import styled, { css } from 'styled-components';
 export const MentorCardContainer = css`
   display: flex;
   flex-wrap: wrap;
-  & > :nth-child(1n) {
-    margin: 8px 8px 8px 0px;
+  & > :nth-child(1) {
+    margin-right: 14px;
   }
+  /* 각 행의 첫 번째 요소 */
+  & > :nth-child(5n + 1) {
+    margin: 14px 14px 14px 0px;
+  }
+  /* 각 행의 마지막 요소 */
   & > :nth-child(5n) {
-    margin: 8px 0px 8px 8px;
+    margin: 14px 0px 14px 14px;
   }
-  & > :not(:nth-child(1n), :nth-child(5n)) {
-    margin: 8px;
+  & > :not(:nth-child(1), :nth-child(5n + 1), :nth-child(5n)) {
+    margin: 14px 14px;
   }
 `;
 
@@ -25,7 +30,8 @@ export const TotalCardContainer = styled.div`
 `;
 
 export const MentorCardWrapper = styled.div`
-  width: 19%;
+  /* width: 14.58vw; */
+  width: 18.51%;
 `;
 
 export const HeaderContentsBox = styled.div`

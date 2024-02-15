@@ -36,18 +36,18 @@ const MentorBoardTemplate = () => {
         </CreateIconLink>
       </S.MentorBoardCategoryContainer>
       <ContainerWrapper>
-        <S.MentorBoardListContainer>
-          <S.BoardTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.BoardTitleBox>
+        <S.MentorListContainer>
+          <S.ListTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.ListTitleBox>
           <RandomMentorBoard />
-        </S.MentorBoardListContainer>
-        <S.MentorBoardListContainer>
-          <S.BoardTitleBox>최근 인기 멘토글</S.BoardTitleBox>
+        </S.MentorListContainer>
+        <S.MentorListContainer>
+          <S.ListTitleBox>최근 인기 멘토글</S.ListTitleBox>
           <PopularMentorBoardList />
-        </S.MentorBoardListContainer>
-        <S.MentorBoardListContainer>
-          <S.BoardTitleBox>전체 멘토 게시글</S.BoardTitleBox>
+        </S.MentorListContainer>
+        <S.MentorListContainer>
+          <S.ListTitleBox>전체 멘토 게시글</S.ListTitleBox>
           <MentorBoardList />
-        </S.MentorBoardListContainer>
+        </S.MentorListContainer>
       </ContainerWrapper>
     </>
   );
