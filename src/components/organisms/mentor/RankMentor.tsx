@@ -75,7 +75,7 @@ const MentorRanking = () => {
   }, [getRankingData]);
 
   return (
-    <S.SpecificCardContainer>
+    <S.MentorCardContainer>
       {getRankingData.length !== 0 ? (
         getRankingData.map((data) => {
           const temp = {
@@ -97,7 +97,7 @@ const MentorRanking = () => {
       ) : (
         <div style={{ color: '#000' }}>명예의 멘토가 없습니다.</div>
       )}
-    </S.SpecificCardContainer>
+    </S.MentorCardContainer>
   );
 };
 

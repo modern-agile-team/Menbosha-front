@@ -6,6 +6,8 @@ import {
   ContainerWrapper,
   CreateIconLink,
   FlexBox,
+  GlobalCategoryContainer,
+  HeadTitleContainer,
   TextBox,
 } from '../../common/globalStyled/styled';
 import MainPageHeader from '../../common/header/MainPageHeader';
@@ -15,13 +17,13 @@ const HelpTemplate = () => {
   return (
     <>
       <MainPageHeader />
-      <S.HeadTitleContainer>
+      <HeadTitleContainer>
         <div>
           <div>도와주세요</div>
           <div>멘티들의 간절한 요청! 들어주지 않을 수 없겠죠?</div>
         </div>
-      </S.HeadTitleContainer>
-      <S.HelpBoardCategoryContainer>
+      </HeadTitleContainer>
+      <GlobalCategoryContainer>
         <Category />
         <CreateIconLink
           href={{
@@ -33,7 +35,7 @@ const HelpTemplate = () => {
             }
           />
         </CreateIconLink>
-      </S.HelpBoardCategoryContainer>
+      </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.HelpBoardListContainer>
           <S.BoardTitleBox>끌올된 게시판</S.BoardTitleBox>

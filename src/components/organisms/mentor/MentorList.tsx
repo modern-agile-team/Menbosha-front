@@ -118,7 +118,7 @@ const MentorList = () => {
   }, [getMentorData]);
 
   return (
-    <S.TotalCardContainer>
+    <S.MentorCardContainer>
       {getMentorData &&
         getMentorData.map((data) => {
           const temp: MentorCardType = {
@@ -140,7 +140,7 @@ const MentorList = () => {
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
       </div>
-    </S.TotalCardContainer>
+    </S.MentorCardContainer>
   );
 };
 

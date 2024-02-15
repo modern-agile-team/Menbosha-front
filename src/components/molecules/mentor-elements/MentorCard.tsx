@@ -18,7 +18,11 @@ const MentorCard = (props: MentorCardType) => {
         },
       }}>
       <S.MentorCardContainer>
-        <ImageBox src={props.userImage} size="cover" />
+        {props.userImage ? (
+          <img src={props.userImage} alt={`${props.name}이미지`} />
+        ) : (
+          <div></div>
+        )}
         <S.MentorCardContentBox>
           <div>
             <div>{props.name}</div>

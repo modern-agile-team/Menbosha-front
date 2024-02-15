@@ -43,20 +43,14 @@ const PopularMentorCard = (props: MentorPopCardType) => {
         },
       }}>
       <S.PopularMentorCardContainer>
-        <ImageBox
-          src={props.image}
-          width="232px"
-          height="232px"
-          size="cover"
-          style={{ borderRadius: 10, margin: 12 }}
-        />
+        {props.image ? (
+          <img src={props.image} alt={`${props.name}이미지`} />
+        ) : (
+          <div></div>
+        )}
         <S.ProfileContentBox>
           <S.RankBox>
-            <Image
-              src={rankInfo.image}
-              alt={`${props.rank}점랭크`}
-              width={51}
-              height={51}></Image>
+            <img src={rankInfo.image} alt={`${props.rank}점랭크`}></img>
             <div>{rankInfo.name}</div>
             <div>{props.rank}점</div>
           </S.RankBox>

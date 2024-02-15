@@ -57,7 +57,7 @@ const PopularMentorList = () => {
   }, [getPopData]);
 
   return (
-    <S.SpecificCardContainer>
+    <S.MentorCardContainer>
       {getPopData.length !== 0 ? (
         getPopData.map((data) => {
           const temp = {
@@ -79,7 +79,7 @@ const PopularMentorList = () => {
       ) : (
         <div style={{ color: '#000' }}>인기 멘토가 없습니다.</div>
       )}
-    </S.SpecificCardContainer>
+    </S.MentorCardContainer>
   );
 };
 

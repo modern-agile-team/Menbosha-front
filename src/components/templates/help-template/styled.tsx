@@ -23,14 +23,6 @@ export const HeadTitleContainer = styled.div`
   }
 `;
 
-export const HelpBoardCategoryContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  position: sticky;
-  background-color: #fff;
-  margin: 40px 204px 0px 204px;
-`;
-
 /**게시글 제목 박스 */
 export const BoardTitleBox = styled.div`
   color: #ff772b;
