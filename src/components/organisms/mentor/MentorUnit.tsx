@@ -28,7 +28,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
   });
   const [getCategory, setCategory] = useState('');
   const [getOtherBoards, setOtherBoards] = useState<
-    MentorBoardListType['mentorBoardForHotPostsItemDto']
+    MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
 
   const getUserInfoApi = async () => {
@@ -55,7 +55,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
 
   const getUnitOtherBoards = async () => {
     const response = await MENTOR.MentorOtherBoards(id);
-    setOtherBoards(response.mentorBoardForHotPostsItemDto);
+    setOtherBoards(response.mentorBoardWithUserAndImageDtos);
   };
 
   const findCategory = () => {
