@@ -30,6 +30,10 @@ const MentorRanking = () => {
     setRankingData(response.userWithImageAndIntroDtos);
   };
 
+  useEffect(() => {
+    getPopularMentorApi();
+  }, [filterCategoryId]);
+
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
     if (
@@ -71,7 +75,7 @@ const MentorRanking = () => {
   }, [getRankingData]);
 
   return (
-    <S.MentoCardContainer>
+    <S.SpecificCardContainer>
       {getRankingData.length !== 0 ? (
         getRankingData.map((data) => {
           const temp = {
@@ -93,7 +97,7 @@ const MentorRanking = () => {
       ) : (
         <div style={{ color: '#000' }}>명예의 멘토가 없습니다.</div>
       )}
-    </S.MentoCardContainer>
+    </S.SpecificCardContainer>
   );
 };
 

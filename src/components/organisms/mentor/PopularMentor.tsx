@@ -1,20 +1,20 @@
-import MentorCard from '@/components/molecules/mentor-elements/MentorCard';
-import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import USER from '@/apis/user';
-import { MentorType, PopularMentorType } from '@/types/user';
+import { MentorPopCardDataType } from '@/types/mentor';
 import { useRouter } from 'next/router';
 import PopularMentorCard from '@/components/molecules/mentor-elements/PopularMentorCard';
 
 const PopularMentorList = () => {
-  const [getPopData, setPopData] = useState<PopularMentorType[]>([]);
+  const [getPopData, setPopData] = useState<MentorPopCardDataType[]>([]);
   const router = useRouter();
 
   const getPopularMentorApi = async () => {
     const response = await USER.getPopularMentor();
     setPopData(response);
   };
+
+  console.log(getPopData);
 
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
@@ -57,18 +57,18 @@ const PopularMentorList = () => {
   }, [getPopData]);
 
   return (
-    <S.MentoCardContainer>
+    <S.SpecificCardContainer>
       {getPopData.length !== 0 ? (
         getPopData.map((data) => {
           const temp = {
-            userId: data.userId,
+            id: data.userId,
             name: data.name,
-            activityCategoryId: data.activityCategoryId,
-            introduce: data.introduce,
-            career: data.career,
-            mainField: data.mainField,
+            shortIntro: data.shortIntro,
+            image: data.imageUrl,
+            customCategory: data.customCategory,
             rank: data.rank,
-            reviewCount: data.reviewCount,
+            mentorReviewCount: data.reviewCount,
+            mentorBoardCount: 0,
           };
           return (
             <S.MentorCardWrapper key={data.userId}>
@@ -79,7 +79,7 @@ const PopularMentorList = () => {
       ) : (
         <div style={{ color: '#000' }}>인기 멘토가 없습니다.</div>
       )}
-    </S.MentoCardContainer>
+    </S.SpecificCardContainer>
   );
 };
 

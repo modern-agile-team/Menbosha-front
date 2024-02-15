@@ -99,7 +99,7 @@ export const ImageBox = styled.div<ImageType>`
   background-image: url(${({ src }) => src});
   background-color: #999;
   width: ${({ width }) => (width !== undefined ? width : `100%`)};
-  height: ${({ height }) => (height !== undefined ? height : `250px`)};
+  height: ${({ height }) => (height !== undefined ? height : `100%`)};
   background-size: ${({ size }) => (size !== undefined ? size : 'contain')};
   background-repeat: no-repeat;
 `;
@@ -129,8 +129,7 @@ export const ContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  margin: 0px 204px;
 `;
 
 /**게시글 생성 아이콘 */

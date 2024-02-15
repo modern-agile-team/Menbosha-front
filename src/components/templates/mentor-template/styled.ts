@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 /**멘토 리스트 컨테이너 */
 export const MentorListContainer = styled.div`
-  margin: 64px 204px;
-  min-width: 1560px;
+  margin-top: 72px;
+  width: 100%;
 `;
 
 interface SlideType {
@@ -31,8 +31,7 @@ export const MentorBoardCategoryContainer = styled.div`
   justify-content: center;
   position: sticky;
   background-color: #fff;
-  top: 0px;
-  margin: 40px 0px 0px 0px;
+  margin: 40px 204px 0px 204px;
 `;
 
 /**멘토 게시판 리스트 컨테이너 */
@@ -41,11 +40,6 @@ export const MentorBoardListContainer = styled.div`
   height: 500px;
   min-width: 1560px;
   margin: 90px;
-`;
-
-/**인기 멘토 리스트 컨테이너*/
-export const PopularMentorListContainer = styled.div`
-  height: 1100px;
 `;
 
 /**게시글 제목 박스 */
@@ -59,10 +53,10 @@ export const BoardTitleBox = styled.div`
 export const HeadTitleContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 65px 0px 0px 0px;
+  margin: 65px 204px 0px 204px;
   > :nth-child(1) {
     display: flex;
-    width: 78%;
+    width: 100%;
     > :nth-child(1) {
       color: #ff772b;
       font-size: 64px;

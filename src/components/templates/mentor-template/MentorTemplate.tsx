@@ -9,11 +9,18 @@ import {
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 import MentorRanking from '@/components/organisms/mentor/RankMentor';
+import MainPageFooter from '@/components/common/footer/Footer';
 
 const MentorTemplate = () => {
   return (
     <>
       <MainPageHeader />
+      <S.HeadTitleContainer>
+        <div>
+          <div>멘토 - 프로필</div>
+          <div>좋은 멘토를 찾아 직접 채팅해보세요.</div>
+        </div>
+      </S.HeadTitleContainer>
       <S.MentorBoardCategoryContainer>
         <Category />
         <CreateIconLink
@@ -34,12 +41,12 @@ const MentorTemplate = () => {
           </TextBox>
           <MentorRanking />
         </S.MentorListContainer>
-        <S.PopularMentorListContainer>
+        <S.MentorListContainer>
           <TextBox size={30} color="#ff792b">
             인기 멘토
           </TextBox>
           <PopularMentorList />
-        </S.PopularMentorListContainer>
+        </S.MentorListContainer>
         <S.MentorListContainer>
           <TextBox size={30} color="#ff792b">
             전체 멘토
@@ -47,6 +54,7 @@ const MentorTemplate = () => {
           <MentorList />
         </S.MentorListContainer>
       </ContainerWrapper>
+      <MainPageFooter />
     </>
   );
 };

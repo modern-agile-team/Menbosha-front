@@ -14,12 +14,6 @@ export const MentorCardContainer = styled.div`
 export const MentorCardContentBox = styled.div`
   width: 140px;
 `;
-
-export const MentorCardImageBox = styled.div`
-  width: 114px;
-  height: 135px;
-  background-color: #999;
-`;
 interface ImgType {
   img?: string;
 }

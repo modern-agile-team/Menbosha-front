@@ -118,7 +118,7 @@ const MentorList = () => {
   }, [getMentorData]);
 
   return (
-    <S.MentoCardContainer>
+    <S.TotalCardContainer>
       {getMentorData &&
         getMentorData.map((data) => {
           const temp: MentorCardType = {
@@ -136,7 +136,11 @@ const MentorList = () => {
             </S.MentorCardWrapper>
           );
         })}
-    </S.MentoCardContainer>
+      <div style={{ width: '100%' }}>
+        {load && <div>Loading...</div>}
+        <div ref={obsRef}></div>
+      </div>
+    </S.TotalCardContainer>
   );
 };
 

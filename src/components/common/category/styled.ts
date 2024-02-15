@@ -4,7 +4,7 @@ export const CategoryContainer = styled.div`
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
-  width: 74%;
+  width: 100%;
 `;
 
 interface IsCategoryType {

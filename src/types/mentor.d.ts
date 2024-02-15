@@ -177,6 +177,16 @@ export interface MentorPopCardType {
   image: string;
 }
 
+export interface MentorPopCardDataType {
+  userId: number;
+  name: string;
+  shortIntro: string;
+  imageUrl: string;
+  customCategory: string;
+  rank: number;
+  reviewCount: number;
+}
+
 /**멘토 d.ts */
 export type MentorPaginationParamsType = {
   page?: number; //검색할 페이지

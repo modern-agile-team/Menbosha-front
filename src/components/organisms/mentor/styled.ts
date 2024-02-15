@@ -1,16 +1,31 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const MentoCardContainer = styled.div`
+/**멘토 카드 컨테이너 */
+export const MentorCardContainer = css`
   display: flex;
-  width: 1560px;
-  min-height: 500px;
   flex-wrap: wrap;
+  & > :nth-child(1n) {
+    margin: 8px 8px 8px 0px;
+  }
+  & > :nth-child(5n) {
+    margin: 8px 0px 8px 8px;
+  }
+  & > :not(:nth-child(1n), :nth-child(5n)) {
+    margin: 8px;
+  }
+`;
+
+export const SpecificCardContainer = styled.div`
+  min-height: 500px;
+  ${MentorCardContainer};
+`;
+
+export const TotalCardContainer = styled.div`
+  ${MentorCardContainer}
 `;
 
 export const MentorCardWrapper = styled.div`
-  width: 290px;
-  height: 460px;
-  margin: 8px;
+  width: 19%;
 `;
 
 export const HeaderContentsBox = styled.div`
