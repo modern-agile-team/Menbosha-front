@@ -33,6 +33,9 @@ export const BoardTitleBox = styled.div`
 
 /**멘토 게시판 리스트 컨테이너 */
 export const HelpBoardListContainer = styled.div`
-  margin-top: 72px;
+  margin-top: 74px;
+  @media only all and (max-width: 1900px) {
+    margin-top: 4.961%; //74
+  }
   width: 100%;
 `;

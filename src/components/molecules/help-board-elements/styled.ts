@@ -37,7 +37,7 @@ interface CardImageType {
 }
 
 export const CardImageBox = styled.div<CardImageType>`
-  width: 360px;
+  width: 100%;
   height: 260px;
   background-color: #c5c5c5;
   border-radius: 10px;
@@ -52,10 +52,11 @@ export const UserPageLink = styled(Link)`
   display: flex;
   margin: 0px 0px 10px 0px;
   text-decoration: none;
-  width: 35%;
+  cursor: pointer;
+  width: 100%;
   > img {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
     border-radius: 10px;
   }
   > :nth-child(2) {

@@ -35,7 +35,7 @@ const RandomMentorBoard = () => {
   }, []);
 
   return (
-    <S.RandomBoardCardContainer>
+    <S.MentorBoardCardContainer>
       {getRandomData.map((data) => {
         const temp = {
           id: data.id,
@@ -56,7 +56,7 @@ const RandomMentorBoard = () => {
           </S.RandomBoardWrapper>
         );
       })}
-    </S.RandomBoardCardContainer>
+    </S.MentorBoardCardContainer>
   );
 };
 
