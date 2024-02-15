@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
-import RandomMentorBoardCard from '@/components/molecules/mentor-board-elements/RandomMentorBoardCard';
 
 const RandomMentorBoard = () => {
   const [getRandomData, setRandomData] = useState<
@@ -52,7 +51,7 @@ const RandomMentorBoard = () => {
         };
         return (
           <S.RandomBoardWrapper key={data.id}>
-            <RandomMentorBoardCard {...temp} />
+            <MentorBoardCard {...temp} />
           </S.RandomBoardWrapper>
         );
       })}
