@@ -178,67 +178,53 @@ export const ChatLinkText = styled.div`
 //MyProfileTemplate
 export const ContentContainer = styled.div`
   display: flex;
-  border: 2px solid #98f;
-  width: 65%;
-  margin: 100px 50px 100px 0px;
-`;
-
-const BackGround = css`
-  > :nth-child(1) {
-    width: 0px;
-    height: 100px;
-    border-right: 1000px solid #fff;
-    border-top: 300px solid transparent;
-    border-bottom: 0px solid transparent;
-    position: absolute;
-    z-index: -1;
-    top: 73vw;
-    left: 1000px;
-    &::after {
-      height: 100px;
-      content: '';
-      border-left: 1000px solid #fff;
-      border-top: 300px solid transparent;
-      border-bottom: 0px solid transparent;
-      position: absolute;
-      top: -300px;
-      left: -1000px;
+  width: 100%;
+  margin: 100px 0px;
+  @media only all and (max-width: 1300px) {
+    & > img {
+      display: none;
     }
-  }
-  > :nth-child(2) {
-    width: 100000px;
-    height: 1000000px;
-    left: -50vw;
-    top: -50vw;
-    position: fixed;
-    z-index: -2;
   }
 `;
 
 export const BadgeBack = styled.div`
-  ${BackGround}
   > :nth-child(2) {
     background-color: #b83a42;
   }
 `;
 
-export const MyProfileBack = styled.div`
-  ${BackGround}
-  > :nth-child(2) {
-    background-color: #ff772b;
-  }
-`;
-
 export const MyReviewBack = styled.div`
-  ${BackGround}
-  >:nth-child(2) {
+  > :nth-child(2) {
     background-color: #752626;
   }
 `;
 
 export const MyRecordBack = styled.div`
-  ${BackGround}
-  >:nth-child(2) {
+  > :nth-child(2) {
     background-color: #4e1f1f;
   }
+`;
+
+export const BackgroundContainer = styled.img`
+  width: 100vw;
+  height: 100vw;
+  max-width: 1920px;
+  @media only all and (max-width: 1919px) {
+    width: 100vw;
+    height: 100vw;
+  }
+  @media only all and (max-width: 1000px) {
+    width: 100vw;
+    height: 2200px;
+  }
+`;
+
+export const MyProfileBack = styled.div`
+  width: 1920px;
+  @media only all and (max-width: 1919px) {
+    width: 100vw;
+  }
+  height: 100%;
+  position: absolute;
+  background-color: #ff772b;
 `;
