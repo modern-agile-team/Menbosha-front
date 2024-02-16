@@ -21,19 +21,15 @@ export type MentorReviewType = {
       };
     };
     review: string;
-    mentorReviewChecklist: {
-      id: number;
-      mentorReviewId: number;
-      isGoodWork: boolean;
-      isClear: boolean;
-      isQuick: boolean;
-      isAccurate: boolean;
-      isKindness: boolean;
-      isFun: boolean;
-      isInformative: boolean;
-      isBad: boolean;
-      isStuffy: boolean;
-    };
+    isGoodWork: boolean;
+    isClear: boolean;
+    isQuick: boolean;
+    isAccurate: boolean;
+    isKindness: boolean;
+    isFun: boolean;
+    isInformative: boolean;
+    isBad: boolean;
+    isStuffy: boolean;
     createdAt: string;
   }[];
 };
@@ -49,7 +45,6 @@ export interface ReviewProprType {
   career: string;
   shortIntro: string;
   review: string;
-  mentorReviewId: number;
   isGoodWork: boolean;
   isClear: boolean;
   isQuick: boolean;

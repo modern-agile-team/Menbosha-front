@@ -202,38 +202,45 @@ const UnitComment = ({ id }: BoardIdType) => {
           onClick={handleCreateCommentApi}></img>
       </FlexBox>
       <S.CommentContainer>
-        {commentData.map((data) => {
-          return (
-            <S.CommentBorder>
-              <S.CommentContentBox>
-                <img src={data.user.userImage.imageUrl} alt="유저이미지" />
-                <>{getRankInfo(data.user.rank)}</>
-                <>
-                  {getCategoryInfo(
-                    data.user.name,
-                    data.user.activityCategoryId,
-                    data.user.userIntro.career,
-                    data.user.userIntro.shortIntro,
-                  )}
-                </>
+        {commentData &&
+          commentData.map((data) => {
+            return (
+              <S.CommentBorder>
+                <S.CommentContentBox>
+                  <img src={data.user.userImage.imageUrl} alt="유저이미지" />
+                  <>{getRankInfo(data.user.rank)}</>
+                  <>
+                    {data.user.userIntro ? (
+                      <>
+                        {getCategoryInfo(
+                          data.user.name,
+                          data.user.activityCategoryId,
+                          data.user.userIntro.career,
+                          data.user.userIntro.shortIntro,
+                        )}
+                      </>
+                    ) : (
+                      <div>데이터없음</div>
+                    )}
+                  </>
 
-                {/* 채팅창 모달 켜질 부분*/}
-                {data.isAuthor ? (
-                  <S.HelpCommentButtonBox>
-                    <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
-                    <img
-                      src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
-                      onClick={() => handleDeleteCommentApi(data.id)}></img>
-                  </S.HelpCommentButtonBox>
-                ) : (
-                  <S.HelpCommentButtonBox>
-                    <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
-                  </S.HelpCommentButtonBox>
-                )}
-              </S.CommentContentBox>
-            </S.CommentBorder>
-          );
-        })}
+                  {/* 채팅창 모달 켜질 부분*/}
+                  {data.isAuthor ? (
+                    <S.HelpCommentButtonBox>
+                      <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
+                      <img
+                        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
+                        onClick={() => handleDeleteCommentApi(data.id)}></img>
+                    </S.HelpCommentButtonBox>
+                  ) : (
+                    <S.HelpCommentButtonBox>
+                      <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
+                    </S.HelpCommentButtonBox>
+                  )}
+                </S.CommentContentBox>
+              </S.CommentBorder>
+            );
+          })}
         <div>
           {load && <div>Loading...</div>}
           <div ref={obsRef}></div>
