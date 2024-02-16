@@ -8,7 +8,7 @@ import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const PopularMentorBoardList = () => {
   const [getHotData, setHotData] = useState<
-    MentorBoardListType['mentorBoardForHotPostsItemDto']
+    MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
@@ -22,7 +22,7 @@ const PopularMentorBoardList = () => {
       pageSize: 4,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
-    setHotData(response.mentorBoardForHotPostsItemDto);
+    setHotData(response.mentorBoardWithUserAndImageDtos);
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const PopularMentorBoardList = () => {
   }, []);
 
   return (
-    <S.MentoBoardCardContainer>
+    <S.MentorBoardCardContainer>
       {getHotData ? (
         getHotData.map((data) => {
           const temp = {
@@ -59,7 +59,7 @@ const PopularMentorBoardList = () => {
       ) : (
         <div style={{ color: '#000' }}>없음</div>
       )}
-    </S.MentoBoardCardContainer>
+    </S.MentorBoardCardContainer>
   );
 };
 

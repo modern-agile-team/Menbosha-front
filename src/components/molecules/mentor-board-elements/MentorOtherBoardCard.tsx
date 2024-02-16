@@ -1,5 +1,6 @@
 import {
   FlexBox,
+  HTMLtext,
   ImageBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
@@ -46,13 +47,10 @@ const MentorOtherBoardCard = (props: MentorBoardCardType) => {
           {props.head}
         </TextBox>
         {isHtml && (
-          <TextBox
-            size={12}
-            color="#000"
-            style={{ padding: '6px 0px 24px 0px' }}
+          <HTMLtext
             dangerouslySetInnerHTML={{
               __html: props.body as string,
-            }}></TextBox>
+            }}></HTMLtext>
         )}
         <TextBox size={10} color="#000">
           {props.createdAt.slice(0, 10)}

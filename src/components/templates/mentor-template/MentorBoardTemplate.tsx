@@ -6,6 +6,8 @@ import {
   ContainerWrapper,
   CreateIconLink,
   FlexBox,
+  GlobalCategoryContainer,
+  HeadTitleContainer,
   TextBox,
 } from '@/components/common/globalStyled/styled';
 import Link from 'next/link';
@@ -16,13 +18,13 @@ const MentorBoardTemplate = () => {
   return (
     <>
       <MainPageHeader />
-      <S.HeadTitleContainer>
+      <HeadTitleContainer>
         <div>
           <div>멘토 - 게시글</div>
           <div>멘토들의 직접 작성한 좋은 게시글을 찾아보세요.</div>
         </div>
-      </S.HeadTitleContainer>
-      <S.MentorBoardCategoryContainer>
+      </HeadTitleContainer>
+      <GlobalCategoryContainer>
         <Category />
         <CreateIconLink
           href={{
@@ -34,20 +36,20 @@ const MentorBoardTemplate = () => {
             }
           />
         </CreateIconLink>
-      </S.MentorBoardCategoryContainer>
+      </GlobalCategoryContainer>
       <ContainerWrapper>
-        <S.MentorBoardListContainer>
-          <S.BoardTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.BoardTitleBox>
+        <S.MentorListContainer>
+          <S.ListTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.ListTitleBox>
           <RandomMentorBoard />
-        </S.MentorBoardListContainer>
-        <S.MentorBoardListContainer>
-          <S.BoardTitleBox>최근 인기 멘토글</S.BoardTitleBox>
+        </S.MentorListContainer>
+        <S.MentorListContainer>
+          <S.ListTitleBox>최근 인기 멘토글</S.ListTitleBox>
           <PopularMentorBoardList />
-        </S.MentorBoardListContainer>
-        <S.MentorBoardListContainer>
-          <S.BoardTitleBox>전체 멘토 게시글</S.BoardTitleBox>
+        </S.MentorListContainer>
+        <S.MentorListContainer>
+          <S.ListTitleBox>전체 멘토 게시글</S.ListTitleBox>
           <MentorBoardList />
-        </S.MentorBoardListContainer>
+        </S.MentorListContainer>
       </ContainerWrapper>
     </>
   );

@@ -9,7 +9,7 @@ import MENTORS from '@/apis/mentors';
 import {
   MentorCardType,
   MentorListType,
-  MentorPaginationType,
+  MentorPaginationParamsType,
 } from '@/types/mentor';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
@@ -60,10 +60,10 @@ const MentorList = () => {
   };
   //스크롤 시 로드 함수
   const getMentorListApi = useCallback(async () => {
-    const params: MentorPaginationType = {
+    const params: MentorPaginationParamsType = {
       page: page,
       pageSize: 10,
-      categoryId: filterCategoryId,
+      activityCategoryId: filterCategoryId,
       orderField: 'id',
       sortOrder: 'DESC',
     };
@@ -118,7 +118,7 @@ const MentorList = () => {
   }, [getMentorData]);
 
   return (
-    <S.MentoCardContainer>
+    <S.MentorCardContainer>
       {getMentorData &&
         getMentorData.map((data) => {
           const temp: MentorCardType = {
@@ -136,7 +136,11 @@ const MentorList = () => {
             </S.MentorCardWrapper>
           );
         })}
-    </S.MentoCardContainer>
+      <div style={{ width: '100%' }}>
+        {load && <div>Loading...</div>}
+        <div ref={obsRef}></div>
+      </div>
+    </S.MentorCardContainer>
   );
 };
 

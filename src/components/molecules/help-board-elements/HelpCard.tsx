@@ -1,4 +1,4 @@
-import { TextBox } from '@/components/common/globalStyled/styled';
+import { HTMLtext, TextBox } from '@/components/common/globalStyled/styled';
 import * as S from './styled';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -49,19 +49,9 @@ const HelpCard = (props: HelpListType) => {
           <S.CardImageBox src={props.image}></S.CardImageBox>
           <div>{props.head}</div>
           {isStateHtml && (
-            <TextBox
-              size={14}
-              color="#000"
-              style={{ padding: '0px 0px 10px 0px' }}
-              dangerouslySetInnerHTML={{ __html: props.body }}
-            />
+            <HTMLtext dangerouslySetInnerHTML={{ __html: props.body }} />
           )}
-          <TextBox
-            size={14}
-            color="#000"
-            style={{ padding: '10px 0px 10px 0px' }}>
-            {props.createdAt && props.createdAt.slice(0, 10)}
-          </TextBox>
+          <div>{props.createdAt && props.createdAt.slice(0, 10)}</div>
         </S.CardContainer>
       </S.CardLink>
     </div>

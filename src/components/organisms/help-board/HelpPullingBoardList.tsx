@@ -52,13 +52,13 @@ const HelpPullingBoardList = () => {
           categoryId: data.categoryId,
         };
         return (
-          <div>
+          <>
             {data.pullingUp !== null && (
               <S.HelpCardWrapper key={data.id}>
                 <HelpCard {...temp} />
               </S.HelpCardWrapper>
             )}
-          </div>
+          </>
         );
       })}
     </S.HelpCardContainer>

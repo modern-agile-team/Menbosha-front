@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   width: 100%;
+  color: rgba(0, 0, 0, 0.75);
+  //도와주세요 카드 이미지
   & > :nth-child(1) {
     transition: all 500ms ease;
   }
@@ -12,11 +14,17 @@ export const CardContainer = styled.div`
       transition: all 500ms ease;
     }
   }
+  //도와주세요 카드 제목
   & > :nth-child(2) {
     font-size: 20px;
     font-weight: bold;
     color: #ff772b;
     padding: 13px 0px;
+  }
+  //도와주세요 카드 날짜
+  & > :nth-child(4) {
+    font-size: 10px;
+    padding: 10px 0px;
   }
 `;
 
@@ -29,7 +37,7 @@ interface CardImageType {
 }
 
 export const CardImageBox = styled.div<CardImageType>`
-  width: 360px;
+  width: 100%;
   height: 260px;
   background-color: #c5c5c5;
   border-radius: 10px;
@@ -44,10 +52,11 @@ export const UserPageLink = styled(Link)`
   display: flex;
   margin: 0px 0px 10px 0px;
   text-decoration: none;
-  width: 35%;
+  cursor: pointer;
+  width: 100%;
   > img {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
     border-radius: 10px;
   }
   > :nth-child(2) {

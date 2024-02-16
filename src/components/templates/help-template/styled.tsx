@@ -23,15 +23,6 @@ export const HeadTitleContainer = styled.div`
   }
 `;
 
-export const HelpBoardCategoryContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  position: sticky;
-  background-color: #fff;
-  top: 0px;
-  margin: 40px 0px 0px 0px;
-`;
-
 /**게시글 제목 박스 */
 export const BoardTitleBox = styled.div`
   color: #ff772b;
@@ -42,8 +33,9 @@ export const BoardTitleBox = styled.div`
 
 /**멘토 게시판 리스트 컨테이너 */
 export const HelpBoardListContainer = styled.div`
-  width: auto;
-  height: 500px;
-  min-width: 1560px;
-  margin: 90px;
+  margin-top: 74px;
+  @media only all and (max-width: 1900px) {
+    margin-top: 4.961%; //74
+  }
+  width: 100%;
 `;

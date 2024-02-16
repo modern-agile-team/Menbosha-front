@@ -65,20 +65,6 @@ export type MyProfileType = {
   };
 };
 
-/**인기 멘토 api Type
- * 유저 이미지, 게시글 수 추가 예정
- */
-export type PopularMentorType = {
-  userId: number;
-  activityCategoryId: number;
-  career: string;
-  introduce: string;
-  mainField: string;
-  name: string;
-  rank: number;
-  reviewCount: number;
-};
-
 /**UserType의 제네릭을 활용한 profileType */
 export type UserProfileType = UserType<{
   activityCategoryId: number;

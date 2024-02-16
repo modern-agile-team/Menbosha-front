@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { MentorReviewType } from '@/types/review';
-import { MentorPaginationType, MentorListType } from '@/types/mentor';
+import { MentorPaginationParamsType, MentorListType } from '@/types/mentor';
 import instance from './axiosInstance';
 
 const MENTORS = {
@@ -22,13 +22,14 @@ const MENTORS = {
   },
 
   async getMentorPagination(
-    params: MentorPaginationType,
+    params: MentorPaginationParamsType,
   ): Promise<MentorListType> {
     const result: AxiosResponse = await instance.get(`${MENTORS.path}`, {
       params: {
         page: params.page,
         pageSize: params.pageSize,
-        activityCategoryId: params.categoryId,
+        id: params.id,
+        activityCategoryId: params.activityCategoryId,
         orderField: params.orderField,
         sortOrder: params.sortOrder,
       },

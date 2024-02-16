@@ -99,7 +99,7 @@ export const ImageBox = styled.div<ImageType>`
   background-image: url(${({ src }) => src});
   background-color: #999;
   width: ${({ width }) => (width !== undefined ? width : `100%`)};
-  height: ${({ height }) => (height !== undefined ? height : `250px`)};
+  height: ${({ height }) => (height !== undefined ? height : `100%`)};
   background-size: ${({ size }) => (size !== undefined ? size : 'contain')};
   background-repeat: no-repeat;
 `;
@@ -124,17 +124,76 @@ export const LinkBox = styled(Link)<LinkType>`
   text-decoration: none;
 `;
 
-/**template Wrapper */
+/**전역 컨테이너 wrapper */
 export const ContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  margin: 0px 204px;
+  @media only all and (max-width: 1900px) {
+    margin: 0px 10.625%; //0 204
+  }
+`;
+
+/**전역 제목 컨테이너 */
+export const HeadTitleContainer = styled.div`
+  margin: 65px 204px 0px 204px;
+  @media only all and (max-width: 1900px) {
+    margin: 3.365% 10.5591% 0px 10.5591%; //65 204 0 204
+  }
+  > :nth-child(1) {
+    display: flex;
+    width: 100%;
+    > :nth-child(1) {
+      color: #ff772b;
+      font-size: 64px;
+      font-weight: bold;
+    }
+    > :nth-child(2) {
+      color: #ff792bbf;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: end;
+      margin-left: 10px;
+    }
+  }
+`;
+
+/**전역 카테고리 컨테이너 */
+export const GlobalCategoryContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  background-color: #fff;
+  margin: 0px 204px;
+  @media only all and (max-width: 1900px) {
+    margin: 0px 10.625%; //0 204
+  }
 `;
 
 /**게시글 생성 아이콘 */
 export const CreateIconLink = styled(Link)`
-  width: 5%;
   margin: 7px 0px 0px 0px;
+`;
+
+//html태그 불러오기
+export const HTMLtext = styled.div`
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: none;
+  overflow: visible;
+  text-overflow: ellipsis;
+  padding-bottom: 10px;
+  h1,
+  h2,
+  ol,
+  li,
+  p,
+  span,
+  strong,
+  u {
+    font-size: 14px;
+    text-decoration: none;
+  }
 `;

@@ -18,7 +18,11 @@ const MentorCard = (props: MentorCardType) => {
         },
       }}>
       <S.MentorCardContainer>
-        <img src={props.userImage} alt="유저이미지" />
+        {props.userImage ? (
+          <img src={props.userImage} alt={`${props.name}이미지`} />
+        ) : (
+          <div></div>
+        )}
         <S.MentorCardContentBox>
           <div>
             <div>{props.name}</div>
@@ -27,7 +31,7 @@ const MentorCard = (props: MentorCardType) => {
             <div>{props.shortIntro}</div>
             <div>{props.customCategory}</div>
           </div>
-          <S.MentorCountBox>
+          <S.TotalMentorCountBox>
             <div>
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/reviewCnt.svg"
@@ -42,7 +46,7 @@ const MentorCard = (props: MentorCardType) => {
               />
               <div>{props.boardCnt}개</div>
             </div>
-          </S.MentorCountBox>
+          </S.TotalMentorCountBox>
         </S.MentorCardContentBox>
       </S.MentorCardContainer>
     </LinkBox>

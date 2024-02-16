@@ -1,9 +1,9 @@
 import {
   CreateMentorBoardType,
   MentorBoardListType,
-  MentorPaginationType,
   MentorBoardParamsType,
   MentorModifyParamsType,
+  MentorPaginationParamsType,
 } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
@@ -105,14 +105,16 @@ const MENTOR = {
   },
 
   /**인기 멘토 게시글 불러오는 api [get] */
-  async hotMentorBoard({ categoryId }: MentorPaginationType): Promise<any> {
+  async hotMentorBoard({
+    activityCategoryId,
+  }: MentorPaginationParamsType): Promise<any> {
     const result: AxiosResponse = await instance.get(
       `${MENTOR.path}/hot-posts`,
       {
         params: {
           page: 1,
           pageSize: 5,
-          categoryId: categoryId,
+          categoryId: activityCategoryId,
           orderField: 'id',
           sortOrder: 'ASC',
         },

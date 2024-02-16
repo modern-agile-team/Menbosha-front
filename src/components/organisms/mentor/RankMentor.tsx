@@ -1,20 +1,38 @@
+import MentorCard from '@/components/molecules/mentor-elements/MentorCard';
+import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import USER from '@/apis/user';
-import { MentorPopCardDataType } from '@/types/mentor';
+import { MentorType } from '@/types/user';
 import { useRouter } from 'next/router';
 import PopularMentorCard from '@/components/molecules/mentor-elements/PopularMentorCard';
+import { MentorListType, MentorPaginationParamsType } from '@/types/mentor';
+import MENTORS from '@/apis/mentors';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
-const PopularMentorList = () => {
-  const [getPopData, setPopData] = useState<MentorPopCardDataType[]>([]);
+const MentorRanking = () => {
+  const [getRankingData, setRankingData] = useState<
+    MentorListType['userWithImageAndIntroDtos']
+  >([]);
+  const filterCategoryId = useRecoilValue(CategoryFilterAtom);
   const router = useRouter();
 
   const getPopularMentorApi = async () => {
-    const response = await USER.getPopularMentor();
-    setPopData(response);
+    const params: MentorPaginationParamsType = {
+      page: 1,
+      pageSize: 5,
+      activityCategoryId: filterCategoryId,
+      orderField: 'rank',
+      sortOrder: 'DESC',
+    };
+    const response = await MENTORS.getMentorPagination(params);
+    setRankingData(response.userWithImageAndIntroDtos);
   };
 
-  console.log(getPopData);
+  useEffect(() => {
+    getPopularMentorApi();
+  }, [filterCategoryId]);
 
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
@@ -54,33 +72,33 @@ const PopularMentorList = () => {
     );
     temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
     // window.sessionStorage.clear();
-  }, [getPopData]);
+  }, [getRankingData]);
 
   return (
     <S.MentorCardContainer>
-      {getPopData.length !== 0 ? (
-        getPopData.map((data) => {
+      {getRankingData.length !== 0 ? (
+        getRankingData.map((data) => {
           const temp = {
-            id: data.userId,
+            id: data.id,
             name: data.name,
-            shortIntro: data.shortIntro,
-            image: data.imageUrl,
-            customCategory: data.customCategory,
+            shortIntro: data.userIntro.shortIntro,
+            image: data.userImage.imageUrl,
+            customCategory: data.userIntro.customCategory,
             rank: data.rank,
-            mentorReviewCount: data.reviewCount,
-            mentorBoardCount: 0,
+            mentorReviewCount: data.mentorReviewCount,
+            mentorBoardCount: data.mentorBoardCount,
           };
           return (
-            <S.MentorCardWrapper key={data.userId}>
+            <S.MentorCardWrapper key={data.id}>
               <PopularMentorCard {...temp} />
             </S.MentorCardWrapper>
           );
         })
       ) : (
-        <div style={{ color: '#000' }}>인기 멘토가 없습니다.</div>
+        <div style={{ color: '#000' }}>명예의 멘토가 없습니다.</div>
       )}
     </S.MentorCardContainer>
   );
 };
 
-export default PopularMentorList;
+export default MentorRanking;

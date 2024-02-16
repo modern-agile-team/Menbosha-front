@@ -11,24 +11,15 @@ export const MentorCardContainer = styled.div`
   border: 2px solid #f00;
 `;
 
-export const MentorCardContentBox = styled.div`
-  width: 140px;
-`;
-
-export const MentorCardImageBox = styled.div`
-  width: 114px;
-  height: 135px;
-  background-color: #999;
-`;
 interface ImgType {
   img?: string;
 }
 export const CardImageBox = styled.div<ImgType>`
-  width: 280px;
+  width: 100%;
   height: 290px;
   background-color: #999;
   background-image: url(${({ img }) => img});
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;

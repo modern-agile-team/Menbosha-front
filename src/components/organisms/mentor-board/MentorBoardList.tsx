@@ -9,7 +9,7 @@ import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const MentorBoardList = () => {
   const [getBoardData, setBoardData] = useState<
-    MentorBoardListType['mentorBoardForHotPostsItemDto']
+    MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1); //페이지 수
@@ -78,7 +78,7 @@ const MentorBoardList = () => {
       const response = await MENTOR.MentorBoardPagination(temp); //api요청 글 목록 불러오기
       setBoardData((prev: any) => [
         ...prev,
-        ...response.mentorBoardForHotPostsItemDto,
+        ...response.mentorBoardWithUserAndImageDtos,
       ]);
       setTotalPage(response.lastPage);
     }
@@ -117,7 +117,7 @@ const MentorBoardList = () => {
   }, []);
 
   return (
-    <S.MentoBoardCardContainer>
+    <S.MentorBoardCardContainer>
       {getBoardData.map((data) => {
         const temp = {
           id: data.id,
@@ -142,7 +142,7 @@ const MentorBoardList = () => {
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
       </div>
-    </S.MentoBoardCardContainer>
+    </S.MentorBoardCardContainer>
   );
 };
 

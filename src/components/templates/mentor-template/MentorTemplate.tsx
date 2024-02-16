@@ -4,16 +4,26 @@ import * as S from './styled';
 import Category from '../../common/category/Category';
 import {
   ContainerWrapper,
+  GlobalCategoryContainer,
   CreateIconLink,
   TextBox,
+  HeadTitleContainer,
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
+import MentorRanking from '@/components/organisms/mentor/RankMentor';
+import MainPageFooter from '@/components/common/footer/Footer';
 
 const MentorTemplate = () => {
   return (
     <>
       <MainPageHeader />
-      <S.MentorBoardCategoryContainer>
+      <HeadTitleContainer>
+        <div>
+          <div>멘토 - 프로필</div>
+          <div>좋은 멘토를 찾아 직접 채팅해보세요.</div>
+        </div>
+      </HeadTitleContainer>
+      <GlobalCategoryContainer>
         <Category />
         <CreateIconLink
           href={{
@@ -25,26 +35,22 @@ const MentorTemplate = () => {
             }
           />
         </CreateIconLink>
-      </S.MentorBoardCategoryContainer>
+      </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
-          <TextBox size={30} color="#ff792b">
-            명예의 전당
-          </TextBox>
+          <S.ListTitleBox>명예의 전당</S.ListTitleBox>
+          <MentorRanking />
         </S.MentorListContainer>
-        <S.PopularMentorListContainer>
-          <TextBox size={30} color="#ff792b">
-            인기 멘토
-          </TextBox>
-          <PopularMentorList />
-        </S.PopularMentorListContainer>
         <S.MentorListContainer>
-          <TextBox size={30} color="#ff792b">
-            전체 멘토
-          </TextBox>
+          <S.ListTitleBox>인기 멘토</S.ListTitleBox>
+          <PopularMentorList />
+        </S.MentorListContainer>
+        <S.MentorListContainer>
+          <S.ListTitleBox>전체 멘토</S.ListTitleBox>
           <MentorList />
         </S.MentorListContainer>
       </ContainerWrapper>
+      <MainPageFooter />
     </>
   );
 };

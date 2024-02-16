@@ -8,7 +8,7 @@ import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const RandomMentorBoard = () => {
   const [getRandomData, setRandomData] = useState<
-    MentorBoardListType['mentorBoardForHotPostsItemDto']
+    MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
   const filterCategory = useRecoilValue(CategoryFilterAtom);
 
@@ -22,7 +22,7 @@ const RandomMentorBoard = () => {
       page: 1,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
-    setRandomData(response.mentorBoardForHotPostsItemDto);
+    setRandomData(response.mentorBoardWithUserAndImageDtos);
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const RandomMentorBoard = () => {
   }, []);
 
   return (
-    <S.MentoBoardCardContainer>
+    <S.MentorBoardCardContainer>
       {getRandomData.map((data) => {
         const temp = {
           id: data.id,
@@ -50,12 +50,12 @@ const RandomMentorBoard = () => {
           mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
         };
         return (
-          <S.RandomMentorWrapper key={data.id}>
+          <S.RandomBoardWrapper key={data.id}>
             <MentorBoardCard {...temp} />
-          </S.RandomMentorWrapper>
+          </S.RandomBoardWrapper>
         );
       })}
-    </S.MentoBoardCardContainer>
+    </S.MentorBoardCardContainer>
   );
 };
 

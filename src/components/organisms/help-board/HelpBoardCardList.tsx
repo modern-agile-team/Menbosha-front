@@ -117,24 +117,25 @@ const HelpBoardCardList = () => {
 
   return (
     <S.HelpCardContainer>
-      {getList.map((data) => {
-        const temp = {
-          id: data.id,
-          name: data.user.name,
-          userImage: data.user.userImage.imageUrl,
-          image: data.imageUrl && data.imageUrl,
-          head: data.head,
-          body: data.body,
-          createdAt: data.createdAt,
-          userId: data.userId,
-          categoryId: data.categoryId,
-        };
-        return (
-          <S.HelpCardWrapper key={data.id}>
-            <HelpCard {...temp} />
-          </S.HelpCardWrapper>
-        );
-      })}
+      {getList &&
+        getList.map((data) => {
+          const temp = {
+            id: data.id,
+            name: data.user.name,
+            userImage: data.user.userImage.imageUrl,
+            image: data.imageUrl && data.imageUrl,
+            head: data.head,
+            body: data.body,
+            createdAt: data.createdAt,
+            userId: data.userId,
+            categoryId: data.categoryId,
+          };
+          return (
+            <S.HelpCardWrapper key={data.id}>
+              <HelpCard {...temp} />
+            </S.HelpCardWrapper>
+          );
+        })}
       <div>
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
