@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
-import { UpdateProfileType, MentorUnitType } from '@/types/user';
+import { UpdateProfileType, MentorUnitType, RankType } from '@/types/user';
 
 const USER = {
   path: '/user',
@@ -82,7 +82,7 @@ const USER = {
   },
 
   /**유저 온도/칭호 조회 api */
-  async getMyRank(): Promise<any> {
+  async getMyRank(): Promise<RankType> {
     const result: AxiosResponse = await instance.get(`${USER.path}/my/rank`);
     return result.data;
   },

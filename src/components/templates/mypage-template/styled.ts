@@ -187,24 +187,6 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const BadgeBack = styled.div`
-  > :nth-child(2) {
-    background-color: #b83a42;
-  }
-`;
-
-export const MyReviewBack = styled.div`
-  > :nth-child(2) {
-    background-color: #752626;
-  }
-`;
-
-export const MyRecordBack = styled.div`
-  > :nth-child(2) {
-    background-color: #4e1f1f;
-  }
-`;
-
 export const BackgroundContainer = styled.img`
   width: 100vw;
   height: 100vw;
@@ -219,12 +201,33 @@ export const BackgroundContainer = styled.img`
   }
 `;
 
-export const MyProfileBack = styled.div`
+export const BackContainColor = css`
   width: 1920px;
   @media only all and (max-width: 1919px) {
     width: 100vw;
   }
   height: 100%;
   position: absolute;
+`;
+
+export const MyProfileBack = styled.div`
+  ${BackContainColor}
   background-color: #ff772b;
+`;
+
+export const BadgeBack = styled.div`
+  ${BackContainColor}
+  background-color: #b83a42;
+`;
+
+export const MyReviewBack = styled.div`
+  > :nth-child(2) {
+    background-color: #752626;
+  }
+`;
+
+export const MyRecordBack = styled.div`
+  > :nth-child(2) {
+    background-color: #4e1f1f;
+  }
 `;
