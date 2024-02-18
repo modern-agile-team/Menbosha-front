@@ -194,7 +194,7 @@ export const BackgroundContainer = styled.img`
   max-width: 1920px;
   @media only all and (max-width: 1919px) {
     width: 100vw;
-    height: 100vw;
+    height: 95vw;
   }
   @media only all and (max-width: 1000px) {
     width: 100vw;
