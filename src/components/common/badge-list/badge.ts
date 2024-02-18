@@ -172,7 +172,7 @@ export const badge_list = [
     badge_name: '정확해요 100',
     memo: '정확해요 100번 이상 달성 시',
     image:
-      'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/badge25.svg',
+      'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/badge40.svg',
   },
   {
     id: 26,
@@ -207,7 +207,7 @@ export const badge_list = [
     badge_name: '만능의 노트',
     memo: '이해가 빨라요 100번 이상 달성 시',
     image:
-      'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/badge30.svg',
+      'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/badge40.svg',
   },
   {
     id: 31,
@@ -242,7 +242,7 @@ export const badge_list = [
     badge_name: '개그의 신',
     memo: '재밌어요 100번 이상 달성 시',
     image:
-      'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/badge35.svg',
+      'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/badge40.svg',
   },
   {
     id: 36,

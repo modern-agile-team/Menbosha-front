@@ -1,5 +1,5 @@
 import { rankList } from '@/components/common/rank/rankList';
-import { RankType } from '@/types/user';
+import { RankType } from '@/types/mypage';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 

@@ -1,8 +1,7 @@
 import USER from '@/apis/user';
-import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
-import { RankType, UserProfileType } from '@/types/user';
+import { RankType } from '@/types/mypage';
 import Link from 'next/link';
 import MyRank from '@/components/molecules/my-page-elements/MyRank';
 import MyBadge from '@/components/molecules/my-page-elements/MyBadge';

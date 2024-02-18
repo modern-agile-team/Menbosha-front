@@ -1,5 +1,7 @@
+import { AskShowPropsType } from '@/types/support';
 import styled from 'styled-components';
 
+//마이 랭크
 export const MyRankWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -48,11 +50,10 @@ export const RankLevelLockContainer = styled.div`
   :nth-child(4),
   :nth-child(5) {
     text-align: center;
-    margin-top: auto;
   }
   & > :nth-child(6) {
     grid-column: 1/ 6;
-    width: auto;
+
     border: 5px solid transparent;
     border-radius: 10px;
     margin: 23px 0px;
@@ -74,7 +75,7 @@ export const RankLevelLockContainer = styled.div`
   :nth-child(10),
   :nth-child(11) {
     text-align: center;
-    margin-bottom: auto;
+
     & > :nth-child(1) {
       font-size: 24px;
       font-weight: bold;
@@ -84,5 +85,23 @@ export const RankLevelLockContainer = styled.div`
       font-size: 16px;
       color: #fff;
     }
+  }
+`;
+
+//내 칭호
+export const BadgeListWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  gap: 0px 10px;
+  color: #fff;
+`;
+
+export const PageCountContainer = styled.div`
+  display: flex;
+  grid-column: 1 / 6;
+  & > :nth-child(n) {
+    color: #fff;
+    margin: 10px;
   }
 `;

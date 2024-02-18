@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
-import { UpdateProfileType, MentorUnitType, RankType } from '@/types/user';
+import { UpdateProfileType, MentorUnitType } from '@/types/user';
+import { RankType } from '@/types/mypage';
 
 const USER = {
   path: '/user',
