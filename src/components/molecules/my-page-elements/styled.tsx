@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 export const MyRankWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   //페이지 타이틀
   & > :nth-child(1) {
     font-size: 64px;

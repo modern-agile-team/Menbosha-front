@@ -93,7 +93,6 @@ export const MyInfoGridContainer = styled.div`
     grid-column: 2 / 4;
   }
   @media only all and (max-width: 1650px) {
-    grid-template-rows: 1fr 12% 15% 15% 15%;
     gap: 10px 0px;
   }
 `;

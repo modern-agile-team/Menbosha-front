@@ -180,7 +180,7 @@ export const ContentContainer = styled.div`
   display: flex;
   width: 100%;
   margin: 100px 0px;
-  @media only all and (max-width: 1300px) {
+  @media only all and (max-width: 1500px) {
     & > img {
       display: none;
     }
@@ -190,21 +190,15 @@ export const ContentContainer = styled.div`
 //멘보샤 빵 사진
 export const BackgroundContainer = styled.img`
   width: 100vw;
-  height: 2150px;
-  max-width: 1920px;
-  @media only all and (max-width: 1000px) {
-    width: 100vw;
-    height: 2200px;
-  }
+  height: 114em;
 `;
 
 //백그라운드 컬러 입히기 전 css 모듈
 export const BackContainColor = css`
-  width: 1920px;
+  width: 100vw;
   @media only all and (max-width: 1920px) {
     width: 100vw;
   }
-  height: 100%;
   position: absolute;
 `;
 
