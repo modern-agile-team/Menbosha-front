@@ -1,25 +1,30 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
-import { MentorInfoType } from '@/types/chat';
-import USER from '@/apis/user';
 import { useRecoilState } from 'recoil';
 import Link from 'next/link';
 import useChatRoomCreate from '@/hooks/useCreateRoom';
 import { handleChatIconClickType } from '@/types/chat';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import CHAT from '@/apis/chatApi/chat';
+import {
+  ChatMentorListType,
+  MentorListType,
+  MentorPaginationParamsType,
+} from '@/types/mentor';
+import MENTORS from '@/apis/mentors';
 
 const MentorListBox = () => {
-  const [getMentorList, setGetMentorList] =
-    useRecoilState<MentorInfoType[]>(MentorInfoAtom);
+  const [getMentorList, setGetMentorList] = useState<
+    MentorListType['userWithImageAndIntroDtos']
+  >([]);
   const [expandedStates, setExpandedStates] = useState<{
     [key: number]: boolean;
   }>({});
-  const [totalPage, setTotalPage] = useState(0);
-  const [load, setLoad] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
   const obsRef = useRef<HTMLDivElement>(null); // 옵저버 state
+  const [load, setLoad] = useState(false);
   const preventRef = useRef(true); // 옵저버 중복 방지
   const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
@@ -33,46 +38,39 @@ const MentorListBox = () => {
     };
   }, [obsRef, getMentorList]);
 
-  // 첫 페이지 불러오기
+  // 무한 스크롤 로드
   useEffect(() => {
-    getPage();
-  }, []);
-
-  // 무한스크롤 로드
-  // useEffect(() => {
-  //   getMentorListApi();
-  // }, [totalPage]);
+    getMentorListApi();
+  }, [page]);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting) {
-      preventRef.current = false; // 옵저버 중복 실행 방지
-      setTotalPage((prev) => prev - 1);
+      //옵저버 중복 실행 방지
+      preventRef.current = false; //옵저버 중복 실행 방지
+      setPage((prev) => prev + 1); //페이지 값 증가
     }
   };
 
-  // 전체 페이지 수 불러오는 api
-  const getPage = useCallback(async () => {
-    const response = await USER.getMentorListPage();
-    setTotalPage(response.totalPage);
-  }, []);
-
-  // 옵저버 확인 시 다음 리스트 불러오는 api
   const getMentorListApi = useCallback(async () => {
-    setLoad(true); // 로드 시작
-    if (totalPage > 0) {
-      const result = await USER.getMentorList(3, totalPage);
-      const reverseArr = [...result].reverse();
-      result && setGetMentorList((prev) => [...prev, ...reverseArr]);
+    const params: MentorPaginationParamsType = {
+      page: page,
+      pageSize: 10,
+      activityCategoryId: 1,
+      orderField: 'id',
+      sortOrder: 'DESC',
+    };
+    setLoad(true);
+    if (page <= totalPage) {
+      const response = await MENTORS.getMentorPagination(params);
+      setGetMentorList((prev: any) => [
+        ...prev,
+        ...response.userWithImageAndIntroDtos,
+      ]);
+      setTotalPage(response.lastPage);
     }
-    setLoad(false); // 중복 방지
-  }, [totalPage]);
-
-  useEffect(() => {
-    if (totalPage) {
-      getMentorListApi();
-    }
-  }, [totalPage, getMentorListApi]);
+    setLoad(false);
+  }, [page]);
 
   /** 멘토 박스 클릭 시 확장 */
   const handleMentorClick = (mentorId: number) => {
@@ -100,6 +98,8 @@ const MentorListBox = () => {
     setChatRoomList(res.chatRooms);
   };
 
+  console.log(chatRoomList);
+
   return (
     <S.ListContainer>
       {getMentorList.map((mentor) => (
@@ -111,9 +111,9 @@ const MentorListBox = () => {
             <S.MentorInfoLeft>
               <S.MentorImage isExpanded={expandedStates[mentor.id]}>
                 {expandedStates[mentor.id] ? (
-                  <img src={mentor.userImage.imageUrl} alt="MentorIcon" />
+                  <img src={`${mentor.userImage.imageUrl}`} alt="MentorIcon" />
                 ) : (
-                  <img src={mentor.userImage.imageUrl} alt="MentorIcon" />
+                  <img src={`${mentor.userImage.imageUrl}`} alt="MentorIcon" />
                 )}
               </S.MentorImage>
               <S.MentorInfoBox isExpanded={expandedStates[mentor.id]}>
@@ -126,7 +126,7 @@ const MentorListBox = () => {
                   {mentor.name}
                 </span>
                 <span style={{ fontSize: '0.5em', fontWeight: '400' }}>
-                  {mentor.userIntro.mainField}
+                  {mentor.userIntro.shortIntro}
                 </span>
               </S.MentorInfoBox>
             </S.MentorInfoLeft>
