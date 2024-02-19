@@ -218,15 +218,13 @@ export const BadgeBack = styled.div`
 /**#752626 백그라운드 */
 
 export const MyReviewBack = styled.div`
-  > :nth-child(2) {
-    background-color: #752626;
-  }
+  ${BackContainColor}
+  background-color: #752626;
 `;
 
 /**#4e1f1f 백그라운드 */
 
 export const MyRecordBack = styled.div`
-  > :nth-child(2) {
-    background-color: #4e1f1f;
-  }
+  ${BackContainColor}
+  background-color: #4e1f1f;
 `;

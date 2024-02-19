@@ -86,6 +86,7 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
             isBad: data.isBad,
             isStuffy: data.isStuffy,
             createdAt: data.createdAt,
+            isLocation: true,
           };
           return (
             <S.ReviewContentContainer key={data.id}>
