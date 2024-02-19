@@ -190,12 +190,8 @@ export const ContentContainer = styled.div`
 //멘보샤 빵 사진
 export const BackgroundContainer = styled.img`
   width: 100vw;
-  height: 112vw;
+  height: 2150px;
   max-width: 1920px;
-  @media only all and (max-width: 1919px) {
-    width: 100vw;
-    height: 95vw;
-  }
   @media only all and (max-width: 1000px) {
     width: 100vw;
     height: 2200px;

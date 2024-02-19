@@ -1,11 +1,12 @@
 import * as S from './styled';
 import { useEffect, useState } from 'react';
 import { badge_list } from '@/components/common/badge-list/badge';
-import { badgeType, RankType } from '@/types/mypage';
+import { badgeType, AcquiredBadgeType } from '@/types/mypage';
+import { ButtonBox } from '@/components/common/globalStyled/styled';
 
-const MyBadge = ({ badge }: Partial<RankType>) => {
+const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
   const [badgeListPageCount, setBadgeListPageCount] = useState(1);
-  const [badgeListPage, setBadgeListPage] = useState<badgeType[]>([]);
+  const [badgeListPageData, setBadgeListPageData] = useState<badgeType[]>([]);
   const [lastPage, setLastPage] = useState(2); //마지막 페이지 변경 시 여기 변경하면 됨
   const [firstPage, setFirstPage] = useState(1); //첫 페이지 변경 시 여기 변경
 
@@ -17,8 +18,10 @@ const MyBadge = ({ badge }: Partial<RankType>) => {
         return data.id > 20 && data.id <= 40;
       }
     });
-    setBadgeListPage(badge);
+    setBadgeListPageData(badge);
   };
+
+  console.log(existingData, acquiredData);
 
   useEffect(() => {
     getBadgeList(badgeListPageCount);
@@ -27,17 +30,22 @@ const MyBadge = ({ badge }: Partial<RankType>) => {
   const pagination = (page: number) => {
     const pageTemp = [];
     for (let i = firstPage; i <= page; i++) {
-      pageTemp.push(<div onClick={() => setPageGroup(i)}>{i}</div>);
+      pageTemp.push(
+        <S.Btn
+          i={i}
+          curPage={badgeListPageCount}
+          onClick={() => setPageGroup(i)}>
+          {i}
+        </S.Btn>,
+      );
     }
     return pageTemp;
   };
 
   const setPageGroup = (page: number) => {
     if (page > lastPage) {
-      alert('마지막페이지 입니다.');
       setBadgeListPageCount(page - 1);
     } else if (page < firstPage) {
-      alert('첫 번째 페이지 입니다.');
       setBadgeListPageCount(page + 1);
     } else {
       setBadgeListPageCount(page);
@@ -47,19 +55,31 @@ const MyBadge = ({ badge }: Partial<RankType>) => {
   return (
     <div>
       <S.BadgeListWrapper>
-        {badgeListPage.map((data) => {
-          return (
-            <div key={data.id}>
-              <>
-                <img src={data.image} />
-              </>
-            </div>
-          );
-        })}
+        {existingData &&
+          badgeListPageData.map((data) => {
+            return (
+              <div key={data.id}>
+                <div>
+                  {existingData.some((item) => item.badgeId === data.id) ? (
+                    <img src={data.image} />
+                  ) : (
+                    <S.UnlockBadgePreviewBox>
+                      <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/unlockBadgeImage.svg" />
+                      <img src={data.image} />
+                    </S.UnlockBadgePreviewBox>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         <S.PageCountContainer>
-          <div onClick={() => setPageGroup(badgeListPageCount - 1)}>&lt;</div>
+          <ButtonBox onClick={() => setPageGroup(badgeListPageCount - 1)}>
+            &lt;
+          </ButtonBox>
           {pagination(lastPage)}
-          <div onClick={() => setPageGroup(badgeListPageCount + 1)}>&gt;</div>
+          <ButtonBox onClick={() => setPageGroup(badgeListPageCount + 1)}>
+            &gt;
+          </ButtonBox>
         </S.PageCountContainer>
       </S.BadgeListWrapper>
     </div>

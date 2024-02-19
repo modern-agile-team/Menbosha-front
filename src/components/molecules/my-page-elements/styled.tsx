@@ -1,5 +1,5 @@
 import { AskShowPropsType } from '@/types/support';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 //마이 랭크
 export const MyRankWrapper = styled.div`
@@ -93,7 +93,6 @@ export const BadgeListWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   place-items: center;
-  gap: 0px 10px;
   color: #fff;
 `;
 
@@ -104,4 +103,49 @@ export const PageCountContainer = styled.div`
     color: #fff;
     margin: 10px;
   }
+`;
+
+export const UnlockBadgePreviewBox = styled.div`
+  & > :nth-child(1) {
+    display: block;
+  }
+  & > :nth-child(2) {
+    display: none;
+  }
+  &:hover {
+    & > :nth-child(1) {
+      display: none;
+    }
+    & > :nth-child(2) {
+      display: block;
+    }
+  }
+`;
+
+export const BadgeImageBox = styled.img`
+  width: 167px;
+  height: 99px;
+`;
+
+interface BtnType {
+  i: number;
+  curPage: number;
+}
+
+export const Btn = styled.div<BtnType>`
+  color: #fff;
+  font-size: 1em;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+  ${(props) =>
+    props.i === props.curPage &&
+    css`
+      padding-bottom: 3px;
+      border-bottom: 3px solid #fff;
+      font-weight: bold;
+      cursor: revert;
+      transform: revert;
+    `}
 `;
