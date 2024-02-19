@@ -78,6 +78,7 @@ export type HelpCommentType = PaginationType<{
 export type ParamsType<T> = {
   page?: number;
   pageSize?: number;
+  userId?: number;
   orderField:
     | 'id'
     | 'userId'

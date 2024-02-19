@@ -180,6 +180,7 @@ export const CreateIconLink = styled(Link)`
 //html태그 불러오기
 export const HTMLtext = styled.div`
   font-size: 12px;
+  width: 100%;
   color: rgba(0, 0, 0, 0.75);
   font-weight: none;
   overflow: visible;

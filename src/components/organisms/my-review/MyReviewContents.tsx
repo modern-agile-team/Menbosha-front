@@ -76,35 +76,39 @@ const MyReviewContents = () => {
           })}
         </S.ReviewCheckListFilterContainer>
         <S.MyReviewContentsWrapper>
-          {reviewData.map((data) => {
-            const props: ReviewProprType = {
-              career: data.mentee.userIntro.career,
-              shortIntro: data.mentee.userIntro.shortIntro,
-              customCategory: data.mentee.userIntro.customCategory,
-              createdAt: data.createdAt,
-              id: data.id,
-              imageUrl: data.mentee.userImage.imageUrl,
-              isAccurate: data.isAccurate,
-              isBad: data.isBad,
-              isClear: data.isClear,
-              isFun: data.isFun,
-              isGoodWork: data.isGoodWork,
-              isInformative: data.isInformative,
-              isKindness: data.isKindness,
-              isQuick: data.isQuick,
-              isStuffy: data.isStuffy,
-              menteeId: data.mentee.id,
-              name: data.mentee.name,
-              rank: data.mentee.rank,
-              review: data.review,
-              isLocation: false,
-            };
-            return (
-              <S.MyReviewContainer>
-                <MentorReviewElements {...props} />
-              </S.MyReviewContainer>
-            );
-          })}
+          {reviewData ? (
+            reviewData.map((data) => {
+              const props: ReviewProprType = {
+                career: data.mentee.userIntro.career,
+                shortIntro: data.mentee.userIntro.shortIntro,
+                customCategory: data.mentee.userIntro.customCategory,
+                createdAt: data.createdAt,
+                id: data.id,
+                imageUrl: data.mentee.userImage.imageUrl,
+                isAccurate: data.isAccurate,
+                isBad: data.isBad,
+                isClear: data.isClear,
+                isFun: data.isFun,
+                isGoodWork: data.isGoodWork,
+                isInformative: data.isInformative,
+                isKindness: data.isKindness,
+                isQuick: data.isQuick,
+                isStuffy: data.isStuffy,
+                menteeId: data.mentee.id,
+                name: data.mentee.name,
+                rank: data.mentee.rank,
+                review: data.review,
+                isLocation: false,
+              };
+              return (
+                <S.MyReviewContainer>
+                  <MentorReviewElements {...props} />
+                </S.MyReviewContainer>
+              );
+            })
+          ) : (
+            <div>아직 후기가 없습니다.</div>
+          )}
           <S.MyReviewPaginationCountContainer>
             <ButtonBox onClick={() => setPageGroup(page - 1)}>&lt;</ButtonBox>
             {pagination(lastPage)}
