@@ -1,4 +1,4 @@
-import CHAT from '@/apis/chatApi/chat';
+import CHAT from '@/apis/chat';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import { CreateChatRoomRequestBody } from '@/types/chat';
 import { useState } from 'react';

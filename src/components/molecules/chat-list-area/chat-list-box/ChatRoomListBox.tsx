@@ -1,36 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './styled';
-import Image from 'next/image';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import useModal from '@/hooks/useModal';
 import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
-import CHAT from '@/apis/chatApi/chat';
-import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 
-const ChatRoomListBox = () => {
+const ChatRoomListBox = (myId: { myId: number | undefined }) => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   // const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
-  // const page = 1;
-  // const pageSize = 5;
-
-  // useEffect(() => {
-  //   const getChatHistoryApi = async () => {
-  //     if (selectedRoomId) {
-  //       const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
-  //       SetGetChatHistory(res);
-  //       console.log(getChatHistory);
-  //     }
-  //   };
-
-  //   getChatHistoryApi();
-  // }, [selectedRoomId]);
 
   const handleRoomSelect = (roomId: string) => {
     const queryURL = {
@@ -46,10 +29,12 @@ const ChatRoomListBox = () => {
     handleModal();
   };
 
+  console.log(myId);
+
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
-        // console.log(data);
+        console.log(data);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');

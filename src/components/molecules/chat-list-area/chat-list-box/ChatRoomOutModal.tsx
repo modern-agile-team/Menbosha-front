@@ -1,7 +1,7 @@
 import { ModalType } from '@/types/chat';
 import styled from 'styled-components';
 import React from 'react';
-import CHAT from '@/apis/chatApi/chat';
+import CHAT from '@/apis/chat';
 import { useRecoilState } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 

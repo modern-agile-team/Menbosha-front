@@ -6,12 +6,8 @@ import Link from 'next/link';
 import useChatRoomCreate from '@/hooks/useCreateRoom';
 import { handleChatIconClickType } from '@/types/chat';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
-import CHAT from '@/apis/chatApi/chat';
-import {
-  ChatMentorListType,
-  MentorListType,
-  MentorPaginationParamsType,
-} from '@/types/mentor';
+import CHAT from '@/apis/chat';
+import { MentorListType, MentorPaginationParamsType } from '@/types/mentor';
 import MENTORS from '@/apis/mentors';
 
 const MentorListBox = () => {

@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import MSWProvider from '@/components/common/MSWProvider';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { SocketProvider } from '@/hooks/useSocket';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
@@ -15,13 +16,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <RecoilRoot>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        {isClient && (
-          <MSWProvider>
-            <Component {...pageProps} />
-          </MSWProvider>
-        )}
-      </React.Suspense>
+      <SocketProvider>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          {isClient && (
+            <MSWProvider>
+              <Component {...pageProps} />
+            </MSWProvider>
+          )}
+        </React.Suspense>
+      </SocketProvider>
     </RecoilRoot>
   );
 }

@@ -2,18 +2,27 @@ import * as S from './styled';
 import ChatNavbar from '../organisms/chat/chat-navbar/ChatNavbar';
 import ChatRoomList from '../organisms/chat/chat-list/ChatRoomList';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { MentorInfoAtom } from '@/recoil/atoms/MentorInfoAtom';
 import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
-import CHAT from '@/apis/chatApi/chat';
+import CHAT from '@/apis/chat';
 import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
+import USER from '@/apis/user';
 
 const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
+  const [getMyId, setGetMyId] = useState();
+
+  const getMyIdApi = async () => {
+    const res = await USER.getMyInfo();
+    setGetMyId(res.id);
+  };
+
+  useEffect(() => {
+    getMyIdApi();
+  }, []);
 
   // 모킹데이터
   // const [getMentorInfo, setGetMentorInfo] =
@@ -40,7 +49,7 @@ const ChatPageTemplate = () => {
     <S.PageWrapperRaw>
       <ChatNavbar />
       <ChatMentorList />
-      <ChatRoomList />
+      <ChatRoomList myId={getMyId} />
       <ChatSpace />
     </S.PageWrapperRaw>
   );

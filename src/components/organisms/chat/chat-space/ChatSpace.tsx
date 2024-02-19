@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
-import CHAT from '@/apis/chatApi/chat';
+import CHAT from '@/apis/chat';
 import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 import {
