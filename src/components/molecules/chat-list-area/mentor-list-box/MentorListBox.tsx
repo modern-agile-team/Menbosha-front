@@ -98,8 +98,6 @@ const MentorListBox = () => {
     setChatRoomList(res.chatRooms);
   };
 
-  console.log(chatRoomList);
-
   return (
     <S.ListContainer>
       {getMentorList.map((mentor) => (

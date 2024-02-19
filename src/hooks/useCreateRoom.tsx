@@ -23,9 +23,15 @@ const useChatRoomCreate = () => {
       const result = await CHAT.createChatRoom(requestBody);
       // setChatRoom(result.data.content);
       console.log('채팅룸 생성 성공:', result.data.contents);
-    } catch (error) {
+    } catch (error: any) {
       console.error('채팅룸 생성 시 오류가 발생했습니다.:', error);
-      setError('채팅룸 생성 실패');
+      if (error.response && error.response.status === 403) {
+        alert('본인과 채팅방을 생성할 수 없습니다.');
+      } else if (error.response && error.response.status === 404) {
+        alert('찾을 수 없는 사용자 입니다.');
+      } else {
+        setError('채팅룸 생성 실패');
+      }
     } finally {
       setIsLoading(false);
     }
