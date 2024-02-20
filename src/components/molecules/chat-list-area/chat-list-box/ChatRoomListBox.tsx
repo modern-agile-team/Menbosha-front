@@ -6,6 +6,7 @@ import useModal from '@/hooks/useModal';
 import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import { useSocket } from '@/hooks/useSocket';
 
 const ChatRoomListBox = (myId: { myId: number | undefined }) => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
@@ -14,6 +15,7 @@ const ChatRoomListBox = (myId: { myId: number | undefined }) => {
     useRecoilState(SelectedRoomIdAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
+  const socket = useSocket();
 
   const handleRoomSelect = (roomId: string) => {
     const queryURL = {
@@ -21,6 +23,20 @@ const ChatRoomListBox = (myId: { myId: number | undefined }) => {
     };
     selectRoom(`${roomId}`, queryURL);
     setSelectedRoomId(roomId);
+
+    const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
+
+    if (socket) {
+      console.log('Emitting login event:', {
+        userId: myId.myId,
+        chatRoomIds: allChatRoomId,
+      });
+
+      socket.emit('login', {
+        userId: myId.myId,
+        chatRoomIds: allChatRoomId,
+      });
+    }
   };
 
   // 마우스 우클릭 시 삭제 모달 핸들러
@@ -91,7 +107,7 @@ const ChatRoomListBox = (myId: { myId: number | undefined }) => {
         );
       })}
       {isOpenModal && (
-        <div>
+        <>
           {getChatRoomList.map((data) => (
             <ChatRoomOutModal
               show={isOpenModal}
@@ -100,7 +116,7 @@ const ChatRoomListBox = (myId: { myId: number | undefined }) => {
               partnerName={data.chatPartners[0].name}
             />
           ))}
-        </div>
+        </>
       )}
     </S.ListContainer>
   );
