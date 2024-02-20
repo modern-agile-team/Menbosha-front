@@ -18,8 +18,8 @@ export const ArrowIcon = styled.div`
 `;
 
 export const SupportContainer = styled.div`
-  width: 80%;
-  margin: 64px 204px;
+  width: 100%;
+  margin-top: 64px;
 `;
 
 export const SupportHeaderBox = styled.div`
@@ -42,11 +42,11 @@ export const SupportHeaderBox = styled.div`
 export const SupportButtonContainer = styled.div`
   display: flex;
   margin-top: 64px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   @media only all and (max-width: 1500px) {
     justify-content: center;
   }
+  //이미지 모두
   & > :nth-child(n) {
     cursor: pointer;
     text-decoration: none;
@@ -54,6 +54,7 @@ export const SupportButtonContainer = styled.div`
     background-color: #ff772b;
     border-radius: 10px;
     color: #fff;
+    //질문이미지
     & > img {
       width: 120px;
       @media only all and (min-width: 1000px) and (max-width: 1600px) {
@@ -64,8 +65,21 @@ export const SupportButtonContainer = styled.div`
       }
       padding-bottom: 30px;
     }
+    //이미지 상위 박스
+    & > :nth-child(1) {
+      text-align: center;
+    }
+    //질문이름
     & > :nth-child(2) {
       font-size: 20px;
+      text-align: center;
+      width: 120px;
+      @media only all and (min-width: 1000px) and (max-width: 1600px) {
+        width: 100px;
+      }
+    }
+    //도움말보기
+    & > :nth-child(3) {
       text-align: center;
     }
   }
@@ -90,12 +104,14 @@ export const SupportButtonContainer = styled.div`
 `;
 
 export const SupportEtcContainer = styled.div`
+  //기타 지원 제목
   & > :nth-child(1) {
     font-size: 30px;
     color: #ff772b;
     margin: 60px 0px 25px 0px;
     font-weight: bold;
   }
+  //기타 지원 서비스
   & > :not(:nth-child(1)) {
     font-size: 20px;
     display: flex;
@@ -130,13 +146,13 @@ export const QnAContentNListWrapper = styled.div`
 
 export const ListContainer = styled.div`
   border-right: 2px solid #ff772b;
-  width: 13%;
   & > :nth-child(n) {
     text-align: center;
     padding: 0px 65px;
     margin: 18px 0px;
     font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
   }
 `;
 
@@ -151,4 +167,9 @@ export const ContentsContainer = styled.div`
   & > :nth-child(2) {
     margin: 48px 24px;
   }
+`;
+
+export const HelpLabelBox = styled.span`
+  font-size: 12px;
+  border-bottom: 1px solid #fff;
 `;

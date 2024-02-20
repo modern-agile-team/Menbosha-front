@@ -12,18 +12,18 @@ const SupportComboBox = (props: AskElementsPropsType) => {
   return (
     <S.AskContentWrapper onClick={handleAskShow}>
       {!askShow ? (
-        <S.AfterTitleContainer>
+        <S.BeforeTitleContainer>
           <div>{props.title}</div>
           <S.ArrowIcon show={askShow} />
-        </S.AfterTitleContainer>
+        </S.BeforeTitleContainer>
       ) : (
-        <S.BeforeTitleContainer>
+        <S.AfterTitleContainer>
           <div>
             <div>{props.title}</div>
             <S.ArrowIcon show={askShow} />
           </div>
           <div>{props.description}</div>
-        </S.BeforeTitleContainer>
+        </S.AfterTitleContainer>
       )}
     </S.AskContentWrapper>
   );

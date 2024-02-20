@@ -18,33 +18,73 @@ const SupportTemplate = () => {
             <div>궁금한점을 빠르게 확인해보세요</div>
           </S.SupportHeaderBox>
           <S.SupportButtonContainer>
-            <Link href={`/support/QnA`}>
+            <Link
+              href={{
+                pathname: `/support/QnA`,
+                query: {
+                  elementNum: 1,
+                  QnAListElement: '공통',
+                },
+              }}>
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/support/qnaIcon.svg"
                 alt="자주하는질문 아이콘"
               />
               <div>자주하는 질문</div>
+              <div>
+                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
+              </div>
             </Link>
-            <Link href={``}>
+            <Link
+              href={{
+                pathname: `/support/QnA`,
+                query: {
+                  elementNum: 2,
+                  QnAListElement: '멘토',
+                },
+              }}>
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/support/mentoNmenteeIcon.svg"
-                alt="멘토 멘티 아이콘"
+                alt="멘토 아이콘"
               />
-              <div>멘토 멘티</div>
+              <div>멘토</div>
+              <div>
+                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
+              </div>
             </Link>
-            <Link href={``}>
+            <Link
+              href={{
+                pathname: `/support/QnA`,
+                query: {
+                  elementNum: 3,
+                  QnAListElement: '멘티',
+                },
+              }}>
               <img
-                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/support/chatSupportIcon.svg"
-                alt="채팅하기 아이콘"
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/support/mentoNmenteeIcon.svg"
+                alt="멘티 아이콘"
               />
-              <div>채팅하기</div>
+              <div>멘티</div>
+              <div>
+                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
+              </div>
             </Link>
-            <Link href={``}>
+            <Link
+              href={{
+                pathname: `/support/QnA`,
+                query: {
+                  elementNum: 5,
+                  QnAListElement: '신고하기',
+                },
+              }}>
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/support/reportSupIcon.svg"
                 alt="신고하기 아이콘"
               />
               <div>신고하기</div>
+              <div>
+                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
+              </div>
             </Link>
           </S.SupportButtonContainer>
           <S.SupportEtcContainer>
