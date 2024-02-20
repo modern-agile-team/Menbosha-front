@@ -5,18 +5,20 @@ export const AskContentWrapper = styled.div`
   margin-bottom: 28px;
 `;
 
-export const AfterTitleContainer = styled.div`
+export const BeforeTitleContainer = styled.div`
   display: flex;
   padding-bottom: 12px;
   font-size: 20px;
   border-bottom: 1px solid #ff772b;
+  cursor: pointer;
 `;
 
-export const BeforeTitleContainer = styled.div`
-  font-weight: bold;
+export const AfterTitleContainer = styled.div`
   font-size: 20px;
+  cursor: pointer;
   & > :nth-child(1) {
     display: flex;
+    font-weight: bold;
     padding-bottom: 12px;
   }
 `;
