@@ -8,6 +8,7 @@ import {
   AskListType,
 } from '@/types/support';
 import SupportComboBox from '@/components/organisms/support-combo-box/SupportComboBox';
+import { useRouter } from 'next/router';
 const askList: AskListType[] = [
   {
     id: 1,
@@ -27,6 +28,10 @@ const askList: AskListType[] = [
   },
   {
     id: 5,
+    name: '신고하기',
+  },
+  {
+    id: 6,
     name: '기타',
   },
 ];
@@ -50,7 +55,7 @@ const askElements: AskElementsType[] = [
   },
   {
     id: 2,
-    name: '공통',
+    name: '멘토',
     list: [
       {
         id: 1,
@@ -66,18 +71,122 @@ const askElements: AskElementsType[] = [
       },
     ],
   },
+  {
+    id: 3,
+    name: '멘티',
+    list: [
+      {
+        id: 1,
+        title: '어떻게 도움을 요청해야 하나요?',
+        description: '멘티가 있어야 굴러갑니다',
+      },
+      {
+        id: 2,
+        title: '멘토와 채팅은 어떻게 하나요?',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+      {
+        id: 3,
+        title: '회원탈퇴는 어떻게 하나요?',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+      {
+        id: 4,
+        title: '도움이 오질 않아요. 어떻게 해야 하나요?',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+      {
+        id: 5,
+        title: '전문적이지 않은 질문을 해도 되나요?',
+        description: '123',
+      },
+      {
+        id: 6,
+        title: '멘토에서 멘티로 전환해도 칭호/뱃지가 남아있나요?',
+        description: '321',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: '계정관리',
+    list: [
+      {
+        id: 1,
+        title: '회원가입을 어떻게 하나요?',
+        description:
+          '멘토와 채팅하기를 끝나시면 후기 체크리스트 팝업창이 뜹니다. 후기 체크리스트 하단에 후기를 써주세요에 멘토분에게 감사인사에 대해 적어주시면 멘토 프로필에 고객님이 적으신 후기 글을 남겨집니다.',
+      },
+      {
+        id: 2,
+        title: '회원탈퇴는 어떻게 하나요?',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+      {
+        id: 3,
+        title: '회원탈토 하면 다시 계정 복구 할 수 있나요?',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: '신고하기',
+    list: [
+      {
+        id: 1,
+        title: '신고는 어떻게 하나요?',
+        description:
+          '멘토와 채팅하기를 끝나시면 후기 체크리스트 팝업창이 뜹니다. 후기 체크리스트 하단에 후기를 써주세요에 멘토분에게 감사인사에 대해 적어주시면 멘토 프로필에 고객님이 적으신 후기 글을 남겨집니다.',
+      },
+      {
+        id: 2,
+        title: '불법성 게시글 및 불법 촬영물',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: '기타',
+    list: [
+      {
+        id: 1,
+        title: '어떻게 도움을 요청해야 하나요?',
+        description:
+          '멘토와 채팅하기를 끝나시면 후기 체크리스트 팝업창이 뜹니다. 후기 체크리스트 하단에 후기를 써주세요에 멘토분에게 감사인사에 대해 적어주시면 멘토 프로필에 고객님이 적으신 후기 글을 남겨집니다.',
+      },
+      {
+        id: 2,
+        title: '멘토와 채팅은 어떻게 하나요?',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+      {
+        id: 3,
+        title: '기타타타',
+        description:
+          '도와주세요에 가셔서 원하시는 게시글을 클릭하셔서 멘티의 게시글 맨밑 도와줄게요 아이콘을 남기시면 됩니다.',
+      },
+    ],
+  },
 ];
 const QnATemplate = () => {
+  const router = useRouter();
   const [ask, setAsk] = useState({
     num: 0,
     name: '',
   });
   const [askElement, setAskElement] = useState<AskElementsType['list']>([]);
-  const [showAsk, setShowAsk] = useState(false);
 
   const handleQnAList = (num: number) => {
     setAskElement([]);
-    console.log(num);
     const askTemp = askElements.find((data) => data.id === num);
     const askName = askList.find((data) => data.id === num)?.name;
     askName &&
@@ -92,14 +201,16 @@ const QnATemplate = () => {
   };
 
   useEffect(() => {
-    setAskElement([...askElements[0].list]);
-    setAsk((prev) => {
-      return {
-        ...prev,
-        num: 1,
-        name: '공통',
-      };
-    });
+    router.isReady &&
+      setAskElement([...askElements[Number(router.query.elementNum) - 1].list]);
+    router.isReady &&
+      setAsk((prev) => {
+        return {
+          ...prev,
+          num: Number(router.query.elementNum),
+          name: String(router.query.QnAListElement),
+        };
+      });
   }, []);
 
   return (
