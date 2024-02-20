@@ -13,12 +13,17 @@ import {
   ChatPartnersType,
 } from '@/types/chat';
 import { log } from 'console';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 
 const ChatSpace = () => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
-  const [chatHistory, setChatHistory] = useState<ChatHistoryType[]>([]);
+  const [chatHistory, setChatHistory] =
+    useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
   const [pagination, setPagination] = useState<ChatPaginationType>();
-  const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
+  // const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
+  const [chatContents, setChatContents] =
+    useRecoilState<ChatContentsType[]>(ChatContentsAtom);
   const [chatPartners, setChatPartners] = useState<ChatPartnersType>();
   const page = 1;
   const pageSize = 5; // 무한 스크롤 구현 전까지 일단 기본값
@@ -34,7 +39,7 @@ const ChatSpace = () => {
         pageSize: res.pageSize,
         totalCount: res.totalCount,
       };
-      setChatHistory(res); //일단 안씁니다.
+      setChatHistory(res);
       setPagination(temp);
       setChatContents(res.chats);
       setChatPartners(res.chatPartners[0]);
@@ -46,11 +51,15 @@ const ChatSpace = () => {
   useEffect(() => {
     if (selectedRoomId) {
       getChatHistoryApi();
-      console.log('::::::', chatHistory);
-      console.log(chatPartners);
       // console.log(pagination);
     }
   }, [selectedRoomId]);
+
+  useEffect(() => {
+    console.log('::::::', chatHistory);
+    console.log(chatPartners);
+    console.log('채팅 내역', chatHistory);
+  }, [chatHistory, chatPartners]);
 
   return (
     <S.ChatSpaceContainer>

@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
+import { ChatContentsType, ChatHistoryType } from '@/types/chat';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import { useSocket } from '@/hooks/useSocket';
+import { MyIdAtom } from '@/recoil/atoms/MyIdAtom';
+import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 
 const ChatSpaceFooter = () => {
   const [inputMessage, setInputMessage] = useState('');
+  const [selectedRoomId, setSelectedRoomId] =
+    useRecoilState(SelectedRoomIdAtom);
+  const [chatContents, setChatContents] =
+    useRecoilState<ChatContentsType[]>(ChatContentsAtom);
+  // const [chatHistory, setChatHistory] =
+  // useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
+  const senderId = useRecoilValue(MyIdAtom);
+  const socket = useSocket();
+
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value.trimLeft());
   };
@@ -20,6 +36,16 @@ const ChatSpaceFooter = () => {
   };
 
   const handleSend = () => {
+    if (socket && selectedRoomId) {
+      const newMessage = {
+        roomId: selectedRoomId,
+        content: inputMessage,
+        senderId: senderId,
+      };
+
+      socket.emit('message', newMessage);
+    }
+
     setInputMessage('');
   };
   console.log(inputMessage);

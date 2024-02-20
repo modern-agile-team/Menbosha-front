@@ -7,12 +7,14 @@ import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
+import { MyIdAtom } from '@/recoil/atoms/MyIdAtom';
 
-const ChatRoomListBox = (myId: { myId: number | undefined }) => {
+const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   // const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
+  const myId = useRecoilValue(MyIdAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
   const socket = useSocket();
@@ -27,7 +29,7 @@ const ChatRoomListBox = (myId: { myId: number | undefined }) => {
     const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
 
     if (socket) {
-      console.log('Emitting login event:', {
+      console.log('Room Join 성공:', {
         userId: myId.myId,
         chatRoomIds: allChatRoomId,
       });
@@ -95,11 +97,12 @@ const ChatRoomListBox = (myId: { myId: number | undefined }) => {
                       hours % 12 || 12
                     }:${minutes}`}</span>
                   )}
-                  {data.chatRooms.unReadChatCount > 0 && (
-                    <S.UnreadMessage>
-                      <span>{data.chatRooms.unReadChatCount}</span>
-                    </S.UnreadMessage>
-                  )}
+                  {selectedRoomId !== data.chatRooms._id &&
+                    data.chatRooms.unReadChatCount > 0 && (
+                      <S.UnreadMessage>
+                        <span>{data.chatRooms.unReadChatCount}</span>
+                      </S.UnreadMessage>
+                    )}
                 </S.ChatListRight>
               </S.ChatRoomInfoBox>
             )}

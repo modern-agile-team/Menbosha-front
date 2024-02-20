@@ -9,20 +9,25 @@ import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import USER from '@/apis/user';
+import { MyIdAtom } from '@/recoil/atoms/MyIdAtom';
 
 const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
-  const [getMyId, setGetMyId] = useState();
+  const [getMyId, setMyId] = useRecoilState(MyIdAtom);
 
   const getMyIdApi = async () => {
     const res = await USER.getMyInfo();
-    setGetMyId(res.id);
+    setMyId(res.id);
   };
 
   useEffect(() => {
     getMyIdApi();
   }, []);
+
+  useEffect(() => {
+    console.log(getMyId);
+  }, [getMyIdApi]);
 
   // 모킹데이터
   // const [getMentorInfo, setGetMentorInfo] =
@@ -49,7 +54,7 @@ const ChatPageTemplate = () => {
     <S.PageWrapperRaw>
       <ChatNavbar />
       <ChatMentorList />
-      <ChatRoomList myId={getMyId} />
+      <ChatRoomList />
       <ChatSpace />
     </S.PageWrapperRaw>
   );
