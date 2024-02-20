@@ -29,6 +29,18 @@ export type MentorBoardListType = PaginationType<{
   }[];
 }>;
 
+// 채팅페이지 내에서 쓰이는 멘토리스트 데이터 타입
+export type ChatMentorListType = {
+  userId: number;
+  userName: string;
+  userImage: {
+    imageUrl: String;
+  };
+  userIntro: {
+    shortIntro: string;
+  };
+};
+
 export type MentorListType = PaginationType<{
   userWithImageAndIntroDtos: {
     id: number;

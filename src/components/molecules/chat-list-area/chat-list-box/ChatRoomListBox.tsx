@@ -1,36 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './styled';
-import Image from 'next/image';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import useModal from '@/hooks/useModal';
 import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
-import CHAT from '@/apis/chatApi/chat';
-import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import { useSocket } from '@/hooks/useSocket';
 
-const ChatRoomListBox = () => {
+const ChatRoomListBox = (myId: { myId: number | undefined }) => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   // const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
-  // const page = 1;
-  // const pageSize = 5;
-
-  // useEffect(() => {
-  //   const getChatHistoryApi = async () => {
-  //     if (selectedRoomId) {
-  //       const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
-  //       SetGetChatHistory(res);
-  //       console.log(getChatHistory);
-  //     }
-  //   };
-
-  //   getChatHistoryApi();
-  // }, [selectedRoomId]);
+  const socket = useSocket();
 
   const handleRoomSelect = (roomId: string) => {
     const queryURL = {
@@ -38,6 +23,20 @@ const ChatRoomListBox = () => {
     };
     selectRoom(`${roomId}`, queryURL);
     setSelectedRoomId(roomId);
+
+    const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
+
+    if (socket) {
+      console.log('Emitting login event:', {
+        userId: myId.myId,
+        chatRoomIds: allChatRoomId,
+      });
+
+      socket.emit('login', {
+        userId: myId.myId,
+        chatRoomIds: allChatRoomId,
+      });
+    }
   };
 
   // 마우스 우클릭 시 삭제 모달 핸들러
@@ -46,10 +45,12 @@ const ChatRoomListBox = () => {
     handleModal();
   };
 
+  console.log(myId);
+
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
-        // console.log(data);
+        console.log(data);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
@@ -106,7 +107,7 @@ const ChatRoomListBox = () => {
         );
       })}
       {isOpenModal && (
-        <div>
+        <>
           {getChatRoomList.map((data) => (
             <ChatRoomOutModal
               show={isOpenModal}
@@ -115,7 +116,7 @@ const ChatRoomListBox = () => {
               partnerName={data.chatPartners[0].name}
             />
           ))}
-        </div>
+        </>
       )}
     </S.ListContainer>
   );

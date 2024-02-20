@@ -58,6 +58,7 @@ const MentorList = () => {
       setPage((prev) => prev + 1); //페이지 값 감소
     }
   };
+
   //스크롤 시 로드 함수
   const getMentorListApi = useCallback(async () => {
     const params: MentorPaginationParamsType = {

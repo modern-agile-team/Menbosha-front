@@ -1,5 +1,5 @@
 import { Axios, AxiosResponse } from 'axios';
-import instance from '../axiosInstance';
+import instance from './axiosInstance';
 import { CreateChatRoomRequestBody } from '@/types/chat';
 
 const CHAT = {
@@ -19,8 +19,12 @@ const CHAT = {
 
   /** 채팅룸 전체조회 api */
   async getChatRoomList(): Promise<any> {
-    const result: AxiosResponse<any> = await instance.get(`${CHAT.path}`);
-    // console.log(result.data);
+    const result: AxiosResponse<any> = await instance.get(`${CHAT.path}`, {
+      // params: {
+      //   page: page,
+      //   pageSize: pageSize,
+      // },
+    });
     return result.data.contents;
   },
 
