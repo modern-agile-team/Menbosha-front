@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import { ChatContentsType, ChatHistoryType } from '@/types/chat';
@@ -15,10 +15,39 @@ const ChatSpaceFooter = () => {
     useRecoilState(SelectedRoomIdAtom);
   const [chatContents, setChatContents] =
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
+  // const [temp, setTemp] = useState<any[]>([]);
   // const [chatHistory, setChatHistory] =
   // useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
   const senderId = useRecoilValue(MyIdAtom);
   const socket = useSocket();
+
+  useEffect(() => {
+    if (socket) {
+      socket.on('message', (incomingMessage: any) => {
+        const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
+          incomingMessage.data;
+        const newChatMessage: ChatContentsType = {
+          _id,
+          chatRoomId,
+          content,
+          senderId,
+          seenUsers,
+          createdAt,
+        };
+        // setTemp((prevContents) => [...prevContents, newChatMessage]);
+        setChatContents((prevContents) => [...prevContents, newChatMessage]);
+      });
+    }
+    return () => {
+      if (socket) {
+        socket.off('message');
+      }
+    };
+  }, [socket]);
+
+  // useEffect(() => {
+  //   setChatContents(temp);
+  // }, [setTemp]);
 
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value.trimLeft());

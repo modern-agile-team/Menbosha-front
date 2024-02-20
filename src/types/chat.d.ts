@@ -127,7 +127,7 @@ export interface ChatContentsType {
   content: string;
   seenUsers: Array;
   senderId: number;
-  _id: number;
+  _id: string;
 }
 
 /** 채팅페이지 무한스크롤 타입 */
