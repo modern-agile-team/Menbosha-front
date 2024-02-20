@@ -55,4 +55,5 @@ export interface ReviewProprType {
   isBad: boolean;
   isStuffy: boolean;
   createdAt: string;
+  isLocation: boolean;
 }

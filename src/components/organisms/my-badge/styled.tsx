@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const RankTitleBox = styled.div`
-  font-size: 64px;
-  color: #ffffff;
-  width: 220px;
+export const MyBadgeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0px 304px 0px 159px;
+  width: 100%;
 `;

@@ -178,67 +178,53 @@ export const ChatLinkText = styled.div`
 //MyProfileTemplate
 export const ContentContainer = styled.div`
   display: flex;
-  border: 2px solid #98f;
-  width: 65%;
-  margin: 100px 50px 100px 0px;
-`;
-
-const BackGround = css`
-  > :nth-child(1) {
-    width: 0px;
-    height: 100px;
-    border-right: 1000px solid #fff;
-    border-top: 300px solid transparent;
-    border-bottom: 0px solid transparent;
-    position: absolute;
-    z-index: -1;
-    top: 73vw;
-    left: 1000px;
-    &::after {
-      height: 100px;
-      content: '';
-      border-left: 1000px solid #fff;
-      border-top: 300px solid transparent;
-      border-bottom: 0px solid transparent;
-      position: absolute;
-      top: -300px;
-      left: -1000px;
+  width: 100%;
+  margin: 100px 0px;
+  @media only all and (max-width: 1500px) {
+    & > img {
+      display: none;
     }
   }
-  > :nth-child(2) {
-    width: 100000px;
-    height: 1000000px;
-    left: -50vw;
-    top: -50vw;
-    position: fixed;
-    z-index: -2;
-  }
 `;
+
+//멘보샤 빵 사진
+export const BackgroundContainer = styled.img`
+  width: 100vw;
+  height: 114em;
+`;
+
+//백그라운드 컬러 입히기 전 css 모듈
+export const BackContainColor = css`
+  width: 100vw;
+  @media only all and (max-width: 1920px) {
+    width: 100vw;
+  }
+  position: absolute;
+`;
+
+/**#ff772b 백그라운드 */
+export const MyProfileBack = styled.div`
+  ${BackContainColor}
+  background-color: #ff772b;
+`;
+
+/**#b83a42 백그라운드 */
 
 export const BadgeBack = styled.div`
-  ${BackGround}
-  > :nth-child(2) {
-    background-color: #b83a42;
-  }
+  ${BackContainColor}
+  background-color: #b83a42;
 `;
 
-export const MyProfileBack = styled.div`
-  ${BackGround}
-  > :nth-child(2) {
-    background-color: #ff772b;
-  }
-`;
+/**#752626 백그라운드 */
 
 export const MyReviewBack = styled.div`
-  ${BackGround}
-  >:nth-child(2) {
-    background-color: #752626;
-  }
+  ${BackContainColor}
+  background-color: #752626;
 `;
 
+/**#4e1f1f 백그라운드 */
+
 export const MyRecordBack = styled.div`
-  ${BackGround}
-  >:nth-child(2) {
-    background-color: #4e1f1f;
-  }
+  ${BackContainColor}
+  background-color: #4e1f1f;
 `;

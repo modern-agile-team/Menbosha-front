@@ -12,16 +12,19 @@ const MyProfileTemplate = () => {
     router.push(`/mypage`);
   };
   return (
-    <ContainerWrapper>
-      <S.ContentContainer>
-        <ButtonBox onClick={handleBack}>이전</ButtonBox>
-        <MyProfileContents />
-      </S.ContentContainer>
+    <div>
       <S.MyProfileBack>
-        <div></div>
-        <div></div>
+        <ContainerWrapper>
+          <S.ContentContainer>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/prevBtnWhite.svg"
+              onClick={handleBack}></img>
+            <MyProfileContents />
+          </S.ContentContainer>
+        </ContainerWrapper>
       </S.MyProfileBack>
-    </ContainerWrapper>
+      <S.BackgroundContainer src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/background1.svg"></S.BackgroundContainer>
+    </div>
   );
 };
 
