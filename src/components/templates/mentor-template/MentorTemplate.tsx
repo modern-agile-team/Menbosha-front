@@ -6,14 +6,60 @@ import {
   ContainerWrapper,
   GlobalCategoryContainer,
   CreateIconLink,
-  TextBox,
   HeadTitleContainer,
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 import MentorRanking from '@/components/organisms/mentor/RankMentor';
 import MainPageFooter from '@/components/common/footer/Footer';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { MentorListType } from '@/types/mentor';
 
 const MentorTemplate = () => {
+  const router = useRouter();
+  const filterCategoryId = useRecoilValue(CategoryFilterAtom);
+
+  // 스크롤 수동으로 조정 설정
+  useEffect(() => {
+    if (
+      'scrollRestoration' in history &&
+      history.scrollRestoration !== 'manual'
+    ) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  const handleRouteChange = useCallback((e: any) => {
+    sessionStorage.setItem(
+      `__next_scroll_back`,
+      JSON.stringify({
+        x: 0,
+        y: window.scrollY.toString(),
+      }),
+    );
+  }, []);
+
+  //   router발생시 스크롤 위치 저장
+  useEffect(() => {
+    router.events.on('routeChangeStart', handleRouteChange);
+    window.addEventListener('beforeunload', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+      window.removeEventListener('beforeunload', handleRouteChange);
+    };
+  }, [router.events]);
+
+  //스크롤 위치 복원 & session비우기
+  useEffect(() => {
+    const temp = JSON.parse(
+      sessionStorage.getItem(`__next_scroll_back`) as string,
+    );
+    temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
+    // window.sessionStorage.clear();
+  }, []);
+
   return (
     <>
       <MainPageHeader />
@@ -39,15 +85,15 @@ const MentorTemplate = () => {
       <ContainerWrapper>
         <S.MentorListContainer>
           <S.ListTitleBox>명예의 전당</S.ListTitleBox>
-          <MentorRanking />
+          <MentorRanking filterCategoryId={filterCategoryId} />
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>인기 멘토</S.ListTitleBox>
-          <PopularMentorList />
+          <PopularMentorList filterCategoryId={filterCategoryId} />
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>전체 멘토</S.ListTitleBox>
-          <MentorList />
+          <MentorList filterCategoryId={filterCategoryId} />
         </S.MentorListContainer>
       </ContainerWrapper>
       <MainPageFooter />

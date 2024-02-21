@@ -3,18 +3,16 @@ import MentorBoardCard from '@/components/molecules/mentor-board-elements/Mentor
 import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
-import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const RandomMentorBoard = () => {
+const RandomMentorBoard = ({ filterCategoryId }: FilterPropsType) => {
   const [getRandomData, setRandomData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getRandomMentorBoardApi = async () => {
     const temp: MentorBoardParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId,
       pageSize: 3,
       loadOnlyPopular: false,
       orderField: 'RAND()',
@@ -27,7 +25,7 @@ const RandomMentorBoard = () => {
 
   useEffect(() => {
     getRandomMentorBoardApi();
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   useEffect(() => {
     getRandomMentorBoardApi();

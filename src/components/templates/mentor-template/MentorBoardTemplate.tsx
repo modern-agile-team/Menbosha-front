@@ -5,16 +5,17 @@ import MentorBoardList from '@/components/organisms/mentor-board/MentorBoardList
 import {
   ContainerWrapper,
   CreateIconLink,
-  FlexBox,
   GlobalCategoryContainer,
   HeadTitleContainer,
-  TextBox,
 } from '@/components/common/globalStyled/styled';
-import Link from 'next/link';
-import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorBaord';
+import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorBoard';
 import PopularMentorBoardList from '@/components/organisms/mentor-board/PopularMentorBoardList';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const MentorBoardTemplate = () => {
+  const filterCategoryId = useRecoilValue(CategoryFilterAtom);
+
   return (
     <>
       <MainPageHeader />
@@ -40,15 +41,15 @@ const MentorBoardTemplate = () => {
       <ContainerWrapper>
         <S.MentorListContainer>
           <S.ListTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.ListTitleBox>
-          <RandomMentorBoard />
+          <RandomMentorBoard filterCategoryId={filterCategoryId} />
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>최근 인기 멘토글</S.ListTitleBox>
-          <PopularMentorBoardList />
+          <PopularMentorBoardList filterCategoryId={filterCategoryId} />
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>전체 멘토 게시글</S.ListTitleBox>
-          <MentorBoardList />
+          <MentorBoardList filterCategoryId={filterCategoryId} />
         </S.MentorListContainer>
       </ContainerWrapper>
     </>

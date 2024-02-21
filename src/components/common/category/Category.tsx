@@ -9,6 +9,10 @@ export interface filterType {
   category: string;
 }
 
+export interface FilterPropsType {
+  filterCategoryId: number;
+}
+
 const Category = () => {
   const [catNum, setCatNum] = useRecoilState(CategoryFilterAtom);
   const [filterList, setFilterList] = useState<filterType[]>([]);

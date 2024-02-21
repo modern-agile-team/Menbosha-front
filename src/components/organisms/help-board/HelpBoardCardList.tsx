@@ -8,8 +8,9 @@ import { HelpListApiType, HelpListParamsType } from '@/types/help';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const HelpBoardCardList = () => {
+const HelpBoardCardList = ({ filterCategoryId }: FilterPropsType) => {
   const [totalPage, setTotalPage] = useState(1); //페이지 수
   const [page, setPage] = useState(1);
   const [getList, setGetList] = useState<
@@ -19,8 +20,6 @@ const HelpBoardCardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
-  const [filterCategory, setFilterCategory] =
-    useRecoilState(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -47,13 +46,13 @@ const HelpBoardCardList = () => {
   }, [page]);
 
   useEffect(() => {
-    if (filterCategory !== 1) {
+    if (filterCategoryId !== 1) {
       setGetList([]);
       setTimeout(() => {
         loadPost();
       }, 0);
     }
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
@@ -67,7 +66,7 @@ const HelpBoardCardList = () => {
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
     const temp: HelpListParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId,
       loadOnlyPullingUp: false,
       sortOrder: 'DESC',
       orderField: 'id',

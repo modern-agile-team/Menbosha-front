@@ -9,16 +9,16 @@ import {
 import HELP from '@/apis/help';
 import { useRecoilValue } from 'recoil';
 import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const HelpPullingBoardList = () => {
+const HelpPullingBoardList = ({ filterCategoryId }: FilterPropsType) => {
   const [getPullingData, setPullingData] = useState<
     HelpListApiType['helpMeBoardWithUserAndImagesItemDto']
   >([]);
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getPullingUpApi = async () => {
     const params: HelpListParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId,
       loadOnlyPullingUp: true,
       sortOrder: 'DESC',
       orderField: 'pullingUp',
@@ -35,7 +35,7 @@ const HelpPullingBoardList = () => {
   /**필터링 되면 재 렌더링 */
   useEffect(() => {
     getPullingUpApi();
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   return (
     <S.HelpCardContainer>

@@ -1,9 +1,6 @@
 import MentorCard from '@/components/molecules/mentor-elements/MentorCard';
-import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import USER from '@/apis/user';
-import { MentorType } from '@/types/user';
 import { useRouter } from 'next/router';
 import MENTORS from '@/apis/mentors';
 import {
@@ -11,10 +8,9 @@ import {
   MentorListType,
   MentorPaginationParamsType,
 } from '@/types/mentor';
-import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const MentorList = () => {
+const MentorList = ({ filterCategoryId }: FilterPropsType) => {
   const [getMentorData, setMentorData] = useState<
     MentorListType['userWithImageAndIntroDtos']
   >([]);
@@ -23,32 +19,27 @@ const MentorList = () => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-  const filterCategoryId = useRecoilValue(CategoryFilterAtom);
-  const router = useRouter();
 
   //옵저버 생성
   useEffect(() => {
-    const observer = new IntersectionObserver(handleObs, { threshold: 0.5 });
+    const observer = new IntersectionObserver(handleObs, { threshold: 0.1 });
     if (obsRef.current) observer.observe(obsRef.current);
     return () => {
       observer.disconnect();
     };
   }, [obsRef, getMentorData]);
 
-  //무한스크롤 로드
-  useEffect(() => {
-    getMentorListApi();
-  }, [page]);
+  // useEffect(() => {
+  //   setMentorData([]);
+  //   setPage(1);
+  //   setTimeout(() => {
+  //     getMentorListApi();
+  //   }, 0);
+  // }, [filterCategoryId]);
 
   useEffect(() => {
-    if (filterCategoryId !== 1) {
-      setMentorData([]);
-      setPage(1);
-      setTimeout(() => {
-        getMentorListApi();
-      }, 0);
-    }
-  }, [filterCategoryId]);
+    getMentorListApi();
+  }, [page, totalPage]);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
@@ -60,6 +51,7 @@ const MentorList = () => {
   };
   //스크롤 시 로드 함수
   const getMentorListApi = useCallback(async () => {
+    console.log('page', page, 'totalpage', totalPage);
     const params: MentorPaginationParamsType = {
       page: page,
       pageSize: 10,
@@ -77,45 +69,7 @@ const MentorList = () => {
       setTotalPage(response.lastPage);
     }
     setLoad(false);
-  }, [page]);
-  // 스크롤 수동으로 조정 설정
-  useEffect(() => {
-    if (
-      'scrollRestoration' in history &&
-      history.scrollRestoration !== 'manual'
-    ) {
-      history.scrollRestoration = 'manual';
-    }
-  }, []);
-
-  const handleRouteChange = useCallback((e: any) => {
-    sessionStorage.setItem(
-      `__next_scroll_back`,
-      JSON.stringify({
-        x: 0,
-        y: window.scrollY.toString(),
-      }),
-    );
-  }, []);
-
-  //   router발생시 스크롤 위치 저장
-  useEffect(() => {
-    router.events.on('routeChangeStart', handleRouteChange);
-    window.addEventListener('beforeunload', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-      window.removeEventListener('beforeunload', handleRouteChange);
-    };
-  }, [router.events]);
-
-  //스크롤 위치 복원 & session비우기
-  useEffect(() => {
-    const temp = JSON.parse(
-      sessionStorage.getItem(`__next_scroll_back`) as string,
-    );
-    temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // window.sessionStorage.clear();
-  }, [getMentorData]);
+  }, [page, totalPage]);
 
   return (
     <S.MentorCardContainer>

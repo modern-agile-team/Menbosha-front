@@ -4,10 +4,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
 import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const MentorBoardList = () => {
+const MentorBoardList = ({ filterCategoryId }: FilterPropsType) => {
   const [getBoardData, setBoardData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
@@ -17,7 +16,6 @@ const MentorBoardList = () => {
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -44,14 +42,14 @@ const MentorBoardList = () => {
   }, [page]);
 
   useEffect(() => {
-    if (filterCategory !== 1) {
+    if (filterCategoryId !== 1) {
       setPage(1);
       setBoardData([]);
       setTimeout(() => {
         loadPost();
       }, 0);
     }
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
@@ -65,7 +63,7 @@ const MentorBoardList = () => {
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
     const temp: MentorBoardParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId,
       loadOnlyPopular: false,
       orderField: 'id',
       sortOrder: 'DESC',

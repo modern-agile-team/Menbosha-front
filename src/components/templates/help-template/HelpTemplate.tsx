@@ -12,8 +12,12 @@ import {
 } from '../../common/globalStyled/styled';
 import MainPageHeader from '../../common/header/MainPageHeader';
 import * as S from './styled';
+import { useRecoilValue } from 'recoil';
+import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 
 const HelpTemplate = () => {
+  const filterCategoryId = useRecoilValue(CategoryFilterAtom);
+
   return (
     <>
       <MainPageHeader />
@@ -39,11 +43,11 @@ const HelpTemplate = () => {
       <ContainerWrapper>
         <S.HelpBoardListContainer>
           <S.BoardTitleBox>끌올된 게시판</S.BoardTitleBox>
-          <HelpPullingBoardList />
+          <HelpPullingBoardList filterCategoryId={filterCategoryId} />
         </S.HelpBoardListContainer>
         <S.HelpBoardListContainer>
           <S.BoardTitleBox>도와주세요 게시판</S.BoardTitleBox>
-          <HelpBoardCardList />
+          <HelpBoardCardList filterCategoryId={filterCategoryId} />
         </S.HelpBoardListContainer>
       </ContainerWrapper>
     </>
