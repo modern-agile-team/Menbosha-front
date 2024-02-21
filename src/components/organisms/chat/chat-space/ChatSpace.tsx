@@ -18,11 +18,11 @@ import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
 
 const ChatSpace = () => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
-  const [chatHistory, setChatHistory] =
-    useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
+  // const [chatHistory, setChatHistory] =
+  //   useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
   const [pagination, setPagination] = useState<ChatPaginationType>();
   // const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
-  const [chatContents, setChatContents] =
+  const [getChatContents, setGetChatContents] =
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
   const [chatPartners, setChatPartners] = useState<ChatPartnersType>();
   const page = 1;
@@ -39,9 +39,9 @@ const ChatSpace = () => {
         pageSize: res.pageSize,
         totalCount: res.totalCount,
       };
-      setChatHistory(res);
+      // setChatHistory(res);
       setPagination(temp);
-      setChatContents(res.chats);
+      setGetChatContents(res.chats);
       setChatPartners(res.chatPartners[0]);
     } catch (error) {
       console.error('에러:', error);
@@ -55,11 +55,14 @@ const ChatSpace = () => {
     }
   }, [selectedRoomId]);
 
+  // useEffect(() => {
+  //   setChatContents(getChatContents);
+  // }, [setGetChatContents]);
+
   useEffect(() => {
-    console.log('::::::', chatHistory);
     console.log(chatPartners);
-    console.log('채팅 내역', chatHistory);
-  }, [chatHistory, chatPartners]);
+    // console.log('채팅 내역', chatHistory);
+  }, [chatPartners]);
 
   return (
     <S.ChatSpaceContainer>
@@ -67,7 +70,7 @@ const ChatSpace = () => {
       <ChatSpaceBody
         pagination={pagination}
         chatPartners={chatPartners}
-        chatContents={chatContents}
+        // chatContents={chatContents}
       />
       <ChatSpaceFooter />
     </S.ChatSpaceContainer>

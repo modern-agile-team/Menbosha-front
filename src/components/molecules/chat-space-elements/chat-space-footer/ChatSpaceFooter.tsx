@@ -15,15 +15,13 @@ const ChatSpaceFooter = () => {
     useRecoilState(SelectedRoomIdAtom);
   const [chatContents, setChatContents] =
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
-  // const [temp, setTemp] = useState<any[]>([]);
-  // const [chatHistory, setChatHistory] =
-  // useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
   const senderId = useRecoilValue(MyIdAtom);
   const socket = useSocket();
 
   useEffect(() => {
     if (socket) {
       socket.on('message', (incomingMessage: any) => {
+        console.log('반환받은 채팅데이터', incomingMessage);
         const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
           incomingMessage.data;
         const newChatMessage: ChatContentsType = {
@@ -36,6 +34,7 @@ const ChatSpaceFooter = () => {
         };
         // setTemp((prevContents) => [...prevContents, newChatMessage]);
         setChatContents((prevContents) => [...prevContents, newChatMessage]);
+        console.log('chatContents가 업데이트되었는지?', chatContents);
       });
     }
     return () => {
@@ -44,10 +43,6 @@ const ChatSpaceFooter = () => {
       }
     };
   }, [socket]);
-
-  // useEffect(() => {
-  //   setChatContents(temp);
-  // }, [setTemp]);
 
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value.trimLeft());

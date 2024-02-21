@@ -1,4 +1,4 @@
-import { ModalType } from '@/types/chat';
+import { ChatRoomDeleteModalType } from '@/types/chat';
 import styled from 'styled-components';
 import React from 'react';
 import CHAT from '@/apis/chat';
@@ -10,7 +10,7 @@ const ChatRoomOutModal = ({
   hide,
   chatRoomId,
   partnerName,
-}: ModalType) => {
+}: ChatRoomDeleteModalType) => {
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
 
   // 채팅방 나가기 기능

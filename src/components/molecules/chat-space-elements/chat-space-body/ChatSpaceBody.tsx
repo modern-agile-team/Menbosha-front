@@ -7,16 +7,23 @@ import {
   ChatPaginationType,
   ChatPartnersType,
 } from '@/types/chat';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import useModal from '@/hooks/useModal';
+import ChatDeleteModal from './ChatDeleteModal';
 
 const ChatSpaceBody = (props: {
   chatPartners: ChatPartnersType | undefined;
-  chatContents: ChatContentsType[];
+  // chatContents: ChatContentsType[];
   pagination: ChatPaginationType | undefined;
 }) => {
-  const { chatPartners, chatContents, pagination } = props;
+  const { chatPartners, pagination } = props;
   const chatPartnerId = chatPartners?.id;
-  const reverseContents = [...chatContents].reverse();
+  const chatContents = useRecoilValue<ChatContentsType[]>(ChatContentsAtom);
+  const { isOpenModal, handleModal } = useModal();
+  const chatContentsInOrder = [...chatContents];
 
+  // 채팅 생성 날짜
   const isSameDay = (date1: Date, date2: Date) => {
     return (
       date1.getFullYear() === date2.getFullYear() &&
@@ -26,9 +33,16 @@ const ChatSpaceBody = (props: {
   };
   let currentDate: Date | null = null;
 
+  const handleChatDelete: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    e.preventDefault();
+    handleModal();
+  };
+
+  // console.log('ChatSpaceBody re-rendering');
+
   return (
     <S.ChatSpaceBodyContainer>
-      {reverseContents.map((message) => {
+      {chatContentsInOrder.reverse().map((message) => {
         const isGuestMessage = message.senderId === chatPartnerId;
         const createdAtDate = new Date(message.createdAt);
         const hours = createdAtDate.getHours();
@@ -46,7 +60,7 @@ const ChatSpaceBody = (props: {
         currentDate = createdAtDate; // currentDate 할당
 
         return (
-          <div key={message._id}>
+          <div key={message._id} onContextMenu={handleChatDelete}>
             {isNewDate && <TimeStamp date={createdAtDate} />}
             {isGuestMessage ? (
               <S.ChatBubbleGuestContainer>
@@ -89,6 +103,18 @@ const ChatSpaceBody = (props: {
           </div>
         );
       })}
+      {isOpenModal && (
+        <>
+          {chatContentsInOrder.reverse().map((data) => (
+            <ChatDeleteModal
+              show={isOpenModal}
+              hide={handleModal}
+              roomId={data.chatRoomId}
+              chatId={data._id}
+            />
+          ))}
+        </>
+      )}
     </S.ChatSpaceBodyContainer>
   );
 };
