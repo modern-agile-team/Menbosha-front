@@ -156,6 +156,6 @@ export const Backdrop = styled.div`
   position: fixed;
   left: 0px;
   top: 0px;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: auto;
 `;

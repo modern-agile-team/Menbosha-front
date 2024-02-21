@@ -26,7 +26,7 @@ const ChatSpace = () => {
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
   const [chatPartners, setChatPartners] = useState<ChatPartnersType>();
   const page = 1;
-  const pageSize = 5; // 무한 스크롤 구현 전까지 일단 기본값
+  const pageSize = 20; // 무한 스크롤 구현 전까지 일단 기본값
   // 채팅내역 불러오기 api ,테스트가 전부 끝나면 try-catch 삭제 예정
   const getChatHistoryApi = async () => {
     try {

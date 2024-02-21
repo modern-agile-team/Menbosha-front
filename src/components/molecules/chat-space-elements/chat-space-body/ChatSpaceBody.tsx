@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styled';
 import TimeStamp from '../time-stamp/TimeStamp';
 import Image from 'next/image';
@@ -20,6 +20,9 @@ const ChatSpaceBody = (props: {
   const { chatPartners, pagination } = props;
   const chatPartnerId = chatPartners?.id;
   const chatContents = useRecoilValue<ChatContentsType[]>(ChatContentsAtom);
+  const [selectedChatId, setSelectedChatId] = useState<string | undefined>(
+    undefined,
+  );
   const { isOpenModal, handleModal } = useModal();
   const chatContentsInOrder = [...chatContents];
 
@@ -33,12 +36,15 @@ const ChatSpaceBody = (props: {
   };
   let currentDate: Date | null = null;
 
-  const handleChatDelete: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
-    handleModal();
-  };
-
-  // console.log('ChatSpaceBody re-rendering');
+  // 채팅내역 삭제 모달 핸들러
+  const handleChatDelete =
+    (messageId: string) =>
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.preventDefault();
+      setSelectedChatId(messageId);
+      handleModal();
+    };
+  console.log('ChatSpaceBody re-rendering');
 
   return (
     <S.ChatSpaceBodyContainer>
@@ -60,46 +66,50 @@ const ChatSpaceBody = (props: {
         currentDate = createdAtDate; // currentDate 할당
 
         return (
-          <div key={message._id} onContextMenu={handleChatDelete}>
-            {isNewDate && <TimeStamp date={createdAtDate} />}
-            {isGuestMessage ? (
-              <S.ChatBubbleGuestContainer>
-                {chatPartners?.userImage && (
-                  <S.ChatGuestImage
-                    src={chatPartners.userImage}
-                    alt="GuestImage"
-                  />
-                )}
-                <S.ChatBubbleGuestCenter>
-                  <S.ChatGuestName>{chatPartners?.name}</S.ChatGuestName>
-                  <S.ChatBubble isHost={isGuestMessage}>
-                    <span>{message.content}</span>
-                  </S.ChatBubble>
-                </S.ChatBubbleGuestCenter>
-                {isValidTime && (
-                  <S.ChatTimeBox>{`${getAmPm(hours)} ${
-                    hours % 12 || 12
-                  }:${minutes}`}</S.ChatTimeBox>
-                )}
-              </S.ChatBubbleGuestContainer>
-            ) : (
-              <S.ChatBubbleHostContainer>
-                {!isSameDay(currentDate, createdAtDate) && (
-                  <TimeStamp date={createdAtDate} />
-                )}
-                {/* 일단 TimeStamp가 상대방이나 본인이 채팅했을 때 날짜가 넘어가면
+          <div key={message._id}>
+            <div
+              onContextMenu={handleChatDelete(message._id)}
+              data-message-id={message._id}>
+              {isNewDate && <TimeStamp date={createdAtDate} />}
+              {isGuestMessage ? (
+                <S.ChatBubbleGuestContainer>
+                  {chatPartners?.userImage && (
+                    <S.ChatGuestImage
+                      src={chatPartners.userImage}
+                      alt="GuestImage"
+                    />
+                  )}
+                  <S.ChatBubbleGuestCenter>
+                    <S.ChatGuestName>{chatPartners?.name}</S.ChatGuestName>
+                    <S.ChatBubble isHost={isGuestMessage}>
+                      <span>{message.content}</span>
+                    </S.ChatBubble>
+                  </S.ChatBubbleGuestCenter>
+                  {isValidTime && (
+                    <S.ChatTimeBox>{`${getAmPm(hours)} ${
+                      hours % 12 || 12
+                    }:${minutes}`}</S.ChatTimeBox>
+                  )}
+                </S.ChatBubbleGuestContainer>
+              ) : (
+                <S.ChatBubbleHostContainer>
+                  {!isSameDay(currentDate, createdAtDate) && (
+                    <TimeStamp date={createdAtDate} />
+                  )}
+                  {/* 일단 TimeStamp가 상대방이나 본인이 채팅했을 때 날짜가 넘어가면
                 찍혀야하므로 각각의 컴포넌트에 둘 다 박았더니 중복됨.
                 따라서 일단 조건을 줘서 해결해봄. */}
-                {isValidTime && (
-                  <S.ChatTimeBox>{`${getAmPm(hours)} ${
-                    hours % 12 || 12
-                  }:${minutes}`}</S.ChatTimeBox>
-                )}
-                <S.ChatBubble isHost={false}>
-                  <span>{message.content}</span>
-                </S.ChatBubble>
-              </S.ChatBubbleHostContainer>
-            )}
+                  {isValidTime && (
+                    <S.ChatTimeBox>{`${getAmPm(hours)} ${
+                      hours % 12 || 12
+                    }:${minutes}`}</S.ChatTimeBox>
+                  )}
+                  <S.ChatBubble isHost={false}>
+                    <span>{message.content}</span>
+                  </S.ChatBubble>
+                </S.ChatBubbleHostContainer>
+              )}
+            </div>
           </div>
         );
       })}
@@ -110,7 +120,7 @@ const ChatSpaceBody = (props: {
               show={isOpenModal}
               hide={handleModal}
               roomId={data.chatRoomId}
-              chatId={data._id}
+              chatId={selectedChatId}
             />
           ))}
         </>

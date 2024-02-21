@@ -84,7 +84,7 @@ export const ChatGuestName = styled.div`
 export const ChatTimeBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 3vw;
+  width: 3.5vw;
   /* height: 2vh; */
   margin-bottom: 10px;
   justify-content: flex-end;

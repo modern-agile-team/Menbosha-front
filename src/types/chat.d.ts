@@ -160,5 +160,5 @@ export interface ChatDeleteModalType {
   show: boolean;
   hide: () => void;
   roomId: string;
-  chatId: string;
+  chatId: string | undefined;
 }
