@@ -57,13 +57,13 @@ const MainPageHeader = () => {
           </Link>
         </S.LogoBox>
         <S.NavigateBox>
-          <Link href={`/mentor`}>
+          <Link href={`/mentor?filterId=1`}>
             <span>멘토 찾기</span>
           </Link>
-          <Link href={`/mentor/board`}>
+          <Link href={`/mentor/board?filterId=1`}>
             <span>멘토 게시글</span>
           </Link>
-          <Link href={`/help`}>
+          <Link href={`/help?filterId=1`}>
             <span>도와주세요</span>
           </Link>
           <Link href={`/support`}>

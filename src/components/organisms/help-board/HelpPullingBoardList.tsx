@@ -7,18 +7,18 @@ import {
   PullingUpType,
 } from '@/types/help';
 import HELP from '@/apis/help';
-import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const HelpPullingBoardList = () => {
+const HelpPullingBoardList = ({
+  filterCategoryId,
+}: Partial<FilterPropsType>) => {
   const [getPullingData, setPullingData] = useState<
     HelpListApiType['helpMeBoardWithUserAndImagesItemDto']
   >([]);
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getPullingUpApi = async () => {
     const params: HelpListParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId as number,
       loadOnlyPullingUp: true,
       sortOrder: 'DESC',
       orderField: 'pullingUp',
@@ -35,32 +35,36 @@ const HelpPullingBoardList = () => {
   /**필터링 되면 재 렌더링 */
   useEffect(() => {
     getPullingUpApi();
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   return (
     <S.HelpCardContainer>
-      {getPullingData.map((data) => {
-        const temp = {
-          id: data.id,
-          name: data.user.name,
-          userImage: data.user.userImage.imageUrl,
-          image: data.imageUrl !== null ? data.imageUrl : '',
-          head: data.head,
-          body: data.body,
-          createdAt: data.pullingUp,
-          userId: data.userId,
-          categoryId: data.categoryId,
-        };
-        return (
-          <>
-            {data.pullingUp !== null && (
-              <S.HelpCardWrapper key={data.id}>
-                <HelpCard {...temp} />
-              </S.HelpCardWrapper>
-            )}
-          </>
-        );
-      })}
+      {getPullingData.length !== 0 ? (
+        getPullingData.map((data) => {
+          const temp = {
+            id: data.id,
+            name: data.user.name,
+            userImage: data.user.userImage.imageUrl,
+            image: data.imageUrl !== null ? data.imageUrl : '',
+            head: data.head,
+            body: data.body,
+            createdAt: data.pullingUp,
+            userId: data.userId,
+            categoryId: data.categoryId,
+          };
+          return (
+            <>
+              {data.pullingUp !== null && (
+                <S.HelpCardWrapper key={data.id}>
+                  <HelpCard {...temp} />
+                </S.HelpCardWrapper>
+              )}
+            </>
+          );
+        })
+      ) : (
+        <div>끌올된 게시물이 없습니다.</div>
+      )}
     </S.HelpCardContainer>
   );
 };

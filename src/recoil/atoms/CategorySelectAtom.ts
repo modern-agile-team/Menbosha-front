@@ -12,8 +12,3 @@ export const SectionSelectAtom = atom({
   key: 'sectionSelect',
   default: '',
 });
-
-export const CategoryFilterAtom = atom({
-  key: 'catFilter',
-  default: 1,
-});

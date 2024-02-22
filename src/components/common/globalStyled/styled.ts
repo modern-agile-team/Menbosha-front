@@ -166,6 +166,7 @@ export const GlobalCategoryContainer = styled.div`
   justify-content: center;
   position: sticky;
   background-color: #fff;
+  top: 0px;
   margin: 0px 204px;
   @media only all and (max-width: 1900px) {
     margin: 0px 10.625%; //0 204

@@ -17,10 +17,8 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
   };
 
   /**돌아가기 버튼 */
-  const handlePrevBtn = () => {
-    router.push({
-      pathname: `/mentor/board`,
-    });
+  const handleBack = () => {
+    router.back();
   };
 
   useEffect(() => {
@@ -31,7 +29,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
     <S.MentorBoardUnitContainer>
       <div>
         <img
-          onClick={handlePrevBtn}
+          onClick={handleBack}
           src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"></img>
       </div>
       {getUnitData && (

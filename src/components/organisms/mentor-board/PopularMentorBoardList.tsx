@@ -4,17 +4,18 @@ import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
 
-const PopularMentorBoardList = () => {
+const PopularMentorBoardList = ({
+  filterCategoryId,
+}: Partial<FilterPropsType>) => {
   const [getHotData, setHotData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   const getRandomMentorBoardApi = async () => {
     const temp: MentorBoardParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId as number,
       loadOnlyPopular: true,
       orderField: 'id',
       sortOrder: 'DESC',
@@ -27,7 +28,7 @@ const PopularMentorBoardList = () => {
 
   useEffect(() => {
     getRandomMentorBoardApi();
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   useEffect(() => {
     getRandomMentorBoardApi();

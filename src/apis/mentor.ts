@@ -7,7 +7,6 @@ import {
 } from '@/types/mentor';
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
-import COUNT from './count';
 
 const MENTOR = {
   path: `/mentor-boards`,
@@ -18,7 +17,6 @@ const MENTOR = {
     body,
     category,
   }: CreateMentorBoardType): Promise<any> {
-    await COUNT.totalCount('increment', 'mentorBoardCount');
     const result: AxiosResponse = await instance.post<CreateMentorBoardType>(
       `${MENTOR.path}`,
       {
@@ -62,7 +60,7 @@ const MENTOR = {
   ): Promise<MentorBoardListType> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
       params: {
-        categoryId: params.categoryId !== 1 ? params.categoryId : 1,
+        categoryId: params.categoryId,
         pageSize: params.pageSize,
         page: params.page,
         loadOnlyPopular: params.loadOnlyPopular,
@@ -125,7 +123,6 @@ const MENTOR = {
 
   /**멘토 게시글 좋아요 생성 [post] */
   async createLike(boardId: number, userId: number): Promise<any> {
-    await COUNT.totalCount('increment', 'mentorBoardLikeCount', userId);
     const result: AxiosResponse = await instance.post(
       `${MENTOR.path}/${boardId}/likes`,
     );
@@ -134,7 +131,6 @@ const MENTOR = {
 
   /**멘토 게시글 좋아요 삭제 [delete] */
   async deleteLike(boardId: number, userId: number): Promise<any> {
-    await COUNT.totalCount('decrement', 'mentorBoardLikeCount', userId);
     const result: AxiosResponse = await instance.delete(
       `${MENTOR.path}/${boardId}/likes`,
     );
