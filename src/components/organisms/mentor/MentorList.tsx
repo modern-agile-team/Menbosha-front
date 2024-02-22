@@ -22,7 +22,7 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
 
   //옵저버 생성
   useEffect(() => {
-    const observer = new IntersectionObserver(handleObs, { threshold: 0.1 });
+    const observer = new IntersectionObserver(handleObs, { threshold: 0.5 });
     if (obsRef.current) observer.observe(obsRef.current);
     return () => {
       observer.disconnect();
