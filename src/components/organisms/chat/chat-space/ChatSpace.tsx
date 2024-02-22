@@ -15,6 +15,7 @@ import {
 import { log } from 'console';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
+import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 
 const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
@@ -22,7 +23,8 @@ const ChatSpace = (myId: MyIdType) => {
   // const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
   const [getChatContents, setGetChatContents] =
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
-  const [chatPartners, setChatPartners] = useState<ChatPartnersType>();
+  const [chatPartners, setChatPartners] =
+    useRecoilState<ChatPartnersType>(ChatPartnersAtom);
   const page = 1;
   const pageSize = 20; // 무한 스크롤 구현 전까지 일단 기본값
   // 채팅내역 불러오기 api ,테스트가 전부 끝나면 try-catch 삭제 예정

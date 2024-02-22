@@ -12,7 +12,8 @@ const ChatRoomOutModal = ({
   partnerName,
 }: ChatRoomDeleteModalType) => {
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
-
+  console.log(partnerName);
+  console.log(chatRoomId);
   // 채팅방 나가기 기능
   const handleChatRoomOut = async () => {
     await CHAT.deleteChatRoom(chatRoomId);
@@ -39,7 +40,7 @@ const ChatRoomOutModal = ({
             <span>채팅방 나가기</span>
           </ModalTitle>
           <ModalContents>
-            <span>{partnerName} 멘토님</span>
+            <span>{partnerName}님 과의</span>
             <span>채팅방을 나가시겠습니까?</span>
           </ModalContents>
           <ButtonArea>

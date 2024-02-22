@@ -8,43 +8,55 @@ import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
+import { log } from 'console';
+import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
+
+let chatPartnerName = '';
 
 const ChatRoomListBox = (myId: MyIdType) => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
+  const chatPartners = useRecoilValue(ChatPartnersAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
   const socket = useSocket();
 
   const handleRoomSelect = (roomId: string) => {
-    const queryURL = {
-      roomId: roomId,
-    };
-    selectRoom(`${roomId}`, queryURL);
-    setSelectedRoomId(roomId);
+    const selectedRoom = getChatRoomList.find(
+      (data) => data.chatRooms._id === roomId,
+    );
+    if (selectedRoom) {
+      chatPartnerName = selectedRoom.chatPartners[0].name;
 
-    const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
+      const queryURL = {
+        roomId: roomId,
+      };
+      selectRoom(`${roomId}`, queryURL);
+      setSelectedRoomId(roomId);
 
-    const emitData = { userId: myId.myId, chatRoomIds: allChatRoomId };
-    // console.log('**********', allChatRoomId);
-    // console.log('userId', myId.myId);
-    // console.log('emitDataaaaaaaa', emitData);
+      const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
 
-    if (socket) {
-      console.log('Room Join', {
-        userId: myId.myId,
-        chatRoomIds: allChatRoomId,
-      });
+      const emitData = { userId: myId.myId, chatRoomIds: allChatRoomId };
+      // console.log('**********', allChatRoomId);
+      // console.log('userId', myId.myId);
+      // console.log('emitDataaaaaaaa', emitData);
 
-      socket.emit('login', emitData);
+      if (socket) {
+        console.log('Room Join', {
+          userId: myId.myId,
+          chatRoomIds: allChatRoomId,
+        });
 
-      socket.on('error', (error: any) => {
-        console.log(error);
-      });
-      socket.on('join', (join: any) => {
-        console.log('Room Join 성공', join);
-      });
+        socket.emit('login', emitData);
+
+        socket.on('error', (error: any) => {
+          console.log(error);
+        });
+        socket.on('join', (join: any) => {
+          console.log('Room Join 성공', join);
+        });
+      }
     }
   };
 
@@ -57,7 +69,7 @@ const ChatRoomListBox = (myId: MyIdType) => {
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
-        // console.log(data);
+        // console.log(data.chatPartners[0].);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
@@ -116,14 +128,14 @@ const ChatRoomListBox = (myId: MyIdType) => {
       })}
       {isOpenModal && (
         <>
-          {getChatRoomList.map((data) => (
-            <ChatRoomOutModal
-              show={isOpenModal}
-              hide={handleModal}
-              chatRoomId={data.chatRooms._id}
-              partnerName={data.chatPartners[0].name}
-            />
-          ))}
+          {/* {getChatRoomList.map((data) => ( */}
+          <ChatRoomOutModal
+            show={isOpenModal}
+            hide={handleModal}
+            chatRoomId={selectedRoomId}
+            partnerName={chatPartners.name}
+          />
+          {/* ))} */}
         </>
       )}
     </S.ListContainer>

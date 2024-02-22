@@ -30,8 +30,6 @@ const ChatPageTemplate = () => {
     getMyIdApi();
   }, []);
 
-  console.log(myId);
-
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
     const res = await CHAT.getChatRoomList();
