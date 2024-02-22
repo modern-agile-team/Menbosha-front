@@ -10,12 +10,12 @@ import {
 } from '@/types/mentor';
 import { FilterPropsType } from '@/components/common/category/Category';
 
-const MentorList = ({ filterCategoryId }: FilterPropsType) => {
+const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const [getMentorData, setMentorData] = useState<
     MentorListType['userWithImageAndIntroDtos']
   >([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1); //페이지 수
+  const [totalPage, setTotalPage] = useState(lastPage); //페이지 수
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
@@ -29,29 +29,32 @@ const MentorList = ({ filterCategoryId }: FilterPropsType) => {
     };
   }, [obsRef, getMentorData]);
 
-  // useEffect(() => {
-  //   setMentorData([]);
-  //   setPage(1);
-  //   setTimeout(() => {
-  //     getMentorListApi();
-  //   }, 0);
-  // }, [filterCategoryId]);
+  useEffect(() => {
+    setMentorData([]);
+    setPage(1);
+    setTimeout(() => {
+      getMentorListApi();
+    }, 0);
+  }, [filterCategoryId]);
+
+  console.log(totalPage);
 
   useEffect(() => {
-    getMentorListApi();
-  }, [page, totalPage]);
+    if (page > 1) {
+      getMentorListApi();
+    }
+  }, [page]);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting) {
       //옵저버 중복 실행 방지
       preventRef.current = false; //옵저버 중복 실행 방지
-      setPage((prev) => prev + 1); //페이지 값 감소
+      setPage((prev) => prev + 1); //페이지 값 증가
     }
   };
   //스크롤 시 로드 함수
   const getMentorListApi = useCallback(async () => {
-    console.log('page', page, 'totalpage', totalPage);
     const params: MentorPaginationParamsType = {
       page: page,
       pageSize: 10,
@@ -62,14 +65,11 @@ const MentorList = ({ filterCategoryId }: FilterPropsType) => {
     setLoad(true); //로딩 시작
     if (page <= totalPage) {
       const response = await MENTORS.getMentorPagination(params); //api요청 글 목록 불러오기
-      setMentorData((prev: any) => [
-        ...prev,
-        ...response.userWithImageAndIntroDtos,
-      ]);
       setTotalPage(response.lastPage);
+      setMentorData((prev) => [...prev, ...response.userWithImageAndIntroDtos]);
     }
     setLoad(false);
-  }, [page, totalPage]);
+  }, [page]);
 
   return (
     <S.MentorCardContainer>

@@ -17,7 +17,7 @@ import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MentorListType } from '@/types/mentor';
 
-const MentorTemplate = () => {
+const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
   const router = useRouter();
   const filterCategoryId = useRecoilValue(CategoryFilterAtom);
 
@@ -70,7 +70,7 @@ const MentorTemplate = () => {
         </div>
       </HeadTitleContainer>
       <GlobalCategoryContainer>
-        <Category />
+        <Category location="mentor" />
         <CreateIconLink
           href={{
             pathname: `/create`,
@@ -93,7 +93,12 @@ const MentorTemplate = () => {
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>전체 멘토</S.ListTitleBox>
-          <MentorList filterCategoryId={filterCategoryId} />
+          {lastPage && (
+            <MentorList
+              filterCategoryId={filterCategoryId}
+              lastPage={lastPage}
+            />
+          )}
         </S.MentorListContainer>
       </ContainerWrapper>
       <MainPageFooter />

@@ -5,7 +5,7 @@ import { MentorListType, MentorPaginationParamsType } from '@/types/mentor';
 import MENTORS from '@/apis/mentors';
 import { FilterPropsType } from '@/components/common/category/Category';
 
-const MentorRanking = ({ filterCategoryId }: FilterPropsType) => {
+const MentorRanking = ({ filterCategoryId }: Partial<FilterPropsType>) => {
   const [getRankingData, setRankingData] = useState<
     MentorListType['userWithImageAndIntroDtos']
   >([]);
@@ -14,7 +14,7 @@ const MentorRanking = ({ filterCategoryId }: FilterPropsType) => {
     const params: MentorPaginationParamsType = {
       page: 1,
       pageSize: 5,
-      activityCategoryId: filterCategoryId,
+      activityCategoryId: filterCategoryId as number,
       orderField: 'rank',
       sortOrder: 'DESC',
     };

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import PopularMentorCard from '@/components/molecules/mentor-elements/PopularMentorCard';
 import { FilterPropsType } from '@/components/common/category/Category';
 
-const PopularMentorList = ({ filterCategoryId }: FilterPropsType) => {
+const PopularMentorList = ({ filterCategoryId }: Partial<FilterPropsType>) => {
   const [getPopData, setPopData] = useState<MentorPopCardDataType[]>([]);
   const router = useRouter();
 
