@@ -20,8 +20,10 @@ export const SocketProvider = ({ children }: SocketProviderProps) => {
 
   useEffect(() => {
     //수정 해야함
-    const socket = io('http://54.180.108.185:3000/ch-65aa05aaec27d430a0545335');
+    // const socket = io('http://54.180.108.185:3000/chat');
+    const socket = io(`${process.env.NEXT_PUBLIC_API_BASE_URL}chat`);
     setSocket(socket);
+    console.log('socketsocketsocketsocket', socket);
 
     return () => {
       socket.disconnect();

@@ -7,14 +7,12 @@ import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
-import { MyIdAtom } from '@/recoil/atoms/MyIdAtom';
+import { MyIdType } from '@/components/templates/ChatPageTemplate';
 
-const ChatRoomListBox = () => {
+const ChatRoomListBox = (myId: MyIdType) => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
-  // const [getChatHistory, SetGetChatHistory] = useRecoilState(ChatHistoryAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
-  const myId = useRecoilValue(MyIdAtom);
   const selectRoom = useReplace();
   const { isOpenModal, handleModal } = useModal();
   const socket = useSocket();
@@ -28,15 +26,24 @@ const ChatRoomListBox = () => {
 
     const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
 
+    const emitData = { userId: myId.myId, chatRoomIds: allChatRoomId };
+    // console.log('**********', allChatRoomId);
+    // console.log('userId', myId.myId);
+    // console.log('emitDataaaaaaaa', emitData);
+
     if (socket) {
-      console.log('Room Join 성공:', {
+      console.log('Room Join', {
         userId: myId.myId,
         chatRoomIds: allChatRoomId,
       });
 
-      socket.emit('login', {
-        userId: myId.myId,
-        chatRoomIds: allChatRoomId,
+      socket.emit('login', emitData);
+
+      socket.on('error', (error: any) => {
+        console.log(error);
+      });
+      socket.on('join', (join: any) => {
+        console.log('Room Join 성공', join);
       });
     }
   };
@@ -47,12 +54,10 @@ const ChatRoomListBox = () => {
     handleModal();
   };
 
-  console.log(myId);
-
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
-        console.log(data);
+        // console.log(data);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');

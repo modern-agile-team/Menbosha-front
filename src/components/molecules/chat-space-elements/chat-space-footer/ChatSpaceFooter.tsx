@@ -6,43 +6,19 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
-import { MyIdAtom } from '@/recoil/atoms/MyIdAtom';
-import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
+import { MyIdType } from '@/components/templates/ChatPageTemplate';
 
-const ChatSpaceFooter = () => {
+const ChatSpaceFooter = (myId: MyIdType) => {
   const [inputMessage, setInputMessage] = useState('');
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
   const [chatContents, setChatContents] =
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
-  const senderId = useRecoilValue(MyIdAtom);
   const socket = useSocket();
 
-  useEffect(() => {
-    if (socket) {
-      socket.on('message', (incomingMessage: any) => {
-        console.log('반환받은 채팅데이터', incomingMessage);
-        const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
-          incomingMessage.data;
-        const newChatMessage: ChatContentsType = {
-          _id,
-          chatRoomId,
-          content,
-          senderId,
-          seenUsers,
-          createdAt,
-        };
-        // setTemp((prevContents) => [...prevContents, newChatMessage]);
-        setChatContents((prevContents) => [...prevContents, newChatMessage]);
-        console.log('chatContents가 업데이트되었는지?', chatContents);
-      });
-    }
-    return () => {
-      if (socket) {
-        socket.off('message');
-      }
-    };
-  }, [socket]);
+  const senderId = myId.myId;
+  // console.log(senderId);
+  // console.log(selectedRoomId);
 
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value.trimLeft());
@@ -72,7 +48,68 @@ const ChatSpaceFooter = () => {
 
     setInputMessage('');
   };
-  console.log(inputMessage);
+
+  // useEffect(() => {
+  //   if (socket) {
+  //     socket.on('message', (incomingMessage: any) => {
+  //       if (incomingMessage) {
+  //         const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
+  //           incomingMessage;
+  //         const newChatMessage: ChatContentsType = {
+  //           _id,
+  //           chatRoomId,
+  //           content,
+  //           senderId,
+  //           seenUsers,
+  //           createdAt,
+  //         };
+  //         // console.log('반환받은 데이터', incomingMessage);
+  //         // console.log('추가할 메시지 데이터:', newChatMessage);
+  //         setChatContents((prevContents) => {
+  //           // console.log('Before setChatContents:', prevContents);
+  //           const updatedContents = [newChatMessage, ...prevContents];
+  //           // console.log('After setChatContents:', updatedContents);
+  //           return updatedContents;
+  //         });
+  //       } else {
+  //         console.error('반환받은 데이터 혹은 데이터 없음:', incomingMessage);
+  //       }
+  //     });
+  //   }
+  //   return () => {
+  //     if (socket) {
+  //       socket.off('message');
+  //     }
+  //   };
+  // }, [socket, setChatContents]);
+
+  useEffect(() => {
+    if (socket) {
+      socket.on('message', (incomingMessage: any) => {
+        if (incomingMessage) {
+          const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
+            incomingMessage;
+          const newChatMessage: ChatContentsType = {
+            _id,
+            chatRoomId,
+            content,
+            senderId,
+            seenUsers,
+            createdAt,
+          };
+
+          setChatContents((prevContents) => [newChatMessage, ...prevContents]);
+        } else {
+          console.error('반환받은 데이터 혹은 데이터 없음:', incomingMessage);
+        }
+      });
+    }
+    return () => {
+      if (socket) {
+        socket.off('message');
+      }
+    };
+  }, [socket, setChatContents]);
 
   return (
     <S.ChatSpaceFooterContainer>

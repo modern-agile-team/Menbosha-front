@@ -2,20 +2,25 @@ import * as S from './styled';
 import ChatNavbar from '../organisms/chat/chat-navbar/ChatNavbar';
 import ChatRoomList from '../organisms/chat/chat-list/ChatRoomList';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 import CHAT from '@/apis/chat';
 import { ChatRoomListType, MentorInfoType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import USER from '@/apis/user';
-import { MyIdAtom } from '@/recoil/atoms/MyIdAtom';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+export interface MyIdType {
+  myId: number;
+}
 
 const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
-  const [getMyId, setMyId] = useRecoilState(MyIdAtom);
+  const [myId, setMyId] = useState(0);
+  const chatContents = useRecoilValue(ChatContentsAtom);
 
+  /** 본인 id넘버 조회 api */
   const getMyIdApi = async () => {
     const res = await USER.getMyInfo();
     setMyId(res.id);
@@ -25,13 +30,7 @@ const ChatPageTemplate = () => {
     getMyIdApi();
   }, []);
 
-  useEffect(() => {
-    console.log(getMyId);
-  }, [getMyIdApi]);
-
-  // 모킹데이터
-  // const [getMentorInfo, setGetMentorInfo] =
-  //   useRecoilState<MentorInfoType[]>(MentorInfoAtom);
+  console.log(myId);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
@@ -39,14 +38,11 @@ const ChatPageTemplate = () => {
     setGetChatRoomList(res.chatRooms);
   };
 
-  /** 멘토리스트 전체조회 api (mock) */
-  // const getMentorInfoApi = async () => {
-  //   const res = await axios.get('/api/mento');
-  //   setGetMentorInfo(res.data);
-  // };
+  useEffect(() => {
+    getChatRoomListApi();
+  }, [chatContents]);
 
   useEffect(() => {
-    // getMentorInfoApi();
     getChatRoomListApi();
   }, []);
 
@@ -54,8 +50,8 @@ const ChatPageTemplate = () => {
     <S.PageWrapperRaw>
       <ChatNavbar />
       <ChatMentorList />
-      <ChatRoomList />
-      <ChatSpace />
+      <ChatRoomList myId={myId} />
+      <ChatSpace myId={myId} />
     </S.PageWrapperRaw>
   );
 };

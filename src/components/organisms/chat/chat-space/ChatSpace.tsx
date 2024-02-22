@@ -14,12 +14,10 @@ import {
 } from '@/types/chat';
 import { log } from 'console';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
-import { ChatHistoryAtom } from '@/recoil/atoms/ChatHistoryAtom';
+import { MyIdType } from '@/components/templates/ChatPageTemplate';
 
-const ChatSpace = () => {
+const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
-  // const [chatHistory, setChatHistory] =
-  //   useRecoilState<ChatHistoryType[]>(ChatHistoryAtom);
   const [pagination, setPagination] = useState<ChatPaginationType>();
   // const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
   const [getChatContents, setGetChatContents] =
@@ -51,17 +49,11 @@ const ChatSpace = () => {
   useEffect(() => {
     if (selectedRoomId) {
       getChatHistoryApi();
-      // console.log(pagination);
     }
   }, [selectedRoomId]);
-
-  // useEffect(() => {
-  //   setChatContents(getChatContents);
-  // }, [setGetChatContents]);
-
+  console.log('::::::::::::', getChatContents);
   useEffect(() => {
-    console.log(chatPartners);
-    // console.log('채팅 내역', chatHistory);
+    // console.log(chatPartners);
   }, [chatPartners]);
 
   return (
@@ -72,7 +64,7 @@ const ChatSpace = () => {
         chatPartners={chatPartners}
         // chatContents={chatContents}
       />
-      <ChatSpaceFooter />
+      <ChatSpaceFooter myId={myId.myId} />
     </S.ChatSpaceContainer>
   );
 };

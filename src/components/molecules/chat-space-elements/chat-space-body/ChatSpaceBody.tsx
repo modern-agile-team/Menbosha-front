@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import TimeStamp from '../time-stamp/TimeStamp';
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import useModal from '@/hooks/useModal';
 import ChatDeleteModal from './ChatDeleteModal';
+import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 
 const ChatSpaceBody = (props: {
   chatPartners: ChatPartnersType | undefined;
@@ -23,7 +24,10 @@ const ChatSpaceBody = (props: {
   const [selectedChatId, setSelectedChatId] = useState<string | undefined>(
     undefined,
   );
+  const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
   const { isOpenModal, handleModal } = useModal();
+  const ChatSpaceBodyRef = useRef<HTMLDivElement | null>(null);
+
   const chatContentsInOrder = [...chatContents];
 
   // 채팅 생성 날짜
@@ -44,10 +48,23 @@ const ChatSpaceBody = (props: {
       setSelectedChatId(messageId);
       handleModal();
     };
+
+  // 처음 채팅방 입장시 && 채팅이 업데이트 됐을 때 스크롤 위치 최하단으로 이동
+  useEffect(() => {
+    if (ChatSpaceBodyRef.current) {
+      setTimeout(() => {
+        if (ChatSpaceBodyRef.current) {
+          ChatSpaceBodyRef.current.scrollTop =
+            ChatSpaceBodyRef.current.scrollHeight;
+        }
+      }, 0);
+    }
+  }, [selectedRoomId, chatContents]);
+
   console.log('ChatSpaceBody re-rendering');
 
   return (
-    <S.ChatSpaceBodyContainer>
+    <S.ChatSpaceBodyContainer ref={ChatSpaceBodyRef}>
       {chatContentsInOrder.reverse().map((message) => {
         const isGuestMessage = message.senderId === chatPartnerId;
         const createdAtDate = new Date(message.createdAt);
@@ -86,7 +103,7 @@ const ChatSpaceBody = (props: {
                     </S.ChatBubble>
                   </S.ChatBubbleGuestCenter>
                   {isValidTime && (
-                    <S.ChatTimeBox>{`${getAmPm(hours)} ${
+                    <S.ChatTimeBox isHost={true}>{`${getAmPm(hours)} ${
                       hours % 12 || 12
                     }:${minutes}`}</S.ChatTimeBox>
                   )}
@@ -100,7 +117,7 @@ const ChatSpaceBody = (props: {
                 찍혀야하므로 각각의 컴포넌트에 둘 다 박았더니 중복됨.
                 따라서 일단 조건을 줘서 해결해봄. */}
                   {isValidTime && (
-                    <S.ChatTimeBox>{`${getAmPm(hours)} ${
+                    <S.ChatTimeBox isHost={false}>{`${getAmPm(hours)} ${
                       hours % 12 || 12
                     }:${minutes}`}</S.ChatTimeBox>
                   )}
@@ -117,6 +134,7 @@ const ChatSpaceBody = (props: {
         <>
           {chatContentsInOrder.reverse().map((data) => (
             <ChatDeleteModal
+              key={data._id}
               show={isOpenModal}
               hide={handleModal}
               roomId={data.chatRoomId}
