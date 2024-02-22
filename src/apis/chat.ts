@@ -98,6 +98,20 @@ const CHAT = {
     );
     return result.data;
   },
+
+  /** 채팅내역 삭제 api */
+  async deleteChat(roomId: string, chatId: string): Promise<any> {
+    const result: AxiosResponse<any> = await instance.delete(
+      `${CHAT.path}/${roomId}/chat/${chatId}`,
+      {
+        params: {
+          roomId: roomId,
+          chatId: chatId,
+        },
+      },
+    );
+    return result.data;
+  },
 };
 
 export default CHAT;

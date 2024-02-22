@@ -127,7 +127,7 @@ export interface ChatContentsType {
   content: string;
   seenUsers: Array;
   senderId: number;
-  _id: number;
+  _id: string;
 }
 
 /** 채팅페이지 무한스크롤 타입 */
@@ -148,9 +148,17 @@ export interface ChatPartnersType {
 }
 
 /** 채팅방 삭제 모달 타입 */
-export interface ModalType {
+export interface ChatRoomDeleteModalType {
   show: boolean;
   hide: () => void;
   chatRoomId: string;
   partnerName: string;
+}
+
+/** 채팅내역 삭제 모달 타입 */
+export interface ChatDeleteModalType {
+  show: boolean;
+  hide: () => void;
+  roomId: string;
+  chatId: string | undefined;
 }

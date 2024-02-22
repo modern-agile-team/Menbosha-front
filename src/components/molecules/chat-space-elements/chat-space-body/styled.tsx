@@ -21,7 +21,7 @@ export const ChatSpaceBodyContainer = styled.div`
 export const ChatBubbleHostContainer = styled.div`
   display: flex;
   max-width: 20vw;
-  float: inline-end; //지렸다 대 재 진
+  float: inline-end;
   /* align-self: flex-end; */
   /* border: 2px solid red; */
 `;
@@ -81,13 +81,14 @@ export const ChatGuestName = styled.div`
   /* border: 2px solid yellow; */
 `;
 
-export const ChatTimeBox = styled.div`
+export const ChatTimeBox = styled.div<{ isHost: boolean }>`
   display: flex;
   flex-direction: column;
-  width: 3vw;
+  width: 3.5vw;
   /* height: 2vh; */
   margin-bottom: 10px;
   justify-content: flex-end;
+  align-items: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
   /* text-align: center; */
   font-size: 0.5em;
   color: rgb(0, 0, 0, 0.7);

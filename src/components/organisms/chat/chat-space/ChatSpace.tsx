@@ -13,15 +13,20 @@ import {
   ChatPartnersType,
 } from '@/types/chat';
 import { log } from 'console';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { MyIdType } from '@/components/templates/ChatPageTemplate';
+import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 
-const ChatSpace = () => {
+const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
-  const [chatHistory, setChatHistory] = useState<ChatHistoryType[]>([]);
   const [pagination, setPagination] = useState<ChatPaginationType>();
-  const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
-  const [chatPartners, setChatPartners] = useState<ChatPartnersType>();
+  // const [chatContents, setChatContents] = useState<ChatContentsType[]>([]);
+  const [getChatContents, setGetChatContents] =
+    useRecoilState<ChatContentsType[]>(ChatContentsAtom);
+  const [chatPartners, setChatPartners] =
+    useRecoilState<ChatPartnersType>(ChatPartnersAtom);
   const page = 1;
-  const pageSize = 5; // 무한 스크롤 구현 전까지 일단 기본값
+  const pageSize = 20; // 무한 스크롤 구현 전까지 일단 기본값
   // 채팅내역 불러오기 api ,테스트가 전부 끝나면 try-catch 삭제 예정
   const getChatHistoryApi = async () => {
     try {
@@ -34,9 +39,9 @@ const ChatSpace = () => {
         pageSize: res.pageSize,
         totalCount: res.totalCount,
       };
-      setChatHistory(res); //일단 안씁니다.
+      // setChatHistory(res);
       setPagination(temp);
-      setChatContents(res.chats);
+      setGetChatContents(res.chats);
       setChatPartners(res.chatPartners[0]);
     } catch (error) {
       console.error('에러:', error);
@@ -46,11 +51,12 @@ const ChatSpace = () => {
   useEffect(() => {
     if (selectedRoomId) {
       getChatHistoryApi();
-      console.log('::::::', chatHistory);
-      console.log(chatPartners);
-      // console.log(pagination);
     }
   }, [selectedRoomId]);
+  console.log('::::::::::::', getChatContents);
+  useEffect(() => {
+    // console.log(chatPartners);
+  }, [chatPartners]);
 
   return (
     <S.ChatSpaceContainer>
@@ -58,9 +64,9 @@ const ChatSpace = () => {
       <ChatSpaceBody
         pagination={pagination}
         chatPartners={chatPartners}
-        chatContents={chatContents}
+        // chatContents={chatContents}
       />
-      <ChatSpaceFooter />
+      <ChatSpaceFooter myId={myId.myId} />
     </S.ChatSpaceContainer>
   );
 };
