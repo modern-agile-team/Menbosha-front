@@ -60,7 +60,7 @@ const MENTOR = {
   ): Promise<MentorBoardListType> {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
       params: {
-        categoryId: params.categoryId !== 1 ? params.categoryId : 1,
+        categoryId: params.categoryId,
         pageSize: params.pageSize,
         page: params.page,
         loadOnlyPopular: params.loadOnlyPopular,

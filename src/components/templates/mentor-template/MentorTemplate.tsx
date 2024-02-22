@@ -12,14 +12,12 @@ import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 import MentorRanking from '@/components/organisms/mentor/RankMentor';
 import MainPageFooter from '@/components/common/footer/Footer';
 import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MentorListType } from '@/types/mentor';
 
 const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
   const router = useRouter();
-  const filterCategoryId = useRecoilValue(CategoryFilterAtom);
 
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
@@ -70,7 +68,7 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
         </div>
       </HeadTitleContainer>
       <GlobalCategoryContainer>
-        <Category location="mentor" />
+        <Category />
         <CreateIconLink
           href={{
             pathname: `/create`,
@@ -85,20 +83,18 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
       <ContainerWrapper>
         <S.MentorListContainer>
           <S.ListTitleBox>명예의 전당</S.ListTitleBox>
-          <MentorRanking filterCategoryId={filterCategoryId} />
+          <MentorRanking filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>인기 멘토</S.ListTitleBox>
-          <PopularMentorList filterCategoryId={filterCategoryId} />
+          <PopularMentorList filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
           <S.ListTitleBox>전체 멘토</S.ListTitleBox>
-          {lastPage && (
-            <MentorList
-              filterCategoryId={filterCategoryId}
-              lastPage={lastPage}
-            />
-          )}
+          <MentorList
+            filterCategoryId={Number(router.query.filterId)}
+            lastPage={lastPage as number}
+          />
         </S.MentorListContainer>
       </ContainerWrapper>
       <MainPageFooter />

@@ -18,6 +18,10 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
     setUnitInfo(response);
   };
 
+  const handleBack = () => {
+    router.back();
+  };
+
   //Unit의 정보 불러오는 api호출
   useEffect(() => {
     getHelpUnitApi();
@@ -25,14 +29,10 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
 
   return (
     <S.ContentWrapper>
-      <LinkBox
-        href={{
-          pathname: '/help',
-        }}
-        color="#f2f"
-        scroll={false}>
-        <S.PrevImg src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg" />
-      </LinkBox>
+      <S.PrevImg
+        onClick={handleBack}
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"
+      />
       <div>
         <div>
           {getUnitInfo && (

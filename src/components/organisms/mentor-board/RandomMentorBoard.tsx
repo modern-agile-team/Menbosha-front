@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { FilterPropsType } from '@/components/common/category/Category';
 
-const RandomMentorBoard = ({ filterCategoryId }: FilterPropsType) => {
+const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
   const [getRandomData, setRandomData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
 
   const getRandomMentorBoardApi = async () => {
     const temp: MentorBoardParamsType = {
-      categoryId: filterCategoryId,
+      categoryId: filterCategoryId as number,
       pageSize: 3,
       loadOnlyPopular: false,
       orderField: 'RAND()',

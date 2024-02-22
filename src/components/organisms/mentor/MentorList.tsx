@@ -31,18 +31,13 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
 
   useEffect(() => {
     setMentorData([]);
+    setTotalPage(lastPage);
     setPage(1);
-    setTimeout(() => {
-      getMentorListApi();
-    }, 0);
+    getMentorListApi();
   }, [filterCategoryId]);
 
-  console.log(totalPage);
-
   useEffect(() => {
-    if (page > 1) {
-      getMentorListApi();
-    }
+    getMentorListApi();
   }, [page]);
 
   const handleObs = (entries: any) => {
@@ -65,15 +60,15 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
     setLoad(true); //로딩 시작
     if (page <= totalPage) {
       const response = await MENTORS.getMentorPagination(params); //api요청 글 목록 불러오기
-      setTotalPage(response.lastPage);
       setMentorData((prev) => [...prev, ...response.userWithImageAndIntroDtos]);
+      setTotalPage(response.lastPage);
     }
     setLoad(false);
-  }, [page]);
+  }, [page, filterCategoryId]);
 
   return (
     <S.MentorCardContainer>
-      {getMentorData &&
+      {getMentorData.length !== 0 ? (
         getMentorData.map((data) => {
           const temp: MentorCardType = {
             id: data.id,
@@ -89,7 +84,10 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
               <MentorCard {...temp} />
             </S.MentorCardWrapper>
           );
-        })}
+        })
+      ) : (
+        <div>멘토가 존재하지 않습니다.</div>
+      )}
       <div style={{ width: '100%' }}>
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>

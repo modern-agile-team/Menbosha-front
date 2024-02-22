@@ -6,16 +6,15 @@ import MentorBoardCard from '@/components/molecules/mentor-board-elements/Mentor
 import { useRouter } from 'next/router';
 import { FilterPropsType } from '@/components/common/category/Category';
 
-const MentorBoardList = ({ filterCategoryId }: FilterPropsType) => {
+const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const [getBoardData, setBoardData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1); //페이지 수
+  const [totalPage, setTotalPage] = useState(lastPage); //페이지 수
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-  const router = useRouter();
 
   //옵저버 생성
   useEffect(() => {
@@ -26,29 +25,17 @@ const MentorBoardList = ({ filterCategoryId }: FilterPropsType) => {
     };
   }, [obsRef, getBoardData]);
 
-  useEffect(() => {
-    //스크롤 수동으로 조정 설정
-    if (
-      'scrollRestoration' in history &&
-      history.scrollRestoration !== 'manual'
-    ) {
-      history.scrollRestoration = 'manual';
-    }
-  }, []);
-
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
   }, [page]);
 
+  //필터링 로드
   useEffect(() => {
-    if (filterCategoryId !== 1) {
-      setPage(1);
-      setBoardData([]);
-      setTimeout(() => {
-        loadPost();
-      }, 0);
-    }
+    setBoardData([]);
+    setPage(1);
+    setTotalPage(lastPage);
+    loadPost();
   }, [filterCategoryId]);
 
   const handleObs = (entries: any) => {
@@ -72,70 +59,41 @@ const MentorBoardList = ({ filterCategoryId }: FilterPropsType) => {
     };
     setLoad(true); //로딩 시작
     if (page <= totalPage) {
-      //나중에 카테고리 전역으로 관리 예정
       const response = await MENTOR.MentorBoardPagination(temp); //api요청 글 목록 불러오기
-      setBoardData((prev: any) => [
+      setBoardData((prev) => [
         ...prev,
         ...response.mentorBoardWithUserAndImageDtos,
       ]);
       setTotalPage(response.lastPage);
     }
     setLoad(false);
-  }, [page]);
-
-  const handleRouteChange = useCallback((e: any) => {
-    sessionStorage.setItem(
-      `__next_scroll_back`,
-      JSON.stringify({
-        x: 0,
-        y: window.scrollY.toString(),
-      }),
-    );
-  }, []);
-
-  //   router발생시 스크롤 위치 저장
-  useEffect(() => {
-    router.events.on('routeChangeStart', handleRouteChange);
-    window.addEventListener('beforeunload', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-      window.removeEventListener('beforeunload', handleRouteChange);
-    };
-  }, [router.events]);
-
-  //스크롤 위치 복원 & session비우기
-  useEffect(() => {
-    const temp = JSON.parse(
-      sessionStorage.getItem(`__next_scroll_back`) as string,
-    );
-    temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    setTimeout(() => {
-      window.sessionStorage.clear();
-    }, 1000);
-  }, []);
-
+  }, [page, filterCategoryId]);
   return (
     <S.MentorBoardCardContainer>
-      {getBoardData.map((data) => {
-        const temp = {
-          id: data.id,
-          head: data.head,
-          body: data.body,
-          category: data.categoryId,
-          createdAt: data.createdAt,
-          updatedAt: data.updatedAt,
-          userId: data.userId,
-          userName: data.user.name,
-          userImage: data.user.userImage.imageUrl,
-          likes: data.likeCount,
-          mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
-        };
-        return (
-          <S.MentorBoardCardWrapper key={data.id}>
-            <MentorBoardCard {...temp} />
-          </S.MentorBoardCardWrapper>
-        );
-      })}
+      {getBoardData.length !== 0 ? (
+        getBoardData.map((data) => {
+          const temp = {
+            id: data.id,
+            head: data.head,
+            body: data.body,
+            category: data.categoryId,
+            createdAt: data.createdAt,
+            updatedAt: data.updatedAt,
+            userId: data.userId,
+            userName: data.user.name,
+            userImage: data.user.userImage.imageUrl,
+            likes: data.likeCount,
+            mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
+          };
+          return (
+            <S.MentorBoardCardWrapper key={data.id}>
+              <MentorBoardCard {...temp} />
+            </S.MentorBoardCardWrapper>
+          );
+        })
+      ) : (
+        <div>게시글이 아직 없습니다.</div>
+      )}
       <div style={{ width: '100%' }}>
         {load && <div>Loading...</div>}
         <div ref={obsRef}></div>
