@@ -21,7 +21,8 @@ export const SocketProvider = ({ children }: SocketProviderProps) => {
   useEffect(() => {
     //수정 해야함
     // const socket = io('http://54.180.108.185:3000/chat');
-    const socket = io(`${process.env.NEXT_PUBLIC_API_BASE_URL}chat`);
+    // const socket = io(`${process.env.NEXT_PUBLIC_API_BASE_URL}chat`);
+    const socket = io('https://api.menbosha.kr');
     setSocket(socket);
     console.log('socketsocketsocketsocket', socket);
 
