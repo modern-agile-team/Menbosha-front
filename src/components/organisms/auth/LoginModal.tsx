@@ -5,8 +5,6 @@ import {
   Naver,
 } from '@/components/molecules/auth-elements/AuthProvider';
 import { useEffect } from 'react';
-import Image from 'next/image';
-import { TextBox } from '@/components/common/globalStyled/styled';
 
 interface ModalType {
   show: boolean;
@@ -24,25 +22,12 @@ const LoginModal = ({ show, hide }: ModalType) => {
     storage.setItem('CURRENT_URL', globalThis.location.pathname);
   }, []);
   return (
-    <div>
+    <>
       <ModalWrapper>
         <ModalHeaderBox>
-          <TextBox size={21}>로그인/회원가입</TextBox>
-          <TextBox
-            size={21}
-            style={{ marginLeft: 'auto', cursor: 'pointer' }}
-            onClick={hide}>
-            X
-          </TextBox>
+          <div>로그인</div>
+          <div onClick={hide}>X</div>
         </ModalHeaderBox>
-        <LogoBox>
-          <Image
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/FooterLogo.svg"
-            alt="로고아이콘"
-            width={75}
-            height={68}
-          />
-        </LogoBox>
         <OAuthBox>
           <Naver />
           <Google />
@@ -58,7 +43,7 @@ const LoginModal = ({ show, hide }: ModalType) => {
           }
         }}
       />
-    </div>
+    </>
   );
 };
 
@@ -69,10 +54,9 @@ export const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #252525;
-  width: 362px;
-  height: 280px;
-  border: 2px solid #ff9b50;
+  background-color: #fff;
+  width: 337px;
+  height: 396px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10000;
@@ -93,10 +77,22 @@ export const Backdrop = styled.div`
 
 export const ModalHeaderBox = styled.div`
   display: flex;
-  padding: 24px;
-  background-color: #ff9b50;
+  background-color: #fff;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  //로그인 타이틀 박스
+  & > :nth-child(1) {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff772b;
+    padding: 45px 0px 0px 36px;
+  }
+  //x 모달창 닫기 박스
+  & > :nth-child(2) {
+    color: #ff772b;
+    cursor: pointer;
+    margin: 24px 24px 0px auto;
+  }
 `;
 
 export const LogoBox = styled.div`
@@ -104,8 +100,6 @@ export const LogoBox = styled.div`
 `;
 
 export const OAuthBox = styled.div`
-  display: flex;
-  justify-content: center;
   & > * {
     margin: 24px;
   }
