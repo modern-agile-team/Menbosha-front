@@ -25,15 +25,12 @@ const MentorUnitTemplate = () => {
         </S.MentorPageTitleContainer>
         <div>
           {router.isReady && <MentorUnit id={Number(router.query.id)} />}
+          <S.MentorReviewContainer>
+            <div>후기</div>
+            {router.isReady && <MentorReview id={Number(router.query.id)} />}
+          </S.MentorReviewContainer>
         </div>
       </S.ContentContainer>
-      <S.MentorReviewWrapper>
-        <div></div>
-        <S.MentorReviewContainer>
-          <div>후기</div>
-          {router.isReady && <MentorReview id={Number(router.query.id)} />}
-        </S.MentorReviewContainer>
-      </S.MentorReviewWrapper>
     </ContainerWrapper>
   );
 };

@@ -11,13 +11,8 @@ import { rankList } from '@/components/common/rank/rankList';
 import Image from 'next/image';
 import MentorBadgeElement from '@/components/molecules/mentor-elements/MentorBadgeElements';
 import { categoryList } from '@/components/common/category/categoryList';
-import { userInfo } from 'os';
 import MENTOR from '@/apis/mentor';
-import {
-  MentorBoardCardType,
-  MentorBoardListType,
-  MentorBoardParamsType,
-} from '@/types/mentor';
+import { MentorBoardCardType, MentorBoardListType } from '@/types/mentor';
 import MentorOtherBoardCard from '@/components/molecules/mentor-board-elements/MentorOtherBoardCard';
 
 const MentorUnit = ({ id }: MentorUnitPropsType) => {
@@ -146,14 +141,17 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
         <div>칭호</div>
         <div>
           {getUserInfo &&
-            getUserInfo.badge.map((data) => {
-              return (
-                <MentorBadgeElement
-                  badgeId={data.badgeId}
-                  createdAt={data.createdAt}
-                />
-              );
-            })}
+            getUserInfo.badge
+              .filter((_, idx) => idx < 3)
+              .map((data) => {
+                return (
+                  <MentorBadgeElement
+                    key={data.badgeId}
+                    badgeId={data.badgeId}
+                    createdAt={data.createdAt}
+                  />
+                );
+              })}
         </div>
       </S.BadgeContainer>
       <S.MentorOtherBoardContainer>
