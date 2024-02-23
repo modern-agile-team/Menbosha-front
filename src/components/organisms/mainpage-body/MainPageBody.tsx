@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './styled';
+import CategoryMarquee from './marquee/CategoryMarquee';
 
 const MainPageBody = () => {
   return (
@@ -90,6 +91,7 @@ const MainPageBody = () => {
             </S.MainContents3InfoContainer>
           </S.MainContents3Right>
         </S.MainContentsContainer3>
+        <CategoryMarquee />
       </S.BodyContainer>
     </S.BodyWrapper>
   );
