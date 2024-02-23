@@ -3,9 +3,14 @@ services:
   ma6-main:
     image: 2swo/ma6-menbosha-front
     ports:
-      - '80:80'
+      - '8080:80'
     env_file:
       - .env
     restart: always
     environment:
       - TZ=Asia/Seoul
+
+  nginx-certbot:
+    image: 2swo/nginx-certbot
+    ports:
+      - '80:80'
