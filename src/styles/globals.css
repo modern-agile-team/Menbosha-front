@@ -19,6 +19,7 @@ body {
   overflow-x: hidden;
   font-family: 'Pretendard-Regular', sans-serif;
   font-size: 24px;
+  scroll-behavior: smooth;
 }
 
 .ql-editor {
