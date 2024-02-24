@@ -1,10 +1,5 @@
 import USER from '@/apis/user';
-import {
-  FlexBox,
-  ImageBox,
-  TextBox,
-} from '@/components/common/globalStyled/styled';
-import { MentorType, MentorUnitPropsType, MentorUnitType } from '@/types/user';
+import { MentorUnitPropsType, MentorUnitType } from '@/types/user';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { rankList } from '@/components/common/rank/rankList';
