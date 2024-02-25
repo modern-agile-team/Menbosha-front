@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
 /**멘토 리스트 컨테이너 */
@@ -21,8 +20,7 @@ export const ListTitleBox = styled.div`
 /**멘토 유닛 템플릿 */
 export const ContentContainer = styled.div`
   display: flex;
-  width: 65%;
-  margin: 100px 50px 100px 0px;
+  margin: 100px 0px 100px 0px;
   > :nth-child(1) {
     font-size: 64px;
     font-weight: bold;
@@ -30,26 +28,11 @@ export const ContentContainer = styled.div`
     width: 180px;
   }
   > :nth-child(2) {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-  }
-`;
-
-/**멘토 리뷰 */
-export const MentorReviewWrapper = styled.div`
-  display: flex;
-  width: 65%;
-  > :nth-child(1) {
-    width: 180px;
-    @media only all and (max-width: 1600px) {
-      display: none;
-    }
+    margin: 0px 117px;
   }
 `;
 
 export const MentorReviewContainer = styled.div`
-  width: 100%;
   & > :nth-child(1) {
     font-size: 20px;
     font-weight: bold;
@@ -66,6 +49,7 @@ export const MentorPageTitleContainer = styled.div`
   }
   & > :nth-child(2) {
     width: 100%;
+    margin-top: 10vw;
     cursor: pointer;
   }
 `;

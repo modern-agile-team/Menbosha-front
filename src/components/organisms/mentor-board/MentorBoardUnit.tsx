@@ -33,7 +33,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
           src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"></img>
       </div>
       {getUnitData && (
-        <div>
+        <S.MentorBoardContentContainer>
           <MentorBoardUnitHead
             id={getUnitData.id}
             head={getUnitData.head}
@@ -53,7 +53,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
             isLike={getUnitData.isLike}
           />
           <MentorBoardUnitBottom id={getUnitData.user.userImage.userId} />
-        </div>
+        </S.MentorBoardContentContainer>
       )}
     </S.MentorBoardUnitContainer>
   );

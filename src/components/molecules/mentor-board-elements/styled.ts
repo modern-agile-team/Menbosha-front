@@ -37,7 +37,6 @@ export const MentorBoardUserBox = styled.div`
 
 export const MentorBoardCardContainer = styled.div`
   width: 100%;
-  transition: all 500ms ease;
   & > :nth-child(1) {
     transition: all 500ms ease;
   }

@@ -1,7 +1,7 @@
 import MentorBoardTemplate from '@/components/templates/mentor-template/MentorBoardTemplate';
 import axios from 'axios';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const MentorBoard = ({
   data,

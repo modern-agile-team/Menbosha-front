@@ -57,7 +57,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
 
   return (
     <S.BodyContainer>
-      {props.image.length >= 0 && (
+      {props.image.length > 0 ? (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           {props.image.length >= 2 && (
             <ButtonBox color="#000" onClick={handleSlidePrev}>
@@ -81,6 +81,8 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
             </ButtonBox>
           )}
         </div>
+      ) : (
+        <div></div>
       )}
       <S.BodyContentBox>
         {isHtml && (

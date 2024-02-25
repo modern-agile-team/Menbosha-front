@@ -164,7 +164,6 @@ export const BadgeContainer = styled.div`
 
 export const MentorOtherBoardContainer = styled.div`
   margin-top: 80px;
-  height: 450px;
   & > :nth-child(1) {
     color: #ff772b;
     font: 20px;
@@ -179,8 +178,22 @@ export const MentorOtherBoardContainer = styled.div`
 
 export const MentorOtherBoardsWrapper = styled.div`
   display: flex;
+  margin-top: 14px;
+  //다른 게시글 모든 요소
   & > :nth-child(n) {
-    padding: 14px;
+    width: 15.2vw;
+  }
+  //다른 게시글 첫 번째 요소
+  & > :nth-child(1) {
+    padding-right: 14px;
+  }
+  //다른 게시글 두 번째 요소
+  & > :nth-child(2) {
+    padding: 0px 14px;
+  }
+  //다른게시글 세 번째 요소
+  & > :nth-child(3) {
+    padding-left: 14px;
   }
 `;
 
