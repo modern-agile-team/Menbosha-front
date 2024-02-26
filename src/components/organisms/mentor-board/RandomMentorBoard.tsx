@@ -61,9 +61,7 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
           );
         })
       ) : (
-        <FlexBox type="flex">
-          <SkeletonUI width="480px" height="290px" count={3} />
-        </FlexBox>
+        <SkeletonUI width="31.75%" height="290px" count={3} />
       )}
     </S.MentorBoardCardContainer>
   );
