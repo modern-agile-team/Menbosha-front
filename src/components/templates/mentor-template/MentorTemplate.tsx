@@ -11,7 +11,6 @@ import {
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 import MentorRanking from '@/components/organisms/mentor/RankMentor';
 import MainPageFooter from '@/components/common/footer/Footer';
-import { useRecoilValue } from 'recoil';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MentorListType } from '@/types/mentor';
@@ -55,7 +54,6 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
       sessionStorage.getItem(`__next_scroll_back`) as string,
     );
     temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // window.sessionStorage.clear();
   }, []);
 
   return (
@@ -77,6 +75,7 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
+            alt="게시글생성아이콘"
           />
         </CreateIconLink>
       </GlobalCategoryContainer>

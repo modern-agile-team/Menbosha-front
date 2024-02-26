@@ -2,17 +2,18 @@ import { useEffect, useState } from 'react';
 import * as S from './styled';
 import USER from '@/apis/user';
 import { MentorPopCardDataType } from '@/types/mentor';
-import { useRouter } from 'next/router';
 import PopularMentorCard from '@/components/molecules/mentor-elements/PopularMentorCard';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const PopularMentorList = ({ filterCategoryId }: Partial<FilterPropsType>) => {
-  const [getPopData, setPopData] = useState<MentorPopCardDataType[]>([]);
-  const router = useRouter();
+  const [getPopData, setGetPopData] = useState<MentorPopCardDataType[]>([]);
+  const [load, setLoad] = useState(false);
 
   const getPopularMentorApi = async () => {
     const response = await USER.getPopularMentor();
-    setPopData(response);
+    setGetPopData(response);
+    setLoad(true);
   };
 
   useEffect(() => {
@@ -40,8 +41,9 @@ const PopularMentorList = ({ filterCategoryId }: Partial<FilterPropsType>) => {
           );
         })
       ) : (
-        <div style={{ color: '#000' }}>인기 멘토가 없습니다.</div>
+        <>{load && <div>인기멘토가 존재하지 않습니다.</div>}</>
       )}
+      <>{!load && <SkeletonUI width="18.5%" height="38vh" count={10} />}</>
     </S.MentorCardContainer>
   );
 };

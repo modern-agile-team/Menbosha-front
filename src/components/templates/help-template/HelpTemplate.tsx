@@ -1,18 +1,14 @@
 import HelpBoardCardList from '../../organisms/help-board/HelpBoardCardList';
-import Link from 'next/link';
 import Category from '../../common/category/Category';
 import HelpPullingBoardList from '../../organisms/help-board/HelpPullingBoardList';
 import {
   ContainerWrapper,
   CreateIconLink,
-  FlexBox,
   GlobalCategoryContainer,
   HeadTitleContainer,
-  TextBox,
 } from '../../common/globalStyled/styled';
 import MainPageHeader from '../../common/header/MainPageHeader';
 import * as S from './styled';
-import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import { HelpListApiType } from '@/types/help';
 import { useCallback, useEffect } from 'react';
@@ -56,7 +52,6 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
       sessionStorage.getItem(`__next_scroll_back`) as string,
     );
     temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // window.sessionStorage.clear();
   }, []);
 
   return (
@@ -78,6 +73,7 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
+            alt="게시글생성아이콘"
           />
         </CreateIconLink>
       </GlobalCategoryContainer>

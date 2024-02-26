@@ -1,14 +1,18 @@
+'use client';
+
 import MENTOR from '@/apis/mentor';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
 import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
-  const [getRandomData, setRandomData] = useState<
+  const [getRandomData, setGetRandomData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
+  const [load, setLoad] = useState(false);
 
   const getRandomMentorBoardApi = async () => {
     const temp: MentorBoardParamsType = {
@@ -20,7 +24,8 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
       page: 1,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
-    setRandomData(response.mentorBoardWithUserAndImageDtos);
+    setGetRandomData(response.mentorBoardWithUserAndImageDtos);
+    setLoad(true);
   };
 
   useEffect(() => {
@@ -33,26 +38,31 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
 
   return (
     <S.MentorBoardCardContainer>
-      {getRandomData.map((data) => {
-        const temp = {
-          id: data.id,
-          head: data.head,
-          body: data.body,
-          category: data.categoryId,
-          createdAt: data.createdAt,
-          updatedAt: data.updatedAt,
-          userId: data.userId,
-          userName: data.user.name,
-          userImage: data.user.userImage.imageUrl,
-          likes: data.likeCount,
-          mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
-        };
-        return (
-          <S.RandomBoardWrapper key={data.id}>
-            <MentorBoardCard {...temp} />
-          </S.RandomBoardWrapper>
-        );
-      })}
+      {getRandomData.length !== 0 ? (
+        getRandomData.map((data) => {
+          const temp = {
+            id: data.id,
+            head: data.head,
+            body: data.body,
+            category: data.categoryId,
+            createdAt: data.createdAt,
+            updatedAt: data.updatedAt,
+            userId: data.userId,
+            userName: data.user.name,
+            userImage: data.user.userImage.imageUrl,
+            likes: data.likeCount,
+            mentorBoardImage: data.imageUrl ?? '', //data.imageUrl !== null ? data.imageUrl : ''
+          };
+          return (
+            <S.RandomBoardWrapper key={data.id}>
+              <MentorBoardCard {...temp} />
+            </S.RandomBoardWrapper>
+          );
+        })
+      ) : (
+        <>{load && <div>멘토의 게시글이 존재하지 않습니다.</div>}</>
+      )}
+      <>{!load && <SkeletonUI width="31.75%" height="290px" count={3} />}</>
     </S.MentorBoardCardContainer>
   );
 };

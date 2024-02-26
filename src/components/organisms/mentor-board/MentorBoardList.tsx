@@ -3,11 +3,11 @@ import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
-import { useRouter } from 'next/router';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
-  const [getBoardData, setBoardData] = useState<
+  const [getBoardData, setGetBoardData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
   const [page, setPage] = useState(1);
@@ -32,7 +32,7 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
 
   //필터링 로드
   useEffect(() => {
-    setBoardData([]);
+    setGetBoardData([]);
     setPage(1);
     setTotalPage(lastPage);
     loadPost();
@@ -60,7 +60,7 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
     setLoad(true); //로딩 시작
     if (page <= totalPage) {
       const response = await MENTOR.MentorBoardPagination(temp); //api요청 글 목록 불러오기
-      setBoardData((prev) => [
+      setGetBoardData((prev) => [
         ...prev,
         ...response.mentorBoardWithUserAndImageDtos,
       ]);
@@ -83,7 +83,7 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
             userName: data.user.name,
             userImage: data.user.userImage.imageUrl,
             likes: data.likeCount,
-            mentorBoardImage: data.imageUrl !== null ? data.imageUrl : '',
+            mentorBoardImage: data.imageUrl ?? '',
           };
           return (
             <S.MentorBoardCardWrapper key={data.id}>
@@ -92,12 +92,12 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
           );
         })
       ) : (
-        <div>게시글이 아직 없습니다.</div>
+        <>{!load && <div>게시글이 존재하지 않습니다.</div>}</>
       )}
-      <div style={{ width: '100%' }}>
-        {load && <div>Loading...</div>}
+      <>
+        {load && <SkeletonUI width="18.5%" height="280px" count={10} />}
         <div ref={obsRef}></div>
-      </div>
+      </>
     </S.MentorBoardCardContainer>
   );
 };

@@ -4,11 +4,13 @@ import PopularMentorCard from '@/components/molecules/mentor-elements/PopularMen
 import { MentorListType, MentorPaginationParamsType } from '@/types/mentor';
 import MENTORS from '@/apis/mentors';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorRanking = ({ filterCategoryId }: Partial<FilterPropsType>) => {
-  const [getRankingData, setRankingData] = useState<
+  const [getRankingData, setGetRankingData] = useState<
     MentorListType['userWithImageAndIntroDtos']
   >([]);
+  const [load, setLoad] = useState(false);
 
   const getPopularMentorApi = async () => {
     const params: MentorPaginationParamsType = {
@@ -19,7 +21,8 @@ const MentorRanking = ({ filterCategoryId }: Partial<FilterPropsType>) => {
       sortOrder: 'DESC',
     };
     const response = await MENTORS.getMentorPagination(params);
-    setRankingData(response.userWithImageAndIntroDtos);
+    setGetRankingData(response.userWithImageAndIntroDtos);
+    setLoad(true);
   };
 
   useEffect(() => {
@@ -28,7 +31,7 @@ const MentorRanking = ({ filterCategoryId }: Partial<FilterPropsType>) => {
 
   return (
     <S.MentorCardContainer>
-      {getRankingData.length !== 0 ? (
+      {getRankingData.length !== 0 && load ? (
         getRankingData.map((data) => {
           const temp = {
             id: data.id,
@@ -47,8 +50,9 @@ const MentorRanking = ({ filterCategoryId }: Partial<FilterPropsType>) => {
           );
         })
       ) : (
-        <div style={{ color: '#000' }}>명예의 멘토가 없습니다.</div>
+        <>{load && <div>명예의 멘토가 존재하지 않습니다.</div>}</>
       )}
+      <>{!load && <SkeletonUI width={'18.519%'} height="38vh" count={5} />}</>
     </S.MentorCardContainer>
   );
 };

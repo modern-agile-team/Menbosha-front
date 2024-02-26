@@ -10,7 +10,6 @@ import {
 } from '@/components/common/globalStyled/styled';
 import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorBoard';
 import PopularMentorBoardList from '@/components/organisms/mentor-board/PopularMentorBoardList';
-import { useRecoilValue } from 'recoil';
 import { MentorBoardListType } from '@/types/mentor';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -54,7 +53,6 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
       sessionStorage.getItem(`__next_scroll_back`) as string,
     );
     temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // window.sessionStorage.clear();
   }, []);
 
   return (
@@ -76,6 +74,7 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
+            alt="게시글생성아이콘"
           />
         </CreateIconLink>
       </GlobalCategoryContainer>

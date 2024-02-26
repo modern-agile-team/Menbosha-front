@@ -1,20 +1,18 @@
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import * as S from './styled';
 import { useEffect, useState } from 'react';
-import {
-  HelpListApiType,
-  HelpListParamsType,
-  PullingUpType,
-} from '@/types/help';
+import { HelpListApiType, HelpListParamsType } from '@/types/help';
 import HELP from '@/apis/help';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const HelpPullingBoardList = ({
   filterCategoryId,
 }: Partial<FilterPropsType>) => {
-  const [getPullingData, setPullingData] = useState<
+  const [getPullingData, setGetPullingData] = useState<
     HelpListApiType['helpMeBoardWithUserAndImagesItemDto']
   >([]);
+  const [load, setLoad] = useState(false);
 
   const getPullingUpApi = async () => {
     const params: HelpListParamsType = {
@@ -25,7 +23,8 @@ const HelpPullingBoardList = ({
       pageSize: 4,
     };
     const response = await HELP.getHelpBoardPagination(params);
-    setPullingData(response.helpMeBoardWithUserAndImagesItemDto);
+    setGetPullingData(response.helpMeBoardWithUserAndImagesItemDto);
+    setLoad(true);
   };
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const HelpPullingBoardList = ({
             id: data.id,
             name: data.user.name,
             userImage: data.user.userImage.imageUrl,
-            image: data.imageUrl !== null ? data.imageUrl : '',
+            image: data.imageUrl ?? '',
             head: data.head,
             body: data.body,
             createdAt: data.pullingUp,
@@ -63,8 +62,9 @@ const HelpPullingBoardList = ({
           );
         })
       ) : (
-        <div>끌올된 게시물이 없습니다.</div>
+        <>{load && <div>끌어올린 게시글이 존재하지 않습니다.</div>}</>
       )}
+      <>{!load && <SkeletonUI width="23.6%" height="260px" count={4} />}</>
     </S.HelpCardContainer>
   );
 };

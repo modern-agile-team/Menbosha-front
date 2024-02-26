@@ -1,7 +1,6 @@
 import MentorCard from '@/components/molecules/mentor-elements/MentorCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import { useRouter } from 'next/router';
 import MENTORS from '@/apis/mentors';
 import {
   MentorCardType,
@@ -9,9 +8,10 @@ import {
   MentorPaginationParamsType,
 } from '@/types/mentor';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
-  const [getMentorData, setMentorData] = useState<
+  const [getMentorData, setGetMentorData] = useState<
     MentorListType['userWithImageAndIntroDtos']
   >([]);
   const [page, setPage] = useState(1);
@@ -30,7 +30,7 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   }, [obsRef, getMentorData]);
 
   useEffect(() => {
-    setMentorData([]);
+    setGetMentorData([]);
     setTotalPage(lastPage);
     setPage(1);
     getMentorListApi();
@@ -61,7 +61,10 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
     setLoad(true); //로딩 시작
     if (page <= totalPage) {
       const response = await MENTORS.getMentorPagination(params); //api요청 글 목록 불러오기
-      setMentorData((prev) => [...prev, ...response.userWithImageAndIntroDtos]);
+      setGetMentorData((prev) => [
+        ...prev,
+        ...response.userWithImageAndIntroDtos,
+      ]);
       setTotalPage(response.lastPage);
     }
     setLoad(false);
@@ -87,12 +90,12 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
           );
         })
       ) : (
-        <div>멘토가 존재하지 않습니다.</div>
+        <>{!load && <div>멘토가 존재하지 않습니다.</div>}</>
       )}
-      <div style={{ width: '100%' }}>
-        {load && <div>Loading...</div>}
+      <>
+        {load && <SkeletonUI width="18.5%" height="140px" count={10} />}
         <div ref={obsRef}></div>
-      </div>
+      </>
     </S.MentorCardContainer>
   );
 };

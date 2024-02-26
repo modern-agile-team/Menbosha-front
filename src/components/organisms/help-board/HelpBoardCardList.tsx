@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { HelpListApiType, HelpListParamsType } from '@/types/help';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const [getList, setGetList] = useState<
@@ -79,7 +80,7 @@ const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
             id: data.id,
             name: data.user.name,
             userImage: data.user.userImage.imageUrl,
-            image: data.imageUrl && data.imageUrl,
+            image: data.imageUrl ?? '',
             head: data.head,
             body: data.body,
             createdAt: data.createdAt,
@@ -93,12 +94,12 @@ const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
           );
         })
       ) : (
-        <div>도와주세요 게시글이 존재하지 않습니다.</div>
+        <>{!load && <div>도와주세요 게시글이 존재하지 않습니다.</div>}</>
       )}
-      <div style={{ width: '100%' }}>
-        {load && <div>Loading...</div>}
+      <>
+        {load && <SkeletonUI width="23.6%" height="260px" count={8} />}
         <div ref={obsRef}></div>
-      </div>
+      </>
     </S.HelpCardContainer>
   );
 };
