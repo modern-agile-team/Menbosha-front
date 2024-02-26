@@ -62,11 +62,12 @@ FROM nginx:latest
 # Install Certbot
 RUN apt-get update && apt-get install -y certbot python3-certbot-nginx
 
+# Copy options-ssl-nginx.conf file (원래는 certbot설치시 자동으로 된다했는데 안돼;;)
+COPY options-ssl-nginx.conf /etc/nginx/options-ssl-nginx.conf
+
 # Copy Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy options-ssl-nginx.conf file (원래는 certbot설치시 자동으로 된다했는데 안돼;;)
-COPY options-ssl-nginx.conf /etc/letsencrypt/options-ssl-nginx.conf
 
 # Expose ports
 EXPOSE 80
