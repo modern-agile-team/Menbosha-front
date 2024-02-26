@@ -5,6 +5,7 @@ import * as S from './styled';
 import MentorBoardCard from '@/components/molecules/mentor-board-elements/MentorBoardCard';
 import { useRouter } from 'next/router';
 import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const [getBoardData, setBoardData] = useState<
@@ -95,7 +96,7 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
         <div>게시글이 아직 없습니다.</div>
       )}
       <div style={{ width: '100%' }}>
-        {load && <div>Loading...</div>}
+        {load && <SkeletonUI width="100%" height="100%" />}
         <div ref={obsRef}></div>
       </div>
     </S.MentorBoardCardContainer>
