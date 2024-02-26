@@ -56,20 +56,23 @@
 # # set hostname to localhost
 
 # CMD ["node", "server.js"]
-# Base Image 지정
+# Base image
 FROM nginx:latest
 
-# 필요한 패키지 및 도구 설치
-RUN apt-get update \
-    && apt-get install -y certbot python3-certbot-nginx \
-    && rm -rf /var/lib/apt/lists/*
+# Install Certbot
+RUN apt-get update && apt-get install -y certbot python3-certbot-nginx
 
-# Nginx 설정 파일 복사
+# Copy Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# 포트 노출
+# Copy options-ssl-nginx.conf file (원래는 certbot설치시 자동으로 된다했는데 안돼;;)
+COPY options-ssl-nginx.conf /etc/letsencrypt/options-ssl-nginx.conf
+
+# Expose ports
 EXPOSE 80
 EXPOSE 443
 
-# 실행 명령 지정
-CMD ["nginx", "-g", "daemon off;"]
+# Entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
