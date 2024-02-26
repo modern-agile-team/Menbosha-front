@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 import { FlexBox } from '@/components/common/globalStyled/styled';
 import MENTORS from '@/apis/mentors';
 import { MentorCreateReviewRequestType } from '@/types/review';
+import { useRouter } from 'next/router';
 
 const CreateReview = ({ mentorId }: { mentorId: number }) => {
   const [checkArray, setCheckArray] = useState<string[]>([]);
   const [isCount, setIsCount] = useState(true);
   const [inputCount, setInputCount] = useState(0);
   const [inputContents, setInputContents] = useState('');
+  const router = useRouter();
 
   const handleOnCheck = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLDivElement;
@@ -30,10 +32,16 @@ const CreateReview = ({ mentorId }: { mentorId: number }) => {
       isCheck: checkArray,
       review: inputContents,
     };
-    if (checkArray.length > 3) {
-      alert('후기 체크리스트는 최대 3개 까지 선택 가능합니다.');
-    } else {
+    if (checkArray.length < 3 && checkArray.length >= 1) {
       await MENTORS.createMentorReview(requestData);
+      router.push({
+        pathname: `/mentor/unit/${mentorId}`,
+        query: {
+          id: mentorId,
+        },
+      });
+    } else {
+      alert('후기 체크리스트는 최소 1개, 최대 3개 까지 선택 가능합니다.');
     }
   };
 
@@ -44,7 +52,7 @@ const CreateReview = ({ mentorId }: { mentorId: number }) => {
 
   //후기 글자 수 카운트
   useEffect(() => {
-    if (inputCount > 200) {
+    if (inputCount > 200 || inputCount < 10) {
       setIsCount(false);
     } else {
       setIsCount(true);
@@ -87,7 +95,11 @@ const CreateReview = ({ mentorId }: { mentorId: number }) => {
         <S.ReviewAreaBox onChange={onTextareaHandler}></S.ReviewAreaBox>
       </S.ReviewInputContainer>
       <FlexBox type="flex" col="center">
-        <S.SubmitButton onClick={handleSubmit}>제출하기</S.SubmitButton>
+        {isCount ? (
+          <S.SubmitButton onClick={handleSubmit}>제출하기</S.SubmitButton>
+        ) : (
+          <S.SubmitButton>제출하기</S.SubmitButton>
+        )}
       </FlexBox>
     </S.ReviewWrapper>
   );
