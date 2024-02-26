@@ -9,8 +9,17 @@ services:
     restart: always
     environment:
       - TZ=Asia/Seoul
-
-  nginx-certbot:
-    image: 2swo/nginx-certbot
+  nginx:
+    image: nginx:latest
     ports:
       - '80:80'
+      - '443:443'
+    volumes:
+      - ./certbot_data:/etc/letsencrypt
+    command: ['nginx', '-g', 'daemon off;']
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot_data:/etc/letsencrypt
+    entrypoint: sh -c "trap exit TERM; while :; do certbot certonly --nginx --non-interactive --agree-tos --email swlee14520@gmail.com -d menbosha.kr; sleep 12h & wait $${!}; done;"

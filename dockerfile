@@ -56,7 +56,6 @@
 # # set hostname to localhost
 
 # CMD ["node", "server.js"]
-
 # Base Image 지정
 FROM nginx:latest
 
@@ -64,10 +63,6 @@ FROM nginx:latest
 RUN apt-get update \
     && apt-get install -y certbot python3-certbot-nginx \
     && rm -rf /var/lib/apt/lists/*
-
-# Nginx SSL 설정 파일 복사
-COPY options-ssl-nginx.conf /etc/letsencrypt/options-ssl-nginx.conf
-
 
 # Nginx 설정 파일 복사
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -78,6 +73,3 @@ EXPOSE 443
 
 # 실행 명령 지정
 CMD ["nginx", "-g", "daemon off;"]
-
-# SSL 인증서 생성 및 관리를 위한 작업
-RUN certbot --nginx --non-interactive --agree-tos --email swlee456@naver.com -d menbosha.kr
