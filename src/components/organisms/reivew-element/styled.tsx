@@ -94,17 +94,26 @@ export const ReviewAreaBox = styled.textarea`
 `;
 
 /**submit버튼 */
-export const SubmitButton = styled.div`
+const SubmitButton = css`
   border: 1px solid #ff772b;
   border-radius: 10px;
   padding: 6px 12px;
   font-size: 16px;
-  cursor: pointer;
   transition: all 200ms ease-in-out;
   //submit버튼 hover
+`;
+
+export const SubmitOn = styled.div`
+  ${SubmitButton}
+  cursor: pointer;
   &:hover {
     background-color: #ff772b;
     color: #fff;
     transition: all 200ms ease-in-out;
   }
+`;
+
+export const SubmitOff = styled.div`
+  ${SubmitButton}
+  background-color: rgba(153, 153, 153, 0.5);
 `;

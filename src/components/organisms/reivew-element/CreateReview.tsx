@@ -96,9 +96,9 @@ const CreateReview = ({ mentorId }: { mentorId: number }) => {
       </S.ReviewInputContainer>
       <FlexBox type="flex" col="center">
         {isCount ? (
-          <S.SubmitButton onClick={handleSubmit}>제출하기</S.SubmitButton>
+          <S.SubmitOn onClick={handleSubmit}>제출하기</S.SubmitOn>
         ) : (
-          <S.SubmitButton>제출하기</S.SubmitButton>
+          <S.SubmitOff>제출하기</S.SubmitOff>
         )}
       </FlexBox>
     </S.ReviewWrapper>
