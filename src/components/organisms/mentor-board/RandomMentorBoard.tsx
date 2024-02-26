@@ -7,10 +7,9 @@ import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { FilterPropsType } from '@/components/common/category/Category';
 import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
-import { FlexBox } from '@/components/common/globalStyled/styled';
 
 const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
-  const [getRandomData, setRandomData] = useState<
+  const [getRandomData, setGetRandomData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
   const [load, setLoad] = useState(false);
@@ -25,7 +24,7 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
       page: 1,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
-    setRandomData(response.mentorBoardWithUserAndImageDtos);
+    setGetRandomData(response.mentorBoardWithUserAndImageDtos);
     setLoad(true);
   };
 
@@ -39,7 +38,7 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
 
   return (
     <S.MentorBoardCardContainer>
-      {load ? (
+      {getRandomData.length !== 0 ? (
         getRandomData.map((data) => {
           const temp = {
             id: data.id,
@@ -61,8 +60,9 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
           );
         })
       ) : (
-        <SkeletonUI width="31.75%" height="290px" count={3} />
+        <>{load && <div>멘토의 게시글이 존재하지 않습니다.</div>}</>
       )}
+      <>{!load && <SkeletonUI width="31.75%" height="290px" count={3} />}</>
     </S.MentorBoardCardContainer>
   );
 };
