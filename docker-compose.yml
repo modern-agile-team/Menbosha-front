@@ -14,19 +14,4 @@ services:
     ports:
       - '80:80'
       - '443:443'
-    command: nginx -g 'daemon off;'
-
-  # nginx:
-  #   image: nginx:latest
-  #   ports:
-  #     - '80:80'
-  #     - '443:443'
-  #   volumes:
-  #     - ./certbot_data:/etc/letsencrypt
-  #   command: ['nginx', '-g', 'daemon off;']
-
-  # certbot:
-  #   image: certbot/certbot
-  #   volumes:
-  #     - ./certbot_data:/etc/letsencrypt
-  #   entrypoint: sh -c "trap exit TERM; while :; do certbot certonly --nginx --non-interactive --agree-tos --email swlee14520@gmail.com -d menbosha.kr; sleep 12h & wait $${!}; done;"
+    # command: nginx -g 'daemon off;'

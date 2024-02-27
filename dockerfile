@@ -55,27 +55,22 @@
 # ENV PORT 80
 # # set hostname to localhost
 
-# CMD ["node", "server.js"]
-# Base image
+
 FROM nginx:latest
 
 # Install Certbot
 RUN apt-get update && apt-get install -y certbot python3-certbot-nginx
 
-# Copy options-ssl-nginx.conf file
-COPY options-ssl-nginx.conf /etc/letsencrypt/options-ssl-nginx.conf
-
 # Copy Nginx configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
-
-# Obtain SSL certificate
-RUN certbot --nginx -n -d menbosha.kr --agree-tos --email swlee456@naver.com --redirect
 
 # Expose ports
 EXPOSE 80
 EXPOSE 443
 
-# Entrypoint script
+# Copy entrypoint.sh script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+
+# Start Nginx and obtain SSL certificate using entrypoint.sh
+CMD ["/entrypoint.sh"]
