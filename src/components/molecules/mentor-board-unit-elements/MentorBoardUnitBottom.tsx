@@ -101,28 +101,26 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
         <div>이 멘토의 다른 게시글</div>
         <div>
           {otherBoards &&
-            otherBoards
-              .filter((_, idx) => idx < 2)
-              .map((data) => {
-                const temp: MentorBoardCardType = {
-                  id: data.id,
-                  head: data.head,
-                  body: data.body,
-                  category: data.categoryId,
-                  createdAt: data.createdAt,
-                  updatedAt: data.updatedAt,
-                  userId: data.userId,
-                  userName: data.user.name,
-                  userImage: data.user.userImage.imageUrl,
-                  likes: data.likeCount,
-                  mentorBoardImage: data.imageUrl,
-                };
-                return (
-                  <S.MentorBoardCardWrapper key={data.id}>
-                    <MentorOtherBoardCard {...temp} />
-                  </S.MentorBoardCardWrapper>
-                );
-              })}
+            otherBoards.map((data) => {
+              const temp: MentorBoardCardType = {
+                id: data.id,
+                head: data.head,
+                body: data.body,
+                category: data.categoryId,
+                createdAt: data.createdAt,
+                updatedAt: data.updatedAt,
+                userId: data.userId,
+                userName: data.user.name,
+                userImage: data.user.userImage.imageUrl,
+                likes: data.likeCount,
+                mentorBoardImage: data.imageUrl,
+              };
+              return (
+                <S.MentorBoardCardWrapper key={data.id}>
+                  <MentorOtherBoardCard {...temp} />
+                </S.MentorBoardCardWrapper>
+              );
+            })}
         </div>
       </S.MentorOtherBoardsContainer>
     </FlexBox>

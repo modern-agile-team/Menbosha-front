@@ -70,6 +70,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
     findCategory();
   }, [getUserInfo]);
 
+  //refactor molecules component divide
   return (
     <>
       {load ? (
