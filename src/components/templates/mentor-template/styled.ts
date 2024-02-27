@@ -33,6 +33,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const MentorReviewContainer = styled.div`
+  margin-top: 120px;
   & > :nth-child(1) {
     font-size: 20px;
     font-weight: bold;
