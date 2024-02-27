@@ -10,8 +10,9 @@ services:
     environment:
       - TZ=Asia/Seoul
   nginx-certbot:
-    image: 2swo/nginx-certbot
+    image: 2swo/front-nginx-certbot
     ports:
       - '80:80'
       - '443:443'
-    # command: nginx -g 'daemon off;'
+    env_file:
+      - .env

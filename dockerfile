@@ -55,22 +55,22 @@
 # ENV PORT 80
 # # set hostname to localhost
 
-
+#nginx 이미지 사용
 FROM nginx:latest
 
-# Install Certbot
+#nignx와 certbot 설치
 RUN apt-get update && apt-get install -y certbot python3-certbot-nginx
 
-# Copy Nginx configuration file
+#nginx.conf(설정파일 복사)
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose ports
+#port
 EXPOSE 80
 EXPOSE 443
 
-# Copy entrypoint.sh script
+#entrypoint.sh 복사, 권한부여
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Start Nginx and obtain SSL certificate using entrypoint.sh
+#컨테이너가 실행될 때 entrypoint.sh 실행
 CMD ["/entrypoint.sh"]

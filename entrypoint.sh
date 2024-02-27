@@ -3,8 +3,8 @@
 # Start Nginx
 nginx
 
-# Obtain SSL certificate for multiple domains
-certbot --nginx -n -d menbosha.kr -d www.menbosha.kr --agree-tos --email swlee456@naver.com --redirect
+# certbot으로 ssl 인증서 발급 -(초기)
+certbot --nginx -n -d $CERTBOT_DOMAINS --agree-tos --email $CERTBOT_EMAIL --redirect
 
 # Keep container running
 tail -f /dev/null
