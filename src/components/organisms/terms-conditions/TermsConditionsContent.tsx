@@ -1,5 +1,10 @@
 import * as S from './styled';
-
+/**
+ * id : 고유 아이디
+ * title : 각 항의 이름
+ * sub_list : 각 조항들의 세부 조항
+ * description: 각 항의 대표 설명
+ */
 const terms_conditions_list = [
   {
     id: 1,

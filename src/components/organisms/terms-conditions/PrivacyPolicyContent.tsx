@@ -1,5 +1,13 @@
 import * as S from './styled';
 
+/**
+ * id : 고유 아이디
+ * title : 각 항의 이름
+ * sub_list : 각 조항들의 세부 조항
+ * table_description: 테이블 형태의 값이 있다면 추가 (display : grid로 구성됨)
+ * table_count : table_description이 있다며, 몇 번 테이블을 반복할 건지 추가
+ * description: 각 항의 대표 설명
+ */
 const privacy_policy_list = [
   {
     id: 0,
