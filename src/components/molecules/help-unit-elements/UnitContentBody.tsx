@@ -12,7 +12,7 @@ const UnitContentBody = (props: HelpUnitBodyType) => {
 
   useEffect(() => {
     setIsStateHtml(true);
-  });
+  }, []);
 
   return (
     <div>
