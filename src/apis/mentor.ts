@@ -182,7 +182,7 @@ const MENTOR = {
     const result: AxiosResponse = await instance.get(`${MENTOR.path}`, {
       params: {
         categoryId: 1,
-        pageSize: 5,
+        pageSize: 2,
         page: 1,
         loadOnlyPopular: false,
         orderField: 'RAND()',

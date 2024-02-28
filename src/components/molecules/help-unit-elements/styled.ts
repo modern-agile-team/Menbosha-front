@@ -12,6 +12,15 @@ export const SlidImages = styled.div`
   position: relative;
 `;
 
+export const ImageNextNPrevButton = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 0px 25px;
+  font-size: 64px;
+`;
+
 export const BodyImages = styled.img`
   width: 900px;
   height: 350px;
@@ -20,16 +29,24 @@ export const BodyImages = styled.img`
   background-color: #999;
 `;
 
+export const HelpContentBodyValueBox = styled.div`
+  margin-top: 48px;
+`;
+
 export const HelpHeadContainer = styled.div`
+  & > :nth-child(2) {
+    display: flex;
+    margin: 0px 0px 24px 0px;
+  }
+`;
+
+export const HelpBoardTitleBox = styled.div`
+  width: 100%;
   & > :nth-child(1) {
     font-size: 40px;
     color: #ff772b;
     font-weight: bold;
     margin: 0px 0px 41px 0px;
-  }
-  & > :nth-child(2) {
-    display: flex;
-    margin: 0px 0px 24px 0px;
   }
 `;
 
@@ -80,13 +97,21 @@ export const UserImg = styled.img`
 export const CommentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  & > :nth-child(n) {
+    margin: 14px 0px;
+    width: 48.5%;
+  }
+  & > :nth-child(2n -1) {
+    margin-right: 14px;
+  }
+  & > :nth-child(2n) {
+    margin-left: 14px;
+  }
 `;
 
 export const CommentBorder = styled.div`
   border: 2px solid #ff772b;
   border-radius: 10px;
-  margin: 14px;
-  width: 46%;
 `;
 
 export const CommentContentBox = styled.div`
@@ -141,5 +166,19 @@ export const HelpCommentButtonBox = styled.div`
   > * {
     padding: 10px;
     cursor: pointer;
+  }
+`;
+
+export const HelpCommentSkeletonBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  & > :nth-child(n) {
+    margin: 14px 0px;
+  }
+  & > :nth-child(2n -1) {
+    margin-right: 14px;
+  }
+  & > :nth-child(2n) {
+    margin-left: 14px;
   }
 `;

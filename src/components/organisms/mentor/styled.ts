@@ -62,7 +62,7 @@ export const RankBox = styled.div`
   margin: 0px 14px;
   & > :nth-child(1) {
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.75);
+    border: 2px solid #ff772b;
     border-radius: 19px;
   }
   & > :nth-child(2) {
@@ -204,4 +204,10 @@ export const ReviewElementWrapper = styled.div`
 export const ReviewContentContainer = styled.div`
   border-bottom: 1px solid #ff772b;
   padding: 24px 0px;
+`;
+
+export const ReviewLoadingBox = styled.div`
+  & > :nth-child(n) {
+    margin: 12px 0px;
+  }
 `;

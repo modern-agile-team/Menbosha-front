@@ -1,13 +1,7 @@
 import HELP from '@/apis/help';
 import { categoryList } from '@/components/common/category/categoryList';
-import {
-  ButtonBox,
-  FlexBox,
-  ImageBox,
-  TextBox,
-} from '@/components/common/globalStyled/styled';
-import { HelpUnitHeadType, HelpUnitType } from '@/types/help';
-import Image from 'next/image';
+import { TextBox } from '@/components/common/globalStyled/styled';
+import { HelpUnitType } from '@/types/help';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
@@ -62,7 +56,9 @@ const UnitContentHead = (props: HelpUnitType) => {
 
   return (
     <S.HelpHeadContainer>
-      <div>{props.head}</div>
+      <S.HelpBoardTitleBox>
+        <div>{props.head}</div>
+      </S.HelpBoardTitleBox>
       <div>
         <S.UserImg src={props.user.userImage.imageUrl} alt="유저이미지" />
         <S.UserInfoBox>
@@ -81,10 +77,12 @@ const UnitContentHead = (props: HelpUnitType) => {
             <div onClick={handlePullingUp}>끌어올리기</div>
             <img
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
-              onClick={modifyHelpUnit}></img>
+              onClick={modifyHelpUnit}
+              alt="수정버튼"></img>
             <img
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
-              onClick={deleteHelpUnitApi}></img>
+              onClick={deleteHelpUnitApi}
+              alt="삭제버튼"></img>
           </S.ActiveButtonBox>
         )}
       </div>

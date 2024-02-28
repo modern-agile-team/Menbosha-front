@@ -29,6 +29,7 @@ export const BodyImages = styled.img`
 export const BodyContentBox = styled.div`
   min-width: 434px;
   width: 46vw;
+  margin: 24px 0px;
   :nth-child(1) {
     overflow-wrap: break-word;
     width: 100%;
@@ -151,5 +152,6 @@ export const MentorOtherBoardsContainer = styled.div`
 `;
 
 export const MentorBoardCardWrapper = styled.div`
+  width: 280px;
   margin: 14px;
 `;
