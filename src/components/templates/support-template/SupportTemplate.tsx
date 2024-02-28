@@ -104,6 +104,7 @@ const SupportTemplate = () => {
           </S.SupportEtcContainer>
         </S.SupportContainer>
       </ContainerWrapper>
+      <MainPageFooter color={true} />
     </div>
   );
 };
