@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
-export const FooterContainer = styled.div`
+interface BgType {
+  color: boolean;
+}
+
+export const FooterContainer = styled.div<BgType>`
   display: flex;
-  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  margin: ${({ color }) => (color ? '0px 204px' : '0px')};
+  width: ${({ color }) => (color ? '' : '100vw')};
   height: auto;
-  /* justify-content: center; */
-  background-color: rgba(0, 0, 0);
-  /* border: 2px solid red; */
+  @media only all and (max-width: 1900px) {
+    margin: ${({ color }) => (color ? '0px 10.625%' : '0px')};
+  }
+  background-color: ${({ color }) => (color ? '#fff' : '#000')};
 `;
 
 export const FooterArea = styled.div`
@@ -34,7 +42,7 @@ export const FooterLeftLogo = styled.img`
   margin-right: 1vw;
 `;
 
-export const FooterLeftContents = styled.div`
+export const FooterLeftContents = styled.div<BgType>`
   display: flex;
   flex-direction: column;
   width: 30vw;
@@ -45,35 +53,40 @@ export const FooterLeftContents = styled.div`
     font-weight: 700;
     font-size: 0.5em;
     line-height: 150%;
-    color: #ffffff;
+    color: ${({ color }) => (color ? '#000' : '#fff')};
     margin-bottom: 1vh;
   }
   & > :nth-child(2) {
     font-weight: 400;
     font-size: 0.5em;
     line-height: 150%;
-    color: rgba(255, 255, 255, 0.75);
+    color: ${({ color }) =>
+      color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
   }
   & > :nth-child(3) {
     font-weight: 400;
     font-size: 0.5em;
     line-height: 150%;
-    color: rgba(255, 255, 255, 0.75);
+    color: ${({ color }) =>
+      color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
   }
 `;
 
-export const FooterRight = styled.div`
+export const FooterRight = styled.div<BgType>`
   display: flex;
   width: 8vw;
   height: 12vh;
   /* border: 2px solid white; */
   justify-content: space-between;
   align-items: flex-end;
-  & > span {
+  a {
+    text-decoration: underline;
+  }
+  span {
     font-weight: 400;
     font-size: 0.5em;
     line-height: 150%;
-    text-decoration-line: underline;
-    color: rgba(255, 255, 255, 0.75);
+    color: ${({ color }) =>
+      color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
   }
 `;

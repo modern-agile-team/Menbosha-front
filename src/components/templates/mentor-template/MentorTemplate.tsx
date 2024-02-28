@@ -96,7 +96,7 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
           />
         </S.MentorListContainer>
       </ContainerWrapper>
-      <MainPageFooter />
+      <MainPageFooter color={true} />
     </>
   );
 };
