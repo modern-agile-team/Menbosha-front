@@ -3,6 +3,7 @@ import MainPageHeader from '../common/header/MainPageHeader';
 import ModifyHelpBoard from '../organisms/modify-help-board/ModifyHelpBoard';
 import { useEffect, useState } from 'react';
 import { HelpUnitType } from '@/types/help';
+import { ContainerWrapper } from '../common/globalStyled/styled';
 
 const ModifyHelpTemplate = () => {
   const [modifyInfo, setModifyInfo] = useState<HelpUnitType>();
@@ -22,12 +23,7 @@ const ModifyHelpTemplate = () => {
   return (
     <div>
       <MainPageHeader />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          width: '100vw',
-        }}>
+      <ContainerWrapper>
         {modifyInfo && (
           <ModifyHelpBoard
             location={modifyLocation}
@@ -38,7 +34,7 @@ const ModifyHelpTemplate = () => {
             categoryId={modifyInfo.categoryId}
           />
         )}
-      </div>
+      </ContainerWrapper>
     </div>
   );
 };

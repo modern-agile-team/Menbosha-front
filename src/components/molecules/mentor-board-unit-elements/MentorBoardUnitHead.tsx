@@ -44,6 +44,9 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
       await MENTOR.deleteMentorBoardUnit(props.id);
       router.push({
         pathname: `/mentor/board`,
+        query: {
+          filterId: 1,
+        },
       });
     }
   };
