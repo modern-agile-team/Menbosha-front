@@ -13,7 +13,7 @@ branches:
   - label: 💻 Delete
     prefix: delete
   - label: 📃 Docs
-    prefix: doc
+    prefix: docs
   - label: ✨ Feature
     prefix: feat
   - label: 📬 API
