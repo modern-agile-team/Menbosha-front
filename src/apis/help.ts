@@ -31,7 +31,6 @@ const HELP = {
 
   /**이미지 업로드 api [post]*/
   async createImg(image: FormData, boardId: number): Promise<any> {
-    console.log('헬프안쪽', boardId);
     const result: AxiosResponse = await instance.post(
       `${HELP.path}/images`,
       image,
