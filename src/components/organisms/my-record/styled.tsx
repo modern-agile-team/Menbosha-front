@@ -6,6 +6,7 @@ export const MyRecordContentContainer = styled.div`
   margin: 0px 363px 0px 159px;
   width: 100%;
   color: #fff;
+  height: 120vh;
 `;
 
 export const PaginationCountContainer = styled.div`

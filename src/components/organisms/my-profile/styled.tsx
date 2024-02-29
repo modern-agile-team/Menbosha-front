@@ -254,3 +254,17 @@ export const UpdateProfileContainer = styled.div`
     }
   }
 `;
+
+export const iIcon = styled.div`
+  font-size: 15px;
+  margin-left: 10px;
+`;
+
+export const EmailBox = styled.div`
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+`;

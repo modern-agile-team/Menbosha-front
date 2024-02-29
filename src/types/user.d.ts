@@ -70,6 +70,7 @@ export type UserProfileType = UserType<{
   activityCategoryId: number;
   hopeCategoryId: number;
   image: string;
+  email: string;
   intro: {
     career: string;
     customCategory: string;
