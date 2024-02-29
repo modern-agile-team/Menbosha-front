@@ -260,6 +260,7 @@ export const iIcon = styled.div`
   margin-left: 10px;
 `;
 
+//이메일 상자
 export const EmailBox = styled.div`
   position: absolute;
   background-color: rgba(255, 255, 255, 0.5);
@@ -267,4 +268,69 @@ export const EmailBox = styled.div`
   border-radius: 10px;
   padding: 15px;
   font-size: 16px;
+`;
+
+//멘토 멘티 토글 버튼구현
+export const ToggleWrapper = styled.div<{ value: boolean }>`
+  position: relative;
+  cursor: pointer;
+  border-radius: 50px;
+  width: 88px;
+  border: 2px solid #ff772b;
+  span {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    top: 2px;
+    border-radius: 50px;
+    background-color: #ff772b;
+    transition: all 0.6s ease-in-out;
+    z-index: 1;
+    ${(
+      { value }, //props에 따른 삼항연산자 처리
+    ) =>
+      value
+        ? 'transform: translateX(0px);left: 3px;'
+        : 'transform: translateX(48px);left: -3px;'}
+  }
+`;
+
+export const ToggleButton = styled.button`
+  position: relative;
+  border: none;
+  background-color: #fff;
+  height: 45px;
+  color: rgba(255, 121, 43, 0.75);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 50px;
+  margin-left: 2px;
+  cursor: pointer;
+  z-index: 0;
+`;
+
+interface IsCategoryType {
+  isCategory?: boolean;
+}
+//희망 카테고리 리스트
+export const HopeCategoryContainer = styled.div<IsCategoryType>`
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  font-size: 16px;
+`;
+
+//카테고리 박스 (nth-child때문에 적용이 안돼서 !import값을 줌)
+export const CategoryBox = styled.div<IsCategoryType>`
+  padding: 4px 12px !important;
+  border: 1px solid #ff772b !important;
+  border-radius: 10px !important;
+  margin: 9px 18px 9px 0px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #000 !important;
+  cursor: pointer !important;
+  background-color: ${({ isCategory }) =>
+    isCategory ? '#ff772b' : '#fff'} !important;
+  transition: all 300ms ease !important;
 `;

@@ -23,8 +23,9 @@ const Category = () => {
     setFilterList(temp);
   }, []);
 
-  const handleCategory = (e: any) => {
-    const value = e.target.innerHTML;
+  const handleCategory = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    const value = target.innerHTML;
     const temp = categoryList.find((data) => data.category === value)?.id;
     if (temp) {
       router.push(`?filterId=${temp}`, undefined, { shallow: true });
