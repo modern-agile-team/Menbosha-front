@@ -70,7 +70,7 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
   const [unitTitle, setUnitTitle] = useState<string>(''); //제목
   const [quillText, setQuillText] = useState<string>(''); //본문
   const [category, setCategory] = useRecoilState(CategorySelectAtom); //카테고리
-  const setSection = useSetRecoilState(SectionSelectAtom);
+  const [section, setSection] = useRecoilState(SectionSelectAtom);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const router = useRouter();
@@ -89,17 +89,19 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
     setQuillText(props.body as string);
     setCategory(temp as string);
     setSection(props.location === 'help' ? '도와주세요 게시판' : '멘토 게시판');
-    for (const file of props.image) {
-      tempFiles = [
-        ...tempFiles,
-        {
-          id: fileId.current++, // fileId의 값을 1씩 늘려주면서 각 파일의 고유값
-          object: file as File,
-          url: file.imageUrl,
-        },
-      ];
+    if (props.image !== undefined) {
+      for (const file of props.image) {
+        tempFiles = [
+          ...tempFiles,
+          {
+            id: fileId.current++, // fileId의 값을 1씩 늘려주면서 각 파일의 고유값
+            object: file as File,
+            url: file.imageUrl,
+          },
+        ];
+      }
+      setFiles(tempFiles);
     }
-    setFiles(tempFiles);
   };
 
   useEffect(() => {
@@ -234,7 +236,7 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
           body: quillText,
           categoryId: catID as number,
         };
-        if (props.location === 'help') {
+        if (section === '도와주세요 게시판') {
           const data = await HELP.ModifyHelpUnit(isData);
           if (files[0] !== null) {
             await HELP.modifyImg(formData, data.id, delImg);
@@ -242,6 +244,9 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
           //router => 해당 글 로 페이지 이동
           router.push({
             pathname: `/help`,
+            query: {
+              filterId: 1,
+            },
           });
         } else {
           const data = await MENTOR.ModifyMentorBoardUnit(isData);
@@ -250,7 +255,10 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
           }
           //router => 해당 글 로 페이지 이동
           router.push({
-            pathname: `/help`,
+            pathname: `/mentor/board`,
+            query: {
+              filterId: 1,
+            },
           });
         }
         resetSelect(); //게시글 카테고리 초기화
@@ -259,102 +267,104 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
   };
 
   return (
-    <S.CreateHelpContainer>
+    <S.CreateBoardWrapper>
       <S.CreateTitle>게시글 수정하기</S.CreateTitle>
-      <div>
-        <S.CreateHeader>
-          <TextBox color="#000" size={20} style={{ width: '100%' }}>
-            제목
-          </TextBox>
-          <S.CreateHeadValue
-            type="text"
-            value={unitTitle}
-            placeholder="제목입력"
-            onChange={(e: any) => {
-              setUnitTitle(e.target.value);
-            }}></S.CreateHeadValue>
-        </S.CreateHeader>
-        <FlexBox type="flex">
-          <TextBox color="#000" size={20}>
-            본문
-          </TextBox>
-          <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
-            <SectionSelectorBox />
-            <CategorySelectorBox />
-          </FlexBox>
-        </FlexBox>
-        <S.QuillBox>
-          <QuillWrapper
-            value={quillText}
-            modules={modules}
-            formats={formats}
-            placeholder="글을 작성해 주세요."
-            onChange={(e: any) => setQuillText(e)}
-            style={{
-              backgroundColor: '#fff',
-              color: '#000',
-              height: '100%',
-              minHeight: 400,
-              borderRadius: 15,
-            }}
-          />
-        </S.QuillBox>
-      </div>
-      <TextBox color="#000" size={20} style={{ margin: '48px 0px 16px 0px' }}>
-        사진{' '}
-        <TextBox color="#f00" size={11}>
-          이미지는 3개까지만 업로드 가능합니다.
-        </TextBox>
-      </TextBox>
-      <FlexBox type="flex"></FlexBox>
-      <div
-        style={{
-          display: 'flex',
-        }}>
-        <S.ImageUploadBox>
-          <div>
-            <FlexBox type="flex">
-              {files.length > 0 &&
-                files.map((file: IFileTypes) => {
-                  const { id, url } = file;
-                  return (
-                    <div key={id} style={{ margin: 5 }}>
-                      <img
-                        src={url as string}
-                        alt="업로드 사진"
-                        width={200}
-                        height={180}
-                        onClick={() => handleFilterFile(id as number)}
-                      />
-                    </div>
-                  );
-                })}
-              {files.length > 2 ? (
-                <div></div>
-              ) : (
-                <S.DropDownImageBox
-                  htmlFor="fileUpload"
-                  ref={dragRef}
-                  drag={isDragging}>
-                  <div>
-                    <div>+</div>
-                    <div>파일을 드래그해서 놓아주세요.</div>
-                    <div>아이콘을 눌러 파일을 직접 선택하세요</div>
-                  </div>
-                </S.DropDownImageBox>
-              )}
+      <S.CreateHelpContainer>
+        <div>
+          <S.CreateHeader>
+            <TextBox color="#000" size={20} style={{ width: '100%' }}>
+              제목
+            </TextBox>
+            <S.CreateHeadValue
+              type="text"
+              value={unitTitle}
+              placeholder="제목입력"
+              onChange={(e: any) => {
+                setUnitTitle(e.target.value);
+              }}></S.CreateHeadValue>
+          </S.CreateHeader>
+          <FlexBox type="flex">
+            <TextBox color="#000" size={20}>
+              본문
+            </TextBox>
+            <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
+              <SectionSelectorBox />
+              <CategorySelectorBox />
             </FlexBox>
-            <input
-              type="file"
-              id="fileUpload"
-              onChange={onChangeFiles}
-              style={{ display: 'none' }}
+          </FlexBox>
+          <S.QuillBox>
+            <QuillWrapper
+              value={quillText}
+              modules={modules}
+              formats={formats}
+              placeholder="글을 작성해 주세요."
+              onChange={(e: any) => setQuillText(e)}
+              style={{
+                backgroundColor: '#fff',
+                color: '#000',
+                height: '100%',
+                minHeight: 400,
+                borderRadius: 15,
+              }}
             />
-          </div>
-        </S.ImageUploadBox>
-      </div>
-      <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
-    </S.CreateHelpContainer>
+          </S.QuillBox>
+        </div>
+        <TextBox color="#000" size={20} style={{ margin: '48px 0px 16px 0px' }}>
+          사진{' '}
+          <TextBox color="#f00" size={11}>
+            이미지는 3개까지만 업로드 가능합니다.
+          </TextBox>
+        </TextBox>
+        <FlexBox type="flex"></FlexBox>
+        <div
+          style={{
+            display: 'flex',
+          }}>
+          <S.ImageUploadBox>
+            <div>
+              <FlexBox type="flex">
+                {files.length > 0 &&
+                  files.map((file: IFileTypes) => {
+                    const { id, url } = file;
+                    return (
+                      <div key={id} style={{ margin: 5 }}>
+                        <img
+                          src={url as string}
+                          alt="업로드 사진"
+                          width={200}
+                          height={180}
+                          onClick={() => handleFilterFile(id as number)}
+                        />
+                      </div>
+                    );
+                  })}
+                {files.length > 2 ? (
+                  <div></div>
+                ) : (
+                  <S.DropDownImageBox
+                    htmlFor="fileUpload"
+                    ref={dragRef}
+                    drag={isDragging}>
+                    <div>
+                      <div>+</div>
+                      <div>파일을 드래그해서 놓아주세요.</div>
+                      <div>아이콘을 눌러 파일을 직접 선택하세요</div>
+                    </div>
+                  </S.DropDownImageBox>
+                )}
+              </FlexBox>
+              <input
+                type="file"
+                id="fileUpload"
+                onChange={onChangeFiles}
+                style={{ display: 'none' }}
+              />
+            </div>
+          </S.ImageUploadBox>
+        </div>
+        <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
+      </S.CreateHelpContainer>
+    </S.CreateBoardWrapper>
   );
 };
 

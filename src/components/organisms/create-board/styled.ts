@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
+export const CreateBoardWrapper = styled.div`
+  width: 100%;
+`;
+
 export const CreateHelpContainer = styled.div`
-  max-width: 1512px;
+  margin: 0px 153px;
 `;
 
 export const CreateTitle = styled.div`
-  border-bottom: 2px solid #ffbb5c;
   font-size: 48px;
-  margin: 0px 0px 64px 0px;
-  padding: 64px 0px 24px 0px;
-  color: #000;
+  font-weight: bold;
+  margin: 64px 0px;
+  color: #ff772b;
 `;
 
 export const CreateHeader = styled.div`
@@ -21,34 +24,31 @@ export const CreateHeader = styled.div`
 
 export const CreateHeadValue = styled.input`
   width: 100%;
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff772b;
   padding: 10px;
   margin: 16px 0px 16px 0px;
   outline: none;
   background-color: #fff;
   border-radius: 15px;
   color: #000;
-  &::placeholder {
-    color: #ffffff50;
-  }
 `;
 
 export const QuillBox = styled.div`
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff772b;
   border-radius: 15px;
   padding: 26px 16px;
   height: 100%;
 `;
 
 export const ImageUploadBox = styled.div`
-  border: 2px solid #ffbb5c;
+  border: 2px solid #ff772b;
   border-radius: 10px;
   padding: 24px;
   width: 100%;
 `;
 
 export const SubmitBox = styled.div`
-  color: #000;
+  color: #ff772b;
   cursor: pointer;
 `;
 
@@ -58,7 +58,7 @@ interface DropType {
 
 export const DropDownImageBox = styled.label<DropType>`
   display: flex;
-  border: 1px solid #ffbb5c;
+  border: 1px solid #ff772b;
   color: #000;
   width: 100%;
   height: 200px;

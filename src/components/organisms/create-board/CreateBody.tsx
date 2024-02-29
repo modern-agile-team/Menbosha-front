@@ -76,6 +76,7 @@ const CreateBody = () => {
   const fileId = useRef<number>(0);
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const resetSelect = useResetRecoilState(CategorySelectAtom);
+  const [sendId, setSendId] = useState(0);
 
   /**이미지 추가 핸들러 */
   const onChangeFiles = useCallback(
@@ -189,10 +190,10 @@ const CreateBody = () => {
         quillText === '' ||
         section === ''
       ) {
-        if (section === '') alert('게시판 위치를 선택해주세요.');
-        if (category === '') alert('카테고리를 선택해주세요.');
-        if (unitTitle === '') alert('제목을 입력해주세요.');
-        if (quillText === '') alert('본문내용을 입력해주세요.');
+        if (unitTitle === '') return alert('제목을 입력해주세요.');
+        if (quillText === '') return alert('본문내용을 입력해주세요.');
+        if (section === '') return alert('게시판 위치를 선택해주세요.');
+        if (category === '') return alert('카테고리를 선택해주세요.');
       } else {
         const catID = categoryList.find((data) => data.category === category);
         const isData = {
@@ -202,20 +203,24 @@ const CreateBody = () => {
         };
         if (section === '멘토 게시판') {
           const data = await MENTOR.createMentorBoard(isData);
-          if (files[0] !== null) {
-            await MENTOR.createMentorBoardImage(formData, data.id);
-          }
+          files[0] !== null &&
+            (await MENTOR.createMentorBoardImage(formData, data.id));
           router.push({
             pathname: `/mentor/board`,
+            query: {
+              filterId: 1,
+            },
           });
-        } else {
+        }
+        if (section === '도와주세요 게시판') {
           const data = await HELP.createHelpBoard(isData);
-          if (files[0] !== null) {
-            await HELP.createImg(formData, data.id);
-          }
+          files[0] !== null && (await HELP.createImg(formData, data.id));
           //router => 해당 글 로 페이지 이동
           router.push({
             pathname: `/help`,
+            query: {
+              filterId: 1,
+            },
           });
         }
         resetSelect(); //게시글 카테고리 초기화
@@ -224,98 +229,103 @@ const CreateBody = () => {
   };
 
   return (
-    <S.CreateHelpContainer>
-      <S.CreateTitle>게시글 작성하기</S.CreateTitle>
-      <div>
-        <S.CreateHeader>
-          <TextBox color="#000" size={20} style={{ width: '100%' }}>
-            제목
-          </TextBox>
-          <S.CreateHeadValue
-            type="text"
-            value={unitTitle}
-            placeholder="제목입력"
-            onChange={(e: any) => {
-              setUnitTitle(e.target.value);
-            }}></S.CreateHeadValue>
-        </S.CreateHeader>
-        <FlexBox type="flex">
-          <TextBox color="#000" size={20}>
-            본문
-          </TextBox>
-          <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
-            <SectionSelectorBox />
-            <CategorySelectorBox />
-          </FlexBox>
-        </FlexBox>
-        <S.QuillBox>
-          <QuillWrapper
-            value={quillText}
-            modules={modules}
-            formats={formats}
-            placeholder="글을 작성해 주세요."
-            onChange={(e: any) => setQuillText(e)}
-            style={{
-              backgroundColor: '#fff',
-              color: '#000',
-              height: '100%',
-              minHeight: 400,
-              borderRadius: 15,
-            }}
-          />
-        </S.QuillBox>
-      </div>
-      <TextBox color="#000" size={20} style={{ margin: '48px 0px 16px 0px' }}>
-        사진{' '}
-        <TextBox color="#f00" size={11}>
-          이미지는 3개까지만 업로드 가능합니다.
-        </TextBox>
-      </TextBox>
-      <FlexBox type="flex"></FlexBox>
-      <div
-        style={{
-          display: 'flex',
-        }}>
-        <S.ImageUploadBox>
-          <div>
-            <FlexBox type="flex">
-              {files.length > 0 &&
-                files.map((file: IFileTypes) => {
-                  const { id, url } = file;
-                  return (
-                    <div key={id} style={{ margin: 5 }}>
-                      <Image
-                        src={url as string}
-                        alt="업로드 사진"
-                        width={200}
-                        height={180}
-                        onClick={() => handleFilterFile(id as number)}
-                      />
-                    </div>
-                  );
-                })}
-              {files.length > 2 ? (
-                <div></div>
-              ) : (
-                <S.DropDownImageBox
-                  htmlFor="fileUpload"
-                  ref={dragRef}
-                  drag={isDragging}>
-                  +
-                </S.DropDownImageBox>
-              )}
+    <S.CreateBoardWrapper>
+      <S.CreateTitle>게시글 작성</S.CreateTitle>
+      <S.CreateHelpContainer>
+        <div>
+          <S.CreateHeader>
+            <TextBox color="#ff772b" size={20} style={{ width: '100%' }}>
+              제목
+            </TextBox>
+            <S.CreateHeadValue
+              type="text"
+              value={unitTitle}
+              placeholder="제목입력"
+              onChange={(e: any) => {
+                setUnitTitle(e.target.value);
+              }}></S.CreateHeadValue>
+          </S.CreateHeader>
+          <FlexBox type="flex">
+            <TextBox color="#ff772b" size={20}>
+              본문
+            </TextBox>
+            <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
+              <SectionSelectorBox />
+              <CategorySelectorBox />
             </FlexBox>
-            <input
-              type="file"
-              id="fileUpload"
-              onChange={onChangeFiles}
-              style={{ display: 'none' }}
+          </FlexBox>
+          <S.QuillBox>
+            <QuillWrapper
+              value={quillText}
+              modules={modules}
+              formats={formats}
+              placeholder="글을 작성해 주세요."
+              onChange={(e: any) => setQuillText(e)}
+              style={{
+                backgroundColor: '#fff',
+                color: '#000',
+                height: '100%',
+                minHeight: 400,
+                borderRadius: 15,
+              }}
             />
-          </div>
-        </S.ImageUploadBox>
-      </div>
-      <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
-    </S.CreateHelpContainer>
+          </S.QuillBox>
+        </div>
+        <TextBox
+          color="#ff772b"
+          size={20}
+          style={{ margin: '48px 0px 16px 0px' }}>
+          사진{' '}
+          <TextBox color="#f00" size={11}>
+            이미지는 3개까지만 업로드 가능합니다.
+          </TextBox>
+        </TextBox>
+        <FlexBox type="flex"></FlexBox>
+        <div
+          style={{
+            display: 'flex',
+          }}>
+          <S.ImageUploadBox>
+            <div>
+              <FlexBox type="flex">
+                {files.length > 0 &&
+                  files.map((file: IFileTypes) => {
+                    const { id, url } = file;
+                    return (
+                      <div key={id} style={{ margin: 5 }}>
+                        <Image
+                          src={url as string}
+                          alt="업로드 사진"
+                          width={200}
+                          height={180}
+                          onClick={() => handleFilterFile(id as number)}
+                        />
+                      </div>
+                    );
+                  })}
+                {files.length > 2 ? (
+                  <div></div>
+                ) : (
+                  <S.DropDownImageBox
+                    htmlFor="fileUpload"
+                    ref={dragRef}
+                    drag={isDragging}>
+                    +
+                  </S.DropDownImageBox>
+                )}
+              </FlexBox>
+              <input
+                type="file"
+                id="fileUpload"
+                onChange={onChangeFiles}
+                style={{ display: 'none' }}
+              />
+            </div>
+          </S.ImageUploadBox>
+        </div>
+        <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
+      </S.CreateHelpContainer>
+    </S.CreateBoardWrapper>
   );
 };
 

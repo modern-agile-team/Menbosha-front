@@ -62,7 +62,7 @@ const CategorySelectorBox = () => {
 
 const SelectBox = styled.div`
   position: relative;
-  border: 1px solid #ffbb5c;
+  border: 1px solid #ff772b;
   margin-left: auto;
   width: 200px;
   margin: 0px 8px 16px 8px;
@@ -99,7 +99,7 @@ const SelectOptions = styled.div<SO>`
   max-height: ${(props) => (props.show === 'true' ? 'none' : '0')};
   padding: 0;
   border-radius: 8px;
-  border: ${(props) => (props.show === 'true' ? '1px solid #ffbb5c' : 'none')};
+  border: ${(props) => (props.show === 'true' ? '1px solid #ff772b' : 'none')};
   background-color: #fff;
   color: #000;
 `;
@@ -109,7 +109,7 @@ const Option = styled.div`
   padding: 6px 8px;
   transition: background-color 0.2s ease-in;
   &:hover {
-    background-color: #ff9b50;
+    background-color: #ff772b;
   }
 `;
 

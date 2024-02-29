@@ -25,17 +25,14 @@ const MENTOR = {
         categoryId: category,
       },
     );
-    return result.data;
+    return result.data.contents;
   },
   /**멘토 게시판 이미지 업로드 api [post] */
   async createMentorBoardImage(image: FormData, boardId: number): Promise<any> {
     const result: AxiosResponse = await instance.post(
-      `${MENTOR.path}/images`,
+      `${MENTOR.path}/${boardId}/images`,
       image,
       {
-        params: {
-          mentorBoardId: boardId,
-        },
         headers: {
           'Content-Type': 'multipart/form-data',
         },
