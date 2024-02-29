@@ -191,12 +191,15 @@ export const ContentContainer = styled.div`
 export const BackgroundContainer = styled.img`
   width: 100vw;
   height: 114em;
+  @media only all and (max-height: 1000px) {
+    height: 100em;
+  }
 `;
 
 //백그라운드 컬러 입히기 전 css 모듈
 export const BackContainColor = css`
   width: 100vw;
-  @media only all and (max-width: 1920px) {
+  @media only all and (max-width: 1919px) {
     width: 100vw;
   }
   position: absolute;

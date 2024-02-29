@@ -30,10 +30,26 @@ const MyRank = ({ rank }: Partial<RankType>) => {
     <div>
       <S.MyRankWrapper>
         <div>등급 및 칭호</div>
-        <img src={rankInfo.image} alt={`${rank}점 랭크`} />
+        {rank && rank > 300 ? (
+          <img
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/rank/shrimpRank300.jpg"
+            alt={`이스터에그(300점 이상 지리네...;)`}
+          />
+        ) : (
+          <img src={rankInfo.image} alt={`${rank}점 랭크`} />
+        )}
         <S.MyRankNameAndScore>
-          <div>{rankInfo.name}</div>
-          <div>{rank}점</div>
+          {rank && rank > 300 ? (
+            <>
+              <div>주방주인</div>
+              <div>300점 이상(어케했누)</div>
+            </>
+          ) : (
+            <>
+              <div>{rankInfo.name}</div>
+              <div>{rank}점</div>
+            </>
+          )}
         </S.MyRankNameAndScore>
       </S.MyRankWrapper>
       <S.RankLevelLockContainer>

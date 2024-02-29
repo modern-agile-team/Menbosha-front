@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 const MyProfileContents = () => {
   const [getInfo, setInfo] = useState<UserProfileType>();
+  const [showEmail, setShowEmail] = useState(false);
 
   const getMyInfoApi = async () => {
     const response = await USER.getMyInfo();
@@ -31,8 +32,22 @@ const MyProfileContents = () => {
       </Link>
       <div></div>
       <div>
-        <div>{getInfo?.name}</div>
-        {getInfo?.isMentor ? <div>멘토</div> : <div>멘토아님</div>}
+        <FlexBox type="flex">
+          <div>{getInfo?.name}</div>
+          <S.iIcon
+            onMouseOver={() => setShowEmail(true)}
+            onMouseOut={() => setShowEmail(false)}>
+            ⓘ
+          </S.iIcon>
+          {showEmail && (
+            <S.EmailBox
+              onMouseOver={() => setShowEmail(true)}
+              onMouseOut={() => setShowEmail(false)}>
+              이메일 : {getInfo?.email}
+            </S.EmailBox>
+          )}
+        </FlexBox>
+        {getInfo?.isMentor ? <div>멘토</div> : <div>멘티</div>}
       </div>
       <div>
         <div>소개</div>

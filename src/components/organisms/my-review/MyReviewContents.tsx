@@ -76,7 +76,7 @@ const MyReviewContents = () => {
           })}
         </S.ReviewCheckListFilterContainer>
         <S.MyReviewContentsWrapper>
-          {reviewData ? (
+          {reviewData.length !== 0 ? (
             reviewData.map((data) => {
               const props: ReviewProprType = {
                 career: data.mentee.userIntro.career,
