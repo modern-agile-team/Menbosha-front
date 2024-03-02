@@ -1,10 +1,17 @@
 import USER from '@/apis/user';
 import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import * as S from './styled';
 import { useRouter } from 'next/router';
 import { IFileTypes } from '../create-board/CreateBody';
 import Link from 'next/link';
+import { categoryList } from '@/components/common/category/categoryList';
 
 export interface ImageType {
   object: File;
@@ -16,6 +23,7 @@ const UpdateMyProfile = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [imgFile, setImgFiles] = useState<ImageType>();
   const router = useRouter();
+  const [hopeCategory, setHopeCategory] = useState(0);
   const [updateInfo, setUpdateInfo] = useState({
     name: '',
     image: '',
@@ -44,6 +52,7 @@ const UpdateMyProfile = () => {
 
   const getMyInfoApi = async () => {
     const response = await USER.getMyInfo();
+    setHopeCategory(response.activityCategoryId);
     setUpdateInfo(() => {
       return {
         name: response.name,
@@ -83,15 +92,6 @@ const UpdateMyProfile = () => {
       }
       router.push('/mypage/info');
     }
-  };
-
-  const handleToggleMentor = () => {
-    setUpdateInfo((prev) => {
-      return {
-        ...prev,
-        isMentor: !updateInfo.isMentor,
-      };
-    });
   };
 
   /**이미지 추가 핸들러 */
@@ -187,11 +187,44 @@ const UpdateMyProfile = () => {
     }
   }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
 
+  //드레그 했을 시 동작
   useEffect(() => {
     initDragEvents();
 
     return () => resetDragEvents();
   }, [initDragEvents, resetDragEvents]);
+
+  //버튼 클릭시마다 타입을 바꿔줍니다
+  const onChangeMode = (type: boolean) => {
+    if (!type) {
+      setUpdateInfo((prev) => {
+        return {
+          ...prev,
+          isMentor: true,
+        };
+      });
+    } else {
+      setUpdateInfo((prev) => {
+        return {
+          ...prev,
+          isMentor: false,
+        };
+      });
+    }
+  };
+
+  //카테고리 값 변경
+  const handleHopeCategory = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    const value = target.innerHTML;
+    const temp = categoryList.find((data) => data.category === value)?.id;
+    if (temp) {
+      setHopeCategory(temp);
+    }
+    if (temp === hopeCategory) {
+      setHopeCategory(1);
+    }
+  };
 
   return (
     <S.UpdateProfileContainer>
@@ -223,15 +256,35 @@ const UpdateMyProfile = () => {
         />
       </div>
       <div>
-        {updateInfo.isMentor ? (
-          <div onClick={handleToggleMentor}>멘토</div>
-        ) : (
-          <div onClick={handleToggleMentor}>멘토아님</div>
-        )}
+        <S.ToggleWrapper
+          value={updateInfo.isMentor}
+          onClick={() => onChangeMode(updateInfo.isMentor)}>
+          <span />
+          <S.ToggleButton type="button">멘토</S.ToggleButton>
+          <S.ToggleButton type="button">멘티</S.ToggleButton>
+        </S.ToggleWrapper>
       </div>
       <div>
         <div>희망 카테고리</div>
-        <div>{updateInfo.activityCategoryId}</div>
+        <S.HopeCategoryContainer>
+          {categoryList.map((data) => {
+            return (
+              <div>
+                {hopeCategory === data.id ? (
+                  <S.CategoryBox isCategory={true} onClick={handleHopeCategory}>
+                    {data.category}
+                  </S.CategoryBox>
+                ) : (
+                  <S.CategoryBox
+                    isCategory={false}
+                    onClick={handleHopeCategory}>
+                    {data.category}
+                  </S.CategoryBox>
+                )}
+              </div>
+            );
+          })}
+        </S.HopeCategoryContainer>
       </div>
       <div>
         <div>소개</div>
