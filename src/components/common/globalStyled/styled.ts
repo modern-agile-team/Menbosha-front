@@ -1,5 +1,91 @@
 import Link from 'next/link';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
+
+//폰트 적용
+export const GlobalFont = createGlobalStyle`
+  @font-face {
+    font-family: "PretendardBlack";
+    src: local("Pretendard-Black"), url("@/../public/fonts/Pretendard-Black.woff2") format("woff2");
+    font-weight: 900;
+  }
+  @font-face {
+    font-family: "PretendardExtraBold";
+    src: local("Pretendard-ExtraBold"), url("@/../public/fonts/Pretendard-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+  }
+  @font-face {
+    font-family: "PretendardBold";
+    src: local("Pretendard-Bold"), url("@/../public/fonts/Pretendard-Black.woff2") format("woff2");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "PretendardSemiBold";
+    src: local("Pretendard-SemiBold"), url("@/../public/fonts/Pretendard-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "PretendardMedium";
+    src: local("Pretendard-Medium"), url("@/../public/fonts/Pretendard-Medium.woff2") format("woff2");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "PretendardRegular";
+    src: local("Pretendard-Regular"), url("@/../public/fonts/Pretendard-Regular.woff2") format("woff2");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "PretendardLight";
+    src: local("Pretendard-Light"), url("@/../public/fonts/Pretendard-Light.woff2") format("woff2");
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: "PretendardExtraLight";
+    src: local("Pretendard-ExtraLight"), url("@/../public/fonts/Pretendard-ExtraLight.woff2") format("woff2");
+    font-weight: 200;
+  }
+  @font-face {
+    font-family: "PretendardThin";
+    src: local("Pretendard-Thin"), url("@/../public/fonts/Pretendard-Thin.woff2") format("woff2");
+    font-weight: 100;
+  }
+`;
+
+/**블랙체 900 */
+export const PretendardBlack = css`
+  font-family: 'PretendardBlack';
+`;
+/**매우 볼드체 800 */
+export const PretendardExtraBold = css`
+  font-family: 'PretendardExtraBold';
+`;
+/**볼드체 700 */
+export const PretendardBold = css`
+  font-family: 'PretendardBold';
+`;
+/**세미 볼드체 600 */
+export const PretendardSemiBold = css`
+  font-family: 'PretendardSemiBold';
+`;
+/**중간체 500 */
+export const PretendardMedium = css`
+  font-family: 'PretendardMedium';
+`;
+/**일반체 400 */
+export const PretendardRegular = css`
+  font-family: 'PretendardRegular';
+`;
+/**가는체 300 */
+export const PretendardLight = css`
+  font-family: 'PretendardLight';
+`;
+/**매우가는체 200 */
+export const PretendardExtraLight = css`
+  font-family: 'PretendardExtraLight';
+`;
+/**얇은체 100 */
+export const PretendardThin = css`
+  font-family: 'PretendardThin';
+`;
 
 interface TextType {
   color?: string;

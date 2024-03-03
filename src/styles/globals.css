@@ -3,6 +3,20 @@
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
     format('woff');
 }
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../../public/fonts/Pretendard-Black.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-Bold.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-ExtraBold.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-ExtraLight.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-Light.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-Medium.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-Regular.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-SemiBold.woff2') format('woff2');
+  src: url('../../public/fonts/Pretendard-Thin.woff2') format('woff2');
+  font-weight: normal;
+  unicode-range: U+0-10FFFF;
+}
 
 ul,
 li {
@@ -22,6 +36,7 @@ body {
   scroll-behavior: smooth;
 }
 
+/* react-quill에 대한 스타일 지정 */
 .ql-editor {
   border-radius: 0px 0px 15px 15px;
   height: 400px !important;

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { PretendardMedium } from '../globalStyled/styled';
 
 export const HeaderContainer = styled.div`
   /* position: relative; */
@@ -34,6 +35,7 @@ export const LogoBox = styled.div`
 `;
 
 export const NavigateBox = styled.div`
+  ${PretendardMedium};
   display: flex;
   width: 40vw;
   justify-content: space-between;
@@ -42,7 +44,6 @@ export const NavigateBox = styled.div`
     text-decoration: none;
     color: #ff772b;
     font-size: 0.83em;
-    font-weight: 500;
     &:hover {
       font-weight: 600;
     }
@@ -136,6 +137,7 @@ export const SideBarBackBg = styled.div`
   height: 100vh;
   position: fixed;
   z-index: 4;
+  background-color: rgba(0, 0, 0, 0.1);
 `;
 
 export const SideBarLogoContainer = styled.div`
@@ -150,6 +152,7 @@ export const SideBarLogoContainer = styled.div`
 `;
 
 export const SideBarNavigateContainer = styled.div`
+  ${PretendardMedium}
   display: flex;
   flex-direction: column;
   margin: 50px 0px;
@@ -158,8 +161,16 @@ export const SideBarNavigateContainer = styled.div`
     text-decoration: none;
     color: #ff772b;
     cursor: pointer;
+    &:hover {
+      font-weight: 600;
+    }
   }
   & > :nth-last-child(1) {
     margin-top: 65vh;
+  }
+  @media only all and (max-height: 1000px) {
+    & > :nth-last-child(1) {
+      margin-top: 30vh;
+    }
   }
 `;

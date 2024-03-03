@@ -8,7 +8,6 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
-import { FlexBox } from '../globalStyled/styled';
 
 const id = 'home'; //초기값 -> 후에 변동 예정
 
@@ -35,9 +34,24 @@ const MainPageHeader = () => {
     provider && setProvider(provider);
   }, []);
 
+  /**사이드바 핸들러 */
   const handleSideButton = () => {
     setIsSide(!isSide);
   };
+
+  //스크롤시 사이드 바 닫음
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY < 0;
+      setIsSide(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <S.HeaderContainer>
