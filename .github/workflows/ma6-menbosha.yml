@@ -2,7 +2,7 @@ name: ma6-menbosha-front
 on:
   push:
     branches:
-      - develop
+      - main
     paths-ignore:
       - 'README.md'
       - 'LICENSE'
