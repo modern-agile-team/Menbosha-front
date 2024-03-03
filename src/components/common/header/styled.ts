@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { PretendardMedium } from '../globalStyled/styled';
 
 export const HeaderContainer = styled.div`
   /* position: relative; */
@@ -35,7 +34,6 @@ export const LogoBox = styled.div`
 `;
 
 export const NavigateBox = styled.div`
-  ${PretendardMedium};
   display: flex;
   width: 40vw;
   justify-content: space-between;
@@ -152,7 +150,6 @@ export const SideBarLogoContainer = styled.div`
 `;
 
 export const SideBarNavigateContainer = styled.div`
-  ${PretendardMedium}
   display: flex;
   flex-direction: column;
   margin: 50px 0px;
