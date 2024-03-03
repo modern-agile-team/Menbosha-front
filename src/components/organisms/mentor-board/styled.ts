@@ -46,18 +46,20 @@ export const RandomBoardWrapper = styled.div`
   width: 31.79%;
 `;
 
-/** MentorBoardUnit */
+//MentorBoardUnit
 export const MentorBoardUnitContainer = styled.div`
   display: flex;
-  padding: 130px;
+  margin-top: 130px;
+  width: 100%;
+  //이전 버튼
   & > :nth-child(1) {
-    padding: 200px 110px 0px 0px;
-  }
-  & > :nth-child(1) {
+    padding: 12.5vw 0px 0px 0px;
     > img {
-      width: 10vw;
-      height: 10vw;
       cursor: pointer;
     }
   }
+`;
+
+export const MentorBoardContentContainer = styled.div`
+  margin: 0px 117px;
 `;

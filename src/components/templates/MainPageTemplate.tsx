@@ -9,7 +9,7 @@ const MainPageTemplate = () => {
     <S.PageWrapper>
       <MainPageHeader />
       <MainPageBody />
-      <MainPageFooter />
+      <MainPageFooter color={false} />
     </S.PageWrapper>
   );
 };

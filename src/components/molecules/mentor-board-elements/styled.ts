@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
 //멘토 css
@@ -37,7 +36,6 @@ export const MentorBoardUserBox = styled.div`
 
 export const MentorBoardCardContainer = styled.div`
   width: 100%;
-  transition: height 500ms ease;
   & > :nth-child(1) {
     transition: all 500ms ease;
   }

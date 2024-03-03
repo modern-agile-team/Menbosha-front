@@ -17,11 +17,11 @@ export const Naver = () => {
   return (
     <div>
       <Image
-        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/Naver.svg"
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/newNaver.svg"
         alt="네이버로그인"
         onClick={naverLogin}
-        height={30}
-        width={30}
+        width={265}
+        height={48}
         style={{ cursor: 'pointer' }}
       />
     </div>
@@ -35,10 +35,10 @@ export const Kakao = () => {
   return (
     <div>
       <Image
-        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/Kakao.svg"
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/newKakao.svg"
         alt="카카오로그인"
-        width={30}
-        height={30}
+        width={265}
+        height={48}
         onClick={kakaoLogin}
         style={{ cursor: 'pointer' }}
       />
@@ -53,10 +53,10 @@ export const Google = () => {
   return (
     <div>
       <Image
-        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/Google.svg"
+        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/Login/newGoogle.svg"
         alt="구글로그인"
-        width={30}
-        height={30}
+        width={265}
+        height={48}
         onClick={googleLogin}
         style={{ cursor: 'pointer' }}
       />

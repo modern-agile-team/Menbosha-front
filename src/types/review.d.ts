@@ -55,4 +55,11 @@ export interface ReviewProprType {
   isBad: boolean;
   isStuffy: boolean;
   createdAt: string;
+  isLocation: boolean;
 }
+
+export type MentorCreateReviewRequestType = {
+  mentorId: number;
+  isCheck: string[];
+  review: string;
+};

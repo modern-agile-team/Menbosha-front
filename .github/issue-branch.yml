@@ -13,7 +13,7 @@ branches:
   - label: 💻 Delete
     prefix: delete
   - label: 📃 Docs
-    prefix: doc
+    prefix: docs
   - label: ✨ Feature
     prefix: feat
   - label: 📬 API
@@ -28,3 +28,5 @@ branches:
     prefix: question
   - label: 🎨 Publish
     prefix: publish
+  - label: 📌 Release
+    prefix: release

@@ -70,6 +70,7 @@ export type UserProfileType = UserType<{
   activityCategoryId: number;
   hopeCategoryId: number;
   image: string;
+  email: string;
   intro: {
     career: string;
     customCategory: string;
@@ -94,11 +95,3 @@ export interface UpdateProfileType {
   sns: string;
   isMentor: boolean;
 }
-
-export type RankType = {
-  rank: number;
-  badge: {
-    badgeId: number;
-    createdAt: string;
-  }[];
-};

@@ -1,5 +1,5 @@
 import USER from '@/apis/user';
-import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
+import { FlexBox } from '@/components/common/globalStyled/styled';
 import {
   MentorBoardCardType,
   MentorBoardListType,
@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import * as S from './style';
 import { rankList } from '@/components/common/rank/rankList';
 import MENTOR from '@/apis/mentor';
-import MentorBoardCard from '../mentor-board-elements/MentorBoardCard';
 import MentorOtherBoardCard from '../mentor-board-elements/MentorOtherBoardCard';
 import { useRouter } from 'next/router';
 
@@ -70,16 +69,17 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
   useEffect(() => {
     getUserInfoApi();
     getUserOtherBoardsApi();
-    if (userInfo) {
-      getRankList();
-    }
   }, []);
+
+  useEffect(() => {
+    getRankList();
+  }, [userInfo]);
 
   return (
     <FlexBox type="flex">
       {userInfo && (
         <S.MentorInfoCardContainer onClick={handleRouteUserInfo}>
-          <img src={userInfo?.image as string} alt="유저이미지" />
+          <img src={userInfo.image} alt="유저이미지" />
           <div>
             <S.MentorRankInfo>
               <img src={rankInfo.image} alt="랭크이미지"></img>
@@ -88,9 +88,11 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
             </S.MentorRankInfo>
             <S.MentorInfoBox>
               <div>{userInfo.name}</div>
-              <div>{userInfo.intro.customCategory}</div>
-              <div>{userInfo.intro.career}</div>
-              <div>{userInfo.intro.shortIntro}</div>
+              <div>
+                <div>{userInfo.intro.customCategory}</div>
+                <div>{userInfo.intro.career}</div>
+                <div>{userInfo.intro.shortIntro}</div>
+              </div>
             </S.MentorInfoBox>
           </div>
         </S.MentorInfoCardContainer>
@@ -99,28 +101,26 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
         <div>이 멘토의 다른 게시글</div>
         <div>
           {otherBoards &&
-            otherBoards
-              .filter((data, idx) => idx < 2)
-              .map((data) => {
-                const temp: MentorBoardCardType = {
-                  id: data.id,
-                  head: data.head,
-                  body: data.body,
-                  category: data.categoryId,
-                  createdAt: data.createdAt,
-                  updatedAt: data.updatedAt,
-                  userId: data.userId,
-                  userName: data.user.name,
-                  userImage: data.user.userImage.imageUrl,
-                  likes: data.likeCount,
-                  mentorBoardImage: data.imageUrl,
-                };
-                return (
-                  <S.MentorBoardCardWrapper>
-                    <MentorOtherBoardCard {...temp} />
-                  </S.MentorBoardCardWrapper>
-                );
-              })}
+            otherBoards.map((data) => {
+              const temp: MentorBoardCardType = {
+                id: data.id,
+                head: data.head,
+                body: data.body,
+                category: data.categoryId,
+                createdAt: data.createdAt,
+                updatedAt: data.updatedAt,
+                userId: data.userId,
+                userName: data.user.name,
+                userImage: data.user.userImage.imageUrl,
+                likes: data.likeCount,
+                mentorBoardImage: data.imageUrl,
+              };
+              return (
+                <S.MentorBoardCardWrapper key={data.id}>
+                  <MentorOtherBoardCard {...temp} />
+                </S.MentorBoardCardWrapper>
+              );
+            })}
         </div>
       </S.MentorOtherBoardsContainer>
     </FlexBox>

@@ -166,6 +166,7 @@ export const GlobalCategoryContainer = styled.div`
   justify-content: center;
   position: sticky;
   background-color: #fff;
+  top: 0px;
   margin: 0px 204px;
   @media only all and (max-width: 1900px) {
     margin: 0px 10.625%; //0 204
@@ -180,6 +181,7 @@ export const CreateIconLink = styled(Link)`
 //html태그 불러오기
 export const HTMLtext = styled.div`
   font-size: 12px;
+  width: 100%;
   color: rgba(0, 0, 0, 0.75);
   font-weight: none;
   overflow: visible;

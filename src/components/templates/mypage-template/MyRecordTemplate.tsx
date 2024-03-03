@@ -1,15 +1,27 @@
 import { ContainerWrapper } from '@/components/common/globalStyled/styled';
 import * as S from './styled';
+import { useRouter } from 'next/router';
+import MyRecordContents from '@/components/organisms/my-record/MyRecordContents';
 
 const MyRecordTemplate = () => {
+  const router = useRouter();
+  const handleBack = () => {
+    router.push(`/mypage`);
+  };
   return (
-    <ContainerWrapper>
-      <div>기록</div>
+    <div>
       <S.MyRecordBack>
-        <div></div>
-        <div></div>
+        <ContainerWrapper>
+          <S.ContentContainer>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/prevBtnWhite4.svg"
+              onClick={handleBack}></img>
+            <MyRecordContents />
+          </S.ContentContainer>
+        </ContainerWrapper>
       </S.MyRecordBack>
-    </ContainerWrapper>
+      <S.BackgroundContainer src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/background4.svg"></S.BackgroundContainer>
+    </div>
   );
 };
 

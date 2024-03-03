@@ -1,26 +1,20 @@
-'use client';
-
 import HELP from '@/apis/help';
 import HelpCard from '@/components/molecules/help-board-elements/HelpCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { HelpListApiType, HelpListParamsType } from '@/types/help';
-import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
-const HelpBoardCardList = () => {
-  const [totalPage, setTotalPage] = useState(1); //페이지 수
-  const [page, setPage] = useState(1);
+const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const [getList, setGetList] = useState<
     HelpListApiType['helpMeBoardWithUserAndImagesItemDto']
   >([]);
+  const [totalPage, setTotalPage] = useState(lastPage); //페이지 수
+  const [page, setPage] = useState(1);
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-  const router = useRouter();
-  const [filterCategory, setFilterCategory] =
-    useRecoilState(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -31,43 +25,35 @@ const HelpBoardCardList = () => {
     };
   }, [obsRef, getList]);
 
-  useEffect(() => {
-    // 스크롤 수동으로 조정 설정
-    if (
-      'scrollRestoration' in history &&
-      history.scrollRestoration !== 'manual'
-    ) {
-      history.scrollRestoration = 'manual';
-    }
-  }, []);
-
   //무한스크롤 로드
   useEffect(() => {
     loadPost();
   }, [page]);
 
+  //필터링 기능
   useEffect(() => {
-    if (filterCategory !== 1) {
-      setGetList([]);
-      setTimeout(() => {
-        loadPost();
-      }, 0);
-    }
-  }, [filterCategory]);
+    setGetList([]);
+    setPage(1);
+    setTotalPage(lastPage);
+    loadPost();
+  }, [filterCategoryId]);
+
+  console.log('page', page, 'totalPage', totalPage);
+  console.log('123123', getList);
 
   const handleObs = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting) {
       //옵저버 중복 실행 방지
       preventRef.current = false; //옵저버 중복 실행 방지
-      setTotalPage((prev) => prev + 1); //페이지 값 증가
+      setPage((prev) => prev + 1); //페이지 값 증가
     }
   };
 
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
     const temp: HelpListParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId,
       loadOnlyPullingUp: false,
       sortOrder: 'DESC',
       orderField: 'id',
@@ -84,46 +70,17 @@ const HelpBoardCardList = () => {
       setTotalPage(response.lastPage);
     }
     setLoad(false);
-  }, [page]);
-
-  const handleRouteChange = (e: any) => {
-    sessionStorage.setItem(
-      `__next_scroll_back`,
-      JSON.stringify({
-        x: 0,
-        y: window.scrollY.toString(),
-      }),
-    );
-  };
-
-  //router발생시 스크롤 위치 저장
-  useEffect(() => {
-    router.events.on('routeChangeStart', handleRouteChange);
-    window.addEventListener('beforeunload', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-      window.removeEventListener('beforeunload', handleRouteChange);
-    };
-  }, [router.events]);
-
-  //스크롤 위치 복원 & session비우기
-  useEffect(() => {
-    const temp = JSON.parse(
-      sessionStorage.getItem(`__next_scroll_back`) as string,
-    );
-    temp && setTimeout(() => window.scrollTo(0, temp.y), 0);
-    // window.sessionStorage.clear();
-  }, [getList]);
+  }, [page, filterCategoryId]);
 
   return (
     <S.HelpCardContainer>
-      {getList &&
+      {getList.length !== 0 ? (
         getList.map((data) => {
           const temp = {
             id: data.id,
             name: data.user.name,
             userImage: data.user.userImage.imageUrl,
-            image: data.imageUrl && data.imageUrl,
+            image: data.imageUrl ?? '',
             head: data.head,
             body: data.body,
             createdAt: data.createdAt,
@@ -135,11 +92,14 @@ const HelpBoardCardList = () => {
               <HelpCard {...temp} />
             </S.HelpCardWrapper>
           );
-        })}
-      <div>
-        {load && <div>Loading...</div>}
+        })
+      ) : (
+        <>{!load && <div>도와주세요 게시글이 존재하지 않습니다.</div>}</>
+      )}
+      <>
+        {load && <SkeletonUI width="23.6%" height="260px" count={8} />}
         <div ref={obsRef}></div>
-      </div>
+      </>
     </S.HelpCardContainer>
   );
 };

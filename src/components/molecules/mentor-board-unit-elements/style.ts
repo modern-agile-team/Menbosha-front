@@ -16,8 +16,6 @@ export const SlidImages = styled.div`
 export const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: auto;
 `;
 
 export const BodyImages = styled.img`
@@ -31,6 +29,7 @@ export const BodyImages = styled.img`
 export const BodyContentBox = styled.div`
   min-width: 434px;
   width: 46vw;
+  margin: 24px 0px;
   :nth-child(1) {
     overflow-wrap: break-word;
     width: 100%;
@@ -80,7 +79,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const LikeContainer = styled.div`
-  margin-left: auto;
+  margin: 94px 0px 50px auto;
   & > img {
     cursor: pointer;
   }
@@ -89,14 +88,16 @@ export const LikeContainer = styled.div`
 export const MentorInfoCardContainer = styled.div`
   border: 2px solid #ff772b;
   border-radius: 10px;
-  padding: 24px 12px;
+  padding: 24px;
   text-align: center;
-  width: 15vw;
+  width: 14.5vw;
+  //멘토 이미지
   & > img {
-    width: 14vw;
-    height: 14vw;
+    width: 100%;
+    height: 60%;
     border-radius: 10px;
   }
+  //멘토 info박스
   & > :nth-child(2) {
     display: flex;
     padding: 27px 0px 0px 5px;
@@ -121,10 +122,17 @@ export const MentorRankInfo = styled.div`
 `;
 
 export const MentorInfoBox = styled.div`
+  margin: 0px 35px;
   text-align: left;
+  //유저 info의 이름
   & > :nth-child(1) {
     font-size: 20px;
     font-weight: bold;
+  }
+  //유저 info의 정보 박스
+  & > :nth-child(2) {
+    padding: 12px 0px;
+    color: #000000;
   }
   & > :not(:nth-child(1)) {
     font-size: 12px;
@@ -144,5 +152,6 @@ export const MentorOtherBoardsContainer = styled.div`
 `;
 
 export const MentorBoardCardWrapper = styled.div`
+  width: 280px;
   margin: 14px;
 `;

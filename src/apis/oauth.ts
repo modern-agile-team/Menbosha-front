@@ -32,11 +32,6 @@ const AUTH = {
     const result: AxiosResponse = await instance.post(
       `${AUTH.path}/${provider}/unlink`,
     );
-    return result;
-  },
-
-  //계정 삭제 보고 api [delete 요청 ]
-  async deleteAccountUserApi(): Promise<any> {
     await instance.delete(`${AUTH.path}/account`);
   },
 };

@@ -6,21 +6,23 @@ import { MentorBoardUnitPropsType, MentorBoardUnitType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRouter } from 'next/router';
+import MentorBoardUnitBodySkeleton from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitBodySkeleton';
+import MentorBoardUnitHeadSkeleton from '@/components/molecules/mentor-board-unit-elements/MentorBoardUnitHeadSkeleton';
 
 const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
   const router = useRouter();
-  const [getUnitData, setUnitData] = useState<MentorBoardUnitType>();
+  const [getUnitData, setGetUnitData] = useState<MentorBoardUnitType>();
+  const [load, setLoad] = useState(false);
 
   const getMentorBoardUnitApi = async () => {
     const response = await MENTOR.getMentorBoardUnit(id);
-    setUnitData(response);
+    setGetUnitData(response);
+    setLoad(true);
   };
 
   /**돌아가기 버튼 */
-  const handlePrevBtn = () => {
-    router.push({
-      pathname: `/mentor/board`,
-    });
+  const handleBack = () => {
+    router.back();
   };
 
   useEffect(() => {
@@ -31,31 +33,42 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
     <S.MentorBoardUnitContainer>
       <div>
         <img
-          onClick={handlePrevBtn}
-          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"></img>
+          onClick={handleBack}
+          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"
+          alt="이전버튼"
+        />
       </div>
       {getUnitData && (
-        <div>
-          <MentorBoardUnitHead
-            id={getUnitData.id}
-            head={getUnitData.head}
-            body={getUnitData.body}
-            userImage={getUnitData.user.userImage.imageUrl}
-            userName={getUnitData.user.name}
-            categoryId={getUnitData.categoryId}
-            createdAt={getUnitData.createdAt}
-            isOwner={getUnitData.unitOwner}
-          />
-          <MentorBoardUnitBody
-            userId={getUnitData.user.userImage.userId}
-            id={getUnitData.id}
-            image={getUnitData.mentorBoardImages}
-            body={getUnitData.body}
-            likes={getUnitData.mentorBoardLikes}
-            isLike={getUnitData.isLike}
-          />
-          <MentorBoardUnitBottom id={getUnitData.user.userImage.userId} />
-        </div>
+        <S.MentorBoardContentContainer>
+          {load ? (
+            <>
+              <MentorBoardUnitHead
+                id={getUnitData.id}
+                head={getUnitData.head}
+                body={getUnitData.body}
+                userImage={getUnitData.user.userImage.imageUrl}
+                userName={getUnitData.user.name}
+                categoryId={getUnitData.categoryId}
+                createdAt={getUnitData.createdAt}
+                isOwner={getUnitData.unitOwner}
+              />
+              <MentorBoardUnitBody
+                userId={getUnitData.user.userImage.userId}
+                id={getUnitData.id}
+                image={getUnitData.mentorBoardImages}
+                body={getUnitData.body}
+                likes={getUnitData.mentorBoardLikes}
+                isLike={getUnitData.isLike}
+              />
+              <MentorBoardUnitBottom id={getUnitData.user.userImage.userId} />
+            </>
+          ) : (
+            <>
+              <MentorBoardUnitHeadSkeleton />
+              <MentorBoardUnitBodySkeleton />
+            </>
+          )}
+        </S.MentorBoardContentContainer>
       )}
     </S.MentorBoardUnitContainer>
   );

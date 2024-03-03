@@ -19,6 +19,7 @@ body {
   overflow-x: hidden;
   font-family: 'Pretendard-Regular', sans-serif;
   font-size: 24px;
+  scroll-behavior: smooth;
 }
 
 .ql-editor {
@@ -31,11 +32,11 @@ body {
 }
 
 .ql-container.ql-snow {
-  border: 2px solid #ffbb5c !important;
+  border: 2px solid #ff772b !important;
 }
 
 .ql-toolbar.ql-snow {
-  border: 2px solid #ffbb5c !important;
+  border: 2px solid #ff772b !important;
 }
 
 .ql-fill {

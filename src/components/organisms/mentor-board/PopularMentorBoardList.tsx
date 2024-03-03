@@ -3,18 +3,20 @@ import MentorBoardCard from '@/components/molecules/mentor-board-elements/Mentor
 import { MentorBoardListType, MentorBoardParamsType } from '@/types/mentor';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
-import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import { FilterPropsType } from '@/components/common/category/Category';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
-const PopularMentorBoardList = () => {
-  const [getHotData, setHotData] = useState<
+const PopularMentorBoardList = ({
+  filterCategoryId,
+}: Partial<FilterPropsType>) => {
+  const [getHotData, setGetHotData] = useState<
     MentorBoardListType['mentorBoardWithUserAndImageDtos']
   >([]);
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
+  const [load, setLoad] = useState(false);
 
   const getRandomMentorBoardApi = async () => {
     const temp: MentorBoardParamsType = {
-      categoryId: filterCategory,
+      categoryId: filterCategoryId as number,
       loadOnlyPopular: true,
       orderField: 'id',
       sortOrder: 'DESC',
@@ -22,12 +24,13 @@ const PopularMentorBoardList = () => {
       pageSize: 4,
     };
     const response = await MENTOR.MentorBoardPagination(temp);
-    setHotData(response.mentorBoardWithUserAndImageDtos);
+    setGetHotData(response.mentorBoardWithUserAndImageDtos);
+    setLoad(true);
   };
 
   useEffect(() => {
     getRandomMentorBoardApi();
-  }, [filterCategory]);
+  }, [filterCategoryId]);
 
   useEffect(() => {
     getRandomMentorBoardApi();
@@ -35,7 +38,7 @@ const PopularMentorBoardList = () => {
 
   return (
     <S.MentorBoardCardContainer>
-      {getHotData ? (
+      {getHotData.length !== 0 ? (
         getHotData.map((data) => {
           const temp = {
             id: data.id,
@@ -57,8 +60,9 @@ const PopularMentorBoardList = () => {
           );
         })
       ) : (
-        <div style={{ color: '#000' }}>없음</div>
+        <>{load && <div>인기 멘토글이 존재하지 않습니다.</div>}</>
       )}
+      <>{!load && <SkeletonUI width="18.5%" height="280px" count={10} />}</>
     </S.MentorBoardCardContainer>
   );
 };

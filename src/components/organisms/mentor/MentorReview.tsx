@@ -5,7 +5,7 @@ import { MentorUnitPropsType } from '@/types/user';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { useRecoilValue } from 'recoil';
-import { CategoryFilterAtom } from '@/recoil/atoms/CategorySelectAtom';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorReview = ({ id }: MentorUnitPropsType) => {
   const [reviewData, setReviewData] = useState<
@@ -16,7 +16,6 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-  const filterCategory = useRecoilValue(CategoryFilterAtom);
 
   //옵저버 생성
   useEffect(() => {
@@ -53,18 +52,9 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
     getMentorReviewApi();
   }, [page]);
 
-  useEffect(() => {
-    if (filterCategory !== 1) {
-      setPage(1);
-      setReviewData([]);
-      setTimeout(() => {
-        getMentorReviewApi();
-      }, 0);
-    }
-  }, [filterCategory]);
   return (
     <S.ReviewElementWrapper>
-      {reviewData &&
+      {reviewData.length !== 0 ? (
         reviewData.map((data) => {
           const temp = {
             id: data.id,
@@ -86,17 +76,21 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
             isBad: data.isBad,
             isStuffy: data.isStuffy,
             createdAt: data.createdAt,
+            isLocation: true,
           };
           return (
             <S.ReviewContentContainer key={data.id}>
               <MentorReviewElements {...temp} />
             </S.ReviewContentContainer>
           );
-        })}
-      <div>
-        {load && <div>Loading...</div>}
+        })
+      ) : (
+        <>{!load && <div>후기가 존재하지 않습니다.</div>}</>
+      )}
+      <S.ReviewLoadingBox>
+        {load && <SkeletonUI width="100%" height="160px" count={5} />}
         <div ref={obsRef}></div>
-      </div>
+      </S.ReviewLoadingBox>
     </S.ReviewElementWrapper>
   );
 };

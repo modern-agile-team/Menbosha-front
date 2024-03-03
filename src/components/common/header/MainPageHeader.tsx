@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useModal from '@/hooks/useModal';
 import LoginModal from '@/components/organisms/auth/LoginModal';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
@@ -13,30 +13,23 @@ const id = 'home'; //초기값 -> 후에 변동 예정
 
 const MainPageHeader = () => {
   const router = useRouter();
-  // const [isMain, setIsMain] = useState(false);
-  const [isLogin, setLogin] = useRecoilState(LoginStateAtom);
+  const isLogin = useRecoilValue(LoginStateAtom);
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
-  const { isOpenModal: mentorModal, handleModal: handleMentorModal } =
-    useModal();
   const [provider, setProvider] = useState('');
-  const [isLoginState, setLoginState] = useRecoilState(LoginStateAtom);
-
-  // useEffect(() => {
-  //   setIsMain(router.pathname === '/main');
-  // }, [router.pathname]); // 디자인 변경으로 인해서 헤더 위치 고정
+  const setLoginState = useSetRecoilState(LoginStateAtom);
 
   const handleLogoutApi = async () => {
     await AUTH.handleLogout(provider);
-    window.localStorage.removeItem('accessToken');
-    window.localStorage.removeItem('refreshToken');
-    window.localStorage.removeItem('provider');
+    window.sessionStorage.removeItem('accessToken');
+    window.sessionStorage.removeItem('refreshToken');
+    window.sessionStorage.removeItem('provider');
     setLoginState(false);
     router.push(`/main`);
   };
 
   useEffect(() => {
-    const provider = window.localStorage.getItem('provider');
+    const provider = window.sessionStorage.getItem('provider');
     provider && setProvider(provider);
   }, []);
 
@@ -57,13 +50,13 @@ const MainPageHeader = () => {
           </Link>
         </S.LogoBox>
         <S.NavigateBox>
-          <Link href={`/mentor`}>
+          <Link href={`/mentor?filterId=1`}>
             <span>멘토 찾기</span>
           </Link>
-          <Link href={`/mentor/board`}>
+          <Link href={`/mentor/board?filterId=1`}>
             <span>멘토 게시글</span>
           </Link>
-          <Link href={`/help`}>
+          <Link href={`/help?filterId=1`}>
             <span>도와주세요</span>
           </Link>
           <Link href={`/support`}>
@@ -71,20 +64,20 @@ const MainPageHeader = () => {
           </Link>
         </S.NavigateBox>
         <S.IconBox>
-          <Link
-            href={{
-              pathname: `chat/${id}`,
-            }}>
-            <Image
-              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
-              alt="ChatIcon"
-              width="24"
-              height="24"
-              style={{ marginRight: 30 }}
-            />
-          </Link>
           {isLogin ? (
             <div>
+              <Link
+                href={{
+                  pathname: `chat/${id}`,
+                }}>
+                <Image
+                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                  alt="ChatIcon"
+                  width="24"
+                  height="24"
+                  style={{ marginRight: 30 }}
+                />
+              </Link>
               <Link href={{ pathname: `/mypage` }}>
                 <Image
                   src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
@@ -103,9 +96,13 @@ const MainPageHeader = () => {
               />
             </div>
           ) : (
-            <div onClick={handleBeforeModal} style={{ color: '#000000' }}>
-              로그인
-            </div>
+            <Image
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/sign-inBtn.svg"
+              alt="sign-in"
+              width={24}
+              height={24}
+              onClick={handleBeforeModal}
+            />
           )}
           {beforeModal && (
             <LoginModal

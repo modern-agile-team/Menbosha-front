@@ -1,9 +1,17 @@
 import USER from '@/apis/user';
 import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import * as S from './styled';
 import { useRouter } from 'next/router';
 import { IFileTypes } from '../create-board/CreateBody';
+import Link from 'next/link';
+import { categoryList } from '@/components/common/category/categoryList';
 
 export interface ImageType {
   object: File;
@@ -15,6 +23,7 @@ const UpdateMyProfile = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [imgFile, setImgFiles] = useState<ImageType>();
   const router = useRouter();
+  const [hopeCategory, setHopeCategory] = useState(0);
   const [updateInfo, setUpdateInfo] = useState({
     name: '',
     image: '',
@@ -30,7 +39,7 @@ const UpdateMyProfile = () => {
     rank: 0,
   });
 
-  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const name = e.target.name;
     const value = e.target.value;
     setUpdateInfo((prev) => {
@@ -43,6 +52,7 @@ const UpdateMyProfile = () => {
 
   const getMyInfoApi = async () => {
     const response = await USER.getMyInfo();
+    setHopeCategory(response.activityCategoryId);
     setUpdateInfo(() => {
       return {
         name: response.name,
@@ -62,33 +72,26 @@ const UpdateMyProfile = () => {
   };
 
   const handleUpdateProfile = async () => {
-    const temp = {
-      isMentor: updateInfo.isMentor,
-      hopeCategoryId: updateInfo.hopeCategoryId,
-      activityCategoryId: updateInfo.activityCategoryId,
-      career: updateInfo.career,
-      customCategory: updateInfo.customCategory,
-      detail: updateInfo.detail,
-      portfolio: updateInfo.portfolio,
-      shortIntro: updateInfo.shortIntro,
-      sns: updateInfo.sns,
-    };
-    await USER.updateMyProfile(temp);
-    if (imgFile) {
-      const formData = new FormData();
-      formData.append('file', imgFile.object);
-      await USER.updateMyImage(formData);
-    }
-    router.push('/mypage/info');
-  };
-
-  const handleToggleMentor = () => {
-    setUpdateInfo((prev) => {
-      return {
-        ...prev,
-        isMentor: !updateInfo.isMentor,
+    if (confirm('저장하시겠습니까?')) {
+      const temp = {
+        isMentor: updateInfo.isMentor,
+        hopeCategoryId: updateInfo.hopeCategoryId,
+        activityCategoryId: updateInfo.activityCategoryId,
+        career: updateInfo.career,
+        customCategory: updateInfo.customCategory,
+        detail: updateInfo.detail,
+        portfolio: updateInfo.portfolio,
+        shortIntro: updateInfo.shortIntro,
+        sns: updateInfo.sns,
       };
-    });
+      await USER.updateMyProfile(temp);
+      if (imgFile) {
+        const formData = new FormData();
+        formData.append('file', imgFile.object);
+        await USER.updateMyImage(formData);
+      }
+      router.push('/mypage/info');
+    }
   };
 
   /**이미지 추가 핸들러 */
@@ -184,118 +187,175 @@ const UpdateMyProfile = () => {
     }
   }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
 
+  //드레그 했을 시 동작
   useEffect(() => {
     initDragEvents();
 
     return () => resetDragEvents();
   }, [initDragEvents, resetDragEvents]);
 
+  //버튼 클릭시마다 타입을 바꿔줍니다
+  const onChangeMode = (type: boolean) => {
+    if (!type) {
+      setUpdateInfo((prev) => {
+        return {
+          ...prev,
+          isMentor: true,
+        };
+      });
+    } else {
+      setUpdateInfo((prev) => {
+        return {
+          ...prev,
+          isMentor: false,
+        };
+      });
+    }
+  };
+
+  //카테고리 값 변경
+  const handleHopeCategory = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    const value = target.innerHTML;
+    const temp = categoryList.find((data) => data.category === value)?.id;
+    if (temp) {
+      setHopeCategory(temp);
+    }
+    if (temp === hopeCategory) {
+      setHopeCategory(1);
+    }
+  };
+
   return (
-    <div>
-      <S.ContentContainer>
-        <S.HeaderContentsBox>개인프로필</S.HeaderContentsBox>
-        <S.HeaderContentsBox>
-          {!imgFile ? (
-            <S.DropDownImageBox
-              htmlFor="fileUpload"
-              ref={dragRef}
-              drag={isDragging}>
-              <div>
-                <div>+</div>
-                <div>파일을 드래그해서 놓아주세요.</div>
-                <div>아이콘을 눌러 파일을 직접 선택하세요</div>
-              </div>
-            </S.DropDownImageBox>
-          ) : (
-            <div style={{ margin: 5 }}>
-              <ImageBox
-                src={imgFile.url as string}
-                width="280px"
-                height="350px"
-                size="contain"
-                onClick={handleFilterFile}
-              />
-              <div onClick={handleFilterFile}>X</div>
-            </div>
-          )}
-          <input
-            type="file"
-            id="fileUpload"
-            onChange={onChangeFiles}
-            style={{ display: 'none' }}
-          />
-          <FlexBox type="flex">
+    <S.UpdateProfileContainer>
+      <div></div>
+      <div>프로필 사진</div>
+      <div></div>
+      <div>
+        {!imgFile ? (
+          <S.DropDownImageBox
+            htmlFor="fileUpload"
+            ref={dragRef}
+            drag={isDragging}>
             <div>
-              <div>{updateInfo.name}</div>
+              <div>+</div>
+              <div>파일을 드래그해서 놓아주세요.</div>
+              <div>아이콘을 눌러 파일을 직접 선택하세요</div>
             </div>
-            <div>{updateInfo.rank}</div>
-          </FlexBox>
-        </S.HeaderContentsBox>
-        <S.HeaderContentsBox>
-          {/* 나중에 UI하나로 구성해서 토글형태 버튼 만들기 */}
-          {updateInfo.isMentor ? (
-            <div onClick={handleToggleMentor}>멘토</div>
-          ) : (
-            <div onClick={handleToggleMentor}>멘토아님</div>
-          )}
-        </S.HeaderContentsBox>
-      </S.ContentContainer>
-      <S.ContentContainer>
-        <S.BodyContentsBox>
-          <div>소개</div>
-          <input
-            name="shortIntro"
-            type="text"
-            onChange={handleInputValue}
-            value={updateInfo.shortIntro}></input>
-        </S.BodyContentsBox>
-        <S.BodyContentsBox>
-          <div>주요경력</div>
-          <input
-            name="career"
-            type="text"
-            onChangeCapture={handleInputValue}
-            value={updateInfo.career}></input>
-        </S.BodyContentsBox>
-        <S.BodyContentsBox>
-          <div>관심카테고리</div>
-          <input
-            name="customCategory"
-            type="text"
-            onChange={handleInputValue}
-            value={updateInfo.customCategory}></input>
-        </S.BodyContentsBox>
-      </S.ContentContainer>
-      <S.ContentContainer>
-        <S.DetailBox>
-          <div>세부사항</div>
-          <input
-            name="detail"
-            type="text"
-            onChange={handleInputValue}
-            value={updateInfo.detail}></input>
-        </S.DetailBox>
-      </S.ContentContainer>
-      <S.ContentContainer>
-        <S.ShareBox>
-          <div>포트폴리오</div>
-          <input
-            name="portfolio"
-            type="text"
-            onChange={handleInputValue}
-            value={updateInfo.portfolio}></input>
-        </S.ShareBox>
-        <S.ShareBox>
-          <div>SNS</div>
-          <input
-            name="sns"
-            type="text"
-            onChange={handleInputValue}
-            value={updateInfo.sns}></input>
-        </S.ShareBox>
-      </S.ContentContainer>
-      <div onClick={handleUpdateProfile}>변경</div>
-    </div>
+          </S.DropDownImageBox>
+        ) : (
+          <div>
+            <img src={imgFile.url as string} onClick={handleFilterFile} />
+          </div>
+        )}
+        <input
+          type="file"
+          id="fileUpload"
+          onChange={onChangeFiles}
+          style={{ display: 'none' }}
+        />
+      </div>
+      <div>
+        <S.ToggleWrapper
+          value={updateInfo.isMentor}
+          onClick={() => onChangeMode(updateInfo.isMentor)}>
+          <span />
+          <S.ToggleButton type="button">멘토</S.ToggleButton>
+          <S.ToggleButton type="button">멘티</S.ToggleButton>
+        </S.ToggleWrapper>
+      </div>
+      <div>
+        <div>희망 카테고리</div>
+        <S.HopeCategoryContainer>
+          {categoryList.map((data) => {
+            return (
+              <div>
+                {hopeCategory === data.id ? (
+                  <S.CategoryBox isCategory={true} onClick={handleHopeCategory}>
+                    {data.category}
+                  </S.CategoryBox>
+                ) : (
+                  <S.CategoryBox
+                    isCategory={false}
+                    onClick={handleHopeCategory}>
+                    {data.category}
+                  </S.CategoryBox>
+                )}
+              </div>
+            );
+          })}
+        </S.HopeCategoryContainer>
+      </div>
+      <div>
+        <div>소개</div>
+        <textarea
+          name="shortIntro"
+          onChange={handleInputValue}
+          value={updateInfo.shortIntro}
+          placeholder="소개를 짧게 입력해 주세요.">
+          {updateInfo?.shortIntro}
+        </textarea>
+      </div>
+      <div>
+        <div>주요경력</div>
+        <textarea
+          name="career"
+          onChange={handleInputValue}
+          value={updateInfo.career}
+          placeholder="주요 경력을 입력해 주세요.">
+          {updateInfo?.career}
+        </textarea>
+      </div>
+      <div>
+        <div>관심카테고리</div>
+        <textarea
+          name="customCategory"
+          onChange={handleInputValue}
+          value={updateInfo.customCategory}
+          placeholder="세부 카테고리를 자유롭게 입력해주세요.
+          예) 프로그래밍, IT, UX, UI">
+          {updateInfo?.customCategory}
+        </textarea>
+      </div>
+      <div>
+        <div>세부사항</div>
+        <textarea
+          name="detail"
+          onChange={handleInputValue}
+          value={updateInfo.detail}
+          placeholder="자신을 어필해 주세요.">
+          {updateInfo?.detail}
+        </textarea>
+      </div>
+      <div>
+        <div>포트폴리오</div>
+        <textarea
+          name="portfolio"
+          onChange={handleInputValue}
+          value={updateInfo.portfolio}
+          placeholder="링크를 입력해 주세요.">
+          {updateInfo?.portfolio}
+        </textarea>
+      </div>
+      <div>
+        <div>SNS</div>
+        <textarea
+          name="sns"
+          onChange={handleInputValue}
+          value={updateInfo.sns}
+          placeholder="링크를 입력해 주세요.">
+          {updateInfo?.sns}
+        </textarea>
+      </div>
+      <div>
+        <div>휴대폰인증</div>
+        <div>인증하기</div>
+      </div>
+      <div></div>
+      <div>
+        <div onClick={handleUpdateProfile}>저장</div>
+      </div>
+    </S.UpdateProfileContainer>
   );
 };
 

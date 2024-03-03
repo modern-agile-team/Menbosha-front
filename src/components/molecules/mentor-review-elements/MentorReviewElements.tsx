@@ -27,6 +27,8 @@ const MentorReviewElements = (props: ReviewProprType) => {
     }
   };
 
+  console.log(props);
+
   useEffect(() => {
     getRankInfo();
   }, []);
@@ -34,7 +36,7 @@ const MentorReviewElements = (props: ReviewProprType) => {
   return (
     <div>
       <S.ReviewContentBox>
-        <S.RankBox>
+        <S.RankBox defaultBg={props.isLocation}>
           <Image src={getRank.image} alt="랭크" width={48} height={48} />
           <div>{getRank.name}</div>
           <div>{props.rank}점</div>
@@ -46,7 +48,7 @@ const MentorReviewElements = (props: ReviewProprType) => {
               id: props.id,
             },
           }}>
-          <S.UserInfoBox>
+          <S.UserInfoBox defaultBg={props.isLocation}>
             <div>{props.name}</div>
             <div>
               <div>{props.customCategory}</div>
@@ -55,17 +57,23 @@ const MentorReviewElements = (props: ReviewProprType) => {
             </div>
           </S.UserInfoBox>
         </LinkBox>
-        <S.ReviewTextBox>
+        <S.ReviewTextBox defaultBg={props.isLocation}>
           <div>{props.createdAt.slice(0, 10)}</div>
           <div>{props.review}</div>
         </S.ReviewTextBox>
         <S.ReportBox>
-          <img
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
-            alt="신고버튼"></img>
+          {props.isLocation ? (
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
+              alt="신고버튼"></img>
+          ) : (
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/reportWhite.svg"
+              alt="신고버튼"></img>
+          )}
         </S.ReportBox>
       </S.ReviewContentBox>
-      <S.CheckListContainer>
+      <S.CheckListContainer defaultBg={props.isLocation}>
         {props.isGoodWork && <div>잘 가르쳐요</div>}
         {props.isClear && <div>깔끔해요</div>}
         {props.isQuick && <div>답변이 빨라요</div>}

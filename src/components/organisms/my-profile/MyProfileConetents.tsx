@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 const MyProfileContents = () => {
   const [getInfo, setInfo] = useState<UserProfileType>();
+  const [showEmail, setShowEmail] = useState(false);
 
   const getMyInfoApi = async () => {
     const response = await USER.getMyInfo();
@@ -17,59 +18,62 @@ const MyProfileContents = () => {
     getMyInfoApi();
   }, []);
   return (
-    <div>
-      <S.ContentContainer>
-        <S.HeaderContentsBox>개인프로필</S.HeaderContentsBox>
-        <S.HeaderContentsBox>
-          <ImageBox
-            src={getInfo?.image}
-            width="280px"
-            height="350px"
-            size="contain"></ImageBox>
-          <FlexBox type="flex">
-            <div>
-              <div>{getInfo?.name}</div>
-              {getInfo?.isMentor ? <div>멘토</div> : <div>멘토아님</div>}
-            </div>
-            <div>{getInfo?.rank}</div>
-          </FlexBox>
-        </S.HeaderContentsBox>
-        <Link
-          href={{
-            pathname: `/mypage/info/update`,
-          }}>
-          설정
-        </Link>
-      </S.ContentContainer>
-      <S.ContentContainer>
-        <S.BodyContentsBox>
-          <div>소개</div>
-          <div>{getInfo?.intro.shortIntro}</div>
-        </S.BodyContentsBox>
-        <S.BodyContentsBox>
-          <div>주요경력</div>
-          <div>{getInfo?.intro.career}</div>
-        </S.BodyContentsBox>
-        <S.BodyContentsBox>
-          <div>관심카테고리</div>
-          <div>{getInfo?.intro.customCategory}</div>
-        </S.BodyContentsBox>
-      </S.ContentContainer>
-      <S.DetailBox>
+    <S.MyInfoGridContainer>
+      <div>프로필</div>
+      <img src={getInfo?.image}></img>
+      <Link
+        href={{
+          pathname: `/mypage/info/update`,
+        }}>
+        <img
+          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/profileSettingBtn.svg"
+          alt="프로필설정"
+        />
+      </Link>
+      <div></div>
+      <div>
+        <FlexBox type="flex">
+          <div>{getInfo?.name}</div>
+          <S.iIcon
+            onMouseOver={() => setShowEmail(true)}
+            onMouseOut={() => setShowEmail(false)}>
+            ⓘ
+          </S.iIcon>
+          {showEmail && (
+            <S.EmailBox
+              onMouseOver={() => setShowEmail(true)}
+              onMouseOut={() => setShowEmail(false)}>
+              이메일 : {getInfo?.email}
+            </S.EmailBox>
+          )}
+        </FlexBox>
+        {getInfo?.isMentor ? <div>멘토</div> : <div>멘티</div>}
+      </div>
+      <div>
+        <div>소개</div>
+        <div>{getInfo?.intro.shortIntro}</div>
+      </div>
+      <div>
+        <div>주요경력</div>
+        <div>{getInfo?.intro.career}</div>
+      </div>
+      <div>
+        <div>관심카테고리</div>
+        <div>{getInfo?.intro.customCategory}</div>
+      </div>
+      <div>
         <div>세부사항</div>
         <div>{getInfo?.intro.detail}</div>
-      </S.DetailBox>
-      <S.ContentContainer>
-        <S.ShareBox>
-          <div>포트폴리오</div>
-          <div>{getInfo?.intro.portfolio}</div>
-        </S.ShareBox>
-        <S.ShareBox>
-          <div>SNS</div>
-          <div>{getInfo?.intro.sns}</div>
-        </S.ShareBox>
-      </S.ContentContainer>
-    </div>
+      </div>
+      <div>
+        <div>포트폴리오</div>
+        <div>{getInfo?.intro.portfolio}</div>
+      </div>
+      <div>
+        <div>SNS</div>
+        <div>{getInfo?.intro.sns}</div>
+      </div>
+    </S.MyInfoGridContainer>
   );
 };
 

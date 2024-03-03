@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import AUTH from '@/apis/oauth';
@@ -17,15 +17,20 @@ const SaveToken = ({ provider }: Company) => {
       const code = new URL(window.location.href).searchParams.get('code');
 
       const result = await AUTH.getToken(provider, code as string);
-      localStorage.setItem('accessToken', result.accessToken);
-      localStorage.setItem('refreshToken', result.refreshToken);
-      localStorage.setItem('provider', provider);
+      sessionStorage.setItem('accessToken', result.accessToken);
+      sessionStorage.setItem('refreshToken', result.refreshToken);
+      sessionStorage.setItem('provider', provider);
       setIsLogin(true);
     } catch (err) {
       console.log(err);
     } finally {
       const currentUrl = window.sessionStorage.getItem('CURRENT_URL');
-      router.push(currentUrl as string);
+      router.push({
+        pathname: currentUrl,
+        query: {
+          filterId: 1,
+        },
+      });
     }
   };
 

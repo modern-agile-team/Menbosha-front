@@ -9,7 +9,6 @@ import {
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
-import Link from 'next/link';
 import { useRecoilValue } from 'recoil';
 import { MyProfileType } from '@/types/user';
 import USER from '@/apis/user';
@@ -17,6 +16,7 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import HELP from '@/apis/help';
 import { useRouter } from 'next/router';
 import { rankList } from '@/components/common/rank/rankList';
+import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const UnitComment = ({ id }: BoardIdType) => {
   //페이지네이션 state
@@ -27,8 +27,6 @@ const UnitComment = ({ id }: BoardIdType) => {
   const preventRef = useRef(true); //옵저버 중복 방지
   const router = useRouter();
 
-  const [commentDel, setCommentDel] = useState(0);
-  const [commentCount, setCommentCount] = useState(0);
   const [commentData, setCommentData] = useState<
     HelpCommentListApiType['helpYouCommentWithUserAndUserImagesItemDto']
   >([]);
@@ -127,7 +125,7 @@ const UnitComment = ({ id }: BoardIdType) => {
     const temp: HelpCommentParamsType = {
       helpBoardId: id,
       page: 1,
-      pageSize: 5,
+      pageSize: 4,
       orderField: 'id',
       sortOrder: 'DESC',
     };
@@ -153,7 +151,7 @@ const UnitComment = ({ id }: BoardIdType) => {
       <>
         {temp && (
           <S.RankBox>
-            <img src={temp?.image}></img>
+            <img src={temp?.image} alt={`${rank}점 랭크`}></img>
             <div>{temp?.rank}</div>
             <div>{rank}점</div>
           </S.RankBox>
@@ -194,7 +192,7 @@ const UnitComment = ({ id }: BoardIdType) => {
     <div>
       <FlexBox type="flex">
         <TextBox color="#FF772B">
-          도와줄게요({commentCount ? commentCount : commentData.length}개)
+          도와줄게요({0 || commentData.length}개)
         </TextBox>
         <img
           src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
@@ -202,10 +200,10 @@ const UnitComment = ({ id }: BoardIdType) => {
           onClick={handleCreateCommentApi}></img>
       </FlexBox>
       <S.CommentContainer>
-        {commentData &&
+        {commentData.length !== 0 ? (
           commentData.map((data) => {
             return (
-              <S.CommentBorder>
+              <S.CommentBorder key={data.id}>
                 <S.CommentContentBox>
                   <img src={data.user.userImage.imageUrl} alt="유저이미지" />
                   <>{getRankInfo(data.user.rank)}</>
@@ -227,25 +225,40 @@ const UnitComment = ({ id }: BoardIdType) => {
                   {/* 채팅창 모달 켜질 부분*/}
                   {data.isAuthor ? (
                     <S.HelpCommentButtonBox>
-                      <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
+                      <img
+                        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                        alt="채팅아이콘"
+                      />
                       <img
                         src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
-                        onClick={() => handleDeleteCommentApi(data.id)}></img>
+                        alt="도와주세요 철회 아이콘"
+                        onClick={() => handleDeleteCommentApi(data.id)}
+                      />
                     </S.HelpCommentButtonBox>
                   ) : (
                     <S.HelpCommentButtonBox>
-                      <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"></img>
+                      <img
+                        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                        alt="채팅아이콘"
+                      />
                     </S.HelpCommentButtonBox>
                   )}
                 </S.CommentContentBox>
               </S.CommentBorder>
             );
-          })}
-        <div>
-          {load && <div>Loading...</div>}
-          <div ref={obsRef}></div>
-        </div>
+          })
+        ) : (
+          <>{!load && <div>댓글이 존재하지 않습니다.</div>}</>
+        )}
       </S.CommentContainer>
+      {load && (
+        <>
+          <S.HelpCommentSkeletonBox>
+            <SkeletonUI width="48.5%" height="150px" count={4} />
+          </S.HelpCommentSkeletonBox>
+          <div ref={obsRef}></div>
+        </>
+      )}
     </div>
   );
 };
