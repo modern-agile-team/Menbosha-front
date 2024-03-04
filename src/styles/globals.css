@@ -1,0 +1,38 @@
+ul,
+li {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff;
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 24px;
+  scroll-behavior: smooth;
+}
+
+/* react-quill에 대한 스타일 지정 */
+.ql-editor {
+  border-radius: 0px 0px 15px 15px;
+  height: 400px !important;
+}
+
+.ql-toolbar {
+  border-radius: 15px 15psx 0px 0px;
+}
+
+.ql-container.ql-snow {
+  border: 2px solid #ff772b !important;
+}
+
+.ql-toolbar.ql-snow {
+  border: 2px solid #ff772b !important;
+}
+
+.ql-fill {
+  color: #fff !important;
+}
