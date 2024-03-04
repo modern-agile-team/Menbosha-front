@@ -234,8 +234,8 @@ const QnATemplate = () => {
 
   return (
     <div>
+      <MainPageHeader />
       <ContainerWrapper>
-        <MainPageHeader />
         <S.QnAContainer>
           <div>자주하는 질문</div>
           <S.QnAContentNListWrapper>

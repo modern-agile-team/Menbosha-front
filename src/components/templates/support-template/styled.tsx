@@ -25,8 +25,8 @@ export const SupportContainer = styled.div`
 export const SupportHeaderBox = styled.div`
   display: flex;
   & > :nth-child(1) {
-    font-size: 64px;
-    font-weight: bold;
+    font-size: 2.67em; //64.08px
+    font-weight: 900; //Pretendard-Black
     color: #ff772b;
   }
   & > :nth-child(2) {
@@ -34,7 +34,8 @@ export const SupportHeaderBox = styled.div`
     flex-direction: column;
     justify-content: end;
     padding: 0px 24px;
-    font-size: 20px;
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
     color: rgb(255, 119, 43, 0.75);
   }
 `;
@@ -71,12 +72,9 @@ export const SupportButtonContainer = styled.div`
     }
     //질문이름
     & > :nth-child(2) {
-      font-size: 20px;
+      font-size: 0.84em; //20.16px
+      font-weight: 700; //Pretendard-Bold
       text-align: center;
-      width: 120px;
-      @media only all and (min-width: 1000px) and (max-width: 1600px) {
-        width: 100px;
-      }
     }
     //도움말보기
     & > :nth-child(3) {
@@ -106,14 +104,15 @@ export const SupportButtonContainer = styled.div`
 export const SupportEtcContainer = styled.div`
   //기타 지원 제목
   & > :nth-child(1) {
-    font-size: 30px;
+    font-size: 1.25em; //30px
+    font-weight: 700; //Pretendard-Bold
     color: #ff772b;
     margin: 60px 0px 25px 0px;
-    font-weight: bold;
   }
   //기타 지원 서비스
   & > :not(:nth-child(1)) {
-    font-size: 20px;
+    font-size: 0.84em; //20.16px
+    font-weight: 400; //Pretendard-Regular
     display: flex;
     border-bottom: 2px solid #ff772b;
     margin: 14px 0px;
@@ -131,9 +130,10 @@ export const SupportElementBox = styled.div`
 export const QnAContainer = styled.div`
   width: 80%;
   margin: 64px 204px;
+  //제목
   & > :nth-child(1) {
-    font-size: 64px;
-    font-weight: bold;
+    font-size: 2.67em; //64.08px
+    font-weight: 900; //Pretendard-Black
     color: #ff772b;
     padding-bottom: 27px;
     border-bottom: 2px solid #ff772b;
@@ -146,12 +146,13 @@ export const QnAContentNListWrapper = styled.div`
 
 export const ListContainer = styled.div`
   border-right: 2px solid #ff772b;
+  height: 50vh;
   & > :nth-child(n) {
     text-align: center;
     padding: 0px 65px;
-    margin: 18px 0px;
-    font-size: 20px;
-    font-weight: bold;
+    margin: 36px 0px;
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
     cursor: pointer;
   }
 `;
@@ -160,8 +161,8 @@ export const ContentsContainer = styled.div`
   width: 70%;
   margin: 36px 0px 0px 126px;
   & > :nth-child(1) {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 2em; //48px
+    font-weight: 700; //Pretendard-Bold
     color: #ff772b;
   }
   & > :nth-child(2) {
@@ -170,6 +171,8 @@ export const ContentsContainer = styled.div`
 `;
 
 export const HelpLabelBox = styled.span`
-  font-size: 12px;
+  font-size: 0.5em; //12px
+  font-weight: 400; //Pretendard-Regular
+  color: #ffffffbf;
   border-bottom: 1px solid #fff;
 `;
