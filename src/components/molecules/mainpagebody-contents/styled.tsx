@@ -39,6 +39,15 @@ export const MenboshaTitleBoxColumn = styled.div`
   font-size: 5.3em;
   font-weight: 900;
   text-shadow: 0px 0px 5.7px rgba(0, 0, 0, 0.4);
+  @media only all and (max-width: 1000px) {
+    font-size: 100px;
+  }
+  @media only all and (max-width: 750px) {
+    font-size: 65px;
+  }
+  @media only all and (max-width: 500px) {
+    font-size: 45px;
+  }
 `;
 
 // 바로 해결하는 멘토링.
@@ -66,6 +75,15 @@ export const MainContents2Right = styled.div`
     margin-bottom: 2vh;
     font-size: 4em;
     font-weight: 900;
+    @media only all and (max-width: 1000px) {
+      font-size: 100px;
+    }
+    @media only all and (max-width: 750px) {
+      font-size: 65px;
+    }
+    @media only all and (max-width: 500px) {
+      font-size: 45px;
+    }
   }
   //바로 해결하는 멘토링 본문
   & > :nth-child(2) {
@@ -119,6 +137,15 @@ export const MainContents3Right = styled.div`
     margin-bottom: 2vh;
     font-size: 4em;
     font-weight: 900; //Pretendard-Black
+    @media only all and (max-width: 1000px) {
+      font-size: 100px;
+    }
+    @media only all and (max-width: 750px) {
+      font-size: 65px;
+    }
+    @media only all and (max-width: 500px) {
+      font-size: 45px;
+    }
   }
   //가볍지만 체계적이게 본문
   & > :nth-child(2) {
@@ -210,6 +237,15 @@ export const MainContents4Right = styled.div`
     margin-bottom: 2vh;
     font-size: 4em;
     font-weight: 900;
+    @media only all and (max-width: 1000px) {
+      font-size: 100px;
+    }
+    @media only all and (max-width: 750px) {
+      font-size: 65px;
+    }
+    @media only all and (max-width: 500px) {
+      font-size: 45px;
+    }
   }
   //세상의 모든것을 다루다 본문
   & > :nth-child(2) {
