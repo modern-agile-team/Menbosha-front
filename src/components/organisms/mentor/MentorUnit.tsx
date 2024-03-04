@@ -78,8 +78,8 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
           <S.HeaderContentsBox>
             <S.RankBox>
               <Image
-                width={150}
-                height={150}
+                width={126}
+                height={126}
                 src={getRank.image}
                 alt="랭크이미지"
               />
