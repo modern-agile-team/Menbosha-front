@@ -19,17 +19,16 @@ export const MyPageTitleBox = styled.div`
   width: 16vw;
   height: 12vh;
   text-align: center;
-  /* border: 2px solid red; */
   :nth-child(1) {
     margin-bottom: 12px;
-    font-size: 64px;
-    font-weight: 900;
+    font-size: 2.7em; //64px
+    font-weight: 900; //Pretendard-Black
     line-height: 120%;
     color: rgb(255, 119, 43);
   }
   :nth-child(2) {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 0.85em; //20px
+    font-weight: 700; //Pretendard-Bold
     color: rgb(255, 119, 43, 0.75);
   }
 `;
@@ -105,6 +104,8 @@ export const ProfileLinkImg = styled.div`
 
 export const ProfileLinkText = styled.div`
   margin: 14% 0% 0% 8%;
+  font-size: 1em;
+  font-weight: 700;
   position: absolute;
   color: #ff772b;
 `;

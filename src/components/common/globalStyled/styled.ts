@@ -212,15 +212,17 @@ export const HeadTitleContainer = styled.div`
   > :nth-child(1) {
     display: flex;
     width: 100%;
+    //페이지 대 제목
     > :nth-child(1) {
       color: #ff772b;
-      font-size: 64px;
-      font-weight: bold;
+      font-size: 2.67em; //64px
+      font-weight: 900;
     }
+    //페이지 소 제목
     > :nth-child(2) {
       color: #ff792bbf;
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20px
+      font-weight: 700;
       display: flex;
       align-items: end;
       margin-left: 10px;
@@ -236,6 +238,7 @@ export const GlobalCategoryContainer = styled.div`
   background-color: #fff;
   top: 0px;
   margin: 0px 204px;
+  margin-top: 25px;
   @media only all and (max-width: 1900px) {
     margin: 0px 10.625%; //0 204
   }
@@ -243,12 +246,13 @@ export const GlobalCategoryContainer = styled.div`
 
 /**게시글 생성 아이콘 */
 export const CreateIconLink = styled(Link)`
-  margin: 7px 0px 0px 0px;
+  margin: 9px 0px 0px 0px;
 `;
 
 //html태그 불러오기
 export const HTMLtext = styled.div`
-  font-size: 12px;
+  font-size: 0.5em;
+  font-weight: 400;
   width: 100%;
   color: rgba(0, 0, 0, 0.75);
   font-weight: none;
@@ -263,7 +267,8 @@ export const HTMLtext = styled.div`
   span,
   strong,
   u {
-    font-size: 14px;
+    font-size: 1em;
+    font-weight: 400;
     text-decoration: none;
   }
 `;

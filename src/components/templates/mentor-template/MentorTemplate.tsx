@@ -85,18 +85,17 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
           <MentorRanking filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <S.ListTitleBox>인기 멘토</S.ListTitleBox>
+          <S.ListSubTitleBox>인기 멘토</S.ListSubTitleBox>
           <PopularMentorList filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <S.ListTitleBox>전체 멘토</S.ListTitleBox>
+          <S.ListSubTitleBox>전체 멘토</S.ListSubTitleBox>
           <MentorList
             filterCategoryId={Number(router.query.filterId)}
             lastPage={lastPage as number}
           />
         </S.MentorListContainer>
       </ContainerWrapper>
-      <MainPageFooter color={true} />
     </>
   );
 };

@@ -6,7 +6,11 @@ import React from 'react';
 const Mentee = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <HelpTemplate lastPage={data.lastPage} />;
+  return (
+    <div style={{ margin: '0px 0px 10vh 0px' }}>
+      <HelpTemplate lastPage={data.lastPage} />
+    </div>
+  );
 };
 
 export default Mentee;

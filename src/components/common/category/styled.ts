@@ -12,14 +12,15 @@ interface IsCategoryType {
 }
 
 export const CategoryBox = styled.div<IsCategoryType>`
-  padding: 7px;
+  padding: 4px 12px;
   border: 2px solid #ff772b;
   border-radius: 10px;
   color: #000;
   width: auto;
   background-color: ${({ isCat }) => (isCat ? '#c63d2f' : '#fff')};
-  margin: 6px;
-  font-size: 16px;
+  margin: 9px;
+  font-size: 0.67em; //16px
+  font-weight: 400; //Pretendard-Regular
   cursor: pointer;
   transition: all 300ms ease;
   &:hover {

@@ -45,8 +45,8 @@ export const MyInfoGridContainer = styled.div`
   color: #fff;
   //페이지 이름
   & > :nth-child(1) {
-    font-size: 64px;
-    font-weight: bold;
+    font-size: 2.7em; //64px
+    font-weight: 900; //Pretendard-Black
   }
   //본인 이미지
   & > :nth-child(2) {
@@ -62,11 +62,12 @@ export const MyInfoGridContainer = styled.div`
   //본인 이름, 멘토 여부
   & > :nth-child(5) {
     > :nth-child(1) {
-      font-size: 40px;
-      font-weight: bold;
+      font-size: 1.7em; //40px
+      font-weight: 700; //Pretendard-Bold
     }
     > :nth-child(2) {
-      font-size: 16px;
+      font-size: 0.7em; //16.8px
+      font-weight: 400; //Pretendard-Regular
     }
     grid-column: 2 / 4;
   }
@@ -78,12 +79,13 @@ export const MyInfoGridContainer = styled.div`
   :nth-child(10),
   :nth-child(11) {
     > :nth-child(1) {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20.4px
+      font-weight: 700; //Pretendard-Bold
       padding: 0px 0px 24px 0px;
     }
     > :nth-child(2) {
-      font-size: 16px;
+      font-size: 0.7em; //16.8px
+      font-weight: 400; //Pretendard-Regular
     }
   }
   & > :nth-child(9) {
@@ -128,6 +130,13 @@ export const DropDownImageBox = styled.label<DropType>`
   }
 `;
 
+/**업데이트 프로필 타이틀 */
+export const UpdateProfileTitleBox = styled.div`
+  font-size: 2.7em; //64.8px
+  font-weight: 900; //Pretendard-Black
+  color: #ff772b;
+`;
+
 export const UpdateProfileContainer = styled.div`
   display: grid;
   justify-content: center;
@@ -143,6 +152,9 @@ export const UpdateProfileContainer = styled.div`
   //이미지 타이틀
   & > :nth-child(2) {
     grid-column: 2 / 4;
+    font-size: 0.85em; //20.4px
+    font-weight: 700; //Pretendard-Bold
+    color: #ff772b;
     padding-bottom: 16px;
   }
   & > :nth-child(4) {
@@ -159,8 +171,8 @@ export const UpdateProfileContainer = styled.div`
   //카테고리 선택
   & > :nth-child(6) {
     & > :nth-child(1) {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20.4px
+      font-weight: 700; //Pretendard-Bold
       color: #ff772b;
     }
     grid-column: 1 / 4;
@@ -172,8 +184,8 @@ export const UpdateProfileContainer = styled.div`
   {
     //소제목
     & > :nth-child(1) {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20.4px
+      font-weight: 700; //Pretendard-Bold
       color: #ff772b;
       padding-bottom: 12px;
     }
@@ -181,7 +193,8 @@ export const UpdateProfileContainer = styled.div`
     & > :nth-child(2) {
       border: 1px solid #ff772b;
       resize: none;
-      font-size: 12px;
+      font-size: 0.5em; //12px
+      font-weight: 400; //Pretendard-Regular
       color: rgba(0, 0, 0);
       border-radius: 10px;
       height: 108px;

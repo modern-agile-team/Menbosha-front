@@ -27,8 +27,15 @@ export const HeadTitleContainer = styled.div`
 export const BoardTitleBox = styled.div`
   color: #ff772b;
   margin: 0px 0px 24px 0px;
-  font-weight: bold;
-  font-size: 36px;
+  font-weight: 700; //bold
+  font-size: 1.5em;
+`;
+/**리스트 서브 제목 */
+export const ListSubTitleBox = styled.div`
+  color: #ff772b;
+  margin: 0px 0px 24px 0px;
+  font-weight: 700; //bold
+  font-size: 1em;
 `;
 
 /**멘토 게시판 리스트 컨테이너 */

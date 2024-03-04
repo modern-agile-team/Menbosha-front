@@ -13,8 +13,16 @@ export const MentorListContainer = styled.div`
 export const ListTitleBox = styled.div`
   color: #ff772b;
   margin: 0px 0px 24px 0px;
-  font-weight: bold;
-  font-size: 30px;
+  font-weight: 700; //bold
+  font-size: 1.5em;
+`;
+
+/**리스트 서브 제목 */
+export const ListSubTitleBox = styled.div`
+  color: #ff772b;
+  margin: 0px 0px 24px 0px;
+  font-weight: 700; //bold
+  font-size: 1em;
 `;
 
 /**멘토 유닛 템플릿 */

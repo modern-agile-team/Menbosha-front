@@ -84,13 +84,13 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
           <RandomMentorBoard filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <S.ListTitleBox>최근 인기 멘토글</S.ListTitleBox>
+          <S.ListSubTitleBox>최근 인기 멘토글</S.ListSubTitleBox>
           <PopularMentorBoardList
             filterCategoryId={Number(router.query.filterId)}
           />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <S.ListTitleBox>전체 멘토 게시글</S.ListTitleBox>
+          <S.ListSubTitleBox>전체 멘토 게시글</S.ListSubTitleBox>
           <MentorBoardList
             filterCategoryId={Number(router.query.filterId)}
             lastPage={lastPage as number}

@@ -227,135 +227,142 @@ const UpdateMyProfile = () => {
   };
 
   return (
-    <S.UpdateProfileContainer>
-      <div></div>
-      <div>프로필 사진</div>
-      <div></div>
-      <div>
-        {!imgFile ? (
-          <S.DropDownImageBox
-            htmlFor="fileUpload"
-            ref={dragRef}
-            drag={isDragging}>
-            <div>
-              <div>+</div>
-              <div>파일을 드래그해서 놓아주세요.</div>
-              <div>아이콘을 눌러 파일을 직접 선택하세요</div>
-            </div>
-          </S.DropDownImageBox>
-        ) : (
-          <div>
-            <img src={imgFile.url as string} onClick={handleFilterFile} />
-          </div>
-        )}
-        <input
-          type="file"
-          id="fileUpload"
-          onChange={onChangeFiles}
-          style={{ display: 'none' }}
-        />
-      </div>
-      <div>
-        <S.ToggleWrapper
-          value={updateInfo.isMentor}
-          onClick={() => onChangeMode(updateInfo.isMentor)}>
-          <span />
-          <S.ToggleButton type="button">멘토</S.ToggleButton>
-          <S.ToggleButton type="button">멘티</S.ToggleButton>
-        </S.ToggleWrapper>
-      </div>
-      <div>
-        <div>희망 카테고리</div>
-        <S.HopeCategoryContainer>
-          {categoryList.map((data) => {
-            return (
+    <>
+      <S.UpdateProfileTitleBox>
+        <div>프로필 수정</div>
+      </S.UpdateProfileTitleBox>
+      <S.UpdateProfileContainer>
+        <div></div>
+        <div>프로필 사진</div>
+        <div></div>
+        <div>
+          {!imgFile ? (
+            <S.DropDownImageBox
+              htmlFor="fileUpload"
+              ref={dragRef}
+              drag={isDragging}>
               <div>
-                {hopeCategory === data.id ? (
-                  <S.CategoryBox isCategory={true} onClick={handleHopeCategory}>
-                    {data.category}
-                  </S.CategoryBox>
-                ) : (
-                  <S.CategoryBox
-                    isCategory={false}
-                    onClick={handleHopeCategory}>
-                    {data.category}
-                  </S.CategoryBox>
-                )}
+                <div>+</div>
+                <div>파일을 드래그해서 놓아주세요.</div>
+                <div>아이콘을 눌러 파일을 직접 선택하세요</div>
               </div>
-            );
-          })}
-        </S.HopeCategoryContainer>
-      </div>
-      <div>
-        <div>소개</div>
-        <textarea
-          name="shortIntro"
-          onChange={handleInputValue}
-          value={updateInfo.shortIntro}
-          placeholder="소개를 짧게 입력해 주세요.">
-          {updateInfo?.shortIntro}
-        </textarea>
-      </div>
-      <div>
-        <div>주요경력</div>
-        <textarea
-          name="career"
-          onChange={handleInputValue}
-          value={updateInfo.career}
-          placeholder="주요 경력을 입력해 주세요.">
-          {updateInfo?.career}
-        </textarea>
-      </div>
-      <div>
-        <div>관심카테고리</div>
-        <textarea
-          name="customCategory"
-          onChange={handleInputValue}
-          value={updateInfo.customCategory}
-          placeholder="세부 카테고리를 자유롭게 입력해주세요.
+            </S.DropDownImageBox>
+          ) : (
+            <div>
+              <img src={imgFile.url as string} onClick={handleFilterFile} />
+            </div>
+          )}
+          <input
+            type="file"
+            id="fileUpload"
+            onChange={onChangeFiles}
+            style={{ display: 'none' }}
+          />
+        </div>
+        <div>
+          <S.ToggleWrapper
+            value={updateInfo.isMentor}
+            onClick={() => onChangeMode(updateInfo.isMentor)}>
+            <span />
+            <S.ToggleButton type="button">멘토</S.ToggleButton>
+            <S.ToggleButton type="button">멘티</S.ToggleButton>
+          </S.ToggleWrapper>
+        </div>
+        <div>
+          <div>희망 카테고리</div>
+          <S.HopeCategoryContainer>
+            {categoryList.map((data) => {
+              return (
+                <div>
+                  {hopeCategory === data.id ? (
+                    <S.CategoryBox
+                      isCategory={true}
+                      onClick={handleHopeCategory}>
+                      {data.category}
+                    </S.CategoryBox>
+                  ) : (
+                    <S.CategoryBox
+                      isCategory={false}
+                      onClick={handleHopeCategory}>
+                      {data.category}
+                    </S.CategoryBox>
+                  )}
+                </div>
+              );
+            })}
+          </S.HopeCategoryContainer>
+        </div>
+        <div>
+          <div>소개</div>
+          <textarea
+            name="shortIntro"
+            onChange={handleInputValue}
+            value={updateInfo.shortIntro}
+            placeholder="소개를 짧게 입력해 주세요.">
+            {updateInfo?.shortIntro}
+          </textarea>
+        </div>
+        <div>
+          <div>주요경력</div>
+          <textarea
+            name="career"
+            onChange={handleInputValue}
+            value={updateInfo.career}
+            placeholder="주요 경력을 입력해 주세요.">
+            {updateInfo?.career}
+          </textarea>
+        </div>
+        <div>
+          <div>관심카테고리</div>
+          <textarea
+            name="customCategory"
+            onChange={handleInputValue}
+            value={updateInfo.customCategory}
+            placeholder="세부 카테고리를 자유롭게 입력해주세요.
           예) 프로그래밍, IT, UX, UI">
-          {updateInfo?.customCategory}
-        </textarea>
-      </div>
-      <div>
-        <div>세부사항</div>
-        <textarea
-          name="detail"
-          onChange={handleInputValue}
-          value={updateInfo.detail}
-          placeholder="자신을 어필해 주세요.">
-          {updateInfo?.detail}
-        </textarea>
-      </div>
-      <div>
-        <div>포트폴리오</div>
-        <textarea
-          name="portfolio"
-          onChange={handleInputValue}
-          value={updateInfo.portfolio}
-          placeholder="링크를 입력해 주세요.">
-          {updateInfo?.portfolio}
-        </textarea>
-      </div>
-      <div>
-        <div>SNS</div>
-        <textarea
-          name="sns"
-          onChange={handleInputValue}
-          value={updateInfo.sns}
-          placeholder="링크를 입력해 주세요.">
-          {updateInfo?.sns}
-        </textarea>
-      </div>
-      <div>
-        <div>휴대폰인증</div>
-        <div>인증하기</div>
-      </div>
-      <div></div>
-      <div>
-        <div onClick={handleUpdateProfile}>저장</div>
-      </div>
-    </S.UpdateProfileContainer>
+            {updateInfo?.customCategory}
+          </textarea>
+        </div>
+        <div>
+          <div>세부사항</div>
+          <textarea
+            name="detail"
+            onChange={handleInputValue}
+            value={updateInfo.detail}
+            placeholder="자신을 어필해 주세요.">
+            {updateInfo?.detail}
+          </textarea>
+        </div>
+        <div>
+          <div>포트폴리오</div>
+          <textarea
+            name="portfolio"
+            onChange={handleInputValue}
+            value={updateInfo.portfolio}
+            placeholder="링크를 입력해 주세요.">
+            {updateInfo?.portfolio}
+          </textarea>
+        </div>
+        <div>
+          <div>SNS</div>
+          <textarea
+            name="sns"
+            onChange={handleInputValue}
+            value={updateInfo.sns}
+            placeholder="링크를 입력해 주세요.">
+            {updateInfo?.sns}
+          </textarea>
+        </div>
+        <div>
+          <div>휴대폰인증</div>
+          <div>아직 구현되지 않았습니다.</div>
+        </div>
+        <div></div>
+        <div>
+          <div onClick={handleUpdateProfile}>저장</div>
+        </div>
+      </S.UpdateProfileContainer>
+    </>
   );
 };
 

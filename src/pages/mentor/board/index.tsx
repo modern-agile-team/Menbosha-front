@@ -6,7 +6,11 @@ import React, { useEffect } from 'react';
 const MentorBoard = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <MentorBoardTemplate lastPage={data.lastPage} />;
+  return (
+    <div style={{ margin: '0px 0px 10vh 0px' }}>
+      <MentorBoardTemplate lastPage={data.lastPage} />
+    </div>
+  );
 };
 
 export default MentorBoard;

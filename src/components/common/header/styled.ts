@@ -41,11 +41,13 @@ export const NavigateBox = styled.div`
   & > a {
     text-decoration: none;
     color: #ff772b;
+    font-weight: 500;
     font-size: 0.83em;
     &:hover {
       font-weight: 600;
     }
   }
+  //반응형 sidebar구현
   @media only all and (max-width: 1200px) {
     display: none;
   }
