@@ -8,7 +8,6 @@ import {
   MentorBoardParamsType,
 } from '@/types/mentor';
 import {
-  HelpCommentParamsType,
   HelpListApiType,
   HelpListParamsType,
   HelpListType,
@@ -152,9 +151,9 @@ const MyRecordContents = () => {
   return (
     <S.MyRecordContentContainer>
       <div>
-        <TextBox color="#fff" size={64}>
-          내 활동
-        </TextBox>
+        <S.MyRecordTitleBox>
+          <div>내 활동</div>
+        </S.MyRecordTitleBox>
         <S.SubTitleBox>게시글</S.SubTitleBox>
         <S.PaginationCardBox>
           {mentorBoardData.map((data) => {
@@ -172,9 +171,9 @@ const MyRecordContents = () => {
               userName: data.user.name,
             };
             return (
-              <div>
+              <S.MyMentorBoardContainer>
                 <MentorBoardCard {...props} />
-              </div>
+              </S.MyMentorBoardContainer>
             );
           })}
         </S.PaginationCardBox>
@@ -208,9 +207,9 @@ const MyRecordContents = () => {
               userImage: data.user.userImage.imageUrl,
             };
             return (
-              <div>
+              <S.MyHelpBoardContainer>
                 <HelpCard {...props} />
-              </div>
+              </S.MyHelpBoardContainer>
             );
           })}
         </S.PaginationCardBox>

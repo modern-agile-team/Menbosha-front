@@ -8,8 +8,8 @@ export const MyRankWrapper = styled.div`
   grid-template-rows: 1fr;
   //페이지 타이틀
   & > :nth-child(1) {
-    font-size: 64px;
-    font-weight: bold;
+    font-size: 2.7em; //64.8px
+    font-weight: 900; //Pretendard-Black
     color: #fff;
     margin-right: 80px;
   }
@@ -31,11 +31,13 @@ export const MyRankNameAndScore = styled.div`
   color: #fff;
   margin-left: 55px;
   & > :nth-child(1) {
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 1.5em; //36px
+    font-weight: 700; //Pretendard-Bold
   }
   & > :nth-child(2) {
-    font-size: 16px;
+    font-size: 0.65em; //15.6px
+    font-weight: 400; //Pretendard-Regular
+    margin-top: 5px;
   }
 `;
 
@@ -78,12 +80,14 @@ export const RankLevelLockContainer = styled.div`
     text-align: center;
 
     & > :nth-child(1) {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 1em; //24px
+      font-weight: 700; //Pretendard-Bold
       color: #fff;
     }
     & > :nth-child(2) {
-      font-size: 16px;
+      font-size: 0.67em; //16.8px
+      font-weight: 400; //Pretendard-Regular
+      margin-top: 5px;
       color: #fff;
     }
   }

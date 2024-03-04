@@ -12,8 +12,10 @@ export const ReviewContentBox = styled.div`
 export const CheckListContainer = styled.div<BgType>`
   display: flex;
   & > * {
+    font-size: 0.85em; //20.4px
+    font-weight: 400; //Pretendard-Regular
     padding: 6px 12px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     color: #fff;
     border-radius: 10px;
     margin: 10px;
@@ -31,9 +33,16 @@ export const CheckListContainer = styled.div<BgType>`
 
 export const RankBox = styled.div<BgType>`
   padding: 0px 10px 0px 10px;
-  & > :not(:nth-child(1)) {
+  & > :nth-child(2) {
     color: #fff;
-    font-size: 15px;
+    font-size: 0.65em; //15px
+    font-weight: 300; //Pretendard-Medium
+    text-align: center;
+  }
+  & > :nth-child(3) {
+    color: #fff;
+    font-size: 0.5em; //12px
+    font-weight: 400; //Pretendard-Regular
     text-align: center;
   }
   //defaultBg true시
@@ -47,14 +56,17 @@ export const RankBox = styled.div<BgType>`
 `;
 
 export const UserInfoBox = styled.div<BgType>`
+  //유저 이름
   & > :nth-child(1) {
     color: #fff;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 0.85em; //20.4px
+    font-weight: 700; //Pretendard-Bold
     padding-left: 10px;
   }
+  //유저 인포
   & > :nth-child(2) {
-    font-size: 16px;
+    font-size: 0.5em; //12px
+    font-weight: 400; //Pretendard-Regular
     color: #ffffff;
     padding: 10px;
   }
@@ -73,13 +85,16 @@ export const UserInfoBox = styled.div<BgType>`
 
 export const ReviewTextBox = styled.div<BgType>`
   margin: 0px auto 0px auto;
+  //생성 시간
   & > :nth-child(1) {
-    font-size: 10px;
+    font-size: 0.42em; //10.08px
+    font-weight: 300; //Pretendard-Light
     color: #ffffff;
   }
+  //리뷰 본문
   & > :nth-child(2) {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 0.67em; //16.08px
+    font-weight: 400; //Pretendard-Regular
     color: #ffffff;
   }
   //defaultBg true시
