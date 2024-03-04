@@ -85,7 +85,7 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
           />
         </S.HelpBoardListContainer>
         <S.HelpBoardListContainer>
-          <S.BoardTitleBox>도와주세요 게시판</S.BoardTitleBox>
+          <S.ListSubTitleBox>도와주세요 게시판</S.ListSubTitleBox>
           <HelpBoardCardList
             filterCategoryId={Number(router.query.filterId)}
             lastPage={lastPage as number}

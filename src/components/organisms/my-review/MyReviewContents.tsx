@@ -67,9 +67,7 @@ const MyReviewContents = () => {
   return (
     <S.MyReviewWrapper>
       <div>
-        <TextBox color="#fff" size={64}>
-          후기
-        </TextBox>
+        <S.MyReviewTitleBox>후기</S.MyReviewTitleBox>
         <S.ReviewCheckListFilterContainer>
           {checkList.map((data) => {
             return <div>{data.description}</div>;

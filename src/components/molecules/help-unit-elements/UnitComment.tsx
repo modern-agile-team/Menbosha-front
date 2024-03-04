@@ -191,9 +191,9 @@ const UnitComment = ({ id }: BoardIdType) => {
   return (
     <div>
       <FlexBox type="flex">
-        <TextBox color="#FF772B">
+        <S.HelpCommentCountBox>
           도와줄게요({0 || commentData.length}개)
-        </TextBox>
+        </S.HelpCommentCountBox>
         <img
           src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
           style={{ marginLeft: 'auto' }}

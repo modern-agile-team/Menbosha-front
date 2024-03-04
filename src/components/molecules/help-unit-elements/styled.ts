@@ -43,25 +43,39 @@ export const HelpHeadContainer = styled.div`
 export const HelpBoardTitleBox = styled.div`
   width: 100%;
   & > :nth-child(1) {
-    font-size: 40px;
+    font-size: 1.67em; //40.08px
+    font-weight: 700; //Pretendard-Bold
     color: #ff772b;
-    font-weight: bold;
     margin: 0px 0px 41px 0px;
   }
 `;
 
 export const UserInfoBox = styled.div`
   padding: 5px 0px 0px 24px;
+  //이름
   & > :nth-child(1) {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 0.67em; //16.08px
+    font-weight: 700;
     color: #000;
     padding: 0px 0px 5px 0px;
   }
+  //카테고리, 날짜
   & > :nth-child(2) {
     display: flex;
     > * {
       margin: 0px 25px 0px 0px;
+    }
+    //카테고리
+    & > :nth-child(1) {
+      font-size: 0.5em; //12px
+      font-weight: 400; //Pretendard-Regular
+      color: rgba(0, 0, 0, 0.75);
+    }
+    //생성 날짜
+    & > :nth-child(2) {
+      font-size: 0.42em; //10.08px
+      font-weight: 300; //Pretendard-Light
+      color: rgba(0, 0, 0, 0.75);
     }
   }
 `;
@@ -71,7 +85,8 @@ export const ActiveButtonBox = styled.div`
   margin-left: auto;
   & > :nth-child(1) {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 0.67em; //16.08px
+    font-weight: 700; //Pretendard-Bold
     line-height: 25px;
     margin: auto 17px;
     padding: 5px 10px;
@@ -91,6 +106,12 @@ export const UserImg = styled.img`
   width: 51px;
   height: 51px;
   border-radius: 10px;
+`;
+
+export const HelpCommentCountBox = styled.div`
+  color: #ff772b;
+  font-size: 0.84em; //20.16px
+  font-weight: 700; //Pretendard-Bold
 `;
 
 /**도와주세요 댓글 컨테이너 */

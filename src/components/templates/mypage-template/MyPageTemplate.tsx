@@ -3,6 +3,7 @@ import { ImageBox, LinkBox } from '../../common/globalStyled/styled';
 import * as S from './styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import MainPageFooter from '@/components/common/footer/Footer';
 
 const MyPageTemplate = () => {
   const router = useRouter();
@@ -51,6 +52,7 @@ const MyPageTemplate = () => {
           </S.ChatLinkImg>
         </S.ElementSection>
       </S.UserpageWrapper>
+      <MainPageFooter color={true} />
     </div>
   );
 };

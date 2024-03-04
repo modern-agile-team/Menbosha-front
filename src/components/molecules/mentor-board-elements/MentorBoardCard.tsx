@@ -54,23 +54,14 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
           size="cover"
           style={{ borderRadius: 10, border: '2px solid #FF772B' }}
         />
-        <div>
-          <TextBox
-            color="#000"
-            size={16}
-            style={{ padding: '3px', fontWeight: 'bold' }}>
-            {props.userName}
-          </TextBox>
-          <TextBox color="#000" size={12} style={{ padding: '3px' }}>
-            {foundCategory ? foundCategory.category : 'not Found'}
-          </TextBox>
-        </div>
-        <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
+        <S.MentorBoardCardUserInfoContainer>
+          <div>{props.userName}</div>
+          <div>{foundCategory ? foundCategory.category : 'not Found'}</div>
+        </S.MentorBoardCardUserInfoContainer>
+        <S.HeartCountBox>
           <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg" />
-          <S.HeartCountBox style={{ verticalAlign: 'center' }}>
-            {props.likes}
-          </S.HeartCountBox>
-        </FlexBox>
+          <S.HeartCountBox>{props.likes}</S.HeartCountBox>
+        </S.HeartCountBox>
       </S.MentorBoardUserBox>
       <S.MentorBoardCardContainer onClick={handleRouteBoard}>
         {props.mentorBoardImage !== '' ? (
@@ -78,21 +69,14 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
         ) : (
           <S.CardImageBox />
         )}
-        <TextBox
-          size={20}
-          color="#FF772B"
-          style={{ padding: '12px 0px 0px 0px' }}>
-          {props.head}
-        </TextBox>
+        <div>{props.head}</div>
         {isHtml && (
           <HTMLtext
             dangerouslySetInnerHTML={{
               __html: props.body as string,
             }}></HTMLtext>
         )}
-        <TextBox size={10} color="#000">
-          {props.createdAt.slice(0, 10)}
-        </TextBox>
+        <div>{props.createdAt.slice(0, 10)}</div>
       </S.MentorBoardCardContainer>
     </div>
   );

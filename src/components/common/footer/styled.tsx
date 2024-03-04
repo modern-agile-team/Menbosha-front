@@ -24,7 +24,6 @@ export const FooterArea = styled.div`
   margin: 0px 197.5px;
   justify-content: space-between;
   align-items: center;
-  /* border: 2px solid yellow; */
 `;
 
 export const FooterLeft = styled.div`
@@ -33,7 +32,6 @@ export const FooterLeft = styled.div`
   height: 15vh;
   justify-content: flex-start;
   align-items: center;
-  /* border: 2px solid white; */
 `;
 
 export const FooterLeftLogo = styled.img`
@@ -48,10 +46,9 @@ export const FooterLeftContents = styled.div<BgType>`
   width: 30vw;
   height: 10vh;
   justify-content: center;
-  /* border: 2px solid green; */
   & > :nth-child(1) {
     font-weight: 700;
-    font-size: 0.5em;
+    font-size: 0.47em;
     line-height: 150%;
     color: ${({ color }) => (color ? '#000' : '#fff')};
     margin-bottom: 1vh;
@@ -76,7 +73,6 @@ export const FooterRight = styled.div<BgType>`
   display: flex;
   width: 8vw;
   height: 12vh;
-  /* border: 2px solid white; */
   justify-content: space-between;
   align-items: flex-end;
   a {

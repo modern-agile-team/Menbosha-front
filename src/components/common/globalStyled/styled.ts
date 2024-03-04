@@ -1,5 +1,73 @@
 import Link from 'next/link';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
+
+/**각각 font-weight별로 사용
+ * 사용하고 싶은 곳에서 font-weight를 주면 자동 적용됩니다.
+ */
+export const GlobalFont = createGlobalStyle`
+  @font-face {
+  font-family: 'Pretendard', sans-serif;
+  src: url('/public/fonts/Pretendard-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pretendard', sans-serif;
+    src: url('/public/fonts/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+  }
+`;
+
+//전체 Pretendard적용
+export const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: "Pretendard";
+  }
+`;
 
 interface TextType {
   color?: string;
@@ -144,15 +212,17 @@ export const HeadTitleContainer = styled.div`
   > :nth-child(1) {
     display: flex;
     width: 100%;
+    //페이지 대 제목
     > :nth-child(1) {
       color: #ff772b;
-      font-size: 64px;
-      font-weight: bold;
+      font-size: 2.67em; //64px
+      font-weight: 900;
     }
+    //페이지 소 제목
     > :nth-child(2) {
       color: #ff792bbf;
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20px
+      font-weight: 700;
       display: flex;
       align-items: end;
       margin-left: 10px;
@@ -168,6 +238,7 @@ export const GlobalCategoryContainer = styled.div`
   background-color: #fff;
   top: 0px;
   margin: 0px 204px;
+  margin-top: 25px;
   @media only all and (max-width: 1900px) {
     margin: 0px 10.625%; //0 204
   }
@@ -175,12 +246,13 @@ export const GlobalCategoryContainer = styled.div`
 
 /**게시글 생성 아이콘 */
 export const CreateIconLink = styled(Link)`
-  margin: 7px 0px 0px 0px;
+  margin: 9px 0px 0px 0px;
 `;
 
 //html태그 불러오기
 export const HTMLtext = styled.div`
-  font-size: 12px;
+  font-size: 0.5em;
+  font-weight: 400;
   width: 100%;
   color: rgba(0, 0, 0, 0.75);
   font-weight: none;
@@ -195,7 +267,8 @@ export const HTMLtext = styled.div`
   span,
   strong,
   u {
-    font-size: 14px;
+    font-size: 1em;
+    font-weight: 400;
     text-decoration: none;
   }
 `;

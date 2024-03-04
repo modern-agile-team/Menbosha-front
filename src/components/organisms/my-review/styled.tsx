@@ -7,12 +7,20 @@ export const MyReviewWrapper = styled.div`
   width: 100%;
 `;
 
+export const MyReviewTitleBox = styled.div`
+  font-size: 2.67em; //64.08px
+  font-weight: 900; //Pretendard-Black
+  color: #fff;
+`;
+
 export const ReviewCheckListFilterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 45px 0px;
   & > :nth-child(n) {
     color: #fff;
+    font-size: 0.67em; //16.08px
+    font-weight: 400; //Pretendard-Regular
     border: 2px solid #fff;
     border-radius: 10px;
     margin: 12px 16px 12px 0px;

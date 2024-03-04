@@ -16,14 +16,16 @@ export const CardContainer = styled.div`
   }
   //도와주세요 카드 제목
   & > :nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 0.9em; //21px
+    font-weight: 700; //Pretendard-Bold
     color: #ff772b;
     padding: 13px 0px;
   }
   //도와주세요 카드 날짜
   & > :nth-child(4) {
-    font-size: 10px;
+    font-size: 0.4em; //12px
+    font-weight: 300; //Pretendard-Light
+    color: rgba(0, 0, 0, 0.5);
     padding: 10px 0px;
   }
 `;
@@ -62,12 +64,16 @@ export const UserPageLink = styled(Link)`
   > :nth-child(2) {
     color: #000;
     padding: 5px 0px 5px 12px;
+    //유저 이름
     > :nth-child(1) {
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 0.7em;
+      font-weight: 700; //Pretendard-Bold
     }
+    //유저 카테고리
     > :nth-child(2) {
-      font-size: 12px;
+      font-size: 0.5em;
+      font-weight: 400; //Pretendard-Regular
+      color: rgba(0, 0, 0, 0.75);
     }
   }
 `;

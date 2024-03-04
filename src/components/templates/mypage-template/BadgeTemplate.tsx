@@ -2,6 +2,7 @@ import { ContainerWrapper } from '@/components/common/globalStyled/styled';
 import * as S from './styled';
 import { useRouter } from 'next/router';
 import MyBadgeContents from '@/components/organisms/my-badge/MyBadgeContents';
+import MainPageFooter from '@/components/common/footer/Footer';
 
 const BadgeTemplate = () => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const BadgeTemplate = () => {
         </ContainerWrapper>
       </S.BadgeBack>
       <S.BackgroundContainer src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/background2.svg" />
+      <MainPageFooter color={true} />
     </div>
   );
 };

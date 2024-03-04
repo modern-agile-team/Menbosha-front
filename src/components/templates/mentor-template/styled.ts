@@ -13,8 +13,16 @@ export const MentorListContainer = styled.div`
 export const ListTitleBox = styled.div`
   color: #ff772b;
   margin: 0px 0px 24px 0px;
-  font-weight: bold;
-  font-size: 30px;
+  font-weight: 700; //bold
+  font-size: 1.5em;
+`;
+
+/**리스트 서브 제목 */
+export const ListSubTitleBox = styled.div`
+  color: #ff772b;
+  margin: 0px 0px 24px 0px;
+  font-weight: 700; //bold
+  font-size: 1em;
 `;
 
 /**멘토 유닛 템플릿 */
@@ -22,10 +30,7 @@ export const ContentContainer = styled.div`
   display: flex;
   margin: 100px 0px 100px 0px;
   > :nth-child(1) {
-    font-size: 64px;
-    font-weight: bold;
     color: #ff772b;
-    width: 180px;
   }
   > :nth-child(2) {
     margin: 0px 117px;
@@ -44,12 +49,10 @@ export const MentorReviewContainer = styled.div`
 /**page title */
 export const MentorPageTitleContainer = styled.div`
   & > :nth-child(1) {
-    @media only all and (max-width: 1700px) {
-      font-size: 25px;
-    }
+    font-size: 2.67em; //64.08px
+    font-weight: 900; //Pretendard-Black
   }
   & > :nth-child(2) {
-    width: 100%;
     margin-top: 10vw;
     cursor: pointer;
   }

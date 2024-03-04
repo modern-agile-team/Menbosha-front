@@ -68,7 +68,7 @@ const PopularMentorCard = (props: MentorPopCardType) => {
               width={25}
               height={25}
             />
-            <div>{props.mentorBoardCount}</div>
+            <div>{props.mentorBoardCount}개</div>
           </S.CountBox>
           <S.CountBox>
             <Image
@@ -77,7 +77,7 @@ const PopularMentorCard = (props: MentorPopCardType) => {
               width={25}
               height={25}
             />
-            <div>{props.mentorReviewCount}</div>
+            <div>{props.mentorReviewCount}개의 후기</div>
           </S.CountBox>
         </S.CountContainer>
       </S.PopularMentorCardContainer>

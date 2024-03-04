@@ -59,7 +59,7 @@ const MentorReviewElements = (props: ReviewProprType) => {
         </LinkBox>
         <S.ReviewTextBox defaultBg={props.isLocation}>
           <div>{props.createdAt.slice(0, 10)}</div>
-          <div>{props.review}</div>
+          <div>{props.review}123123</div>
         </S.ReviewTextBox>
         <S.ReportBox>
           {props.isLocation ? (

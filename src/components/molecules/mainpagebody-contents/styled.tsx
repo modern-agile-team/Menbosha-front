@@ -37,8 +37,17 @@ export const MenboshaTitleBoxColumn = styled.div`
   flex-direction: column;
   text-align: center;
   font-size: 5.3em;
-  font-weight: 800;
+  font-weight: 900;
   text-shadow: 0px 0px 5.7px rgba(0, 0, 0, 0.4);
+  @media only all and (max-width: 1000px) {
+    font-size: 100px;
+  }
+  @media only all and (max-width: 750px) {
+    font-size: 65px;
+  }
+  @media only all and (max-width: 500px) {
+    font-size: 45px;
+  }
 `;
 
 // 바로 해결하는 멘토링.
@@ -48,14 +57,12 @@ export const MainContentsContainer2 = styled.div`
   height: 100vh;
   padding-top: 10vh;
   color: #000000;
-  /* border: 2px solid black; */
 `;
 
 export const MainContents2Left = styled.img`
   width: 7vw;
   height: 12vh;
   margin-right: 1vw;
-  /* border: 2px solid blue; */
 `;
 
 export const MainContents2Right = styled.div`
@@ -63,13 +70,23 @@ export const MainContents2Right = styled.div`
   flex-direction: column;
   width: 52vw;
   height: 80vh;
-  /* border: 2px solid orange; */
-  / & > span {
+  //바로 해결하는 멘토링 제목
+  & > :nth-child(1) {
     margin-bottom: 2vh;
     font-size: 4em;
-    font-weight: 700;
+    font-weight: 900;
+    @media only all and (max-width: 1000px) {
+      font-size: 100px;
+    }
+    @media only all and (max-width: 750px) {
+      font-size: 65px;
+    }
+    @media only all and (max-width: 500px) {
+      font-size: 45px;
+    }
   }
-  & > div {
+  //바로 해결하는 멘토링 본문
+  & > :nth-child(2) {
     margin-bottom: 5vh;
     width: 40vw;
     font-size: 0.83em;
@@ -77,7 +94,7 @@ export const MainContents2Right = styled.div`
     line-height: 150%;
     text-align: justify;
   }
-  :nth-child(3) {
+  & > :nth-child(3) {
     align-self: flex-end;
   }
 `;
@@ -101,14 +118,12 @@ export const MainContentsContainer3 = styled.div`
   width: 80vw;
   height: 90vh;
   color: #000000;
-  /* border: 2px solid pink; */
 `;
 
 export const MainContents3Left = styled.img`
   width: 7vw;
   height: 12vh;
   margin-right: 1vw;
-  /* border: 2px solid blue; */
 `;
 
 export const MainContents3Right = styled.div`
@@ -117,18 +132,28 @@ export const MainContents3Right = styled.div`
   flex-direction: column;
   width: 55vw;
   height: 80vh;
-  /* border: 2px solid orange; */
-  & > span {
+  //가볍지만 체계적이게 제목
+  & > :nth-child(1) {
     margin-bottom: 2vh;
     font-size: 4em;
-    font-weight: 700;
+    font-weight: 900; //Pretendard-Black
+    @media only all and (max-width: 1000px) {
+      font-size: 100px;
+    }
+    @media only all and (max-width: 750px) {
+      font-size: 65px;
+    }
+    @media only all and (max-width: 500px) {
+      font-size: 45px;
+    }
   }
-  & > div {
+  //가볍지만 체계적이게 본문
+  & > :nth-child(2) {
     margin-bottom: 5vh;
     width: 44vw;
     font-size: 0.83em;
-    font-weight: 700;
-    line-height: 150%;
+    font-weight: 700; //Pretendard-Bold
+    line-height: 150%; //행간
     text-align: justify;
   }
 `;
@@ -145,7 +170,6 @@ export const MainContents3InfoContainer = styled.div`
   align-items: center;
   min-width: 46vw; // 890
   min-height: 50vh; //541
-  /* border: 2px solid black; */
 `;
 
 export const InfoBox = styled.div`
@@ -153,7 +177,6 @@ export const InfoBox = styled.div`
   flex-direction: column;
   width: 22vw;
   height: 23vh;
-  /* align-items: center; */
   justify-content: space-around;
   border: 3px solid #ff772b;
   border-radius: 30px;
@@ -164,8 +187,8 @@ export const InfoTitleBox = styled.div`
   width: 20vw;
   height: 7vh;
   padding-left: 2vh;
+  font-weight: 700;
   text-align: start;
-  /* border: 2px solid blue; */
 `;
 
 export const InfoTextBox = styled.div`
@@ -176,9 +199,8 @@ export const InfoTextBox = styled.div`
   padding-left: 2vh;
   justify-content: flex-end;
   font-size: 0.65em;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 150%;
-  /* border: 2px solid green; */
 `;
 
 // marqueeTitle
@@ -189,7 +211,6 @@ export const MainContentsContainer4 = styled.div`
   height: 100vh;
   align-items: center;
   background-color: rgb(0, 0, 0);
-  /* border: 2px solid yellow; */
 `;
 
 export const MainContentsTitleArea4 = styled.div`
@@ -197,14 +218,12 @@ export const MainContentsTitleArea4 = styled.div`
   width: 80vw;
   height: 25vh;
   margin-bottom: 4vh;
-  /* border: 2px solid pink; */
 `;
 
 export const MainContents4Left = styled.img`
   width: 7vw;
   height: 12vh;
   margin-right: 1vw;
-  /* border: 2px solid blue; */
 `;
 
 export const MainContents4Right = styled.div`
@@ -213,13 +232,23 @@ export const MainContents4Right = styled.div`
   flex-direction: column;
   width: 55vw;
   height: 25vh;
-  /* border: 2px solid orange; */
-  & > span {
+  //세상의 모든 것을 다루다 제목
+  & > :nth-child(1) {
     margin-bottom: 2vh;
     font-size: 4em;
-    font-weight: 700;
+    font-weight: 900;
+    @media only all and (max-width: 1000px) {
+      font-size: 100px;
+    }
+    @media only all and (max-width: 750px) {
+      font-size: 65px;
+    }
+    @media only all and (max-width: 500px) {
+      font-size: 45px;
+    }
   }
-  & > div {
+  //세상의 모든것을 다루다 본문
+  & > :nth-child(2) {
     margin-bottom: 5vh;
     width: 46vw;
     font-size: 0.83em;
@@ -246,7 +275,6 @@ export const MainContentsTitleArea5 = styled.div`
   margin-bottom: 4vh;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid pink; */
 `;
 
 export const MainContents5Left = styled.div`
@@ -256,19 +284,18 @@ export const MainContents5Left = styled.div`
   width: 55vw;
   height: 25vh;
   justify-content: center;
-  /* border: 2px solid orange; */
-  & > span {
+  //그럼, 시작해 볼까요? 제목
+  & > :nth-child(1) {
     margin-bottom: 2vh;
     font-size: 4em;
     font-weight: 700;
   }
-  & > div {
-    /* margin-bottom: 5vh; */
+  //그럼, 시작해 볼까요? 본문
+  & > :nth-child(2) {
     width: 46vw;
     font-size: 0.83em;
     font-weight: 700;
     line-height: 150%;
-    /* text-align: justify; */
   }
 `;
 
@@ -277,5 +304,4 @@ export const MainContents5Right = styled.img`
   height: 12vh;
   margin-right: 1vw;
   cursor: pointer;
-  /* border: 2px solid blue; */
 `;
