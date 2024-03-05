@@ -86,6 +86,22 @@ export const Bubble = styled.div<BubbleSizeType>`
   animation: ${bubbleMove} 1s infinite linear;
 `;
 
+export const TextRoute = styled.div`
+  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 90%;
+  margin: 4% 0% 0% 43%;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    height: 100%;
+    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
+    transition: all 0.5s;
+  }
+`;
+
 export const ProfileLinkImg = styled.div`
   background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
   background-size: contain;
