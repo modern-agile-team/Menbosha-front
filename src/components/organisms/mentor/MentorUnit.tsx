@@ -141,7 +141,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
           <S.BadgeContainer>
             <div>칭호</div>
             <div>
-              {getUserInfo &&
+              {getUserInfo && getUserInfo.badge.length !== 0 ? (
                 getUserInfo.badge
                   .filter((_, idx) => idx < 3)
                   .map((data) => {
@@ -152,7 +152,10 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
                         createdAt={data.createdAt}
                       />
                     );
-                  })}
+                  })
+              ) : (
+                <div>칭호가 존재하지 않습니다.</div>
+              )}
             </div>
           </S.BadgeContainer>
           <S.MentorOtherBoardContainer>
