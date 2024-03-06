@@ -3,7 +3,6 @@ import { ReviewProprType } from '@/types/review';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
-import Link from 'next/link';
 import { LinkBox } from '@/components/common/globalStyled/styled';
 
 const MentorReviewElements = (props: ReviewProprType) => {
@@ -26,8 +25,6 @@ const MentorReviewElements = (props: ReviewProprType) => {
         });
     }
   };
-
-  console.log(props);
 
   useEffect(() => {
     getRankInfo();
@@ -65,11 +62,13 @@ const MentorReviewElements = (props: ReviewProprType) => {
           {props.isLocation ? (
             <img
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
-              alt="신고버튼"></img>
+              alt="신고버튼"
+              onClick={() => alert('아직구현되지 않은 기능입니다.')}></img>
           ) : (
             <img
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/reportWhite.svg"
-              alt="신고버튼"></img>
+              alt="신고버튼"
+              onClick={() => alert('아직구현되지 않은 기능입니다.')}></img>
           )}
         </S.ReportBox>
       </S.ReviewContentBox>

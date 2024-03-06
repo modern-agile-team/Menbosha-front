@@ -4,14 +4,24 @@ import * as S from './styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import MainPageFooter from '@/components/common/footer/Footer';
+import { useCallback, useEffect, useState } from 'react';
 
 const MyPageTemplate = () => {
   const router = useRouter();
+  const [routeFrame, setRouteFrame] = useState({
+    profile: false,
+    rank: false,
+    review: false,
+    record: false,
+  });
 
-  const handleRouter = (link: string) => {
-    router.push({
-      pathname: `${link}`,
-    });
+  const handleRouter = (link: string, location: string) => {
+    setRouteFrame({ ...routeFrame, [location]: true });
+    setTimeout(() => {
+      router.push({
+        pathname: `${link}`,
+      });
+    }, 1000);
   };
 
   return (
@@ -26,30 +36,38 @@ const MyPageTemplate = () => {
         <S.ElementSection>
           <S.Bubble size="2vw" style={{ margin: '2% 0px 0px 6%' }} />
           <S.Bubble size="4vw" style={{ margin: '5% 0px 0px 7%' }} />
-          <S.ProfileLinkImg onClick={() => handleRouter(`/mypage/info`)}>
-            <S.ProfileLinkText>프로필</S.ProfileLinkText>
+          <S.ProfileLinkImg
+            route={routeFrame.profile}
+            onClick={() => handleRouter(`/mypage/info`, 'profile')}>
+            <div>프로필</div>
           </S.ProfileLinkImg>
         </S.ElementSection>
         <S.ElementSection>
           <S.Bubble size="1vw" style={{ margin: '9% 0px 0px 9%' }} />
           <S.Bubble size="2.5vw" style={{ margin: '5% 0px 0px 15%' }} />
           <S.Bubble size="2vw" style={{ margin: '17% 0px 0px 45%' }} />
-          <S.TempLinkImg onClick={() => handleRouter(`/mypage/badge`)}>
-            <S.TempLinkText>온도/칭호</S.TempLinkText>
+          <S.TempLinkImg
+            route={routeFrame.rank}
+            onClick={() => handleRouter(`/mypage/badge`, 'rank')}>
+            <div>온도/칭호</div>
           </S.TempLinkImg>
         </S.ElementSection>
         <S.ElementSection>
           <S.Bubble size="2vw" style={{ margin: '10% 0px 0px 49%' }} />
           <S.Bubble size="1.5vw" style={{ margin: '12% 0px 0px 45%' }} />
           <S.Bubble size="4vw" style={{ margin: '15% 0px 0px 46%' }} />
-          <S.ReviewLinkImg onClick={() => handleRouter(`/mypage/review`)}>
-            <S.ReviewLinkText>후기</S.ReviewLinkText>
+          <S.ReviewLinkImg
+            route={routeFrame.review}
+            onClick={() => handleRouter(`/mypage/review`, 'review')}>
+            <div>후기</div>
           </S.ReviewLinkImg>
         </S.ElementSection>
         <S.ElementSection>
-          <S.ChatLinkImg onClick={() => handleRouter(`/mypage/record`)}>
-            <S.ChatLinkText>게시글 및 덧글</S.ChatLinkText>
-          </S.ChatLinkImg>
+          <S.RecordLinkImg
+            route={routeFrame.record}
+            onClick={() => handleRouter(`/mypage/record`, 'record')}>
+            <div>게시글 및 덧글</div>
+          </S.RecordLinkImg>
         </S.ElementSection>
       </S.UserpageWrapper>
       <MainPageFooter color={true} />
