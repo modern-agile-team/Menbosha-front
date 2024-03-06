@@ -79,10 +79,14 @@ const CreateBody = () => {
 
   //어디에서 게시글 생성인지 불러옴
   useEffect(() => {
-    const tempSection =
-      String(router.query.location) === 'help'
-        ? '도와주세요 게시판'
-        : '멘토 게시판';
+    let tempSection = '';
+    if (String(router.query.location) === 'help') {
+      tempSection = '도와주세요 게시판';
+    } else if (String(router.query.location) === 'mentor') {
+      tempSection = '멘토 게시판';
+    } else {
+      tempSection = '';
+    }
     setSection(tempSection);
   }, []);
 
