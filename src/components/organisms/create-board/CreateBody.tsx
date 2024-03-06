@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as S from './styled';
 import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   CategorySelectAtom,
   SectionSelectAtom,
@@ -68,7 +68,7 @@ export interface IFileTypes {
 const CreateBody = () => {
   const [unitTitle, setUnitTitle] = useState<string>(''); //제목
   const [quillText, setQuillText] = useState<string>(''); //본문
-  const [category, setCategory] = useRecoilState(CategorySelectAtom); //카테고리
+  const category = useRecoilValue(CategorySelectAtom); //카테고리
   const [section, setSection] = useRecoilState(SectionSelectAtom);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
@@ -76,8 +76,17 @@ const CreateBody = () => {
   const fileId = useRef<number>(0);
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const resetSelect = useResetRecoilState(CategorySelectAtom);
-  const [sendId, setSendId] = useState(0);
 
+  //어디에서 게시글 생성인지 불러옴
+  useEffect(() => {
+    const tempSection =
+      String(router.query.location) === 'help'
+        ? '도와주세요 게시판'
+        : '멘토 게시판';
+    setSection(tempSection);
+  }, []);
+
+  console.log(section);
   /**이미지 추가 핸들러 */
   const onChangeFiles = useCallback(
     (e: React.ChangeEvent<HTMLInputElement> | any): void => {

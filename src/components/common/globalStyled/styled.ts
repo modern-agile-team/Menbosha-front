@@ -245,7 +245,7 @@ export const GlobalCategoryContainer = styled.div`
 `;
 
 /**게시글 생성 아이콘 */
-export const CreateIconLink = styled(Link)`
+export const CreateIconLink = styled.div`
   margin: 9px 0px 0px 0px;
 `;
 

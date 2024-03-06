@@ -160,6 +160,15 @@ export const MainContents3Right = styled.div`
 
 // grid 사용해봄
 export const MainContents3InfoContainer = styled.div`
+  @media only all and (max-height: 1000px) {
+    height: 40vh; //541
+  }
+  @media only all and (max-height: 800px) {
+    height: 30vh;
+  }
+  @media only all and (max-height: 600px) {
+    height: 20vh;
+  }
   position: absolute;
   bottom: 0;
   right: 0;
@@ -168,8 +177,6 @@ export const MainContents3InfoContainer = styled.div`
   grid-template-rows: 1fr 1fr;
   justify-items: center;
   align-items: center;
-  min-width: 46vw; // 890
-  min-height: 50vh; //541
 `;
 
 export const InfoBox = styled.div`
@@ -177,9 +184,13 @@ export const InfoBox = styled.div`
   flex-direction: column;
   width: 22vw;
   height: 23vh;
+  @media only all and (max-height: 900px) {
+    font-size: 50%;
+  }
   justify-content: space-around;
   border: 3px solid #ff772b;
   border-radius: 30px;
+  margin: 5px;
 `;
 
 export const InfoTitleBox = styled.div`
