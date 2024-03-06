@@ -10,7 +10,11 @@ const MENTORS = {
   path: '/mentors',
 
   /**멘로 리뷰 조회 api [get] */
-  async getMentorReview(id: number, page: number): Promise<MentorReviewType> {
+  async getMentorReview(
+    id: number,
+    page: number,
+    filter?: string,
+  ): Promise<MentorReviewType> {
     const result: AxiosResponse = await instance.get(
       `${MENTORS.path}/${id}/reviews`,
       {
@@ -18,6 +22,16 @@ const MENTORS = {
           sortOrder: 'DESC',
           page: page,
           pageSize: 5, //값 10개씩 불러오기
+          isGoodWork: filter === 'isGoodWork' ? true : undefined,
+          isClear: filter === 'isClear' ? true : undefined,
+          isQuick: filter === 'isQuick' ? true : undefined,
+          isAccurate: filter === 'isAccurate' ? true : undefined,
+          isKindness: filter === 'isKindness' ? true : undefined,
+          isFun: filter === 'isFun' ? true : undefined,
+          isInformative: filter === 'isInformative' ? true : undefined,
+          isBad: filter === 'isBad' ? true : undefined,
+          isStuffy: filter === 'isStuffy' ? true : undefined,
+          isUnderstandWell: filter === 'isUnderstandWell' ? true : undefined,
         },
       },
     );

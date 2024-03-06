@@ -17,15 +17,22 @@ export const ReviewCheckListFilterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 45px 0px;
-  & > :nth-child(n) {
-    color: #fff;
-    font-size: 0.67em; //16.08px
-    font-weight: 400; //Pretendard-Regular
-    border: 2px solid #fff;
-    border-radius: 10px;
-    margin: 12px 16px 12px 0px;
-    padding: 4px 12px;
-  }
+`;
+
+export const ReviewCheckListBox = styled.div<{select : boolean}>`
+  ${({select})=>{
+    return css`
+      color: ${select ? "#fff" : "#000"};
+      background-color: ${select ? "none" : "#fff"};
+    `
+  }}
+  font-size: 0.67em; //16.08px
+  font-weight: 400; //Pretendard-Regular
+  border: 2px solid #fff;
+  border-radius: 10px;
+  margin: 12px 16px 12px 0px;
+  padding: 4px 12px;
+  cursor: pointer;
 `;
 
 export const MyReviewContentsWrapper = styled.div`
