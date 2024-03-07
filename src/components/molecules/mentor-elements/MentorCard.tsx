@@ -12,7 +12,7 @@ const MentorCard = (props: MentorCardType) => {
     <LinkBox
       color="#fff"
       href={{
-        pathname: `/mentor/unit/${props.id}`,
+        pathname: `/userpage/${props.id}`,
         query: {
           id: props.id,
         },

@@ -33,7 +33,7 @@ const PopularMentorCard = (props: MentorPopCardType) => {
     <LinkBox
       color="#000"
       href={{
-        pathname: `/mentor/unit/${props.id}`,
+        pathname: `/userpage/${props.id}`,
         query: {
           id: props.id,
         },
