@@ -32,9 +32,6 @@ export const ContentContainer = styled.div`
   > :nth-child(1) {
     color: #ff772b;
   }
-  > :nth-child(2) {
-    margin: 0px 117px;
-  }
 `;
 
 export const MentorReviewContainer = styled.div`
@@ -48,12 +45,16 @@ export const MentorReviewContainer = styled.div`
 
 /**page title */
 export const MentorPageTitleContainer = styled.div`
+  width: 18vw;
   & > :nth-child(1) {
     font-size: 2.67em; //64.08px
     font-weight: 900; //Pretendard-Black
   }
+  //prev btn
   & > :nth-child(2) {
     margin-top: 10vw;
+    width: 10vw;
+    height: 18vh;
     cursor: pointer;
   }
 `;

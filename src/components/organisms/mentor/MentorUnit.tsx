@@ -12,7 +12,7 @@ import MentorOtherBoardCard from '@/components/molecules/mentor-board-elements/M
 import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorUnit = ({ id }: MentorUnitPropsType) => {
-  const [getUserInfo, setUserInfo] = useState<MentorUnitType>();
+  const [getUserInfo, setGetUserInfo] = useState<MentorUnitType>();
   const [getRank, setRank] = useState({
     name: '',
     image: '',
@@ -25,9 +25,11 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
 
   const getUserInfoApi = async () => {
     const response = await USER.getUserInfo(id);
-    setUserInfo(response);
+    setGetUserInfo(response);
     setLoad(true);
   };
+
+  console.log(getUserInfo);
 
   const getRankInfo = () => {
     if (getUserInfo) {
@@ -89,7 +91,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
               </div>
             </S.RankBox>
             <S.MentorInfoBox>
-              <img src={getUserInfo?.image} alt="유저이미지"></img>
+              <img src={getUserInfo?.userImage.imageUrl} alt="유저이미지"></img>
               <div>
                 <div>{getUserInfo?.name}</div>
               </div>
@@ -99,10 +101,16 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
                 alt="채팅이모지"
+                onClick={() => {
+                  alert('아직 구현되지 않은 기능입니다.');
+                }}
               />
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
                 alt="신고이모지"
+                onClick={() => {
+                  alert('아직 구현되지 않은 기능입니다.');
+                }}
               />
             </div>
           </S.HeaderContentsBox>
@@ -110,39 +118,39 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
             <S.ContentContainer>
               <S.BodyContentsBox>
                 <div>소개</div>
-                <div>{getUserInfo?.intro.shortIntro}</div>
+                <div>{getUserInfo?.userIntro.shortIntro}</div>
               </S.BodyContentsBox>
               <S.BodyContentsBox>
                 <div>주요경력</div>
-                <div>{getUserInfo?.intro.career}</div>
+                <div>{getUserInfo?.userIntro.career}</div>
               </S.BodyContentsBox>
               <S.BodyContentsBox>
                 <div>관심카테고리</div>
-                <div>{getUserInfo?.intro.customCategory}</div>
+                <div>{getUserInfo?.userIntro.customCategory}</div>
               </S.BodyContentsBox>
             </S.ContentContainer>
             <S.ContentContainer>
               <S.DetailBox>
                 <div>세부사항</div>
-                <div>{getUserInfo?.intro.detail}</div>
+                <div>{getUserInfo?.userIntro.detail}</div>
               </S.DetailBox>
             </S.ContentContainer>
             <S.ContentContainer>
               <S.ShareBox>
                 <div>포트폴리오</div>
-                <div>{getUserInfo?.intro.portfolio}</div>
+                <div>{getUserInfo?.userIntro.portfolio}</div>
               </S.ShareBox>
               <S.ShareBox>
                 <div>SNS</div>
-                <div>{getUserInfo?.intro.sns}</div>
+                <div>{getUserInfo?.userIntro.sns}</div>
               </S.ShareBox>
             </S.ContentContainer>
           </S.MentorInfoContainer>
           <S.BadgeContainer>
             <div>칭호</div>
             <div>
-              {getUserInfo && getUserInfo.badge.length !== 0 ? (
-                getUserInfo.badge
+              {getUserInfo && getUserInfo.userBadge.length !== 0 ? (
+                getUserInfo.userBadge
                   .filter((_, idx) => idx < 3)
                   .map((data) => {
                     return (
