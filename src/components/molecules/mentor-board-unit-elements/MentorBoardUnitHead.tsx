@@ -63,8 +63,8 @@ const MentorBoardUnitHead = (props: MentorBoardUnitType) => {
       <S.MentorBoardOwnerUser>
         <img src={props.user.userImage.imageUrl} alt="11" />
         <S.HeadProfile>
-          <TextBox size={16}>{props.user.name}</TextBox>
-          <TextBox size={12}>{category}</TextBox>
+          <div>{props.user.name}</div>
+          <div>{category}</div>
         </S.HeadProfile>
         {props.unitOwner && (
           <S.ButtonContainer>
