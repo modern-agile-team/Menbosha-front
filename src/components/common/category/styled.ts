@@ -17,14 +17,14 @@ export const CategoryBox = styled.div<IsCategoryType>`
   border-radius: 10px;
   color: #000;
   width: auto;
-  background-color: ${({ isCat }) => (isCat ? '#c63d2f' : '#fff')};
+  background-color: ${({ isCat }) => (isCat ? '#ff772b' : '#fff')};
   margin: 9px;
   font-size: 0.67em; //16px
   font-weight: 400; //Pretendard-Regular
   cursor: pointer;
   transition: all 300ms ease;
   &:hover {
-    border: 2px solid #c63d2f;
+    border: 2px solid #ff772b;
     transition: all 300ms ease;
   }
 `;

@@ -19,6 +19,10 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
+  const [getClient, setGetClient] = useState(false);
+  useEffect(() => {
+    setGetClient(true);
+  }, []);
 
   //옵저버 생성
   useEffect(() => {
@@ -30,10 +34,12 @@ const MentorList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   }, [obsRef, getMentorData]);
 
   useEffect(() => {
-    setGetMentorData([]);
-    setTotalPage(lastPage);
-    setPage(1);
-    getMentorListApi();
+    if (getClient) {
+      setGetMentorData([]);
+      setTotalPage(lastPage);
+      setPage(1);
+      getMentorListApi();
+    }
   }, [filterCategoryId]);
 
   useEffect(() => {
