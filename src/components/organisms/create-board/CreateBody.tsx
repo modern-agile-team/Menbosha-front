@@ -83,6 +83,7 @@ const CreateBody = () => {
     setGetHeadCount(e.target.value.length);
     setUnitTitle(e.target.value);
   };
+
   //count가 맞으면 true
   useEffect(() => {
     if (getHeadCount <= 50 && getHeadCount >= 5) {
@@ -135,6 +136,8 @@ const CreateBody = () => {
     },
     [files],
   ); // 위에서 선언했던 files state 배열을 deps에 넣어줍니다.
+
+  console.log(quillText);
 
   /** 이미지 삭제 핸들러 */
   const handleFilterFile = useCallback(
@@ -213,10 +216,12 @@ const CreateBody = () => {
       if (
         category === '' ||
         quillText === '' ||
+        quillText === '<p><br></p>' ||
         section === '' ||
         !isHeadCount
       ) {
-        if (quillText === '') return alert('본문내용을 입력해주세요.');
+        if (quillText === '' || '<p><br></p>')
+          return alert('본문내용을 입력해주세요.');
         if (section === '') return alert('게시판 위치를 선택해주세요.');
         if (category === '') return alert('카테고리를 선택해주세요.');
         if (!isHeadCount)
