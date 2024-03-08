@@ -64,9 +64,10 @@ const SelectBox = styled.div`
   position: relative;
   border: 1px solid #ff772b;
   margin-left: auto;
-  width: 200px;
-  margin: 0px 8px 16px 8px;
-  border-radius: 5px;
+  width: 5vw;
+  margin: 2vh 0.45vw;
+  padding: 0.6vh 1vw;
+  border-radius: 10px;
   background-color: #fff;
   color: #000;
   align-self: center;
