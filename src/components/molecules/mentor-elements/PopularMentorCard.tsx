@@ -1,9 +1,5 @@
 import * as S from './styled';
-import {
-  ImageBox,
-  LinkBox,
-  TextBox,
-} from '@/components/common/globalStyled/styled';
+import { LinkBox } from '@/components/common/globalStyled/styled';
 import { rankList } from '@/components/common/rank/rankList';
 import { MentorPopCardType } from '@/types/mentor';
 import Image from 'next/image';
@@ -37,7 +33,7 @@ const PopularMentorCard = (props: MentorPopCardType) => {
     <LinkBox
       color="#000"
       href={{
-        pathname: `/mentor/unit/${props.id}`,
+        pathname: `/userpage/${props.id}`,
         query: {
           id: props.id,
         },
@@ -56,8 +52,8 @@ const PopularMentorCard = (props: MentorPopCardType) => {
           </S.RankBox>
           <S.NameBox>
             <div>{props.name}</div>
-            <div>{props.customCategory}</div>
-            <div>{props.shortIntro}</div>
+            <div>{props.customCategory.slice(0, 20)}</div>
+            <div>{props.shortIntro.slice(0, 20)}</div>
           </S.NameBox>
         </S.ProfileContentBox>
         <S.CountContainer>

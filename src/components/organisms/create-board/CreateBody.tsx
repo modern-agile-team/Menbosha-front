@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import * as S from './styled';
 import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   CategorySelectAtom,
   SectionSelectAtom,
@@ -68,7 +68,7 @@ export interface IFileTypes {
 const CreateBody = () => {
   const [unitTitle, setUnitTitle] = useState<string>(''); //제목
   const [quillText, setQuillText] = useState<string>(''); //본문
-  const [category, setCategory] = useRecoilState(CategorySelectAtom); //카테고리
+  const category = useRecoilValue(CategorySelectAtom); //카테고리
   const [section, setSection] = useRecoilState(SectionSelectAtom);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
@@ -76,7 +76,34 @@ const CreateBody = () => {
   const fileId = useRef<number>(0);
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const resetSelect = useResetRecoilState(CategorySelectAtom);
-  const [sendId, setSendId] = useState(0);
+  const [getHeadCount, setGetHeadCount] = useState(0); //제목 개수 상태
+  const [isHeadCount, setIsHeadCount] = useState(false); //제목
+
+  const onHeadHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGetHeadCount(e.target.value.length);
+    setUnitTitle(e.target.value);
+  };
+
+  //count가 맞으면 true
+  useEffect(() => {
+    if (getHeadCount <= 50 && getHeadCount >= 5) {
+      setIsHeadCount(true);
+    } else {
+      setIsHeadCount(false);
+    }
+  }, [getHeadCount]);
+  //어디에서 게시글 생성인지 불러옴
+  useEffect(() => {
+    let tempSection = '';
+    if (String(router.query.location) === 'help') {
+      tempSection = '도와주세요 게시판';
+    } else if (String(router.query.location) === 'mentor') {
+      tempSection = '멘토 게시판';
+    } else {
+      tempSection = '';
+    }
+    setSection(tempSection);
+  }, []);
 
   /**이미지 추가 핸들러 */
   const onChangeFiles = useCallback(
@@ -109,6 +136,8 @@ const CreateBody = () => {
     },
     [files],
   ); // 위에서 선언했던 files state 배열을 deps에 넣어줍니다.
+
+  console.log(quillText);
 
   /** 이미지 삭제 핸들러 */
   const handleFilterFile = useCallback(
@@ -186,14 +215,17 @@ const CreateBody = () => {
     if (confirm('업로드하시겠습니까?')) {
       if (
         category === '' ||
-        unitTitle === '' ||
         quillText === '' ||
-        section === ''
+        quillText === '<p><br></p>' ||
+        section === '' ||
+        !isHeadCount
       ) {
-        if (unitTitle === '') return alert('제목을 입력해주세요.');
-        if (quillText === '') return alert('본문내용을 입력해주세요.');
+        if (quillText === '' || '<p><br></p>')
+          return alert('본문내용을 입력해주세요.');
         if (section === '') return alert('게시판 위치를 선택해주세요.');
         if (category === '') return alert('카테고리를 선택해주세요.');
+        if (!isHeadCount)
+          return alert('제목은 5글자 이상 50글자 이하로 작성해주세요.');
       } else {
         const catID = categoryList.find((data) => data.category === category);
         const isData = {
@@ -234,26 +266,29 @@ const CreateBody = () => {
       <S.CreateHelpContainer>
         <div>
           <S.CreateHeader>
-            <TextBox color="#ff772b" size={20} style={{ width: '100%' }}>
-              제목
-            </TextBox>
-            <S.CreateHeadValue
-              type="text"
-              value={unitTitle}
-              placeholder="제목입력"
-              onChange={(e: any) => {
-                setUnitTitle(e.target.value);
-              }}></S.CreateHeadValue>
-          </S.CreateHeader>
-          <FlexBox type="flex">
-            <TextBox color="#ff772b" size={20}>
-              본문
-            </TextBox>
-            <FlexBox type="flex" style={{ marginLeft: 'auto' }}>
+            <div>
+              <S.HeaderTextBox isCount={isHeadCount}>
+                <div>제목</div>
+                <div>{getHeadCount}/50</div>
+              </S.HeaderTextBox>
+              <S.CreateHeadValue
+                type="text"
+                value={unitTitle}
+                placeholder="제목입력"
+                onChange={onHeadHandler}></S.CreateHeadValue>
+            </div>
+            <div>
+              <div>게시판 선택</div>
               <SectionSelectorBox />
+            </div>
+            <div>
+              <div>카테고리</div>
               <CategorySelectorBox />
-            </FlexBox>
-          </FlexBox>
+            </div>
+          </S.CreateHeader>
+          <S.CreateComboBoxContainer>
+            <div>본문</div>
+          </S.CreateComboBoxContainer>
           <S.QuillBox>
             <QuillWrapper
               value={quillText}

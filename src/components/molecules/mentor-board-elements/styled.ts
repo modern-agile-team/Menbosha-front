@@ -14,8 +14,7 @@ interface ImgType {
   img?: string;
 }
 export const CardImageBox = styled.div<ImgType>`
-  width: 100%;
-  height: 290px;
+  height: 27vh;
   background-color: #999;
   background-image: url(${({ img }) => img});
   background-size: cover;
@@ -56,9 +55,10 @@ export const MentorBoardCardContainer = styled.div`
   & > :nth-child(1) {
     transition: all 500ms ease;
   }
+  overflow: hidden;
   &:hover {
     & > :nth-child(1) {
-      background-size: 110%;
+      transform: scale(1.1);
       transition: all 500ms ease;
     }
   }

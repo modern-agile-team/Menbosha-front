@@ -1,9 +1,9 @@
-import UserpageTemplate from '@/components/templates/userpage-template/UserpageTemplate';
+import MentorUnitTemplate from '@/components/templates/mentor-template/MentorUnitTemplate';
 
 const Userpage = () => {
   return (
     <div>
-      <UserpageTemplate />
+      <MentorUnitTemplate isMentor={true} />
     </div>
   );
 };

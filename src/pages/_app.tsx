@@ -8,6 +8,7 @@ import {
   GlobalFont,
   GlobalStyle,
 } from '@/components/common/globalStyled/styled';
+import Seo from '@/components/common/Seo';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <MSWProvider>
               <GlobalFont />
               <GlobalStyle />
+              <Seo />
               <Component {...pageProps} />
             </MSWProvider>
           )}

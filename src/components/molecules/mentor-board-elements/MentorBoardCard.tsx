@@ -34,7 +34,7 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
   /**유저페이지로 라우트 */
   const handleRouteUser = () => {
     router.push({
-      pathname: `/mentor/unit/${props.userId}`,
+      pathname: `/userpage/${props.userId}`,
       query: {
         id: props.userId,
       },

@@ -15,6 +15,11 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
+  const [getClient, setGetClient] = useState(false);
+
+  useEffect(() => {
+    setGetClient(true);
+  }, []);
 
   //옵저버 생성
   useEffect(() => {
@@ -32,10 +37,12 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
 
   //필터링 로드
   useEffect(() => {
-    setGetBoardData([]);
-    setPage(1);
-    setTotalPage(lastPage);
-    loadPost();
+    if (getClient) {
+      setGetBoardData([]);
+      setPage(1);
+      setTotalPage(lastPage);
+      loadPost();
+    }
   }, [filterCategoryId]);
 
   const handleObs = (entries: any) => {

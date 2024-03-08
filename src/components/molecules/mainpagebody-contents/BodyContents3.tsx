@@ -36,7 +36,7 @@ const BodyContents3 = () => {
           </S.InfoBox>
           <S.InfoBox>
             <S.InfoTitleBox>
-              멘토로서 신뢰도를 얻을 수<br /> 있는 온도 표시 시스템
+              멘토로서 신뢰도를 얻을 수<br /> 있는 랭크 표시 시스템
             </S.InfoTitleBox>
             <S.InfoTextBox>
               복잡한 리뷰도 신뢰도에 중요한 영향이 있지만, 이를 종합해 자신이

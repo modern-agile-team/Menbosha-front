@@ -40,7 +40,8 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
         });
       } catch (err) {
         if (axios.isAxiosError(err) && err.response) {
-          alert('본인의 게시물에는 좋아요를 할 수 없습니다.');
+          err.response.data.statusCode === 403 &&
+            alert(err.response.data.message);
         }
       }
     } else {

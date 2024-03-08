@@ -88,7 +88,7 @@ const MainPageHeader = () => {
             <div>
               <Link
                 href={{
-                  pathname: `chat/${id}`,
+                  pathname: `/chat/${id}`,
                 }}>
                 <Image
                   src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"

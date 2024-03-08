@@ -13,9 +13,12 @@ import PopularMentorBoardList from '@/components/organisms/mentor-board/PopularM
 import { MentorBoardListType } from '@/types/mentor';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useRecoilValue } from 'recoil';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 
 const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
   const router = useRouter();
+  const loginState = useRecoilValue(LoginStateAtom);
 
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
@@ -26,6 +29,19 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
       history.scrollRestoration = 'manual';
     }
   }, []);
+
+  const handleCreateRoute = () => {
+    if (loginState) {
+      router.push({
+        pathname: `/create`,
+        query: {
+          location: 'mentor',
+        },
+      });
+    } else {
+      alert('게시글을 작성하려면 로그인이 필요합니다.');
+    }
+  };
 
   const handleRouteChange = useCallback((e: any) => {
     sessionStorage.setItem(
@@ -66,10 +82,7 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
       </HeadTitleContainer>
       <GlobalCategoryContainer>
         <Category />
-        <CreateIconLink
-          href={{
-            pathname: `/create`,
-          }}>
+        <CreateIconLink onClick={handleCreateRoute}>
           <img
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'

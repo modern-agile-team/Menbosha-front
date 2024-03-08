@@ -66,6 +66,7 @@ export const RankBox = styled.div`
     border: 3px solid #ff772b;
     border-radius: 19px;
     @media only all and (max-width: 1000px) {
+      padding: 4vw;
       width: 50px;
       height: 50px;
     }
@@ -97,8 +98,8 @@ export const MentorInfoBox = styled.div`
     height: 380px;
     border-radius: 10px;
     @media only all and (max-width: 1000px) {
-      width: 180px;
-      height: 280px;
+      width: 28vw;
+      height: 27vh;
     }
   }
   > :nth-child(2) {
