@@ -1,3 +1,4 @@
+import LoginModal from '@/components/organisms/auth/LoginModal';
 import axios from 'axios';
 
 const instance = axios.create({
@@ -103,8 +104,7 @@ instance.interceptors.response.use(
       error.response.data.message === 'jwt malformed' &&
       error.response.data.statusCode === 400
     ) {
-      window.location.href = '/main';
-      window.alert('잘못된 접근입니다.');
+      window.alert('로그인이 필요합니다.');
     }
     return Promise.reject(error);
     // return error;

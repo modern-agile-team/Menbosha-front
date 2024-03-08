@@ -50,16 +50,16 @@ export const RandomBoardWrapper = styled.div`
 export const MentorBoardUnitContainer = styled.div`
   display: flex;
   margin-top: 130px;
-  width: 100%;
   //이전 버튼
   & > :nth-child(1) {
     padding: 12.5vw 0px 0px 0px;
     > img {
       cursor: pointer;
+      width: 10vw;
     }
   }
 `;
 
 export const MentorBoardContentContainer = styled.div`
-  margin: 0px 117px;
+  margin: 0px 8.5vw;
 `;

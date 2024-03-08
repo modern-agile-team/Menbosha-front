@@ -28,25 +28,34 @@ export interface MentorUnitPropsType {
 
 /**멘토 조회 api 타입 */
 export type MentorUnitType = {
+  id: number;
   name: string;
-  phone: string;
   isMentor: boolean;
-  intro: {
-    career: string;
+  hopeCategoryId: number;
+  activityCategoryId: number;
+  rank: number;
+  phone: string;
+  createdAt: string;
+  updatedAt: string;
+  userImage: {
+    imageUrl: string;
+  };
+  userIntro: {
     shortIntro: string;
+    career: string;
     customCategory: string;
     detail: string;
     portfolio: string;
     sns: string;
   };
-  image: string;
-  email: string;
-  activityCategoryId: number;
-  badge: {
+  userBadge: {
     badgeId: number;
     createdAt: string;
   }[];
-  rank: number;
+  totalCount: {
+    mentorBoardCount: number;
+    reviewCount: number;
+  };
 };
 
 /**내 정보 조회 api Type */

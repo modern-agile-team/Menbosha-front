@@ -14,7 +14,6 @@ import { MyProfileType } from '@/types/user';
 import USER from '@/apis/user';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import HELP from '@/apis/help';
-import { useRouter } from 'next/router';
 import { rankList } from '@/components/common/rank/rankList';
 import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
@@ -25,8 +24,6 @@ const UnitComment = ({ id }: BoardIdType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
-  const router = useRouter();
-
   const [commentData, setCommentData] = useState<
     HelpCommentListApiType['helpYouCommentWithUserAndUserImagesItemDto']
   >([]);
@@ -53,21 +50,19 @@ const UnitComment = ({ id }: BoardIdType) => {
 
   //무한스크롤 로드
   useEffect(() => {
-    if (page !== 1) {
-      loadPost();
-    }
+    loadPost();
   }, [page]);
 
   //스크롤 시 로드 함수
   const loadPost = useCallback(async () => {
+    setLoad(true); //로딩 시작
     const temp: HelpCommentParamsType = {
       helpBoardId: id,
-      page: 1,
-      pageSize: 5,
+      page: page,
+      pageSize: 4,
       orderField: 'id',
       sortOrder: 'ASC',
     };
-    setLoad(true); //로딩 시작
     if (page <= totalPage) {
       const response = await HELP.helpCommentPagination(temp);
       setCommentData((prev) => [
@@ -105,6 +100,8 @@ const UnitComment = ({ id }: BoardIdType) => {
         };
       if (response === 409) {
         alert('이미 등록된 아이디 입니다.');
+      } else if (response === 403) {
+        alert('본인 게시글은 도와줄 수 없습니다.');
       } else {
         setCommentData((prev) => [...prev, temp]);
       }
@@ -118,22 +115,6 @@ const UnitComment = ({ id }: BoardIdType) => {
       setCommentData([...temp]);
       await HELPCOMMENT.deleteHelpComment(commentId);
     }
-  };
-
-  /**도와줄게요 댓글 호출 */
-  const getCommentApi = async () => {
-    const temp: HelpCommentParamsType = {
-      helpBoardId: id,
-      page: 1,
-      pageSize: 4,
-      orderField: 'id',
-      sortOrder: 'DESC',
-    };
-    const response = await HELP.helpCommentPagination(temp);
-    setCommentData((prev) => [
-      ...prev,
-      ...response.helpYouCommentWithUserAndUserImagesItemDto,
-    ]);
   };
 
   /**내 정보 조회 */
@@ -174,9 +155,9 @@ const UnitComment = ({ id }: BoardIdType) => {
         {category && (
           <S.CategoryBox>
             <div>{name}</div>
-            <div>{category}</div>
-            <div>{career}</div>
-            <div>{short}</div>
+            <div>{category.slice(0, 20)}</div>
+            <div>{career.slice(0, 20)}</div>
+            <div>{short.slice(0, 20)}</div>
           </S.CategoryBox>
         )}
       </>
@@ -184,7 +165,6 @@ const UnitComment = ({ id }: BoardIdType) => {
   };
 
   useEffect(() => {
-    getCommentApi();
     isLogin && getMyProfileApi();
   }, []);
 
@@ -194,10 +174,11 @@ const UnitComment = ({ id }: BoardIdType) => {
         <S.HelpCommentCountBox>
           도와줄게요({0 || commentData.length}개)
         </S.HelpCommentCountBox>
-        <img
-          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
-          style={{ marginLeft: 'auto' }}
-          onClick={handleCreateCommentApi}></img>
+        <S.HelpYouCommentButton>
+          <img
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"
+            onClick={handleCreateCommentApi}></img>
+        </S.HelpYouCommentButton>
       </FlexBox>
       <S.CommentContainer>
         {commentData.length !== 0 ? (

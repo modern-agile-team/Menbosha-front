@@ -76,10 +76,10 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
   }, [userInfo]);
 
   return (
-    <FlexBox type="flex">
+    <FlexBox type="flex" style={{ width: '50vw' }}>
       {userInfo && (
         <S.MentorInfoCardContainer onClick={handleRouteUserInfo}>
-          <img src={userInfo.image} alt="유저이미지" />
+          <img src={userInfo.userImage.imageUrl} alt="유저이미지" />
           <div>
             <S.MentorRankInfo>
               <img src={rankInfo.image} alt="랭크이미지"></img>
@@ -89,12 +89,28 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
             <S.MentorInfoBox>
               <div>{userInfo.name}</div>
               <div>
-                <div>{userInfo.intro.customCategory}</div>
-                <div>{userInfo.intro.career}</div>
-                <div>{userInfo.intro.shortIntro}</div>
+                <div>{userInfo.userIntro.customCategory.slice(0, 20)}</div>
+                <div>{userInfo.userIntro.career.slice(0, 20)}</div>
+                <div>{userInfo.userIntro.shortIntro.slice(0, 20)}</div>
               </div>
             </S.MentorInfoBox>
           </div>
+          <S.MentorRecordCountContainer>
+            <div>
+              <img
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/reviewCnt.svg"
+                alt="리뷰수이모지"
+              />
+              <div>{userInfo.totalCount.mentorBoardCount}개</div>
+            </div>
+            <div>
+              <img
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/boardCnt.svg"
+                alt="보드수이모지"
+              />
+              <div>{userInfo.totalCount.reviewCount}개</div>
+            </div>
+          </S.MentorRecordCountContainer>
         </S.MentorInfoCardContainer>
       )}
       <S.MentorOtherBoardsContainer>

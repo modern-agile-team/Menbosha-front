@@ -3,20 +3,19 @@ import styled from 'styled-components';
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: right;
-  margin-top: 130px;
-  width: 100%;
+  margin-top: 13vh;
 `;
 
 export const HelpUnitContentContainer = styled.div`
-  width: 100%;
+  margin-right: 7vw;
 `;
 
 export const PrevImg = styled.img`
-  width: 190px;
-  height: 190px;
-  margin: 155px 114px 0px 0px;
+  width: 15vw;
+  height: 17vh;
+  margin: 8vw 7vw 0px 0px;
 `;
 
 export const HelpCommentWrapper = styled.div`
-  margin-top: 64px;
+  margin-top: 6vh;
 `;

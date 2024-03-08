@@ -28,11 +28,7 @@ const USER = {
 
   /**유저 정보 조회 api [get] */
   async getUserInfo(id: number): Promise<MentorUnitType> {
-    const result: AxiosResponse = await instance.get(`${USER.path}/info`, {
-      params: {
-        userId: id,
-      },
-    });
+    const result: AxiosResponse = await instance.get(`${USER.path}/${id}/info`);
     return result.data;
   },
 

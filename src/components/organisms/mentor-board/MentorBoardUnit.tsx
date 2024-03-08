@@ -20,6 +20,8 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
     setLoad(true);
   };
 
+  console.log(getUnitData);
+
   /**돌아가기 버튼 */
   const handleBack = () => {
     router.back();
@@ -42,16 +44,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
         <S.MentorBoardContentContainer>
           {load ? (
             <>
-              <MentorBoardUnitHead
-                id={getUnitData.id}
-                head={getUnitData.head}
-                body={getUnitData.body}
-                userImage={getUnitData.user.userImage.imageUrl}
-                userName={getUnitData.user.name}
-                categoryId={getUnitData.categoryId}
-                createdAt={getUnitData.createdAt}
-                isOwner={getUnitData.unitOwner}
-              />
+              <MentorBoardUnitHead {...getUnitData} />
               <MentorBoardUnitBody
                 userId={getUnitData.user.userImage.userId}
                 id={getUnitData.id}
