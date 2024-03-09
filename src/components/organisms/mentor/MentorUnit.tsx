@@ -149,8 +149,8 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
           <S.BadgeContainer>
             <div>칭호</div>
             <div>
-              {getUserInfo && getUserInfo.userBadge.length !== 0 ? (
-                getUserInfo.userBadge
+              {getUserInfo && getUserInfo.userBadges.length !== 0 ? (
+                getUserInfo.userBadges
                   .filter((_, idx) => idx < 3)
                   .map((data) => {
                     return (

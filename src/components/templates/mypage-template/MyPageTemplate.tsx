@@ -49,7 +49,7 @@ const MyPageTemplate = () => {
           <S.TempLinkImg
             route={routeFrame.rank}
             onClick={() => handleRouter(`/mypage/badge`, 'rank')}>
-            <div>온도/칭호</div>
+            <div>랭크/칭호</div>
           </S.TempLinkImg>
         </S.ElementSection>
         <S.ElementSection>
@@ -66,7 +66,7 @@ const MyPageTemplate = () => {
           <S.RecordLinkImg
             route={routeFrame.record}
             onClick={() => handleRouter(`/mypage/record`, 'record')}>
-            <div>게시글 및 덧글</div>
+            <div>기록</div>
           </S.RecordLinkImg>
         </S.ElementSection>
       </S.UserpageWrapper>

@@ -8,16 +8,16 @@ export const MyRankWrapper = styled.div`
   grid-template-rows: 1fr;
   //페이지 타이틀
   & > :nth-child(1) {
-    font-size: 2.7em; //64.8px
+    font-size: 3.33vw; //64.8px
     font-weight: 900; //Pretendard-Black
     color: #fff;
-    margin-right: 80px;
+    margin-right: 4.5vw;
   }
   //랭크 이미지
   & > :nth-child(2) {
-    width: 228px;
-    height: 228px;
-    padding: 41px;
+    width: 11vw;
+    height: 11vw;
+    padding: 2vw;
     background-color: #fff;
     border-radius: 19px;
   }
