@@ -11,13 +11,20 @@ const nextConfig = {
     ];
   },
   async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.menbosha.kr' }],
-        destination: 'https://menbosha.kr/:path*',
-      },
-    ];
+    return {
+      beforeFiles: [
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'www.menbosha.kr',
+            },
+          ],
+          destination: 'https://menbosha.kr/:path*',
+        },
+      ],
+    };
   },
   generateEtags: false,
   images: {
