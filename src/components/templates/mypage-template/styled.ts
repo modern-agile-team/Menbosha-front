@@ -140,29 +140,22 @@ export const RecordLinkImg = styled.div<{ route: boolean }>`
 export const ContentContainer = styled.div`
   display: flex;
   width: 100%;
-  margin: 100px 0px;
-  @media only all and (max-width: 1500px) {
-    & > img {
-      display: none;
-    }
+  margin: 10vh 0px;
+  & > :nth-child(1) {
+    width: 10vw;
   }
 `;
 
 //멘보샤 빵 사진
 export const BackgroundContainer = styled.img`
   width: 100vw;
-  height: 114em;
-  @media only all and (max-height: 1000px) {
-    height: 100em;
-  }
+  height: 200vh;
 `;
 
 //백그라운드 컬러 입히기 전 css 모듈
 export const BackContainColor = css`
   width: 100vw;
-  @media only all and (max-width: 1919px) {
-    width: 100vw;
-  }
+  height: 100vh;
   position: absolute;
 `;
 

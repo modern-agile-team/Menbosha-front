@@ -26,7 +26,7 @@ const SaveToken = ({ provider }: Company) => {
     } finally {
       const currentUrl = window.sessionStorage.getItem('CURRENT_URL');
       router.push({
-        pathname: currentUrl,
+        pathname: `https://menbosha.kr/${currentUrl}`,
         query: {
           filterId: 1,
         },

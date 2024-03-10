@@ -48,7 +48,7 @@ export type MentorUnitType = {
     portfolio: string;
     sns: string;
   };
-  userBadge: {
+  userBadges: {
     badgeId: number;
     createdAt: string;
   }[];
