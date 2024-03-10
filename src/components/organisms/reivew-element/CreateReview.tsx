@@ -32,10 +32,10 @@ const CreateReview = ({ mentorId }: { mentorId: number }) => {
       isCheck: checkArray,
       review: inputContents,
     };
-    if (checkArray.length < 3 && checkArray.length >= 1) {
+    if (checkArray.length <= 3 && checkArray.length >= 1) {
       await MENTORS.createMentorReview(requestData);
       router.push({
-        pathname: `/mentor/unit/${mentorId}`,
+        pathname: `/userpage/${mentorId}`,
         query: {
           id: mentorId,
         },

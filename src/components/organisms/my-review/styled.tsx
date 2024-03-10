@@ -19,12 +19,12 @@ export const ReviewCheckListFilterContainer = styled.div`
   margin: 45px 0px;
 `;
 
-export const ReviewCheckListBox = styled.div<{select : boolean}>`
-  ${({select})=>{
+export const ReviewCheckListBox = styled.div<{ select: boolean }>`
+  ${({ select }) => {
     return css`
-      color: ${select ? "#fff" : "#000"};
-      background-color: ${select ? "none" : "#fff"};
-    `
+      color: ${select ? '#fff' : '#000'};
+      background-color: ${select ? 'none' : '#fff'};
+    `;
   }}
   font-size: 0.67em; //16.08px
   font-weight: 400; //Pretendard-Regular
@@ -36,7 +36,7 @@ export const ReviewCheckListBox = styled.div<{select : boolean}>`
 `;
 
 export const MyReviewContentsWrapper = styled.div`
-  height: 70vh;
+  height: 100vh;
 `;
 
 export const MyReviewContainer = styled.div`
