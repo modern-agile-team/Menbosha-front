@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import MainPageFooter from '@/components/common/footer/Footer';
 import { useCallback, useEffect, useState } from 'react';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import { useRecoilValue } from 'recoil';
 
 const MyPageTemplate = () => {
   const router = useRouter();
@@ -14,6 +16,7 @@ const MyPageTemplate = () => {
     review: false,
     record: false,
   });
+  const loginState = useRecoilValue(LoginStateAtom);
 
   const handleRouter = (link: string, location: string) => {
     setRouteFrame({ ...routeFrame, [location]: true });
@@ -23,6 +26,13 @@ const MyPageTemplate = () => {
       });
     }, 1000);
   };
+
+  useEffect(()=>{
+    if(!loginState) {
+      alert('로그인이 필요한 접근입니다.');
+      router.push('/main');
+    }
+  },[])
 
   return (
     <div>
