@@ -137,8 +137,6 @@ const CreateBody = () => {
     [files],
   ); // 위에서 선언했던 files state 배열을 deps에 넣어줍니다.
 
-  console.log(quillText);
-
   /** 이미지 삭제 핸들러 */
   const handleFilterFile = useCallback(
     (id: number): void => {

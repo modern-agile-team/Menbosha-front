@@ -77,8 +77,6 @@ const UnitComment = ({ id }: BoardIdType) => {
     setLoad(false);
   }, [page]);
 
-  console.log(myProfile);
-
   /**도와줄게요 댓글 생성 */
   const handleCreateCommentApi = async () => {
     if (confirm('도움을 줄까요?')) {
@@ -185,7 +183,6 @@ const UnitComment = ({ id }: BoardIdType) => {
           pathname: `${path}`,
         });
   };
-  console.log(page);
 
   useEffect(() => {
     isLogin && getMyProfileApi();

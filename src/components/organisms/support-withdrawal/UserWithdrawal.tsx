@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import * as S from './styled';
 import USER from '@/apis/user';
-import { UserProfileType } from '@/types/user';
-import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
+import { MyProfileType } from '@/types/user';
+import { TextBox } from '@/components/common/globalStyled/styled';
 
 const UserWithdrawal = () => {
   const [provider, setProvider] = useState('');
   const [approve, setApprove] = useState(false);
-  const [myInfo, setMyInfo] = useState<UserProfileType>();
+  const [myInfo, setMyInfo] = useState<MyProfileType>();
   const setLoginState = useSetRecoilState(LoginStateAtom);
   const router = useRouter();
 
