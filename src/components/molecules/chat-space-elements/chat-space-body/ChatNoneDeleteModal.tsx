@@ -1,57 +1,60 @@
-import { ChatRoomDeleteModalType } from '@/types/chat';
-import styled from 'styled-components';
-import React from 'react';
 import CHAT from '@/apis/chat';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
-import { Router, useRouter } from 'next/router';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import { ChatDeleteModalType } from '@/types/chat';
+import React, { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 
-const ChatRoomOutModal = ({
+const ChatNoneDeleteModal = ({
   show,
   hide,
-  chatRoomId,
-  partnerName,
-}: ChatRoomDeleteModalType) => {
-  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
-  const router = useRouter();
+  roomId,
+  chatId,
+}: ChatDeleteModalType) => {
+  const [chatContents, setChatContents] = useRecoilState(ChatContentsAtom);
   const page = 1;
-  const pageSize = 100;
-  // console.log(partnerName);
-  // console.log(chatRoomId);
-  // 채팅방 나가기 기능
-  const handleChatRoomOut = async () => {
-    await CHAT.deleteChatRoom(chatRoomId);
-    updateChatRoomListApi();
-    handleCloseModal();
+  const pageSize = 20;
+  // 채팅 내역 삭제 기능
+  const handleChatDeleteApi = async () => {
+    if (chatId) {
+      await CHAT.deleteChat(roomId, chatId);
+      updateChatContentsApi();
+      handleCloseModal();
+    } else {
+      console.error('해당 채팅내역이 존재하지 않습니다.');
+    }
   };
 
-  const updateChatRoomListApi = async () => {
-    const res = await CHAT.getChatRoomList(page, pageSize);
-    setChatRoomList(res.chatRooms);
+  const updateChatContentsApi = async () => {
+    const res = await CHAT.getChatHistory(roomId, page, pageSize);
+    setChatContents(res.chats);
   };
 
   const handleCloseModal = () => {
     if (show) {
       hide();
-      router.replace('/chat/home');
     }
   };
+
+  useEffect(() => {
+    // console.log(chatContents);
+    console.log(chatId);
+    console.log(roomId);
+  }, []);
 
   return (
     <div>
       <ModalWrapper>
         <ModalContainer>
           <ModalTitle>
-            <span>채팅방 나가기</span>
+            <span>알림</span>
           </ModalTitle>
           <ModalContents>
-            <span>{partnerName}님 과의</span>
-            <span>채팅방을 나가시겠습니까?</span>
+            <span>상대방의 채팅은 삭제할 수 없습니다.</span>
           </ModalContents>
           <ButtonArea>
-            <button onClick={handleChatRoomOut}>예</button>
-            <button onClick={handleCloseModal}>아니오</button>
+            <button>확인</button>
           </ButtonArea>
         </ModalContainer>
       </ModalWrapper>
@@ -67,15 +70,15 @@ const ChatRoomOutModal = ({
   );
 };
 
-export default ChatRoomOutModal;
+export default ChatNoneDeleteModal;
 
 export const ModalWrapper = styled.div`
   display: flex;
   position: absolute;
-  width: 27vw;
-  height: 30vh;
-  top: 40%;
-  left: 50%;
+  width: 22vw;
+  height: 25vh;
+  top: 50%;
+  left: 80%;
   transform: translate(-50%, -50%);
   justify-content: center;
   /* align-items: center; */
@@ -88,8 +91,8 @@ export const ModalWrapper = styled.div`
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 27vw;
-  height: 30vh;
+  width: 22vw;
+  height: 25vh;
   align-items: center;
   font-size: 0.65em;
   color: #000000;
@@ -98,8 +101,8 @@ export const ModalContainer = styled.div`
 
 export const ModalTitle = styled.div`
   display: flex;
-  width: 27vw;
-  height: 5vh;
+  width: 22vw;
+  height: 4vh;
   align-items: center;
   margin-bottom: 7vh;
   background-color: #ff772b;
@@ -119,7 +122,7 @@ export const ModalContents = styled.div`
   width: 20vw;
   height: 5vh;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 3vh;
   /* border: 2px solid red; */
   :nth-child(1) {
     font-size: 1.2em;
@@ -163,6 +166,6 @@ export const Backdrop = styled.div`
   position: fixed;
   left: 0px;
   top: 0px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.03);
   cursor: auto;
 `;

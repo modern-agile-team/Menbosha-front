@@ -12,6 +12,7 @@ import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import useModal from '@/hooks/useModal';
 import ChatDeleteModal from './ChatDeleteModal';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import { MyIdType } from '@/components/templates/ChatPageTemplate';
 
 const ChatSpaceBody = (props: {
   chatPartners: ChatPartnersType | undefined;
@@ -27,7 +28,6 @@ const ChatSpaceBody = (props: {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
   const { isOpenModal, handleModal } = useModal();
   const ChatSpaceBodyRef = useRef<HTMLDivElement | null>(null);
-
   const chatContentsInOrder = [...chatContents];
 
   // 채팅 생성 날짜
@@ -45,8 +45,16 @@ const ChatSpaceBody = (props: {
     (messageId: string) =>
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       e.preventDefault();
-      setSelectedChatId(messageId);
-      handleModal();
+      const isHostMessage =
+        chatContents.find((message) => message._id === messageId)?.senderId !==
+        chatPartners?.id;
+
+      if (isHostMessage) {
+        setSelectedChatId(messageId);
+        handleModal();
+      } else {
+        alert('상대방의 채팅은 삭제할 수 없습니다.');
+      }
     };
 
   // 처음 채팅방 입장시 && 채팅이 업데이트 됐을 때 스크롤 위치 최하단으로 이동
@@ -61,7 +69,7 @@ const ChatSpaceBody = (props: {
     }
   }, [selectedRoomId, chatContents]);
 
-  console.log('ChatSpaceBody re-rendering');
+  // console.log('ChatSpaceBody re-rendering');
 
   return (
     <S.ChatSpaceBodyContainer ref={ChatSpaceBodyRef}>

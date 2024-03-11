@@ -17,8 +17,11 @@ const ChatRoomListBox = (myId: MyIdType) => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
-  const chatPartners = useRecoilValue(ChatPartnersAtom);
+  // const chatPartners = useRecoilValue(ChatPartnersAtom);
   const selectRoom = useReplace();
+  const [rightClickedRoomId, setRightClickedRoomId] = useState<string>('');
+  const [rightClickedPartnerName, setRightClickedPartnerName] =
+    useState<string>('');
   const { isOpenModal, handleModal } = useModal();
   const socket = useSocket();
 
@@ -41,6 +44,7 @@ const ChatRoomListBox = (myId: MyIdType) => {
       // console.log('**********', allChatRoomId);
       // console.log('userId', myId.myId);
       // console.log('emitDataaaaaaaa', emitData);
+      console.log(getChatRoomList);
 
       if (socket) {
         console.log('Room Join', {
@@ -63,7 +67,14 @@ const ChatRoomListBox = (myId: MyIdType) => {
   // 마우스 우클릭 시 삭제 모달 핸들러
   const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.preventDefault();
-    handleModal();
+    const roomId = e.currentTarget.getAttribute('data-room-id');
+    const partnerName = e.currentTarget.getAttribute('data-partner-name');
+
+    if (roomId && partnerName) {
+      setRightClickedRoomId(roomId);
+      setRightClickedPartnerName(partnerName);
+      handleModal();
+    }
   };
 
   return (
@@ -84,6 +95,8 @@ const ChatRoomListBox = (myId: MyIdType) => {
         return (
           <S.ChatRoomListArea
             key={data.chatRooms._id}
+            data-room-id={data.chatRooms._id}
+            data-partner-name={data.chatPartners[0].name}
             {...data}
             onContextMenu={handleChatRoomDelete}
             onClick={() => handleRoomSelect(data.chatRooms._id)}
@@ -128,14 +141,14 @@ const ChatRoomListBox = (myId: MyIdType) => {
       })}
       {isOpenModal && (
         <>
-          {/* {getChatRoomList.map((data) => ( */}
-          <ChatRoomOutModal
-            show={isOpenModal}
-            hide={handleModal}
-            chatRoomId={selectedRoomId}
-            partnerName={chatPartners.name}
-          />
-          {/* ))} */}
+          {getChatRoomList.map((data) => (
+            <ChatRoomOutModal
+              show={isOpenModal}
+              hide={handleModal}
+              chatRoomId={rightClickedRoomId}
+              partnerName={rightClickedPartnerName}
+            />
+          ))}
         </>
       )}
     </S.ListContainer>

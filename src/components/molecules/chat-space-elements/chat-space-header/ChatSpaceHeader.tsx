@@ -14,27 +14,16 @@ const ChatSpaceHeader = (props: {
   return (
     <S.ChatSpaceHeaderContainer>
       <S.ChatSpaceHeaderArea>
-        {chatPartners ? (
-          <div>
-            <S.ChatSpaceHeaderLeft>
-              <S.ChatSpaceHeaderGuestImage
-                src={chatPartners?.userImage}
-                alt="GuestIcon"
-              />
-              <span>{chatPartners?.name}</span>
-            </S.ChatSpaceHeaderLeft>
-          </div>
-        ) : (
-          <div>
-            <S.ChatSpaceHeaderLeft>
-              <S.ChatSpaceHeaderGuestImage
-                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/userHead+-+white.svg"
-                alt="GuestIcon"
-              />
-              <span>멘토님</span>
-            </S.ChatSpaceHeaderLeft>
-          </div>
-        )}
+        <S.ChatSpaceHeaderLeft>
+          <S.ChatSpaceHeaderGuestImage
+            src={
+              chatPartners?.userImage ||
+              'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/UserImage-white.svg'
+            }
+            alt="GuestIcon"
+          />
+          <span>{chatPartners?.name || '멘토님'}</span>
+        </S.ChatSpaceHeaderLeft>
         <S.ChatSpaceHeaderRight>
           <Image
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatToolTip.svg"

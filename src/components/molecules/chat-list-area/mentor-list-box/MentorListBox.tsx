@@ -24,6 +24,7 @@ const MentorListBox = () => {
   const preventRef = useRef(true); // 옵저버 중복 방지
   const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
+  const pageSize = 100;
 
   // 옵저버 생성
   useEffect(() => {
@@ -90,7 +91,7 @@ const MentorListBox = () => {
   };
 
   const updateChatRoomListApi = async () => {
-    const res = await CHAT.getChatRoomList();
+    const res = await CHAT.getChatRoomList(page, pageSize);
     setChatRoomList(res.chatRooms);
   };
 

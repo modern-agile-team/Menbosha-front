@@ -19,6 +19,8 @@ const ChatPageTemplate = () => {
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
   const [myId, setMyId] = useState(0);
   const chatContents = useRecoilValue(ChatContentsAtom);
+  const page = 1;
+  const pageSize = 100;
 
   /** 본인 id넘버 조회 api */
   const getMyIdApi = async () => {
@@ -32,7 +34,7 @@ const ChatPageTemplate = () => {
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
-    const res = await CHAT.getChatRoomList();
+    const res = await CHAT.getChatRoomList(page, pageSize);
     setGetChatRoomList(res.chatRooms);
   };
 
