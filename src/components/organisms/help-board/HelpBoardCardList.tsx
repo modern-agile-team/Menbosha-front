@@ -44,9 +44,6 @@ const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
     }
   }, [filterCategoryId]);
 
-  console.log('page', page, 'totalPage', totalPage);
-  console.log('123123', getList);
-
   const handleObs = (entries: any) => {
     const target = entries[0];
     if (target.isIntersecting) {
