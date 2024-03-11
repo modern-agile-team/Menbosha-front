@@ -67,6 +67,7 @@ export type MyProfileType = {
   hopeCategoryId: number;
   image: string;
   rank: number;
+  email: string;
   intro: {
     shortIntro: string;
     career: string;
