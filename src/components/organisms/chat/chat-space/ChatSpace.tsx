@@ -17,6 +17,8 @@ import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
 import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
+import { useRouter } from 'next/router';
+import EmptySpaceBody from '@/components/molecules/chat-space-elements/chat-space-body/EmptySpaceBody';
 
 const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);

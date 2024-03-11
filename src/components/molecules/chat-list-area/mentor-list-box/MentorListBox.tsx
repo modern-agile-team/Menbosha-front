@@ -128,7 +128,7 @@ const MentorListBox = () => {
           </S.MentorInfoArea>
           {expandedStates[mentor.id] && (
             <S.IconBox isExpanded={expandedStates[mentor.id]}>
-              <Link href={'/mypage'}>
+              <Link href={`/userpage/${mentor.id}`}>
                 <Image
                   src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/User-white.svg"
                   alt="UserIcon"

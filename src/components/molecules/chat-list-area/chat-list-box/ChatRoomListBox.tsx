@@ -8,7 +8,6 @@ import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
-import { log } from 'console';
 import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 
 let chatPartnerName = '';

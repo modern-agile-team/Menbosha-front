@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import { Router, useRouter } from 'next/router';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 
 const ChatRoomOutModal = ({
   show,
@@ -15,6 +16,8 @@ const ChatRoomOutModal = ({
 }: ChatRoomDeleteModalType) => {
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
   const router = useRouter();
+  const [selectedRoomId, setSelectedRoomId] =
+    useRecoilState(SelectedRoomIdAtom);
   const page = 1;
   const pageSize = 100;
   // console.log(partnerName);
@@ -23,6 +26,7 @@ const ChatRoomOutModal = ({
   const handleChatRoomOut = async () => {
     await CHAT.deleteChatRoom(chatRoomId);
     updateChatRoomListApi();
+    setSelectedRoomId('');
     handleCloseModal();
   };
 
@@ -30,6 +34,10 @@ const ChatRoomOutModal = ({
     const res = await CHAT.getChatRoomList(page, pageSize);
     setChatRoomList(res.chatRooms);
   };
+
+  // const updateChatContentsApi = async () => {
+  //   const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
+  // };
 
   const handleCloseModal = () => {
     if (show) {
