@@ -22,7 +22,6 @@ const UpdateMyProfile = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [imgFile, setImgFiles] = useState<ImageType>();
   const router = useRouter();
-  const [hopeCategory, setHopeCategory] = useState(0);
   const [updateInfo, setUpdateInfo] = useState({
     name: '',
     image: '',
@@ -65,7 +64,6 @@ const UpdateMyProfile = () => {
 
   const getMyInfoApi = async () => {
     const response = await USER.getMyInfo();
-    setHopeCategory(response.activityCategoryId);
     setUpdateInfo(() => {
       return {
         name: response.name,
@@ -245,11 +243,30 @@ const UpdateMyProfile = () => {
     const target = e.target as HTMLDivElement;
     const value = target.innerHTML;
     const temp = categoryList.find((data) => data.category === value)?.id;
-    if (temp) {
-      setHopeCategory(temp);
+    if (updateInfo.isMentor) {
+      temp &&
+        setUpdateInfo((prev) => {
+          return {
+            ...prev,
+            hopeCategoryId: temp,
+          };
+        });
+    } else {
+      temp &&
+        setUpdateInfo((prev) => {
+          return {
+            ...prev,
+            activityCategoryId: temp,
+          };
+        });
     }
-    if (temp === hopeCategory) {
-      setHopeCategory(1);
+    if (temp === updateInfo.hopeCategoryId) {
+      setUpdateInfo((prev) => {
+        return {
+          ...prev,
+          hopeCategoryId: 1,
+        };
+      });
     }
   };
 
@@ -301,18 +318,38 @@ const UpdateMyProfile = () => {
             {categoryList.map((data) => {
               return (
                 <div>
-                  {hopeCategory === data.id ? (
-                    <S.CategoryBox
-                      isCategory={true}
-                      onClick={handleHopeCategory}>
-                      {data.category}
-                    </S.CategoryBox>
+                  {!updateInfo.isMentor ? (
+                    <>
+                      {updateInfo.hopeCategoryId === data.id ? (
+                        <S.CategoryBox
+                          isCategory={true}
+                          onClick={handleHopeCategory}>
+                          {data.category}
+                        </S.CategoryBox>
+                      ) : (
+                        <S.CategoryBox
+                          isCategory={false}
+                          onClick={handleHopeCategory}>
+                          {data.category}
+                        </S.CategoryBox>
+                      )}
+                    </>
                   ) : (
-                    <S.CategoryBox
-                      isCategory={false}
-                      onClick={handleHopeCategory}>
-                      {data.category}
-                    </S.CategoryBox>
+                    <>
+                      {updateInfo.activityCategoryId === data.id ? (
+                        <S.CategoryBox
+                          isCategory={true}
+                          onClick={handleHopeCategory}>
+                          {data.category}
+                        </S.CategoryBox>
+                      ) : (
+                        <S.CategoryBox
+                          isCategory={false}
+                          onClick={handleHopeCategory}>
+                          {data.category}
+                        </S.CategoryBox>
+                      )}
+                    </>
                   )}
                 </div>
               );

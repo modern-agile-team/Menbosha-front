@@ -58,8 +58,8 @@ const USER = {
         detail: update.detail,
         portfolio: update.portfolio,
         sns: update.sns,
-        hopeCategory: update.hopeCategoryId,
-        activityCategory: update.activityCategoryId,
+        hopeCategoryId: update.hopeCategoryId,
+        activityCategoryId: update.activityCategoryId,
         isMentor: update.isMentor,
       },
     );
