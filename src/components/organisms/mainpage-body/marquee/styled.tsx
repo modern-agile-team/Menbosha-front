@@ -4,6 +4,8 @@ export const MarqueeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
+  /* margin-top: 100px; */
+  /* border: 2px solid white; */
 `;
 
 export const MarqueeArea = styled.div`

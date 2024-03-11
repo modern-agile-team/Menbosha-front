@@ -113,9 +113,6 @@ const ChatSpaceBody = (props: {
                   {!isSameDay(currentDate, createdAtDate) && (
                     <TimeStamp date={createdAtDate} />
                   )}
-                  {/* 일단 TimeStamp가 상대방이나 본인이 채팅했을 때 날짜가 넘어가면
-                찍혀야하므로 각각의 컴포넌트에 둘 다 박았더니 중복됨.
-                따라서 일단 조건을 줘서 해결해봄. */}
                   {isValidTime && (
                     <S.ChatTimeBox isHost={false}>{`${getAmPm(hours)} ${
                       hours % 12 || 12
