@@ -6,7 +6,7 @@ const BodyContents3 = () => {
     <S.MainContentsContainer3>
       <S.MainContents3Left src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/mainLeaf.svg" />
       <S.MainContents3Right>
-        <span>가볍지만 체계적으로.</span>
+        <div>가볍지만 체계적으로.</div>
         <div>
           단순하고 가벼운 시스템에서도 사소한 사고가 발생하지 않도록 체계적인
           시스템을 구축했습니다. 나쁜 경험이 없도록 최선을 다하는 멘보샤입니다.
@@ -36,7 +36,7 @@ const BodyContents3 = () => {
           </S.InfoBox>
           <S.InfoBox>
             <S.InfoTitleBox>
-              멘토로서 신뢰도를 얻을 수<br /> 있는 온도 표시 시스템
+              멘토로서 신뢰도를 얻을 수<br /> 있는 랭크 표시 시스템
             </S.InfoTitleBox>
             <S.InfoTextBox>
               복잡한 리뷰도 신뢰도에 중요한 영향이 있지만, 이를 종합해 자신이

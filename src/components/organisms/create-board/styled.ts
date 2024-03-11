@@ -9,21 +9,47 @@ export const CreateHelpContainer = styled.div`
 `;
 
 export const CreateTitle = styled.div`
-  font-size: 48px;
-  font-weight: bold;
-  margin: 64px 0px;
+  font-size: 2.67em; //64.08px
+  font-weight: 900; //Pretendard-Black
+  margin: 6vh 0px;
   color: #ff772b;
 `;
 
 export const CreateHeader = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
+  margin: 1vh 0px;
+  & > :nth-child(1) {
+    margin-right: 5vw;
+  }
+  & > :nth-child(n) {
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
+    color: #ff772b;
+  }
+`;
+
+export const HeaderTextBox = styled.div<{ isCount: boolean }>`
+  display: flex;
+  & > :nth-child(2) {
+    margin: auto 0.5vw;
+    font-size: 0.68em;
+    font-weight: 400;
+    color: ${({ isCount }) => (isCount ? '#000' : '#f00')};
+  }
+`;
+
+export const CreateComboBoxContainer = styled.div`
+  display: flex;
+  margin: 1vh 0px;
+  & > :nth-child(1) {
+    font-size: 0.84em;
+    font-weight: 700;
+    color: #ff772b;
+  }
 `;
 
 export const CreateHeadValue = styled.input`
-  width: 100%;
+  width: 35vw;
   border: 2px solid #ff772b;
   padding: 10px;
   margin: 16px 0px 16px 0px;

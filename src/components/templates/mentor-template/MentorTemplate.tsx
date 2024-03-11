@@ -10,13 +10,25 @@ import {
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 import MentorRanking from '@/components/organisms/mentor/RankMentor';
-import MainPageFooter from '@/components/common/footer/Footer';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MentorListType } from '@/types/mentor';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import { useRecoilValue } from 'recoil';
 
 const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
   const router = useRouter();
+  const loginState = useRecoilValue(LoginStateAtom);
+
+  const handleCreateRoute = () => {
+    if (loginState) {
+      router.push({
+        pathname: `/create`,
+      });
+    } else {
+      alert('게시글을 작성하려면 로그인이 필요합니다.');
+    }
+  };
 
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
@@ -67,10 +79,7 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
       </HeadTitleContainer>
       <GlobalCategoryContainer>
         <Category />
-        <CreateIconLink
-          href={{
-            pathname: `/create`,
-          }}>
+        <CreateIconLink onClick={handleCreateRoute}>
           <img
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
@@ -85,18 +94,17 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
           <MentorRanking filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <S.ListTitleBox>인기 멘토</S.ListTitleBox>
+          <S.ListSubTitleBox>인기 멘토</S.ListSubTitleBox>
           <PopularMentorList filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
-          <S.ListTitleBox>전체 멘토</S.ListTitleBox>
+          <S.ListSubTitleBox>전체 멘토</S.ListSubTitleBox>
           <MentorList
             filterCategoryId={Number(router.query.filterId)}
             lastPage={lastPage as number}
           />
         </S.MentorListContainer>
       </ContainerWrapper>
-      <MainPageFooter color={true} />
     </>
   );
 };

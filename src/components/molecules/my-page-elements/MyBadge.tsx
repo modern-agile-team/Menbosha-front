@@ -61,7 +61,9 @@ const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
               <div key={data.id}>
                 <div>
                   {existingData.some((item) => item.badgeId === data.id) ? (
-                    <img src={data.image} />
+                    <S.UnlockBadgeBox>
+                      <img src={data.image} />
+                    </S.UnlockBadgeBox>
                   ) : (
                     <S.UnlockBadgePreviewBox>
                       <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/badge/unlockBadgeImage.svg" />

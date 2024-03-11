@@ -39,34 +39,40 @@ export const MyInfoFooterBox = styled.div`
 
 export const MyInfoGridContainer = styled.div`
   display: grid;
-  margin: 0px 363px 0px 159px;
-  grid-template-columns: 280px 280px 280px;
+  /* margin: 0px 363px 0px 159px; */
+  margin: 0px 19vw 0px 8vw;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 2fr 0.5fr 1fr 1fr 1fr;
   color: #fff;
   //페이지 이름
   & > :nth-child(1) {
-    font-size: 64px;
-    font-weight: bold;
+    font-size: 2.7em; //64px
+    font-size: 3.33vw;
+    font-weight: 900; //Pretendard-Black
   }
   //본인 이미지
   & > :nth-child(2) {
-    width: 280px;
-    height: 360px;
+    width: 14.6vw; //280.31px
+    height: 33.4vh; //360.71px
     border-radius: 10px;
   }
   //프로필 설정(프로필 변경)
   & > :nth-child(3) {
-    padding-left: 24px;
+    padding-left: 1.2vw; //23.04px
     align-self: self-end;
+    & > :nth-child(1) {
+      width: 2vw;
+    }
   }
   //본인 이름, 멘토 여부
   & > :nth-child(5) {
     > :nth-child(1) {
-      font-size: 40px;
-      font-weight: bold;
+      font-size: 2.1vw; //40.32px
+      font-weight: 700; //Pretendard-Bold
     }
     > :nth-child(2) {
-      font-size: 16px;
+      font-size: 0.83vw; //15.936px
+      font-weight: 400; //Pretendard-Regular
     }
     grid-column: 2 / 4;
   }
@@ -78,12 +84,13 @@ export const MyInfoGridContainer = styled.div`
   :nth-child(10),
   :nth-child(11) {
     > :nth-child(1) {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 1.05vw; //20.16px
+      font-weight: 700; //Pretendard-Bold
       padding: 0px 0px 24px 0px;
     }
     > :nth-child(2) {
-      font-size: 16px;
+      font-size: 0.83vw; //15.936px
+      font-weight: 400; //Pretendard-Regular
     }
   }
   & > :nth-child(9) {
@@ -91,9 +98,6 @@ export const MyInfoGridContainer = styled.div`
   }
   & > :nth-child(11) {
     grid-column: 2 / 4;
-  }
-  @media only all and (max-width: 1650px) {
-    gap: 10px 0px;
   }
 `;
 
@@ -128,6 +132,13 @@ export const DropDownImageBox = styled.label<DropType>`
   }
 `;
 
+/**업데이트 프로필 타이틀 */
+export const UpdateProfileTitleBox = styled.div`
+  font-size: 2.7em; //64.8px
+  font-weight: 900; //Pretendard-Black
+  color: #ff772b;
+`;
+
 export const UpdateProfileContainer = styled.div`
   display: grid;
   justify-content: center;
@@ -143,6 +154,9 @@ export const UpdateProfileContainer = styled.div`
   //이미지 타이틀
   & > :nth-child(2) {
     grid-column: 2 / 4;
+    font-size: 0.85em; //20.4px
+    font-weight: 700; //Pretendard-Bold
+    color: #ff772b;
     padding-bottom: 16px;
   }
   & > :nth-child(4) {
@@ -159,8 +173,8 @@ export const UpdateProfileContainer = styled.div`
   //카테고리 선택
   & > :nth-child(6) {
     & > :nth-child(1) {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20.4px
+      font-weight: 700; //Pretendard-Bold
       color: #ff772b;
     }
     grid-column: 1 / 4;
@@ -172,8 +186,8 @@ export const UpdateProfileContainer = styled.div`
   {
     //소제목
     & > :nth-child(1) {
-      font-size: 20px;
-      font-weight: bold;
+      font-size: 0.85em; //20.4px
+      font-weight: 700; //Pretendard-Bold
       color: #ff772b;
       padding-bottom: 12px;
     }
@@ -181,7 +195,8 @@ export const UpdateProfileContainer = styled.div`
     & > :nth-child(2) {
       border: 1px solid #ff772b;
       resize: none;
-      font-size: 12px;
+      font-size: 0.5em; //12px
+      font-weight: 400; //Pretendard-Regular
       color: rgba(0, 0, 0);
       border-radius: 10px;
       height: 108px;
@@ -256,8 +271,8 @@ export const UpdateProfileContainer = styled.div`
 `;
 
 export const iIcon = styled.div`
-  font-size: 15px;
-  margin-left: 10px;
+  font-size: 1vw;
+  margin-left: 0.5vw;
 `;
 
 //이메일 상자

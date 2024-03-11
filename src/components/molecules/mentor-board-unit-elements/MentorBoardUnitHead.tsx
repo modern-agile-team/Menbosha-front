@@ -3,7 +3,7 @@ import {
   ImageBox,
   TextBox,
 } from '@/components/common/globalStyled/styled';
-import { MBUnitHeadPropsType } from '@/types/mentor';
+import { MBUnitHeadPropsType, MentorBoardUnitType } from '@/types/mentor';
 import Image from 'next/image';
 import * as S from './style';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ import MENTOR from '@/apis/mentor';
 import { categoryList } from '@/components/common/category/categoryList';
 import { useEffect, useState } from 'react';
 
-const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
+const MentorBoardUnitHead = (props: MentorBoardUnitType) => {
   const router = useRouter();
   const [category, setCategory] = useState('');
 
@@ -61,12 +61,12 @@ const MentorBoardUnitHead = (props: MBUnitHeadPropsType) => {
         <div>{props.head}</div>
       </S.MentorBoardTitleInfo>
       <S.MentorBoardOwnerUser>
-        <img src={props.userImage} alt="11" />
+        <img src={props.user.userImage.imageUrl} alt="11" />
         <S.HeadProfile>
-          <TextBox size={16}>{props.userName}</TextBox>
-          <TextBox size={12}>{category}</TextBox>
+          <div>{props.user.name}</div>
+          <div>{category}</div>
         </S.HeadProfile>
-        {props.isOwner && (
+        {props.unitOwner && (
           <S.ButtonContainer>
             <img
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg"

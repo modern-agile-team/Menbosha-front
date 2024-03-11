@@ -19,17 +19,16 @@ export const MyPageTitleBox = styled.div`
   width: 16vw;
   height: 12vh;
   text-align: center;
-  /* border: 2px solid red; */
   :nth-child(1) {
     margin-bottom: 12px;
-    font-size: 64px;
-    font-weight: 900;
+    font-size: 2.7em; //64px
+    font-weight: 900; //Pretendard-Black
     line-height: 120%;
     color: rgb(255, 119, 43);
   }
   :nth-child(2) {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 0.85em; //20px
+    font-weight: 700; //Pretendard-Bold
     color: rgb(255, 119, 43, 0.75);
   }
 `;
@@ -87,121 +86,76 @@ export const Bubble = styled.div<BubbleSizeType>`
   animation: ${bubbleMove} 1s infinite linear;
 `;
 
-export const ProfileLinkImg = styled.div`
+const MyPageBreadBox = css<{ route: boolean }>`
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 90%;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
+  //각 빵 이름
+  & > :nth-child(1) {
+    top: 15vw;
+    left: 8vw;
+    font-size: 1em;
+    font-weight: 700;
+    position: absolute;
+    color: #ff772b;
+  }
+  ${({ route }) => {
+    return css`
+      transform: ${route ? 'scale(100)' : 'scale(1)'};
+    `;
+  }}
+`;
+
+export const ProfileLinkImg = styled.div<{ route: boolean }>`
   background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 50%;
-  height: 90%;
   margin: 4% 0% 0% 43%;
-  cursor: pointer;
-  transition: all 0.5s;
-  &:hover {
-    height: 100%;
-    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
-    transition: all 0.5s;
-  }
+  ${MyPageBreadBox}
 `;
 
-export const ProfileLinkText = styled.div`
-  margin: 14% 0% 0% 8%;
-  position: absolute;
-  color: #ff772b;
-`;
-
-export const TempLinkImg = styled.div`
+export const TempLinkImg = styled.div<{ route: boolean }>`
   background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/rank.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 50%;
-  height: 90%;
   margin: 8% 0% 0% 33%;
-  cursor: pointer;
-  transition: all 0.5s;
-  &:hover {
-    height: 100%;
-    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/rank.svg');
-    transition: all 0.5s;
-  }
+  ${MyPageBreadBox}
 `;
 
-export const TempLinkText = styled.div`
-  margin: 14% 0% 0% 9%;
-  position: absolute;
-  color: #ff772b;
-`;
-
-export const ReviewLinkImg = styled.div`
-  background-size: contain;
-  background-repeat: no-repeat;
+export const ReviewLinkImg = styled.div<{ route: boolean }>`
   background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/review.svg');
-  width: 50%;
-  height: 90%;
   margin: 6% 0% 0% 29%;
-  cursor: pointer;
-  transition: all 0.5s;
-  &:hover {
-    height: 100%;
-    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/review.svg');
-    transition: all 0.5s;
-  }
+  ${MyPageBreadBox}
 `;
 
-export const ReviewLinkText = styled.div`
-  margin: 14% 0% 0% 11%;
-  position: absolute;
-  color: #ff772b;
-`;
-
-export const ChatLinkImg = styled.div`
+export const RecordLinkImg = styled.div<{ route: boolean }>`
   background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/chatting.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 50%;
-  height: 80%;
   margin: 3% 0% 0% 10%;
-  cursor: pointer;
-  transition: all 0.5s;
-  &:hover {
-    height: 100%;
-    background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/chatting.svg');
-    transition: all 0.5s;
-  }
-`;
-
-export const ChatLinkText = styled.div`
-  margin: 14% 0% 0% 11%;
-  position: absolute;
-  color: #ff772b;
+  ${MyPageBreadBox}
 `;
 
 //MyProfileTemplate
 export const ContentContainer = styled.div`
   display: flex;
   width: 100%;
-  margin: 100px 0px;
-  @media only all and (max-width: 1500px) {
-    & > img {
-      display: none;
-    }
+  margin: 10vh 0px;
+  & > :nth-child(1) {
+    width: 10vw;
   }
 `;
 
 //멘보샤 빵 사진
 export const BackgroundContainer = styled.img`
   width: 100vw;
-  height: 114em;
-  @media only all and (max-height: 1000px) {
-    height: 100em;
-  }
+  height: 200vh;
 `;
 
 //백그라운드 컬러 입히기 전 css 모듈
 export const BackContainColor = css`
   width: 100vw;
-  @media only all and (max-width: 1919px) {
-    width: 100vw;
-  }
+  height: 100vh;
   position: absolute;
 `;
 

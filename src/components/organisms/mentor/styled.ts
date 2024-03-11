@@ -60,24 +60,33 @@ export const RankBox = styled.div`
   flex-direction: column;
   justify-content: end;
   margin: 0px 14px;
+  //랭크 이미지
   & > :nth-child(1) {
     padding: 40px;
-    border: 2px solid #ff772b;
+    border: 3px solid #ff772b;
     border-radius: 19px;
+    @media only all and (max-width: 1000px) {
+      padding: 4vw;
+      width: 50px;
+      height: 50px;
+    }
   }
+  //랭크 인포
   & > :nth-child(2) {
     display: flex;
+    flex-direction: column;
     color: #ff772b;
-    margin-top: 20px;
+    margin-top: 15px;
+    //랭크 이름
     :nth-child(1) {
-      font-size: 36px;
-      font-weight: bold;
+      font-size: 1em; //24px
+      font-weight: 700; //Pretendard-Bold
     }
+    //랭크 점수
     :nth-child(2) {
-      font-size: 16px;
-      display: flex;
-      align-items: end;
-      margin-left: 12px;
+      font-size: 0.67em; //16.08px
+      font-weight: 400; //Pretendard-Regular
+      align-items: start;
     }
   }
 `;
@@ -88,12 +97,15 @@ export const MentorInfoBox = styled.div`
     width: 280px;
     height: 380px;
     border-radius: 10px;
+    @media only all and (max-width: 1000px) {
+      width: 28vw;
+      height: 27vh;
+    }
   }
   > :nth-child(2) {
-    display: flex;
     color: #ff772b;
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 1.7em; //40.8px
+    font-weight: 700; //Pretendard-Bold
     margin-top: 10px;
   }
 `;
@@ -101,14 +113,17 @@ export const MentorInfoBox = styled.div`
 export const BodyContentsBox = styled.div`
   width: 35%;
   height: 120px;
+  //컨텐츠 1번째
   & > :nth-child(1) {
     color: #ff772b;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
   }
+  //컨텐츠 2번째
   & > :nth-child(2) {
     padding-top: 24px;
-    font-size: 16px;
+    font-size: 0.67em; //16.08px
+    font-weight: 400; //Pretendard-Medium
   }
 `;
 
@@ -118,12 +133,13 @@ export const DetailBox = styled.div`
   height: auto;
   & > :nth-child(1) {
     color: #ff772b;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
   }
   & > :nth-child(2) {
     padding-top: 24px;
-    font-size: 16px;
+    font-size: 0.67em; //16.08px
+    font-weight: 400; //Pretendard-Medium
   }
 `;
 
@@ -132,12 +148,12 @@ export const ShareBox = styled.div`
   height: 120px;
   & > :nth-child(1) {
     color: #ff772b;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
   }
   & > :nth-child(2) {
-    padding-top: 24px;
-    font-size: 16px;
+    font-size: 0.67em; //16.08px
+    font-weight: 400; //Pretendard-Medium
   }
 `;
 

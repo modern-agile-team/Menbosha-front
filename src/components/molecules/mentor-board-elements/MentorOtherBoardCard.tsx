@@ -33,21 +33,14 @@ const MentorOtherBoardCard = (props: MentorBoardCardType) => {
       ) : (
         <S.CardImageBox />
       )}
-      <TextBox
-        size={20}
-        color="#FF772B"
-        style={{ padding: '12px 0px 0px 0px' }}>
-        {props.head}
-      </TextBox>
+      <div>{props.head}</div>
       {isHtml && (
         <HTMLtext
           dangerouslySetInnerHTML={{
             __html: props.body,
           }}></HTMLtext>
       )}
-      <TextBox size={10} color="#000">
-        {props.createdAt.slice(0, 10)}
-      </TextBox>
+      <div>{props.createdAt.slice(0, 10)}</div>
     </S.MentorBoardCardContainer>
   );
 };

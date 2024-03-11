@@ -12,9 +12,25 @@ import * as S from './styled';
 import { useRouter } from 'next/router';
 import { HelpListApiType } from '@/types/help';
 import { useCallback, useEffect } from 'react';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import { useRecoilValue } from 'recoil';
 
 const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
   const router = useRouter();
+  const loginState = useRecoilValue(LoginStateAtom);
+
+  const handleCreateRoute = () => {
+    if (loginState) {
+      router.push({
+        pathname: `/create`,
+        query: {
+          location: 'help',
+        },
+      });
+    } else {
+      alert('게시글을 작성하려면 로그인이 필요합니다.');
+    }
+  };
 
   // 스크롤 수동으로 조정 설정
   useEffect(() => {
@@ -65,10 +81,7 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
       </HeadTitleContainer>
       <GlobalCategoryContainer>
         <Category />
-        <CreateIconLink
-          href={{
-            pathname: `/create`,
-          }}>
+        <CreateIconLink onClick={handleCreateRoute}>
           <img
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
@@ -85,7 +98,7 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
           />
         </S.HelpBoardListContainer>
         <S.HelpBoardListContainer>
-          <S.BoardTitleBox>도와주세요 게시판</S.BoardTitleBox>
+          <S.ListSubTitleBox>도와주세요 게시판</S.ListSubTitleBox>
           <HelpBoardCardList
             filterCategoryId={Number(router.query.filterId)}
             lastPage={lastPage as number}

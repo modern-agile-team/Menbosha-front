@@ -40,7 +40,8 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
         });
       } catch (err) {
         if (axios.isAxiosError(err) && err.response) {
-          alert('본인의 게시물에는 좋아요를 할 수 없습니다.');
+          err.response.data.statusCode === 403 &&
+            alert(err.response.data.message);
         }
       }
     } else {
@@ -60,9 +61,9 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
       {props.image.length > 0 ? (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           {props.image.length >= 2 && (
-            <ButtonBox color="#000" onClick={handleSlidePrev}>
-              이전
-            </ButtonBox>
+            <S.ImageNextNPrevButton onClick={handleSlidePrev}>
+              &lt;
+            </S.ImageNextNPrevButton>
           )}
           <S.SlideContain>
             <S.SlidImages ref={slideRef}>
@@ -76,9 +77,9 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
             </S.SlidImages>
           </S.SlideContain>
           {props.image.length >= 2 && (
-            <ButtonBox color="#000" onClick={handleSlideNext}>
-              다음
-            </ButtonBox>
+            <S.ImageNextNPrevButton onClick={handleSlideNext}>
+              &gt;
+            </S.ImageNextNPrevButton>
           )}
         </div>
       ) : (
@@ -104,7 +105,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg"
           />
         )}
-        {like.count}
+        <div>{like.count}</div>
       </S.LikeContainer>
     </S.BodyContainer>
   );

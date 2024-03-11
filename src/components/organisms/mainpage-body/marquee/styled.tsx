@@ -6,27 +6,9 @@ export const MarqueeContainer = styled.div`
   width: 100vw;
 `;
 
-export const MarqueeArea1 = styled.div`
+export const MarqueeArea = styled.div`
   display: flex;
-  width: 100vw;
-  height: 21vh;
-  /* border: 2px solid lightblue; */
-`;
-
-export const MarqueeArea2 = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 21vh;
-  /* border: 2px solid white; */
-`;
-
-export const MarqueeArea3 = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 21vh;
-  justify-content: center;
-  align-items: center;
-  /* border: 2px solid white; */
+  margin: 14px 0px;
 `;
 
 export const MarqueeBox = styled.div`
@@ -40,4 +22,16 @@ export const MarqueeBox = styled.div`
   font-weight: 700;
   border: 5px solid #ff772b;
   border-radius: 30px;
+  @media only all and (max-width: 1000px) {
+    font-size: 1.5em;
+    height: 12vh;
+  }
+  @media only all and (max-width: 750px) {
+    font-size: 1em;
+    height: 10vh;
+  }
+  @media only all and (max-width: 500px) {
+    font-size: 0.5em;
+    height: 8vh;
+  }
 `;

@@ -52,6 +52,8 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
     getMentorReviewApi();
   }, [page]);
 
+  console.log(reviewData);
+
   return (
     <S.ReviewElementWrapper>
       {reviewData.length !== 0 ? (
@@ -62,9 +64,15 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
             name: data.mentee.name,
             rank: data.mentee.rank,
             imageUrl: data.mentee.userImage.imageUrl,
-            customCategory: data.mentee.userIntro.customCategory,
-            career: data.mentee.userIntro.career,
-            shortIntro: data.mentee.userIntro.shortIntro,
+            customCategory: data.mentee.userIntro
+              ? data.mentee.userIntro.customCategory
+              : '없음',
+            career: data.mentee.userIntro
+              ? data.mentee.userIntro.career
+              : '없음',
+            shortIntro: data.mentee.userIntro
+              ? data.mentee.userIntro.shortIntro
+              : '없음',
             review: data.review,
             isGoodWork: data.isGoodWork,
             isClear: data.isClear,

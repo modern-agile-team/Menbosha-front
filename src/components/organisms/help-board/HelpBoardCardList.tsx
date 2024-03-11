@@ -15,6 +15,10 @@ const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
   const obsRef = useRef<HTMLDivElement>(null); //옵저버 state
   const [load, setLoad] = useState(false);
   const preventRef = useRef(true); //옵저버 중복 방지
+  const [getClient, setGetClient] = useState(false);
+  useEffect(() => {
+    setGetClient(true);
+  }, []);
 
   //옵저버 생성
   useEffect(() => {
@@ -32,10 +36,12 @@ const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
 
   //필터링 기능
   useEffect(() => {
-    setGetList([]);
-    setPage(1);
-    setTotalPage(lastPage);
-    loadPost();
+    if (getClient) {
+      setGetList([]);
+      setPage(1);
+      setTotalPage(lastPage);
+      loadPost();
+    }
   }, [filterCategoryId]);
 
   console.log('page', page, 'totalPage', totalPage);

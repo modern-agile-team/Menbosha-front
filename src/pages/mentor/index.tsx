@@ -5,7 +5,14 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 const Mentor = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <MentorTemplate lastPage={data.lastPage} />;
+  return (
+    <div
+      style={{
+        margin: '0px 0px 10vh 0px',
+      }}>
+      <MentorTemplate lastPage={data.lastPage} />
+    </div>
+  );
 };
 
 export default Mentor;

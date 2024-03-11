@@ -8,18 +8,23 @@ export const AskContentWrapper = styled.div`
 export const BeforeTitleContainer = styled.div`
   display: flex;
   padding-bottom: 12px;
-  font-size: 20px;
+  font-size: 0.84em; //20.16px
+  font-weight: 400; //Pretendard-Regular
   border-bottom: 1px solid #ff772b;
   cursor: pointer;
 `;
 
 export const AfterTitleContainer = styled.div`
-  font-size: 20px;
   cursor: pointer;
   & > :nth-child(1) {
     display: flex;
-    font-weight: bold;
+    font-size: 0.84em; //20.16px
+    font-weight: 700; //Pretendard-Bold
     padding-bottom: 12px;
+  }
+  & > :nth-child(2) {
+    font-size: 0.65em; //16.5px
+    font-weight: 400; //Pretendard-Regular
   }
 `;
 

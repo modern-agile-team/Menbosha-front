@@ -2,6 +2,7 @@ import { ContainerWrapper } from '@/components/common/globalStyled/styled';
 import * as S from './styled';
 import { useRouter } from 'next/router';
 import MyReviewContents from '@/components/organisms/my-review/MyReviewContents';
+import MainPageFooter from '@/components/common/footer/Footer';
 
 const MyReviewTemplate = () => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const MyReviewTemplate = () => {
         </ContainerWrapper>
       </S.MyReviewBack>
       <S.BackgroundContainer src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/background3.svg" />
+      <MainPageFooter color={true} />
     </div>
   );
 };

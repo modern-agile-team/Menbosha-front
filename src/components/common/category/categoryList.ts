@@ -25,30 +25,30 @@ export const categoryList = [
   },
   {
     id: 7,
-    category: '투자',
-  },
-  {
-    id: 8,
     category: '게임',
   },
   {
-    id: 9,
+    id: 8,
     category: '음악',
   },
   {
-    id: 10,
+    id: 9,
     category: '반려동물',
   },
   {
-    id: 11,
+    id: 10,
     category: '회화',
   },
   {
-    id: 12,
+    id: 11,
     category: '육아',
   },
   {
-    id: 13,
+    id: 12,
     category: '공부',
+  },
+  {
+    id: 13,
+    category: '그 외',
   },
 ];

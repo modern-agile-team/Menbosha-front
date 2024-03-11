@@ -37,32 +37,30 @@ const SectionSelectorBox = () => {
   }, []);
 
   return (
-    <>
-      <SelectBox onClick={handleModal}>
-        <Label>{getSection ? getSection : '위치'}</Label>
-        <SelectOptions show={`${isOpenModal}`}>
-          {sectionList.map((list) => {
-            return (
-              <div key={list.id}>
-                <Option onClick={handleOnChangeSelectValue}>
-                  {list.section}
-                </Option>
-              </div>
-            );
-          })}
-        </SelectOptions>
-        {isOpenModal && (
-          <DropDown
-            onClick={(e: React.MouseEvent) => {
-              e.preventDefault();
+    <SelectBox onClick={handleModal}>
+      <Label>{getSection ? getSection : '위치'}</Label>
+      <SelectOptions show={`${isOpenModal}`}>
+        {sectionList.map((list) => {
+          return (
+            <div key={list.id}>
+              <Option onClick={handleOnChangeSelectValue}>
+                {list.section}
+              </Option>
+            </div>
+          );
+        })}
+      </SelectOptions>
+      {isOpenModal && (
+        <DropDown
+          onClick={(e: React.MouseEvent) => {
+            e.preventDefault();
 
-              if (isOpenModal) {
-                handleModal();
-              }
-            }}></DropDown>
-        )}
-      </SelectBox>
-    </>
+            if (isOpenModal) {
+              handleModal();
+            }
+          }}></DropDown>
+      )}
+    </SelectBox>
   );
 };
 
@@ -70,9 +68,10 @@ const SelectBox = styled.div`
   position: relative;
   border: 1px solid #ff772b;
   margin-left: auto;
-  width: 200px;
-  margin: 0px 8px 16px 8px;
-  border-radius: 5px;
+  width: 6vw;
+  margin: 2vh 0.45vw;
+  padding: 0.6vh 1vw;
+  border-radius: 10px;
   background-color: #fff;
   color: #000;
   align-self: center;

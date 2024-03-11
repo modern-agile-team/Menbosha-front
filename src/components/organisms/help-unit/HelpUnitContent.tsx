@@ -38,8 +38,8 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
         onClick={handleBack}
         src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/prevBtn.svg"
       />
-      <S.HelpUnitContentContainer>
-        <>
+      <div>
+        <S.HelpUnitContentContainer>
           {getUnitInfo && load ? (
             <>
               <UnitContentHead {...getUnitInfo} />
@@ -54,11 +54,11 @@ const HelpUnitContent = ({ id }: BoardIdType) => {
               <HelpUnitContentBodySkeleton />
             </>
           )}
-        </>
-        <S.HelpCommentWrapper>
-          <UnitComment id={id} />
-        </S.HelpCommentWrapper>
-      </S.HelpUnitContentContainer>
+          <S.HelpCommentWrapper>
+            <UnitComment id={id} />
+          </S.HelpCommentWrapper>
+        </S.HelpUnitContentContainer>
+      </div>
     </S.ContentWrapper>
   );
 };

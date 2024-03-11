@@ -12,7 +12,7 @@ const MentorCard = (props: MentorCardType) => {
     <LinkBox
       color="#fff"
       href={{
-        pathname: `/mentor/unit/${props.id}`,
+        pathname: `/userpage/${props.id}`,
         query: {
           id: props.id,
         },
@@ -28,8 +28,8 @@ const MentorCard = (props: MentorCardType) => {
             <div>{props.name}</div>
           </div>
           <div>
-            <div>{props.shortIntro}</div>
-            <div>{props.customCategory}</div>
+            <div>{props.shortIntro.slice(0, 20)}</div>
+            <div>{props.customCategory.slice(0, 20)}</div>
           </div>
           <S.TotalMentorCountBox>
             <div>

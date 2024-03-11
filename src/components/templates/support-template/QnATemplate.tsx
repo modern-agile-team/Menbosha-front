@@ -234,10 +234,19 @@ const QnATemplate = () => {
 
   return (
     <div>
+      <MainPageHeader />
       <ContainerWrapper>
-        <MainPageHeader />
         <S.QnAContainer>
           <div>자주하는 질문</div>
+          <S.ReactListContainer>
+            {askList.map((data) => {
+              return (
+                <div>
+                  <div onClick={() => handleQnAList(data.id)}>{data.name}</div>
+                </div>
+              );
+            })}
+          </S.ReactListContainer>
           <S.QnAContentNListWrapper>
             <S.ListContainer>
               {askList.map((data) => {

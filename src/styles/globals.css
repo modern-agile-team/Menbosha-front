@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-    format('woff');
-}
-
 ul,
 li {
   text-decoration: none;
@@ -17,11 +11,11 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  font-family: 'Pretendard-Regular', sans-serif;
   font-size: 24px;
   scroll-behavior: smooth;
 }
 
+/* react-quill에 대한 스타일 지정 */
 .ql-editor {
   border-radius: 0px 0px 15px 15px;
   height: 400px !important;
