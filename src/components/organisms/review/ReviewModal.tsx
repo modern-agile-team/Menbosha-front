@@ -5,7 +5,7 @@ import {
   Naver,
 } from '@/components/molecules/auth-elements/AuthProvider';
 import { useEffect } from 'react';
-import CreateReview from '../reivew-element/CreateReview';
+import CreateReview from '../review-element/CreateReview';
 
 interface ModalType {
   show: boolean;

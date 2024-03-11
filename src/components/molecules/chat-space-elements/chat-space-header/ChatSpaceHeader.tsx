@@ -28,10 +28,10 @@ const ChatSpaceHeader = (props: {
           <div>
             <S.ChatSpaceHeaderLeft>
               <S.ChatSpaceHeaderGuestImage
-                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/userHead+-+white.svg"
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/UserImage.svg"
                 alt="GuestIcon"
               />
-              <span>멘토님</span>
+              {/* <span>멘토님</span> */}
             </S.ChatSpaceHeaderLeft>
           </div>
         )}
