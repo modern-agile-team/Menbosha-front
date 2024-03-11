@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import { badge_list } from '@/components/common/badge-list/badge';
 import { badgeType, AcquiredBadgeType } from '@/types/mypage';
 import { ButtonBox } from '@/components/common/globalStyled/styled';
+import BadgeNotification from './BadgeNotification';
+import { useRecoilState } from 'recoil';
+import { NotificationAtom } from '@/recoil/atoms/NotificationAtom';
 
 const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
   const [badgeListPageCount, setBadgeListPageCount] = useState(1);
   const [badgeListPageData, setBadgeListPageData] = useState<badgeType[]>([]);
-  const [lastPage, setLastPage] = useState(2); //마지막 페이지 변경 시 여기 변경하면 됨
-  const [firstPage, setFirstPage] = useState(1); //첫 페이지 변경 시 여기 변경
+  const [newBadge, setNewBadge] = useRecoilState(NotificationAtom);
 
   const getBadgeList = (page: number) => {
     const badge = badge_list.filter((data) => {
@@ -21,15 +23,13 @@ const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
     setBadgeListPageData(badge);
   };
 
-  console.log(existingData, acquiredData);
-
   useEffect(() => {
     getBadgeList(badgeListPageCount);
   }, [badgeListPageCount]);
 
   const pagination = (page: number) => {
     const pageTemp = [];
-    for (let i = firstPage; i <= page; i++) {
+    for (let i = 1; i <= page; i++) {
       pageTemp.push(
         <S.Btn
           i={i}
@@ -42,15 +42,21 @@ const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
     return pageTemp;
   };
 
+  useEffect(() => {
+    setNewBadge(true);
+  }, [acquiredData]);
+
   const setPageGroup = (page: number) => {
-    if (page > lastPage) {
+    if (page > 2) {
       setBadgeListPageCount(page - 1);
-    } else if (page < firstPage) {
+    } else if (page < 1) {
       setBadgeListPageCount(page + 1);
     } else {
       setBadgeListPageCount(page);
     }
   };
+
+  console.log(existingData, acquiredData);
 
   return (
     <div>
@@ -78,12 +84,24 @@ const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
           <ButtonBox onClick={() => setPageGroup(badgeListPageCount - 1)}>
             &lt;
           </ButtonBox>
-          {pagination(lastPage)}
+          {pagination(2)}
           <ButtonBox onClick={() => setPageGroup(badgeListPageCount + 1)}>
             &gt;
           </ButtonBox>
         </S.PageCountContainer>
       </S.BadgeListWrapper>
+      {newBadge && (
+        <>
+          {acquiredData.length !== 0 &&
+            acquiredData.map((data) => {
+              return (
+                <div key={data.id}>
+                  <BadgeNotification acquired={data.badgeId} />
+                </div>
+              );
+            })}
+        </>
+      )}
     </div>
   );
 };

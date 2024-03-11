@@ -20,8 +20,6 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
     setLoad(true);
   };
 
-  console.log(getUnitData);
-
   /**돌아가기 버튼 */
   const handleBack = () => {
     router.back();

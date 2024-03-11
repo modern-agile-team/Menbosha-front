@@ -172,3 +172,18 @@ export const Btn = styled.div<BtnType>`
       transform: revert;
     `}
 `;
+
+//Notification Badge
+export const NotificationContainer = styled.div<{ color: string }>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 15vw;
+  height: 10vh;
+  font-size: 0.8em;
+  background-color: ${({ color }) => color};
+`;

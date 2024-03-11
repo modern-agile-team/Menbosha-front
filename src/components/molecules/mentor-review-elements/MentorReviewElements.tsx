@@ -42,7 +42,7 @@ const MentorReviewElements = (props: ReviewProprType) => {
           href={{
             pathname: `/userpage/${props.menteeId}`,
             query: {
-              id: props.id,
+              id: props.menteeId,
             },
           }}>
           <S.UserInfoBox defaultBg={props.isLocation}>
