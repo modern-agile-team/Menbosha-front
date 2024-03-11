@@ -10,6 +10,7 @@ import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import USER from '@/apis/user';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { useSocket } from '@/hooks/useSocket';
 export interface MyIdType {
   myId: number;
 }
@@ -18,19 +19,45 @@ const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
   const [myId, setMyId] = useState(0);
+  const [readyToSocket, setReadyToSocket] = useState(false);
   const chatContents = useRecoilValue(ChatContentsAtom);
   const page = 1;
   const pageSize = 100;
+  const socket = useSocket();
+
+  const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
+  const emitData = { userId: myId, chatRoomIds: allChatRoomId };
 
   /** 본인 id넘버 조회 api */
   const getMyIdApi = async () => {
     const res = await USER.getMyInfo();
     setMyId(res.id);
+    setReadyToSocket(true);
   };
 
   useEffect(() => {
     getMyIdApi();
   }, []);
+
+  useEffect(() => {
+    if (socket && readyToSocket === true) {
+      console.log('Room Join', {
+        userId: myId,
+        chatRoomIds: allChatRoomId,
+      });
+
+      socket.emit('login', emitData);
+
+      socket.on('error', (error: any) => {
+        console.log(error);
+      });
+      socket.on('join', (join: any) => {
+        console.log('Room Join 성공', join);
+      });
+    }
+  }, []);
+
+  console.log('**********', allChatRoomId);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {

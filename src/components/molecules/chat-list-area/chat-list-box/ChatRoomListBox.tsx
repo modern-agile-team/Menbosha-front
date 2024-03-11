@@ -43,7 +43,7 @@ const ChatRoomListBox = (myId: MyIdType) => {
       // console.log('**********', allChatRoomId);
       // console.log('userId', myId.myId);
       // console.log('emitDataaaaaaaa', emitData);
-      console.log(getChatRoomList);
+      // console.log(getChatRoomList);
 
       if (socket) {
         console.log('Room Join', {
