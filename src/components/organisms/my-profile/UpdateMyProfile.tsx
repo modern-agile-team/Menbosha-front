@@ -9,9 +9,8 @@ import React, {
 } from 'react';
 import * as S from './styled';
 import { useRouter } from 'next/router';
-import { IFileTypes } from '../create-board/CreateBody';
-import Link from 'next/link';
 import { categoryList } from '@/components/common/category/categoryList';
+import { info } from 'console';
 
 export interface ImageType {
   object: File;
@@ -38,6 +37,14 @@ const UpdateMyProfile = () => {
     sns: '',
     rank: 0,
   });
+  const [infoCount, setInfoCount] = useState({
+    career: 0,
+    customCategory: 0,
+    detail: 0,
+    portfolio: 0,
+    shortIntro: 0,
+    sns: 0,
+  });
 
   const handleInputValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const name = e.target.name;
@@ -46,6 +53,12 @@ const UpdateMyProfile = () => {
       return {
         ...prev,
         [name]: value,
+      };
+    });
+    setInfoCount((prev) => {
+      return {
+        ...prev,
+        [name]: e.target.value.length,
       };
     });
   };
@@ -69,6 +82,16 @@ const UpdateMyProfile = () => {
         rank: response.rank,
       };
     });
+    setInfoCount(() => {
+      return {
+        career: response.intro.career.length,
+        customCategory: response.intro.customCategory.length,
+        detail: response.intro.detail.length,
+        portfolio: response.intro.portfolio.length,
+        shortIntro: response.intro.shortIntro.length,
+        sns: response.intro.sns.length,
+      };
+    });
   };
 
   const handleUpdateProfile = async () => {
@@ -84,13 +107,17 @@ const UpdateMyProfile = () => {
         shortIntro: updateInfo.shortIntro,
         sns: updateInfo.sns,
       };
-      await USER.updateMyProfile(temp);
+      try {
+        await USER.updateMyProfile(temp);
+        router.push('/mypage/info');
+      } catch {
+        alert('글자 수는 제한에 맞게 입력 해 주세요.');
+      }
       if (imgFile) {
         const formData = new FormData();
         formData.append('file', imgFile.object);
         await USER.updateMyImage(formData);
       }
-      router.push('/mypage/info');
     }
   };
 
@@ -264,8 +291,8 @@ const UpdateMyProfile = () => {
             value={updateInfo.isMentor}
             onClick={() => onChangeMode(updateInfo.isMentor)}>
             <span />
-            <S.ToggleButton type="button">멘토</S.ToggleButton>
             <S.ToggleButton type="button">멘티</S.ToggleButton>
+            <S.ToggleButton type="button">멘토</S.ToggleButton>
           </S.ToggleWrapper>
         </div>
         <div>
@@ -293,7 +320,7 @@ const UpdateMyProfile = () => {
           </S.HopeCategoryContainer>
         </div>
         <div>
-          <div>소개</div>
+          <div>소개 {infoCount.shortIntro}/50</div>
           <textarea
             name="shortIntro"
             onChange={handleInputValue}
@@ -303,7 +330,7 @@ const UpdateMyProfile = () => {
           </textarea>
         </div>
         <div>
-          <div>주요경력</div>
+          <div>주요경력 {infoCount.career}/200</div>
           <textarea
             name="career"
             onChange={handleInputValue}
@@ -313,7 +340,7 @@ const UpdateMyProfile = () => {
           </textarea>
         </div>
         <div>
-          <div>관심카테고리</div>
+          <div>관심카테고리 {infoCount.customCategory}/200</div>
           <textarea
             name="customCategory"
             onChange={handleInputValue}
@@ -324,7 +351,7 @@ const UpdateMyProfile = () => {
           </textarea>
         </div>
         <div>
-          <div>세부사항</div>
+          <div>세부사항 {infoCount.detail}/200</div>
           <textarea
             name="detail"
             onChange={handleInputValue}
@@ -334,7 +361,7 @@ const UpdateMyProfile = () => {
           </textarea>
         </div>
         <div>
-          <div>포트폴리오</div>
+          <div>포트폴리오 {infoCount.portfolio}/200</div>
           <textarea
             name="portfolio"
             onChange={handleInputValue}
@@ -344,7 +371,7 @@ const UpdateMyProfile = () => {
           </textarea>
         </div>
         <div>
-          <div>SNS</div>
+          <div>SNS {infoCount.sns}/200</div>
           <textarea
             name="sns"
             onChange={handleInputValue}

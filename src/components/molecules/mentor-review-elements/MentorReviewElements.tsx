@@ -48,9 +48,9 @@ const MentorReviewElements = (props: ReviewProprType) => {
           <S.UserInfoBox defaultBg={props.isLocation}>
             <div>{props.name}</div>
             <div>
-              <div>{props.customCategory}</div>
-              <div>{props.career}</div>
-              <div>{props.shortIntro}</div>
+              <div>{props.customCategory.slice(0, 20)}</div>
+              <div>{props.career.slice(0, 20)}</div>
+              <div>{props.shortIntro.slice(0, 20)}</div>
             </div>
           </S.UserInfoBox>
         </LinkBox>

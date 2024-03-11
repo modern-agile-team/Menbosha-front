@@ -16,6 +16,8 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import HELP from '@/apis/help';
 import { rankList } from '@/components/common/rank/rankList';
 import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
+import { Router, useRouter } from 'next/router';
+import axios from 'axios';
 
 const UnitComment = ({ id }: BoardIdType) => {
   //페이지네이션 state
@@ -29,6 +31,7 @@ const UnitComment = ({ id }: BoardIdType) => {
   >([]);
   const [myProfile, setMyProfile] = useState<MyProfileType>();
   const isLogin = useRecoilValue(LoginStateAtom);
+  const router = useRouter();
 
   //옵저버 생성
   useEffect(() => {
@@ -74,36 +77,42 @@ const UnitComment = ({ id }: BoardIdType) => {
     setLoad(false);
   }, [page]);
 
+  console.log(myProfile);
+
   /**도와줄게요 댓글 생성 */
   const handleCreateCommentApi = async () => {
     if (confirm('도움을 줄까요?')) {
-      const response = await HELPCOMMENT.createHelpComment(id);
-      const temp: HelpCommentType['helpYouCommentWithUserAndUserImagesItemDto'] =
-        {
-          id: response.id,
-          userId: myProfile?.id as number,
-          isAuthor: true,
-          createdAt: response.createdAt,
-          helpMeBoardId: id,
-          user: {
-            name: myProfile?.name as string,
-            userImage: {
-              imageUrl: myProfile?.image as string,
+      try {
+        const response = await HELPCOMMENT.createHelpComment(id);
+        const temp: HelpCommentType['helpYouCommentWithUserAndUserImagesItemDto'] =
+          {
+            id: response.id,
+            userId: myProfile?.id as number,
+            isAuthor: true,
+            createdAt: response.createdAt,
+            helpMeBoardId: id,
+            user: {
+              name: myProfile?.name as string,
+              userImage: {
+                imageUrl: myProfile?.image as string,
+              },
+              rank: myProfile?.rank as number,
+              activityCategoryId: myProfile?.activityCategoryId as number,
+              userIntro: {
+                shortIntro: myProfile?.intro.shortIntro as string,
+                career: myProfile?.intro.career as string,
+              },
             },
-            rank: myProfile?.rank as number,
-            activityCategoryId: myProfile?.activityCategoryId as number,
-            userIntro: {
-              shortIntro: response.content,
-              career: '경력',
-            },
-          },
-        };
-      if (response === 409) {
-        alert('이미 등록된 아이디 입니다.');
-      } else if (response === 403) {
-        alert('본인 게시글은 도와줄 수 없습니다.');
-      } else {
+          };
         setCommentData((prev) => [...prev, temp]);
+      } catch (err) {
+        if (axios.isAxiosError(err) && err.response) {
+          if (err.response.data.statusCode === 409) {
+            alert('이미 등록된 아이디 입니다.');
+          } else if (err.response.data.statusCode === 403) {
+            alert('본인 게시글은 도와줄 수 없습니다.');
+          }
+        }
       }
     }
   };
@@ -157,12 +166,26 @@ const UnitComment = ({ id }: BoardIdType) => {
             <div>{name}</div>
             <div>{category.slice(0, 20)}</div>
             <div>{career.slice(0, 20)}</div>
-            <div>{short.slice(0, 20)}</div>
+            <div>{short}</div>
           </S.CategoryBox>
         )}
       </>
     );
   };
+
+  const handleRouteUserLink = (path: string, id?: number) => {
+    id !== undefined
+      ? router.push({
+          pathname: `${path}/${id}`,
+          query: {
+            id: id,
+          },
+        })
+      : router.push({
+          pathname: `${path}`,
+        });
+  };
+  console.log(page);
 
   useEffect(() => {
     isLogin && getMyProfileApi();
@@ -184,48 +207,52 @@ const UnitComment = ({ id }: BoardIdType) => {
         {commentData.length !== 0 ? (
           commentData.map((data) => {
             return (
-              <S.CommentBorder key={data.id}>
-                <S.CommentContentBox>
-                  <img src={data.user.userImage.imageUrl} alt="유저이미지" />
-                  <>{getRankInfo(data.user.rank)}</>
-                  <>
-                    {data.user.userIntro ? (
-                      <>
-                        {getCategoryInfo(
-                          data.user.name,
-                          data.user.activityCategoryId,
-                          data.user.userIntro.career,
-                          data.user.userIntro.shortIntro,
-                        )}
-                      </>
-                    ) : (
-                      <div>데이터없음</div>
-                    )}
-                  </>
-
-                  {/* 채팅창 모달 켜질 부분*/}
-                  {data.isAuthor ? (
-                    <S.HelpCommentButtonBox>
-                      <img
-                        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
-                        alt="채팅아이콘"
-                      />
-                      <img
-                        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
-                        alt="도와주세요 철회 아이콘"
-                        onClick={() => handleDeleteCommentApi(data.id)}
-                      />
-                    </S.HelpCommentButtonBox>
+              <S.CommentContentBox key={data.id}>
+                <img src={data.user.userImage.imageUrl} alt="유저이미지" />
+                <div
+                  onClick={() => handleRouteUserLink('/userpage', data.userId)}>
+                  {getRankInfo(data.user.rank)}
+                </div>
+                <div
+                  onClick={() => handleRouteUserLink('/userpage', data.userId)}>
+                  {data.user.userIntro ? (
+                    <>
+                      {getCategoryInfo(
+                        data.user.name,
+                        data.user.activityCategoryId,
+                        data.user.userIntro.career,
+                        data.user.userIntro.shortIntro,
+                      )}
+                    </>
                   ) : (
-                    <S.HelpCommentButtonBox>
-                      <img
-                        src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
-                        alt="채팅아이콘"
-                      />
-                    </S.HelpCommentButtonBox>
+                    <div>데이터없음</div>
                   )}
-                </S.CommentContentBox>
-              </S.CommentBorder>
+                </div>
+
+                {/* 채팅창 모달 켜질 부분*/}
+                {data.isAuthor ? (
+                  <S.HelpCommentButtonBox>
+                    <img
+                      onClick={() => handleRouteUserLink('/chat/home')}
+                      src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                      alt="채팅아이콘"
+                    />
+                    <img
+                      src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/trashcan.svg"
+                      alt="도와주세요 철회 아이콘"
+                      onClick={() => handleDeleteCommentApi(data.id)}
+                    />
+                  </S.HelpCommentButtonBox>
+                ) : (
+                  <S.HelpCommentButtonBox>
+                    <img
+                      onClick={() => handleRouteUserLink('/chat/home')}
+                      src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                      alt="채팅아이콘"
+                    />
+                  </S.HelpCommentButtonBox>
+                )}
+              </S.CommentContentBox>
             );
           })
         ) : (
@@ -237,9 +264,9 @@ const UnitComment = ({ id }: BoardIdType) => {
           <S.HelpCommentSkeletonBox>
             <SkeletonUI width="48.5%" height="150px" count={4} />
           </S.HelpCommentSkeletonBox>
-          <div ref={obsRef}></div>
         </>
       )}
+      <div ref={obsRef}>&nbsp;</div>
     </div>
   );
 };
