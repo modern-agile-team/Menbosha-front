@@ -1,7 +1,7 @@
 import * as S from './styled';
 import ChatNavbar from '../organisms/chat/chat-navbar/ChatNavbar';
 import ChatRoomList from '../organisms/chat/chat-list/ChatRoomList';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 import CHAT from '@/apis/chat';
@@ -19,7 +19,7 @@ const ChatPageTemplate = () => {
   const [getChatRoomList, setGetChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
   const [myId, setMyId] = useState(0);
-  const [readyToSocket, setReadyToSocket] = useState(false);
+  const [readyMyId, setReadyMyId] = useState(false);
   const chatContents = useRecoilValue(ChatContentsAtom);
   const page = 1;
   const pageSize = 100;
@@ -32,15 +32,30 @@ const ChatPageTemplate = () => {
   const getMyIdApi = async () => {
     const res = await USER.getMyInfo();
     setMyId(res.id);
-    setReadyToSocket(true);
+    setReadyMyId(true);
   };
 
   useEffect(() => {
     getMyIdApi();
   }, []);
+  console.log(myId);
+
+  /** 채팅룸 전체조회 api */
+  const getChatRoomListApi = async () => {
+    const res = await CHAT.getChatRoomList(page, pageSize);
+    setGetChatRoomList(res.chatRooms);
+  };
 
   useEffect(() => {
-    if (socket && readyToSocket === true) {
+    getChatRoomListApi();
+  }, [chatContents]);
+
+  // useEffect(() => {
+  //   getChatRoomListApi();
+  // }, []);
+
+  const joinSocket = useCallback(() => {
+    if (socket && readyMyId === true) {
       console.log('Room Join', {
         userId: myId,
         chatRoomIds: allChatRoomId,
@@ -55,23 +70,11 @@ const ChatPageTemplate = () => {
         console.log('Room Join 성공', join);
       });
     }
-  }, []);
-
-  console.log('**********', allChatRoomId);
-
-  /** 채팅룸 전체조회 api */
-  const getChatRoomListApi = async () => {
-    const res = await CHAT.getChatRoomList(page, pageSize);
-    setGetChatRoomList(res.chatRooms);
-  };
+  }, [socket]);
 
   useEffect(() => {
-    getChatRoomListApi();
-  }, [chatContents]);
-
-  useEffect(() => {
-    getChatRoomListApi();
-  }, []);
+    joinSocket();
+  }, [socket]);
 
   return (
     <S.PageWrapperRaw>

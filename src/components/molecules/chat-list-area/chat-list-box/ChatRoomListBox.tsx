@@ -40,26 +40,21 @@ const ChatRoomListBox = (myId: MyIdType) => {
       const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
 
       const emitData = { userId: myId.myId, chatRoomIds: allChatRoomId };
-      // console.log('**********', allChatRoomId);
-      // console.log('userId', myId.myId);
-      // console.log('emitDataaaaaaaa', emitData);
-      // console.log(getChatRoomList);
+      // if (socket) {
+      //   console.log('Room Join', {
+      //     userId: myId.myId,
+      //     chatRoomIds: allChatRoomId,
+      //   });
 
-      if (socket) {
-        console.log('Room Join', {
-          userId: myId.myId,
-          chatRoomIds: allChatRoomId,
-        });
+      //   socket.emit('login', emitData);
 
-        socket.emit('login', emitData);
-
-        socket.on('error', (error: any) => {
-          console.log(error);
-        });
-        socket.on('join', (join: any) => {
-          console.log('Room Join 성공', join);
-        });
-      }
+      //   socket.on('error', (error: any) => {
+      //     console.log(error);
+      //   });
+      //   socket.on('join', (join: any) => {
+      //     console.log('Room Join 성공', join);
+      //   });
+      // }
     }
   };
 
@@ -79,7 +74,6 @@ const ChatRoomListBox = (myId: MyIdType) => {
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
-        // console.log(data.chatPartners[0].);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
@@ -140,14 +134,12 @@ const ChatRoomListBox = (myId: MyIdType) => {
       })}
       {isOpenModal && (
         <>
-          {getChatRoomList.map((data) => (
-            <ChatRoomOutModal
-              show={isOpenModal}
-              hide={handleModal}
-              chatRoomId={rightClickedRoomId}
-              partnerName={rightClickedPartnerName}
-            />
-          ))}
+          <ChatRoomOutModal
+            show={isOpenModal}
+            hide={handleModal}
+            chatRoomId={rightClickedRoomId}
+            partnerName={rightClickedPartnerName}
+          />
         </>
       )}
     </S.ListContainer>

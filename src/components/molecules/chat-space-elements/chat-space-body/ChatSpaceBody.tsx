@@ -40,7 +40,7 @@ const ChatSpaceBody = (props: {
   };
   let currentDate: Date | null = null;
 
-  console.log(selectedRoomId);
+  // console.log(selectedRoomId);
 
   // 채팅내역 삭제 모달 핸들러
   const handleChatDelete =
