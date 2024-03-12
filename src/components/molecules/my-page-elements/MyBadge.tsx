@@ -1,13 +1,13 @@
 import * as S from './styled';
 import { useEffect, useState } from 'react';
 import { badge_list } from '@/components/common/badge-list/badge';
-import { badgeType, AcquiredBadgeType } from '@/types/mypage';
+import { badgeType, AcquiredPropsType } from '@/types/mypage';
 import { ButtonBox } from '@/components/common/globalStyled/styled';
 import BadgeNotification from './BadgeNotification';
 import { useRecoilState } from 'recoil';
 import { NotificationAtom } from '@/recoil/atoms/NotificationAtom';
 
-const MyBadge = ({ existingData, acquiredData }: AcquiredBadgeType) => {
+const MyBadge = ({ existingData, acquiredData }: AcquiredPropsType) => {
   const [badgeListPageCount, setBadgeListPageCount] = useState(1);
   const [badgeListPageData, setBadgeListPageData] = useState<badgeType[]>([]);
   const [newBadge, setNewBadge] = useRecoilState(NotificationAtom);

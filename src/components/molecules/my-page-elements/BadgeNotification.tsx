@@ -33,6 +33,7 @@ const BadgeNotification = ({ acquired }: NotificationType) => {
     <S.NotificationContainer color={newBadge.color}>
       <div>새로운 칭호!!</div>
       <div>{newBadge.name}발견!</div>
+      <div>새로고침 해 보세요!</div>
     </S.NotificationContainer>
   );
 };
