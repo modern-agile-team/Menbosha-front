@@ -91,7 +91,6 @@ const USER = {
     const result: AxiosResponse = await instance.post(
       `${USER.path}/${userId}/badges`,
     );
-    console.log(result);
     return result.data;
   },
 };
