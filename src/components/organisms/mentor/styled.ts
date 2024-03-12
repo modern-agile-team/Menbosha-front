@@ -112,7 +112,8 @@ export const MentorInfoBox = styled.div`
 
 export const BodyContentsBox = styled.div`
   width: 35%;
-  height: 120px;
+  min-height: 120px;
+  height: auto;
   //컨텐츠 1번째
   & > :nth-child(1) {
     color: #ff772b;
@@ -145,7 +146,8 @@ export const DetailBox = styled.div`
 
 export const ShareBox = styled.div`
   width: 45%;
-  height: 120px;
+  min-height: 120px;
+  height: auto;
   & > :nth-child(1) {
     color: #ff772b;
     font-size: 0.84em; //20.16px

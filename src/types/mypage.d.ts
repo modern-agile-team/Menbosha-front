@@ -20,6 +20,21 @@ export type AcquiredBadgeType = {
     id: number;
     userId: number;
   }[];
+  acquiredBadges: {
+    badgeId: number;
+    createdAt: string;
+    id: number;
+    userId: number;
+  }[];
+};
+
+export type AcquiredPropsType = {
+  existingData: {
+    badgeId: number;
+    createdAt: string;
+    id: number;
+    userId: number;
+  }[];
   acquiredData: {
     badgeId: number;
     createdAt: string;

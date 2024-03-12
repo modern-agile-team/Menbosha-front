@@ -14,11 +14,11 @@ export const CheckListContainer = styled.div<BgType>`
   & > * {
     font-size: 0.85em; //20.4px
     font-weight: 400; //Pretendard-Regular
-    padding: 6px 12px;
+    padding: 0.42vh 0.69vw;
     border: 2px solid #fff;
     color: #fff;
     border-radius: 10px;
-    margin: 10px;
+    margin: 0.5vw;
   }
   //defaultBg true시
   ${({ defaultBg }) =>
@@ -57,6 +57,9 @@ export const RankBox = styled.div<BgType>`
 
 export const UserInfoBox = styled.div<BgType>`
   //유저 이름
+  @media only all and (max-width: 1000px) {
+    display: none;
+  }
   & > :nth-child(1) {
     color: #fff;
     font-size: 0.85em; //20.4px

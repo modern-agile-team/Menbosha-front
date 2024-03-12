@@ -138,13 +138,13 @@ export const CommentContainer = styled.div`
   }
 `;
 
-export const CommentBorder = styled.div`
+export const CommentContentBox = styled.div`
   border: 2px solid #ff772b;
   border-radius: 10px;
-`;
-
-export const CommentContentBox = styled.div`
   display: flex;
+  @media only all and (max-width: 1300px) {
+    display: block;
+  }
   > * {
     margin: 18px 9px 18px 9px;
   }
@@ -154,6 +154,11 @@ export const CommentContentBox = styled.div`
     height: 10.5vh;
     border-radius: 10px;
     margin-left: 1vw;
+    cursor: pointer;
+  }
+  > :nth-child(2),
+  :nth-child(3) {
+    cursor: pointer;
   }
 `;
 
@@ -206,6 +211,10 @@ export const HelpCommentButtonBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media only all and (max-width: 1300px) {
+    width: 51px;
+    height: 51px;
+  }
   > * {
     padding: 10px;
     cursor: pointer;

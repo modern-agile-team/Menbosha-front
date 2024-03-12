@@ -7,24 +7,18 @@ const HELPCOMMENT = {
 
   /** 도와주세요 댓글 생성 api [post] */
   async createHelpComment(boardId: number): Promise<any> {
-    try {
-      const result: AxiosResponse = await instance.post(
-        `${HELPCOMMENT.path}`,
-        {
-          content: 'test',
+    const result: AxiosResponse = await instance.post(
+      `${HELPCOMMENT.path}`,
+      {
+        content: 'test',
+      },
+      {
+        params: {
+          helpMeBoardId: boardId,
         },
-        {
-          params: {
-            helpMeBoardId: boardId,
-          },
-        },
-      );
-      return result.data;
-    } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        return err.response.status;
-      }
-    }
+      },
+    );
+    return result.data;
   },
 
   /** 도와주세요 댓글 삭제 api [delete] */
