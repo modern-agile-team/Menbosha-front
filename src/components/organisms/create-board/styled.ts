@@ -5,7 +5,7 @@ export const CreateBoardWrapper = styled.div`
 `;
 
 export const CreateHelpContainer = styled.div`
-  margin: 0px 153px;
+  margin: 0px 8vw;
 `;
 
 export const CreateTitle = styled.div`
@@ -25,6 +25,9 @@ export const CreateHeader = styled.div`
     font-size: 0.84em; //20.16px
     font-weight: 700; //Pretendard-Bold
     color: #ff772b;
+  }
+  @media only all and (max-width: 1000px) {
+    display: block;
   }
 `;
 

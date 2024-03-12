@@ -64,13 +64,17 @@ export type MyProfileType = {
   name: string;
   isMentor: boolean;
   activityCategoryId: number;
-  wishCategoryId: number;
+  hopeCategoryId: number;
   image: string;
   rank: number;
+  email: string;
   intro: {
-    mainField: string;
-    introduce: string;
+    shortIntro: string;
     career: string;
+    customCategory: string;
+    detail: string;
+    portfolio: string;
+    sns: string;
   };
 };
 

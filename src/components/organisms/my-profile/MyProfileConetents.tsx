@@ -2,11 +2,11 @@ import USER from '@/apis/user';
 import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
-import { UserProfileType } from '@/types/user';
+import { MyProfileType, UserProfileType } from '@/types/user';
 import Link from 'next/link';
 
 const MyProfileContents = () => {
-  const [getInfo, setInfo] = useState<UserProfileType>();
+  const [getInfo, setInfo] = useState<MyProfileType>();
   const [showEmail, setShowEmail] = useState(false);
 
   const getMyInfoApi = async () => {

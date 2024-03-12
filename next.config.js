@@ -10,7 +10,7 @@ const nextConfig = {
       },
     ];
   },
-  async rewrites() {
+  rewrites() {
     return {
       beforeFiles: [
         {
