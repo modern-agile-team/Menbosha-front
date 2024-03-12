@@ -199,7 +199,7 @@ export const NotificationContainer = styled.div<{ color: string }>`
     font-weight: 700;
     padding: 0.7vh 0px;
   }
-  //새로운 칭호 발견!
+  //새로고침 해 주세요.
   & > :nth-child(3) {
     font-size: 0.6em;
     font-weight: 400;
