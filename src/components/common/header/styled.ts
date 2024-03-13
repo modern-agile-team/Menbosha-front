@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   width: inherit;

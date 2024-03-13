@@ -17,7 +17,6 @@ export const BodyContainer = styled.div`
 
 // 메인컨텐츠3과 CategoryMarquee 사이
 export const BetweenGradation = styled.div`
-  /* background: linear-gradient(180deg, white, black); */
   background: linear-gradient(180deg, #ffffff 0%, #000000 86.98%);
   width: 100vw;
   height: 40vh;
