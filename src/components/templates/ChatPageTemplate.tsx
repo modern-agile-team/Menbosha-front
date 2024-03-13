@@ -16,16 +16,14 @@ export interface MyIdType {
 }
 
 const ChatPageTemplate = () => {
-  const [getChatRoomList, setGetChatRoomList] =
+  const [chatRoomList, setChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
   const [myId, setMyId] = useState(0);
   const [readyMyId, setReadyMyId] = useState(false);
   const chatContents = useRecoilValue(ChatContentsAtom);
-  const page = 1;
-  const pageSize = 100;
   const socket = useSocket();
 
-  const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
+  const allChatRoomId = chatRoomList.map((data) => data.chatRooms._id);
   const emitData = { userId: myId, chatRoomIds: allChatRoomId };
 
   /** 본인 id넘버 조회 api */
@@ -42,47 +40,53 @@ const ChatPageTemplate = () => {
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
+    const page = 1;
+    const pageSize = 100;
     const res = await CHAT.getChatRoomList(page, pageSize);
-    setGetChatRoomList(res.chatRooms);
+    setChatRoomList(res.chatRooms);
   };
 
   useEffect(() => {
     getChatRoomListApi();
   }, [chatContents]);
 
-  // useEffect(() => {
-  //   getChatRoomListApi();
-  // }, []);
+  useEffect(() => {
+    getChatRoomListApi();
+  }, []);
+  console.log(chatRoomList);
 
   const joinSocket = useCallback(() => {
-    if (socket && readyMyId === true) {
+    if (socket && readyMyId === true && myId !== 0) {
       console.log('Room Join', {
         userId: myId,
         chatRoomIds: allChatRoomId,
       });
 
       socket.emit('login', emitData);
+      console.log(emitData);
 
       socket.on('error', (error: any) => {
-        console.log(error);
+        console.error('Socket error:', error);
       });
       socket.on('join', (join: any) => {
         console.log('Room Join 성공', join);
       });
     }
-  }, [socket]);
+  }, [socket, readyMyId, allChatRoomId]);
 
   useEffect(() => {
     joinSocket();
-  }, [socket]);
+  }, [myId]);
 
-  return (
+  return readyMyId ? (
     <S.PageWrapperRaw>
       <ChatNavbar />
       <ChatMentorList />
       <ChatRoomList myId={myId} />
       <ChatSpace myId={myId} />
     </S.PageWrapperRaw>
+  ) : (
+    <div>Loading...</div>
   );
 };
 
