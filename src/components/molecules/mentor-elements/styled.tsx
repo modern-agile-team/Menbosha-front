@@ -34,6 +34,10 @@ export const MentorCardContentBox = styled.div`
   }
   //전체 멘토 카드 중, content
   & > :nth-child(2) {
+    @media only all and (max-width: 1600px), (max-height: 800px) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     font-size: 0.5em;
     font-weight: 400; //Pretendard-Regular
     color: rgba(0, 0, 0, 0.75);
