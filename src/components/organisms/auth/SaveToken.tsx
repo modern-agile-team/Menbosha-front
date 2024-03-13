@@ -34,7 +34,7 @@ const SaveToken = ({ provider }: Company) => {
         });
       } else {
         router.push({
-          pathname: `https://menbosha.kr/main`,
+          pathname: `https://menbosha.kr/`,
         });
       }
     }

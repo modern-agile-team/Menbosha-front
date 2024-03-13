@@ -1,15 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/main',
-        permanent: true,
-      },
-    ];
-  },
   generateEtags: false,
   images: {
     loader: 'imgix', // 'imgix'에서 'default'로 변경
