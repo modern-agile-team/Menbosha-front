@@ -73,10 +73,6 @@ const ChatPageTemplate = () => {
     }
   }, [socket, readyMyId, allChatRoomId]);
 
-  useEffect(() => {
-    joinSocket();
-  }, [myId]);
-
   // 계속 Join 요청 되는 것 부분
   useEffect(() => {
     joinSocket();
