@@ -9,7 +9,7 @@ const ChatNavbar = () => {
       <S.NavbarTop>
         <S.TopLogoBox
           href={{
-            pathname: `/main`,
+            pathname: `/`,
           }}>
           <Image
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/MainLogo.svg"

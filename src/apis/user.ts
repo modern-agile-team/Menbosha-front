@@ -3,6 +3,7 @@ import instance from './axiosInstance';
 import { UpdateProfileType, MentorUnitType } from '@/types/user';
 import { RankType } from '@/types/mypage';
 import { AcquiredBadgeType } from '@/types/mypage';
+import { MyProfileType } from '@/types/user';
 
 const USER = {
   path: '/user',
@@ -33,7 +34,7 @@ const USER = {
   },
 
   /**내 정보 조회 api [get] */
-  async getMyInfo(): Promise<any> {
+  async getMyInfo(): Promise<MyProfileType> {
     const result: AxiosResponse = await instance.get(`${USER.path}/my/profile`);
     return result.data;
   },
@@ -57,8 +58,8 @@ const USER = {
         detail: update.detail,
         portfolio: update.portfolio,
         sns: update.sns,
-        hopeCategory: update.hopeCategoryId,
-        activityCategory: update.activityCategoryId,
+        hopeCategoryId: update.hopeCategoryId,
+        activityCategoryId: update.activityCategoryId,
         isMentor: update.isMentor,
       },
     );

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const MyReviewWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0px 304px 0px 159px;
+  margin: 0px 15.8vw 0px 8vw;
   width: 100%;
 `;
 
@@ -16,7 +16,7 @@ export const MyReviewTitleBox = styled.div`
 export const ReviewCheckListFilterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 45px 0px;
+  margin: 4.3vh 0px;
 `;
 
 export const ReviewCheckListBox = styled.div<{ select: boolean }>`
@@ -30,8 +30,8 @@ export const ReviewCheckListBox = styled.div<{ select: boolean }>`
   font-weight: 400; //Pretendard-Regular
   border: 2px solid #fff;
   border-radius: 10px;
-  margin: 12px 16px 12px 0px;
-  padding: 4px 12px;
+  margin: 1.2vh 0.75vw 1.2vh 0px;
+  padding: 0.43vh 0.69vw;
   cursor: pointer;
 `;
 

@@ -1,21 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/main',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.menbosha.kr' }],
-        destination: 'https://menbosha.kr/:path*',
-        permanent: true,
-      },
-    ];
-  },
   generateEtags: false,
   images: {
     loader: 'imgix', // 'imgix'에서 'default'로 변경

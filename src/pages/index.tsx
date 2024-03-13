@@ -1,9 +1,8 @@
+import MainPageTemplate from '@/components/templates/MainPageTemplate';
+import React from 'react';
+
 const Home = () => {
-  return (
-    <>
-      <div>인트로페이지</div>
-    </>
-  );
+  return <MainPageTemplate />;
 };
 
 export default Home;

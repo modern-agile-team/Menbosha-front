@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import * as S from './styled';
 import USER from '@/apis/user';
-import { UserProfileType } from '@/types/user';
-import { FlexBox, TextBox } from '@/components/common/globalStyled/styled';
+import { MyProfileType } from '@/types/user';
+import { TextBox } from '@/components/common/globalStyled/styled';
 
 const UserWithdrawal = () => {
   const [provider, setProvider] = useState('');
   const [approve, setApprove] = useState(false);
-  const [myInfo, setMyInfo] = useState<UserProfileType>();
+  const [myInfo, setMyInfo] = useState<MyProfileType>();
   const setLoginState = useSetRecoilState(LoginStateAtom);
   const router = useRouter();
 
@@ -23,7 +23,7 @@ const UserWithdrawal = () => {
       window.sessionStorage.removeItem('provider');
       setLoginState(false);
       alert('회원탈퇴 되었습니다.');
-      router.push(`/main`);
+      router.push(`/`);
     } else {
       alert('체크박스에 체크가 필요합니다.');
     }

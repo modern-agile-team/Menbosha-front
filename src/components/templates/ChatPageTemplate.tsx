@@ -36,6 +36,7 @@ const ChatPageTemplate = () => {
   useEffect(() => {
     getMyIdApi();
   }, []);
+  console.log(myId);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
@@ -52,6 +53,29 @@ const ChatPageTemplate = () => {
   useEffect(() => {
     getChatRoomListApi();
   }, []);
+  console.log(chatRoomList);
+
+  const joinSocket = useCallback(() => {
+    if (socket && readyMyId === true && myId !== 0) {
+      console.log('Room Join', {
+        userId: myId,
+        chatRoomIds: allChatRoomId,
+      });
+
+      socket.emit('login', emitData);
+
+      socket.on('error', (error: any) => {
+        console.error('Socket error:', error);
+      });
+      socket.on('join', (join: any) => {
+        console.log('Room Join 성공', join);
+      });
+    }
+  }, [socket, readyMyId, allChatRoomId]);
+
+  useEffect(() => {
+    joinSocket();
+  }, [myId]);
 
   const joiningSocket = useCallback(() => {
     if (socket && readyMyId === true && myId !== 0) {
