@@ -18,12 +18,12 @@ const CHAT = {
   },
 
   /** 채팅룸 전체조회 api */
-  async getChatRoomList(): Promise<any> {
+  async getChatRoomList(page: number, pageSize: number): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(`${CHAT.path}`, {
-      // params: {
-      //   page: page,
-      //   pageSize: pageSize,
-      // },
+      params: {
+        page: page,
+        pageSize: pageSize,
+      },
     });
     return result.data.contents;
   },
@@ -87,7 +87,7 @@ const CHAT = {
   },
 
   /** 채팅룸 삭제 api */
-  async deleteChatRoom(roomId: string): Promise<any> {
+  async deleteChatRoom(roomId: string | null): Promise<any> {
     const result: AxiosResponse<any> = await instance.delete(
       `${CHAT.path}/${roomId}`,
       {

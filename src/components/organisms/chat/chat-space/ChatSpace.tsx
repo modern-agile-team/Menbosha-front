@@ -8,14 +8,13 @@ import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import CHAT from '@/apis/chat';
 import {
   ChatContentsType,
-  ChatHistoryType,
   ChatPaginationType,
   ChatPartnersType,
 } from '@/types/chat';
-import { log } from 'console';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
 import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
@@ -25,8 +24,9 @@ const ChatSpace = (myId: MyIdType) => {
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
   const [chatPartners, setChatPartners] =
     useRecoilState<ChatPartnersType>(ChatPartnersAtom);
+  const chatRoomList = useRecoilValue(ChatRoomListAtom);
   const page = 1;
-  const pageSize = 20; // 무한 스크롤 구현 전까지 일단 기본값
+  const pageSize = 100; // 무한 스크롤 구현 전까지 일단 기본값
   // 채팅내역 불러오기 api ,테스트가 전부 끝나면 try-catch 삭제 예정
   const getChatHistoryApi = async () => {
     try {
@@ -53,19 +53,12 @@ const ChatSpace = (myId: MyIdType) => {
       getChatHistoryApi();
     }
   }, [selectedRoomId]);
-  console.log('::::::::::::', getChatContents);
-  useEffect(() => {
-    // console.log(chatPartners);
-  }, [chatPartners]);
+  console.log('::::::::::::', selectedRoomId);
 
   return (
     <S.ChatSpaceContainer>
       <ChatSpaceHeader chatPartners={chatPartners} />
-      <ChatSpaceBody
-        pagination={pagination}
-        chatPartners={chatPartners}
-        // chatContents={chatContents}
-      />
+      <ChatSpaceBody pagination={pagination} chatPartners={chatPartners} />
       <ChatSpaceFooter myId={myId.myId} />
     </S.ChatSpaceContainer>
   );
