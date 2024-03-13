@@ -52,8 +52,6 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
     getMentorReviewApi();
   }, [page]);
 
-  console.log(reviewData);
-
   return (
     <S.ReviewElementWrapper>
       {reviewData.length !== 0 ? (

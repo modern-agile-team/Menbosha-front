@@ -29,8 +29,6 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
     setLoad(true);
   };
 
-  console.log(getUserInfo);
-
   const getRankInfo = () => {
     if (getUserInfo) {
       const rankImage = rankList.find(
@@ -65,7 +63,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
   useEffect(() => {
     getUnitOtherBoards();
     getUserInfoApi();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     getRankInfo();

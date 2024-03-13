@@ -8,12 +8,6 @@ const nextConfig = {
         destination: '/main',
         permanent: true,
       },
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.menbosha.kr' }],
-        destination: 'https://menbosha.kr/:path*',
-        permanent: true,
-      },
     ];
   },
   generateEtags: false,

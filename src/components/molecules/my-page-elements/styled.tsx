@@ -172,3 +172,36 @@ export const Btn = styled.div<BtnType>`
       transform: revert;
     `}
 `;
+
+//Notification Badge
+export const NotificationContainer = styled.div<{ color: string }>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 15vw;
+  height: auto;
+  font-size: 0.6em;
+  padding: 1.2vh 4vw;
+  background-color: ${({ color }) => color};
+  border-radius: 10px;
+  //새로운 칭호 발견!
+  & > :nth-child(1) {
+    font-size: 0.8em;
+    font-weight: 400;
+  }
+  //칭호 이름
+  & > :nth-child(2) {
+    font-size: 1em;
+    font-weight: 700;
+    padding: 0.7vh 0px;
+  }
+  //새로고침 해 주세요.
+  & > :nth-child(3) {
+    font-size: 0.6em;
+    font-weight: 400;
+  }
+`;

@@ -20,7 +20,7 @@ export const BetweenGradation = styled.div`
   /* background: linear-gradient(180deg, white, black); */
   background: linear-gradient(180deg, #ffffff 0%, #000000 86.98%);
   width: 100vw;
-  height: 40vh;
+  height: 50vh;
   /* border: 2px solid lightgreen; */
 `;
 
