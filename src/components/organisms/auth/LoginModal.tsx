@@ -5,6 +5,7 @@ import {
   Naver,
 } from '@/components/molecules/auth-elements/AuthProvider';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface ModalType {
   show: boolean;
