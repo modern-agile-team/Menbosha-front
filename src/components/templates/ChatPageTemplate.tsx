@@ -73,32 +73,9 @@ const ChatPageTemplate = () => {
     }
   }, [socket, readyMyId, allChatRoomId]);
 
-  useEffect(() => {
-    joinSocket();
-  }, [myId]);
-
-  const joiningSocket = useCallback(() => {
-    if (socket && readyMyId === true && myId !== 0) {
-      // console.log('Room Join', {
-      //   userId: myId,
-      //   chatRoomIds: allChatRoomId,
-      // });
-
-      socket.emit('login', emitData);
-
-      // 에러잡는 건 추후 에러 발생 시 사용
-      // socket.on('error', (error: any) => {
-      //   console.error('Socket error:', error);
-      // });
-      socket.on('join', (join: any) => {
-        console.log('Room Join 성공', join);
-      });
-    }
-  }, [socket, readyMyId]);
-
   // 계속 Join 요청 되는 것 부분
   useEffect(() => {
-    joiningSocket();
+    joinSocket();
   }, [myId, allChatRoomId]);
 
   return readyMyId ? (
