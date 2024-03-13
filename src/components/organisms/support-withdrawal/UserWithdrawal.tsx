@@ -23,7 +23,7 @@ const UserWithdrawal = () => {
       window.sessionStorage.removeItem('provider');
       setLoginState(false);
       alert('회원탈퇴 되었습니다.');
-      router.push(`/main`);
+      router.push(`/`);
     } else {
       alert('체크박스에 체크가 필요합니다.');
     }

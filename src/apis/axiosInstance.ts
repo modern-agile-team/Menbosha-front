@@ -31,7 +31,7 @@ const reNewToken = async () => {
         (err.response.data.message === 'token mismatch' &&
           err.response.data.statusCode === 401)
       ) {
-        window.location.href = '/main';
+        window.location.href = '/';
         setTimeout(() => {
           window.sessionStorage.clear();
         }, 0);
@@ -96,7 +96,7 @@ instance.interceptors.response.use(
           error.response.data.message === 'token not found')
       ) {
         alert(error.response.data.message);
-        window.location.href = '/main';
+        window.location.href = '/';
         setTimeout(() => {
           window.sessionStorage.clear();
         }, 0);
