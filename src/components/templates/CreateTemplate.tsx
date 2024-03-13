@@ -13,7 +13,7 @@ const CreateTemplate = () => {
   useEffect(() => {
     if (!loginState) {
       alert('로그인이 필요합니다.');
-      router.push('/main');
+      router.push('/');
     }
   }, []);
   return (

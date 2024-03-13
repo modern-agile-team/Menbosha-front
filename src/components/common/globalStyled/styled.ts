@@ -16,56 +16,64 @@ export const GlobalFont = createGlobalStyle`
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-ExtraBold.woff2') format('woff2');
     font-weight: 800;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-Bold.woff2') format('woff2');
     font-weight: 700;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-SemiBold.woff2') format('woff2');
     font-weight: 600;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-Medium.woff2') format('woff2');
     font-weight: 500;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-Regular.woff2') format('woff2');
     font-weight: 400;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-Light.woff2') format('woff2');
     font-weight: 300;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-ExtraLight.woff2') format('woff2');
     font-weight: 200;
+    font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'Pretendard', sans-serif;
     src: url('/public/fonts/Pretendard-Thin.woff2') format('woff2');
     font-weight: 100;
+    font-style: normal;
     font-display: swap;
   }
 `;
 
 //전체 Pretendard적용
 export const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: "Pretendard";
+  html {
+    font-family: "Pretendard", sans-serif;
   }
 `;
 
