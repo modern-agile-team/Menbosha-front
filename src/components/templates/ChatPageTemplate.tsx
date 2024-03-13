@@ -75,7 +75,7 @@ const ChatPageTemplate = () => {
 
   useEffect(() => {
     joinSocket();
-  }, [myId]);
+  }, [myId, allChatRoomId]);
 
   return readyMyId ? (
     <S.PageWrapperRaw>
