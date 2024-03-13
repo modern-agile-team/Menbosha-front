@@ -8,6 +8,12 @@ const nextConfig = {
         destination: '/main',
         permanent: true,
       },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'localhost:3000' }],
+        destination: 'https://menbosha.kr/*',
+        permanent: false,
+      },
     ];
   },
   rewrites() {

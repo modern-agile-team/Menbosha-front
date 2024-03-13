@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.menbosha.kr"
+        }
+      ],
+      "destination": "https://menbosha.kr/:path*"
+    }
+  ]
+}
