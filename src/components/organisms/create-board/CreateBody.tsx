@@ -137,8 +137,6 @@ const CreateBody = () => {
     [files],
   ); // 위에서 선언했던 files state 배열을 deps에 넣어줍니다.
 
-  console.log(quillText);
-
   /** 이미지 삭제 핸들러 */
   const handleFilterFile = useCallback(
     (id: number): void => {
@@ -215,13 +213,16 @@ const CreateBody = () => {
     if (confirm('업로드하시겠습니까?')) {
       if (
         category === '' ||
-        quillText === '' ||
+        quillText.length === 0 ||
         quillText === '<p><br></p>' ||
+        quillText.length < '<p>1234567890</p>'.length ||
         section === '' ||
-        !isHeadCount
+        isHeadCount === false
       ) {
-        if (quillText === '' || '<p><br></p>')
+        if (quillText.length === 0 || quillText === '<p><br></p>')
           return alert('본문내용을 입력해주세요.');
+        if (quillText.length < '<p>1234567890</p>'.length)
+          return alert('본문은 10자 이상 입력해야합니다.');
         if (section === '') return alert('게시판 위치를 선택해주세요.');
         if (category === '') return alert('카테고리를 선택해주세요.');
         if (!isHeadCount)

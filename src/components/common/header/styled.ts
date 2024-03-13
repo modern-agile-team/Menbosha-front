@@ -148,6 +148,9 @@ export const SideBarLogoContainer = styled.div`
     margin: 20px 15px 0px auto;
     color: #ff772b;
   }
+  @media only all and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const SideBarNavigateContainer = styled.div`

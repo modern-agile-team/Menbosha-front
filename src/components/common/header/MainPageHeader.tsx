@@ -26,7 +26,7 @@ const MainPageHeader = () => {
     window.sessionStorage.removeItem('refreshToken');
     window.sessionStorage.removeItem('provider');
     setLoginState(false);
-    router.push(`/main`);
+    router.push(`/`);
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const MainPageHeader = () => {
         <S.LogoBox>
           <Link
             href={{
-              pathname: `/main`,
+              pathname: `/`,
             }}>
             <Image
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/MainLogo.svg"
@@ -141,7 +141,7 @@ const MainPageHeader = () => {
           <S.SideBarLogoContainer>
             <Link
               href={{
-                pathname: `/main`,
+                pathname: `/`,
               }}>
               <Image
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/MainLogo.svg"

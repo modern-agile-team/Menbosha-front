@@ -1,7 +1,7 @@
 import USER from '@/apis/user';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
-import { AcquiredBadgeType, RankType } from '@/types/mypage';
+import { AcquiredBadgeType, AcquiredPropsType, RankType } from '@/types/mypage';
 import Link from 'next/link';
 import MyRank from '@/components/molecules/my-page-elements/MyRank';
 import MyBadge from '@/components/molecules/my-page-elements/MyBadge';
@@ -12,7 +12,7 @@ const MyBadgeContents = () => {
     badge: [],
   });
   const [userId, setUserId] = useState(0);
-  const [badgeData, setBadgeData] = useState<AcquiredBadgeType>({
+  const [badgeData, setBadgeData] = useState<AcquiredPropsType>({
     existingData: [],
     acquiredData: [],
   });
@@ -42,10 +42,11 @@ const MyBadgeContents = () => {
             existingData: response,
           };
         })
-      : setBadgeData(() => {
+      : setBadgeData((prev: any) => {
           return {
-            existingData: response[0].existingData,
-            acquiredData: response[1].acquiredData,
+            ...prev,
+            existingData: response[0],
+            acquiredData: response[1].acquiredBadges,
           };
         });
   };

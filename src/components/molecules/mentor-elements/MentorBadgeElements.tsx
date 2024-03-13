@@ -12,7 +12,6 @@ const MentorBadgeElement = ({ badgeId, createdAt }: MentorBadgeType) => {
         return data.image;
       }
     });
-    console.log(temp);
     temp && setBadge(temp.image);
   };
 

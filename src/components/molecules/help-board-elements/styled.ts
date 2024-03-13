@@ -40,7 +40,7 @@ interface CardImageType {
 
 export const CardImageBox = styled.div<CardImageType>`
   width: 100%;
-  height: 260px;
+  height: 23vh;
   background-color: #c5c5c5;
   border-radius: 10px;
   cursor: pointer;

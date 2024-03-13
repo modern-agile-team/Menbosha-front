@@ -28,7 +28,7 @@ const AfterLoginModal = ({ show, hide }: ModalType) => {
     window.sessionStorage.removeItem('provider');
     setLoginState(false);
     hide();
-    router.push(`/main`);
+    router.push(`/`);
   };
 
   useEffect(() => {
