@@ -8,17 +8,13 @@ import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import CHAT from '@/apis/chat';
 import {
   ChatContentsType,
-  ChatHistoryType,
   ChatPaginationType,
   ChatPartnersType,
 } from '@/types/chat';
-import { log } from 'console';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
 import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
-import { useRouter } from 'next/router';
-import EmptySpaceBody from '@/components/molecules/chat-space-elements/chat-space-body/EmptySpaceBody';
 
 const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
@@ -57,11 +53,7 @@ const ChatSpace = (myId: MyIdType) => {
       getChatHistoryApi();
     }
   }, [selectedRoomId]);
-  // console.log('::::::::::::', getChatContents);
-
-  // useEffect(() => {
-  //   console.log(chatPartners);
-  // }, [chatPartners]);
+  console.log('::::::::::::', selectedRoomId);
 
   return (
     <S.ChatSpaceContainer>

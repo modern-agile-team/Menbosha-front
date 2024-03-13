@@ -30,6 +30,8 @@ const ChatSpaceBody = (props: {
   const ChatSpaceBodyRef = useRef<HTMLDivElement | null>(null);
   const chatContentsInOrder = [...chatContents];
 
+  const isRoomSelected = selectedRoomId !== '';
+
   // 채팅 생성 날짜
   const isSameDay = (date1: Date, date2: Date) => {
     return (
@@ -40,7 +42,7 @@ const ChatSpaceBody = (props: {
   };
   let currentDate: Date | null = null;
 
-  // console.log(selectedRoomId);
+  console.log(selectedRoomId);
 
   // 채팅내역 삭제 모달 핸들러
   const handleChatDelete =
@@ -71,7 +73,13 @@ const ChatSpaceBody = (props: {
     }
   }, [selectedRoomId, chatContents]);
 
-  // console.log('ChatSpaceBody re-rendering');
+  if (!isRoomSelected) {
+    return (
+      <S.EmptyContainer>
+        채팅 시작을 위해 채팅방을 선택해주세요.
+      </S.EmptyContainer>
+    );
+  }
 
   return (
     <S.ChatSpaceBodyContainer ref={ChatSpaceBodyRef}>

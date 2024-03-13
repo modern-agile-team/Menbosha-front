@@ -36,25 +36,6 @@ const ChatRoomListBox = (myId: MyIdType) => {
       };
       selectRoom(`${roomId}`, queryURL);
       setSelectedRoomId(roomId);
-
-      const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
-
-      const emitData = { userId: myId.myId, chatRoomIds: allChatRoomId };
-      // if (socket) {
-      //   console.log('Room Join', {
-      //     userId: myId.myId,
-      //     chatRoomIds: allChatRoomId,
-      //   });
-
-      //   socket.emit('login', emitData);
-
-      //   socket.on('error', (error: any) => {
-      //     console.log(error);
-      //   });
-      //   socket.on('join', (join: any) => {
-      //     console.log('Room Join 성공', join);
-      //   });
-      // }
     }
   };
 

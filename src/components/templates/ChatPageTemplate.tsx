@@ -63,7 +63,6 @@ const ChatPageTemplate = () => {
       });
 
       socket.emit('login', emitData);
-      console.log(emitData);
 
       socket.on('error', (error: any) => {
         console.error('Socket error:', error);

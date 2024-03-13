@@ -12,7 +12,6 @@ export const ChatSpaceBodyContainer = styled.div`
     width: 4px;
   }
   &::-webkit-scrollbar-thumb {
-    /* width: 10px; */
     background: gray;
     border-radius: 10px;
   }
@@ -22,7 +21,6 @@ export const ChatBubbleHostContainer = styled.div`
   display: flex;
   max-width: 20vw;
   float: inline-end;
-  /* align-self: flex-end; */
   /* border: 2px solid red; */
 `;
 
@@ -30,7 +28,6 @@ export const ChatBubbleGuestContainer = styled.div`
   display: flex;
   margin: 20px 0px 10px 20px;
   float: inline-start;
-  /* align-self: flex-start; */
   /* border: 2px solid green; */
 `;
 
@@ -60,7 +57,6 @@ export const ChatGuestImage = styled.img`
   height: 50px;
   justify-content: center;
   align-items: center;
-  /* margin-right: 10px; */
   /* border: 2px solid #ff772b; */
   border-radius: 10px;
 `;
@@ -75,7 +71,6 @@ export const ChatBubbleGuestCenter = styled.div`
 export const ChatGuestName = styled.div`
   max-width: 6vw;
   height: 2vh;
-  /* text-align: center; */
   font-size: 0.65em;
   color: #000000;
   /* border: 2px solid yellow; */
@@ -85,12 +80,21 @@ export const ChatTimeBox = styled.div<{ isHost: boolean }>`
   display: flex;
   flex-direction: column;
   width: 3.5vw;
-  /* height: 2vh; */
   margin-bottom: 10px;
   justify-content: flex-end;
   align-items: ${({ isHost }) => (isHost ? 'flex-start' : 'flex-end')};
-  /* text-align: center; */
   font-size: 0.5em;
   color: rgb(0, 0, 0, 0.7);
   /* border: 2px solid blue; */
+`;
+
+// 채팅방 선택하지 않았을 경우(기본값)
+export const EmptyContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 85vh;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
 `;
