@@ -10,22 +10,6 @@ const nextConfig = {
       },
     ];
   },
-  rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'www.menbosha.kr',
-            },
-          ],
-          destination: 'https://menbosha.kr/:path*',
-        },
-      ],
-    };
-  },
   generateEtags: false,
   images: {
     loader: 'imgix', // 'imgix'에서 'default'로 변경
