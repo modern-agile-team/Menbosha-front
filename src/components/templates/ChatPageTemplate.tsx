@@ -77,7 +77,7 @@ const ChatPageTemplate = () => {
     joinSocket();
   }, [myId]);
 
-  const joinSocket = useCallback(() => {
+  const joiningSocket = useCallback(() => {
     if (socket && readyMyId === true && myId !== 0) {
       // console.log('Room Join', {
       //   userId: myId,
@@ -98,7 +98,7 @@ const ChatPageTemplate = () => {
 
   // 계속 Join 요청 되는 것 부분
   useEffect(() => {
-    joinSocket();
+    joiningSocket();
   }, [myId, allChatRoomId]);
 
   return readyMyId ? (
