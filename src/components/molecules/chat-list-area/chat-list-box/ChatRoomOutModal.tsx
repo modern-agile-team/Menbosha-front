@@ -2,7 +2,7 @@ import { ChatRoomDeleteModalType } from '@/types/chat';
 import styled from 'styled-components';
 import React from 'react';
 import CHAT from '@/apis/chat';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import { useRouter } from 'next/router';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
@@ -19,7 +19,6 @@ const ChatRoomOutModal = ({
     useRecoilState(SelectedRoomIdAtom);
   const page = 1;
   const pageSize = 100;
-
   // 채팅방 나가기 기능
   const handleChatRoomOut = async () => {
     await CHAT.deleteChatRoom(chatRoomId);
