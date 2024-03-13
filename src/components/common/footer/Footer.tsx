@@ -34,7 +34,6 @@ const MainPageFooter = ({ color }: { color: boolean }) => {
             }}>
             <span>이용약관</span>
           </Link>
-          {/* Link 처리는 Page가 추가 된 후에 다른 Pr에서 바로 적용시키겠습니다. */}
         </S.FooterRight>
       </S.FooterArea>
     </S.FooterContainer>

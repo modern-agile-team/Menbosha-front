@@ -1,9 +1,8 @@
 import CHAT from '@/apis/chat';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
-import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { ChatDeleteModalType } from '@/types/chat';
 import React, { useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 const ChatDeleteModal = ({
@@ -13,8 +12,7 @@ const ChatDeleteModal = ({
   chatId,
 }: ChatDeleteModalType) => {
   const [chatContents, setChatContents] = useRecoilState(ChatContentsAtom);
-  const page = 1;
-  const pageSize = 20;
+
   // 채팅 내역 삭제 기능
   const handleChatDeleteApi = async () => {
     if (chatId) {
@@ -27,6 +25,8 @@ const ChatDeleteModal = ({
   };
 
   const updateChatContentsApi = async () => {
+    const page = 1;
+    const pageSize = 100;
     const res = await CHAT.getChatHistory(roomId, page, pageSize);
     setChatContents(res.chats);
   };
@@ -36,12 +36,6 @@ const ChatDeleteModal = ({
       hide();
     }
   };
-
-  useEffect(() => {
-    // console.log(chatContents);
-    console.log(chatId);
-    console.log(roomId);
-  }, []);
 
   return (
     <div>
@@ -82,7 +76,6 @@ export const ModalWrapper = styled.div`
   left: 80%;
   transform: translate(-50%, -50%);
   justify-content: center;
-  /* align-items: center; */
   background-color: #ffffff;
   z-index: 10000;
   border-radius: 10px;

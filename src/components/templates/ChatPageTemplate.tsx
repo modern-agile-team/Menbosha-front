@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import ChatSpace from '../organisms/chat/chat-space/ChatSpace';
 import CHAT from '@/apis/chat';
-import { ChatRoomListType, MentorInfoType } from '@/types/chat';
+import { ChatRoomListType } from '@/types/chat';
 import ChatMentorList from '../organisms/chat/chat-list/ChatMentorList';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import USER from '@/apis/user';
@@ -36,7 +36,6 @@ const ChatPageTemplate = () => {
   useEffect(() => {
     getMyIdApi();
   }, []);
-  console.log(myId);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
@@ -53,26 +52,27 @@ const ChatPageTemplate = () => {
   useEffect(() => {
     getChatRoomListApi();
   }, []);
-  console.log(chatRoomList);
 
   const joinSocket = useCallback(() => {
     if (socket && readyMyId === true && myId !== 0) {
-      console.log('Room Join', {
-        userId: myId,
-        chatRoomIds: allChatRoomId,
-      });
+      // console.log('Room Join', {
+      //   userId: myId,
+      //   chatRoomIds: allChatRoomId,
+      // });
 
       socket.emit('login', emitData);
 
-      socket.on('error', (error: any) => {
-        console.error('Socket error:', error);
-      });
+      // 에러잡는 건 추후 에러 발생 시 사용
+      // socket.on('error', (error: any) => {
+      //   console.error('Socket error:', error);
+      // });
       socket.on('join', (join: any) => {
         console.log('Room Join 성공', join);
       });
     }
-  }, [socket, readyMyId, allChatRoomId]);
+  }, [socket, readyMyId]);
 
+  // 계속 Join 요청 되는 것 부분
   useEffect(() => {
     joinSocket();
   }, [myId, allChatRoomId]);
@@ -81,7 +81,7 @@ const ChatPageTemplate = () => {
     <S.PageWrapperRaw>
       <ChatNavbar />
       <ChatMentorList />
-      <ChatRoomList myId={myId} />
+      <ChatRoomList />
       <ChatSpace myId={myId} />
     </S.PageWrapperRaw>
   ) : (

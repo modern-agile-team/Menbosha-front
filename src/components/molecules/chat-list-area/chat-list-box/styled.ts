@@ -12,7 +12,6 @@ export const ListContainer = styled.div`
     width: 3px;
   }
   &::-webkit-scrollbar-thumb {
-    /* width: 10px; */
     background: gray;
     border-radius: 10px;
   }
@@ -59,8 +58,6 @@ export const ChatListGuestImage = styled.img<{ isSelected: boolean }>`
   height: 50px;
   margin-right: 10px;
   border-radius: 10px;
-  /* border: 2px solid #ff772b;
-  border: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff772b')}; */
 `;
 
 export const ChatListCenter = styled.div`

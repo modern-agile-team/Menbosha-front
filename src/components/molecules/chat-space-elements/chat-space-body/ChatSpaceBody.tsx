@@ -1,22 +1,19 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import TimeStamp from '../time-stamp/TimeStamp';
-import Image from 'next/image';
 import {
   ChatContentsType,
   ChatPaginationType,
   ChatPartnersType,
 } from '@/types/chat';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import useModal from '@/hooks/useModal';
 import ChatDeleteModal from './ChatDeleteModal';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
-import { MyIdType } from '@/components/templates/ChatPageTemplate';
 
 const ChatSpaceBody = (props: {
   chatPartners: ChatPartnersType | undefined;
-  // chatContents: ChatContentsType[];
   pagination: ChatPaginationType | undefined;
 }) => {
   const { chatPartners, pagination } = props;
@@ -41,8 +38,6 @@ const ChatSpaceBody = (props: {
     );
   };
   let currentDate: Date | null = null;
-
-  console.log(selectedRoomId);
 
   // 채팅내역 삭제 모달 핸들러
   const handleChatDelete =

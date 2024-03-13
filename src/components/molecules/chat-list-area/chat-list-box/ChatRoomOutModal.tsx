@@ -2,10 +2,9 @@ import { ChatRoomDeleteModalType } from '@/types/chat';
 import styled from 'styled-components';
 import React from 'react';
 import CHAT from '@/apis/chat';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
-import { Router, useRouter } from 'next/router';
-import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import { useRouter } from 'next/router';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 
 const ChatRoomOutModal = ({
@@ -20,8 +19,7 @@ const ChatRoomOutModal = ({
     useRecoilState(SelectedRoomIdAtom);
   const page = 1;
   const pageSize = 100;
-  // console.log(partnerName);
-  // console.log(chatRoomId);
+
   // 채팅방 나가기 기능
   const handleChatRoomOut = async () => {
     await CHAT.deleteChatRoom(chatRoomId);
@@ -34,10 +32,6 @@ const ChatRoomOutModal = ({
     const res = await CHAT.getChatRoomList(page, pageSize);
     setChatRoomList(res.chatRooms);
   };
-
-  // const updateChatContentsApi = async () => {
-  //   const res = await CHAT.getChatHistory(selectedRoomId, page, pageSize);
-  // };
 
   const handleCloseModal = () => {
     if (show) {
@@ -86,7 +80,6 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   justify-content: center;
-  /* align-items: center; */
   background-color: #ffffff;
   z-index: 10000;
   border-radius: 10px;

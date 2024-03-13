@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as S from './styled';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
@@ -7,22 +7,18 @@ import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
-import { MyIdType } from '@/components/templates/ChatPageTemplate';
-import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 
 let chatPartnerName = '';
 
-const ChatRoomListBox = (myId: MyIdType) => {
+const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
-  // const chatPartners = useRecoilValue(ChatPartnersAtom);
   const selectRoom = useReplace();
   const [rightClickedRoomId, setRightClickedRoomId] = useState<string>('');
   const [rightClickedPartnerName, setRightClickedPartnerName] =
     useState<string>('');
   const { isOpenModal, handleModal } = useModal();
-  const socket = useSocket();
 
   const handleRoomSelect = (roomId: string) => {
     const selectedRoom = getChatRoomList.find(
