@@ -4,7 +4,6 @@ import BodyContents1 from '@/components/molecules/mainpagebody-contents/BodyCont
 import BodyContents2 from '@/components/molecules/mainpagebody-contents/BodyContents2';
 import BodyContents3 from '@/components/molecules/mainpagebody-contents/BodyContents3';
 import BodyContents4 from '@/components/molecules/mainpagebody-contents/BodyContents4';
-import BodyContents5 from '@/components/molecules/mainpagebody-contents/BodyContents5';
 
 const MainPageBody = () => {
   return (
@@ -15,7 +14,6 @@ const MainPageBody = () => {
         <BodyContents3 />
         <S.BetweenGradation />
         <BodyContents4 />
-        {/* <BodyContents5 /> */}
         <S.MainContentsContainer5>
           <S.MainContentsTitleArea5>
             <S.MainContents5Left>

@@ -4,13 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const ChatNavbar = () => {
-  // const headerElements = ['멘티', '콘텐츠', '고객 지원'];
-  // const translationElements: Record<string, string> = {
-  //   // 멘토: 'mentor',
-  //   멘티: 'mentee',
-  //   콘텐츠: 'contents',
-  //   '고객 지원': 'support',
-  // };
   return (
     <S.NavbarContainer>
       <S.NavbarTop>
@@ -43,7 +36,7 @@ const ChatNavbar = () => {
       <S.NavbarBottom>
         <Link
           href={{
-            pathname: `/userpage`,
+            pathname: `/mypage`,
           }}>
           <Image
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"

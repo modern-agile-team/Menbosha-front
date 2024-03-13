@@ -16,7 +16,6 @@ export const ListContainer = styled.div`
     width: 3px;
   }
   &::-webkit-scrollbar-thumb {
-    /* width: 10px; */
     background: gray;
     border-radius: 10px;
   }
@@ -28,8 +27,6 @@ export const ListArea = styled.div<ListAreaType>`
   width: 20vw;
   height: ${({ isExpanded }) => (isExpanded ? '18vh' : '8vh')};
   margin-bottom: 24px;
-  /* justify-content: center; */
-  /* align-items: center; */
   border: 2px solid #ff772b;
   border-radius: 10px;
   background-color: ${({ isExpanded }) => (isExpanded ? '#ff772b' : '#ffffff')};
@@ -64,8 +61,6 @@ export const MentorImage = styled.div<ListAreaType>`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  /* border: ${({ isExpanded }) =>
-    isExpanded ? '2px solid #ffffff' : ' 2px solid #ff772b'}; */
   transition: border 0.3s ease;
   & > img {
     width: 50px;

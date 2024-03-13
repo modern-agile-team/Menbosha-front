@@ -17,8 +17,6 @@ const ChatSpaceFooter = (myId: MyIdType) => {
   const socket = useSocket();
 
   const senderId = myId.myId;
-  // console.log(senderId);
-  // console.log(selectedRoomId);
 
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value.trimLeft());

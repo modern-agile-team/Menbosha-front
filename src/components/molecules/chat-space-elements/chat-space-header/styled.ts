@@ -24,7 +24,6 @@ export const ChatSpaceHeaderLeft = styled.div`
   display: flex;
   width: 10vw;
   height: inherit;
-  /* justify-content: center; */
   align-items: center;
   /* border: 2px solid blue; */
   & > span {

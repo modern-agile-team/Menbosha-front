@@ -36,7 +36,6 @@ export const FooterLeft = styled.div`
 
 export const FooterLeftLogo = styled.img`
   width: 5vw;
-  /* height: 10vh; */
   margin-right: 1vw;
 `;
 
