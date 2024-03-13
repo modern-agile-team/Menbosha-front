@@ -61,7 +61,12 @@ const ChatSpaceFooter = (myId: MyIdType) => {
             seenUsers,
             createdAt,
           };
-          setChatContents((prevContents) => [newChatMessage, ...prevContents]);
+          if (selectedRoomId === chatRoomId) {
+            setChatContents((prevContents) => [
+              newChatMessage,
+              ...prevContents,
+            ]);
+          }
         } else {
           console.error('반환받은 데이터 혹은 데이터 없음:', incomingMessage);
         }
