@@ -39,6 +39,12 @@ export const MentorCardContainer = styled.div`
 
 export const MentorCardWrapper = styled.div`
   width: 18.519%;
+  @media only all and (max-width: 1200px) and (max-height: 1000px) {
+    width: 30%;
+  }
+  @media only all and (max-width: 500px) and (max-height: 800px) {
+    width: 45%;
+  }
 `;
 
 export const HeaderContentsBox = styled.div`

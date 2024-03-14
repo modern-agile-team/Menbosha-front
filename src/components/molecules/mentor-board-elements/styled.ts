@@ -26,7 +26,7 @@ export const CardImageBox = styled.div<ImgType>`
 `;
 
 export const MentorBoardCardUserInfoContainer = styled.div`
-  margin: 0px 12px;
+  margin: 0px 1.5vw;
   //유저 이름
   & > :nth-child(1) {
     font-size: 0.6em;
@@ -46,7 +46,7 @@ export const MentorBoardCardUserInfoContainer = styled.div`
 
 export const MentorBoardUserBox = styled.div`
   display: flex;
-  margin: 0px 0px 12px 0px;
+  margin: 0px 0px 1.2vh 0px;
   cursor: pointer;
   width: 100%;
 `;
@@ -84,7 +84,7 @@ export const HeartCountBox = styled.div`
   margin-left: auto;
   //좋아여 카운트
   & > :nth-child(2) {
-    margin: auto 8px;
+    margin: auto 1vw;
     font-size: 0.8em;
     font-weight: 400;
   }

@@ -4,6 +4,10 @@ import styled from 'styled-components';
 export const MentorBoardCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media only all and (max-width: 1000px) {
+    display: block;
+    flex-wrap: nowrap;
+  }
   & > :nth-child(1) {
     margin-right: 14px;
   }
@@ -39,11 +43,17 @@ export const MentorBoardCardContainer = styled.div`
 
 export const MentorBoardCardWrapper = styled.div`
   width: 18.5%;
+  @media only all and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 /** 랜덤 멘토 게시글 */
 export const RandomBoardWrapper = styled.div`
   width: 31.79%;
+  @media only all and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 //MentorBoardUnit
