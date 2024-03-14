@@ -5,6 +5,7 @@ import { FlexBox } from '@/components/common/globalStyled/styled';
 import MENTORS from '@/apis/mentors';
 import { MentorCreateReviewRequestType } from '@/types/review';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const CreateReview = ({ mentorId }: { mentorId: number }) => {
   const [checkArray, setCheckArray] = useState<string[]>([]);
@@ -33,13 +34,21 @@ const CreateReview = ({ mentorId }: { mentorId: number }) => {
       review: inputContents,
     };
     if (checkArray.length <= 3 && checkArray.length >= 1) {
-      await MENTORS.createMentorReview(requestData);
-      router.push({
-        pathname: `/userpage/${mentorId}`,
-        query: {
-          id: mentorId,
-        },
-      });
+      try {
+        await MENTORS.createMentorReview(requestData);
+        router.push({
+          pathname: `/userpage/${mentorId}`,
+          query: {
+            id: mentorId,
+          },
+        });
+      } catch (err) {
+        if (axios.isAxiosError(err) && err.response) {
+          err.response.data.message ===
+            'A review for this mentor has already been submitted. Please try again tomorrow.' &&
+            alert('같은 사람에게 리뷰는 하루에 한 번만 가능합니다.');
+        }
+      }
     } else {
       alert('후기 체크리스트는 최소 1개, 최대 3개 까지 선택 가능합니다.');
     }
