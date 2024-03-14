@@ -47,13 +47,7 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
   return (
     <div>
       <S.MentorBoardUserBox onClick={handleRouteUser}>
-        <ImageBox
-          src={props.userImage}
-          width="50px"
-          height="50px"
-          size="cover"
-          style={{ borderRadius: 10, border: '2px solid #FF772B' }}
-        />
+        <img src={props.userImage} alt={`${props.userName}이미지`} />
         <S.MentorBoardCardUserInfoContainer>
           <div>{props.userName}</div>
           <div>{foundCategory ? foundCategory.category : 'not Found'}</div>

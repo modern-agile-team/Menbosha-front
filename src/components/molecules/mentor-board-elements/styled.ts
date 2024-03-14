@@ -1,15 +1,4 @@
 import styled from 'styled-components';
-
-//멘토 css
-
-export const MentorCardContainer = styled.div`
-  display: flex;
-  width: 280px;
-  height: 159px;
-  border-radius: 10px;
-  border: 2px solid #f00;
-`;
-
 interface ImgType {
   img?: string;
 }
@@ -26,7 +15,7 @@ export const CardImageBox = styled.div<ImgType>`
 `;
 
 export const MentorBoardCardUserInfoContainer = styled.div`
-  margin: 0px 1.5vw;
+  margin: 0px 1vw;
   //유저 이름
   & > :nth-child(1) {
     font-size: 0.6em;
@@ -49,10 +38,16 @@ export const MentorBoardUserBox = styled.div`
   margin: 0px 0px 1.2vh 0px;
   cursor: pointer;
   width: 100%;
+  //유저 이미지
+  & > :nth-child(1) {
+    width: 51px;
+    height: 51px;
+    border-radius: 10px;
+    border: 2px solid #ff772b;
+  }
 `;
 
 export const MentorBoardCardContainer = styled.div`
-  width: 100%;
   & > :nth-child(1) {
     transition: all 500ms ease;
   }
