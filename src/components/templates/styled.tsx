@@ -5,9 +5,8 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
   color: white;
 `;
 
