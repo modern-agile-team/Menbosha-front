@@ -9,6 +9,7 @@ import {
   GlobalStyle,
 } from '@/components/common/globalStyled/styled';
 import Seo from '@/components/common/Seo';
+import ScrollToTopButton from '@/components/common/scroll-to-top/ScrollToTopButton';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <GlobalStyle />
               <Seo />
               <Component {...pageProps} />
+              <ScrollToTopButton />
             </MSWProvider>
           )}
         </React.Suspense>
