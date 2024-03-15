@@ -27,16 +27,18 @@ const SaveToken = ({ provider }: Company) => {
       const currentUrl = window.sessionStorage.getItem('CURRENT_URL');
       if (currentUrl !== undefined) {
         router.push({
-          pathname: `https://menbosha.kr${currentUrl}`,
+          // pathname: `https://menbosha.kr${currentUrl}`,
+          pathname: currentUrl,
           query: {
             filterId: 1,
           },
         });
-      } else {
-        router.push({
-          pathname: `https://menbosha.kr/`,
-        });
       }
+      // else {
+      //   router.push({
+      //     pathname: `https://menbosha.kr/`,
+      //   });
+      // }
     }
   };
 

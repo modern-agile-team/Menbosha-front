@@ -13,11 +13,13 @@ import {
 } from '@/types/chat';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { MyIdType } from '@/components/templates/ChatPageTemplate';
+import ChatRoomList from '../chat-list/ChatRoomList';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const ChatSpace = (myId: MyIdType) => {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
   const [pagination, setPagination] = useState<ChatPaginationType>();
-  const [getChatContents, setGetChatContents] =
+  const [chatContents, setChatContents] =
     useRecoilState<ChatContentsType[]>(ChatContentsAtom);
   const [chatPartners, setChatPartners] = useState<ChatPartnersType>({
     id: 0,
@@ -41,7 +43,7 @@ const ChatSpace = (myId: MyIdType) => {
       };
       // setChatHistory(res);
       setPagination(temp);
-      setGetChatContents(res.chats);
+      setChatContents(res.chats);
       setChatPartners(res.chatPartners[0]);
     } catch (error) {
       console.error('에러:', error);
