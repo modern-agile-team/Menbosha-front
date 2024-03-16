@@ -1,4 +1,3 @@
-import LoginModal from '@/components/organisms/auth/LoginModal';
 import axios from 'axios';
 
 const instance = axios.create({
