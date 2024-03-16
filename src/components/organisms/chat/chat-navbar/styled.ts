@@ -36,15 +36,15 @@ export const TopNavBox = styled.div`
   height: 45vh;
   justify-content: space-around;
   align-items: center;
-  /* border: 2px solid lightGreen; */
+  /* border: 5px solid black; */
   & > a {
     text-decoration: none;
     color: #ff772b;
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 0.83em;
+    font-weight: 500;
     transition: color 0.3s ease;
     &:hover {
-      color: #ffac60;
+      font-weight: 600;
     }
   }
 `;

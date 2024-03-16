@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 // 멘보샤처럼 맛있게.
@@ -68,8 +69,9 @@ export const MainContents2Left = styled.img`
 export const MainContents2Right = styled.div`
   display: flex;
   flex-direction: column;
-  width: 52vw;
+  width: 60vw;
   height: 80vh;
+  /* border: 2px solid black; */
   //바로 해결하는 멘토링 제목
   & > :nth-child(1) {
     margin-bottom: 2vh;
@@ -104,6 +106,7 @@ export const MainContents2RightBottom = styled.div`
   flex-direction: column;
   bottom: 0;
   right: 0;
+  margin-right: 100px;
   background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/mainContents.svg');
   background-repeat: no-repeat;
   background-size: contain;
@@ -118,6 +121,10 @@ export const MainContentsContainer3 = styled.div`
   width: 80vw;
   height: 90vh;
   color: #000000;
+  /* border: 2px solid blue; */
+  @media only all and (max-width: 1000px) {
+    margin-bottom: 50px;
+  }
 `;
 
 export const MainContents3Left = styled.img`
@@ -131,7 +138,8 @@ export const MainContents3Right = styled.div`
   display: flex;
   flex-direction: column;
   width: 55vw;
-  height: 80vh;
+  height: 89vh;
+  /* border: 2px solid red; */
   //가볍지만 체계적이게 제목
   & > :nth-child(1) {
     margin-bottom: 2vh;
@@ -149,7 +157,7 @@ export const MainContents3Right = styled.div`
   }
   //가볍지만 체계적이게 본문
   & > :nth-child(2) {
-    margin-bottom: 5vh;
+    /* margin-bottom: 5vh; */
     width: 44vw;
     font-size: 0.83em;
     font-weight: 700; //Pretendard-Bold
@@ -161,13 +169,13 @@ export const MainContents3Right = styled.div`
 // grid 사용해봄
 export const MainContents3InfoContainer = styled.div`
   @media only all and (max-height: 1000px) {
-    height: 40vh; //541
+    height: 60vh; //541
   }
   @media only all and (max-height: 800px) {
-    height: 30vh;
+    height: 50vh;
   }
   @media only all and (max-height: 600px) {
-    height: 20vh;
+    height: 40vh;
   }
   position: absolute;
   bottom: 0;
@@ -177,6 +185,7 @@ export const MainContents3InfoContainer = styled.div`
   grid-template-rows: 1fr 1fr;
   justify-items: center;
   align-items: center;
+  /* border: 2px solid black; */
 `;
 
 export const InfoBox = styled.div`
@@ -241,7 +250,7 @@ export const MainContents4Right = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 55vw;
+  width: 65vw;
   height: 25vh;
   //세상의 모든 것을 다루다 제목
   & > :nth-child(1) {
@@ -310,9 +319,25 @@ export const MainContents5Left = styled.div`
   }
 `;
 
-export const MainContents5Right = styled.img`
-  width: 7vw;
-  height: 12vh;
-  margin-right: 1vw;
+export const GoToRouteBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15vw;
   cursor: pointer;
+  //아이콘
+  & > :nth-child(1) {
+    width: 5vw;
+    height: 10vh;
+  }
+  //~~하러가기
+  & > :nth-child(2) {
+    font-size: 0.8em;
+    font-weight: 400;
+    text-decoration: none;
+    color: #fff;
+    @media only all and (max-width: 1200px) {
+      font-size: 0.4em;
+    }
+  }
 `;

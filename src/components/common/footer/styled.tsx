@@ -36,7 +36,6 @@ export const FooterLeft = styled.div`
 
 export const FooterLeftLogo = styled.img`
   width: 5vw;
-  /* height: 10vh; */
   margin-right: 1vw;
 `;
 
@@ -71,7 +70,7 @@ export const FooterLeftContents = styled.div<BgType>`
 
 export const FooterRight = styled.div<BgType>`
   display: flex;
-  width: 8vw;
+  width: 9vw;
   height: 12vh;
   justify-content: space-between;
   align-items: flex-end;

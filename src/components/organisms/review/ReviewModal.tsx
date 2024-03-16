@@ -5,7 +5,7 @@ import {
   Naver,
 } from '@/components/molecules/auth-elements/AuthProvider';
 import { useEffect } from 'react';
-import CreateReview from '../reivew-element/CreateReview';
+import CreateReview from '../review-element/CreateReview';
 
 interface ModalType {
   show: boolean;
@@ -52,7 +52,9 @@ export const ModalWrapper = styled.div`
   transform: translate(-50%, -50%);
   background-color: #fff;
   width: 35vw;
-  height: 80vh;
+  @media only all and (max-width: 800px) {
+    width: 80vw;
+  }
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10000;

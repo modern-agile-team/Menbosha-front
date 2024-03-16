@@ -4,19 +4,15 @@ import instance from './axiosInstance';
 const AUTH = {
   path: '/auth',
   async getToken(provider: string, code: string): Promise<any> {
-    try {
-      const result: AxiosResponse = await instance.get(
-        `${AUTH.path}/${provider}/login`,
-        {
-          params: {
-            code: code,
-          },
+    const result: AxiosResponse = await instance.get(
+      `${AUTH.path}/${provider}/login`,
+      {
+        params: {
+          code: code,
         },
-      );
-      return result.data;
-    } catch (err) {
-      console.log(err);
-    }
+      },
+    );
+    return result.data;
   },
 
   //logoutApi [post요청]

@@ -17,13 +17,17 @@ const UserWithdrawal = () => {
 
   const handleWithdrawal = async () => {
     if (approve) {
-      await AUTH.unlinkMemberApi(provider);
-      window.sessionStorage.removeItem('accessToken');
-      window.sessionStorage.removeItem('refreshToken');
-      window.sessionStorage.removeItem('provider');
-      setLoginState(false);
-      alert('회원탈퇴 되었습니다.');
-      router.push(`/main`);
+      try {
+        await AUTH.unlinkMemberApi(provider);
+        window.sessionStorage.removeItem('accessToken');
+        window.sessionStorage.removeItem('refreshToken');
+        window.sessionStorage.removeItem('provider');
+        setLoginState(false);
+        alert('회원탈퇴 되었습니다.');
+        router.push(`/`);
+      } catch {
+        alert('회원탈퇴 중 에러가 발생했습니다.');
+      }
     } else {
       alert('체크박스에 체크가 필요합니다.');
     }
@@ -76,11 +80,9 @@ const UserWithdrawal = () => {
           <S.CheckIcon></S.CheckIcon>
           <S.ExplainTitleBox>
             <div>
-              {myInfo &&
-                `사용자 ${myInfo.name}님 탈퇴한 경우 아이디 및 활동 내용
-            복구가 불가능합니다.`}
+              {`탈퇴 후 서비스 이용기록 및 회원정보가 모두 삭제 됩니다. `}
             </div>
-            <div>{`회원을 탈퇴한 경우 아이디 및 활동 내용 복구가 불가하오니 신중하게 선택하시길 바랍니다.`}</div>
+            <div>{`회원정보, 게시판  기록 후기, 멘토 멘티 관련 정보 등 개인형 서비스 이용 기록은 모두 삭제되며, 삭제 기록은 복구가 불가능합니다.`}</div>
             <S.ExplainBodyBox>
               <S.ExplainTextBox>
                 <div>개인형 서비스</div>

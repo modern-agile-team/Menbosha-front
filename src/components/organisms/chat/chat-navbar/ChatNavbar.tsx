@@ -4,19 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const ChatNavbar = () => {
-  const headerElements = ['멘토', '멘티', '콘텐츠', '고객 지원'];
-  const translationElements: Record<string, string> = {
-    멘토: 'mentor',
-    멘티: 'mentee',
-    콘텐츠: 'contents',
-    '고객 지원': 'support',
-  };
   return (
     <S.NavbarContainer>
       <S.NavbarTop>
         <S.TopLogoBox
           href={{
-            pathname: `/main`,
+            pathname: `/`,
           }}>
           <Image
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/MainLogo.svg"
@@ -26,17 +19,24 @@ const ChatNavbar = () => {
           />
         </S.TopLogoBox>
         <S.TopNavBox>
-          {headerElements.map((element, index) => (
-            <Link key={index} href={`/${translationElements[element]}`}>
-              <span>{element}</span>
-            </Link>
-          ))}
+          <Link href={`/mentor?filterId=1`}>
+            <span>멘토 찾기</span>
+          </Link>
+          <Link href={`/mentor/board?filterId=1`}>
+            <span>멘토 게시글</span>
+          </Link>
+          <Link href={`/help?filterId=1`}>
+            <span>도와주세요</span>
+          </Link>
+          <Link href={`/support`}>
+            <span>고객지원</span>
+          </Link>
         </S.TopNavBox>
       </S.NavbarTop>
       <S.NavbarBottom>
         <Link
           href={{
-            pathname: `/userpage`,
+            pathname: `/mypage`,
           }}>
           <Image
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"

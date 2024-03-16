@@ -10,7 +10,7 @@ export default function Seo() {
       <title>멘보샤</title>
       <meta
         name="naver-site-verification"
-        content="1810c6859d6c323ba31e4d6edc2b1b7caa58dc91"
+        content="f70d229d3e38d57d3101592c57fb452c85668743"
       />
     </Head>
   );

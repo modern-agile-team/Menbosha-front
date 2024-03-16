@@ -17,8 +17,6 @@ const ChatSpaceFooter = (myId: MyIdType) => {
   const socket = useSocket();
 
   const senderId = myId.myId;
-  // console.log(senderId);
-  // console.log(selectedRoomId);
 
   const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value.trimLeft());
@@ -49,40 +47,6 @@ const ChatSpaceFooter = (myId: MyIdType) => {
     setInputMessage('');
   };
 
-  // useEffect(() => {
-  //   if (socket) {
-  //     socket.on('message', (incomingMessage: any) => {
-  //       if (incomingMessage) {
-  //         const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
-  //           incomingMessage;
-  //         const newChatMessage: ChatContentsType = {
-  //           _id,
-  //           chatRoomId,
-  //           content,
-  //           senderId,
-  //           seenUsers,
-  //           createdAt,
-  //         };
-  //         // console.log('반환받은 데이터', incomingMessage);
-  //         // console.log('추가할 메시지 데이터:', newChatMessage);
-  //         setChatContents((prevContents) => {
-  //           // console.log('Before setChatContents:', prevContents);
-  //           const updatedContents = [newChatMessage, ...prevContents];
-  //           // console.log('After setChatContents:', updatedContents);
-  //           return updatedContents;
-  //         });
-  //       } else {
-  //         console.error('반환받은 데이터 혹은 데이터 없음:', incomingMessage);
-  //       }
-  //     });
-  //   }
-  //   return () => {
-  //     if (socket) {
-  //       socket.off('message');
-  //     }
-  //   };
-  // }, [socket, setChatContents]);
-
   useEffect(() => {
     if (socket) {
       socket.on('message', (incomingMessage: any) => {
@@ -97,7 +61,6 @@ const ChatSpaceFooter = (myId: MyIdType) => {
             seenUsers,
             createdAt,
           };
-
           setChatContents((prevContents) => [newChatMessage, ...prevContents]);
         } else {
           console.error('반환받은 데이터 혹은 데이터 없음:', incomingMessage);

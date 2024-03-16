@@ -27,12 +27,12 @@ const MyPageTemplate = () => {
     }, 1000);
   };
 
-  useEffect(()=>{
-    if(!loginState) {
+  useEffect(() => {
+    if (!loginState) {
       alert('로그인이 필요한 접근입니다.');
-      router.push('/main');
+      router.push('/');
     }
-  },[])
+  }, []);
 
   return (
     <div>

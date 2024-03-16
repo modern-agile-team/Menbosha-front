@@ -6,6 +6,8 @@ commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
 branches:
   - label: 🌏 Deploy
     prefix: deploy
+  - label: 💻 CrossBrowsing
+    prefix: cross
   - label: ⚙ Setting
     prefix: setting
   - label: 🐞 BugFix

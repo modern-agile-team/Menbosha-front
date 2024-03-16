@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  withCredentials: true,
   timeout: 5000,
 });
 
@@ -29,7 +30,7 @@ const reNewToken = async () => {
         (err.response.data.message === 'token mismatch' &&
           err.response.data.statusCode === 401)
       ) {
-        window.location.href = '/main';
+        window.location.href = '/';
         setTimeout(() => {
           window.sessionStorage.clear();
         }, 0);
@@ -94,7 +95,7 @@ instance.interceptors.response.use(
           error.response.data.message === 'token not found')
       ) {
         alert(error.response.data.message);
-        window.location.href = '/main';
+        window.location.href = '/';
         setTimeout(() => {
           window.sessionStorage.clear();
         }, 0);

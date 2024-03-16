@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const WithdrawalContainer = styled.div`
-  width: 80%;
-  margin: 64px 204px;
+  margin: 6.4vh 0px;
+  //회원탈퇴 페이지 타이틀
   & > :nth-child(1) {
     font-size: 64px;
-    font-weight: bold;
+    font-weight: 900;
     color: #ff772b;
   }
+  //하위요소
   & > :nth-child(2) {
-    margin: 90px 155px;
+    margin: 9vh 14vw;
   }
 `;
 
@@ -33,21 +34,17 @@ export const CheckIcon = styled.div`
 
 export const ExplainTitleContainer = styled.div`
   display: flex;
-  margin-bottom: 64px;
+  margin-bottom: 6.4vh;
 `;
 
 export const ExplainTitleBox = styled.div`
   & > :nth-child(1) {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 700;
     color: #000;
   }
   & > :nth-child(2) {
     font-size: 16px;
-    width: 1200px;
-    @media only all and (max-width: 1500px) {
-      width: 100%;
-    }
     color: #ff772b;
   }
 `;
@@ -60,19 +57,18 @@ export const ExplainTextBox = styled.div`
   display: flex;
   & > :nth-child(1) {
     text-align: center;
-    width: 30%;
+    width: 8vw;
     font-size: 20px;
     color: #ff772b;
     border: 1px solid #ff772b;
-
-    padding: 25px 40px;
+    padding: 20px 40px;
   }
   & > :nth-child(2) {
-    width: 100%;
+    width: 30vw;
     font-size: 16px;
     color: #000;
     border: 1px solid #ff772b;
-    padding: 25px 40px;
+    padding: 2.5vh 2.1vw;
   }
 `;
 
@@ -89,12 +85,12 @@ export const NotificationBox = styled.div`
 `;
 
 export const ConfirmationButton = styled.div`
-  margin: 24px 0px;
+  margin: 2.4vh 0px;
   display: flex;
   justify-content: center;
   & > :nth-child(1) {
     cursor: pointer;
-    padding: 6px 55px;
+    padding: 0.6vh 3.2vw;
     border: 1px solid #ff772b;
     border-radius: 10px;
   }

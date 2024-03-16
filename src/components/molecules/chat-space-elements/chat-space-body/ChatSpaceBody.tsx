@@ -1,21 +1,20 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import TimeStamp from '../time-stamp/TimeStamp';
-import Image from 'next/image';
 import {
   ChatContentsType,
   ChatPaginationType,
   ChatPartnersType,
 } from '@/types/chat';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import useModal from '@/hooks/useModal';
 import ChatDeleteModal from './ChatDeleteModal';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import { MyIdType } from '@/components/templates/ChatPageTemplate';
 
 const ChatSpaceBody = (props: {
   chatPartners: ChatPartnersType | undefined;
-  // chatContents: ChatContentsType[];
   pagination: ChatPaginationType | undefined;
 }) => {
   const { chatPartners, pagination } = props;
@@ -27,8 +26,9 @@ const ChatSpaceBody = (props: {
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
   const { isOpenModal, handleModal } = useModal();
   const ChatSpaceBodyRef = useRef<HTMLDivElement | null>(null);
-
   const chatContentsInOrder = [...chatContents];
+
+  const isRoomSelected = selectedRoomId !== '';
 
   // 채팅 생성 날짜
   const isSameDay = (date1: Date, date2: Date) => {
@@ -40,13 +40,23 @@ const ChatSpaceBody = (props: {
   };
   let currentDate: Date | null = null;
 
+  console.log(selectedRoomId);
+
   // 채팅내역 삭제 모달 핸들러
   const handleChatDelete =
     (messageId: string) =>
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       e.preventDefault();
-      setSelectedChatId(messageId);
-      handleModal();
+      const isHostMessage =
+        chatContents.find((message) => message._id === messageId)?.senderId !==
+        chatPartners?.id;
+
+      if (isHostMessage) {
+        setSelectedChatId(messageId);
+        handleModal();
+      } else {
+        alert('상대방의 채팅은 삭제할 수 없습니다.');
+      }
     };
 
   // 처음 채팅방 입장시 && 채팅이 업데이트 됐을 때 스크롤 위치 최하단으로 이동
@@ -61,7 +71,13 @@ const ChatSpaceBody = (props: {
     }
   }, [selectedRoomId, chatContents]);
 
-  console.log('ChatSpaceBody re-rendering');
+  if (!isRoomSelected) {
+    return (
+      <S.EmptyContainer>
+        채팅 시작을 위해 채팅방을 선택해주세요.
+      </S.EmptyContainer>
+    );
+  }
 
   return (
     <S.ChatSpaceBodyContainer ref={ChatSpaceBodyRef}>
@@ -113,9 +129,6 @@ const ChatSpaceBody = (props: {
                   {!isSameDay(currentDate, createdAtDate) && (
                     <TimeStamp date={createdAtDate} />
                   )}
-                  {/* 일단 TimeStamp가 상대방이나 본인이 채팅했을 때 날짜가 넘어가면
-                찍혀야하므로 각각의 컴포넌트에 둘 다 박았더니 중복됨.
-                따라서 일단 조건을 줘서 해결해봄. */}
                   {isValidTime && (
                     <S.ChatTimeBox isHost={false}>{`${getAmPm(hours)} ${
                       hours % 12 || 12

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as S from './styled';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
@@ -7,20 +7,18 @@ import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import { useSocket } from '@/hooks/useSocket';
-import { MyIdType } from '@/components/templates/ChatPageTemplate';
-import { log } from 'console';
-import { ChatPartnersAtom } from '@/recoil/atoms/ChatPartnersAtom';
 
 let chatPartnerName = '';
 
-const ChatRoomListBox = (myId: MyIdType) => {
+const ChatRoomListBox = () => {
   const getChatRoomList = useRecoilValue(ChatRoomListAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
-  const chatPartners = useRecoilValue(ChatPartnersAtom);
   const selectRoom = useReplace();
+  const [rightClickedRoomId, setRightClickedRoomId] = useState<string>('');
+  const [rightClickedPartnerName, setRightClickedPartnerName] =
+    useState<string>('');
   const { isOpenModal, handleModal } = useModal();
-  const socket = useSocket();
 
   const handleRoomSelect = (roomId: string) => {
     const selectedRoom = getChatRoomList.find(
@@ -34,42 +32,25 @@ const ChatRoomListBox = (myId: MyIdType) => {
       };
       selectRoom(`${roomId}`, queryURL);
       setSelectedRoomId(roomId);
-
-      const allChatRoomId = getChatRoomList.map((data) => data.chatRooms._id);
-
-      const emitData = { userId: myId.myId, chatRoomIds: allChatRoomId };
-      // console.log('**********', allChatRoomId);
-      // console.log('userId', myId.myId);
-      // console.log('emitDataaaaaaaa', emitData);
-
-      if (socket) {
-        console.log('Room Join', {
-          userId: myId.myId,
-          chatRoomIds: allChatRoomId,
-        });
-
-        socket.emit('login', emitData);
-
-        socket.on('error', (error: any) => {
-          console.log(error);
-        });
-        socket.on('join', (join: any) => {
-          console.log('Room Join 성공', join);
-        });
-      }
     }
   };
 
   // 마우스 우클릭 시 삭제 모달 핸들러
   const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
     e.preventDefault();
-    handleModal();
+    const roomId = e.currentTarget.getAttribute('data-room-id');
+    const partnerName = e.currentTarget.getAttribute('data-partner-name');
+
+    if (roomId && partnerName) {
+      setRightClickedRoomId(roomId);
+      setRightClickedPartnerName(partnerName);
+      handleModal();
+    }
   };
 
   return (
     <S.ListContainer>
       {getChatRoomList.map((data) => {
-        // console.log(data.chatPartners[0].);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
@@ -84,6 +65,8 @@ const ChatRoomListBox = (myId: MyIdType) => {
         return (
           <S.ChatRoomListArea
             key={data.chatRooms._id}
+            data-room-id={data.chatRooms._id}
+            data-partner-name={data.chatPartners[0].name}
             {...data}
             onContextMenu={handleChatRoomDelete}
             onClick={() => handleRoomSelect(data.chatRooms._id)}
@@ -128,14 +111,12 @@ const ChatRoomListBox = (myId: MyIdType) => {
       })}
       {isOpenModal && (
         <>
-          {/* {getChatRoomList.map((data) => ( */}
           <ChatRoomOutModal
             show={isOpenModal}
             hide={handleModal}
-            chatRoomId={selectedRoomId}
-            partnerName={chatPartners.name}
+            chatRoomId={rightClickedRoomId}
+            partnerName={rightClickedPartnerName}
           />
-          {/* ))} */}
         </>
       )}
     </S.ListContainer>
