@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  //vercel환경 cors적용
   async headers() {
     return [
       {
@@ -46,6 +47,15 @@ const nextConfig = {
         },
       ],
     };
+  },
+  //vercel환경에서 api요청 rewrites
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
+      },
+    ];
   },
   generateEtags: false,
   images: {
