@@ -26,18 +26,18 @@ const SaveToken = ({ provider }: Company) => {
       console.log(err);
     } finally {
       const currentUrl = window.sessionStorage.getItem('CURRENT_URL');
-      // if (currentUrl !== undefined) {
-      //   router.push({
-      //     pathname: `https://menbosha.kr${currentUrl}`,
-      //     query: {
-      //       filterId: 1,
-      //     },
-      //   });
-      // } else {
-      //   router.push({
-      //     pathname: `https://menbosha.kr/`,
-      //   });
-      // }
+      if (currentUrl !== undefined) {
+        router.push({
+          pathname: `https://menbosha.kr${currentUrl}`,
+          query: {
+            filterId: 1,
+          },
+        });
+      } else {
+        router.push({
+          pathname: `https://menbosha.kr/`,
+        });
+      }
     }
   };
 
