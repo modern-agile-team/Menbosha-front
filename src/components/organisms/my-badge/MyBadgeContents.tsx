@@ -1,15 +1,15 @@
 import USER from '@/apis/user';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
-import { AcquiredBadgeType, AcquiredPropsType, RankType } from '@/types/mypage';
+import { AcquiredPropsType } from '@/types/mypage';
 import Link from 'next/link';
 import MyRank from '@/components/molecules/my-page-elements/MyRank';
 import MyBadge from '@/components/molecules/my-page-elements/MyBadge';
 
 const MyBadgeContents = () => {
-  const [getRankAndBadge, setRankAndBadge] = useState<RankType>({
-    rank: 0,
-    badge: [],
+  const [getRank, setRank] = useState({
+    myRank: 0,
+    newRank: 0,
   });
   const [userId, setUserId] = useState(0);
   const [badgeData, setBadgeData] = useState<AcquiredPropsType>({
@@ -17,13 +17,12 @@ const MyBadgeContents = () => {
     acquiredData: [],
   });
 
-  const getRankAndBadgeList = async () => {
-    const response = await USER.getMyRank();
-    setRankAndBadge((prev) => {
+  const getRankScore = async () => {
+    const response = await USER.getMyRankScore(userId);
+    setRank(() => {
       return {
-        ...prev,
-        rank: response.rank,
-        badge: response.badge,
+        myRank: response.myRank,
+        newRank: response.newRank,
       };
     });
   };
@@ -53,17 +52,19 @@ const MyBadgeContents = () => {
 
   useEffect(() => {
     getMyUserId();
-    getRankAndBadgeList();
   }, []);
 
   useEffect(() => {
-    getMyAcquiredBadges();
+    if (userId !== 0) {
+      getMyAcquiredBadges();
+      getRankScore();
+    }
   }, [userId]);
 
   return (
     <S.MyBadgeWrapper>
       <div>
-        {getRankAndBadge.rank && <MyRank rank={getRankAndBadge.rank} />}
+        <MyRank myRank={getRank.myRank} newRank={getRank.newRank} />
         {badgeData && (
           <MyBadge
             existingData={badgeData.existingData}
