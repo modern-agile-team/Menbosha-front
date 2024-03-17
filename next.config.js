@@ -52,8 +52,36 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: `/:path*`,
-        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}:path*`,
+        source: `/auth/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}auth/:path*`,
+      },
+      {
+        source: `/chat/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}chat/:path*`,
+      },
+      {
+        source: `/help-me-boards/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}help-me-boards/:path*`,
+      },
+      {
+        source: `/help-you-comments/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}help-you-comments/:path*`,
+      },
+      {
+        source: `/mentors/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}mentors/:path*`,
+      },
+      {
+        source: `/mentor-boards/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}mentor-boards/:path*`,
+      },
+      {
+        source: `/report/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}report/:path*`,
+      },
+      {
+        source: `/user/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}user/:path*`,
       },
     ];
   },
