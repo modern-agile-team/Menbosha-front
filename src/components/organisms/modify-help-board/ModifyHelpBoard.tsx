@@ -229,7 +229,6 @@ const ModifyHelpBoard = (props: ModifyHelpUnitType) => {
         const catID = categoryList.find(
           (data) => data.category === category,
         )?.id;
-        console.log(typeof catID);
         const isData = {
           id: props.id,
           head: unitTitle,
