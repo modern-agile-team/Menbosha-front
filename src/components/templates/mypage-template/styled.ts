@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Image from 'next/image';
 import styled, { css, keyframes } from 'styled-components';
 
 /**유저 페이지 최상위 */
@@ -72,18 +72,55 @@ const bubbleMove = keyframes`
         padding: 0px;
     }
 `;
-
+/**버블 움직임을 위한 keyframes */
+const bubbleMove2 = keyframes`
+    0% {
+        padding: 0px;
+    }
+    60% {
+      padding: 3px;
+    }
+    100% {
+        padding: 0px;
+    }
+`;
+/**버블 움직임을 위한 keyframes */
+const bubbleMove3 = keyframes`
+    0% {
+        padding: 0px;
+    }
+    20% {
+        padding: 2px;
+    }
+    100% {
+        padding: 0px;
+    }
+`;
 interface BubbleSizeType {
   size: string;
 }
 /**버블 움직임을 위한 style */
-export const Bubble = styled.div<BubbleSizeType>`
+export const Bubble = css<BubbleSizeType>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 50%;
   border: 2px solid rgb(255, 119, 43);
   position: absolute;
+`;
+
+export const Bubble1 = styled.div<BubbleSizeType>`
+  ${Bubble}
   animation: ${bubbleMove} 1s infinite linear;
+`;
+
+export const Bubble2 = styled.div<BubbleSizeType>`
+  ${Bubble}
+  animation: ${bubbleMove2} 1s infinite linear;
+`;
+
+export const Bubble3 = styled.div<BubbleSizeType>`
+  ${Bubble}
+  animation: ${bubbleMove3} 1s infinite linear;
 `;
 
 const MyPageBreadBox = css<{ route: boolean }>`
@@ -94,7 +131,8 @@ const MyPageBreadBox = css<{ route: boolean }>`
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   &:hover {
-    transform: scale(1.2);
+    width: 60%;
+    height: 100%;
   }
   //각 빵 이름
   & > :nth-child(1) {
