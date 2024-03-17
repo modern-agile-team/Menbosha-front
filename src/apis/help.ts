@@ -32,12 +32,9 @@ const HELP = {
   /**이미지 업로드 api [post]*/
   async createImg(image: FormData, boardId: number): Promise<any> {
     const result: AxiosResponse = await instance.post(
-      `${HELP.path}/images`,
+      `${HELP.path}/${boardId}/images`,
       image,
       {
-        params: {
-          helpMeBoardId: boardId,
-        },
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -117,11 +114,10 @@ const HELP = {
     delUrl: string[],
   ): Promise<any> {
     const result: AxiosResponse = await instance.patch(
-      `${HELP.path}/images`,
+      `${HELP.path}/${boardId}/images`,
       image,
       {
         params: {
-          helpMeBoardId: boardId,
           deleteImageUrl: JSON.stringify(delUrl),
         },
         headers: {

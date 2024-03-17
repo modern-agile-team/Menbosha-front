@@ -149,7 +149,7 @@ const MENTOR = {
         },
       },
     );
-    return result.data;
+    return result.data.contents;
   },
 
   /**이미지 수정 업로드 api [patch]*/
@@ -159,11 +159,10 @@ const MENTOR = {
     delUrl: string[],
   ): Promise<any> {
     const result: AxiosResponse = await instance.patch(
-      `${MENTOR.path}/images`,
+      `${MENTOR.path}/${boardId}/images`,
       image,
       {
         params: {
-          mentorBoardId: boardId,
           deleteImageUrl: JSON.stringify(delUrl),
         },
         headers: {

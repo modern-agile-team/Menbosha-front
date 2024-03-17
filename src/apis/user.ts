@@ -1,8 +1,7 @@
 import { AxiosResponse } from 'axios';
 import instance from './axiosInstance';
 import { UpdateProfileType, MentorUnitType } from '@/types/user';
-import { RankType } from '@/types/mypage';
-import { AcquiredBadgeType } from '@/types/mypage';
+import { AcquiredBadgeType, RankScoreType } from '@/types/mypage';
 import { MyProfileType } from '@/types/user';
 
 const USER = {
@@ -80,9 +79,11 @@ const USER = {
     return result;
   },
 
-  /**유저 온도/칭호 조회 api */
-  async getMyRank(): Promise<RankType> {
-    const result: AxiosResponse = await instance.get(`${USER.path}/my/rank`);
+  /**유저 온도/칭호 조회 api 승우버전(신)*/
+  async getMyRankScore(userId: number): Promise<RankScoreType> {
+    const result: AxiosResponse = await instance.post(
+      `${USER.path}/${userId}/rank`,
+    );
     return result.data;
   },
 
