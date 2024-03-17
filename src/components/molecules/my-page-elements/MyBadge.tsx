@@ -56,8 +56,6 @@ const MyBadge = ({ existingData, acquiredData }: AcquiredPropsType) => {
     }
   };
 
-  console.log(existingData, acquiredData);
-
   return (
     <div>
       <S.BadgeListWrapper>

@@ -4,7 +4,6 @@ import { MentorReviewType } from '@/types/review';
 import { MentorUnitPropsType } from '@/types/user';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import { useRecoilValue } from 'recoil';
 import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 
 const MentorReview = ({ id }: MentorUnitPropsType) => {
@@ -58,19 +57,18 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
         reviewData.map((data) => {
           const temp = {
             id: data.id,
-            menteeId: data.mentee.id,
-            name: data.mentee.name,
-            rank: data.mentee.rank,
-            imageUrl: data.mentee.userImage.imageUrl,
-            customCategory: data.mentee.userIntro
-              ? data.mentee.userIntro.customCategory
-              : '없음',
-            career: data.mentee.userIntro
-              ? data.mentee.userIntro.career
-              : '없음',
-            shortIntro: data.mentee.userIntro
-              ? data.mentee.userIntro.shortIntro
-              : '없음',
+            menteeId: data.mentee !== null ? data.mentee.id : 0,
+            name: data.mentee !== null ? data.mentee.name : '탈퇴회원',
+            rank: data.mentee !== null ? data.mentee.rank : 0,
+            imageUrl:
+              data.mentee !== null ? data.mentee.userImage.imageUrl : '',
+            customCategory:
+              data.mentee !== null ? data.mentee.userIntro.customCategory : '',
+            career: data.mentee !== null ? data.mentee.userIntro.career : '',
+            shortIntro:
+              data.mentee !== null
+                ? data.mentee.userIntro.shortIntro
+                : '탈퇴회원입니다.',
             review: data.review,
             isGoodWork: data.isGoodWork,
             isClear: data.isClear,
