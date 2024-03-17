@@ -12,6 +12,9 @@ export default function Seo() {
         name="naver-site-verification"
         content="f70d229d3e38d57d3101592c57fb452c85668743"
       />
+      <meta
+        http-equiv="Content-Security-Policy"
+        content="upgrade-insecure-requests"></meta>
     </Head>
   );
 }
