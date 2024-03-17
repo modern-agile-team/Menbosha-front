@@ -45,6 +45,7 @@ const MyPageTemplate = () => {
           <S.Bubble1 size="2vw" style={{ margin: '2% 0px 0px 6%' }} />
           <S.Bubble2 size="4vw" style={{ margin: '5% 0px 0px 7%' }} />
           <S.ProfileLinkImg
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg"
             route={routeFrame.profile}
             onClick={() => handleRouter(`/mypage/info`, 'profile')}>
             <div>프로필</div>

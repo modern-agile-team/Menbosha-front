@@ -150,8 +150,7 @@ const MyPageBreadBox = css<{ route: boolean }>`
   }}
 `;
 
-export const ProfileLinkImg = styled.div<{ route: boolean }>`
-  background-image: url('https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/myProfile.svg');
+export const ProfileLinkImg = styled.img<{ route: boolean }>`
   margin: 4% 0% 0% 43%;
   ${MyPageBreadBox}
 `;
