@@ -21,11 +21,14 @@ const MainPageHeader = () => {
   const [isSide, setIsSide] = useState(false);
 
   const handleLogoutApi = async () => {
-    await AUTH.handleLogout(provider);
-    window.localStorage.removeItem('accessToken');
-    window.localStorage.removeItem('provider');
-    setLoginState(false);
-    router.push(`/`);
+    const logout = confirm('정말로 로그아웃하시겠습니까?');
+    if (logout) {
+      await AUTH.handleLogout(provider);
+      window.localStorage.removeItem('accessToken');
+      window.localStorage.removeItem('provider');
+      setLoginState(false);
+      router.push(`/`);
+    }
   };
 
   useEffect(() => {
