@@ -112,7 +112,7 @@ export const IconBox = styled.div`
   width: auto;
   height: auto;
   align-items: center;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   & > span {
     font-size: 0.5em;
     font-weight: 400;
