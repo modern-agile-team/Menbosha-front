@@ -25,7 +25,7 @@ const SaveToken = ({ provider }: Company) => {
       console.log(err);
     } finally {
       const currentUrl = window.sessionStorage.getItem('CURRENT_URL');
-      if (currentUrl !== undefined) {
+      if (currentUrl) {
         router.push({
           pathname: `https://menbosha.kr${currentUrl}`,
           query: {
