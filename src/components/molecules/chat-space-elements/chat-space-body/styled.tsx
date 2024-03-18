@@ -96,6 +96,9 @@ export const EmptyContainer = styled.div`
   height: 85vh;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: rgb(0, 0, 0);
   font-size: 24px;
+  font-weight: 600;
+  line-height: 180%;
 `;
