@@ -19,9 +19,8 @@ const UserWithdrawal = () => {
     if (approve) {
       try {
         await AUTH.unlinkMemberApi(provider);
-        window.sessionStorage.removeItem('accessToken');
-        window.sessionStorage.removeItem('refreshToken');
-        window.sessionStorage.removeItem('provider');
+        window.localStorage.removeItem('accessToken');
+        window.localStorage.removeItem('provider');
         setLoginState(false);
         alert('회원탈퇴 되었습니다.');
         router.push(`/`);
@@ -43,7 +42,7 @@ const UserWithdrawal = () => {
   };
 
   useEffect(() => {
-    const provider = window.sessionStorage.getItem('provider');
+    const provider = window.localStorage.getItem('provider');
     provider && setProvider(provider);
     getMyProfile();
   }, []);

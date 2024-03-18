@@ -59,10 +59,21 @@ export const FooterLeftContents = styled.div<BgType>`
     color: ${({ color }) =>
       color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
   }
+  //모던애자일 링크
   & > :nth-child(3) {
     font-weight: 400;
     font-size: 0.5em;
     line-height: 150%;
+    text-decoration: none;
+    color: ${({ color }) =>
+      color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
+  }
+  //인덕대학교 링크
+  & > :nth-child(4) {
+    font-weight: 400;
+    font-size: 0.5em;
+    line-height: 150%;
+    text-decoration: none;
     color: ${({ color }) =>
       color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
   }
