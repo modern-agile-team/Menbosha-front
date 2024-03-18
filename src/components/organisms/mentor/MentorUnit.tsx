@@ -72,7 +72,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
   };
 
   const handleChatIconClick = async () => {
-    if (isLogin === false) {
+    if (!isLogin) {
       alert('로그인이 필요합니다.');
     } else if (getUserInfo) {
       const confirmed = window.confirm(

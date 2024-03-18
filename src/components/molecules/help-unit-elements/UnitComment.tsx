@@ -198,9 +198,9 @@ const UnitComment = ({ id }: BoardIdType) => {
     mentorId,
     mentorName,
   }: handleChatIconClickType) => {
-    if (isLogin === false) {
+    if (!isLogin) {
       alert('로그인이 필요합니다.');
-    } else {
+    } else if (commentData) {
       const confirmed = window.confirm(
         `${mentorName}님과 채팅을 시작하시겠습니까?`,
       );
