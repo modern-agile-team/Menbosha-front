@@ -18,7 +18,6 @@ const SaveToken = ({ provider }: Company) => {
 
       const result = await AUTH.getToken(provider, code as string);
       localStorage.setItem('accessToken', result.accessToken);
-      localStorage.setItem('refreshToken', result.refreshToken);
       localStorage.setItem('provider', provider);
       setIsLogin(true);
     } catch (err) {
