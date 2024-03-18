@@ -78,9 +78,10 @@ const ChatSpaceBody = (props: {
   if (!isRoomSelected) {
     return (
       <S.EmptyContainer>
-        채팅 시작을 위해 채팅방을 선택해주세요.
+        채팅방을 선택해주세요.
         <br />
-        채팅이 안되면 새로고침을 한 번 해주세요.
+        채팅이 안되면 메인 페이지로 가신 뒤, <br />
+        다시 채팅페이지로 와주세요.
       </S.EmptyContainer>
     );
   }
