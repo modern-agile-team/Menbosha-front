@@ -17,9 +17,9 @@ const SaveToken = ({ provider }: Company) => {
       const code = new URL(window.location.href).searchParams.get('code');
 
       const result = await AUTH.getToken(provider, code as string);
-      sessionStorage.setItem('accessToken', result.accessToken);
-      sessionStorage.setItem('refreshToken', result.refreshToken);
-      sessionStorage.setItem('provider', provider);
+      localStorage.setItem('accessToken', result.accessToken);
+      localStorage.setItem('refreshToken', result.refreshToken);
+      localStorage.setItem('provider', provider);
       setIsLogin(true);
     } catch (err) {
       alert('로그인 도중 오류가 발생했습니다');

@@ -23,16 +23,16 @@ const AfterLoginModal = ({ show, hide }: ModalType) => {
 
   const handleLogoutApi = async () => {
     await AUTH.handleLogout(provider);
-    window.sessionStorage.removeItem('accessToken');
-    window.sessionStorage.removeItem('refreshToken');
-    window.sessionStorage.removeItem('provider');
+    window.localStorage.removeItem('accessToken');
+    window.localStorage.removeItem('refreshToken');
+    window.localStorage.removeItem('provider');
     setLoginState(false);
     hide();
     router.push(`/`);
   };
 
   useEffect(() => {
-    const provider = window.sessionStorage.getItem('provider');
+    const provider = window.localStorage.getItem('provider');
     provider && setProvider(provider);
   }, []);
 
