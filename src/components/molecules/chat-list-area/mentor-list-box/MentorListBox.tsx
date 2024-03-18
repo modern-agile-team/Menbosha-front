@@ -127,28 +127,34 @@ const MentorListBox = () => {
             </S.MentorInfoLeft>
           </S.MentorInfoArea>
           {expandedStates[mentor.id] && (
-            <S.IconBox isExpanded={expandedStates[mentor.id]}>
-              <Link href={`/userpage/${mentor.id}`}>
+            <S.IconArea isExpanded={expandedStates[mentor.id]}>
+              <S.IconBox>
+                <Link href={`/userpage/${mentor.id}`}>
+                  <Image
+                    src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/User-white.svg"
+                    alt="UserIcon"
+                    width="36"
+                    height="36"
+                  />
+                </Link>
+                <span>프로필</span>
+              </S.IconBox>
+              <S.IconBox>
                 <Image
-                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/User-white.svg"
-                  alt="UserIcon"
+                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatIcon.svg"
+                  alt="ChatIcon"
                   width="36"
                   height="36"
+                  onClick={() =>
+                    handleChatIconClick({
+                      mentorId: mentor.id,
+                      mentorName: mentor.name,
+                    })
+                  }
                 />
-              </Link>
-              <Image
-                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatIcon.svg"
-                alt="ChatIcon"
-                width="36"
-                height="36"
-                onClick={() =>
-                  handleChatIconClick({
-                    mentorId: mentor.id,
-                    mentorName: mentor.name,
-                  })
-                }
-              />
-            </S.IconBox>
+                <span style={{ marginTop: 5 }}>채팅하기</span>
+              </S.IconBox>
+            </S.IconArea>
           )}
         </S.ListArea>
       ))}

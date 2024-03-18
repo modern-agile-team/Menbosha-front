@@ -194,7 +194,7 @@ export const InfoBox = styled.div`
   width: 22vw;
   height: 23vh;
   @media only all and (max-height: 900px) {
-    font-size: 50%;
+    font-size: 80%;
   }
   justify-content: space-around;
   border: 3px solid #ff772b;
@@ -209,6 +209,7 @@ export const InfoTitleBox = styled.div`
   padding-left: 2vh;
   font-weight: 700;
   text-align: start;
+  /* border: 2px solid black; */
 `;
 
 export const InfoTextBox = styled.div`
