@@ -53,15 +53,24 @@ const ChatSpaceFooter = (myId: MyIdType) => {
         if (incomingMessage) {
           const { _id, chatRoomId, content, senderId, seenUsers, createdAt } =
             incomingMessage;
-          const newChatMessage: ChatContentsType = {
-            _id,
-            chatRoomId,
-            content,
-            senderId,
-            seenUsers,
-            createdAt,
-          };
-          setChatContents((prevContents) => [newChatMessage, ...prevContents]);
+          if (chatRoomId && chatRoomId === selectedRoomId) {
+            const newChatMessage: ChatContentsType = {
+              _id,
+              chatRoomId,
+              content,
+              senderId,
+              seenUsers,
+              createdAt,
+            };
+
+            console.log(chatRoomId);
+            console.log(selectedRoomId);
+
+            setChatContents((prevContents) => [
+              newChatMessage,
+              ...prevContents,
+            ]);
+          }
         } else {
           console.error('반환받은 데이터 혹은 데이터 없음:', incomingMessage);
         }
@@ -72,7 +81,7 @@ const ChatSpaceFooter = (myId: MyIdType) => {
         socket.off('message');
       }
     };
-  }, [socket, setChatContents]);
+  }, [socket, selectedRoomId, setChatContents]);
 
   return (
     <S.ChatSpaceFooterContainer>

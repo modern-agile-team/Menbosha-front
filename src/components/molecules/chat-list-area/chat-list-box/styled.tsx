@@ -124,3 +124,15 @@ export const UnreadMessage = styled.div`
     color: white;
   }
 `;
+
+export const IfChatPartnerEmptyBox = styled.div<{ isSelected: boolean }>`
+  display: flex;
+  width: 19vw;
+  height: 7vh;
+  align-items: center;
+  justify-content: center;
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#000000')};
+  font-size: 0.5em;
+  font-weight: 500;
+  line-height: 180%;
+`;

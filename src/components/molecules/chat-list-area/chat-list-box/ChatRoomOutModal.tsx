@@ -23,6 +23,12 @@ const ChatRoomOutModal = ({
   const handleChatRoomOut = async () => {
     await CHAT.deleteChatRoom(chatRoomId);
     updateChatRoomListApi();
+
+    // 임시방편
+    // const updatedChatRoomList = chatRoomList.filter(
+    //   (room) => room.chatRooms._id !== chatRoomId,
+    // );
+    // setChatRoomList(updatedChatRoomList);
     setSelectedRoomId('');
     handleCloseModal();
   };

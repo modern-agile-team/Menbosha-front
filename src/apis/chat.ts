@@ -28,6 +28,17 @@ const CHAT = {
     return result.data.contents;
   },
 
+  /** 채팅방 나갔을 때 예외처리를 위한 임시 확인용 */
+  async getChatRoomList2(page: number, pageSize: number): Promise<any> {
+    const result: AxiosResponse<any> = await instance.get(`${CHAT.path}`, {
+      params: {
+        page: page,
+        pageSize: pageSize,
+      },
+    });
+    return result;
+  },
+
   /** 채팅룸 단일조회 - 유저 id */
   async getChatRoomById(receiverId: number): Promise<any> {
     const result: AxiosResponse<any> = await instance.get(
