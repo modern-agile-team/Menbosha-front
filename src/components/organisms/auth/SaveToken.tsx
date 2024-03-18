@@ -23,22 +23,21 @@ const SaveToken = ({ provider }: Company) => {
       setIsLogin(true);
     } catch (err) {
       alert('로그인 도중 오류가 발생했습니다');
+      console.log(err);
     } finally {
       const currentUrl = window.sessionStorage.getItem('CURRENT_URL');
       if (currentUrl !== undefined) {
         router.push({
-          // pathname: `https://menbosha.kr${currentUrl}`,
-          pathname: currentUrl,
+          pathname: `https://menbosha.kr${currentUrl}`,
           query: {
             filterId: 1,
           },
         });
+      } else {
+        router.push({
+          pathname: `https://menbosha.kr/`,
+        });
       }
-      // else {
-      //   router.push({
-      //     pathname: `https://menbosha.kr/`,
-      //   });
-      // }
     }
   };
 
