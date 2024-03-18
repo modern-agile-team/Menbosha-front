@@ -9,8 +9,6 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
 
-const id = 'home'; //초기값 -> 후에 변동 예정
-
 const MainPageHeader = () => {
   const router = useRouter();
   const isLogin = useRecoilValue(LoginStateAtom);
@@ -90,7 +88,7 @@ const MainPageHeader = () => {
             <div>
               <Link
                 href={{
-                  pathname: `/chat/${id}`,
+                  pathname: `/chat/home`,
                 }}>
                 <Image
                   src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
@@ -171,7 +169,7 @@ const MainPageHeader = () => {
               <div>
                 <Link
                   href={{
-                    pathname: `chat/${id}`,
+                    pathname: `chat/home`,
                   }}>
                   <Image
                     src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"

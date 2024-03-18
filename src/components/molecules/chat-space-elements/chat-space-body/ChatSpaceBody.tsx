@@ -79,6 +79,8 @@ const ChatSpaceBody = (props: {
     return (
       <S.EmptyContainer>
         채팅 시작을 위해 채팅방을 선택해주세요.
+        <br />
+        채팅이 안되면 새로고침을 한 번 해주세요.
       </S.EmptyContainer>
     );
   }
