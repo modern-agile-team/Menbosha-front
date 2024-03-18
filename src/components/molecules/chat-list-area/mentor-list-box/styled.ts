@@ -87,7 +87,7 @@ export const MentorInfoBox = styled.div<ListAreaType>`
   /* border: 1px solid green; */
 `;
 
-export const IconBox = styled.div<ListAreaType>`
+export const IconArea = styled.div<ListAreaType>`
   display: flex;
   width: 10vw;
   height: ${({ isExpanded }) => (isExpanded ? 'auto' : '7vh')};
@@ -104,4 +104,18 @@ export const IconBox = styled.div<ListAreaType>`
     cursor: pointer;
   }
   /* border: 2px solid black; */
+`;
+
+export const IconBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  align-items: center;
+  border: 2px solid red;
+  & > span {
+    font-size: 0.5em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+  }
 `;

@@ -13,8 +13,10 @@ import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 import { handleChatIconClickType } from '@/types/chat';
 import CHAT from '@/apis/chat';
 import useChatRoomCreate from '@/hooks/useCreateRoom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
+import { useRouter } from 'next/router';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 
 const MentorUnit = ({ id }: MentorUnitPropsType) => {
   const [getUserInfo, setGetUserInfo] = useState<MentorUnitType>();
@@ -29,6 +31,8 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
   const [load, setLoad] = useState(false);
   const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
+  const router = useRouter();
+  const isLogin = useRecoilValue(LoginStateAtom);
 
   const getUserInfoApi = async () => {
     const response = await USER.getUserInfo(id);
@@ -67,13 +71,16 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
     }
   };
 
-  const handleChatIconClick = async ({}) => {
-    if (getUserInfo) {
+  const handleChatIconClick = async () => {
+    if (isLogin) {
+      alert('로그인이 필요합니다.');
+    } else if (getUserInfo) {
       const confirmed = window.confirm(
         `${getUserInfo?.name}님과 채팅을 시작하시겠습니까?`,
       );
       if (confirmed) {
         await handleCreateChatRoom(getUserInfo?.id);
+        router.push('/chat/home');
         updateChatRoomListApi();
       }
     }
@@ -121,13 +128,11 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
               </div>
             </S.MentorInfoBox>
             <div>
-              {/** 채팅쪽 추가 이쪽에 하시면 됩니다.*/}
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
                 alt="채팅이모지"
-                onClick={() => {
-                  alert('아직 구현되지 않은 기능입니다.');
-                }}
+                onClick={handleChatIconClick}
+                style={{ cursor: 'pointer' }}
               />
               <img
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"

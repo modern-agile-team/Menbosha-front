@@ -93,17 +93,23 @@ const ChatSpaceFooter = (myId: MyIdType) => {
           placeholder="메세지를 입력해주세요..."
         />
         <S.ChatSpaceToolBox>
-          <Image
+          <img
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatPlus.svg"
             alt="PlusIcon"
             width="28"
             height="28"
+            onClick={() => {
+              alert('이미지 파일전송은 아직 구현되지 않았습니다.');
+            }}
           />
-          <Image
+          <img
             src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatImoticon.svg"
             alt="PlusIcon"
             width="28"
             height="28"
+            onClick={() => {
+              alert('이모티콘 전송은 아직 구현되지 않았습니다.');
+            }}
           />
         </S.ChatSpaceToolBox>
       </S.ChatSpaceInputBox>

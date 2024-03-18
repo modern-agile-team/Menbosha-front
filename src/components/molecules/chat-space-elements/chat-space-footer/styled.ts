@@ -50,6 +50,7 @@ export const ChatSpaceToolBox = styled.div`
   height: 4vh;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 10000;
   & > * {
     cursor: pointer;
   }
