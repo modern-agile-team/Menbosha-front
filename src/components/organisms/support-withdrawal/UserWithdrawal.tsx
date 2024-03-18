@@ -20,7 +20,6 @@ const UserWithdrawal = () => {
       try {
         await AUTH.unlinkMemberApi(provider);
         window.localStorage.removeItem('accessToken');
-        window.localStorage.removeItem('refreshToken');
         window.localStorage.removeItem('provider');
         setLoginState(false);
         alert('회원탈퇴 되었습니다.');

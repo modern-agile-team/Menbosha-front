@@ -23,7 +23,6 @@ const MainPageHeader = () => {
   const handleLogoutApi = async () => {
     await AUTH.handleLogout(provider);
     window.localStorage.removeItem('accessToken');
-    window.localStorage.removeItem('refreshToken');
     window.localStorage.removeItem('provider');
     setLoginState(false);
     router.push(`/`);
