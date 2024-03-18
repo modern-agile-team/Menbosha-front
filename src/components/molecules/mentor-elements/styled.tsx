@@ -46,7 +46,7 @@ export const MentorCardContentBox = styled.div`
     color: rgba(0, 0, 0, 0.75);
     padding: 5px 0px;
     & > :nth-child(2) {
-      @media only all and (max-width: 1700px), (max-height: 800px) {
+      @media only all and (max-width: 1700px), (max-height: 900px) {
         display: none;
       }
     }
