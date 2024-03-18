@@ -35,10 +35,21 @@ export const MentorCardContainer = styled.div`
       margin: 0.926%; //14
     }
   }
+  @media only all and (max-width: 1200px), (max-height: 1000px) {
+    & > :nth-child(n) {
+      margin: 0.926%;
+    }
+  }
 `;
 
 export const MentorCardWrapper = styled.div`
-  width: 18.519%;
+  width: 18%;
+  @media only all and (max-width: 1200px) {
+    width: 30%;
+  }
+  @media only all and (max-width: 500px) {
+    width: 45%;
+  }
 `;
 
 export const HeaderContentsBox = styled.div`
@@ -177,6 +188,7 @@ export const BadgeContainer = styled.div`
   }
   & > :nth-child(2) {
     display: flex;
+    justify-content: center;
   }
 `;
 

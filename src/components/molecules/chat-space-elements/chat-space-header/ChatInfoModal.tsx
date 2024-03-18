@@ -1,64 +1,39 @@
-import { ChatRoomDeleteModalType } from '@/types/chat';
-import styled from 'styled-components';
 import React from 'react';
-import CHAT from '@/apis/chat';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
-import { useRouter } from 'next/router';
-import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
+import styled from 'styled-components';
 
-const ChatRoomOutModal = ({
-  show,
-  hide,
-  chatRoomId,
-  partnerName,
-}: ChatRoomDeleteModalType) => {
-  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
-  const router = useRouter();
-  const [selectedRoomId, setSelectedRoomId] =
-    useRecoilState(SelectedRoomIdAtom);
-  const page = 1;
-  const pageSize = 100;
-  // 채팅방 나가기 기능
-  const handleChatRoomOut = async () => {
-    await CHAT.deleteChatRoom(chatRoomId);
-    updateChatRoomListApi();
-
-    // 임시방편
-    // const updatedChatRoomList = chatRoomList.filter(
-    //   (room) => room.chatRooms._id !== chatRoomId,
-    // );
-    // setChatRoomList(updatedChatRoomList);
-    setSelectedRoomId('');
-    handleCloseModal();
-  };
-
-  const updateChatRoomListApi = async () => {
-    const res = await CHAT.getChatRoomList(page, pageSize);
-    setChatRoomList(res.chatRooms);
-  };
-
+const ChatInfoModal = ({ show, hide }: any) => {
   const handleCloseModal = () => {
     if (show) {
       hide();
-      router.replace('/chat/home');
     }
   };
-
   return (
-    <div>
+    <>
       <ModalWrapper>
         <ModalContainer>
           <ModalTitle>
-            <span>채팅방 나가기</span>
+            <span>채팅 가이드</span>
           </ModalTitle>
           <ModalContents>
-            <span>{partnerName}님 과의</span>
-            <span>채팅방을 나가시겠습니까?</span>
+            <div>어서오세요, 멘보샤 채팅방에 오신 것을 환영합니다.</div>
+            <p>
+              <span>1. 채팅이 확인되지 않을 시 '새로고침'을 해주세요.</span>
+              <br />
+              <span>
+                2. 현재 macOS에서 채팅이 2번 입력되는 오류가 있습니다.
+              </span>
+              <br />
+              <span>3. 삭제할 채팅방을 우클릭하면 삭제하실 수 있습니다.</span>
+              <br />
+              <span>4. 삭제할 채팅을 우클릭하면 삭제하실 수 있습니다.</span>
+              <br />
+              <span>5. 본인의 채팅내역만 삭제하실 수 있습니다.</span>
+              <br />
+              <span>6. 불편한 기능은 추후 빠르게 업데이트 하겠습니다.</span>
+            </p>
           </ModalContents>
           <ButtonArea>
-            <button onClick={handleChatRoomOut}>예</button>
-            <button onClick={handleCloseModal}>아니오</button>
+            <button onClick={handleCloseModal}>닫기</button>
           </ButtonArea>
         </ModalContainer>
       </ModalWrapper>
@@ -70,32 +45,32 @@ const ChatRoomOutModal = ({
           }
         }}
       />
-    </div>
+    </>
   );
 };
 
-export default ChatRoomOutModal;
+export default ChatInfoModal;
 
 export const ModalWrapper = styled.div`
   display: flex;
   position: absolute;
-  width: 27vw;
-  height: 30vh;
-  top: 40%;
-  left: 50%;
+  width: 30vw;
+  height: 45vh;
+  top: 50%;
+  left: 80%;
   transform: translate(-50%, -50%);
   justify-content: center;
   background-color: #ffffff;
-  z-index: 10000;
+  z-index: 12000;
   border-radius: 10px;
-  /* border: 2px solid #ff9b50; */
+  border: 2px solid #ff9b50;
 `;
 
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 27vw;
-  height: 30vh;
+  width: 30vw;
+  height: 45vh;
   align-items: center;
   font-size: 0.65em;
   color: #000000;
@@ -104,10 +79,10 @@ export const ModalContainer = styled.div`
 
 export const ModalTitle = styled.div`
   display: flex;
-  width: 27vw;
-  height: 5vh;
+  width: 30vw;
+  height: 4vh;
   align-items: center;
-  margin-bottom: 7vh;
+  margin-bottom: 20px;
   background-color: #ff772b;
   border-radius: 10px 10px 0px 0px;
   border: 1px solid #ff772b;
@@ -122,24 +97,24 @@ export const ModalTitle = styled.div`
 export const ModalContents = styled.div`
   display: flex;
   flex-direction: column;
-  width: 20vw;
-  height: 5vh;
+  width: 27vw;
+  height: 30vh;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   /* border: 2px solid red; */
-  :nth-child(1) {
+  & > div {
     font-size: 1.2em;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 20px;
   }
-  :nth-child(2) {
-    font-size: 1em;
+  & > p {
+    line-height: 200%;
   }
 `;
 
 export const ButtonArea = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 14vw;
   height: 5vh;
   /* border: 2px solid black; */
@@ -169,6 +144,6 @@ export const Backdrop = styled.div`
   position: fixed;
   left: 0px;
   top: 0px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.03);
   cursor: auto;
 `;

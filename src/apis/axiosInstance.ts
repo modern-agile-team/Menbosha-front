@@ -1,4 +1,3 @@
-import LoginModal from '@/components/organisms/auth/LoginModal';
 import axios from 'axios';
 
 const instance = axios.create({
@@ -9,17 +8,11 @@ const instance = axios.create({
 
 //토근 갱신
 const reNewToken = async () => {
-  const refreshToken = sessionStorage.getItem('refreshToken');
   try {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}auth/new-access-token`,
-      {
-        headers: {
-          Authorization: `Bearer ${refreshToken}`,
-        },
-      },
     );
-    sessionStorage.setItem('accessToken', response.data.accessToken);
+    localStorage.setItem('accessToken', response.data.accessToken);
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
       //재발급 중 에러 발생 시
@@ -33,7 +26,7 @@ const reNewToken = async () => {
       ) {
         window.location.href = '/';
         setTimeout(() => {
-          window.sessionStorage.clear();
+          window.localStorage.clear();
         }, 0);
       }
     }
@@ -43,10 +36,10 @@ const reNewToken = async () => {
 //요청 전 인터셉터
 instance.interceptors.request.use(
   (config) => {
-    if (sessionStorage.getItem('accessToken') === undefined) {
-      sessionStorage.setItem('accessToken', '');
+    if (localStorage.getItem('accessToken') === undefined) {
+      localStorage.setItem('accessToken', '');
     }
-    const accessToken = sessionStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('accessToken');
 
     config.headers['Authorization'] = `Bearer ${accessToken}`;
 
@@ -79,8 +72,8 @@ instance.interceptors.response.use(
         error.response.data.statusCode === 401 &&
         error.response.data.message === 'jwt expired'
       ) {
-        await reNewToken();
-        const accessToken = sessionStorage.getItem('accessToken');
+        await reNewToken(); //스토리지에서 토큰 받아서 재발급 받는 로직
+        const accessToken = localStorage.getItem('accessToken');
 
         error.config.headers['Authorization'] = ` Bearer ${accessToken}`;
 
@@ -98,7 +91,7 @@ instance.interceptors.response.use(
         alert(error.response.data.message);
         window.location.href = '/';
         setTimeout(() => {
-          window.sessionStorage.clear();
+          window.localStorage.clear();
         }, 0);
       }
     } else if (
@@ -106,6 +99,8 @@ instance.interceptors.response.use(
       error.response.data.statusCode === 400
     ) {
       window.alert('로그인이 필요합니다.');
+      window.location.href = '/';
+      return;
     }
     return Promise.reject(error);
     // return error;

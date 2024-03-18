@@ -6,12 +6,13 @@ import {
   ChatPaginationType,
   ChatPartnersType,
 } from '@/types/chat';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import useModal from '@/hooks/useModal';
 import ChatDeleteModal from './ChatDeleteModal';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
-import { MyIdType } from '@/components/templates/ChatPageTemplate';
+import { useSocket } from '@/hooks/useSocket';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const ChatSpaceBody = (props: {
   chatPartners: ChatPartnersType | undefined;
@@ -19,14 +20,17 @@ const ChatSpaceBody = (props: {
 }) => {
   const { chatPartners, pagination } = props;
   const chatPartnerId = chatPartners?.id;
-  const chatContents = useRecoilValue<ChatContentsType[]>(ChatContentsAtom);
+  const [chatContents, setChatContents] =
+    useRecoilState<ChatContentsType[]>(ChatContentsAtom);
   const [selectedChatId, setSelectedChatId] = useState<string | undefined>(
     undefined,
   );
+  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
   const selectedRoomId = useRecoilValue(SelectedRoomIdAtom);
   const { isOpenModal, handleModal } = useModal();
   const ChatSpaceBodyRef = useRef<HTMLDivElement | null>(null);
   const chatContentsInOrder = [...chatContents];
+  const socket = useSocket();
 
   const isRoomSelected = selectedRoomId !== '';
 
@@ -40,7 +44,7 @@ const ChatSpaceBody = (props: {
   };
   let currentDate: Date | null = null;
 
-  console.log(selectedRoomId);
+  // console.log(selectedRoomId);
 
   // 채팅내역 삭제 모달 핸들러
   const handleChatDelete =

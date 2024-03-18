@@ -1,6 +1,58 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  //vercel환경 cors적용
+  async headers() {
+    return [
+      {
+        // matching all API routes
+        source: '/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Credentials', value: 'true' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value:
+              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+          },
+        ],
+      },
+    ];
+  },
+  //main으로 강제 리다이렉트, 쓸일 있으면 쓰기
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/main',
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
+  //강제 리다이렉트 실행
+  async middleware() {
+    return ['./src/middleware'];
+  },
+  rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'www.menbosha.kr',
+            },
+          ],
+          destination: 'https://menbosha.kr/:path*',
+        },
+      ],
+    };
+  },
   generateEtags: false,
   images: {
     loader: 'imgix', // 'imgix'에서 'default'로 변경
@@ -38,7 +90,7 @@ const nextConfig = {
       },
     ],
   },
-  reactStrictMode: false,
+  reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

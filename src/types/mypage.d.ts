@@ -5,12 +5,9 @@ export type badgeType = {
   image: string;
 };
 
-export type RankType = {
-  rank: number;
-  badge: {
-    badgeId: number;
-    createdAt: string;
-  }[];
+export type RankScoreType = {
+  myRank: number;
+  newRank: number;
 };
 
 export type AcquiredBadgeType = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
@@ -6,34 +6,48 @@ import useModal from '@/hooks/useModal';
 import ChatRoomOutModal from './ChatRoomOutModal';
 import useReplace from '@/hooks/useReplace';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
-import { useSocket } from '@/hooks/useSocket';
+import CHAT from '@/apis/chat';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 
 let chatPartnerName = '';
 
 const ChatRoomListBox = () => {
-  const getChatRoomList = useRecoilValue(ChatRoomListAtom);
+  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
   const [selectedRoomId, setSelectedRoomId] =
     useRecoilState(SelectedRoomIdAtom);
   const selectRoom = useReplace();
+  const chatContents = useRecoilValue(ChatContentsAtom);
   const [rightClickedRoomId, setRightClickedRoomId] = useState<string>('');
   const [rightClickedPartnerName, setRightClickedPartnerName] =
     useState<string>('');
   const { isOpenModal, handleModal } = useModal();
 
   const handleRoomSelect = (roomId: string) => {
-    const selectedRoom = getChatRoomList.find(
+    const selectedRoom = chatRoomList.find(
       (data) => data.chatRooms._id === roomId,
     );
-    if (selectedRoom) {
+    if (selectedRoom?.chatPartners.length === 1) {
       chatPartnerName = selectedRoom.chatPartners[0].name;
 
       const queryURL = {
         roomId: roomId,
       };
+
       selectRoom(`${roomId}`, queryURL);
+      setSelectedRoomId(roomId);
+    } else {
+      const queryURLEmpty = {
+        roomId: roomId,
+      };
+      console.log(queryURLEmpty);
+
+      selectRoom(`${roomId}`, queryURLEmpty);
       setSelectedRoomId(roomId);
     }
   };
+  // useEffect(() => {
+  //   console.log('1231241241231');
+  // }, [chatRoomList]);
 
   // 마우스 우클릭 시 삭제 모달 핸들러
   const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
@@ -48,9 +62,22 @@ const ChatRoomListBox = () => {
     }
   };
 
+  // 임시 확인용
+  const getChatRoomListApi2 = async () => {
+    const page = 1;
+    const pageSize = 100;
+    const res = await CHAT.getChatRoomList2(page, pageSize);
+    console.log(res);
+  };
+
+  useEffect(() => {
+    getChatRoomListApi2();
+  }, [chatContents]);
+
   return (
     <S.ListContainer>
-      {getChatRoomList.map((data) => {
+      {chatRoomList.map((data) => {
+        // console.log(data);
         const createdAtDate = new Date(data.chatRooms.chat.createdAt);
         const hours = createdAtDate.getHours();
         const minutes = createdAtDate.getMinutes().toString().padStart(2, '0');
@@ -62,16 +89,21 @@ const ChatRoomListBox = () => {
         const getAmPm = (hours: number): string => {
           return hours >= 12 ? '오후' : '오전';
         };
+
+        const chatPartnerExist = data.chatPartners.length !== 0;
+
         return (
           <S.ChatRoomListArea
             key={data.chatRooms._id}
             data-room-id={data.chatRooms._id}
-            data-partner-name={data.chatPartners[0].name}
+            data-partner-name={
+              chatPartnerExist ? data.chatPartners[0].name : ''
+            }
             {...data}
             onContextMenu={handleChatRoomDelete}
             onClick={() => handleRoomSelect(data.chatRooms._id)}
             isSelected={selectedRoomId === data.chatRooms._id}>
-            {data.chatPartners.length !== 0 && (
+            {chatPartnerExist && data.chatPartners.length === 1 && (
               <S.ChatRoomInfoBox key={data.chatPartners[0].id}>
                 <S.ChatListLeft>
                   <S.ChatListGuestImage
@@ -105,6 +137,15 @@ const ChatRoomListBox = () => {
                     )}
                 </S.ChatListRight>
               </S.ChatRoomInfoBox>
+            )}
+            {!chatPartnerExist && (
+              <S.IfChatPartnerEmptyBox
+                isSelected={selectedRoomId === data.chatRooms._id}>
+                <div>
+                  상대방이 채팅방을 나갔습니다.
+                  <br />이 방을 선택하면 채팅 내역을 확인할 수 있습니다.
+                </div>
+              </S.IfChatPartnerEmptyBox>
             )}
           </S.ChatRoomListArea>
         );

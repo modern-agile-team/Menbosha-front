@@ -56,6 +56,9 @@ interface CountType {
 
 export const ReviewInputTitle = styled.div<CountType>`
   display: flex;
+  @media only all and (max-width: 800px) {
+    display: block;
+  }
   & > :nth-child(1) {
     font-size: 16px;
     font-weight: bold;
@@ -86,10 +89,6 @@ export const ReviewAreaBox = styled.textarea`
     display: none;
   }
   height: 24vh;
-  //1900px 반응형
-  @media only all and (max-width: 1900px) {
-    height: 200px;
-  }
   padding: 15px 13px 15px 13px;
 `;
 

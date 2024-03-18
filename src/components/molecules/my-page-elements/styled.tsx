@@ -29,7 +29,7 @@ export const MyRankNameAndScore = styled.div`
   flex-direction: column;
   justify-content: end;
   color: #fff;
-  margin-left: 55px;
+  margin-left: 2.4vw;
   & > :nth-child(1) {
     font-size: 1.88vw; //36px
     font-weight: 700; //Pretendard-Bold
@@ -139,12 +139,12 @@ export const UnlockBadgePreviewBox = styled.div`
   &:hover {
     & > :nth-child(1) {
       display: none;
-      width: 8vw;
+      width: 9.3vw;
       height: 11vh;
     }
     & > :nth-child(2) {
       display: block;
-      width: 8vw;
+      width: 9.3vw;
       height: 11vh;
     }
   }

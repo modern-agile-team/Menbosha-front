@@ -9,15 +9,19 @@ import {
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { MyProfileType } from '@/types/user';
 import USER from '@/apis/user';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import HELP from '@/apis/help';
 import { rankList } from '@/components/common/rank/rankList';
 import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import axios from 'axios';
+import CHAT from '@/apis/chat';
+import useChatRoomCreate from '@/hooks/useCreateRoom';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
+import { handleChatIconClickType } from '@/types/chat';
 
 const UnitComment = ({ id }: BoardIdType) => {
   //페이지네이션 state
@@ -31,6 +35,8 @@ const UnitComment = ({ id }: BoardIdType) => {
   >([]);
   const [myProfile, setMyProfile] = useState<MyProfileType>();
   const isLogin = useRecoilValue(LoginStateAtom);
+  const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
+  const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
   const router = useRouter();
 
   //옵저버 생성
@@ -188,6 +194,31 @@ const UnitComment = ({ id }: BoardIdType) => {
     isLogin && getMyProfileApi();
   }, []);
 
+  const handleChatIconClick = async ({
+    mentorId,
+    mentorName,
+  }: handleChatIconClickType) => {
+    if (isLogin) {
+      alert('로그인이 필요합니다.');
+    } else {
+      const confirmed = window.confirm(
+        `${mentorName}님과 채팅을 시작하시겠습니까?`,
+      );
+      if (confirmed) {
+        await handleCreateChatRoom(mentorId);
+        router.push('/chat/home');
+        updateChatRoomListApi();
+      }
+    }
+  };
+
+  const updateChatRoomListApi = async () => {
+    const page = 1;
+    const pageSize = 100;
+    const res = await CHAT.getChatRoomList(page, pageSize);
+    setChatRoomList(res.chatRooms);
+  };
+
   return (
     <div>
       <FlexBox type="flex">
@@ -225,12 +256,15 @@ const UnitComment = ({ id }: BoardIdType) => {
                     <div>데이터없음</div>
                   )}
                 </div>
-
-                {/* 채팅창 모달 켜질 부분*/}
                 {data.isAuthor ? (
                   <S.HelpCommentButtonBox>
                     <img
-                      onClick={() => handleRouteUserLink('/chat/home')}
+                      onClick={() =>
+                        handleChatIconClick({
+                          mentorId: data.userId,
+                          mentorName: data.user.name,
+                        })
+                      }
                       src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
                       alt="채팅아이콘"
                     />
@@ -243,7 +277,12 @@ const UnitComment = ({ id }: BoardIdType) => {
                 ) : (
                   <S.HelpCommentButtonBox>
                     <img
-                      onClick={() => handleRouteUserLink('/chat/home')}
+                      onClick={() =>
+                        handleChatIconClick({
+                          mentorId: data.userId,
+                          mentorName: data.user.name,
+                        })
+                      }
                       src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
                       alt="채팅아이콘"
                     />

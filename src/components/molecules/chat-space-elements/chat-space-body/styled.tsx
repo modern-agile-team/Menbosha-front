@@ -44,6 +44,7 @@ export const ChatBubble = styled.div<{ isHost: boolean }>`
   background-color: ${({ isHost }) => (isHost ? '#FF772B' : '#ffffff')};
   border: ${({ isHost }) => (isHost ? 'none' : '2px solid #FF772B')};
   border-radius: 10px;
+  z-index: ${({ isHost }) => (isHost ? 'auto' : '10000')};
   & > span {
     margin: 7px 12px;
     line-height: 150%;

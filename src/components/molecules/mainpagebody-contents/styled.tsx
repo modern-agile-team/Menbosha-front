@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 // 멘보샤처럼 맛있게.
@@ -193,7 +194,7 @@ export const InfoBox = styled.div`
   width: 22vw;
   height: 23vh;
   @media only all and (max-height: 900px) {
-    font-size: 50%;
+    font-size: 80%;
   }
   justify-content: space-around;
   border: 3px solid #ff772b;
@@ -208,6 +209,7 @@ export const InfoTitleBox = styled.div`
   padding-left: 2vh;
   font-weight: 700;
   text-align: start;
+  /* border: 2px solid black; */
 `;
 
 export const InfoTextBox = styled.div`
@@ -318,9 +320,25 @@ export const MainContents5Left = styled.div`
   }
 `;
 
-export const MainContents5Right = styled.img`
-  width: 7vw;
-  height: 12vh;
-  margin-right: 1vw;
+export const GoToRouteBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15vw;
   cursor: pointer;
+  //아이콘
+  & > :nth-child(1) {
+    width: 5vw;
+    height: 10vh;
+  }
+  //~~하러가기
+  & > :nth-child(2) {
+    font-size: 0.8em;
+    font-weight: 400;
+    text-decoration: none;
+    color: #fff;
+    @media only all and (max-width: 1200px) {
+      font-size: 0.4em;
+    }
+  }
 `;

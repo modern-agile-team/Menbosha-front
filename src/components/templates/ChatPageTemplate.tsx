@@ -11,6 +11,7 @@ import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import USER from '@/apis/user';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { useSocket } from '@/hooks/useSocket';
+import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 export interface MyIdType {
   myId: number;
 }
@@ -18,6 +19,8 @@ export interface MyIdType {
 const ChatPageTemplate = () => {
   const [chatRoomList, setChatRoomList] =
     useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
+  const [selectedRoomId, setSelectedRoomId] =
+    useRecoilState(SelectedRoomIdAtom);
   const [myId, setMyId] = useState(0);
   const [readyMyId, setReadyMyId] = useState(false);
   const chatContents = useRecoilValue(ChatContentsAtom);
@@ -36,7 +39,6 @@ const ChatPageTemplate = () => {
   useEffect(() => {
     getMyIdApi();
   }, []);
-  console.log(myId);
 
   /** 채팅룸 전체조회 api */
   const getChatRoomListApi = async () => {
@@ -48,12 +50,14 @@ const ChatPageTemplate = () => {
 
   useEffect(() => {
     getChatRoomListApi();
-  }, [chatContents]);
+  }, [chatContents, selectedRoomId]);
 
   useEffect(() => {
     getChatRoomListApi();
+    setSelectedRoomId('');
   }, []);
-  console.log(chatRoomList);
+
+  // console.log(chatRoomList);
 
   const joinSocket = useCallback(() => {
     if (socket && readyMyId === true && myId !== 0) {
@@ -76,7 +80,7 @@ const ChatPageTemplate = () => {
   // 계속 Join 요청 되는 것 부분
   useEffect(() => {
     joinSocket();
-  }, [myId, allChatRoomId]);
+  }, [myId]);
 
   return readyMyId ? (
     <S.PageWrapperRaw>

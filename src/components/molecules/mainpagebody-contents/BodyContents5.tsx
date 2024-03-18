@@ -1,26 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styled';
+import ScrollToTopButton from '@/components/common/scroll-to-top/ScrollToTopButton';
+import useModal from '@/hooks/useModal';
+import { useRecoilValue } from 'recoil';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import LoginModal from '@/components/organisms/auth/LoginModal';
+import { useRouter } from 'next/router';
 
 const BodyContents5 = () => {
-  const goToTopButtonRef = useRef<HTMLImageElement>(null);
+  const { isOpenModal, handleModal } = useModal();
+  const isLogin = useRecoilValue(LoginStateAtom);
+  const router = useRouter();
 
-  useEffect(() => {
-    const handleGoToTop = () => {
-      const rightButton = goToTopButtonRef.current;
-      if (rightButton) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
-
-    const rightButton = goToTopButtonRef.current;
-
-    if (rightButton) {
-      rightButton.addEventListener('click', handleGoToTop);
-      return () => {
-        rightButton.removeEventListener('click', handleGoToTop);
-      };
-    }
-  }, []);
+  const handleRouteMypage = () => {
+    router.push('/mypage');
+  };
 
   return (
     <S.MainContentsContainer5>
@@ -32,11 +26,25 @@ const BodyContents5 = () => {
             능력을 마음껏 펼쳐주세요.
           </div>
         </S.MainContents5Left>
-        <S.MainContents5Right
-          ref={goToTopButtonRef}
-          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/gotoup.svg"
-          alt="GotoUP"
-        />
+        {!isLogin ? (
+          <S.GoToRouteBox>
+            <img
+              onClick={handleModal}
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/sign-inBtn.svg"
+              alt="SignIn"
+            />
+            <div>로그인 하러가기</div>
+          </S.GoToRouteBox>
+        ) : (
+          <S.GoToRouteBox onClick={handleRouteMypage}>
+            <img
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
+              alt="UserIcon"
+            />
+            <div>프로필 수정하러 가기</div>
+          </S.GoToRouteBox>
+        )}
+        {isOpenModal && <LoginModal show={isOpenModal} hide={handleModal} />}
       </S.MainContentsTitleArea5>
     </S.MainContentsContainer5>
   );
