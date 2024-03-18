@@ -55,7 +55,7 @@ const ChatPageTemplate = () => {
   }, [chatContents, selectedRoomId]);
 
   useEffect(() => {
-    router.reload();
+    // router.reload();
     getChatRoomListApi();
     setSelectedRoomId('');
   }, []);
