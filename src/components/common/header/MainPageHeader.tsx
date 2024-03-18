@@ -19,6 +19,7 @@ const MainPageHeader = () => {
   const setLoginState = useSetRecoilState(LoginStateAtom);
   const [isSide, setIsSide] = useState(false);
   const chatContents = useRecoilValue(ChatContentsAtom);
+  const [showNotificationIcon, setShowNotificationIcon] = useState(false);
 
   const handleLogoutApi = async () => {
     const logout = confirm('정말로 로그아웃하시겠습니까?');
@@ -30,6 +31,10 @@ const MainPageHeader = () => {
       router.push(`/`);
     }
   };
+
+  useEffect(() => {
+    setShowNotificationIcon(true);
+  }, [chatContents]);
 
   useEffect(() => {
     const provider = window.localStorage.getItem('provider');
@@ -93,7 +98,11 @@ const MainPageHeader = () => {
                   pathname: `/chat/home`,
                 }}>
                 <Image
-                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                  src={
+                    showNotificationIcon
+                      ? 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/chatIcon-notification.svg'
+                      : 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg'
+                  }
                   alt="ChatIcon"
                   width="24"
                   height="24"
@@ -174,7 +183,11 @@ const MainPageHeader = () => {
                     pathname: `chat/home`,
                   }}>
                   <Image
-                    src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                    src={
+                      showNotificationIcon
+                        ? 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/chatIcon-notification.svg'
+                        : 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg'
+                    }
                     alt="ChatIcon"
                     width="24"
                     height="24"
