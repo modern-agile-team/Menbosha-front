@@ -33,6 +33,10 @@ const nextConfig = {
   //     },
   //   ];
   // },
+  //강제 리다이렉트 실행
+  async middleware() {
+    return ['./src/middleware'];
+  },
   rewrites() {
     return {
       beforeFiles: [
@@ -49,43 +53,6 @@ const nextConfig = {
       ],
     };
   },
-  // //vercel환경에서 api요청 rewrites 현재는 안씀 사용하게 되면, 사용
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: `/auth/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}auth/:path*`,
-  //     },
-  //     {
-  //       source: `/chat/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}chat/:path*`,
-  //     },
-  //     {
-  //       source: `/help-me-boards/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}help-me-boards/:path*`,
-  //     },
-  //     {
-  //       source: `/help-you-comments/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}help-you-comments/:path*`,
-  //     },
-  //     {
-  //       source: `/mentors/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}mentors/:path*`,
-  //     },
-  //     {
-  //       source: `/mentor-boards/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}mentor-boards/:path*`,
-  //     },
-  //     {
-  //       source: `/report/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}report/:path*`,
-  //     },
-  //     {
-  //       source: `/user/:path*`,
-  //       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}user/:path*`,
-  //     },
-  //   ];
-  // },
   generateEtags: false,
   images: {
     loader: 'imgix', // 'imgix'에서 'default'로 변경
