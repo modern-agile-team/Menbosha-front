@@ -198,7 +198,7 @@ const UnitComment = ({ id }: BoardIdType) => {
     mentorId,
     mentorName,
   }: handleChatIconClickType) => {
-    if (isLogin === false) {
+    if (isLogin) {
       alert('로그인이 필요합니다.');
     } else {
       const confirmed = window.confirm(
