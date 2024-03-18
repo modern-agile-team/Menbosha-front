@@ -8,6 +8,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
+import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 
 const MainPageHeader = () => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const MainPageHeader = () => {
   const [provider, setProvider] = useState('');
   const setLoginState = useSetRecoilState(LoginStateAtom);
   const [isSide, setIsSide] = useState(false);
+  const chatContents = useRecoilValue(ChatContentsAtom);
 
   const handleLogoutApi = async () => {
     await AUTH.handleLogout(provider);

@@ -12,7 +12,6 @@ import USER from '@/apis/user';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import { useSocket } from '@/hooks/useSocket';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
-import { useRouter } from 'next/router';
 export interface MyIdType {
   myId: number;
 }
@@ -26,7 +25,6 @@ const ChatPageTemplate = () => {
   const [readyMyId, setReadyMyId] = useState(false);
   const chatContents = useRecoilValue(ChatContentsAtom);
   const socket = useSocket();
-  const router = useRouter();
 
   const allChatRoomId = chatRoomList.map((data) => data.chatRooms._id);
   const emitData = { userId: myId, chatRoomIds: allChatRoomId };
@@ -63,7 +61,7 @@ const ChatPageTemplate = () => {
   // console.log(chatRoomList);
 
   const joinSocket = useCallback(() => {
-    if (socket && readyMyId === true && myId !== 0) {
+    if (socket && readyMyId === true && myId !== 0 && allChatRoomId) {
       console.log('Room Join', {
         userId: myId,
         chatRoomIds: allChatRoomId,
