@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const SlideContain = styled.div`
   overflow: hidden;
-  width: 46vw;
-  height: 27vh;
+  width: 45vw;
+  height: 34vh;
 `;
 
 export const SlidImages = styled.div`
@@ -24,12 +24,11 @@ export const ImageNextNPrevButton = styled.div`
 export const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50vw;
 `;
 
 export const BodyImages = styled.img`
-  width: 46vw;
-  height: 27vh;
+  width: 45vw;
+  height: 34vh;
   object-fit: scale-down;
   background-color: #999;
 `;
