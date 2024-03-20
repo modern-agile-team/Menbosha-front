@@ -54,6 +54,7 @@ const MainPageHeader = () => {
       const pageSize = 100;
       const res = await CHAT.getChatRoomList(page, pageSize);
       setChatRoomList(res.chatRooms);
+      console.log(chatRoomList);
     }
   };
 
