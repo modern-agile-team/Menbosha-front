@@ -4,11 +4,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useModal from '@/hooks/useModal';
 import LoginModal from '@/components/organisms/auth/LoginModal';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
 import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
+import USER from '@/apis/user';
+import { UserIdAtom } from '@/recoil/atoms/UserIdAtom';
+import CHAT from '@/apis/chat';
+import { ChatRoomListType } from '@/types/chat';
+import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const MainPageHeader = () => {
   const router = useRouter();
@@ -18,7 +23,11 @@ const MainPageHeader = () => {
   const [provider, setProvider] = useState('');
   const setLoginState = useSetRecoilState(LoginStateAtom);
   const [isSide, setIsSide] = useState(false);
+  const [myId, setMyId] = useRecoilState(UserIdAtom);
+  const [chatRoomList, setChatRoomList] =
+    useRecoilState<ChatRoomListType[]>(ChatRoomListAtom);
   const chatContents = useRecoilValue(ChatContentsAtom);
+  const [showNotificationIcon, setShowNotificationIcon] = useState(false);
 
   const handleLogoutApi = async () => {
     const logout = confirm('정말로 로그아웃하시겠습니까?');
@@ -30,6 +39,35 @@ const MainPageHeader = () => {
       router.push(`/`);
     }
   };
+  /** 본인 id넘버 조회 api */
+  const getMyIdApi = async () => {
+    if (isLogin) {
+      const res = await USER.getMyInfo();
+      setMyId(res.id);
+    }
+  };
+
+  /** 채팅룸 전체조회 api */
+  const getChatRoomListApi = async () => {
+    if (isLogin) {
+      const page = 1;
+      const pageSize = 100;
+      const res = await CHAT.getChatRoomList(page, pageSize);
+      setChatRoomList(res.chatRooms);
+      console.log(chatRoomList);
+    }
+  };
+
+  useEffect(() => {
+    getMyIdApi();
+    getChatRoomListApi();
+  }, [isLogin]);
+
+  // 다음 작업 여기서부터!!!!
+  /** unreadMessage 있을 때 채팅 알람 아이콘으로 변경 */
+  useEffect(() => {
+    setShowNotificationIcon(true);
+  }, [chatContents]);
 
   useEffect(() => {
     const provider = window.localStorage.getItem('provider');
@@ -93,7 +131,11 @@ const MainPageHeader = () => {
                   pathname: `/chat/home`,
                 }}>
                 <Image
-                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                  src={
+                    showNotificationIcon
+                      ? 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/chatIcon-notice.svg'
+                      : 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg'
+                  }
                   alt="ChatIcon"
                   width="24"
                   height="24"
@@ -174,7 +216,11 @@ const MainPageHeader = () => {
                     pathname: `chat/home`,
                   }}>
                   <Image
-                    src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                    src={
+                      showNotificationIcon
+                        ? 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/chatIcon-notice.svg'
+                        : 'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg'
+                    }
                     alt="ChatIcon"
                     width="24"
                     height="24"

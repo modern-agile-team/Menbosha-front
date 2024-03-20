@@ -4,7 +4,6 @@ export const MarqueeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  /* margin-top: 100px; */
   /* border: 2px solid white; */
 `;
 
@@ -24,16 +23,16 @@ export const MarqueeBox = styled.div`
   font-weight: 700;
   border: 5px solid #ff772b;
   border-radius: 30px;
-  @media only all and (max-width: 1000px) {
+  @media only all and (max-width: 1600px), (max-height: 900px) {
     font-size: 1.5em;
     height: 12vh;
   }
-  @media only all and (max-width: 750px) {
-    font-size: 1em;
+  @media only all and (max-width: 1280px), (max-height: 600px) {
+    font-size: 1.2em;
     height: 10vh;
   }
-  @media only all and (max-width: 500px) {
-    font-size: 0.5em;
+  @media only all and (max-width: 900px), (max-height: 400px) {
+    font-size: 0.83em;
     height: 8vh;
   }
 `;
