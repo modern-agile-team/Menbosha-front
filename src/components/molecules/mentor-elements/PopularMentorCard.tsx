@@ -13,7 +13,7 @@ const PopularMentorCard = (props: MentorPopCardType) => {
 
   const getRankList = () => {
     const temp = rankList.find(
-      (data) => data.range[0] < props?.rank && data.range[1] > props?.rank,
+      (data) => data.range[0] < props?.rank && data.range[1] >= props?.rank,
     );
     temp &&
       setRankInfo((prev) => {

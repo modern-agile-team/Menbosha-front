@@ -44,7 +44,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
     if (getUserInfo) {
       const rankImage = rankList.find(
         (data) =>
-          data.range[0] < getUserInfo.rank && data.range[1] > getUserInfo.rank,
+          data.range[0] < getUserInfo.rank && data.range[1] >= getUserInfo.rank,
       );
       rankImage &&
         setRank((prev) => {

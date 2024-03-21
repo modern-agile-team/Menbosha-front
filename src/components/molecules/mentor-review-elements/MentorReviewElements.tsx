@@ -13,7 +13,7 @@ const MentorReviewElements = (props: ReviewProprType) => {
   const getRankInfo = () => {
     if (props) {
       const rankImage = rankList.find(
-        (data) => data.range[0] < props.rank && data.range[1] > props.rank,
+        (data) => data.range[0] < props.rank && data.range[1] >= props.rank,
       );
       rankImage &&
         setRank((prev) => {
