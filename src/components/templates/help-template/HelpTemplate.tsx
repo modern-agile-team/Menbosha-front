@@ -92,7 +92,7 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
       </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.HelpBoardListContainer>
-          <S.BoardTitleBox>끌올된 게시판</S.BoardTitleBox>
+          <S.BoardTitleBox>잠깐, 이 글 하나만 보고가주세요.</S.BoardTitleBox>
           <HelpPullingBoardList
             filterCategoryId={Number(router.query.filterId)}
           />

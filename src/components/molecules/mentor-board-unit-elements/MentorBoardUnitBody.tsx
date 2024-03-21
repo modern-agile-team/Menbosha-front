@@ -5,6 +5,8 @@ import * as S from './style';
 import { useEffect, useState } from 'react';
 import MENTOR from '@/apis/mentor';
 import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 
 const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
   const { slideRef, handleSlidePrev, handleSlideNext } = useCarousel(
@@ -15,6 +17,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
     count: 0,
     isLike: props.isLike,
   });
+  const isLogin = useRecoilValue(LoginStateAtom);
 
   useEffect(() => {
     setHtml(true);
@@ -28,31 +31,35 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
 
   /**좋아요 핸들러 */
   const handleLike = async () => {
-    if (!like.isLike) {
-      try {
-        await MENTOR.createLike(props.id, props.userId);
+    if (isLogin) {
+      if (!like.isLike) {
+        try {
+          await MENTOR.createLike(props.id, props.userId);
+          setLike((prev) => {
+            return {
+              ...prev,
+              count: like.count + 1,
+              isLike: true,
+            };
+          });
+        } catch (err) {
+          if (axios.isAxiosError(err) && err.response) {
+            err.response.data.statusCode === 403 &&
+              alert(err.response.data.message);
+          }
+        }
+      } else {
+        await MENTOR.deleteLike(props.id, props.userId);
         setLike((prev) => {
           return {
             ...prev,
-            count: like.count + 1,
-            isLike: true,
+            count: like.count - 1,
+            isLike: false,
           };
         });
-      } catch (err) {
-        if (axios.isAxiosError(err) && err.response) {
-          err.response.data.statusCode === 403 &&
-            alert(err.response.data.message);
-        }
       }
     } else {
-      await MENTOR.deleteLike(props.id, props.userId);
-      setLike((prev) => {
-        return {
-          ...prev,
-          count: like.count - 1,
-          isLike: false,
-        };
-      });
+      alert('로그인이 필요합니다.');
     }
   };
 

@@ -93,7 +93,7 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
       </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
-          <S.ListTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.ListTitleBox>
+          <S.ListTitleBox>랜덤 멘토 게시글</S.ListTitleBox>
           <RandomMentorBoard filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
