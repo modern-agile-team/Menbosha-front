@@ -34,24 +34,19 @@ const nextConfig = {
   //   ];
   // },
   //강제 리다이렉트 실행
-  async middleware() {
-    return ['./src/middleware'];
-  },
   rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'www.menbosha.kr',
-            },
-          ],
-          destination: 'https://menbosha.kr/:path*',
-        },
-      ],
-    };
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.menbosha.kr',
+          },
+        ],
+        destination: '//:path*',
+      },
+    ];
   },
   generateEtags: false,
   images: {
