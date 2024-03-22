@@ -25,7 +25,7 @@ export const MentorCardContentBox = styled.div`
   width: 40%;
   padding: 12px 0px 0px 0px;
   color: #000;
-  @media only all and (max-width: 500px) and (max-height: 800px) {
+  @media only all and (max-width: 500px) and (max-height: 600px) {
     overflow: hidden;
   }
   //전체 멘토 카드 중, name
@@ -90,7 +90,7 @@ export const RankBox = styled.div`
   }
   //랭크 이름
   > :nth-child(2) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
+    @media only all and (max-width: 600px), (max-height: 600px) {
       display: none;
     }
     font-size: 0.63em;
@@ -98,7 +98,7 @@ export const RankBox = styled.div`
   }
   //랭크 점수
   > :nth-child(3) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
+    @media only all and (max-width: 600px), (max-height: 600px) {
       display: none;
     }
     font-size: 0.5em; //Regular
@@ -117,7 +117,7 @@ export const NameBox = styled.div`
   margin-left: 30px;
   //card 이름 부분
   & > :nth-child(1) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
+    @media only all and (max-width: 600px), (max-height: 600px) {
       font-size: 0.5em;
     }
     font-size: 0.85em; //20px
@@ -136,7 +136,7 @@ export const NameBox = styled.div`
   }
   //card shortIntro 부분
   & > :nth-child(3) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
+    @media only all and (max-width: 600px), (max-height: 600px) {
       font-size: 0.3em;
     }
     flex-wrap: wrap;
@@ -155,7 +155,6 @@ export const CountContainer = styled.div`
 export const CountBox = styled.div`
   display: flex;
   margin-right: 30px;
-  width: 100%;
   //카운트 박스 중 아이콘
   & > :nth-child(1) {
     margin-right: 6px;
@@ -181,27 +180,28 @@ export const PopularMentorCardContainer = styled.div`
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  transition: all 250ms ease;
+  transition: all 0.3s ease;
   &:hover {
     border: 5px solid #ff792bbf;
     margin: -3px;
   }
   //이미지 크기 1700이하 반응형
   & > :nth-child(1) {
-    width: 82.86%; //232
-    height: 47.809%; //232 */
-    margin: 4.29%; //24
+    width: 12vw; //232
+    height: 20vh; //232 */
+    margin: 1.3vw 0px; //24
+    @media only all and (max-width: 700px) {
+      width: 20vw;
+    }
     background-color: #999;
     border-radius: 10px;
   }
 `;
 
 export const BadgeBox = styled.div`
-  width: 30.3%;
   margin: 14px;
   & > img {
     border-radius: 15px;
-    height: 166px;
-    width: 100%;
+    height: 13vh;
   }
 `;

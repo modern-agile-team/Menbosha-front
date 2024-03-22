@@ -43,12 +43,12 @@ export const MentorCardContainer = styled.div`
 `;
 
 export const MentorCardWrapper = styled.div`
-  width: 18%;
+  width: 14.5vw;
   @media only all and (max-width: 1200px) {
-    width: 30%;
+    width: 24.7vw;
   }
   @media only all and (max-width: 500px) {
-    width: 45%;
+    width: 37.9vw;
   }
 `;
 
