@@ -82,24 +82,36 @@ export const RankBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 4vw;
+  /* width: 4vw; */
   //랭크 이미지
   > :nth-child(1) {
-    width: 4vw;
-    height: 4vh;
+    width: 51px;
+    height: 51px;
+    @media only all and (max-width: 1600px), (max-height: 900px) {
+      width: 40px;
+      height: 40px;
+    }
+    @media only all and (max-width: 1280px), (max-height: 600px) {
+      width: 30px;
+      height: 30px;
+    }
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      width: 20px;
+      height: 20px;
+    }
   }
   //랭크 이름
   > :nth-child(2) {
-    @media only all and (max-width: 600px), (max-height: 600px) {
-      display: none;
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      font-size: 0.4em;
     }
     font-size: 0.63em;
     font-weight: 500; //Medium
   }
   //랭크 점수
   > :nth-child(3) {
-    @media only all and (max-width: 600px), (max-height: 600px) {
-      display: none;
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      font-size: 0.3em;
     }
     font-size: 0.5em; //Regular
     font-weight: 400;
@@ -180,7 +192,7 @@ export const PopularMentorCardContainer = styled.div`
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 250ms ease;
   &:hover {
     border: 5px solid #ff792bbf;
     margin: -3px;
