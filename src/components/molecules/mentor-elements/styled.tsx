@@ -25,7 +25,7 @@ export const MentorCardContentBox = styled.div`
   width: 40%;
   padding: 12px 0px 0px 0px;
   color: #000;
-  @media only all and (max-width: 500px) and (max-height: 800px) {
+  @media only all and (max-width: 500px) and (max-height: 600px) {
     overflow: hidden;
   }
   //전체 멘토 카드 중, name
@@ -82,24 +82,36 @@ export const RankBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 4vw;
+  /* width: 4vw; */
   //랭크 이미지
   > :nth-child(1) {
-    width: 4vw;
-    height: 4vh;
+    width: 51px;
+    height: 51px;
+    @media only all and (max-width: 1600px), (max-height: 900px) {
+      width: 40px;
+      height: 40px;
+    }
+    @media only all and (max-width: 1280px), (max-height: 600px) {
+      width: 30px;
+      height: 30px;
+    }
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      width: 20px;
+      height: 20px;
+    }
   }
   //랭크 이름
   > :nth-child(2) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
-      display: none;
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      font-size: 0.4em;
     }
     font-size: 0.63em;
     font-weight: 500; //Medium
   }
   //랭크 점수
   > :nth-child(3) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
-      display: none;
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      font-size: 0.3em;
     }
     font-size: 0.5em; //Regular
     font-weight: 400;
@@ -117,7 +129,7 @@ export const NameBox = styled.div`
   margin-left: 30px;
   //card 이름 부분
   & > :nth-child(1) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
+    @media only all and (max-width: 600px), (max-height: 600px) {
       font-size: 0.5em;
     }
     font-size: 0.85em; //20px
@@ -136,7 +148,7 @@ export const NameBox = styled.div`
   }
   //card shortIntro 부분
   & > :nth-child(3) {
-    @media only all and (max-width: 500px), (max-height: 800px) {
+    @media only all and (max-width: 600px), (max-height: 600px) {
       font-size: 0.3em;
     }
     flex-wrap: wrap;
@@ -155,7 +167,6 @@ export const CountContainer = styled.div`
 export const CountBox = styled.div`
   display: flex;
   margin-right: 30px;
-  width: 100%;
   //카운트 박스 중 아이콘
   & > :nth-child(1) {
     margin-right: 6px;
@@ -188,20 +199,21 @@ export const PopularMentorCardContainer = styled.div`
   }
   //이미지 크기 1700이하 반응형
   & > :nth-child(1) {
-    width: 82.86%; //232
-    height: 47.809%; //232 */
-    margin: 4.29%; //24
+    width: 12vw; //232
+    height: 20vh; //232 */
+    margin: 1.3vw 0px; //24
+    @media only all and (max-width: 700px) {
+      width: 20vw;
+    }
     background-color: #999;
     border-radius: 10px;
   }
 `;
 
 export const BadgeBox = styled.div`
-  width: 30.3%;
   margin: 14px;
   & > img {
     border-radius: 15px;
-    height: 166px;
-    width: 100%;
+    height: 13vh;
   }
 `;

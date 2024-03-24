@@ -52,7 +52,7 @@ const MentorRanking = ({ filterCategoryId }: Partial<FilterPropsType>) => {
       ) : (
         <>{load && <div>명예의 멘토가 존재하지 않습니다.</div>}</>
       )}
-      <>{!load && <SkeletonUI width={'18.519%'} height="38vh" count={5} />}</>
+      <>{!load && <SkeletonUI width={'18%'} height="38vh" count={5} />}</>
     </S.MentorCardContainer>
   );
 };
