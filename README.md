@@ -10,27 +10,27 @@
 
 ### 멤버구성
 
-- 백엔드
+- Back-End
   <table>
     <tr>
-      <td align="center"><a href="https://github.com/hobiJeong"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/cbc5dd4c-c6ec-4ba7-9856-cdb58576cb4c/KakaoTalk_20230831_154444245.jpg?id=eb170196-5d31-4985-9617-19a6a57086ef&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=Rv-ZiRv1hxaJjfIQJFNny8jiT95sK2FN9B2TkVII0RI&downloadName=KakaoTalk_20230831_154444245.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정비호</b></sub></a><br /><a href="https://github.com/hobiJeong" title="Packaging/porting to new platform">Back-End</a></td>
-      <td align="center"><a href="https://github.com/2swo"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/203630b9-3b5d-4b74-8393-61bab89928e2/IMG_1133.jpeg?id=0294c278-35dd-4562-8f28-86d8afed963e&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=uJUsmJrb7kShqI57r3-msnTBrvzhIopauEfHMo9XkwA&downloadName=IMG_1133.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>이승우</b></sub></a><br /><a href="https://github.com/2swo" title="Packaging/porting to new platform">Back-End</a></td>
-      <td align="center"><a href="https://github.com/NicoDora"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/7ff558d0-c97b-4714-b531-987ec35365d1/KakaoTalk_20230530_132243331_02.jpg?id=82258536-7072-4faf-b576-2fd76d1521ba&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=84rMqLcr8vqkDSgeIiSjIWnsP3zHsepUE3LEfm95jEU&downloadName=KakaoTalk_20230530_132243331_02.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>박준혁</b></sub></a><br /><a href="https://github.com/NicoDora" title="Packaging/porting to new platform">Back-End</a></td>
+      <td align="center"><a href="https://github.com/hobiJeong"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/cbc5dd4c-c6ec-4ba7-9856-cdb58576cb4c/KakaoTalk_20230831_154444245.jpg?id=eb170196-5d31-4985-9617-19a6a57086ef&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=Rv-ZiRv1hxaJjfIQJFNny8jiT95sK2FN9B2TkVII0RI&downloadName=KakaoTalk_20230831_154444245.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정비호</b></sub></a><br /><a href="https://github.com/hobiJeong" title="Packaging/porting to new platform">백엔드 팀원</a></td>
+      <td align="center"><a href="https://github.com/2swo"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/203630b9-3b5d-4b74-8393-61bab89928e2/IMG_1133.jpeg?id=0294c278-35dd-4562-8f28-86d8afed963e&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=uJUsmJrb7kShqI57r3-msnTBrvzhIopauEfHMo9XkwA&downloadName=IMG_1133.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>이승우</b></sub></a><br /><a href="https://github.com/2swo" title="Packaging/porting to new platform">백엔드 팀장</a></td>
+      <td align="center"><a href="https://github.com/NicoDora"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/7ff558d0-c97b-4714-b531-987ec35365d1/KakaoTalk_20230530_132243331_02.jpg?id=82258536-7072-4faf-b576-2fd76d1521ba&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=84rMqLcr8vqkDSgeIiSjIWnsP3zHsepUE3LEfm95jEU&downloadName=KakaoTalk_20230530_132243331_02.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>박준혁</b></sub></a><br /><a href="https://github.com/NicoDora" title="Packaging/porting to new platform">부회장</a></td>
     </tr>
   </table>
-- 프론트엔드
+- Front-End
   <table>
     <tr>
-      <td align="center"><a href="https://github.com/CBWDG"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e6fd1ebb-05fe-44e4-af77-3604d1f80bb1/Untitled.png?id=e2a3f4fc-c37f-42b4-9a5d-97bd8a3b04b3&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=tJnPwwIIvoTW9erHXEHBrRQTx_RQvRMC7JTpb9vyszc&downloadName=Untitled.png" width="100px;" height="100px"; alt=""/><br /><sub><b>원동건</b></sub></a><br /><a href="https://github.com/CBWDG" title="Packaging/porting to new platform">Front-End</a></td>
-      <td align="center"><a href="https://github.com/zzzRYT"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/338cf61c-cbf5-4b76-acf6-a7a9b4deb652/KakaoTalk_20230530_132243331_01.jpg?id=58b7705d-7ff7-49d0-896f-41170a63a5de&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=HSFDOtbbu8Md6z5b9wmf4Y1gcinEVNDkD39Jbh0f0gQ&downloadName=KakaoTalk_20230530_132243331_01.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>이재진</b></sub></a><br /><a href="https://github.com/zzzRYT" title="Packaging/porting to new platform">Front-End</a></td>
+      <td align="center"><a href="https://github.com/CBWDG"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e6fd1ebb-05fe-44e4-af77-3604d1f80bb1/Untitled.png?id=e2a3f4fc-c37f-42b4-9a5d-97bd8a3b04b3&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=tJnPwwIIvoTW9erHXEHBrRQTx_RQvRMC7JTpb9vyszc&downloadName=Untitled.png" width="100px;" height="100px"; alt=""/><br /><sub><b>원동건</b></sub></a><br /><a href="https://github.com/CBWDG" title="Packaging/porting to new platform">프론트엔트 팀장</a></td>
+      <td align="center"><a href="https://github.com/zzzRYT"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/338cf61c-cbf5-4b76-acf6-a7a9b4deb652/KakaoTalk_20230530_132243331_01.jpg?id=58b7705d-7ff7-49d0-896f-41170a63a5de&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=HSFDOtbbu8Md6z5b9wmf4Y1gcinEVNDkD39Jbh0f0gQ&downloadName=KakaoTalk_20230530_132243331_01.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>이재진</b></sub></a><br /><a href="https://github.com/zzzRYT" title="Packaging/porting to new platform">회장</a></td>
     </tr>
   </table>
-- 디자인
+- Design
   <table>
     <tr>
-      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=aa597a24bf3d44ffa4e5b3cb1c31591a&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/ab43deaf-59a7-4ec3-b4dd-a71a75508e45/%EC%86%A1%EC%B9%98%EC%9A%B1%EB%8B%98.jpg?id=bb944638-4858-48c5-b1fe-6c9572d7a499&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=Blc8e01C8BBsjGSg9NLaFQR6ciH0StTOA-J9WwtEk1k&downloadName=%EC%86%A1%EC%B9%98%EC%9A%B1%EB%8B%98.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>송치욱</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=aa597a24bf3d44ffa4e5b3cb1c31591a&pm=c" title="Packaging/porting to new platform">Design</a></td>
-      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=a017cfe72081459ab912a91dda6bf16b&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e39cb3bb-aafd-4d5a-9387-44a5e6b31c50/%EC%A0%95%ED%98%84%EB%AF%BC%EB%8B%98.jpg?id=e988c719-d1d6-4344-b0a6-6bfc73d81c90&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=hj03K-DdMJVswH4M-5dX7GzdqBWXU3v_qw1W5jxuoyE&downloadName=%EC%A0%95%ED%98%84%EB%AF%BC%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정현민</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=a017cfe72081459ab912a91dda6bf16b&pm=c" title="Packaging/porting to new platform">Design</a></td>
-      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/c59ad505-f1bd-4f4a-b690-5800f51cea25/%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg?id=bf4fae0e-d698-4f17-98e8-96bc2bb85967&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=FrKTyBIee8S-3kLoQbXuwvswd2VBM0dX8Hrp9Ii78Hs&downloadName=%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정효준</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c" title="Packaging/porting to new platform">Design</a></td>
+      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=aa597a24bf3d44ffa4e5b3cb1c31591a&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/ab43deaf-59a7-4ec3-b4dd-a71a75508e45/%EC%86%A1%EC%B9%98%EC%9A%B1%EB%8B%98.jpg?id=bb944638-4858-48c5-b1fe-6c9572d7a499&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=Blc8e01C8BBsjGSg9NLaFQR6ciH0StTOA-J9WwtEk1k&downloadName=%EC%86%A1%EC%B9%98%EC%9A%B1%EB%8B%98.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>송치욱</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=aa597a24bf3d44ffa4e5b3cb1c31591a&pm=c" title="Packaging/porting to new platform">디자인 팀원</a></td>
+      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=a017cfe72081459ab912a91dda6bf16b&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e39cb3bb-aafd-4d5a-9387-44a5e6b31c50/%EC%A0%95%ED%98%84%EB%AF%BC%EB%8B%98.jpg?id=e988c719-d1d6-4344-b0a6-6bfc73d81c90&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=hj03K-DdMJVswH4M-5dX7GzdqBWXU3v_qw1W5jxuoyE&downloadName=%EC%A0%95%ED%98%84%EB%AF%BC%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정현민</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=a017cfe72081459ab912a91dda6bf16b&pm=c" title="Packaging/porting to new platform">디자인 팀원</a></td>
+      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/c59ad505-f1bd-4f4a-b690-5800f51cea25/%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg?id=bf4fae0e-d698-4f17-98e8-96bc2bb85967&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=FrKTyBIee8S-3kLoQbXuwvswd2VBM0dX8Hrp9Ii78Hs&downloadName=%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정효준</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c" title="Packaging/porting to new platform">디자인 팀장</a></td>
     </tr>
   </table>
 
@@ -38,34 +38,58 @@
 
 ### 커밋 메시지 컨벤션
 
-`feat` : 새로운 기능 추가
+```
+  git commit -m "feat(#123):커밋 내용"
+```
 
-`modify` : 기능 수정
+`feat(#이슈번호): 커밋내용`
 
-`fix` : 버그 수정
-
-`docs` : 문서 수정
-
-`style` : 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
-
-`refactor` : 코드 리펙토링
-
-`test` : 테스트 코드, 리펙토링 테스트 코드 추가
-
-`chore` : 빌드 업무 수정, 패키지 매니저 수정
-
-`conflict`: 충돌 해결
-
-`publisher` : 페이지 퍼블리싱
-
-예제: `feat(#이슈번호): 커밋내용`
+<figure style="display:flex">
+<img src="./public/images/commitStrategy1.png"><img src="./public/images/commitStrategy2.png">
+</figure>
 
 ### 브랜치 전략
 
 - `feature/기능이름/(#이슈번호)`
+- 이슈 생성 시 자동 브랜치 생성
 
-```
-  git checkout -b [만들 피처브랜치 명] develop
+```yml
+#issue-branch.yml
+branchName: '/${issue.title[0,25]}/#${issue.number}'
+gitSafeReplacementChar: '_'
+defaultBranch: 'develop'
+autoCloseIssue: true
+commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
+branches:
+  - label: 🌏 Deploy
+    prefix: deploy
+  - label: 💻 CrossBrowsing
+    prefix: cross
+
+  ...
+
+  - label: 📌 Release
+    prefix: release
+
+# workflow/create_branch_for_issue.yml
+name: Create Branch For Issue
+on:
+  issues:
+    types: [assigned]
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [closed]
+
+jobs:
+  create_issue_branch_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Issue Branch
+        uses: robvanderleek/create-issue-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 ```
 
 ### 폴더,파일 작성 전략
