@@ -98,7 +98,7 @@ instance.interceptors.response.use(
       }
     } else if (
       error.response.data.statusCode === 400 &&
-      error.response.data.message === 'token not foundjwt malformed'
+      error.response.data.message === 'jwt malformed'
     ) {
       window.alert('로그인이 필요합니다.');
       window.location.href = '/';
