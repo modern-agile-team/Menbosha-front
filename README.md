@@ -69,6 +69,7 @@
 <p align="center">
 <a href="https://nextjs.org/" style="text-decoration: none">
 <img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
+</a>
 <a href="https://ko.legacy.reactjs.org/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/React.js-blue?logo=react"/>
 </a>
@@ -80,6 +81,7 @@
 </a>
 <a href="https://axios-http.com/kr/docs/intro" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
+</a>
 <a href="https://styled-components.com/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
 </a>
