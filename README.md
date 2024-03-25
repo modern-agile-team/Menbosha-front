@@ -98,15 +98,18 @@ jobs:
 - 구분
 
 ```
-  [name] : 폴더
+  name : 폴더(소문자로만, 구분은 '-')
   [name].ts/tsx : 동적경로
   name.ts/tsx : 파일
+  Name.tsx : 컴포넌트
 ```
 
 - 폴더구조
   ```markup
   ├─ public
+  |   ├─ fonts
   │   └─ images
+  |
   └─ src
       ├─ apis
       │    ├─ axiosInstance.ts : axios라이브러리 인스턴스
