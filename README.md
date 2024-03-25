@@ -41,7 +41,7 @@
 <h3 align="center">  
   Language & Tools
 </h3>
-<p align="center">
+<p align="center" style="text-decoration: none">
 <a href="https://developer.mozilla.org/ko/docs/Web/HTML">
   <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
 </a>
