@@ -42,11 +42,30 @@
   Language & Tools
 </h3>
 <p align="center">
+<<<<<<< HEAD
   <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
   <img src= "https://img.shields.io/badge/CSS-blue?logo=css3"/>
   <img src= "https://img.shields.io/badge/Scss-pink?logo=sass"/>
   <img src= "https://img.shields.io/badge/TypeScript-white?logo=typeScript&logoColor=3178C6"/>
   <img src= "https://img.shields.io/badge/VScode-white?logo=visualstudiocode&logoColor=007ACC"/>
+=======
+<a href="https://developer.mozilla.org/ko/docs/Web/HTML" style="text-decoration: none">
+  <img src="https://img.shields.io/badge/HTML-white?logo=html5" style="text-decoration: none"/>
+</a>
+<a href="https://devdocs.io/css/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/CSS-blue?logo=css3" />
+</a>
+<a href="https://sass-lang.com/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/Sass-pink?logo=sass" />
+</a>
+<a href="https://www.typescriptlang.org/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/TypeScript-white?logo=typeScript&logoColor=3178C6"/>
+</a>
+<a href="https://code.visualstudio.com/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/VScode-white?logo=visualstudiocode&logoColor=007ACC"/>
+</a>
+<a href="https://nodejs.org/en" style="text-decoration: none">
+>>>>>>> 79942786ab25297e92ab95976bd4f7e12451ec0d
   <img src= "https://img.shields.io/badge/Node.js-white?logo=nodedotjs&logoColor=#339933"/>
 </p>
 
@@ -55,11 +74,28 @@
 </h3>
 
 <p align="center">
+<<<<<<< HEAD
 <img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
   <img src= "https://img.shields.io/badge/React-blue?logo=react"/>
   <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
   <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
    <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
+=======
+<a href="https://nextjs.org/" style="text-decoration: none">
+<img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
+<a href="https://ko.legacy.reactjs.org/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/React.js-blue?logo=react"/>
+</a>
+<a href="https://socket.io/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
+</a>
+<a href="https://mswjs.io/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
+</a>
+<a href="https://axios-http.com/kr/docs/intro" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
+<a href="https://styled-components.com/" style="text-decoration: none">
+>>>>>>> 79942786ab25297e92ab95976bd4f7e12451ec0d
   <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
 </p>
 
@@ -68,6 +104,10 @@
 </h3>
 
 <p align="center">
+<<<<<<< HEAD
+=======
+<a href = "https://recoiljs.org/ko/" style="text-decoration: none">
+>>>>>>> 79942786ab25297e92ab95976bd4f7e12451ec0d
   <img src= "https://img.shields.io/badge/Recoil-3578E5?logo=Recoil&logoColor=white"/>
 </p>
 
@@ -76,6 +116,10 @@
 </h3>
 
 <p align="center">
+<<<<<<< HEAD
+=======
+<a href="https://webpack.kr/" style="text-decoration: none">
+>>>>>>> 79942786ab25297e92ab95976bd4f7e12451ec0d
    <img src= "https://img.shields.io/badge/WebPack-white?logo=webpack&logoColor=blue"/>
 </p>
 
@@ -84,8 +128,18 @@
 </h3>
 
 <p align="center">
+<<<<<<< HEAD
    <img src= "https://img.shields.io/badge/ESLint-white?logo=eslint&logoColor=4B32C3"/>
    <img src= "https://img.shields.io/badge/Prettier-black?logo=Prettier&logoColor=F7B93E"/>
+=======
+<a href="https://eslint.org/" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/ESLint-white?logo=eslint&logoColor=4B32C3"/>
+</a>
+<a href="https://prettier.io/" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Prettier-black?logo=Prettier&logoColor=F7B93E"/>
+</a>
+<a href="https://www.dotenv.org/docs/" style="text-decoration: none">
+>>>>>>> 79942786ab25297e92ab95976bd4f7e12451ec0d
    <img src= "https://img.shields.io/badge/.ENV-black?logo=dotenv&logoColor=#ECD53F"/>
 </p>
 
@@ -94,12 +148,34 @@
 </h3>
 
 <p align="center">
+<<<<<<< HEAD
    <img src= "https://img.shields.io/badge/Git-white?logo=git&logoColor=F05032"/>
    <img src= "https://img.shields.io/badge/Github-black?logo=github&logoColor=#181717"/>
    <img src= "https://img.shields.io/badge/Github--Actions-white?logo=githubactions&logoColor=2088FF"/>
    <img src= "https://img.shields.io/badge/Slack-white?logo=slack&logoColor=4A154B"/>
    <img src= "https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000"/>
    <img src= "https://img.shields.io/badge/Discord-white?logo=Discord&logoColor=#5865F2"/>
+=======
+<a href="https://git-scm.com/" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Git-white?logo=git&logoColor=F05032"/>
+</a>
+<a href="https://github.com/" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Github-black?logo=github&logoColor=#181717"/>
+</a>
+<a href="https://docs.github.com/ko/actions" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Github--Actions-white?logo=githubactions&logoColor=2088FF"/>
+</a>
+<a href="https://slack.com/intl/ko-kr/" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Slack-white?logo=slack&logoColor=4A154B"/>
+</a>
+<a href="https://www.notion.so/ko-kr" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000"/>
+</a>
+<a href="https://discord.com/" style="text-decoration: none">
+   <img src= "https://img.shields.io/badge/Discord-white?logo=Discord&logoColor=#5865F2"/>
+</a>
+<a href="https://www.figma.com/" style="text-decoration: none">
+>>>>>>> 79942786ab25297e92ab95976bd4f7e12451ec0d
    <img src= "https://img.shields.io/badge/Figma-white?logo=figma&logoColor=#F24E1E"/>
    
 </p>
