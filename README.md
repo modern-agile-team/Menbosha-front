@@ -41,23 +41,23 @@
 <h3 align="center">  
   Language & Tools
 </h3>
-<p align="center" style="text-decoration: none">
-<a href="https://developer.mozilla.org/ko/docs/Web/HTML">
-  <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
+<p align="center">
+<a href="https://developer.mozilla.org/ko/docs/Web/HTML" style="text-decoration: none">
+  <img src="https://img.shields.io/badge/HTML-white?logo=html5" style="text-decoration: none"/>
 </a>
-<a href="https://devdocs.io/css/">
-  <img src= "https://img.shields.io/badge/CSS-blue?logo=css3"/>
+<a href="https://devdocs.io/css/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/CSS-blue?logo=css3" />
 </a>
-<a href="https://sass-lang.com/">
-  <img src= "https://img.shields.io/badge/Sass-pink?logo=sass"/>
+<a href="https://sass-lang.com/" style="text-decoration: none">
+  <img src= "https://img.shields.io/badge/Sass-pink?logo=sass" />
 </a>
-<a href="https://www.typescriptlang.org/">
+<a href="https://www.typescriptlang.org/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/TypeScript-white?logo=typeScript&logoColor=3178C6"/>
 </a>
-<a href="https://code.visualstudio.com/">
+<a href="https://code.visualstudio.com/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/VScode-white?logo=visualstudiocode&logoColor=007ACC"/>
 </a>
-<a href="https://nodejs.org/en">
+<a href="https://nodejs.org/en" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/Node.js-white?logo=nodedotjs&logoColor=#339933"/>
 </a>
 </p>
@@ -67,20 +67,20 @@
 </h3>
 
 <p align="center">
-<a href="https://nextjs.org/">
+<a href="https://nextjs.org/" style="text-decoration: none">
 <img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
-<a href="https://ko.legacy.reactjs.org/">
+<a href="https://ko.legacy.reactjs.org/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/React.js-blue?logo=react"/>
 </a>
-<a href="https://socket.io/">
+<a href="https://socket.io/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
 </a>
-<a href="https://mswjs.io/">
+<a href="https://mswjs.io/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
 </a>
-<a href="https://axios-http.com/kr/docs/intro">
+<a href="https://axios-http.com/kr/docs/intro" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
-<a href="https://styled-components.com/">
+<a href="https://styled-components.com/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
 </a>
 </p>
@@ -90,7 +90,7 @@
 </h3>
 
 <p align="center">
-<a href = "https://recoiljs.org/ko/">
+<a href = "https://recoiljs.org/ko/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/Recoil-3578E5?logo=Recoil&logoColor=white"/>
 </a>
 </p>
@@ -100,7 +100,7 @@
 </h3>
 
 <p align="center">
-<a href="https://webpack.kr/">
+<a href="https://webpack.kr/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/WebPack-white?logo=webpack&logoColor=blue"/>
 </a>
 </p>
@@ -110,13 +110,13 @@
 </h3>
 
 <p align="center">
-<a href="https://eslint.org/">
+<a href="https://eslint.org/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/ESLint-white?logo=eslint&logoColor=4B32C3"/>
 </a>
-<a href="https://prettier.io/">
+<a href="https://prettier.io/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Prettier-black?logo=Prettier&logoColor=F7B93E"/>
 </a>
-<a href="https://www.dotenv.org/docs/">
+<a href="https://www.dotenv.org/docs/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/.ENV-black?logo=dotenv&logoColor=#ECD53F"/>
 </a>
 </p>
@@ -126,25 +126,25 @@
 </h3>
 
 <p align="center">
-<a href="https://git-scm.com/">
+<a href="https://git-scm.com/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Git-white?logo=git&logoColor=F05032"/>
 </a>
-<a href="https://github.com/">
+<a href="https://github.com/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Github-black?logo=github&logoColor=#181717"/>
 </a>
-<a href="https://docs.github.com/ko/actions">
+<a href="https://docs.github.com/ko/actions" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Github--Actions-white?logo=githubactions&logoColor=2088FF"/>
 </a>
-<a href="https://slack.com/intl/ko-kr/">
+<a href="https://slack.com/intl/ko-kr/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Slack-white?logo=slack&logoColor=4A154B"/>
 </a>
-<a href="https://www.notion.so/ko-kr">
+<a href="https://www.notion.so/ko-kr" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000"/>
 </a>
-<a href="https://discord.com/">
+<a href="https://discord.com/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Discord-white?logo=Discord&logoColor=#5865F2"/>
 </a>
-<a href="https://www.figma.com/">
+<a href="https://www.figma.com/" style="text-decoration: none">
    <img src= "https://img.shields.io/badge/Figma-white?logo=figma&logoColor=#F24E1E"/>
 </a>
 </p>
