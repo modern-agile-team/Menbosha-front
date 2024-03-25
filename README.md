@@ -69,25 +69,25 @@
 <p align="center">
   <style>
     a {
-      text-decoration: none;
+      text-decoration: none !important;
     }
   </style>
-  <a href="https://nextjs.org/" style="text-decoration: none">
+  <a href="https://nextjs.org/">
   <img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
   </a>
-  <a href="https://ko.legacy.reactjs.org/" style="text-decoration: none">
+  <a href="https://ko.legacy.reactjs.org/">
   <img src= "https://img.shields.io/badge/React.js-blue?logo=react"/>
   </a>
-  <a href="https://socket.io/" style="text-decoration: none">
+  <a href="https://socket.io/">
   <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
   </a>
-  <a href="https://mswjs.io/" style="text-decoration: none">
+  <a href="https://mswjs.io/">
   <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
   </a>
-  <a href="https://axios-http.com/kr/docs/intro" style="text-decoration: none">
+  <a href="https://axios-http.com/kr/docs/intro">
    <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
   </a>
-  <a href="https://styled-components.com/" style="text-decoration: none">
+  <a href="https://styled-components.com/">
   <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
   </a>
 </p>
