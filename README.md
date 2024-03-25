@@ -1,8 +1,8 @@
-# 멘보샤
+> **_“멘보샤처럼 맛있게, 당신만의 멘토링”_**
 
-## 프로젝트 소개
+멘보샤는 누구나 자유롭게 멘토링을 하거나 받을 수 있는 커뮤니티 입니다. <br>
 
-- 새우를 그냥 튀긴 것보다 양쪽에 빵을 붙여 튀겨서 더 맛있게 만드는 것처럼 서로가 서로에게 빵과 새우의 존재가 될 수 있도록 도와주는 것을 목표로하는 플랫폼
+1대1 실시간 채팅과 리뷰 시스템을 기반으로 쾌적한 멘토링 서비스를 제공합니다 😀
 
 ## 개발기간
 
@@ -11,16 +11,28 @@
 ### 멤버구성
 
 - 백엔드
-  - 이승우
-  - 정비호
-  - 박준혁
+  <table>
+    <tr>
+      <td align="center"><a href="https://github.com/hobiJeong"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/cbc5dd4c-c6ec-4ba7-9856-cdb58576cb4c/KakaoTalk_20230831_154444245.jpg?id=eb170196-5d31-4985-9617-19a6a57086ef&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=Rv-ZiRv1hxaJjfIQJFNny8jiT95sK2FN9B2TkVII0RI&downloadName=KakaoTalk_20230831_154444245.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정비호</b></sub></a><br /><a href="https://github.com/hobiJeong" title="Packaging/porting to new platform">Back-End</a></td>
+      <td align="center"><a href="https://github.com/2swo"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/203630b9-3b5d-4b74-8393-61bab89928e2/IMG_1133.jpeg?id=0294c278-35dd-4562-8f28-86d8afed963e&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=uJUsmJrb7kShqI57r3-msnTBrvzhIopauEfHMo9XkwA&downloadName=IMG_1133.jpeg" width="100px;" height="100px;" alt=""/><br /><sub><b>이승우</b></sub></a><br /><a href="https://github.com/2swo" title="Packaging/porting to new platform">Back-End</a></td>
+      <td align="center"><a href="https://github.com/NicoDora"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/7ff558d0-c97b-4714-b531-987ec35365d1/KakaoTalk_20230530_132243331_02.jpg?id=82258536-7072-4faf-b576-2fd76d1521ba&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=84rMqLcr8vqkDSgeIiSjIWnsP3zHsepUE3LEfm95jEU&downloadName=KakaoTalk_20230530_132243331_02.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>박준혁</b></sub></a><br /><a href="https://github.com/NicoDora" title="Packaging/porting to new platform">Back-End</a></td>
+    </tr>
+  </table>
 - 프론트엔드
-  - 이재진
-  - 원동건
+  <table>
+    <tr>
+      <td align="center"><a href="https://github.com/CBWDG"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e6fd1ebb-05fe-44e4-af77-3604d1f80bb1/Untitled.png?id=e2a3f4fc-c37f-42b4-9a5d-97bd8a3b04b3&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=tJnPwwIIvoTW9erHXEHBrRQTx_RQvRMC7JTpb9vyszc&downloadName=Untitled.png" width="100px;" height="100px"; alt=""/><br /><sub><b>원동건</b></sub></a><br /><a href="https://github.com/CBWDG" title="Packaging/porting to new platform">Front-End</a></td>
+      <td align="center"><a href="https://github.com/zzzRYT"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/338cf61c-cbf5-4b76-acf6-a7a9b4deb652/KakaoTalk_20230530_132243331_01.jpg?id=58b7705d-7ff7-49d0-896f-41170a63a5de&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=HSFDOtbbu8Md6z5b9wmf4Y1gcinEVNDkD39Jbh0f0gQ&downloadName=KakaoTalk_20230530_132243331_01.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>이재진</b></sub></a><br /><a href="https://github.com/zzzRYT" title="Packaging/porting to new platform">Front-End</a></td>
+    </tr>
+  </table>
 - 디자인
-  - 정효준
-  - 정현민
-  - 송치욱
+  <table>
+    <tr>
+      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=aa597a24bf3d44ffa4e5b3cb1c31591a&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/ab43deaf-59a7-4ec3-b4dd-a71a75508e45/%EC%86%A1%EC%B9%98%EC%9A%B1%EB%8B%98.jpg?id=bb944638-4858-48c5-b1fe-6c9572d7a499&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=Blc8e01C8BBsjGSg9NLaFQR6ciH0StTOA-J9WwtEk1k&downloadName=%EC%86%A1%EC%B9%98%EC%9A%B1%EB%8B%98.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>송치욱</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=aa597a24bf3d44ffa4e5b3cb1c31591a&pm=c" title="Packaging/porting to new platform">Design</a></td>
+      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=a017cfe72081459ab912a91dda6bf16b&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e39cb3bb-aafd-4d5a-9387-44a5e6b31c50/%EC%A0%95%ED%98%84%EB%AF%BC%EB%8B%98.jpg?id=e988c719-d1d6-4344-b0a6-6bfc73d81c90&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=hj03K-DdMJVswH4M-5dX7GzdqBWXU3v_qw1W5jxuoyE&downloadName=%EC%A0%95%ED%98%84%EB%AF%BC%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정현민</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=a017cfe72081459ab912a91dda6bf16b&pm=c" title="Packaging/porting to new platform">Design</a></td>
+      <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/c59ad505-f1bd-4f4a-b690-5800f51cea25/%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg?id=bf4fae0e-d698-4f17-98e8-96bc2bb85967&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=FrKTyBIee8S-3kLoQbXuwvswd2VBM0dX8Hrp9Ii78Hs&downloadName=%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정효준</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c" title="Packaging/porting to new platform">Design</a></td>
+    </tr>
+  </table>
 
 ---
 
@@ -72,6 +84,9 @@
   ├─ public
   │   └─ images
   └─ src
+      ├─ apis
+      │    ├─ axiosInstance.ts : axios라이브러리 인스턴스
+      │    └─ [endpoint_url].ts : 벡엔드와 합의한 엔드폰인트
       ├─ components
       │   ├─ common : 자주사용되는 기능
       │   │   ├─ index.ts
@@ -81,34 +96,45 @@
       │   │        └─ [componentName].tsx
       │   ├─ molecules : 하나의 기능
       │   ├─ organisms : 여러기능 집합
-      │   ├─ templates : 집합이 모여 하나의 페이지구성
-      │   └─ veiws : 페이지에 실제 들어갈 데이터보여줌
+      │   └─ templates : 집합이 모여 하나의 페이지구성
       ├─ hooks
-      │  ├─ index.ts
-      │  └─ [hookName]
+      │  └─ use[hookName]
       │      ├─ [hookName].tsx
       │      └─ index.ts
       ├─ pages
-      │   ├─ index.tsx
+      │   ├─ index.tsx : root페이지
       │   ├─ _app.tsx
       │   ├─ _document.tsx
       │   └─ [each_page]
       │         └─ index.tsx
-      ├─ recoil
+      ├─ recoil : 전역상태관리
       │    ├─ atoms
       │    │   └─ userAtom.ts
       │    └─ selectors
       │        └─ userSelector.ts
-      └─ styles
-            └─ globals.css
+      ├─ styles
+      │     └─ globals.css
+      │
+      └─ types
+            └─ [type].d.ts : 타입 정의파일
   ```
 - dependencies
   ```json
     "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "env-cmd": "^10.1.0",
     "next": "14.0.3",
+    "prettier": "^3.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-fast-marquee": "^1.6.4",
+    "react-quill": "^2.0.0",
+    "react-slick": "^0.29.0",
+    "react-slider": "^2.0.6",
     "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.4",
     "styled-components": "^6.1.1"
   ```
 - 폴더 :
