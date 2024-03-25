@@ -43,7 +43,7 @@
 </h3>
 <p align="center">
 <a href="https://developer.mozilla.org/ko/docs/Web/HTML" style="text-decoration: none">
-  <img src="https://img.shields.io/badge/HTML-white?logo=html5" style="text-decoration: none"/>
+  <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
 </a>
 <a href="https://devdocs.io/css/" style="text-decoration: none">
   <img src= "https://img.shields.io/badge/CSS-blue?logo=css3" />
@@ -67,6 +67,11 @@
 </h3>
 
 <p align="center">
+<style>
+    a {
+      text-decoration: none;
+    }
+</style>
 <a href="https://nextjs.org/" style="text-decoration: none">
 <img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
 </a>
