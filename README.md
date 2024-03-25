@@ -21,7 +21,7 @@
 - 프론트엔드
   <table>
     <tr>
-      <td align="center"><a href="https://github.com/CBWDG"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/e6fd1ebb-05fe-44e4-af77-3604d1f80bb1/Untitled.png?id=e2a3f4fc-c37f-42b4-9a5d-97bd8a3b04b3&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=tJnPwwIIvoTW9erHXEHBrRQTx_RQvRMC7JTpb9vyszc&downloadName=Untitled.png" width="100px;" height="100px"; alt=""/><br /><sub><b>원동건</b></sub></a><br /><a href="https://github.com/CBWDG" title="Packaging/porting to new platform">Front-End</a></td>
+      <td align="center"><a href="https://github.com/CBWDG"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/59cbf17b-518b-492c-963b-1287bf8509a0/KakaoTalk_20231109_194807293_%EC%88%98%EC%A0%952.jpg?id=e2a3f4fc-c37f-42b4-9a5d-97bd8a3b04b3&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711432800000&signature=04mThbBwukmhOiXYgSNW57-yV2sHOCQYFttz_BxxseE&downloadName=KakaoTalk_20231109_194807293_%EC%88%98%EC%A0%952.jpg" width="100px;" height="100px"; alt=""/><br /><sub><b>원동건</b></sub></a><br /><a href="https://github.com/CBWDG" title="Packaging/porting to new platform">Front-End</a></td>
       <td align="center"><a href="https://github.com/zzzRYT"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/338cf61c-cbf5-4b76-acf6-a7a9b4deb652/KakaoTalk_20230530_132243331_01.jpg?id=58b7705d-7ff7-49d0-896f-41170a63a5de&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=HSFDOtbbu8Md6z5b9wmf4Y1gcinEVNDkD39Jbh0f0gQ&downloadName=KakaoTalk_20230530_132243331_01.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>이재진</b></sub></a><br /><a href="https://github.com/zzzRYT" title="Packaging/porting to new platform">Front-End</a></td>
     </tr>
   </table>
@@ -33,6 +33,76 @@
       <td align="center"><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c"><img src="https://file.notion.so/f/f/0b241d7f-6520-4240-ac94-27957e3f3aa5/c59ad505-f1bd-4f4a-b690-5800f51cea25/%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg?id=bf4fae0e-d698-4f17-98e8-96bc2bb85967&table=block&spaceId=0b241d7f-6520-4240-ac94-27957e3f3aa5&expirationTimestamp=1711425600000&signature=FrKTyBIee8S-3kLoQbXuwvswd2VBM0dX8Hrp9Ii78Hs&downloadName=%EC%A0%95%ED%9A%A8%EC%A4%80%EB%8B%98.jpg" width="100px;" height="100px;" alt=""/><br /><sub><b>정효준</b></sub></a><br /><a href="https://www.notion.so/b4290c8ff0b34e4aac8c8f90847fea7e?p=179166cce3b64819adb353b2f05a2454&pm=c" title="Packaging/porting to new platform">Design</a></td>
     </tr>
   </table>
+
+---
+
+## 기술 스택<p>
+
+<h3 align="center">  
+  Language & Tools
+</h3>
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
+  <img src= "https://img.shields.io/badge/CSS-blue?logo=css3"/>
+  <img src= "https://img.shields.io/badge/Scss-pink?logo=sass"/>
+  <img src= "https://img.shields.io/badge/TypeScript-white?logo=typeScript&logoColor=3178C6"/>
+  <img src= "https://img.shields.io/badge/VScode-white?logo=visualstudiocode&logoColor=007ACC"/>
+  <img src= "https://img.shields.io/badge/Node.js-white?logo=nodedotjs&logoColor=#339933"/>
+</p>
+
+<h3 align="center">  
+  FrameWork & Library
+</h3>
+
+<p align="center">
+<img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
+  <img src= "https://img.shields.io/badge/React-blue?logo=react"/>
+  <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
+  <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
+   <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
+  <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
+</p>
+
+<h3 align="center">  
+  Global-State
+</h3>
+
+<p align="center">
+  <img src= "https://img.shields.io/badge/Recoil-3578E5?logo=Recoil&logoColor=white"/>
+</p>
+
+<h3 align="center">  
+  Module-Bundler
+</h3>
+
+<p align="center">
+   <img src= "https://img.shields.io/badge/WebPack-white?logo=webpack&logoColor=blue"/>
+</p>
+
+<h3 align="center">  
+  Cooperation
+</h3>
+
+<p align="center">
+   <img src= "https://img.shields.io/badge/ESLint-white?logo=eslint&logoColor=4B32C3"/>
+   <img src= "https://img.shields.io/badge/Prettier-black?logo=Prettier&logoColor=F7B93E"/>
+   <img src= "https://img.shields.io/badge/.ENV-black?logo=dotenv&logoColor=#ECD53F"/>
+</p>
+
+<h3 align="center">  
+  Communication
+</h3>
+
+<p align="center">
+   <img src= "https://img.shields.io/badge/Git-white?logo=git&logoColor=F05032"/>
+   <img src= "https://img.shields.io/badge/Github-black?logo=github&logoColor=#181717"/>
+   <img src= "https://img.shields.io/badge/Github--Actions-white?logo=githubactions&logoColor=2088FF"/>
+   <img src= "https://img.shields.io/badge/Slack-white?logo=slack&logoColor=4A154B"/>
+   <img src= "https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000"/>
+   <img src= "https://img.shields.io/badge/Discord-white?logo=Discord&logoColor=#5865F2"/>
+   <img src= "https://img.shields.io/badge/Figma-white?logo=figma&logoColor=#F24E1E"/>
+   
+</p>
 
 ---
 
