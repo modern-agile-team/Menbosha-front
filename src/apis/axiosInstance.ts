@@ -55,14 +55,15 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     if (response.status === 404) {
-      console.log('404 error');
+      window.location.href = '/404';
     }
     return response;
   },
   async (error) => {
     //요청 만료시
     if (error.message === 'timeout of 3000ms exceeded') {
-      alert('');
+      alert('요청시간이 초과되었습니다.');
+      window.location.href = '/';
     }
     //토큰 재발급
     else if (
