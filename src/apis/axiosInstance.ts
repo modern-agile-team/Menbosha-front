@@ -68,7 +68,7 @@ instance.interceptors.response.use(
     //토큰 재발급
     else if (
       error.response.data.statusCode === 401 ||
-      error.response.data.statusCode === 400
+      error.response.data.statusCode === 404
     ) {
       if (
         error.response.data.statusCode === 401 &&
