@@ -244,13 +244,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
                 alt="랭크이미지"
               />
               <div>
-                <SkeletonUI width="40%" height="15px" count={1} />
+                <SkeletonUI width="40%" height="1.4vh" count={1} />
               </div>
             </S.RankBox>
             <S.MentorInfoBox>
-              <SkeletonUI width="280px" height="380px" count={1} />
+              <SkeletonUI width="280px" height="36vh" count={1} />
               <div>
-                <SkeletonUI width="40%" height="30px" count={1} />
+                <SkeletonUI width="40%" height="29vh" count={1} />
               </div>
             </S.MentorInfoBox>
             <div>
@@ -301,7 +301,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
           <S.BadgeContainer>
             <div>칭호</div>
             <div>
-              <SkeletonUI width="30%" height="166px" count={3} />
+              <SkeletonUI width="30%" height="16vh" count={3} />
             </div>
           </S.BadgeContainer>
           <S.MentorOtherBoardContainer>
@@ -309,7 +309,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
             <div>
               <S.MentorOtherBoardsWrapper>
                 {getOtherBoards.length !== 0 ? (
-                  <SkeletonUI width="100%" height="290px" count={3} />
+                  <SkeletonUI width="100%" height="28vh" count={3} />
                 ) : (
                   <>{load && <div>게시글이 존재하지 않습니다.</div>}</>
                 )}
