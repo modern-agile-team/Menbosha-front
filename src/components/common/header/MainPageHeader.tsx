@@ -4,22 +4,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import useModal from '@/hooks/useModal';
 import LoginModal from '@/components/organisms/auth/LoginModal';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
-import { ChatContentsAtom } from '@/recoil/atoms/ChatContentsAtom';
 import SideBarReactive from '@/components/molecules/side-bar-elements/SideBarReactive';
 
 const MainPageHeader = () => {
   const router = useRouter();
-  const isLogin = useRecoilValue(LoginStateAtom);
+  const [isLogin, setIsLogin] = useRecoilState(LoginStateAtom);
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
   const [provider, setProvider] = useState('');
-  const setLoginState = useSetRecoilState(LoginStateAtom);
   const [isSide, setIsSide] = useState(false);
-  const chatContents = useRecoilValue(ChatContentsAtom);
 
   const handleLogoutApi = async () => {
     const logout = confirm('정말로 로그아웃하시겠습니까?');
@@ -28,7 +25,9 @@ const MainPageHeader = () => {
         await AUTH.handleLogout(provider);
       } catch {
       } finally {
-        window.localStorage.clear();
+        window.localStorage.removeItem('accessToken');
+        window.localStorage.removeItem('provider');
+        setIsLogin(false);
         router.push(`/`);
       }
     }
