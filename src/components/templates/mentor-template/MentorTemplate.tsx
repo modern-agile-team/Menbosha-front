@@ -5,8 +5,10 @@ import Category from '../../common/category/Category';
 import {
   ContainerWrapper,
   GlobalCategoryContainer,
-  CreateIconLink,
   HeadTitleContainer,
+  ToolTipContainer,
+  Tooltip,
+  TooltipImage,
 } from '@/components/common/globalStyled/styled';
 import PopularMentorList from '@/components/organisms/mentor/PopularMentor';
 import MentorRanking from '@/components/organisms/mentor/RankMentor';
@@ -79,14 +81,15 @@ const MentorTemplate = ({ lastPage }: Partial<MentorListType>) => {
       </HeadTitleContainer>
       <GlobalCategoryContainer>
         <Category />
-        <CreateIconLink onClick={handleCreateRoute}>
-          <img
+        <ToolTipContainer hoverBox="image" onClick={handleCreateRoute}>
+          <TooltipImage
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
             alt="게시글생성아이콘"
           />
-        </CreateIconLink>
+          <Tooltip>게시글 생성</Tooltip>
+        </ToolTipContainer>
       </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>

@@ -6,7 +6,8 @@ export const MentorCardContainer = styled.div`
   border-radius: 10px;
   border: 2px solid #ff792bbf;
   cursor: pointer;
-  transition: all 250ms ease;
+  /* transition: all 250ms ease; */
+  transition-duration: 100ms;
   height: 13vh;
   &:hover {
     border: 5px solid #ff792bbf;
@@ -76,6 +77,7 @@ export const TotalMentorCountBox = styled.div`
 export const ProfileContentBox = styled.div`
   display: flex;
   width: 80%;
+  height: 30%;
 `;
 
 export const RankBox = styled.div`
@@ -166,10 +168,9 @@ export const CountContainer = styled.div`
 
 export const CountBox = styled.div`
   display: flex;
-  margin-right: 30px;
+  margin-right: auto;
   //카운트 박스 중 아이콘
   & > :nth-child(1) {
-    margin-right: 6px;
     width: 2vw;
     height: 2vh;
   }
@@ -178,13 +179,12 @@ export const CountBox = styled.div`
     font-size: 0.4em;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    margin: auto 1.5vw auto auto;
   }
 `;
 
 export const PopularMentorCardContainer = styled.div`
+  will-change: auto;
   height: 45vh;
   border-radius: 10px;
   border: 2px solid #ff792bbf;
@@ -192,7 +192,8 @@ export const PopularMentorCardContainer = styled.div`
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  transition: all 250ms ease;
+  /* transition: all 100ms ease; */
+  transition-duration: 100ms;
   &:hover {
     border: 5px solid #ff792bbf;
     margin: -3px;
