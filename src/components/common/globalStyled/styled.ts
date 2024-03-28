@@ -252,9 +252,53 @@ export const GlobalCategoryContainer = styled.div`
   }
 `;
 
-/**게시글 생성 아이콘 */
-export const CreateIconLink = styled.div`
-  margin: 9px 0px 0px 0px;
+export const TooltipImage = styled.img`
+  cursor: pointer;
+`;
+
+export const ToolTipBox = styled.div`
+  cursor: pointer;
+`;
+
+export const Tooltip = styled.div`
+  display: none;
+  background-color: #ff772b;
+  opacity: 0.5;
+  border-radius: 6px;
+  padding: 8px 11px;
+  font-size: 0.65em;
+  text-align: center;
+  width: 5vw;
+  text-decoration: none;
+  color: #fff;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-bottom-color: #ff772b;
+    border-top: 0;
+    margin-left: -5px;
+    margin-top: -5px;
+  }
+`;
+
+export const ToolTipContainer = styled.div<{ hoverBox: string }>`
+  position: relative;
+  margin: 0 auto;
+
+  ${({ hoverBox }) => {
+    return `
+    ${hoverBox === 'image' ? TooltipImage : ToolTipBox}:hover + ${Tooltip} {
+      position: absolute;
+      left: 0;
+      display: block;
+    }
+    `;
+  }}
 `;
 
 //html태그 불러오기

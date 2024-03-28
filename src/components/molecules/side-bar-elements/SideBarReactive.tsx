@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import useModal from '@/hooks/useModal';
 import { useEffect, useState } from 'react';
+import { ButtonBox } from '@/components/common/globalStyled/styled';
 
 interface SideBarType {
   handleLogoutApi: () => void;
@@ -39,7 +40,7 @@ const SideBarReactive = ({
               height={47}
             />
           </Link>
-          <div onClick={handleSideButton}>X</div>
+          <ButtonBox onClick={handleSideButton}>X</ButtonBox>
         </S.SideBarLogoContainer>
         <S.SideBarNavigateContainer>
           <Link href={`/mentor?filterId=1`}>
