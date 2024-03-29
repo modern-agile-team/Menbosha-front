@@ -18,7 +18,7 @@ export default function Seo() {
       <meta property="og:image" content="https://example.com/image.jpg" />
       <meta
         property="og:description"
-        content="멘보샤 처럼 맛있는 멘토와 멘티를 진행해 보세요. 누구나 멘토가 될 수 있고, 누구나 멘티가 될 수 있습니다."
+        content="멘보샤 처럼 맛있는 멘토와 멘티를 진행해 보세요. 누구나 멘토가 될 수 있고, 누구나 멘티가 될 수 있습니다.  "
       />
       <meta property="og:site_name" content="멘보샤" />
       <meta property="og:locale" content="ko_KR" />
