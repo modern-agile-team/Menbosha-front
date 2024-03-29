@@ -9,6 +9,12 @@ import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
 import { useRouter } from 'next/router';
 import AUTH from '@/apis/oauth';
 import SideBarReactive from '@/components/molecules/side-bar-elements/SideBarReactive';
+import {
+  FlexBox,
+  ToolTipContainer,
+  Tooltip,
+  TooltipImage,
+} from '../globalStyled/styled';
 
 const MainPageHeader = () => {
   const router = useRouter();
@@ -89,36 +95,45 @@ const MainPageHeader = () => {
         </S.NavigateBox>
         <S.IconBox>
           {isLogin ? (
-            <div>
+            <FlexBox type="flex">
               <Link
                 href={{
                   pathname: `/chat/home`,
                 }}>
-                <Image
-                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
-                  alt="ChatIcon"
-                  width="24"
-                  height="24"
-                  style={{ marginRight: 30 }}
-                />
+                <ToolTipContainer hoverBox="image">
+                  <TooltipImage
+                    src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/ChatIcon-orange.svg"
+                    alt="ChatIcon"
+                    width="24"
+                    height="24"
+                    style={{ marginRight: 30 }}
+                  />
+                  <Tooltip>채팅룸</Tooltip>
+                </ToolTipContainer>
               </Link>
               <Link href={{ pathname: `/mypage` }}>
-                <Image
-                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
-                  alt="UserIcon"
+                <ToolTipContainer hoverBox="image">
+                  <TooltipImage
+                    src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
+                    alt="UserIcon"
+                    width="24"
+                    height="24"
+                    style={{ marginRight: 30 }}
+                  />
+                  <Tooltip>마이페이지</Tooltip>
+                </ToolTipContainer>
+              </Link>
+              <ToolTipContainer hoverBox="image">
+                <TooltipImage
+                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/Logout.svg"
+                  alt="LogoutIcon"
                   width="24"
                   height="24"
-                  style={{ marginRight: 30 }}
+                  onClick={handleLogoutApi}
                 />
-              </Link>
-              <Image
-                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/Logout.svg"
-                alt="LogoutIcon"
-                width="24"
-                height="24"
-                onClick={handleLogoutApi}
-              />
-            </div>
+                <Tooltip>로그아웃</Tooltip>
+              </ToolTipContainer>
+            </FlexBox>
           ) : (
             <Image
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/sign-inBtn.svg"
