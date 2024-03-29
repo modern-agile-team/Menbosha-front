@@ -105,6 +105,14 @@ instance.interceptors.response.use(
       window.alert('로그인이 필요합니다.');
       window.location.href = '/';
       return;
+    } else if (
+      error.response.data.statusCode === 400 &&
+      error.response.data.message === 'jwt must be provided'
+    ) {
+      window.alert('토큰이 만료되었습니다.');
+      window.location.href = '/';
+      window.localStorage.clear();
+      return;
     }
     return;
   },
