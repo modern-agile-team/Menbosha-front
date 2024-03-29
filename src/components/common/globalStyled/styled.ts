@@ -258,6 +258,10 @@ export const TooltipImage = styled.img`
 
 export const ToolTipBox = styled.div`
   cursor: pointer;
+  font-size: 0.5em; //12px
+  font-weight: 400; //Pretendard-Regular
+  color: #ffffffbf;
+  border-bottom: 1px solid #fff;
 `;
 
 export const Tooltip = styled.div`
