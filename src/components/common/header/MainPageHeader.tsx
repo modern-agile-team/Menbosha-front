@@ -17,10 +17,11 @@ import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const MainPageHeader = () => {
   const router = useRouter();
-  const [isLogin, setIsLogin] = useRecoilState(LoginStateAtom);
+  const isLogin = useRecoilValue(LoginStateAtom);
   const { isOpenModal: beforeModal, handleModal: handleBeforeModal } =
     useModal();
   const [provider, setProvider] = useState('');
+  const setLoginState = useSetRecoilState(LoginStateAtom);
   const [isSide, setIsSide] = useState(false);
   const [myId, setMyId] = useRecoilState(UserIdAtom);
   const [chatRoomList, setChatRoomList] =
@@ -31,15 +32,11 @@ const MainPageHeader = () => {
   const handleLogoutApi = async () => {
     const logout = confirm('정말로 로그아웃하시겠습니까?');
     if (logout) {
-      try {
-        await AUTH.handleLogout(provider);
-      } catch {
-      } finally {
-        window.localStorage.removeItem('accessToken');
-        window.localStorage.removeItem('provider');
-        setIsLogin(false);
-        router.push(`/`);
-      }
+      await AUTH.handleLogout(provider);
+      window.localStorage.removeItem('accessToken');
+      window.localStorage.removeItem('provider');
+      setLoginState(false);
+      router.push(`/`);
     }
   };
   /** 본인 id넘버 조회 api */
@@ -66,21 +63,22 @@ const MainPageHeader = () => {
     getChatRoomListApi();
   }, [isLogin]);
 
-  // 미완
+  // 미완성
+  // 다음 작업 여기서부터!!!!
   /** unreadMessage 있을 때 채팅 알람 아이콘으로 변경 */
   // useEffect(() => {
   //   setShowNotificationIcon(true);
   // }, [chatContents]);
 
-  /**사이드바 핸들러 */
-  const handleSideButton = () => {
-    setIsSide(!isSide);
-  };
-
   useEffect(() => {
     const provider = window.localStorage.getItem('provider');
     provider && setProvider(provider);
   }, []);
+
+  /**사이드바 핸들러 */
+  const handleSideButton = () => {
+    setIsSide(!isSide);
+  };
 
   //스크롤시 사이드 바 닫음
   useEffect(() => {
@@ -128,7 +126,7 @@ const MainPageHeader = () => {
         </S.NavigateBox>
         <S.IconBox>
           {isLogin ? (
-            <FlexBox type="flex">
+            <div>
               <Link
                 href={{
                   pathname: `/chat/home`,
@@ -146,28 +144,22 @@ const MainPageHeader = () => {
                 />
               </Link>
               <Link href={{ pathname: `/mypage` }}>
-                <ToolTipContainer hoverBox="image">
-                  <TooltipImage
-                    src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
-                    alt="UserIcon"
-                    width="24"
-                    height="24"
-                    style={{ marginRight: 30 }}
-                  />
-                  <Tooltip>마이페이지</Tooltip>
-                </ToolTipContainer>
-              </Link>
-              <ToolTipContainer hoverBox="image">
-                <TooltipImage
-                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/Logout.svg"
-                  alt="LogoutIcon"
+                <Image
+                  src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/User-orange.svg"
+                  alt="UserIcon"
                   width="24"
                   height="24"
-                  onClick={handleLogoutApi}
+                  style={{ marginRight: 30 }}
                 />
-                <Tooltip>로그아웃</Tooltip>
-              </ToolTipContainer>
-            </FlexBox>
+              </Link>
+              <Image
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/Logout.svg"
+                alt="LogoutIcon"
+                width="24"
+                height="24"
+                onClick={handleLogoutApi}
+              />
+            </div>
           ) : (
             <Image
               src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/sign-inBtn.svg"
