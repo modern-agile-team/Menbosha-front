@@ -45,9 +45,6 @@ const ChatRoomListBox = () => {
       setSelectedRoomId(roomId);
     }
   };
-  // useEffect(() => {
-  //   console.log('1231241241231');
-  // }, [chatRoomList]);
 
   // 마우스 우클릭 시 삭제 모달 핸들러
   const handleChatRoomDelete: React.MouseEventHandler<HTMLLIElement> = (e) => {
@@ -67,7 +64,6 @@ const ChatRoomListBox = () => {
     const page = 1;
     const pageSize = 100;
     const res = await CHAT.getChatRoomList2(page, pageSize);
-    console.log(res);
   };
 
   useEffect(() => {

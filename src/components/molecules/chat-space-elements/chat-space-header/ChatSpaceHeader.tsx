@@ -8,6 +8,11 @@ import { useRecoilValue } from 'recoil';
 import { SelectedRoomIdAtom } from '@/recoil/atoms/SelectedRoomIdAtom';
 import ChatInfoModal from './ChatInfoModal';
 import ReportModal from '@/components/organisms/report/ChatReportModal';
+import {
+  ToolTipContainer,
+  Tooltip,
+  TooltipImage,
+} from '@/components/common/globalStyled/styled';
 
 const ChatSpaceHeader = (props: {
   chatPartners: ChatPartnersType | undefined;
@@ -41,31 +46,40 @@ const ChatSpaceHeader = (props: {
             />
           </S.ChatSpaceHeaderLeft>
           <S.ChatSpaceHeaderRight>
-            <Image
-              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatToolTip.svg"
-              alt="Info"
-              width="28"
-              height="28"
-              onClick={handleInfoModal}
-            />
-            <Image
-              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
-              alt="Report"
-              width="28"
-              height="28"
-              onClick={() => {
-                alert('채팅방을 선택해 주세요.');
-              }}
-            />
-            <Image
-              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/review.svg"
-              alt="Review"
-              width="28"
-              height="28"
-              onClick={() => {
-                alert('채팅방을 선택해 주세요.');
-              }}
-            />
+            <ToolTipContainer hoverBox="image">
+              <TooltipImage
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatToolTip.svg"
+                alt="Info"
+                width="28"
+                height="28"
+                onClick={handleInfoModal}
+              />
+              <Tooltip>도움말</Tooltip>
+            </ToolTipContainer>
+            <ToolTipContainer hoverBox="image">
+              <TooltipImage
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
+                alt="Report"
+                width="28"
+                height="28"
+                onClick={() => {
+                  alert('채팅방을 선택해 주세요.');
+                }}
+              />
+              <Tooltip>신고</Tooltip>
+            </ToolTipContainer>
+            <ToolTipContainer hoverBox="image">
+              <TooltipImage
+                src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/review.svg"
+                alt="Review"
+                width="28"
+                height="28"
+                onClick={() => {
+                  alert('채팅방을 선택해 주세요.');
+                }}
+              />
+              <Tooltip>리뷰</Tooltip>
+            </ToolTipContainer>
             {isOpenInfo && (
               <ChatInfoModal show={isOpenInfo} hide={handleInfoModal} />
             )}

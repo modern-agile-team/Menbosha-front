@@ -14,26 +14,45 @@ const CreateReport = ({ userId }: { userId: number }) => {
   const handleOnCheck = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLDivElement;
     const name = target.className.split(' ');
-    setCheckArray((prev) => [...prev, name[name.length - 1]]);
-    //다시 클릭시 해제
-    if (checkArray.includes(name[name.length - 1])) {
-      const deleteArray = checkArray.filter(
-        (data) => data !== name[name.length - 1],
-      );
-      setCheckArray(deleteArray);
+    const checkName = name[name.length - 1];
+
+    const correspondingReport = reportList.find(
+      (report) => report.checkName === checkName,
+    );
+
+    if (correspondingReport) {
+      let description = correspondingReport.description;
+      description = description.replace(/"/g, '');
+      console.log(description);
+
+      setCheckArray((prev) => {
+        if (!prev.includes(description)) {
+          return [...prev, description];
+        } else {
+          return prev.filter((data) => data !== description);
+        }
+      });
     }
   };
+  useEffect(() => {
+    console.log(checkArray);
+  }, [checkArray]);
 
   const handleSubmit = async () => {
-    const requestData: CreateReportRequestType = {
-      userId: userId,
-      isCheck: checkArray,
-      report: inputContents,
-    };
-    if (checkArray.length >= 1) {
-      await REPORT.createUserReport(requestData);
-    } else {
-      alert('신고 체크리스트는 최소 1개 선택해주시기 바랍니다.');
+    const confirmed = window.confirm('정말 신고하시겠습니까?');
+
+    if (confirmed) {
+      const requestData: CreateReportRequestType = {
+        userId: userId,
+        isCheck: checkArray,
+        report: inputContents,
+      };
+
+      if (checkArray.length >= 1) {
+        await REPORT.createUserReport(requestData);
+      } else {
+        alert('최소 1개 이상의 신고 체크리스트를 선택해 주세요.');
+      }
     }
   };
 
@@ -56,7 +75,7 @@ const CreateReport = ({ userId }: { userId: number }) => {
         {reportList.map((data) => {
           return (
             <>
-              {!checkArray.includes(data.checkName) ? (
+              {!checkArray.includes(data.description) ? (
                 <S.CheckBox
                   className={data.checkName}
                   isCheck={true}

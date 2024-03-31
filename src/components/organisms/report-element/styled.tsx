@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 export const ReportWrapper = styled.div`
   color: #000;
+  background-color: #fff;
   padding: 15px;
+  border-radius: 0px 0px 10px 10px;
 `;
 
 /**체크리스트 컨테이너 */

@@ -1,7 +1,7 @@
 export const reportList = [
   {
     id: 2,
-    checkName: '증오발언및혐오표현게시글',
+    checkName: 'isHate',
     description: '증오발언 및 혐오표현 게시글',
   },
   {

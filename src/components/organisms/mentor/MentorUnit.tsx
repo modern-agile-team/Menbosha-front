@@ -149,13 +149,6 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
                 }}
                 style={{ cursor: 'pointer' }}
               />
-              {isOpenModal && (
-                <ContentReportModal
-                  userId={getUserInfo?.id as number}
-                  show={isOpenModal}
-                  hide={handleModal}
-                />
-              )}
             </div>
           </S.HeaderContentsBox>
           <S.MentorInfoContainer>
@@ -247,6 +240,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
               </S.MentorOtherBoardsWrapper>
             </div>
           </S.MentorOtherBoardContainer>
+          {isOpenModal && (
+            <ContentReportModal
+              userId={getUserInfo?.id as number}
+              show={isOpenModal}
+              hide={handleModal}
+            />
+          )}
         </div>
       ) : (
         <div>

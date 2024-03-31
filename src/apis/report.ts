@@ -14,8 +14,6 @@ const REPORT = {
         report: content.report,
       },
     );
-    console.log(content.isCheck);
-
     return result;
   },
 };
