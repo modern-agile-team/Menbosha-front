@@ -63,11 +63,11 @@ const MainPageHeader = () => {
     getChatRoomListApi();
   }, [isLogin]);
 
-  // 다음 작업 여기서부터!!!!
+  // 미완
   /** unreadMessage 있을 때 채팅 알람 아이콘으로 변경 */
-  useEffect(() => {
-    setShowNotificationIcon(true);
-  }, [chatContents]);
+  // useEffect(() => {
+  //   setShowNotificationIcon(true);
+  // }, [chatContents]);
 
   useEffect(() => {
     const provider = window.localStorage.getItem('provider');
