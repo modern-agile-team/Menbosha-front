@@ -92,7 +92,7 @@ const MentorReview = ({ id }: MentorUnitPropsType) => {
         <>{!load && <div>후기가 존재하지 않습니다.</div>}</>
       )}
       <S.ReviewLoadingBox>
-        {load && <SkeletonUI width="100%" height="160px" count={5} />}
+        {load && <SkeletonUI width="100%" height="15vh" count={5} />}
         <div ref={obsRef}></div>
       </S.ReviewLoadingBox>
     </S.ReviewElementWrapper>

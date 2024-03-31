@@ -62,7 +62,7 @@ const RandomMentorBoard = ({ filterCategoryId }: Partial<FilterPropsType>) => {
       ) : (
         <>{load && <div>멘토의 게시글이 존재하지 않습니다.</div>}</>
       )}
-      <>{!load && <SkeletonUI width="31.75%" height="290px" count={3} />}</>
+      <>{!load && <SkeletonUI width="31.75%" height="28vh" count={3} />}</>
     </S.MentorBoardCardContainer>
   );
 };

@@ -64,6 +64,7 @@ const HELP = {
         sortOrder: params.sortOrder,
         pageSize: params.pageSize,
         page: params.page,
+        userId: params.userId && params.userId,
       },
     });
     return result.data.contents;

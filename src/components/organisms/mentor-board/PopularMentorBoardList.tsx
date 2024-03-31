@@ -62,7 +62,7 @@ const PopularMentorBoardList = ({
       ) : (
         <>{load && <div>인기 멘토글이 존재하지 않습니다.</div>}</>
       )}
-      <>{!load && <SkeletonUI width="18.5%" height="280px" count={10} />}</>
+      <>{!load && <SkeletonUI width="18.5%" height="27vh" count={10} />}</>
     </S.MentorBoardCardContainer>
   );
 };
