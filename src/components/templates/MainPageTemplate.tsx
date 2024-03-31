@@ -5,7 +5,7 @@ import MainPageFooter from '../common/footer/Footer';
 import MainPageBody from '../organisms/mainpage-body/MainPageBody';
 import { useSocket } from '@/hooks/useSocket';
 import { ChatRoomListType } from '@/types/chat';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 
 const MainPageTemplate = () => {
