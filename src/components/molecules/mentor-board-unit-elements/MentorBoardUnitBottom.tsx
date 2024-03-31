@@ -29,7 +29,7 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
       userInfo &&
       rankList.find(
         (data) =>
-          data.range[0] < userInfo?.rank && data.range[1] > userInfo?.rank,
+          data.range[0] < userInfo?.rank && data.range[1] >= userInfo?.rank,
       );
     temp &&
       setRankInfo((prev) => {

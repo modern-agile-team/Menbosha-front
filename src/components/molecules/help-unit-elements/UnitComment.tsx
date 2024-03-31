@@ -298,7 +298,7 @@ const UnitComment = ({ id }: BoardIdType) => {
       {load && (
         <>
           <S.HelpCommentSkeletonBox>
-            <SkeletonUI width="48.5%" height="150px" count={4} />
+            <SkeletonUI width="48.5%" height="15vh" count={4} />
           </S.HelpCommentSkeletonBox>
         </>
       )}

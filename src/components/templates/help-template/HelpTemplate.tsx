@@ -3,9 +3,11 @@ import Category from '../../common/category/Category';
 import HelpPullingBoardList from '../../organisms/help-board/HelpPullingBoardList';
 import {
   ContainerWrapper,
-  CreateIconLink,
   GlobalCategoryContainer,
   HeadTitleContainer,
+  ToolTipContainer,
+  Tooltip,
+  TooltipImage,
 } from '../../common/globalStyled/styled';
 import MainPageHeader from '../../common/header/MainPageHeader';
 import * as S from './styled';
@@ -81,18 +83,19 @@ const HelpTemplate = ({ lastPage }: Partial<HelpListApiType>) => {
       </HeadTitleContainer>
       <GlobalCategoryContainer>
         <Category />
-        <CreateIconLink onClick={handleCreateRoute}>
-          <img
+        <ToolTipContainer hoverBox="image" onClick={handleCreateRoute}>
+          <TooltipImage
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
             alt="게시글생성아이콘"
           />
-        </CreateIconLink>
+          <Tooltip>게시글 생성</Tooltip>
+        </ToolTipContainer>
       </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.HelpBoardListContainer>
-          <S.BoardTitleBox>끌올된 게시판</S.BoardTitleBox>
+          <S.BoardTitleBox>잠깐, 이 글 하나만 보고가주세요.</S.BoardTitleBox>
           <HelpPullingBoardList
             filterCategoryId={Number(router.query.filterId)}
           />

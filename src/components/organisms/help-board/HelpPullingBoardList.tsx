@@ -64,7 +64,7 @@ const HelpPullingBoardList = ({
       ) : (
         <>{load && <div>끌어올린 게시글이 존재하지 않습니다.</div>}</>
       )}
-      <>{!load && <SkeletonUI width="23.6%" height="260px" count={4} />}</>
+      <>{!load && <SkeletonUI width="23.6%" height="25vh" count={4} />}</>
     </S.HelpCardContainer>
   );
 };
