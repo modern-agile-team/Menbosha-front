@@ -21,8 +21,6 @@ const useChatRoomCreate = () => {
         chatRoomType,
       };
       const result = await CHAT.createChatRoom(requestBody);
-      // setChatRoom(result.data.content);
-      console.log('채팅룸 생성 성공:', result.data.contents);
     } catch (error: any) {
       console.error('채팅룸 생성 시 오류가 발생했습니다.:', error);
       if (error.response && error.response.status === 403) {
