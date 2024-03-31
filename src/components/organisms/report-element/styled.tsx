@@ -47,7 +47,7 @@ export const CheckWarning = styled.div`
   margin: 0px 15px 15px 15px;
 `;
 
-/**후기 작성 컨테이너 */
+/**신고 작성 컨테이너 */
 export const ReportInputContainer = styled.div`
   margin: 45px 15px 15px 15px;
 `;
@@ -77,7 +77,7 @@ export const ReportInputTitle = styled.div<CountType>`
   }
 `;
 
-/**후기 작성 area */
+/**신고 작성 area */
 export const ReportAreaBox = styled.textarea`
   border: 2px solid #ff772b;
   border-radius: 10px;
