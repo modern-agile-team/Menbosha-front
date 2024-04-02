@@ -117,3 +117,10 @@ export interface ChatDeleteModalType {
   roomId: string;
   chatId: string | undefined;
 }
+
+/** 신고하기 타입 */
+export type CreateReportRequestType = {
+  userId: number;
+  isCheck: string[];
+  report: string;
+};

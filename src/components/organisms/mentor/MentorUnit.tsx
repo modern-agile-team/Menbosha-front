@@ -17,6 +17,8 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import { useRouter } from 'next/router';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import useModal from '@/hooks/useModal';
+import ContentReportModal from '../report/ContentReportModal';
 
 const MentorUnit = ({ id }: MentorUnitPropsType) => {
   const [getUserInfo, setGetUserInfo] = useState<MentorUnitType>();
@@ -31,6 +33,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
   const [load, setLoad] = useState(false);
   const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
+  const { isOpenModal, handleModal } = useModal();
   const router = useRouter();
   const isLogin = useRecoilValue(LoginStateAtom);
 
@@ -138,8 +141,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
                 alt="신고이모지"
                 onClick={() => {
-                  alert('아직 구현되지 않은 기능입니다.');
+                  if (!isLogin) {
+                    alert('로그인이 필요합니다.');
+                  } else {
+                    handleModal();
+                  }
                 }}
+                style={{ cursor: 'pointer' }}
               />
             </div>
           </S.HeaderContentsBox>
@@ -232,6 +240,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
               </S.MentorOtherBoardsWrapper>
             </div>
           </S.MentorOtherBoardContainer>
+          {isOpenModal && (
+            <ContentReportModal
+              userId={getUserInfo?.id as number}
+              show={isOpenModal}
+              hide={handleModal}
+            />
+          )}
         </div>
       ) : (
         <div>
