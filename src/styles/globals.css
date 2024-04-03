@@ -14,7 +14,7 @@ body {
   font-size: 24px;
   scroll-behavior: smooth;
 }
-
+/* 
 @font-face {
   font-family: 'Pretendard', sans-serif;
   src: url('/public/fonts/Pretendard-Black.woff2') format('woff2');
@@ -77,11 +77,11 @@ body {
   font-weight: 100;
   font-style: normal;
   font-display: swap;
-}
+} */
 
-* {
+/* * {
   font-family: 'Pretendard', sans-serif;
-}
+} */
 
 /* react-quill에 대한 스타일 지정 */
 .ql-editor {

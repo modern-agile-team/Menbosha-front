@@ -7,6 +7,11 @@ export default function Seo() {
         rel="icon"
         href="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mainpage/titleLogo.svg"
       />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+      />
       <title>멘보샤</title>
       <meta
         name="naver-site-verification"
