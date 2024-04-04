@@ -63,8 +63,8 @@ const ChatSpaceFooter = (myId: MyIdType) => {
               createdAt,
             };
 
-            console.log(chatRoomId);
-            console.log(selectedRoomId);
+            // console.log(chatRoomId);
+            // console.log(selectedRoomId);
 
             setChatContents((prevContents) => [
               newChatMessage,

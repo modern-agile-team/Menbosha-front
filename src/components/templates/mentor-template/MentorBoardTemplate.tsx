@@ -4,9 +4,11 @@ import Category from '../../common/category/Category';
 import MentorBoardList from '@/components/organisms/mentor-board/MentorBoardList';
 import {
   ContainerWrapper,
-  CreateIconLink,
   GlobalCategoryContainer,
   HeadTitleContainer,
+  ToolTipContainer,
+  Tooltip,
+  TooltipImage,
 } from '@/components/common/globalStyled/styled';
 import RandomMentorBoard from '@/components/organisms/mentor-board/RandomMentorBoard';
 import PopularMentorBoardList from '@/components/organisms/mentor-board/PopularMentorBoardList';
@@ -82,18 +84,19 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
       </HeadTitleContainer>
       <GlobalCategoryContainer>
         <Category />
-        <CreateIconLink onClick={handleCreateRoute}>
-          <img
+        <ToolTipContainer hoverBox="image" onClick={handleCreateRoute}>
+          <TooltipImage
             src={
               'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
             }
             alt="게시글생성아이콘"
           />
-        </CreateIconLink>
+          <Tooltip>게시글 생성</Tooltip>
+        </ToolTipContainer>
       </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
-          <S.ListTitleBox>멘토가 들려주는 꿀통 대방출~!~!</S.ListTitleBox>
+          <S.ListTitleBox>랜덤 멘토 게시글</S.ListTitleBox>
           <RandomMentorBoard filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>

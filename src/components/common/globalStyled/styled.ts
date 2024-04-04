@@ -4,78 +4,6 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 /**각각 font-weight별로 사용
  * 사용하고 싶은 곳에서 font-weight를 주면 자동 적용됩니다.
  */
-export const GlobalFont = createGlobalStyle`
-  @font-face {
-  font-family: 'Pretendard', sans-serif;
-  src: url('/public/fonts/Pretendard-Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-ExtraBold.woff2') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-SemiBold.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-ExtraLight.woff2') format('woff2');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pretendard', sans-serif;
-    src: url('/public/fonts/Pretendard-Thin.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-  }
-`;
-
-//전체 Pretendard적용
-export const GlobalStyle = createGlobalStyle`
-  html {
-    font-family: "Pretendard", sans-serif;
-  }
-`;
 
 interface TextType {
   color?: string;
@@ -252,9 +180,57 @@ export const GlobalCategoryContainer = styled.div`
   }
 `;
 
-/**게시글 생성 아이콘 */
-export const CreateIconLink = styled.div`
-  margin: 9px 0px 0px 0px;
+export const TooltipImage = styled.img`
+  cursor: pointer;
+`;
+
+export const ToolTipBox = styled.div`
+  cursor: pointer;
+  font-size: 0.5em; //12px
+  font-weight: 400; //Pretendard-Regular
+  color: #ffffffbf;
+  border-bottom: 1px solid #fff;
+`;
+
+export const Tooltip = styled.div`
+  display: none;
+  background-color: #ff772b;
+  opacity: 0.5;
+  border-radius: 6px;
+  padding: 8px 11px;
+  font-size: 0.65em;
+  text-align: center;
+  width: 5vw;
+  text-decoration: none;
+  color: #fff;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-bottom-color: #ff772b;
+    border-top: 0;
+    margin-left: -5px;
+    margin-top: -5px;
+  }
+`;
+
+export const ToolTipContainer = styled.div<{ hoverBox: string }>`
+  position: relative;
+  margin: 0 auto;
+
+  ${({ hoverBox }) => {
+    return `
+    ${hoverBox === 'image' ? TooltipImage : ToolTipBox}:hover + ${Tooltip} {
+      position: absolute;
+      left: 0;
+      display: block;
+    }
+    `;
+  }}
 `;
 
 //html태그 불러오기

@@ -17,6 +17,8 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { ChatRoomListAtom } from '@/recoil/atoms/ChatRoomListAtom';
 import { useRouter } from 'next/router';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import useModal from '@/hooks/useModal';
+import ContentReportModal from '../report/ContentReportModal';
 
 const MentorUnit = ({ id }: MentorUnitPropsType) => {
   const [getUserInfo, setGetUserInfo] = useState<MentorUnitType>();
@@ -31,6 +33,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
   const [load, setLoad] = useState(false);
   const { handleCreateChatRoom, isLoading, error } = useChatRoomCreate();
   const [chatRoomList, setChatRoomList] = useRecoilState(ChatRoomListAtom);
+  const { isOpenModal, handleModal } = useModal();
   const router = useRouter();
   const isLogin = useRecoilValue(LoginStateAtom);
 
@@ -44,7 +47,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
     if (getUserInfo) {
       const rankImage = rankList.find(
         (data) =>
-          data.range[0] < getUserInfo.rank && data.range[1] > getUserInfo.rank,
+          data.range[0] < getUserInfo.rank && data.range[1] >= getUserInfo.rank,
       );
       rankImage &&
         setRank((prev) => {
@@ -138,8 +141,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
                 src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/report.svg"
                 alt="신고이모지"
                 onClick={() => {
-                  alert('아직 구현되지 않은 기능입니다.');
+                  if (!isLogin) {
+                    alert('로그인이 필요합니다.');
+                  } else {
+                    handleModal();
+                  }
                 }}
+                style={{ cursor: 'pointer' }}
               />
             </div>
           </S.HeaderContentsBox>
@@ -232,6 +240,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
               </S.MentorOtherBoardsWrapper>
             </div>
           </S.MentorOtherBoardContainer>
+          {isOpenModal && (
+            <ContentReportModal
+              userId={getUserInfo?.id as number}
+              show={isOpenModal}
+              hide={handleModal}
+            />
+          )}
         </div>
       ) : (
         <div>
@@ -244,13 +259,13 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
                 alt="랭크이미지"
               />
               <div>
-                <SkeletonUI width="40%" height="15px" count={1} />
+                <SkeletonUI width="40%" height="1.4vh" count={1} />
               </div>
             </S.RankBox>
             <S.MentorInfoBox>
-              <SkeletonUI width="280px" height="380px" count={1} />
+              <SkeletonUI width="280px" height="36vh" count={1} />
               <div>
-                <SkeletonUI width="40%" height="30px" count={1} />
+                <SkeletonUI width="40%" height="29vh" count={1} />
               </div>
             </S.MentorInfoBox>
             <div>
@@ -301,7 +316,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
           <S.BadgeContainer>
             <div>칭호</div>
             <div>
-              <SkeletonUI width="30%" height="166px" count={3} />
+              <SkeletonUI width="30%" height="16vh" count={3} />
             </div>
           </S.BadgeContainer>
           <S.MentorOtherBoardContainer>
@@ -309,7 +324,7 @@ const MentorUnit = ({ id }: MentorUnitPropsType) => {
             <div>
               <S.MentorOtherBoardsWrapper>
                 {getOtherBoards.length !== 0 ? (
-                  <SkeletonUI width="100%" height="290px" count={3} />
+                  <SkeletonUI width="100%" height="28vh" count={3} />
                 ) : (
                   <>{load && <div>게시글이 존재하지 않습니다.</div>}</>
                 )}
