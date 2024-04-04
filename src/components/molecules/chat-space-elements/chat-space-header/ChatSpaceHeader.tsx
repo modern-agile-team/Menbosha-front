@@ -103,27 +103,36 @@ const ChatSpaceHeader = (props: {
           <span>{chatPartners?.name || ''}</span>
         </S.ChatSpaceHeaderLeft>
         <S.ChatSpaceHeaderRight>
-          <Image
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatToolTip.svg"
-            alt="Info"
-            width="28"
-            height="28"
-            onClick={handleInfoModal}
-          />
-          <Image
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
-            alt="Report"
-            width="28"
-            height="28"
-            onClick={handleReportModal}
-          />
-          <Image
-            onClick={handleModal}
-            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/review.svg"
-            alt="Review"
-            width="28"
-            height="28"
-          />
+          <ToolTipContainer hoverBox="image">
+            <TooltipImage
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatToolTip.svg"
+              alt="Info"
+              width="28"
+              height="28"
+              onClick={handleInfoModal}
+            />
+            <Tooltip>도움말</Tooltip>
+          </ToolTipContainer>
+          <ToolTipContainer hoverBox="image">
+            <TooltipImage
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/ChatReport.svg"
+              alt="Report"
+              width="28"
+              height="28"
+              onClick={handleReportModal}
+            />
+            <Tooltip>신고</Tooltip>
+          </ToolTipContainer>
+          <ToolTipContainer hoverBox="image">
+            <TooltipImage
+              src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/chat/review.svg"
+              alt="Review"
+              width="28"
+              height="28"
+              onClick={handleModal}
+            />
+            <Tooltip>리뷰</Tooltip>
+          </ToolTipContainer>
           {isOpenInfo && (
             <ChatInfoModal show={isOpenInfo} hide={handleInfoModal} />
           )}

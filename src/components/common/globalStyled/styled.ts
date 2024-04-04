@@ -203,6 +203,7 @@ export const Tooltip = styled.div`
   width: 5vw;
   text-decoration: none;
   color: #fff;
+  z-index: 9999;
   &::after {
     content: '';
     position: absolute;
