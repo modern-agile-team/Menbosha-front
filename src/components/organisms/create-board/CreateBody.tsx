@@ -359,7 +359,9 @@ const CreateBody = () => {
             </div>
           </S.ImageUploadBox>
         </div>
-        <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
+        <FlexBox type="flex" col="right">
+          <S.SubmitBox onClick={handleSubmit}>올리기</S.SubmitBox>
+        </FlexBox>
       </S.CreateHelpContainer>
     </S.CreateBoardWrapper>
   );
