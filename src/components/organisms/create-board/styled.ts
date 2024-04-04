@@ -76,9 +76,21 @@ export const ImageUploadBox = styled.div`
   width: 100%;
 `;
 
-export const SubmitBox = styled.div`
+export const SubmitBox = styled.button`
   color: #ff772b;
   cursor: pointer;
+  font-size: 0.83em;
+  font-weight: 400;
+  line-height: 150%;
+  margin: 10px 0px 10vh 0px;
+  border: 2px solid #ff772b;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: background-color 0.3 ease;
+  &:hover {
+    background-color: #ff772b;
+    color: #fff;
+  }
 `;
 
 interface DropType {

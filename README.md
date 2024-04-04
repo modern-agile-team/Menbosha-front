@@ -1,3 +1,5 @@
+# <span style="color:#ff772b">멘보샤</span>
+
 > **_“멘보샤처럼 맛있게, 당신만의 멘토링”_**
 
 멘보샤는 누구나 자유롭게 멘토링을 하거나 받을 수 있는 커뮤니티 입니다. <br>
@@ -31,9 +33,10 @@
 | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/4f864cf8-3181-4830-ad14-35de279d3a55) | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/ff2ef5af-9f5d-4c30-91fa-af7b6484f39b) | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/6fff00aa-b8cb-4ef4-ac7a-f1f451d0f08b) | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/9d75e08c-ecea-4a6b-9077-a0e01f17a25b) |
 | 멘티들이 질문할 내용~~                                                                                              | 페이지 이용에 관해서                                                                                                | 본인 프로필 등등                                                                                                    | 1:1 채팅 페이지                                                                                                     |
 
-## 개발기간
+## 개발 기간
 
-- 23.12.01 ~ 24.03.01 +a
+- 23.12.01 ~ 24.03.17
+- 베타 테스트 기간 : 24.03.18 ~ 24.04.01
 
 ### 멤버구성
 

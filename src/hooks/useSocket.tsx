@@ -22,7 +22,7 @@ export const SocketProvider = ({ children }: SocketProviderProps) => {
     // const socket = io('https://api.menbosha.kr');
     const socket = io(`${process.env.NEXT_PUBLIC_API_BASE_URL}`);
     setSocket(socket);
-    console.log('socketsocketsocketsocket', socket);
+    console.log('socket 연결 확인', socket);
 
     return () => {
       socket.disconnect();

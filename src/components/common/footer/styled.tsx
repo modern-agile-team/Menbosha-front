@@ -28,8 +28,8 @@ export const FooterArea = styled.div`
 
 export const FooterLeft = styled.div`
   display: flex;
-  width: 40vw;
-  height: 15vh;
+  width: 50vw;
+  height: 20vh;
   justify-content: flex-start;
   align-items: center;
 `;
@@ -42,9 +42,10 @@ export const FooterLeftLogo = styled.img`
 export const FooterLeftContents = styled.div<BgType>`
   display: flex;
   flex-direction: column;
-  width: 30vw;
-  height: 10vh;
+  max-width: 50vw;
+  max-height: 20vh;
   justify-content: center;
+  /* border: 2px solid white; */
   & > :nth-child(1) {
     font-weight: 700;
     font-size: 0.47em;
@@ -91,6 +92,15 @@ export const FooterRight = styled.div<BgType>`
   span {
     font-weight: 400;
     font-size: 0.5em;
+    @media only all and (max-width: 1600px), (max-height: 900px) {
+      font-size: 0.4em;
+    }
+    @media only all and (max-width: 1280px), (max-height: 600px) {
+      font-size: 0.33em;
+    }
+    @media only all and (max-width: 900px), (max-height: 400px) {
+      font-size: 0.28em;
+    }
     line-height: 150%;
     color: ${({ color }) =>
       color ? 'rgba(0, 0, 0, 0.75)' : 'rgba(255, 255, 255, 0.75)'};
