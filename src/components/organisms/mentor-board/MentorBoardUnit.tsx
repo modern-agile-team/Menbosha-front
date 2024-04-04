@@ -27,7 +27,7 @@ const MentorBoardUnit = ({ id }: MentorBoardUnitPropsType) => {
 
   useEffect(() => {
     getMentorBoardUnitApi();
-  }, []);
+  }, [id]);
 
   return (
     <S.MentorBoardUnitContainer>

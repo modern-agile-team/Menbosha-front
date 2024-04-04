@@ -100,7 +100,7 @@ const HelpBoardCardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
         <>{!load && <div>도와주세요 게시글이 존재하지 않습니다.</div>}</>
       )}
       <>
-        {load && <SkeletonUI width="23.6%" height="260px" count={8} />}
+        {load && <SkeletonUI width="23.6%" height="25vh" count={8} />}
         <div ref={obsRef}></div>
       </>
     </S.HelpCardContainer>

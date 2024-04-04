@@ -1,3 +1,4 @@
+# <span style="color:#ff772b">멘보샤</span>
 > **_“멘보샤처럼 맛있게, 당신만의 멘토링”_**
 
 멘보샤는 누구나 자유롭게 멘토링을 하거나 받을 수 있는 커뮤니티 입니다. <br>
@@ -31,9 +32,10 @@
 | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/4f864cf8-3181-4830-ad14-35de279d3a55) | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/ff2ef5af-9f5d-4c30-91fa-af7b6484f39b) | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/6fff00aa-b8cb-4ef4-ac7a-f1f451d0f08b) | ![image](https://github.com/modern-agile-team/Menbosha-front/assets/137866369/9d75e08c-ecea-4a6b-9077-a0e01f17a25b) |
 | 멘티들이 질문할 내용~~                                                                                              | 페이지 이용에 관해서                                                                                                | 본인 프로필 등등                                                                                                    | 1:1 채팅 페이지                                                                                                     |
 
-## 개발기간
+## 개발 기간
 
-- 23.12.01 ~ 24.03.01 +a
+- 23.12.01 ~ 24.03.17
+- 베타 테스트 기간 : 24.03.18 ~ 24.04.01
 
 ### 멤버구성
 
@@ -67,23 +69,24 @@
   Language & Tools
 </h3>
 <p align="center">
-<a href="https://developer.mozilla.org/ko/docs/Web/HTML" style="text-decoration: none">
-  <img src="https://img.shields.io/badge/HTML-white?logo=html5" style="text-decoration: none"/>
-</a>
-<a href="https://devdocs.io/css/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/CSS-blue?logo=css3" />
-</a>
-<a href="https://sass-lang.com/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/Sass-pink?logo=sass" />
-</a>
-<a href="https://www.typescriptlang.org/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/TypeScript-white?logo=typeScript&logoColor=3178C6"/>
-</a>
-<a href="https://code.visualstudio.com/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/VScode-white?logo=visualstudiocode&logoColor=007ACC"/>
-</a>
-<a href="https://nodejs.org/en" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/Node.js-white?logo=nodedotjs&logoColor=#339933"/>
+  <a href="https://developer.mozilla.org/ko/docs/Web/HTML"  style="text-decoration: none">
+    <img src="https://img.shields.io/badge/HTML-white?logo=html5"/>
+  </a>
+  <a href="https://devdocs.io/css/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/CSS-blue?logo=css3" />
+  </a>
+  <a href="https://sass-lang.com/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Sass-pink?logo=sass" />
+  </a>
+  <a href="https://www.typescriptlang.org/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/TypeScript-white?logo=typeScript&logoColor=3178C6"/>
+  </a>
+  <a href="https://code.visualstudio.com/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/VScode-white?logo=visualstudiocode&logoColor=007ACC"/>
+  </a>
+  <a href="https://nodejs.org/en" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Node.js-white?logo=nodedotjs&logoColor=#339933"/>
+  </a>
 </p>
 
 <h3 align="center">  
@@ -91,21 +94,24 @@
 </h3>
 
 <p align="center">
-<a href="https://nextjs.org/" style="text-decoration: none">
-<img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
-<a href="https://ko.legacy.reactjs.org/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/React.js-blue?logo=react"/>
-</a>
-<a href="https://socket.io/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
-</a>
-<a href="https://mswjs.io/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
-</a>
-<a href="https://axios-http.com/kr/docs/intro" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
-<a href="https://styled-components.com/" style="text-decoration: none">
-  <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
+  <a href="https://nextjs.org/">
+    <img src= "https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white"/>
+  </a>
+  <a href="https://ko.legacy.reactjs.org/">
+    <img src= "https://img.shields.io/badge/React.js-blue?logo=react"/>
+  </a>
+  <a href="https://socket.io/">
+    <img src= "https://img.shields.io/badge/Socket.io-white?logo=socket.io&logoColor=010101"/>
+  </a>
+  <a href="https://mswjs.io/">
+    <img src= "https://img.shields.io/badge/MSW-white?logo=mockserviceworker&logoColor=black"/>
+  </a>
+  <a href="https://axios-http.com/kr/docs/intro">
+    <img src= "https://img.shields.io/badge/Axios-white?logo=axios&logoColor=5A29E4"/>
+  </a>
+  <a href="https://styled-components.com/">
+    <img src= "https://img.shields.io/badge/Styled--Components-DB7093?logo=styledcomponents&logoColor=white"/>
+  </a>
 </p>
 
 <h3 align="center">  
@@ -113,8 +119,9 @@
 </h3>
 
 <p align="center">
-<a href = "https://recoiljs.org/ko/" style="text-decoration: none">
+  <a href = "https://recoiljs.org/ko/" style="text-decoration: none">
     <img src= "https://img.shields.io/badge/Recoil-3578E5?logo=Recoil&logoColor=white"/>
+  </a>
 </p>
 
 <h3 align="center">  
@@ -122,8 +129,9 @@
 </h3>
 
 <p align="center">
-<a href="https://webpack.kr/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/WebPack-white?logo=webpack&logoColor=blue"/>
+  <a href="https://webpack.kr/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/WebPack-white?logo=webpack&logoColor=blue"/>
+  </a>
 </p>
 
 <h3 align="center">  
@@ -131,14 +139,15 @@
 </h3>
 
 <p align="center">
-<a href="https://eslint.org/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/ESLint-white?logo=eslint&logoColor=4B32C3"/>
-</a>
-<a href="https://prettier.io/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Prettier-black?logo=Prettier&logoColor=F7B93E"/>
-</a>
-<a href="https://www.dotenv.org/docs/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/.ENV-black?logo=dotenv&logoColor=#ECD53F"/>
+  <a href="https://eslint.org/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/ESLint-white?logo=eslint&logoColor=4B32C3"/>
+  </a>
+  <a href="https://prettier.io/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Prettier-black?logo=Prettier&logoColor=F7B93E"/>
+  </a>
+  <a href="https://www.dotenv.org/docs/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/.ENV-black?logo=dotenv&logoColor=#ECD53F"/>
+  </a>
 </p>
 
 <h3 align="center">  
@@ -146,27 +155,27 @@
 </h3>
 
 <p align="center">
-<a href="https://git-scm.com/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Git-white?logo=git&logoColor=F05032"/>
-</a>
-<a href="https://github.com/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Github-black?logo=github&logoColor=#181717"/>
-</a>
-<a href="https://docs.github.com/ko/actions" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Github--Actions-white?logo=githubactions&logoColor=2088FF"/>
-</a>
-<a href="https://slack.com/intl/ko-kr/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Slack-white?logo=slack&logoColor=4A154B"/>
-</a>
-<a href="https://www.notion.so/ko-kr" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000"/>
-</a>
-<a href="https://discord.com/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Discord-white?logo=Discord&logoColor=#5865F2"/>
-</a>
-<a href="https://www.figma.com/" style="text-decoration: none">
-   <img src= "https://img.shields.io/badge/Figma-white?logo=figma&logoColor=#F24E1E"/>
-   
+  <a href="https://git-scm.com/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Git-white?logo=git&logoColor=F05032"/>
+  </a>
+  <a href="https://github.com/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Github-black?logo=github&logoColor=#181717"/>
+  </a>
+  <a href="https://docs.github.com/ko/actions" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Github--Actions-white?logo=githubactions&logoColor=2088FF"/>
+  </a>
+  <a href="https://slack.com/intl/ko-kr/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Slack-white?logo=slack&logoColor=4A154B"/>
+  </a>
+  <a href="https://www.notion.so/ko-kr" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000"/>
+  </a>
+  <a href="https://discord.com/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Discord-white?logo=Discord&logoColor=#5865F2"/>
+  </a>
+  <a href="https://www.figma.com/" style="text-decoration: none">
+    <img src= "https://img.shields.io/badge/Figma-white?logo=figma&logoColor=#F24E1E"/>
+  </a>
 </p>
 
 ---

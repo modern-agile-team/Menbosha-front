@@ -1,6 +1,9 @@
 import {
   ContainerWrapper,
   LinkBox,
+  ToolTipBox,
+  ToolTipContainer,
+  Tooltip,
 } from '@/components/common/globalStyled/styled';
 import MainPageHeader from '../../common/header/MainPageHeader';
 import MainPageFooter from '@/components/common/footer/Footer';
@@ -31,9 +34,6 @@ const SupportTemplate = () => {
                 alt="자주하는질문 아이콘"
               />
               <div>자주하는 질문</div>
-              <div>
-                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
-              </div>
             </Link>
             <Link
               href={{
@@ -48,9 +48,6 @@ const SupportTemplate = () => {
                 alt="멘토 아이콘"
               />
               <div>멘토</div>
-              <div>
-                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
-              </div>
             </Link>
             <Link
               href={{
@@ -65,9 +62,6 @@ const SupportTemplate = () => {
                 alt="멘티 아이콘"
               />
               <div>멘티</div>
-              <div>
-                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
-              </div>
             </Link>
             <Link
               href={{
@@ -82,9 +76,6 @@ const SupportTemplate = () => {
                 alt="신고하기 아이콘"
               />
               <div>신고하기</div>
-              <div>
-                <S.HelpLabelBox>도움말보기</S.HelpLabelBox>
-              </div>
             </Link>
           </S.SupportButtonContainer>
           <S.SupportEtcContainer>

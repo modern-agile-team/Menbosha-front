@@ -40,6 +40,10 @@ const StyledSkeleton = styled.div<Partial<SkeletonType>>`
     );
     animation: ${loading} 1000ms ease-in-out infinite;
   }
+  @media only all and (max-width: 1200px), (max-height: 600px) {
+    width: ${({ width }) =>
+      width && `${parseInt(width?.replace('%', '')) + 20}%`};
+  }
 `;
 
 const SkeletonUI = ({ width, height, count }: SkeletonType) => {

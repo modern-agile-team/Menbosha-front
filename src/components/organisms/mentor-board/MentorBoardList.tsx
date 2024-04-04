@@ -102,7 +102,7 @@ const MentorBoardList = ({ filterCategoryId, lastPage }: FilterPropsType) => {
         <>{!load && <div>게시글이 존재하지 않습니다.</div>}</>
       )}
       <>
-        {load && <SkeletonUI width="18.5%" height="280px" count={10} />}
+        {load && <SkeletonUI width="18.5%" height="27vh" count={10} />}
         <div ref={obsRef}></div>
       </>
     </S.MentorBoardCardContainer>

@@ -4,13 +4,13 @@ import SkeletonUI from '@/components/common/skeletonUI/SkeletonUI';
 const MentorBoardUnitBodySkeleton = () => {
   return (
     <S.BodyContainer>
-      <SkeletonUI width="100%" height="300px" count={1} />
+      <SkeletonUI width="100%" height="30vh" count={1} />
       <S.BodyContentBox>
-        <SkeletonUI width="100%" height="15px" count={1} />
+        <SkeletonUI width="100%" height="1.4vh" count={1} />
         <br />
-        <SkeletonUI width="80%" height="15px" count={1} />
+        <SkeletonUI width="80%" height="1.4vh" count={1} />
         <br />
-        <SkeletonUI width="30%" height="15px" count={1} />
+        <SkeletonUI width="30%" height="1.4vh" count={1} />
       </S.BodyContentBox>
       <S.LikeContainer>
         <img
