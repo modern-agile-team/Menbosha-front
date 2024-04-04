@@ -1,5 +1,12 @@
 import USER from '@/apis/user';
-import { FlexBox, ImageBox } from '@/components/common/globalStyled/styled';
+import {
+  FlexBox,
+  ImageBox,
+  ToolTipBox,
+  ToolTipContainer,
+  Tooltip,
+  TooltipImage,
+} from '@/components/common/globalStyled/styled';
 import { useEffect, useState } from 'react';
 import * as S from './styled';
 import { MyProfileType, UserProfileType } from '@/types/user';
@@ -25,10 +32,14 @@ const MyProfileContents = () => {
         href={{
           pathname: `/mypage/info/update`,
         }}>
-        <img
-          src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/profileSettingBtn.svg"
-          alt="프로필설정"
-        />
+        <ToolTipContainer hoverBox="image">
+          <TooltipImage
+            src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/mypage/profileSettingBtn.svg"
+            alt="프로필설정"
+          />
+
+          <Tooltip>프로필 수정</Tooltip>
+        </ToolTipContainer>
       </Link>
       <div></div>
       <div>
