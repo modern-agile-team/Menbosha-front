@@ -83,6 +83,10 @@ body {
   font-family: 'Pretendard', sans-serif;
 } */
 
+a {
+  text-decoration: none;
+}
+
 /* react-quill에 대한 스타일 지정 */
 .ql-editor {
   border-radius: 0px 0px 15px 15px;
