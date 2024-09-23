@@ -4,8 +4,6 @@
 
 1대1 실시간 채팅과 리뷰 시스템을 기반으로 쾌적한 멘토링 서비스를 제공합니다 😀
 
-![image](https://private-user-images.githubusercontent.com/76510679/315301215-60de43fe-2fc3-4b33-ba2b-33539ad5ea86.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTIyNzk1MzQsIm5iZiI6MTcxMjI3OTIzNCwicGF0aCI6Ii83NjUxMDY3OS8zMTUzMDEyMTUtNjBkZTQzZmUtMmZjMy00YjMzLWJhMmItMzM1MzlhZDVlYTg2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDA1VDAxMDcxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTAyNjA1Y2JjZmVhMDYwZTQxMDBjMDZiOWQ5YjFiOTkxNzcyMDYxZDI4M2QzZmQ4NWYzOTA3ZDEwNmY2OGY3MTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.SINCCd6Jvosd5OlWGR6Ye5NY3Tw5DJaxWM_uU00it4Q)
-
 ## 페이지 소개
 
 | 메인                                                                                                                | 로그인(소셜)                                                                                                        | 멘토 찾기                                                                                                           | 멘토 프로필                                                                                                         |
