@@ -9,6 +9,7 @@ import * as S from './styled';
 import { categoryList } from '@/components/common/category/categoryList';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { sanitizedData } from '@/utils/sanitizedData';
 
 /**게시판으로 라우트 */
 const MentorBoardCard = (props: MentorBoardCardType) => {
@@ -53,7 +54,7 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
           <div>{foundCategory ? foundCategory.category : 'not Found'}</div>
         </S.MentorBoardCardUserInfoContainer>
         <S.HeartCountBox>
-          <img src="https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/fullHeart.svg" />
+          ❤️
           <S.HeartCountBox>{props.likes}</S.HeartCountBox>
         </S.HeartCountBox>
       </S.MentorBoardUserBox>
@@ -66,9 +67,7 @@ const MentorBoardCard = (props: MentorBoardCardType) => {
         <div>{props.head}</div>
         {isHtml && (
           <HTMLtext
-            dangerouslySetInnerHTML={{
-              __html: props.body as string,
-            }}></HTMLtext>
+            dangerouslySetInnerHTML={sanitizedData(props.body)}></HTMLtext>
         )}
         <div>{props.createdAt.slice(0, 10)}</div>
       </S.MentorBoardCardContainer>

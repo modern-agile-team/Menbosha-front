@@ -7,6 +7,7 @@ import MENTOR from '@/apis/mentor';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { LoginStateAtom } from '@/recoil/atoms/LoginStateAtom';
+import { sanitizedData } from '@/utils/sanitizedData';
 
 const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
   const { slideRef, handleSlidePrev, handleSlideNext } = useCarousel(
@@ -65,7 +66,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
 
   return (
     <S.BodyContainer>
-      {props.image.length > 0 ? (
+      {props.image?.length > 0 ? (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           {props.image.length >= 2 && (
             <S.ImageNextNPrevButton onClick={handleSlidePrev}>
@@ -94,10 +95,7 @@ const MentorBoardUnitBody = (props: MBUnitBodyPropsType) => {
       )}
       <S.BodyContentBox>
         {isHtml && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: props.body as string,
-            }}></div>
+          <div dangerouslySetInnerHTML={sanitizedData(props.body)}></div>
         )}
       </S.BodyContentBox>
       <S.LikeContainer>

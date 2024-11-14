@@ -33,7 +33,7 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
   }, []);
 
   const handleCreateRoute = () => {
-    if (loginState) {
+    if (true) {
       router.push({
         pathname: `/create`,
         query: {
@@ -85,18 +85,13 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
       <GlobalCategoryContainer>
         <Category />
         <ToolTipContainer hoverBox="image" onClick={handleCreateRoute}>
-          <TooltipImage
-            src={
-              'https://menbosha-s3.s3.ap-northeast-2.amazonaws.com/public/board/createIcon.svg'
-            }
-            alt="게시글생성아이콘"
-          />
+          <div>게시글 생성</div>
           <Tooltip>게시글 생성</Tooltip>
         </ToolTipContainer>
       </GlobalCategoryContainer>
       <ContainerWrapper>
         <S.MentorListContainer>
-          <S.ListTitleBox>랜덤 멘토 게시글</S.ListTitleBox>
+          {/* <S.ListTitleBox>랜덤 멘토 게시글</S.ListTitleBox>
           <RandomMentorBoard filterCategoryId={Number(router.query.filterId)} />
         </S.MentorListContainer>
         <S.MentorListContainer>
@@ -105,7 +100,7 @@ const MentorBoardTemplate = ({ lastPage }: Partial<MentorBoardListType>) => {
             filterCategoryId={Number(router.query.filterId)}
           />
         </S.MentorListContainer>
-        <S.MentorListContainer>
+        <S.MentorListContainer> */}
           <S.ListSubTitleBox>전체 멘토 게시글</S.ListSubTitleBox>
           <MentorBoardList
             filterCategoryId={Number(router.query.filterId)}

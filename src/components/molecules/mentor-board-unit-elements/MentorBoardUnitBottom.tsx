@@ -43,14 +43,14 @@ const MentorBoardUnitBottom = (props: MentorBoardUnitPropsType) => {
 
   /**유저 정보 가져오는 api */
   const getUserInfoApi = async () => {
-    const response = await USER.getUserInfo(props.id);
-    setUserInfo(response);
+    // const response = await USER.getUserInfo(props.id);
+    // setUserInfo(response);
   };
 
   /**해당 유저의 게시글 가져오는 api */
   const getUserOtherBoardsApi = async () => {
-    const response = await MENTOR.MentorOtherBoards(props.id);
-    setOtherBoards(response.mentorBoardWithUserAndImageDtos);
+    // const response = await MENTOR.MentorOtherBoards(props.id);
+    // setOtherBoards(response.mentorBoardWithUserAndImageDtos);
   };
 
   /**유저 정보로 route */

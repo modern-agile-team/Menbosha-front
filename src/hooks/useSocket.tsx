@@ -18,16 +18,15 @@ const SocketContext = createContext<SocketContextType | undefined>(undefined);
 export const SocketProvider = ({ children }: SocketProviderProps) => {
   const [socket, setSocket] = useState<SocketContextType | null>(null);
 
-  useEffect(() => {
-    // const socket = io('https://api.menbosha.kr');
-    const socket = io(`${process.env.NEXT_PUBLIC_API_BASE_URL}`);
-    setSocket(socket);
-    console.log('socket 연결 확인', socket);
+  // useEffect(() => {
+  //   // const socket = io('https://api.menbosha.kr');
+  //   const socket = io(`${process.env.NEXT_PUBLIC_API_BASE_URL}`);
+  //   setSocket(socket);
 
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
   return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
