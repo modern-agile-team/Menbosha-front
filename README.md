@@ -177,6 +177,12 @@
   </a>
 </p>
 
+## 🛠️ 프로젝트 아키텍처
+
+<img width="868" alt="아키텍처" src="https://github.com/modern-agile-team/Menbosha-back/assets/128793959/1dda685c-ef9e-4e18-8322-d8e9dcdc6b94">
+
+<br>
+
 ---
 
 ### 커밋 메시지 컨벤션
